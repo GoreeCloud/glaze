@@ -1,0 +1,182 @@
+{
+  "$schema": "../../schemas/v1.7-advanced-theme-system-v1-2.schema.json",
+  "schemaVersion": 1,
+  "contractId": "goreecloud.glaze-ui.v1.7.advanced-theme-system-v1-2",
+  "name": "Glaze UI V1.7 Advanced Theme System v1.2 Development Reconciliation Contract",
+  "version": "1.7.0-dev.31",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+  "dependsOn": {
+    "personalizationVersion": "1.7.0-dev.5",
+    "themeSemanticColorVersion": "1.7.0-dev.8",
+    "themeTransitionSystemVersion": "1.7.0-dev.20",
+    "motionExpressionProfilesVersion": "1.7.0-dev.21",
+    "motionPersonalizationVersion": "1.7.0-dev.22"
+  },
+  "provenance": {
+    "historicalFoundationsReinterpreted": false,
+    "dev5RemainsHistoricalPersonalization2Foundation": true,
+    "dev8RemainsHistoricalThemeSemanticColorFoundation": true,
+    "dev20RemainsSection28ThemeTransitionFoundation": true,
+    "dev21RemainsSection29MotionExpressionFoundation": true,
+    "dev22RemainsSection30MotionPersonalizationFoundation": true
+  },
+  "advancedThemeManager": {
+    "appearanceModes": ["follow-system","light","dark","deep-dark"],
+    "goreeCloudPresets": true,
+    "userCreatedThemes": true,
+    "accentPalettes": true,
+    "multiColorPalettes": true,
+    "primarySecondaryTertiaryFamilies": true,
+    "surfaceAtmosphere": true,
+    "materialIntensity": true,
+    "glazeClarity": true,
+    "expressionProfiles": ["calm","balanced","expressive"],
+    "densityProfiles": true,
+    "governedGeometryProfiles": true,
+    "motionExpressionProfiles": true,
+    "wallpaperDerivedPalettes": true,
+    "applicationAwareThemes": true,
+    "perApplicationOverrides": true,
+    "perDevicePreferences": true,
+    "livePreview": true,
+    "previewBeforeApply": true,
+    "accessibilityPreview": true,
+    "colorVisionPreview": true,
+    "contrastDiagnostics": true,
+    "themeHistory": true,
+    "undo": true,
+    "duplication": true,
+    "safeImportExport": true,
+    "versionedThemePackages": true,
+    "callerOwnsPersistence": true,
+    "explicitUserIntentRequiredForConsequentialPreferenceProposals": true
+  },
+  "themeArchitecture": {
+    "precedence": ["accessibility","protected-semantic-state","product-identity","user-theme","contextual-accent","glaze-default"],
+    "accessibilityHighestPriority": true,
+    "semanticTruthOverridesPersonalization": true,
+    "productIdentityRemainsRecognizable": true,
+    "contextualColorBounded": true,
+    "glazeDefaultFinalFallback": true
+  },
+  "semanticColorSystem": {
+    "semanticFamilies": [
+      "information","success","warning","error","danger","critical","destructive","privacy","security",
+      "protected","restricted","trusted","unverified","online","offline","connecting","synchronizing",
+      "pending","unavailable","selected","focused","active","disabled","attention","recovery"
+    ],
+    "channels": ["text","icon","symbol","border","surface","material","progress","badge","selection","prominence"],
+    "prominence": ["subtle","standard","prominent","critical"],
+    "criticalReservedForConsequentialState": true,
+    "protectedSemanticOverrideAllowed": false,
+    "compoundStateLayeringGoverned": true
+  },
+  "paletteGeneration": {
+    "authoritativeLocalSeedsRequired": true,
+    "supportedSeedSources": ["user-selected","goreecloud-preset","wallpaper-summary","application-identity","approved-local-input"],
+    "completeCoordinatedFamilies": true,
+    "accessibilityValidationAfterDerivation": true,
+    "protectedSemanticPalettesReplaced": false,
+    "networkRequired": false,
+    "telemetryRequired": false,
+    "wallpaperUploadRequired": false,
+    "remoteAnalysisRequired": false,
+    "offlineCompleteThemeExperienceRequired": true
+  },
+  "colorCoding": {
+    "navigationAndInteraction": [
+      "current-destination","current-workspace","selected","focused","editing","dragging",
+      "active-filter","search-scope","current-profile","related-information"
+    ],
+    "systemAuthority": {
+      "security": "Wardveil Security",
+      "privacy": "Privacy Shield",
+      "backup": "Everkeep",
+      "recovery": "Everkeep",
+      "identity": "GoreeCloud Identity",
+      "authentication": "GoreeCloud Identity"
+    },
+    "connectivityStates": ["online","offline","connecting","limited-connectivity","unavailable","failed"],
+    "synchronizationStates": ["synchronized","synchronizing","pending","paused","conflict","unavailable","failed"],
+    "connectivityAndSynchronizationConflated": false,
+    "dataVisualizationProtectedSemanticCollisionAllowed": false,
+    "colorOnlyMeaningAllowed": false
+  },
+  "themeAccessibility": {
+    "diagnostics": [
+      "textContrast","focusVisibility","selectionVisibility","semanticStateSeparation",
+      "categoricalColorSeparation","glazeReadability","disabledStateClarity",
+      "colorVisionAccessibility","grayscaleUsability","forcedColorsCompatibility"
+    ],
+    "safeAutomaticAdjustments": ["tone","chroma","foreground","material-opacity"],
+    "automaticCorrectionMayChangeSemanticMeaning": false,
+    "forcedColorsAuthorityPreserved": true
+  },
+  "themeSafety": {
+    "unsafePropertiesMayBeDisabled": true,
+    "knownGoodFallback": "glaze-default",
+    "repairSurfaceMustRemainReachable": true,
+    "resetSurfaceMustRemainReachable": true,
+    "damagedThemeMayBlockThemeManager": false
+  },
+  "themePackages": {
+    "format": "goreecloud.glaze-theme",
+    "version": 1,
+    "declarative": true,
+    "inspectible": true,
+    "nonExecutable": true,
+    "bounded": true,
+    "portable": true,
+    "trackersAllowed": false,
+    "analyticsDependenciesAllowed": false,
+    "remoteRuntimeResourcesAllowed": false,
+    "protectedSemanticOverrideAllowed": false,
+    "automaticApplyAllowed": false,
+    "automaticPersistenceAllowed": false
+  },
+  "authority": {
+    "boundary": "presentation-only",
+    "providerTruthCreatedByGlaze": false,
+    "securityTruthCreatedByGlaze": false,
+    "privacyTruthCreatedByGlaze": false,
+    "connectivityTruthCreatedByGlaze": false,
+    "synchronizationTruthCreatedByGlaze": false,
+    "recoveryTruthCreatedByGlaze": false,
+    "identityTruthCreatedByGlaze": false,
+    "themePreferencePersistedByGlaze": false,
+    "applicationPreferenceAuthorityCreatedByGlaze": false,
+    "devicePreferenceAuthorityCreatedByGlaze": false,
+    "remoteResourceAuthorityCreatedByGlaze": false,
+    "executableThemeContentAccepted": false
+  },
+  "acceptanceBoundary": {
+    "sourceReconciliationOnly": true,
+    "v12Sections6Through21SourceRequirementsMapped": true,
+    "v12Sections6Through21Complete": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "representativeDeviceAcceptanceEstablished": false,
+    "performanceAcceptanceEstablished": false,
+    "energyAcceptanceEstablished": false,
+    "humanVisualReviewEstablished": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "releasePromotionAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "runtimeEntrypoint": "js/glaze-v1.7-advanced-theme-system-v1-2.dev.mjs",
+  "developmentAggregateEntrypoint": "js/glaze-v1.7-development.mjs",
+  "tokenMap": "tokens/glaze-v1.7-advanced-theme-system-v1-2.dev.json",
+  "researchRecord": "research/v1.7-advanced-theme-system-v1-2.md",
+  "sourceAuthorities": [
+    "GLAZE_UI_V1_7_PLANNED.md",
+    "PLANNED-FEATURES.md",
+    "IMPLEMENTED-FEATURES.md",
+    "CHANGELOGS.md"
+  ]
+}
