@@ -45,14 +45,8 @@
     ],
     "reducedMotion": "accessibility profile",
     "nonNeutralSignalsRequireCallerOrProviderAuthority": true,
-    "untrustedSignalsFallBackToNeutral": true,
-    "authorityRequired": true,
-    "visibility": [
-      "visible",
-      "offscreen",
-      "background",
-      "obscured"
-    ]
+    "authorityIsPerSignal": true,
+    "untrustedSignalsFallBackToNeutral": true
   },
   "performanceModes": [
     "full",
@@ -78,6 +72,8 @@
     "resolverP99MsMax": 16.7,
     "interactionPaintP95MsMax": 100,
     "interactionPaintP99MsMax": 200,
+    "activeFrameP95MinimumCeilingMs": 20,
+    "activeFrameP95IdleMultiplier": 1.25,
     "severeFrameStallRateMax": 0.01,
     "catastrophicForegroundStallCountMax": 0,
     "taskStateResetCountMax": 0,
@@ -135,8 +131,7 @@
     "rawScaleAccepted": false,
     "callerPerformanceThresholdsAccepted": false,
     "callerFrameBudgetAccepted": false,
-    "acceptanceMeasurementsAcceptedByResolver": false,
-    "measurementsAcceptedByResolver": false
+    "acceptanceMeasurementsAcceptedByResolver": false
   },
   "evidence": {
     "measurementsManufactured": false,
@@ -144,8 +139,7 @@
     "exactRevisionPerformanceEvidenceStillRequired": true,
     "measuredFramePacingEstablished": false,
     "measuredInteractionLatencyEstablished": false,
-    "energyImpactEstablished": false,
-    "environmentSignalsRequireAuthority": true
+    "energyImpactEstablished": false
   },
   "authority": {
     "boundary": "presentation-only",
