@@ -64,6 +64,15 @@ assert(untrusted.authority.transitionOccurrenceOwnedByCallerOrProvider===true,'t
 const reduced=resolveGlazeVisualMotionDirectionV12({...base,accessibility:{...base.accessibility,reducedMotion:true}});
 assert(reduced.direction.motionDirective==='reduced-motion-equivalent','Reduced Motion must take precedence');
 
+const untrustedAccessibility=resolveGlazeVisualMotionDirectionV12({
+  ...base,
+  accessibility:{...base.accessibility,reducedMotion:true,reducedTransparency:true},
+  accessibilityAuthoritative:false
+});
+assert(untrustedAccessibility.accessibility.untrustedNonNeutralIgnored===true,'untrusted accessibility state must be identified');
+assert(untrustedAccessibility.accessibility.effective.reducedMotion===false&&untrustedAccessibility.accessibility.effective.reducedTransparency===false,'untrusted accessibility state must fail closed to neutral');
+assert(untrustedAccessibility.direction.motionDirective==='signature-emphasized','untrusted accessibility flags must not manufacture presentation constraints');
+
 const opaque=resolveGlazeVisualMotionDirectionV12({...base,surfaceRole:'transient',materialPurpose:'transient-separation',accessibility:{...base.accessibility,reducedTransparency:true}});
 assert(opaque.direction.materialDirective==='solid-certainty','Reduced Transparency must force a solid equivalent');
 
