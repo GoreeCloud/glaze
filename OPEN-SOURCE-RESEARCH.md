@@ -63,3 +63,15 @@ Detailed requirements research is retained in `research/v1.7-glaze-studio-v1-2.m
 
 No third-party source code, UI/control implementation, algorithms, animation values, components, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
 
+
+## V1.7 dev.34 — Accessibility Continuity
+
+Research date: 2026-09-27.
+
+- W3C ARIA Authoring Practices at `3f094fde1c81b25dfa69162563bf28d093f854d4` — W3C Software and Document License. Studied for visible, persistent, predictable keyboard focus and semantic conventions supporting assistive interaction.
+- Adobe React Spectrum / React Aria at `16eead67e83cf42f3c0ee46ef6eb7a2032778378` — Apache-2.0. Studied for explicit focus-scope containment/restoration and bounded focus-management architecture.
+- AndroidX Compose UI at `23327507f7fc7d5b19d65fec4b090f60c970079b` — Apache-2.0. Studied for preserving/restoring previously focused children across composition changes with explicit fallback behavior.
+
+Detailed requirements research is retained in `research/v1.7-accessibility-continuity.md`.
+
+No third-party source code, UI/focus-management implementation, algorithms, raw presentation values, components, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
