@@ -1,0 +1,183 @@
+{
+  "$schema": "../../schemas/v1.7-motion-performance.schema.json",
+  "schemaVersion": 1,
+  "contractId": "goreecloud.glaze-ui.v1.7.motion-performance",
+  "name": "Glaze UI V1.7 Motion Performance Development Contract",
+  "version": "1.7.0-dev.25",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [
+    33
+  ],
+  "dependsOn": {
+    "v16PerformanceDiagnosticsVersion": "1.6.0-dev.9",
+    "motionFatigueProtectionVersion": "1.7.0-dev.24",
+    "reducedMotionEquivalentsVersion": "1.7.0-dev.23"
+  },
+  "environmentSignals": {
+    "runtimePressure": [
+      "none",
+      "elevated",
+      "severe"
+    ],
+    "powerSaving": "boolean",
+    "thermalState": [
+      "none",
+      "constrained",
+      "critical"
+    ],
+    "hardwareClass": [
+      "standard",
+      "constrained"
+    ],
+    "refreshClass": [
+      "normal",
+      "low"
+    ],
+    "performanceDegraded": "boolean",
+    "visibilityClass": [
+      "visible",
+      "offscreen",
+      "background",
+      "obscured"
+    ],
+    "reducedMotion": "accessibility profile",
+    "nonNeutralSignalsRequireCallerOrProviderAuthority": true,
+    "authorityIsPerSignal": true,
+    "untrustedSignalsFallBackToNeutral": true
+  },
+  "performanceModes": [
+    "full",
+    "restrained",
+    "simplified",
+    "minimal",
+    "reduced-motion"
+  ],
+  "motionKinds": [
+    "direct-manipulation",
+    "task-transition",
+    "connected-transformation",
+    "adaptive-recomposition",
+    "material",
+    "skeleton",
+    "decorative",
+    "continuous-decorative"
+  ],
+  "performanceBudgetReference": {
+    "source": "GoreeCloud Standard — Glaze UI Performance Budget",
+    "sourceVersion": "v1.0",
+    "resolverP95MsMax": 10,
+    "resolverP99MsMax": 16.7,
+    "interactionPaintP95MsMax": 100,
+    "interactionPaintP99MsMax": 200,
+    "activeFrameP95MinimumCeilingMs": 20,
+    "activeFrameP95IdleMultiplier": 1.25,
+    "severeFrameStallRateMax": 0.01,
+    "catastrophicForegroundStallCountMax": 0,
+    "taskStateResetCountMax": 0,
+    "pageReloadRequiredCountMax": 0,
+    "automaticAuthorityActionCountMax": 0,
+    "minimumSamples": {
+      "resolver": 200,
+      "interactionPaint": 30,
+      "idleFrames": 120,
+      "activeFrames": 240
+    },
+    "exactRevisionRepresentativeMeasurementsRequired": true,
+    "acceptanceMayBeInferredFromThisResolver": false
+  },
+  "degradationPolicy": {
+    "optionalMotionMayDegrade": true,
+    "multipleConstraintsIncreaseSimplification": true,
+    "severeRuntimePressureUsesMinimalPresentation": true,
+    "criticalThermalStateUsesMinimalPresentation": true,
+    "offscreenBackgroundOrObscuredUsesMinimalPresentation": true,
+    "offscreenOptionalWorkSuspended": true,
+    "idleRenderLoopsAllowed": false,
+    "reducedMotionUsesSemanticEquivalent": true,
+    "fatigueBudgetPressureParticipates": true,
+    "directManipulationTrackingPreserved": true,
+    "semanticStateReduced": false,
+    "authoritativeStateReduced": false,
+    "untrustedNonNeutralSignalsIgnored": true
+  },
+  "renderingPolicy": {
+    "compositorFriendlyTechniquesPreferred": true,
+    "preferred": [
+      "transform",
+      "opacity",
+      "bounded-clipping",
+      "platform-native-compositor-primitives"
+    ],
+    "avoidWhenEquivalent": [
+      "layout-driven-animation",
+      "synchronous-layout-measurement-loops",
+      "unbounded-repainting",
+      "continuous-main-thread-rendering",
+      "unbounded-shader-complexity"
+    ],
+    "offscreenOptionalWorkSuspended": true,
+    "idleRenderLoopsAllowed": false
+  },
+  "requestPolicy": {
+    "rawTimingAccepted": false,
+    "rawEasingAccepted": false,
+    "rawSpringAccepted": false,
+    "rawPhysicsAccepted": false,
+    "rawKeyframesAccepted": false,
+    "rawDistanceAccepted": false,
+    "rawScaleAccepted": false,
+    "callerPerformanceThresholdsAccepted": false,
+    "callerFrameBudgetAccepted": false,
+    "acceptanceMeasurementsAcceptedByResolver": false
+  },
+  "evidence": {
+    "measurementsManufactured": false,
+    "environmentSignalsRequireCallerOrProviderAuthority": true,
+    "exactRevisionPerformanceEvidenceStillRequired": true,
+    "measuredFramePacingEstablished": false,
+    "measuredInteractionLatencyEstablished": false,
+    "energyImpactEstablished": false
+  },
+  "authority": {
+    "boundary": "presentation-only",
+    "applicationStateChangedByGlaze": false,
+    "navigationExecutedByGlaze": false,
+    "providerTruthCreatedByGlaze": false,
+    "performanceTruthCreatedByGlaze": false,
+    "powerStateCreatedByGlaze": false,
+    "thermalStateCreatedByGlaze": false,
+    "hardwareCapabilityCreatedByGlaze": false,
+    "refreshCapabilityCreatedByGlaze": false,
+    "accessibilityStateCreatedByGlaze": false
+  },
+  "glazeMotionBoundary": {
+    "experimentalFoundationVersion": "0.6.0",
+    "runtimeCompatibilityBaseline": "0.4.0",
+    "experimentalLifecyclePromoted": false
+  },
+  "acceptanceBoundary": {
+    "sourceFoundationOnly": true,
+    "section33Complete": false,
+    "motionPerformancePolicyImplemented": true,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "thermalPowerAcceptanceEstablished": false,
+    "lowEndHardwareAcceptanceEstablished": false,
+    "lowRefreshAcceptanceEstablished": false,
+    "highRefreshAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "releasePromotionAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "runtimeEntrypoint": "js/glaze-v1.7-motion-performance.dev.mjs",
+  "developmentAggregateEntrypoint": "js/glaze-v1.7-development.mjs",
+  "tokenMap": "tokens/glaze-v1.7-motion-performance.dev.json",
+  "researchRecord": "docs/development/v1.7-motion-performance-open-source-research-20260926.md"
+}
