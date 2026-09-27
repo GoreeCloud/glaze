@@ -4,6 +4,14 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.24` **Motion Fatigue Protection** Development source for V1.7 v1.2 Section 32.
+- Preserved the established V1.6 reference motion budget without expansion: 6 simultaneous transitions, 4 skeleton motion elements, 1 background material animation, 2 decorative movements, 1 large-area transformation, and 4 continuous animated elements.
+- Added deterministic over-budget simplification that suppresses decorative movement first, then continuous animation, excess skeleton motion, background material animation, large-area transformation richness, and finally excess simultaneous transition richness while preserving semantic and authoritative state.
+- Added static skeleton/material fallbacks, decorative-motion suspension during major task transitions, and explicit reuse of dev.19 repeated-action fatigue suppression; Reduced Motion continues to outrank the ordinary budget and direct manipulation remains input-driven.
+- Rejected application-facing budget overrides and raw duration/easing/spring/physics/keyframe/path/distance/rotation/scale controls; applications may report current semantic motion counts but cannot raise governed limits.
+- Recorded Material Components, Carbon Design System, Fluent UI, V1.6 focus/motion, V1.6 loading/skeleton, and dev.19 microinteraction research as independent-reimplementation provenance without copying upstream source, exact motion values, curves, components, assets, or visual identity.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.24` with v1.2 foundation sections 22–32 while keeping Sections 22–32 acceptance incomplete, Glaze Motion 0.6 Experimental, V1.6 / `1.6.0` as Official Anchor, and V1.7 non-consumer-eligible.
+
 - Added bounded `1.7.0-dev.23` **Reduced Motion Equivalents** Development source for V1.7 v1.2 Section 31.
 - Added deterministic state-first Reduced Motion equivalents for all ten Signature Transition Families: Bloom opacity/shape-state replacement; Flow immediate recomposition with brief emphasis; Lift opacity without travel; Veil immediate hierarchy change with restrained fade; Fold immediate layout replacement; Trace static destination highlight; Settle direct tracking then immediate final position; Focus Transfer immediate focus-ring update; Color Shift immediate or restrained palette replacement; Material Shift immediate material replacement.
 - Preserved state, meaning, focus, navigation, task continuity, direct-manipulation tracking, and authoritative final state while prohibiting critical interactions that require users to observe motion.

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.com/schemas/glaze-ui/v1.7-motion-fatigue-protection.schema.json",
+  "title": "Glaze UI V1.7 Motion Fatigue Protection Development Contract",
+  "type": "object",
+  "required": ["schemaVersion","contractId","version","lifecycle","stableBaseline","consumerEligible","planVersion","v12SpecificationSections","referenceBudget","budgetPolicy","reductionOrder","reductionSemantics","accessibility","invariants","requestPolicy","authority","acceptanceBoundary"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "contractId": {"const": "goreecloud.glaze-ui.v1.7.motion-fatigue-protection"},
+    "version": {"const": "1.7.0-dev.24"},
+    "lifecycle": {"const": "Development"},
+    "stableBaseline": {"const": "1.6.0"},
+    "consumerEligible": {"const": false},
+    "planVersion": {"const": "v1.2"},
+    "v12SpecificationSections": {"const": [32]},
+    "referenceBudget": {"type": "object"},
+    "budgetPolicy": {"type": "object"},
+    "reductionOrder": {"type": "array"},
+    "reductionSemantics": {"type": "object"},
+    "accessibility": {"type": "object"},
+    "invariants": {"type": "object"},
+    "requestPolicy": {"type": "object"},
+    "authority": {"type": "object"},
+    "glazeMotionBoundary": {"type": "object"},
+    "acceptanceBoundary": {"type": "object"},
+    "runtimeEntrypoint": {"type": "string"},
+    "developmentAggregateEntrypoint": {"type": "string"},
+    "tokenMap": {"type": "string"},
+    "researchRecord": {"type": "string"}
+  },
+  "additionalProperties": true
+}
