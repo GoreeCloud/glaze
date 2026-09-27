@@ -1,0 +1,58 @@
+{
+  "version": "1.7.0-dev.35",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [42],
+  "sharedSemanticDimensions": [
+    "semantic-vocabulary",
+    "color-roles",
+    "state-vocabulary",
+    "motion-language",
+    "material-hierarchy",
+    "interaction-principles",
+    "accessibility-expectations",
+    "authority-boundaries"
+  ],
+  "consistency": {
+    "semanticMeaningMustMatch": true,
+    "semanticStateMustMatch": true,
+    "semanticColorRoleMustMatch": true,
+    "motionRelationshipMustMatch": true,
+    "materialHierarchyMustMatch": true,
+    "interactionPrinciplesMustMatch": true,
+    "accessibilityExpectationsMustMatch": true,
+    "authorityBoundariesMustMatch": true
+  },
+  "nonUniformity": {
+    "pixelIdenticalPresentationRequired": false,
+    "identicalNativeControlsRequired": false,
+    "identicalLayoutCompositionRequired": false,
+    "identicalAnimationTimingRequired": false,
+    "identicalAnimationCurvesRequired": false,
+    "identicalAnimationPathsRequired": false,
+    "identicalRenderingPrimitivesRequired": false,
+    "identicalInputBindingsRequired": false,
+    "identicalWindowingMechanicsRequired": false
+  },
+  "authority": {
+    "providerTruthCreatedByGlaze": false,
+    "platformCapabilityCreatedByGlaze": false,
+    "nativeImplementationCreatedByGlaze": false,
+    "accessibilityStateCreatedByGlaze": false,
+    "applicationStateChangedByGlaze": false,
+    "navigationExecutedByGlaze": false,
+    "acceptanceGrantedByGlaze": false
+  },
+  "acceptance": {
+    "section42Complete": false,
+    "crossPlatformRenderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "representativeDeviceAcceptanceEstablished": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "energyAcceptanceEstablished": false,
+    "humanCrossDeviceReviewEstablished": false
+  }
+}
