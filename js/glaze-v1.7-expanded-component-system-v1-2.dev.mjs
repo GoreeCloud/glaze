@@ -193,7 +193,10 @@ export function resolveGlazeExpandedComponentV12(input={}){
 
   const transitionAuthoritative=input.transitionAuthoritative===true;
   const stateAuthorityRequired=relationship!==null&&STATE_CHANGE_RELATIONSHIPS.includes(relationship);
-  const stateAuthoritySatisfied=!stateAuthorityRequired||input.semanticStateAuthoritative===true;
+  let stateAuthoritySatisfied=!stateAuthorityRequired||input.semanticStateAuthoritative===true;
+  if(specialized!==null&&stateAuthorityRequired){
+    stateAuthoritySatisfied=specialized.transition.providerTruthSatisfied===true;
+  }
   const providerStateAuthorityRequired=PROVIDER_STATE_COMPONENTS.includes(component)
     &&base.providerState.requestedState!==null
     &&relationship==='material-role-change';
