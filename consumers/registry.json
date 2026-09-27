@@ -3,7 +3,7 @@
   "officialBaseline": "1.6.0",
   "officialProductLabel": "GLAZE UI V1.6",
   "requiredConsumerVersion": "1.6.0",
-  "auditedAt": "2026-09-25",
+  "auditedAt": "2026-09-26",
   "statusVocabulary": [
     "adoption-required",
     "unverified",
@@ -122,6 +122,17 @@
       "evidence": null,
       "productionEligible": false,
       "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required."
+    },
+    {
+      "name": "GoreeCloud Advanced Tab Manager",
+      "repository": "GoreeCloud/firefox-extensions",
+      "status": "adoption-required",
+      "targetVersion": null,
+      "requiredTargetVersion": "1.6.0",
+      "referenceRevision": null,
+      "evidence": null,
+      "productionEligible": false,
+      "notes": "Advanced Tab Manager 0.1.12 source on GoreeCloud/firefox-extensions main d9761d6e046ef25f93f391a848e2dfc597c98498 has repository-local GLAZE UI V1.6 / 1.6.0 source mapping, but current-target rendered, assistive-technology, large-text/high-zoom, alternate-appearance/environmental, signing/restart, and governed product Stable acceptance remain incomplete. Accepted product Stable 0.1.11 retains historical V1.5.1 provenance."
     },
     {
       "name": "GoreeCloud Security Center",
