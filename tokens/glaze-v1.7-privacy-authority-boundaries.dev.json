@@ -1,0 +1,53 @@
+{
+  "version": "1.7.0-dev.37",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [44],
+  "truth": {
+    "motionCommunicatesTruth": true,
+    "motionCreatesTruth": false,
+    "adaptivePresentationCreatesTruth": false,
+    "truthBearingTransitionRequiresAuthoritativeState": true,
+    "unknownOrUntrustedTruthFailsClosed": true,
+    "providerPrecedenceInferred": false
+  },
+  "domains": [
+    "security-protection",
+    "privacy-access",
+    "synchronization",
+    "operation-result",
+    "recovery",
+    "identity-authentication"
+  ],
+  "authority": {
+    "securityTruthCreatedByGlaze": false,
+    "privacyTruthCreatedByGlaze": false,
+    "synchronizationTruthCreatedByGlaze": false,
+    "successTruthCreatedByGlaze": false,
+    "recoveryTruthCreatedByGlaze": false,
+    "identityTruthCreatedByGlaze": false,
+    "authorizationGrantedByGlaze": false,
+    "permissionGrantedByGlaze": false,
+    "consentGrantedByGlaze": false,
+    "providerPrecedenceInferredByGlaze": false
+  },
+  "motion": {
+    "truthBearingMotionRequiresAuthoritativeAffirmation": true,
+    "unknownStateUsesNeutralPresentation": true,
+    "untrustedAffirmationUsesNeutralPresentation": true,
+    "stateMayNotDependOnAnimationCompletion": true,
+    "animationMayNotAdvanceProviderState": true
+  },
+  "acceptance": {
+    "section44Complete": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "providerIntegrationAcceptanceEstablished": false,
+    "privacyBoundaryAcceptanceEstablished": false,
+    "securityBoundaryAcceptanceEstablished": false,
+    "humanReviewEstablished": false
+  }
+}
