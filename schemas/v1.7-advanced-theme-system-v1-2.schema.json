@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze-ui/v1.7-advanced-theme-system-v1-2.schema.json",
+  "title": "Glaze UI V1.7 Advanced Theme System v1.2 Development Reconciliation Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","contractId","name","version","lifecycle","stableBaseline",
+    "consumerEligible","planVersion","v12SpecificationSections","dependsOn","provenance",
+    "advancedThemeManager","themeArchitecture","semanticColorSystem","paletteGeneration",
+    "colorCoding","themeAccessibility","themeSafety","themePackages","authority",
+    "acceptanceBoundary","runtimeEntrypoint","developmentAggregateEntrypoint","tokenMap",
+    "researchRecord","sourceAuthorities"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7-advanced-theme-system-v1-2.schema.json"},
+    "schemaVersion": {"const":1},
+    "contractId": {"const":"goreecloud.glaze-ui.v1.7.advanced-theme-system-v1-2"},
+    "name": {"const":"Glaze UI V1.7 Advanced Theme System v1.2 Development Reconciliation Contract"},
+    "version": {"const":"1.7.0-dev.31"},
+    "lifecycle": {"const":"Development"},
+    "stableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "planVersion": {"const":"v1.2"},
+    "v12SpecificationSections": {"const":[6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]},
+    "dependsOn": {
+      "type":"object","additionalProperties":false,
+      "required":["personalizationVersion","themeSemanticColorVersion","themeTransitionSystemVersion","motionExpressionProfilesVersion","motionPersonalizationVersion"],
+      "properties":{
+        "personalizationVersion":{"const":"1.7.0-dev.5"},
+        "themeSemanticColorVersion":{"const":"1.7.0-dev.8"},
+        "themeTransitionSystemVersion":{"const":"1.7.0-dev.20"},
+        "motionExpressionProfilesVersion":{"const":"1.7.0-dev.21"},
+        "motionPersonalizationVersion":{"const":"1.7.0-dev.22"}
+      }
+    },
+    "provenance":{"type":"object"},
+    "advancedThemeManager":{"type":"object"},
+    "themeArchitecture":{"type":"object"},
+    "semanticColorSystem":{"type":"object"},
+    "paletteGeneration":{"type":"object"},
+    "colorCoding":{"type":"object"},
+    "themeAccessibility":{"type":"object"},
+    "themeSafety":{"type":"object"},
+    "themePackages":{"type":"object"},
+    "authority":{
+      "type":"object","additionalProperties":false,
+      "required":[
+        "boundary","providerTruthCreatedByGlaze","securityTruthCreatedByGlaze","privacyTruthCreatedByGlaze",
+        "connectivityTruthCreatedByGlaze","synchronizationTruthCreatedByGlaze","recoveryTruthCreatedByGlaze",
+        "identityTruthCreatedByGlaze","themePreferencePersistedByGlaze","applicationPreferenceAuthorityCreatedByGlaze",
+        "devicePreferenceAuthorityCreatedByGlaze","remoteResourceAuthorityCreatedByGlaze","executableThemeContentAccepted"
+      ],
+      "properties":{
+        "boundary":{"const":"presentation-only"},
+        "providerTruthCreatedByGlaze":{"const":false},
+        "securityTruthCreatedByGlaze":{"const":false},
+        "privacyTruthCreatedByGlaze":{"const":false},
+        "connectivityTruthCreatedByGlaze":{"const":false},
+        "synchronizationTruthCreatedByGlaze":{"const":false},
+        "recoveryTruthCreatedByGlaze":{"const":false},
+        "identityTruthCreatedByGlaze":{"const":false},
+        "themePreferencePersistedByGlaze":{"const":false},
+        "applicationPreferenceAuthorityCreatedByGlaze":{"const":false},
+        "devicePreferenceAuthorityCreatedByGlaze":{"const":false},
+        "remoteResourceAuthorityCreatedByGlaze":{"const":false},
+        "executableThemeContentAccepted":{"const":false}
+      }
+    },
+    "acceptanceBoundary":{
+      "type":"object","additionalProperties":false,
+      "required":[
+        "sourceReconciliationOnly","v12Sections6Through21SourceRequirementsMapped","v12Sections6Through21Complete",
+        "renderedAcceptanceEstablished","nativePlatformAcceptanceEstablished","assistiveTechnologyAcceptanceEstablished",
+        "representativeDeviceAcceptanceEstablished","performanceAcceptanceEstablished","energyAcceptanceEstablished",
+        "humanVisualReviewEstablished","downstreamConsumerAcceptanceAutomatic","releasePromotionAutomatic",
+        "deploymentAcceptanceAutomatic","productionAcceptanceAutomatic"
+      ],
+      "properties":{
+        "sourceReconciliationOnly":{"const":true},
+        "v12Sections6Through21SourceRequirementsMapped":{"const":true},
+        "v12Sections6Through21Complete":{"const":false},
+        "renderedAcceptanceEstablished":{"const":false},
+        "nativePlatformAcceptanceEstablished":{"const":false},
+        "assistiveTechnologyAcceptanceEstablished":{"const":false},
+        "representativeDeviceAcceptanceEstablished":{"const":false},
+        "performanceAcceptanceEstablished":{"const":false},
+        "energyAcceptanceEstablished":{"const":false},
+        "humanVisualReviewEstablished":{"const":false},
+        "downstreamConsumerAcceptanceAutomatic":{"const":false},
+        "releasePromotionAutomatic":{"const":false},
+        "deploymentAcceptanceAutomatic":{"const":false},
+        "productionAcceptanceAutomatic":{"const":false}
+      }
+    },
+    "runtimeEntrypoint":{"const":"js/glaze-v1.7-advanced-theme-system-v1-2.dev.mjs"},
+    "developmentAggregateEntrypoint":{"const":"js/glaze-v1.7-development.mjs"},
+    "tokenMap":{"const":"tokens/glaze-v1.7-advanced-theme-system-v1-2.dev.json"},
+    "researchRecord":{"const":"research/v1.7-advanced-theme-system-v1-2.md"},
+    "sourceAuthorities":{"type":"array","minItems":4,"uniqueItems":true,"items":{"type":"string","minLength":1}}
+  }
+}
