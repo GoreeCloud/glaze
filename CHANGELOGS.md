@@ -4,6 +4,11 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.29` **Native Glaze Kits** source for V1.7 v1.2 Section 37, extending historical dev.9 without renumbering it.
+- Preserved shared Glaze semantic motion across Android/Jetpack Compose, Apple/SwiftUI, Web, and supported Linux native mappings while keeping platform interaction, accessibility, rendering, and performance behavior native-owned.
+- Section 37 remains Development-only and incomplete; V1.6 / `1.6.0` remains Official Anchor and Glaze Motion remains Experimental.
+
+
 - Added bounded `1.7.0-dev.28` **Notification and Activity Surfaces** Development source for V1.7 v1.2 Section 36 without relabeling the historical dev.7 v1.0 Section 8 foundation.
 - Added governed semantic motion relationships for progress, completion, recovery, arrival, expansion, and dismissal across the six existing notification/activity components.
 - Required authoritative transition occurrence before Signature Motion is eligible; progress motion additionally requires authoritative progress truth, completion/recovery motion requires authoritative provider truth, and expansion Bloom requires authoritative connected identity.
