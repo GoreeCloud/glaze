@@ -4,6 +4,16 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.27` **System Shell Continuity v1.2** Development reconciliation for V1.7 v1.2 Section 35.
+- Preserved historical `1.7.0-dev.6` System Shell Continuity as earlier-plan implementation provenance rather than silently renumbering it, and mapped the ten current Section 35 shell areas onto its authoritative capability/task-continuity model.
+- Added semantic shell-motion mappings: notification/activity presentation and contextual commands use transient-elevation / Glaze Lift; Control Center and Universal Search use context-overlay / Glaze Veil; multi-window, split view, compact/expanded navigation, and window restoration use workspace-recomposition / Glaze Flow; task switching uses focus-transfer / Glaze Focus Transfer; application/system handoff uses source-destination continuity / Glaze Trace only with authoritative object identity and otherwise fails to the Standard transition.
+- Reused dev.23 Reduced Motion equivalents, dev.24 fatigue protection, and dev.25 performance degradation without creating competing shell-specific accessibility, motion-budget, or performance authorities.
+- Made shell state and provider execution explicitly state-first: optional motion cannot delay shell navigation, handoff/window execution, or final state, and final state never depends on animation completion.
+- Rejected direct family selection, raw timing/easing/spring/physics/keyframe/path/distance/scale controls, caller performance thresholds, and acceptance-measurement injection; Glaze still cannot create shell capability, provider truth, navigation authority, persistence, system privileges, or consequential execution.
+- Recorded AOSP SystemUI Scene Framework, GNOME Mutter/GNOME Shell, and KDE KWin research as independent-reimplementation provenance without copying upstream source, animation values, curves, window algorithms, layouts, components, assets, or visual identity.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.27` with v1.2 foundation/evaluation sections 22–35 while keeping Sections 22–35 acceptance incomplete, Glaze Motion 0.6 Experimental, V1.6 / `1.6.0` as Official Anchor, and V1.7 non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.26` **Glaze Motion Lifecycle** Development reconciliation for V1.7 v1.2 Section 34.
 - Evaluated all ten required promotion dimensions—accessibility, native-platform behavior, frame pacing, interaction latency, interruption, reversal, Reduced Motion, physical-device behavior, energy impact, and human motion review—against current Glaze Motion 0.6 source evidence and exact historical provenance.
 - Recorded every promotion dimension as unsatisfied for lifecycle promotion: existing unit/reference/emulator/native-test evidence remains development evidence only, representative physical-device/frame-pacing/latency/energy/human-motion acceptance is absent, and no missing evidence is inferred.
