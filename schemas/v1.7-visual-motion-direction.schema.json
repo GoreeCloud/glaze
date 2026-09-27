@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze-ui/v1.7-visual-motion-direction.schema.json",
+  "title": "Glaze UI V1.7 Visual and Motion Direction Development Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","contractId","name","version","lifecycle","stableBaseline",
+    "consumerEligible","planVersion","v12SpecificationSections","advancementObjectives",
+    "governingDirection","materialPolicy","motionPolicy","authority","dependencies",
+    "acceptanceBoundary","runtimeEntrypoint","developmentAggregateEntrypoint","tokenMap",
+    "researchRecord"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7-visual-motion-direction.schema.json"},
+    "schemaVersion": {"const":1},
+    "contractId": {"const":"goreecloud.glaze-ui.v1.7.visual-motion-direction"},
+    "name": {"const":"Glaze UI V1.7 Visual and Motion Direction Development Contract"},
+    "version": {"const":"1.7.0-dev.36"},
+    "lifecycle": {"const":"Development"},
+    "stableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "planVersion": {"const":"v1.2"},
+    "v12SpecificationSections": {"const":[43]},
+    "advancementObjectives": {
+      "type":"array","minItems":8,"maxItems":8,"uniqueItems":true,
+      "items":{"type":"string","minLength":1}
+    },
+    "governingDirection": {"type":"object","minProperties":8},
+    "materialPolicy": {"type":"object","minProperties":8},
+    "motionPolicy": {"type":"object","minProperties":8},
+    "authority": {"type":"object","minProperties":15},
+    "dependencies": {"type":"object","minProperties":7},
+    "acceptanceBoundary": {"type":"object","minProperties":14},
+    "runtimeEntrypoint": {"const":"js/glaze-v1.7-visual-motion-direction.dev.mjs"},
+    "developmentAggregateEntrypoint": {"const":"js/glaze-v1.7-development.mjs"},
+    "tokenMap": {"const":"tokens/glaze-v1.7-visual-motion-direction.dev.json"},
+    "researchRecord": {"const":"research/v1.7-visual-motion-direction.md"}
+  }
+}
