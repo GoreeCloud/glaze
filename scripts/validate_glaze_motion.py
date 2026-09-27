@@ -144,7 +144,7 @@ def main():
     req('v1.7-glaze-motion-lifecycle-reconciliation-20260926.md' in doc,'current V1.7 lifecycle reconciliation reference missing')
 
     native_doc=NATIVE.read_text()
-    phrases(native_doc,('Mobile and tablet native','Desktop native','TV native','First-party native evaluation evidence','Performance evidence','Authority boundary','Settings.Global.ANIMATOR_DURATION_SCALE'),'native mapping guidance')
+    phrases(native_doc,('native animation, gesture, focus, and navigation conventions','Native mapping must not be inferred from a web demo','each platform requires its own implementation and acceptance evidence','Reduced Motion and platform accessibility preferences override decorative motion','Direct manipulation should track input without avoidable latency'),'native mapping guidance')
 
     css=CSS.read_text()
     req('Glaze Motion 0.3 Experimental' in css and '@media (prefers-reduced-motion: reduce)' in css,'retained Motion CSS markers missing')
