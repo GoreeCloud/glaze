@@ -18,12 +18,12 @@
     "providerPrecedenceInferred": false
   },
   "truthDomains": {
-    "security-protection": ["Wardveil Security"],
-    "privacy-access": ["Privacy Shield", "responsible-provider"],
+    "security-protection": ["wardveil-security"],
+    "privacy-access": ["privacy-shield", "responsible-provider"],
     "synchronization": ["responsible-provider"],
     "operation-result": ["responsible-provider"],
-    "recovery": ["Everkeep", "responsible-provider"],
-    "identity-authentication": ["GoreeCloud Identity"]
+    "recovery": ["everkeep", "responsible-provider"],
+    "identity-authentication": ["goreecloud-identity"]
   },
   "truthBearingEvents": [
     "protection-enabled",
