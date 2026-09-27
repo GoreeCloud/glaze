@@ -987,6 +987,8 @@ Optional visual complexity should degrade gracefully under constrained condition
 
 Task continuity, accessibility, responsiveness, and semantic state always outrank animation fidelity.
 
+Development source status — September 27, 2026: `1.7.0-dev.38` implements the bounded v1.2 Section 45 Performance and Energy Awareness source foundation. It reuses Motion Performance dev.25 for authoritative runtime/power/thermal/hardware/refresh/visibility constraints and extends deterministic degradation across themes, materials, motion, adaptive transitions, decoration, and optional background visual work. Task continuity, accessibility, responsiveness, semantic state, protected semantic color meaning, and provider truth remain non-degradable; optional visual work may simplify or suspend, idle render loops remain prohibited, and optional visuals may not force frames. Section 45 remains incomplete pending applicable exact-revision measured performance/energy, battery/thermal, background-lifecycle, rendered/native/assistive-technology/representative-device, regression, and human visual/motion evidence.
+
 ## 46. V1.7 Acceptance
 
 V1.7 qualification should cover:

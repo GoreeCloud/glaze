@@ -1,0 +1,48 @@
+name: Glaze UI V1.7 Performance and Energy Awareness Development
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  performance-energy-awareness:
+    name: Validate V1.7 Performance and Energy Awareness source foundation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Validate Section 45 source foundation
+        run: |
+          python -m json.tool contracts/v1.7/performance-energy-awareness.dev.json >/dev/null
+          python -m json.tool schemas/v1.7-performance-energy-awareness.schema.json >/dev/null
+          python -m json.tool tokens/glaze-v1.7-performance-energy-awareness.dev.json >/dev/null
+          node --check js/glaze-v1.7-performance-energy-awareness.dev.mjs
+          node --check js/glaze-v1.7-development.mjs
+          node --check scripts/validate_glaze_v1_7_performance_energy_awareness_development.mjs
+          node scripts/validate_glaze_v1_7_performance_energy_awareness_development.mjs
+  retained-performance-authority:
+    name: Preserve Motion Performance, accessibility, truth, and visual boundaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: node scripts/validate_glaze_v1_7_motion_performance_development.mjs
+      - run: node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs
+      - run: node scripts/validate_glaze_v1_7_visual_motion_direction_development.mjs
+      - run: node scripts/validate_glaze_v1_7_privacy_authority_boundaries_development.mjs
+  v1-6-anchor:
+    name: Preserve GLAZE UI V1.6 Anchor authority
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
+      - run: node scripts/verify_glaze_v1_6_stable.mjs
