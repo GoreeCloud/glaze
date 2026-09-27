@@ -1,0 +1,37 @@
+name: Glaze UI V1.7 Glaze Inspector v1.2 Development
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspector-v1-2:
+    name: Validate V1.7 Glaze Inspector v1.2 source foundation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Validate Section 39 source foundation
+        run: |
+          python -m json.tool contracts/v1.7/glaze-inspector-v1-2.dev.json >/dev/null
+          python -m json.tool schemas/v1.7-glaze-inspector-v1-2.schema.json >/dev/null
+          python -m json.tool tokens/glaze-v1.7-inspector-v1-2.dev.json >/dev/null
+          node --check js/glaze-v1.7-inspector-v1-2-diagnostics.dev.mjs
+          node --check js/glaze-v1.7-inspector-v1-2.dev.mjs
+          node --check js/glaze-v1.7-development.mjs
+          node --check scripts/validate_glaze_v1_7_inspector_v1_2_development.mjs
+          node scripts/validate_glaze_v1_7_inspector_v1_2_development.mjs
+  v1-6-anchor:
+    name: Preserve GLAZE UI V1.6 Anchor authority
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
+      - run: node scripts/verify_glaze_v1_6_stable.mjs
