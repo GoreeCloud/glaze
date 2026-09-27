@@ -134,7 +134,9 @@ assert(noOccurrence.presentation.animatedTransitionAllowed===false,'unattested t
 for(const bad of [
   ()=>resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'operation-result',claims:[],score:10}),
   ()=>resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'operation-result',claims:[{providerId:'x',ownerKind:'application',authority:'application',scope:'application-local',state:'success',authorityAttested:true,confidence:0.9}]}),
-  ()=>resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'operation-result',claims:[{providerId:'x',ownerKind:'application',authority:'application',scope:'application-local',state:'success',authorityAttested:true}],providerPrecedence:'x'})
+  ()=>resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'operation-result',claims:[{providerId:'x',ownerKind:'application',authority:'application',scope:'application-local',state:'success',authorityAttested:true}],providerPrecedence:'x'}),
+  ()=>resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'security-protection',claims:[{providerId:'wardveil-security',ownerKind:'wardveil-security',authority:'security',scope:'system',state:'protected',authorityAttested:true,isProtected:true}]}),
+  ()=>resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'privacy-consent',claims:[{providerId:'privacy-shield',ownerKind:'privacy-shield',authority:'privacy',scope:'system',state:'granted',authorityAttested:true}],permissionGranted:true})
 ]){
   let failed=false; try{bad();}catch{failed=true;}
   assert(failed,'inference/ranking/raw truth controls must fail closed');
