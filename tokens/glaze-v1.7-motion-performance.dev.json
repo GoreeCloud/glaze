@@ -1,0 +1,70 @@
+{
+  "version": "1.7.0-dev.25",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [
+    33
+  ],
+  "performanceModes": [
+    "full",
+    "restrained",
+    "simplified",
+    "minimal",
+    "reduced-motion"
+  ],
+  "triggerSemantics": {
+    "runtimePressure": "caller/provider-supplied semantic pressure",
+    "powerSaving": "prefer restrained or simpler optional motion",
+    "thermalConstraint": "prefer simpler motion; critical state uses minimal presentation",
+    "constrainedHardware": "reduce optional richness",
+    "lowRefresh": "reduce optional richness",
+    "performanceDegraded": "reduce optional richness",
+    "reducedMotion": "use lower-motion semantic equivalent",
+    "motionBudgetPressure": "inherit Motion Fatigue Protection simplification"
+  },
+  "rendering": {
+    "compositorFriendlyPreferred": true,
+    "preferred": [
+      "transform",
+      "opacity",
+      "bounded-clipping",
+      "platform-native-compositor-primitives"
+    ],
+    "avoidWhenEquivalent": [
+      "layout-driven-animation",
+      "synchronous-layout-measurement-loops",
+      "unbounded-repainting",
+      "continuous-main-thread-rendering",
+      "unbounded-shader-complexity"
+    ]
+  },
+  "fallbacks": {
+    "directManipulation": "preserve-input-tracking-and-simplify-post-release-settle",
+    "taskTransition": "simpler-semantic-transition-or-immediate-state",
+    "connectedTransformation": "simple-state-transition-or-replacement",
+    "adaptiveRecomposition": "immediate-recomposition-with-stable-focus",
+    "material": "static-material-state",
+    "skeleton": "static-skeleton",
+    "decorative": "suppress-optional-decorative-motion",
+    "continuousDecorative": "stop-optional-continuous-motion",
+    "reducedMotion": "use-reduced-motion-semantic-equivalent"
+  },
+  "boundaries": {
+    "measurementsManufactured": false,
+    "callerMaySetFrameBudget": false,
+    "callerMaySetPerformanceThresholds": false,
+    "semanticStateReduced": false,
+    "authoritativeStateReduced": false,
+    "directManipulationTrackingPreserved": true,
+    "section33Complete": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "thermalPowerAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "glazeMotionExperimentalLifecyclePromoted": false
+  }
+}
