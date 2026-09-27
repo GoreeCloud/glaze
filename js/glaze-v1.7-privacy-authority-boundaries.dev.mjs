@@ -99,6 +99,9 @@ const CAPABILITY_DOMAIN_BY_TRUTH=Object.freeze({
 const PROHIBITED_KEYS=Object.freeze([
   'providerPrecedence','providerRank','providerScore','authorityRank','authorityScore',
   'confidence','probability','inferredState','assumedState','forceState','forceSuccess',
+  'protected','isProtected','secure','isSecure','success','isSuccess','completed','isCompleted',
+  'synced','isSynced','revoked','isRevoked','authenticated','isAuthenticated',
+  'authorized','isAuthorized','permissionGranted','consentGranted','accessGranted','accessRevoked',
   'successAnimation','protectionAnimation','privacyAnimation','completionAnimation',
   'duration','durationMs','easing','curve','spring','physics','keyframes','path',
   'blurPx','backdropBlurPx','pixelHash','screenshotSimilarityScore','score','rating','winner'
