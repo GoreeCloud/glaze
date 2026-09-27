@@ -34,6 +34,8 @@
     "increasedContrastVariantRequired": true,
     "forcedColorsAuthorityPreserved": true,
     "screenReaderSemanticsPreserved": true,
+    "switchAccessSemanticAlternativesRequired": true,
+    "voiceAccessSemanticAddressabilityRequired": true,
     "touchAssistanceTargetProtectionRequired": true,
     "keyboardFocusVisibilityRequired": true,
     "colorOnlyMeaningAllowed": false
@@ -42,6 +44,8 @@
     "accessibilityStateCreatedByGlaze": false,
     "preferencePersistedByGlaze": false,
     "providerTruthCreatedByGlaze": false,
+    "inputModelCreatedByGlaze": false,
+    "focusExecutedByGlaze": false,
     "navigationExecutedByGlaze": false,
     "acceptanceGrantedByGlaze": false
   },
