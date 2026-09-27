@@ -1,0 +1,63 @@
+{
+  "version": "1.7.0-dev.32",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [39],
+  "semanticTiming": {
+    "durationFamilies": ["instant","micro","short","medium","long","ambient"],
+    "easingFamilies": ["standard","enter","exit","emphasized","linear"],
+    "unknown": "unverified-observation",
+    "rawValuesAccepted": false
+  },
+  "motionMagnitude": {
+    "families": ["minimal","restrained","standard","emphasized"],
+    "performanceCeilings": {
+      "full": "emphasized",
+      "restrained": "restrained",
+      "simplified": "restrained",
+      "minimal": "minimal",
+      "reduced-motion": "minimal"
+    }
+  },
+  "motionBudget": {
+    "source": "V1.7 dev.24 Motion Fatigue Protection / inherited V1.6 reference budget",
+    "callerMayRaiseLimits": false,
+    "callerMayOverrideBudget": false,
+    "acceptanceMayBeInferred": false
+  },
+  "inspectionDomains": [
+    "current-motion-family",
+    "transition-source-destination",
+    "connected-identity-relationship",
+    "duration-family",
+    "easing-family",
+    "motion-magnitude",
+    "motion-budget",
+    "reduced-motion-mapping",
+    "theme-resolution",
+    "semantic-color-resolution",
+    "material-resolution",
+    "focus-state",
+    "accessibility-overrides",
+    "motion-selection-explanation"
+  ],
+  "boundaries": {
+    "advisoryOnly": true,
+    "sourceMutationAutomatic": false,
+    "animationExecutionPerformed": false,
+    "directSignatureFamilySelectionAccepted": false,
+    "rawAnimationValuesAccepted": false,
+    "rawMeasurementInputAccepted": false,
+    "providerTruthInvented": false,
+    "themeTruthInvented": false,
+    "privateContentRequired": false,
+    "telemetryRequired": false,
+    "section39Complete": false,
+    "consumerEligibilityAutomatic": false,
+    "releasePromotionAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  }
+}

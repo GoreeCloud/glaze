@@ -35,9 +35,10 @@ export * from './glaze-v1.7-notification-activity-surfaces-v1-2.dev.mjs';
 export * from './glaze-v1.7-native-glaze-kits-v1-2.dev.mjs';
 export * from './glaze-v1.7-expanded-component-system-v1-2.dev.mjs';
 export * from './glaze-v1.7-advanced-theme-system-v1-2.dev.mjs';
+export * from './glaze-v1.7-inspector-v1-2.dev.mjs';
 
 export const glazeV17Development = Object.freeze({
-  version: '1.7.0-dev.31',
+  version: '1.7.0-dev.32',
   lifecycle: 'development',
   stableBaseline: '1.6.0',
   consumerEligible: false,
@@ -46,7 +47,7 @@ export const glazeV17Development = Object.freeze({
   planVersion: 'v1.2',
   planV12ThemeSystemFoundationSections: Object.freeze([6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]),
   planV11FoundationSections: Object.freeze([7, 8, 9, 10, 11, 12, 13, 18, 19, 21, 24, 25, 26, 27, 28]),
-  planV12FoundationSections: Object.freeze([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]),
+  planV12FoundationSections: Object.freeze([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]),
   taskContinuityFoundation: 'js/glaze-v1.7-task-continuity.dev.mjs',
   adaptiveInputFoundation: 'js/glaze-v1.7-adaptive-input.dev.mjs',
   formFactorProfilesFoundation: 'js/glaze-v1.7-form-factor-profiles.dev.mjs',
@@ -86,6 +87,9 @@ export const glazeV17Development = Object.freeze({
   advancedThemeSystemV12Foundation: 'js/glaze-v1.7-advanced-theme-system-v1-2.dev.mjs',
   advancedThemeSystemHistoricalFoundationsReinterpreted: false,
   advancedThemeSystemV12ResearchRecord: 'research/v1.7-advanced-theme-system-v1-2.md',
+  inspectorV12Foundation: 'js/glaze-v1.7-inspector-v1-2.dev.mjs',
+  inspectorHistoricalFoundationReinterpretedAsV12: false,
+  inspectorV12ResearchRecord: 'research/v1.7-glaze-inspector-v1-2.md',
   glazeMotionExperimentalLifecyclePromoted: false,
   presentationOnly: true,
   accessibilityPrecedence: true,
