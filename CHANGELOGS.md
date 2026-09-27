@@ -4,6 +4,15 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.27` **System Shell Continuity** Development source for V1.7 v1.2 Section 35 without relabeling the historical dev.6 v1.0 Section 7 foundation.
+- Added governed semantic shell-motion relationships for notification/activity presentation, Control Center, multi-window, split view, compact/expanded navigation, restoration, application/system handoff, task switching, Universal Search, overlays, and contextual commands.
+- Required authoritative shell-transition occurrence before Signature Motion is eligible, and retained authoritative connected-identity requirements for Bloom/Trace relationships so Glaze cannot manufacture shell or object relationships.
+- Preserved task state, navigation, focus, selection, drafts, query/filter context, pane/window state, safe pending interactions, provider truth, and final shell state independently of animation completion; optional motion cannot delay shell execution or make navigation slower.
+- Integrated Reduced Motion and dev.25 Motion Performance so optional shell animation can degrade toward simpler or immediate state-first equivalents under accessibility or performance pressure without changing authoritative state.
+- Kept Section 35 acceptance incomplete pending rendered, native-platform, assistive-technology, measured-performance, physical-device, energy, and human-motion evidence; V1.6 / `1.6.0` remains Official Anchor, V1.7 remains non-consumer-eligible, and Glaze Motion 0.6 remains Experimental.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.27` with v1.2 source foundations/evaluation through Section 35.
+
+
 - Added bounded `1.7.0-dev.26` **Glaze Motion Lifecycle** Development reconciliation for V1.7 v1.2 Section 34.
 - Evaluated all ten required promotion dimensions—accessibility, native-platform behavior, frame pacing, interaction latency, interruption, reversal, Reduced Motion, physical-device behavior, energy impact, and human motion review—against current Glaze Motion 0.6 source evidence and exact historical provenance.
 - Recorded every promotion dimension as unsatisfied for lifecycle promotion: existing unit/reference/emulator/native-test evidence remains development evidence only, representative physical-device/frame-pacing/latency/energy/human-motion acceptance is absent, and no missing evidence is inferred.
