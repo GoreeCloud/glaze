@@ -77,7 +77,7 @@ Launcher and Keyboard both target GLAZE UI V1.0 as **Adoption Candidates** and r
 - neither consumer is `aligned-current-stable`;
 - two test-only native Android evaluations are still insufficient for Motion Core Candidate promotion.
 
-The full evidence record is `acceptance/glaze-motion-0.6-experimental.md`.
+The original 0.6 Experimental acceptance record was retired from the current tree during the inherited-version normalization at commit `f16f87c20be97ebab020cabadc56825f0baf3e37`; its historical evidence remains recoverable from exact commit `974c6043281db1497973ef2b5ebc149440cd476b`. The current V1.7 lifecycle evaluation is recorded in `docs/development/v1.7-glaze-motion-lifecycle-reconciliation-20260926.md` and does not rewrite that historical evidence.
 
 ## Reference consumer evidence
 
@@ -131,4 +131,4 @@ Glaze Motion is presentation infrastructure. Privacy Shield supplies privacy tru
 
 Glaze Motion 0.6.0 remains **Experimental** and outside GLAZE UI V1.0 Stable. Source validation, runtime/interaction/accessibility/reference-consumer tests, native mapping documentation, local performance instrumentation, rendered acceptance, and two merged first-party test-only native Android evaluations provide stronger development evidence than 0.5, but they do not establish Candidate or Stable readiness.
 
-Candidate or Stable promotion still requires additional representative consumer and physical-device evidence, applicable assistive-technology and performance acceptance, compatibility/migration review, dependency/security/licensing review, and normal Glaze UI promotion governance.
+Candidate or Stable promotion still requires additional representative consumer and physical-device evidence, applicable assistive-technology and performance acceptance, compatibility/migration review, dependency/security/licensing review, and normal Glaze UI promotion governance. V1.7 Section 34 evaluates the current evidence across accessibility, native-platform behavior, frame pacing, interaction latency, interruption, reversal, Reduced Motion, physical-device behavior, energy impact, and human motion review. The current dev.26 evaluation retains Glaze Motion 0.6 as Experimental because no bounded subset satisfies all ten independent promotion requirements.

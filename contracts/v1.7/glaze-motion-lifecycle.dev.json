@@ -1,0 +1,144 @@
+{
+  "$schema": "../../schemas/v1.7-glaze-motion-lifecycle.schema.json",
+  "schemaVersion": 1,
+  "contractId": "goreecloud.glaze-ui.v1.7.glaze-motion-lifecycle",
+  "name": "Glaze UI V1.7 Glaze Motion Lifecycle Development Reconciliation",
+  "version": "1.7.0-dev.26",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [
+    34
+  ],
+  "subject": {
+    "name": "Glaze Motion",
+    "evidenceVersion": "0.6.0",
+    "lifecycle": "Experimental",
+    "runtimeImplementationBaseline": "0.4.0"
+  },
+  "promotionRequirements": [
+    "accessibility",
+    "native-platform-behavior",
+    "frame-pacing",
+    "interaction-latency",
+    "interruption",
+    "reversal",
+    "reduced-motion",
+    "physical-device-behavior",
+    "energy-impact",
+    "human-motion-review"
+  ],
+  "evidenceAssessment": {
+    "accessibility": {
+      "evidenceClass": "partial-development-evidence",
+      "promotionSatisfied": false,
+      "gap": "Complete applicable assistive-technology acceptance is not established."
+    },
+    "nativePlatformBehavior": {
+      "evidenceClass": "partial-development-evidence",
+      "promotionSatisfied": false,
+      "gap": "Test-only Android evaluations do not establish representative native-platform acceptance."
+    },
+    "framePacing": {
+      "evidenceClass": "instrumentation-only-no-acceptance",
+      "promotionSatisfied": false,
+      "gap": "Representative exact-revision frame-pacing acceptance is not established."
+    },
+    "interactionLatency": {
+      "evidenceClass": "not-established",
+      "promotionSatisfied": false,
+      "gap": "Representative interaction-latency acceptance is not established."
+    },
+    "interruption": {
+      "evidenceClass": "source-regression-only",
+      "promotionSatisfied": false,
+      "gap": "Independent representative interruption acceptance is not established."
+    },
+    "reversal": {
+      "evidenceClass": "not-established",
+      "promotionSatisfied": false,
+      "gap": "Independent representative reversal acceptance is not established."
+    },
+    "reducedMotion": {
+      "evidenceClass": "partial-development-evidence",
+      "promotionSatisfied": false,
+      "gap": "Complete representative native and assistive-technology Reduced Motion acceptance is not established."
+    },
+    "physicalDeviceBehavior": {
+      "evidenceClass": "not-established",
+      "promotionSatisfied": false,
+      "gap": "Representative physical-device Motion acceptance is not established."
+    },
+    "energyImpact": {
+      "evidenceClass": "not-established",
+      "promotionSatisfied": false,
+      "gap": "Representative power, thermal, and energy acceptance is not established."
+    },
+    "humanMotionReview": {
+      "evidenceClass": "not-established",
+      "promotionSatisfied": false,
+      "gap": "V1.7 Section 34 human motion review is not established."
+    }
+  },
+  "currentEvidence": {
+    "historicalEvidenceCommit": "974c6043281db1497973ef2b5ebc149440cd476b",
+    "historicalAcceptancePath": "acceptance/glaze-motion-0.6-experimental.md",
+    "historicalAcceptanceRetiredFromCurrentTree": true,
+    "launcherEvaluation": {
+      "pullRequest": 22,
+      "validatedHead": "3095b9320b660f5e166465990d5d2bee061d7422",
+      "mergeRevision": "23a389b3b24db726ceab5e328f9f8157fa7655ae",
+      "evaluationMode": "native-android-test-only",
+      "physicalDeviceCertification": false
+    },
+    "keyboardEvaluation": {
+      "pullRequest": 4,
+      "validatedHead": "80de7bd2dcff6d07b06b19f8250e37d20155d7ff",
+      "mergeRevision": "c9c0500263b40640339cf7a46f1a029d9a2ac240",
+      "evaluationMode": "native-android-test-only",
+      "physicalDeviceCertification": false
+    },
+    "currentTokenContract": "tokens/glaze-motion.json",
+    "currentDocumentation": "GLAZE_MOTION.md"
+  },
+  "decision": {
+    "disposition": "retain-experimental",
+    "promotionReady": false,
+    "eligibleSubset": [],
+    "officialGlazeUiContractAdoption": false,
+    "lifecycleMutationAuthorized": false,
+    "reason": "No bounded Glaze Motion subset satisfies all ten independent Section 34 promotion requirements on current authoritative evidence."
+  },
+  "authority": {
+    "evaluationOnly": true,
+    "mayInferMissingEvidence": false,
+    "mayPromoteLifecycle": false,
+    "mayChangeVersionFile": false,
+    "mayChangeLifecycleRegistry": false,
+    "mayGrantConsumerAcceptance": false
+  },
+  "acceptanceBoundary": {
+    "sourceEvaluationImplemented": true,
+    "section34Complete": false,
+    "independentAccessibilityAcceptanceEstablished": false,
+    "independentNativePlatformAcceptanceEstablished": false,
+    "independentFramePacingAcceptanceEstablished": false,
+    "independentInteractionLatencyAcceptanceEstablished": false,
+    "independentInterruptionAcceptanceEstablished": false,
+    "independentReversalAcceptanceEstablished": false,
+    "independentReducedMotionAcceptanceEstablished": false,
+    "physicalDeviceAcceptanceEstablished": false,
+    "energyImpactAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "candidatePromotionEstablished": false,
+    "anchorPromotionEstablished": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "runtimeEntrypoint": "js/glaze-v1.7-glaze-motion-lifecycle.dev.mjs",
+  "developmentAggregateEntrypoint": "js/glaze-v1.7-development.mjs",
+  "tokenMap": "tokens/glaze-v1.7-glaze-motion-lifecycle.dev.json",
+  "reconciliationRecord": "docs/development/v1.7-glaze-motion-lifecycle-reconciliation-20260926.md"
+}

@@ -1,0 +1,57 @@
+{
+  "version": "1.7.0-dev.26",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [
+    34
+  ],
+  "evaluatedGlazeMotion": {
+    "version": "0.6.0",
+    "status": "experimental",
+    "runtimeImplementationBaseline": "0.4.0"
+  },
+  "requiredIndependentValidation": [
+    "accessibility",
+    "native-platform-behavior",
+    "frame-pacing",
+    "interaction-latency",
+    "interruption",
+    "reversal",
+    "reduced-motion",
+    "physical-device-behavior",
+    "energy-impact",
+    "human-motion-review"
+  ],
+  "currentDisposition": {
+    "accessibility": "partial-development-evidence",
+    "nativePlatformBehavior": "partial-development-evidence",
+    "framePacing": "instrumentation-only-no-acceptance",
+    "interactionLatency": "not-established",
+    "interruption": "source-regression-only",
+    "reversal": "not-established",
+    "reducedMotion": "partial-development-evidence",
+    "physicalDeviceBehavior": "not-established",
+    "energyImpact": "not-established",
+    "humanMotionReview": "not-established"
+  },
+  "decision": {
+    "disposition": "retain-experimental",
+    "promotionReady": false,
+    "eligibleSubset": [],
+    "officialGlazeUiContractAdoption": false
+  },
+  "boundaries": {
+    "evidenceMayBeInferred": false,
+    "historicalEvidenceMayBeRewritten": false,
+    "experimentalLifecyclePromoted": false,
+    "section34Complete": false,
+    "candidatePromotionEstablished": false,
+    "anchorPromotionEstablished": false,
+    "versionFileChanged": false,
+    "lifecycleRegistryChanged": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  }
+}
