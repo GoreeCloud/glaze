@@ -8,25 +8,59 @@
   "stableBaseline": "1.6.0",
   "consumerEligible": false,
   "planVersion": "v1.2",
-  "v12SpecificationSections": [33],
+  "v12SpecificationSections": [
+    33
+  ],
   "dependsOn": {
     "v16PerformanceDiagnosticsVersion": "1.6.0-dev.9",
     "motionFatigueProtectionVersion": "1.7.0-dev.24",
     "reducedMotionEquivalentsVersion": "1.7.0-dev.23"
   },
   "environmentSignals": {
-    "runtimePressure": ["none", "elevated", "severe"],
+    "runtimePressure": [
+      "none",
+      "elevated",
+      "severe"
+    ],
     "powerSaving": "boolean",
-    "thermalState": ["none", "constrained", "critical"],
-    "hardwareClass": ["standard", "constrained"],
-    "refreshClass": ["normal", "low"],
+    "thermalState": [
+      "none",
+      "constrained",
+      "critical"
+    ],
+    "hardwareClass": [
+      "standard",
+      "constrained"
+    ],
+    "refreshClass": [
+      "normal",
+      "low"
+    ],
     "performanceDegraded": "boolean",
-    "visibilityClass": ["visible", "offscreen", "background", "obscured"],
+    "visibilityClass": [
+      "visible",
+      "offscreen",
+      "background",
+      "obscured"
+    ],
     "reducedMotion": "accessibility profile",
     "nonNeutralSignalsRequireCallerOrProviderAuthority": true,
-    "untrustedSignalsFallBackToNeutral": true
+    "untrustedSignalsFallBackToNeutral": true,
+    "authorityRequired": true,
+    "visibility": [
+      "visible",
+      "offscreen",
+      "background",
+      "obscured"
+    ]
   },
-  "performanceModes": ["full", "restrained", "simplified", "minimal", "reduced-motion"],
+  "performanceModes": [
+    "full",
+    "restrained",
+    "simplified",
+    "minimal",
+    "reduced-motion"
+  ],
   "motionKinds": [
     "direct-manipulation",
     "task-transition",
@@ -40,7 +74,7 @@
   "performanceBudgetReference": {
     "source": "GoreeCloud Standard — Glaze UI Performance Budget",
     "sourceVersion": "v1.0",
-    "resolverP95MsMax": 10.0,
+    "resolverP95MsMax": 10,
     "resolverP99MsMax": 16.7,
     "interactionPaintP95MsMax": 100,
     "interactionPaintP99MsMax": 200,
@@ -70,18 +104,26 @@
     "fatigueBudgetPressureParticipates": true,
     "directManipulationTrackingPreserved": true,
     "semanticStateReduced": false,
-    "authoritativeStateReduced": false
+    "authoritativeStateReduced": false,
+    "untrustedNonNeutralSignalsIgnored": true
   },
   "renderingPolicy": {
     "compositorFriendlyTechniquesPreferred": true,
-    "preferred": ["transform", "opacity", "bounded-clipping", "platform-native-compositor-primitives"],
+    "preferred": [
+      "transform",
+      "opacity",
+      "bounded-clipping",
+      "platform-native-compositor-primitives"
+    ],
     "avoidWhenEquivalent": [
       "layout-driven-animation",
       "synchronous-layout-measurement-loops",
       "unbounded-repainting",
       "continuous-main-thread-rendering",
       "unbounded-shader-complexity"
-    ]
+    ],
+    "offscreenOptionalWorkSuspended": true,
+    "idleRenderLoopsAllowed": false
   },
   "requestPolicy": {
     "rawTimingAccepted": false,
@@ -93,7 +135,8 @@
     "rawScaleAccepted": false,
     "callerPerformanceThresholdsAccepted": false,
     "callerFrameBudgetAccepted": false,
-    "acceptanceMeasurementsAcceptedByResolver": false
+    "acceptanceMeasurementsAcceptedByResolver": false,
+    "measurementsAcceptedByResolver": false
   },
   "evidence": {
     "measurementsManufactured": false,
@@ -101,7 +144,8 @@
     "exactRevisionPerformanceEvidenceStillRequired": true,
     "measuredFramePacingEstablished": false,
     "measuredInteractionLatencyEstablished": false,
-    "energyImpactEstablished": false
+    "energyImpactEstablished": false,
+    "environmentSignalsRequireAuthority": true
   },
   "authority": {
     "boundary": "presentation-only",
