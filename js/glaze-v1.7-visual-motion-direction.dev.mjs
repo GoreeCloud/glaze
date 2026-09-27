@@ -76,10 +76,19 @@ function resolveAccessibility(input){
     increasedContrast:source.increasedContrast===true,
     forcedColors:source.forcedColors===true
   });
+  const authoritative=input.accessibilityAuthoritative===true;
+  const effective=authoritative?requested:Object.freeze({
+    reducedMotion:false,
+    reducedTransparency:false,
+    increasedContrast:false,
+    forcedColors:false
+  });
   return Object.freeze({
     requested,
-    authoritative:input.accessibilityAuthoritative===true,
-    safetyReductionApplied:Object.values(requested).some(Boolean),
+    authoritative,
+    effective,
+    safetyReductionApplied:Object.values(effective).some(Boolean),
+    untrustedNonNeutralIgnored:!authoritative&&Object.values(requested).some(Boolean),
     truthCreatedByGlaze:false
   });
 }
@@ -108,7 +117,7 @@ function resolveExpression(input){
 }
 
 function materialDirection({surfaceRole,materialPurpose,prominence,accessibility}){
-  const a=accessibility.requested;
+  const a=accessibility.effective;
   if(a.forcedColors)return 'forced-colors-semantic-equivalent';
   if(a.reducedTransparency||a.increasedContrast||prominence==='critical')return 'solid-certainty';
   if(surfaceRole==='decorative')return materialPurpose==='ambient-accent'
@@ -134,13 +143,13 @@ function motionDirection({
   if(!transitionOccurrenceAuthoritative){
     return Object.freeze({directive:'immediate-state',richness:'minimal',reason:'transition-occurrence-not-authoritative'});
   }
-  if(accessibility.requested.reducedMotion){
+  if(accessibility.effective.reducedMotion){
     return Object.freeze({directive:'reduced-motion-equivalent',richness:'minimal',reason:'reduced-motion-precedence'});
   }
   if(performance.effective==='severe'){
     return Object.freeze({directive:'immediate-state',richness:'minimal',reason:'severe-performance-pressure'});
   }
-  if(accessibility.requested.forcedColors||accessibility.requested.increasedContrast){
+  if(accessibility.effective.forcedColors||accessibility.effective.increasedContrast){
     return Object.freeze({directive:'restrained-semantic',richness:'restrained',reason:'accessibility-clarity-precedence'});
   }
   if(prominence==='critical'){
