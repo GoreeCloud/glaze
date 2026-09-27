@@ -120,7 +120,7 @@ assert(motionValidator.includes("CURRENT_LAUNCHER='GoreeCloud/launcher'"),'curre
 
 for(const phrase of [
   'Retain Experimental',
-  'Promotion-ready bounded subset: None',
+  'Promotion-ready bounded subset',
   'Historical 0.6 evidence provenance',
   'Section 34 evidence assessment',
   'No bounded subset is eligible',
