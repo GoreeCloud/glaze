@@ -8,44 +8,25 @@
   "stableBaseline": "1.6.0",
   "consumerEligible": false,
   "planVersion": "v1.2",
-  "v12SpecificationSections": [
-    33
-  ],
+  "v12SpecificationSections": [33],
   "dependsOn": {
     "v16PerformanceDiagnosticsVersion": "1.6.0-dev.9",
     "motionFatigueProtectionVersion": "1.7.0-dev.24",
     "reducedMotionEquivalentsVersion": "1.7.0-dev.23"
   },
   "environmentSignals": {
-    "runtimePressure": [
-      "none",
-      "elevated",
-      "severe"
-    ],
+    "runtimePressure": ["none", "elevated", "severe"],
     "powerSaving": "boolean",
-    "thermalState": [
-      "none",
-      "constrained",
-      "critical"
-    ],
-    "hardwareClass": [
-      "standard",
-      "constrained"
-    ],
-    "refreshClass": [
-      "normal",
-      "low"
-    ],
+    "thermalState": ["none", "constrained", "critical"],
+    "hardwareClass": ["standard", "constrained"],
+    "refreshClass": ["normal", "low"],
     "performanceDegraded": "boolean",
-    "reducedMotion": "accessibility profile"
+    "visibilityClass": ["visible", "offscreen", "background", "obscured"],
+    "reducedMotion": "accessibility profile",
+    "nonNeutralSignalsRequireCallerOrProviderAuthority": true,
+    "untrustedSignalsFallBackToNeutral": true
   },
-  "performanceModes": [
-    "full",
-    "restrained",
-    "simplified",
-    "minimal",
-    "reduced-motion"
-  ],
+  "performanceModes": ["full", "restrained", "simplified", "minimal", "reduced-motion"],
   "motionKinds": [
     "direct-manipulation",
     "task-transition",
@@ -56,11 +37,35 @@
     "decorative",
     "continuous-decorative"
   ],
+  "performanceBudgetReference": {
+    "source": "GoreeCloud Standard — Glaze UI Performance Budget",
+    "sourceVersion": "v1.0",
+    "resolverP95MsMax": 10.0,
+    "resolverP99MsMax": 16.7,
+    "interactionPaintP95MsMax": 100,
+    "interactionPaintP99MsMax": 200,
+    "severeFrameStallRateMax": 0.01,
+    "catastrophicForegroundStallCountMax": 0,
+    "taskStateResetCountMax": 0,
+    "pageReloadRequiredCountMax": 0,
+    "automaticAuthorityActionCountMax": 0,
+    "minimumSamples": {
+      "resolver": 200,
+      "interactionPaint": 30,
+      "idleFrames": 120,
+      "activeFrames": 240
+    },
+    "exactRevisionRepresentativeMeasurementsRequired": true,
+    "acceptanceMayBeInferredFromThisResolver": false
+  },
   "degradationPolicy": {
     "optionalMotionMayDegrade": true,
     "multipleConstraintsIncreaseSimplification": true,
     "severeRuntimePressureUsesMinimalPresentation": true,
     "criticalThermalStateUsesMinimalPresentation": true,
+    "offscreenBackgroundOrObscuredUsesMinimalPresentation": true,
+    "offscreenOptionalWorkSuspended": true,
+    "idleRenderLoopsAllowed": false,
     "reducedMotionUsesSemanticEquivalent": true,
     "fatigueBudgetPressureParticipates": true,
     "directManipulationTrackingPreserved": true,
@@ -69,12 +74,7 @@
   },
   "renderingPolicy": {
     "compositorFriendlyTechniquesPreferred": true,
-    "preferred": [
-      "transform",
-      "opacity",
-      "bounded-clipping",
-      "platform-native-compositor-primitives"
-    ],
+    "preferred": ["transform", "opacity", "bounded-clipping", "platform-native-compositor-primitives"],
     "avoidWhenEquivalent": [
       "layout-driven-animation",
       "synchronous-layout-measurement-loops",
@@ -92,11 +92,12 @@
     "rawDistanceAccepted": false,
     "rawScaleAccepted": false,
     "callerPerformanceThresholdsAccepted": false,
-    "callerFrameBudgetAccepted": false
+    "callerFrameBudgetAccepted": false,
+    "acceptanceMeasurementsAcceptedByResolver": false
   },
   "evidence": {
     "measurementsManufactured": false,
-    "environmentSignalsSuppliedByCallerOrProvider": true,
+    "environmentSignalsRequireCallerOrProviderAuthority": true,
     "exactRevisionPerformanceEvidenceStillRequired": true,
     "measuredFramePacingEstablished": false,
     "measuredInteractionLatencyEstablished": false,
@@ -108,10 +109,15 @@
     "navigationExecutedByGlaze": false,
     "providerTruthCreatedByGlaze": false,
     "performanceTruthCreatedByGlaze": false,
+    "powerStateCreatedByGlaze": false,
+    "thermalStateCreatedByGlaze": false,
+    "hardwareCapabilityCreatedByGlaze": false,
+    "refreshCapabilityCreatedByGlaze": false,
     "accessibilityStateCreatedByGlaze": false
   },
   "glazeMotionBoundary": {
     "experimentalFoundationVersion": "0.6.0",
+    "runtimeCompatibilityBaseline": "0.4.0",
     "experimentalLifecyclePromoted": false
   },
   "acceptanceBoundary": {
@@ -123,6 +129,9 @@
     "nativePlatformAcceptanceEstablished": false,
     "assistiveTechnologyAcceptanceEstablished": false,
     "thermalPowerAcceptanceEstablished": false,
+    "lowEndHardwareAcceptanceEstablished": false,
+    "lowRefreshAcceptanceEstablished": false,
+    "highRefreshAcceptanceEstablished": false,
     "humanMotionReviewEstablished": false,
     "downstreamConsumerAcceptanceAutomatic": false,
     "releasePromotionAutomatic": false,
