@@ -75,3 +75,16 @@ Research date: 2026-09-27.
 Detailed requirements research is retained in `research/v1.7-accessibility-continuity.md`.
 
 No third-party source code, UI/focus-management implementation, algorithms, raw presentation values, components, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
+
+## V1.7 dev.35 — Cross-Device Consistency Without Uniformity
+
+Research date: 2026-09-27.
+
+- Flutter at `8db55268667c738b90677d49857ff42938e9c9fa` — BSD-3-Clause. Studied for preserving common interaction/action meaning while choosing platform-specific context-menu controls and toolbar presentation.
+- JetBrains Compose Multiplatform Core at `ba2c8a19a0d6e190068d99ce33d77c2f8bb5159d` — Apache-2.0. Studied for shared declarative semantics with target-specific platform bridges, rendering, accessibility, and native implementation.
+- GNOME libadwaita at `0ffcd2c80b2260bdae01b89e88d94bb5c856db13` — examined sources declare LGPL-2.1-or-later. Studied for adaptive split/collapsed navigation composition and separate platform-owned appearance/accessibility settings.
+
+Detailed requirements research is retained in `research/v1.7-cross-device-consistency.md`.
+
+No third-party source code, components, native controls, layout algorithms, numeric dimensions, animation values, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
+

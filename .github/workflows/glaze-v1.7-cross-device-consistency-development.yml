@@ -1,0 +1,46 @@
+name: Glaze UI V1.7 Cross-Device Consistency Development
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cross-device-consistency:
+    name: Validate V1.7 Cross-Device Consistency source foundation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Validate Section 42 source foundation
+        run: |
+          python -m json.tool contracts/v1.7/cross-device-consistency.dev.json >/dev/null
+          python -m json.tool schemas/v1.7-cross-device-consistency.schema.json >/dev/null
+          python -m json.tool tokens/glaze-v1.7-cross-device-consistency.dev.json >/dev/null
+          node --check js/glaze-v1.7-cross-device-consistency.dev.mjs
+          node --check js/glaze-v1.7-development.mjs
+          node --check scripts/validate_glaze_v1_7_cross_device_consistency_development.mjs
+          node scripts/validate_glaze_v1_7_cross_device_consistency_development.mjs
+  retained-native-accessibility:
+    name: Preserve Native Kits and Accessibility Continuity foundations
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: node scripts/validate_glaze_v1_7_native_glaze_kits_v1_2_development.mjs
+      - run: node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs
+  v1-6-anchor:
+    name: Preserve GLAZE UI V1.6 Anchor authority
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
+      - run: node scripts/verify_glaze_v1_6_stable.mjs

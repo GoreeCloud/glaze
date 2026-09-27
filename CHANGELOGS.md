@@ -4,6 +4,15 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.35` **Cross-Device Consistency Without Uniformity** source for V1.7 v1.2 Section 42.
+- Added source-level consistency checks for semantic vocabulary, color roles, state vocabulary, motion language, material hierarchy, interaction principles, accessibility expectations, and authority boundaries across Android/Jetpack Compose, Apple/SwiftUI, Web, and supported Linux native mappings.
+- Explicitly kept platform-native controls, adaptive layout composition, rendering primitives, input bindings, windowing mechanics, animation timing/curves/paths, and other native implementation details free to differ when governed semantic meaning remains consistent.
+- Kept semantic truth caller/provider-owned and platform capability, accessibility state, native implementation, application state, permission, authorization, navigation execution, and acceptance external to Glaze authority.
+- Rejected pixel/screenshot similarity scores, raw visual/animation/performance controls, ranking, ratings, and winner selection from the Section 42 semantic resolver.
+- Recorded exact-revision Flutter, Compose Multiplatform Core, and GNOME libadwaita research under the GoreeCloud Reforge boundary without copying upstream source, native controls, layout algorithms, numeric animation values, assets, or visual identity.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.35`; Section 42 remains incomplete pending applicable cross-platform rendered/native/assistive-technology/representative-device/performance/energy/human review. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.34` **Accessibility Continuity** source for V1.7 v1.2 Section 41.
 - Added authoritative accessibility-mode continuity for Large Text, Reduced Motion, Reduced Transparency, Increased Contrast, Forced Colors, screen readers, switch access, voice access, Touch Assistance, and keyboard navigation while preserving the current task through the existing Task Continuity state model.
 - Added large-text adaptive recomposition without task reset, solid/opaque Reduced Transparency fallbacks, Increased Contrast/Forced Colors precedence, screen-reader semantic/reading-order requirements, switch/voice semantic alternatives, Touch Assistance target protection, visible predictable keyboard focus, and caller-authoritative logical focus-restoration proposals without focus execution by Glaze.

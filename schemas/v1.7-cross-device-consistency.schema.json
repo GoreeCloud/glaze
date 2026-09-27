@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze-ui/v1.7-cross-device-consistency.schema.json",
+  "title": "Glaze UI V1.7 Cross-Device Consistency Without Uniformity Development Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","contractId","name","version","lifecycle","stableBaseline",
+    "consumerEligible","planVersion","v12SpecificationSections","sharedSemanticDimensions",
+    "supportedPlatforms","consistencyRequirements","uniformityNotRequired","authority",
+    "dependencies","acceptanceBoundary","runtimeEntrypoint","developmentAggregateEntrypoint",
+    "tokenMap","researchRecord"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7-cross-device-consistency.schema.json"},
+    "schemaVersion": {"const":1},
+    "contractId": {"const":"goreecloud.glaze-ui.v1.7.cross-device-consistency"},
+    "name": {"const":"Glaze UI V1.7 Cross-Device Consistency Without Uniformity Development Contract"},
+    "version": {"const":"1.7.0-dev.35"},
+    "lifecycle": {"const":"Development"},
+    "stableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "planVersion": {"const":"v1.2"},
+    "v12SpecificationSections": {"const":[42]},
+    "sharedSemanticDimensions": {
+      "type":"array","minItems":8,"maxItems":8,"uniqueItems":true,
+      "items":{"type":"string","minLength":1}
+    },
+    "supportedPlatforms": {
+      "const":["android-compose","apple-swiftui","web","linux-native"]
+    },
+    "consistencyRequirements": {"type":"object","minProperties":8},
+    "uniformityNotRequired": {"type":"object","minProperties":9},
+    "authority": {"type":"object","minProperties":15},
+    "dependencies": {"type":"object","minProperties":6},
+    "acceptanceBoundary": {"type":"object","minProperties":13},
+    "runtimeEntrypoint": {"const":"js/glaze-v1.7-cross-device-consistency.dev.mjs"},
+    "developmentAggregateEntrypoint": {"const":"js/glaze-v1.7-development.mjs"},
+    "tokenMap": {"const":"tokens/glaze-v1.7-cross-device-consistency.dev.json"},
+    "researchRecord": {"const":"research/v1.7-cross-device-consistency.md"}
+  }
+}
