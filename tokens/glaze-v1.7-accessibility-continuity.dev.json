@@ -1,0 +1,62 @@
+{
+  "version": "1.7.0-dev.34",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [41],
+  "accessibilityChanges": [
+    "large-text",
+    "reduced-motion",
+    "reduced-transparency",
+    "increased-contrast",
+    "forced-colors",
+    "screen-reader",
+    "switch-access",
+    "voice-access",
+    "touch-assistance",
+    "keyboard-navigation"
+  ],
+  "continuity": {
+    "taskResetAllowed": false,
+    "navigationResetAllowed": false,
+    "focusResetAllowed": false,
+    "selectionResetAllowed": false,
+    "draftResetAllowed": false,
+    "accessibilityOutranksMotionRichness": true,
+    "semanticActionMeaningPreserved": true,
+    "finalStateDependsOnAnimationCompletion": false
+  },
+  "presentation": {
+    "largeTextReflowRequired": true,
+    "reducedMotionEquivalentRequired": true,
+    "reducedTransparencySolidEquivalentRequired": true,
+    "increasedContrastVariantRequired": true,
+    "forcedColorsAuthorityPreserved": true,
+    "screenReaderSemanticsPreserved": true,
+    "switchAccessSemanticAlternativesRequired": true,
+    "voiceAccessSemanticAddressabilityRequired": true,
+    "touchAssistanceTargetProtectionRequired": true,
+    "keyboardFocusVisibilityRequired": true,
+    "colorOnlyMeaningAllowed": false
+  },
+  "authority": {
+    "accessibilityStateCreatedByGlaze": false,
+    "preferencePersistedByGlaze": false,
+    "providerTruthCreatedByGlaze": false,
+    "inputModelCreatedByGlaze": false,
+    "focusExecutedByGlaze": false,
+    "navigationExecutedByGlaze": false,
+    "acceptanceGrantedByGlaze": false
+  },
+  "acceptance": {
+    "section41Complete": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "representativeDeviceAcceptanceEstablished": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "energyAcceptanceEstablished": false,
+    "humanAccessibilityReviewEstablished": false
+  }
+}

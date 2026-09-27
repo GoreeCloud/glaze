@@ -4,6 +4,15 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.34` **Accessibility Continuity** source for V1.7 v1.2 Section 41.
+- Added authoritative accessibility-mode continuity for Large Text, Reduced Motion, Reduced Transparency, Increased Contrast, Forced Colors, screen readers, switch access, voice access, Touch Assistance, and keyboard navigation while preserving the current task through the existing Task Continuity state model.
+- Added large-text adaptive recomposition without task reset, solid/opaque Reduced Transparency fallbacks, Increased Contrast/Forced Colors precedence, screen-reader semantic/reading-order requirements, switch/voice semantic alternatives, Touch Assistance target protection, visible predictable keyboard focus, and caller-authoritative logical focus-restoration proposals without focus execution by Glaze.
+- Composed Adaptive Input and Motion Expression Profiles so authoritative input changes preserve task/focus/drafts and Reduced Motion caps optional motion richness without rewriting the selected durable motion preference.
+- Kept accessibility state caller/platform-owned and fail-closed when authority is absent; rejected raw presentation values, assistive-technology evidence payloads, measurement payloads, scores/ratings, or caller-injected acceptance state.
+- Recorded exact-revision W3C ARIA Authoring Practices, Adobe React Spectrum / React Aria, and AndroidX Compose UI research under the GoreeCloud Reforge boundary without copying upstream source, focus-management implementation, components, assets, or visual identity.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.34`; Section 41 remains incomplete pending applicable rendered/native/assistive-technology/large-text/Forced-Colors/switch/voice/Touch-Assistance/keyboard/representative-device/performance/energy/human accessibility evidence. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.33` **Glaze Studio v1.2** source for V1.7 Section 40, extending historical dev.12 / v1.1 Section 27 without relabeling it.
 - Added semantic preview/comparison coverage for Signature transitions, motion profiles, components, adaptive layout changes, form-factor transitions, themes, color palettes, accessibility modes, Reduced Motion, input models, and semantic states through the current dev.32 Inspector and retained governed foundations.
 - Added deterministic side-by-side Calm, Balanced, Expressive, and Reduced Motion behavior comparison while keeping Studio-selected modes simulation-only and never creating or persisting durable user preferences.
