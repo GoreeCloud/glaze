@@ -1,0 +1,136 @@
+{
+  "$schema": "../../schemas/v1.7-motion-performance.schema.json",
+  "schemaVersion": 1,
+  "contractId": "goreecloud.glaze-ui.v1.7.motion-performance",
+  "name": "Glaze UI V1.7 Motion Performance Development Contract",
+  "version": "1.7.0-dev.25",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [
+    33
+  ],
+  "dependsOn": {
+    "v16PerformanceDiagnosticsVersion": "1.6.0-dev.9",
+    "motionFatigueProtectionVersion": "1.7.0-dev.24",
+    "reducedMotionEquivalentsVersion": "1.7.0-dev.23"
+  },
+  "environmentSignals": {
+    "runtimePressure": [
+      "none",
+      "elevated",
+      "severe"
+    ],
+    "powerSaving": "boolean",
+    "thermalState": [
+      "none",
+      "constrained",
+      "critical"
+    ],
+    "hardwareClass": [
+      "standard",
+      "constrained"
+    ],
+    "refreshClass": [
+      "normal",
+      "low"
+    ],
+    "performanceDegraded": "boolean",
+    "reducedMotion": "accessibility profile"
+  },
+  "performanceModes": [
+    "full",
+    "restrained",
+    "simplified",
+    "minimal",
+    "reduced-motion"
+  ],
+  "motionKinds": [
+    "direct-manipulation",
+    "task-transition",
+    "connected-transformation",
+    "adaptive-recomposition",
+    "material",
+    "skeleton",
+    "decorative",
+    "continuous-decorative"
+  ],
+  "degradationPolicy": {
+    "optionalMotionMayDegrade": true,
+    "multipleConstraintsIncreaseSimplification": true,
+    "severeRuntimePressureUsesMinimalPresentation": true,
+    "criticalThermalStateUsesMinimalPresentation": true,
+    "reducedMotionUsesSemanticEquivalent": true,
+    "fatigueBudgetPressureParticipates": true,
+    "directManipulationTrackingPreserved": true,
+    "semanticStateReduced": false,
+    "authoritativeStateReduced": false
+  },
+  "renderingPolicy": {
+    "compositorFriendlyTechniquesPreferred": true,
+    "preferred": [
+      "transform",
+      "opacity",
+      "bounded-clipping",
+      "platform-native-compositor-primitives"
+    ],
+    "avoidWhenEquivalent": [
+      "layout-driven-animation",
+      "synchronous-layout-measurement-loops",
+      "unbounded-repainting",
+      "continuous-main-thread-rendering",
+      "unbounded-shader-complexity"
+    ]
+  },
+  "requestPolicy": {
+    "rawTimingAccepted": false,
+    "rawEasingAccepted": false,
+    "rawSpringAccepted": false,
+    "rawPhysicsAccepted": false,
+    "rawKeyframesAccepted": false,
+    "rawDistanceAccepted": false,
+    "rawScaleAccepted": false,
+    "callerPerformanceThresholdsAccepted": false,
+    "callerFrameBudgetAccepted": false
+  },
+  "evidence": {
+    "measurementsManufactured": false,
+    "environmentSignalsSuppliedByCallerOrProvider": true,
+    "exactRevisionPerformanceEvidenceStillRequired": true,
+    "measuredFramePacingEstablished": false,
+    "measuredInteractionLatencyEstablished": false,
+    "energyImpactEstablished": false
+  },
+  "authority": {
+    "boundary": "presentation-only",
+    "applicationStateChangedByGlaze": false,
+    "navigationExecutedByGlaze": false,
+    "providerTruthCreatedByGlaze": false,
+    "performanceTruthCreatedByGlaze": false,
+    "accessibilityStateCreatedByGlaze": false
+  },
+  "glazeMotionBoundary": {
+    "experimentalFoundationVersion": "0.6.0",
+    "experimentalLifecyclePromoted": false
+  },
+  "acceptanceBoundary": {
+    "sourceFoundationOnly": true,
+    "section33Complete": false,
+    "motionPerformancePolicyImplemented": true,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "thermalPowerAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "releasePromotionAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "runtimeEntrypoint": "js/glaze-v1.7-motion-performance.dev.mjs",
+  "developmentAggregateEntrypoint": "js/glaze-v1.7-development.mjs",
+  "tokenMap": "tokens/glaze-v1.7-motion-performance.dev.json",
+  "researchRecord": "docs/development/v1.7-motion-performance-open-source-research-20260926.md"
+}
