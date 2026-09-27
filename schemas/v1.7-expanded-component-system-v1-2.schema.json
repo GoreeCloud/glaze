@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.com/schemas/glaze-ui/v1.7-expanded-component-system-v1-2.schema.json",
+  "title": "Glaze UI V1.7 Expanded Component System v1.2 Development Contract",
+  "type": "object",
+  "required": [
+    "schemaVersion","contractId","version","lifecycle","stableBaseline","consumerEligible",
+    "planVersion","v12SpecificationSections","historicalFoundation","componentCatalog",
+    "componentTransitionRelationships","componentPolicy","accessibilityAndComposition",
+    "authority","dependencies","researchProvenance","acceptanceBoundary"
+  ],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "contractId": {"const": "goreecloud.glaze-ui.v1.7.expanded-component-system-v1-2"},
+    "version": {"const": "1.7.0-dev.30"},
+    "lifecycle": {"const": "Development"},
+    "stableBaseline": {"const": "1.6.0"},
+    "consumerEligible": {"const": false},
+    "planVersion": {"const": "v1.2"},
+    "v12SpecificationSections": {"const": [38]},
+    "historicalFoundation": {"type": "object"},
+    "componentCatalog": {"type": "array","minItems":14,"maxItems":14,"uniqueItems":true},
+    "componentTransitionRelationships": {"type": "object","minProperties":14},
+    "componentPolicy": {"type": "object"},
+    "accessibilityAndComposition": {"type": "object"},
+    "authority": {"type": "object"},
+    "dependencies": {"type": "object"},
+    "researchProvenance": {"type": "object"},
+    "acceptanceBoundary": {"type": "object"},
+    "runtimeEntrypoint": {"type": "string"},
+    "developmentAggregateEntrypoint": {"type": "string"},
+    "tokenMap": {"type": "string"}
+  },
+  "additionalProperties": true
+}
