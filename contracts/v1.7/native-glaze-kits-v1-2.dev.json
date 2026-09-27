@@ -1,0 +1,128 @@
+{
+  "$schema": "../../schemas/v1.7-native-glaze-kits-v1-2.schema.json",
+  "schemaVersion": 1,
+  "contractId": "goreecloud.glaze-ui.v1.7.native-glaze-kits-v1-2",
+  "name": "Glaze UI V1.7 Native Glaze Kits v1.2 Development Contract",
+  "version": "1.7.0-dev.29",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [37],
+  "historicalFoundation": {
+    "version": "1.7.0-dev.9",
+    "planNumbering": "v1.1-historical-numbering",
+    "historicalSpecificationSection": 24,
+    "reinterpretedAsV12Section37": false
+  },
+  "platforms": ["android-compose","apple-swiftui","web","linux-native"],
+  "semanticMotionRelationships": [
+    "same-object-expansion",
+    "workspace-recomposition",
+    "transient-elevation",
+    "context-overlay",
+    "posture-partition",
+    "source-destination-continuity",
+    "direct-manipulation-settle",
+    "focus-transfer",
+    "color-state-change",
+    "material-role-change"
+  ],
+  "motionCharacter": ["continuity","depth","material","precision","quiet-settling"],
+  "platformMotionBridges": {
+    "android-compose": {
+      "framework": "Jetpack Compose",
+      "preferredPrimitiveClass": "state-driven-compose-or-android-native-motion",
+      "systemMotionPreferenceBridge": "android-platform-accessibility-and-animation-settings"
+    },
+    "apple-swiftui": {
+      "framework": "SwiftUI",
+      "preferredPrimitiveClass": "state-driven-swiftui-or-apple-native-motion",
+      "systemMotionPreferenceBridge": "swiftui-accessibility-reduce-motion"
+    },
+    "web": {
+      "framework": "Web Platform",
+      "preferredPrimitiveClass": "css-transitions-or-web-animations-native-browser-motion",
+      "systemMotionPreferenceBridge": "prefers-reduced-motion"
+    },
+    "linux-native": {
+      "framework": "Supported Linux native UI toolkit",
+      "preferredPrimitiveClass": "supported-native-toolkit-motion",
+      "systemMotionPreferenceBridge": "desktop-toolkit-reduced-motion-or-animation-setting"
+    }
+  },
+  "crossPlatformPolicy": {
+    "semanticFamilyConsistencyRequired": true,
+    "semanticIntentConsistencyRequired": true,
+    "stateMeaningConsistencyRequired": true,
+    "motionCharacterConsistencyRequired": true,
+    "identicalAnimationImplementationRequired": false,
+    "exactTimingEqualityRequired": false,
+    "exactCurveEqualityRequired": false,
+    "exactPathEqualityRequired": false,
+    "exactPhysicsEqualityRequired": false,
+    "nativeInteractionBehaviorPreserved": true,
+    "nativeAccessibilitySettingsPreserved": true,
+    "nativeRenderingArchitecturePreserved": true,
+    "nativePerformanceCharacteristicsPreserved": true,
+    "reducedMotionPrecedence": true,
+    "performanceMaySimplifyOptionalMotion": true,
+    "performanceMayRemoveOptionalMotion": true,
+    "stateFirstFallbackRequired": true,
+    "rawAnimationControlsAccepted": false,
+    "finalStateDependsOnAnimationCompletion": false
+  },
+  "authority": {
+    "boundary": "presentation-only",
+    "semanticRelationshipAuthorityRequired": true,
+    "nativeMotionCapabilityAuthorityRequired": true,
+    "platformCapabilityOwnedByCallerOrPlatform": true,
+    "nativePrimitiveSelectionOwnedByPlatformOrApplication": true,
+    "systemMotionPreferenceOwnedByPlatform": true,
+    "renderingArchitectureOwnedByPlatform": true,
+    "performanceCharacteristicsOwnedByPlatform": true,
+    "platformCapabilityCreatedByGlaze": false,
+    "nativeMotionCapabilityCreatedByGlaze": false,
+    "nativePrimitiveAvailabilityCreatedByGlaze": false,
+    "systemMotionPreferenceCreatedByGlaze": false,
+    "performanceAcceptanceCreatedByGlaze": false,
+    "applicationStateChangedByGlazeMotion": false,
+    "navigationExecutedByGlazeMotion": false,
+    "focusAuthorityCreatedByGlazeMotion": false
+  },
+  "dependencies": {
+    "historicalNativeGlazeKits": "1.7.0-dev.9",
+    "signatureTransitionFamilies": "1.7.0-dev.16",
+    "reducedMotionEquivalents": "1.7.0-dev.23",
+    "motionPerformance": "1.7.0-dev.25"
+  },
+  "researchProvenance": {
+    "record": "research/v1.7-native-glaze-kits-v1-2.md",
+    "independentReimplementation": true,
+    "upstreamSourceCopied": false,
+    "upstreamTimingValuesCopied": false,
+    "upstreamCurvesCopied": false,
+    "upstreamAssetsCopied": false,
+    "upstreamVisualIdentityCopied": false
+  },
+  "acceptanceBoundary": {
+    "sourceMappingOnly": true,
+    "section37Complete": false,
+    "nativeReferenceImplementationsComplete": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "renderedAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "representativeDeviceAcceptanceEstablished": false,
+    "energyAcceptanceEstablished": false,
+    "interruptionReversalAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "releasePromotionAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "runtimeEntrypoint": "js/glaze-v1.7-native-glaze-kits-v1-2.dev.mjs",
+  "developmentAggregateEntrypoint": "js/glaze-v1.7-development.mjs",
+  "tokenMap": "tokens/glaze-v1.7-native-glaze-kits-v1-2.dev.json"
+}

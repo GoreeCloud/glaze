@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "name": "Glaze UI V1.7 Native Glaze Kits v1.2 Development Semantic Map",
+  "version": "1.7.0-dev.29",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [37],
+  "platformMotionRoles": {
+    "android-compose": "native-motion.android.compose",
+    "apple-swiftui": "native-motion.apple.swiftui",
+    "web": "native-motion.web",
+    "linux-native": "native-motion.linux"
+  },
+  "sharedMotionCharacter": ["continuity","depth","material","precision","quiet-settling"],
+  "semanticRelationships": [
+    "same-object-expansion",
+    "workspace-recomposition",
+    "transient-elevation",
+    "context-overlay",
+    "posture-partition",
+    "source-destination-continuity",
+    "direct-manipulation-settle",
+    "focus-transfer",
+    "color-state-change",
+    "material-role-change"
+  ],
+  "crossPlatformPolicy": {
+    "semanticFamily": "preserve",
+    "semanticIntent": "preserve",
+    "stateMeaning": "preserve",
+    "nativeInteractionBehavior": "preserve",
+    "nativeAccessibilitySettings": "preserve",
+    "nativeRenderingArchitecture": "preserve",
+    "nativePerformanceCharacteristics": "preserve",
+    "identicalAnimationImplementation": "not-required",
+    "exactTimingEquality": "not-required",
+    "exactCurveEquality": "not-required",
+    "exactPathEquality": "not-required",
+    "exactPhysicsEquality": "not-required",
+    "stateFirstFallback": "required"
+  },
+  "accessibility": {
+    "reducedMotionPrecedence": true,
+    "nativeSystemPreferenceAuthoritative": true,
+    "motionRequiredToUnderstandState": false,
+    "focusStateIndependentOfAnimation": true
+  },
+  "performance": {
+    "optionalMotionMaySimplify": true,
+    "optionalMotionMayBeRemoved": true,
+    "nativePerformanceArchitecturePreserved": true,
+    "measuredPerformanceAcceptanceAutomatic": false
+  },
+  "boundaries": {
+    "presentationOnly": true,
+    "nativeMotionCapabilityAuthorityRequired": true,
+    "semanticRelationshipAuthorityRequired": true,
+    "nativePrimitiveSelectionOwnedByPlatformOrApplication": true,
+    "rawAnimationControlsAccepted": false,
+    "finalStateDependsOnAnimationCompletion": false,
+    "platformCapabilityCreatedByGlaze": false,
+    "nativeMotionCapabilityCreatedByGlaze": false,
+    "systemMotionPreferenceCreatedByGlaze": false,
+    "section37Complete": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "renderedAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "representativeDeviceAcceptanceEstablished": false,
+    "energyAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false
+  },
+  "sourceAuthorities": [
+    "contracts/v1.7/native-glaze-kits-v1-2.dev.json",
+    "js/glaze-v1.7-native-glaze-kits.dev.mjs",
+    "js/glaze-v1.7-signature-transition-families.dev.mjs",
+    "js/glaze-v1.7-motion-performance.dev.mjs",
+    "research/v1.7-native-glaze-kits-v1-2.md"
+  ]
+}
