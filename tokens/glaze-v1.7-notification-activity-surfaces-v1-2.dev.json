@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "name": "Glaze UI V1.7 Notification and Activity Surfaces v1.2 Development Semantic Map",
+  "version": "1.7.0-dev.28",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [36],
+  "sourceAuthorities": [
+    "tokens/glaze-v1.7-notification-activity-surfaces.dev.json",
+    "tokens/glaze-v1.7-signature-transition-families.dev.json",
+    "tokens/glaze-v1.7-motion-performance.dev.json"
+  ],
+  "transitionRelationships": {
+    "progress": "color-state-change",
+    "completion": "material-role-change",
+    "recovery": "material-role-change",
+    "arrival": "transient-elevation",
+    "expansion": "same-object-expansion",
+    "dismissal": "transient-elevation"
+  },
+  "attention": {
+    "persistentPulsingDefault": false,
+    "continuousAttentionAnimationAllowed": false,
+    "staticSemanticEmphasisAvailable": true,
+    "motionRequiredToCommunicateAttention": false
+  },
+  "stateFirst": {
+    "progressTruthDependsOnAnimation": false,
+    "completionTruthDependsOnAnimation": false,
+    "recoveryTruthDependsOnAnimation": false,
+    "dismissalTruthDependsOnAnimation": false,
+    "finalStateDependsOnAnimationCompletion": false,
+    "motionRequiredToUnderstandState": false
+  },
+  "degradation": {
+    "reducedMotionPrecedence": true,
+    "performanceMaySimplifyOptionalMotion": true,
+    "performanceMayRemoveOptionalMotion": true,
+    "semanticStateMayBeReduced": false,
+    "providerTruthMayBeReduced": false
+  },
+  "boundaries": {
+    "presentationOnly": true,
+    "transitionOccurrenceAuthorityRequired": true,
+    "providerTruthAuthorityRequiredForCompletionRecovery": true,
+    "progressTruthAuthorityRequiredForProgress": true,
+    "identityAuthorityRequiredForExpansion": true,
+    "notificationTruthCreatedByGlaze": false,
+    "activityTruthCreatedByGlaze": false,
+    "progressTruthCreatedByGlaze": false,
+    "completionTruthCreatedByGlaze": false,
+    "recoveryTruthCreatedByGlaze": false,
+    "section36Complete": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "physicalDeviceAcceptanceEstablished": false,
+    "energyAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false
+  }
+}
