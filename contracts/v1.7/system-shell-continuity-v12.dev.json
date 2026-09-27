@@ -1,0 +1,151 @@
+{
+  "$schema": "../../schemas/v1.7-system-shell-continuity-v12.schema.json",
+  "schemaVersion": 1,
+  "contractId": "goreecloud.glaze-ui.v1.7.system-shell-continuity-v12",
+  "name": "Glaze UI V1.7 System Shell Continuity v1.2 Development Reconciliation",
+  "version": "1.7.0-dev.27",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [
+    35
+  ],
+  "historicalFoundation": {
+    "version": "1.7.0-dev.6",
+    "originalSpecificationSections": [
+      7
+    ],
+    "reinterpretedAsSection35": false,
+    "runtime": "js/glaze-v1.7-system-shell-continuity.dev.mjs"
+  },
+  "section35Areas": [
+    "notification-activity-presentation",
+    "control-center",
+    "multi-window",
+    "split-view",
+    "compact-expanded-navigation",
+    "window-restoration",
+    "application-system-handoff",
+    "task-switching",
+    "universal-search",
+    "contextual-commands"
+  ],
+  "semanticMotionPolicy": {
+    "notification-activity-presentation": {
+      "historicalShellArea": "notification-activity-presentation",
+      "relationship": "transient-elevation",
+      "expectedFamily": "Glaze Lift"
+    },
+    "control-center": {
+      "historicalShellArea": "control-center",
+      "relationship": "context-overlay",
+      "expectedFamily": "Glaze Veil"
+    },
+    "multi-window": {
+      "historicalShellArea": "multi-window",
+      "relationship": "workspace-recomposition",
+      "expectedFamily": "Glaze Flow"
+    },
+    "split-view": {
+      "historicalShellArea": "split-view",
+      "relationship": "workspace-recomposition",
+      "expectedFamily": "Glaze Flow"
+    },
+    "compact-expanded-navigation": {
+      "historicalShellArea": "compact-expanded-navigation",
+      "relationship": "workspace-recomposition",
+      "expectedFamily": "Glaze Flow"
+    },
+    "window-restoration": {
+      "historicalShellArea": "window-restoration",
+      "relationship": "workspace-recomposition",
+      "expectedFamily": "Glaze Flow"
+    },
+    "application-system-handoff": {
+      "historicalShellArea": "application-system-handoff",
+      "relationship": "source-destination-continuity",
+      "expectedFamily": "Glaze Trace",
+      "authoritativeObjectIdentityRequired": true
+    },
+    "task-switching": {
+      "historicalShellArea": "task-switching",
+      "relationship": "focus-transfer",
+      "expectedFamily": "Glaze Focus Transfer"
+    },
+    "universal-search": {
+      "historicalShellArea": "search-continuity",
+      "relationship": "context-overlay",
+      "expectedFamily": "Glaze Veil"
+    },
+    "contextual-commands": {
+      "historicalShellArea": "contextual-command-surfaces",
+      "relationship": "transient-elevation",
+      "expectedFamily": "Glaze Lift"
+    }
+  },
+  "dependsOn": {
+    "historicalSystemShellVersion": "1.7.0-dev.6",
+    "signatureTransitionFamiliesVersion": "1.7.0-dev.16",
+    "reducedMotionEquivalentsVersion": "1.7.0-dev.23",
+    "motionFatigueProtectionVersion": "1.7.0-dev.24",
+    "motionPerformanceVersion": "1.7.0-dev.25",
+    "glazeMotionLifecycleReconciliationVersion": "1.7.0-dev.26"
+  },
+  "motionPolicy": {
+    "signatureMotionReinforcesShellRelationships": true,
+    "directFamilyRequestAccepted": false,
+    "rawTimingAccepted": false,
+    "rawEasingAccepted": false,
+    "rawSpringAccepted": false,
+    "rawPhysicsAccepted": false,
+    "rawKeyframesAccepted": false,
+    "rawPathAccepted": false,
+    "rawDistanceAccepted": false,
+    "rawScaleAccepted": false,
+    "rawPerformanceThresholdAccepted": false,
+    "artificialNavigationDelayAllowed": false,
+    "motionMayDelayProviderExecution": false,
+    "finalStateDependsOnAnimationCompletion": false,
+    "reducedMotionPrecedence": true,
+    "fatigueProtectionRequired": true,
+    "performanceDegradationRequired": true
+  },
+  "authority": {
+    "boundary": "presentation-only",
+    "shellConfigurationOwnedByCallerOrPlatform": true,
+    "capabilityAuthorityRequired": true,
+    "objectIdentityCreatedByGlaze": false,
+    "windowingSupportCreatedByGlaze": false,
+    "systemPrivilegesGrantedByGlaze": false,
+    "notificationTruthCreatedByGlaze": false,
+    "activityTruthCreatedByGlaze": false,
+    "searchAuthorityCreatedByGlaze": false,
+    "navigationAuthorityCreatedByGlaze": false,
+    "executionAuthorityCreatedByGlaze": false,
+    "persistencePerformedByGlaze": false,
+    "actionExecutedByMotion": false,
+    "navigationExecutedByMotion": false
+  },
+  "acceptanceBoundary": {
+    "sourceFoundationOnly": true,
+    "section35Complete": false,
+    "historicalDev6ReinterpretedAsSection35": false,
+    "semanticShellMotionMappingImplemented": true,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "physicalDeviceAcceptanceEstablished": false,
+    "energyImpactAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "releasePromotionAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "runtimeEntrypoint": "js/glaze-v1.7-system-shell-continuity-v12.dev.mjs",
+  "developmentAggregateEntrypoint": "js/glaze-v1.7-development.mjs",
+  "tokenMap": "tokens/glaze-v1.7-system-shell-continuity-v12.dev.json",
+  "researchRecord": "docs/development/v1.7-system-shell-continuity-v12-open-source-research-20260926.md"
+}
