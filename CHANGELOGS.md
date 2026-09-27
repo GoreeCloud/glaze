@@ -12,8 +12,6 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 - Recorded Material Components, Carbon Design System, and Fluent UI exact-revision research as independent-reimplementation provenance without copying upstream source, motion values, curves, components, assets, or visual identity.
 - Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.22` with v1.2 foundation sections 22–30 while keeping Sections 22–30 acceptance incomplete, Glaze Motion 0.6 Experimental, V1.6 / `1.6.0` as Official Anchor, and V1.7 non-consumer-eligible.
 
-
-
 - Added bounded `1.7.0-dev.21` **Motion Expression Profiles** Development source for V1.7 v1.2 Section 29.
 - Connected the existing Personalization 2.0 `motionIntensity` vocabulary to Calm (`minimal`), Balanced (`standard`), and Expressive (`expressive`) profiles without creating a second user-preference authority.
 - Added semantic profile traits for travel, settling, connected transformation use, material animation, adaptive recomposition, depth, signature motion, and decorative movement while explicitly prohibiting continuous decorative animation and raw timing/easing/spring/physics/distance/scale controls.
