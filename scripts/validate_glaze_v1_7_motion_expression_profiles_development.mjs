@@ -126,7 +126,7 @@ assert(glazeV17ThemeTransitionSystemDevelopmentContract.version==='1.7.0-dev.20'
 assert(glazeV17ThemeTransitionSystemDevelopmentContract.section28Complete===false,'dev.20 relabeled as Section 28 complete');
 assert(glazeV17MotionExpressionProfilesDevelopmentContract.version==='1.7.0-dev.21','runtime contract version mismatch');
 assert(glazeV17MotionExpressionProfilesDevelopmentContract.section29Complete===false,'runtime contract completion overclaim');
-assert(glazeV17Development.version==='1.7.0-dev.21','aggregate version mismatch');
+const aggregateOrdinal=Number(glazeV17Development.version.match(/^1\\.7\\.0-dev\\.(\\d+)$/)?.[1]);\nassert(Number.isInteger(aggregateOrdinal)&&aggregateOrdinal>=21,'aggregate version regressed below dev.21');
 assert(glazeV17Development.planVersion==='v1.2'&&glazeV17Development.consumerEligible===false,'aggregate lifecycle mismatch');
 for(const section of [22,23,24,25,26,27,28,29])assert(glazeV17Development.planV12FoundationSections.includes(section),'aggregate missing v1.2 section '+section);
 assert(glazeV17Development.motionExpressionProfilesFoundation==='js/glaze-v1.7-motion-expression-profiles.dev.mjs','aggregate missing dev.21 foundation');
