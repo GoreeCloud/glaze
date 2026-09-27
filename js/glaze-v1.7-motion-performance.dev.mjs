@@ -3,7 +3,8 @@
  * Bounded v1.2 Section 33 source layer. Resolves independently-authorized
  * caller/provider environmental signals into deterministic presentation
  * simplification. It does not manufacture measurements, mutate application
- * state, or create release/acceptance authority.
+ * state, or create release/acceptance authority. The approved performance budget
+ * remains external exact-revision qualification authority.
  */
 
 import {
