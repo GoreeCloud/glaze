@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.com/schemas/glaze-ui/v1.7-native-glaze-kits-v1-2.schema.json",
+  "title": "Glaze UI V1.7 Native Glaze Kits v1.2 Development Contract",
+  "type": "object",
+  "required": [
+    "schemaVersion","contractId","version","lifecycle","stableBaseline","consumerEligible",
+    "planVersion","v12SpecificationSections","historicalFoundation","platforms",
+    "semanticMotionRelationships","motionCharacter","platformMotionBridges",
+    "crossPlatformPolicy","authority","dependencies","researchProvenance","acceptanceBoundary"
+  ],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "contractId": {"const": "goreecloud.glaze-ui.v1.7.native-glaze-kits-v1-2"},
+    "version": {"const": "1.7.0-dev.29"},
+    "lifecycle": {"const": "Development"},
+    "stableBaseline": {"const": "1.6.0"},
+    "consumerEligible": {"const": false},
+    "planVersion": {"const": "v1.2"},
+    "v12SpecificationSections": {"const": [37]},
+    "historicalFoundation": {"type":"object"},
+    "platforms": {"type":"array","minItems":4,"maxItems":4,"uniqueItems":true},
+    "semanticMotionRelationships": {"type":"array","minItems":10,"maxItems":10,"uniqueItems":true},
+    "motionCharacter": {"type":"array","minItems":5,"maxItems":5,"uniqueItems":true},
+    "platformMotionBridges": {"type":"object","minProperties":4,"maxProperties":4},
+    "crossPlatformPolicy": {"type":"object"},
+    "authority": {"type":"object"},
+    "dependencies": {"type":"object"},
+    "researchProvenance": {"type":"object"},
+    "acceptanceBoundary": {"type":"object"},
+    "runtimeEntrypoint": {"type":"string"},
+    "developmentAggregateEntrypoint": {"type":"string"},
+    "tokenMap": {"type":"string"}
+  },
+  "additionalProperties": true
+}
