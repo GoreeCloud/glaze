@@ -5,49 +5,40 @@
   "consumerEligible": false,
   "planVersion": "v1.2",
   "v12SpecificationSections": [44],
-  "truth": {
+  "principle": {
     "motionCommunicatesTruth": true,
     "motionCreatesTruth": false,
-    "adaptivePresentationCreatesTruth": false,
-    "truthBearingTransitionRequiresAuthoritativeState": true,
-    "unknownOrUntrustedTruthFailsClosed": true,
-    "providerPrecedenceInferred": false
+    "presentationCreatesTruth": false,
+    "providerPrecedenceInferred": false,
+    "conflictsFailClosed": true
   },
-  "domains": [
-    "security-protection",
-    "privacy-access",
-    "synchronization",
-    "operation-result",
-    "recovery",
-    "identity-authentication"
-  ],
-  "authority": {
-    "securityTruthCreatedByGlaze": false,
-    "privacyTruthCreatedByGlaze": false,
-    "synchronizationTruthCreatedByGlaze": false,
-    "successTruthCreatedByGlaze": false,
-    "recoveryTruthCreatedByGlaze": false,
-    "identityTruthCreatedByGlaze": false,
-    "authorizationGrantedByGlaze": false,
-    "permissionGrantedByGlaze": false,
-    "consentGrantedByGlaze": false,
-    "providerPrecedenceInferredByGlaze": false
+  "owners": {
+    "securityProtection": "wardveil-security",
+    "privacyConsent": "privacy-shield",
+    "resilienceRecovery": "everkeep",
+    "identityAuthentication": "goreecloud-identity",
+    "coordinationStatus": "goreecloud-mesh"
   },
-  "motion": {
-    "truthBearingMotionRequiresAuthoritativeAffirmation": true,
-    "unknownStateUsesNeutralPresentation": true,
-    "untrustedAffirmationUsesNeutralPresentation": true,
-    "stateMayNotDependOnAnimationCompletion": true,
-    "animationMayNotAdvanceProviderState": true
+  "meshBoundary": {
+    "coordinationTruthAllowed": true,
+    "securityTruthInherited": false,
+    "privacyTruthInherited": false,
+    "governanceAuthorityInherited": false,
+    "authorizationAuthorityInherited": false
+  },
+  "truthBearingMotion": {
+    "acceptedTruthRequired": true,
+    "transitionOccurrenceAuthorityRequired": true,
+    "successCannotBeManufactured": true,
+    "protectionCannotBeManufactured": true,
+    "privacyRevocationCannotBeManufactured": true,
+    "synchronizationCompletionCannotBeManufactured": true
   },
   "acceptance": {
     "section44Complete": false,
-    "renderedAcceptanceEstablished": false,
-    "nativePlatformAcceptanceEstablished": false,
-    "assistiveTechnologyAcceptanceEstablished": false,
-    "providerIntegrationAcceptanceEstablished": false,
     "privacyBoundaryAcceptanceEstablished": false,
     "securityBoundaryAcceptanceEstablished": false,
-    "humanReviewEstablished": false
+    "providerIntegrationAcceptanceEstablished": false,
+    "humanTruthCommunicationReviewEstablished": false
   }
 }

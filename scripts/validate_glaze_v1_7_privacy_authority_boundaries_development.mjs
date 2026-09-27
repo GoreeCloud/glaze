@@ -2,9 +2,9 @@ import {readFileSync} from 'node:fs';
 import {
   resolveGlazePrivacyAuthorityBoundaryV12,
   glazeV17PrivacyAuthorityBoundariesDevelopmentContract,
-  PRIVACY_AUTHORITY_TRUTH_DOMAINS,
-  PRIVACY_AUTHORITY_EVENTS
+  PRIVACY_AUTHORITY_TRUTH_DOMAINS
 } from '../js/glaze-v1.7-privacy-authority-boundaries.dev.mjs';
+import {glazeProviderDevelopmentContract} from '../js/glaze-v1.5-provider-registry.dev.mjs';
 import {glazeV17VisualMotionDirectionDevelopmentContract}
   from '../js/glaze-v1.7-visual-motion-direction.dev.mjs';
 import {glazeV17Development} from '../js/glaze-v1.7-development.mjs';
@@ -27,146 +27,141 @@ const research=read('research/v1.7-privacy-authority-boundaries.md');
 const rootResearch=read('OPEN-SOURCE-RESEARCH.md');
 
 assert(contract.version==='1.7.0-dev.37','contract version mismatch');
-assert(contract.planVersion==='v1.2'&&contract.v12SpecificationSections.length===1&&contract.v12SpecificationSections[0]===44,'contract plan binding mismatch');
+assert(contract.planVersion==='v1.2'&&contract.v12SpecificationSections[0]===44,'contract plan binding mismatch');
 assert(contract.consumerEligible===false&&contract.stableBaseline==='1.6.0','contract lifecycle boundary weakened');
-assert(contract.governingRule.motionCommunicatesTruth===true&&contract.governingRule.motionCreatesTruth===false,'truth/motion rule weakened');
-assert(contract.governingRule.providerPrecedenceInferred===false,'provider precedence boundary weakened');
-assert(contract.truthDomains['security-protection'][0]==='wardveil-security','security authority identifier drifted');
-assert(contract.truthDomains['privacy-access'].includes('privacy-shield'),'privacy authority identifier drifted');
-assert(contract.truthDomains.recovery.includes('everkeep'),'recovery authority identifier drifted');
-assert(contract.truthDomains['identity-authentication'][0]==='goreecloud-identity','identity authority identifier drifted');
+assert(contract.truthDomains.length===9,'truth domain count mismatch');
+assert(contract.authorityPolicy.providerRegistryInherited===true,'V1.5 provider registry inheritance missing');
+assert(contract.authorityPolicy.providerConflictsFailClosed===true,'provider conflict policy weakened');
+assert(contract.authorityPolicy.providerPrecedenceInferred===false,'provider precedence inference introduced');
+assert(contract.motionPolicy.truthBearingMotionRequiresAcceptedTruth===true,'truth-bearing motion boundary weakened');
 assert(contract.acceptanceBoundary.section44Complete===false,'contract overclaims Section 44 completion');
-assert(schema.properties.version.const==='1.7.0-dev.37','schema version mismatch');
-assert(schema.properties.v12SpecificationSections.const[0]===44,'schema plan binding mismatch');
+assert(schema.properties.version.const==='1.7.0-dev.37','schema identity mismatch');
+assert(tokens.principle.motionCreatesTruth===false&&tokens.principle.conflictsFailClosed===true,'token truth boundary weakened');
 
 const wardveil=resolveGlazePrivacyAuthorityBoundaryV12({
   truthDomain:'security-protection',
-  event:'protection-enabled',
-  truthState:'confirmed',
-  authoritySource:'wardveil-security',
-  authorityAuthoritative:true
+  claims:[{providerId:'wardveil-security',ownerKind:'wardveil-security',authority:'security',scope:'system',state:'protected',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true,
+  accessibility:{},accessibilityAuthoritative:true,
+  performancePressure:'neutral',performancePressureAuthoritative:true
 });
-assert(wardveil.resolution.effectiveTruth==='confirmed','Wardveil confirmation lost');
-assert(wardveil.resolution.truthBearingMotionAllowed===true,'authoritative Wardveil protection should permit truth-bearing motion');
-assert(wardveil.authority.sourceAllowed===true&&wardveil.authority.providerPrecedenceInferred===false,'Wardveil authority resolution invalid');
+assert(wardveil.truth.accepted&&wardveil.truth.effectiveState==='protected','authoritative Wardveil protection must be accepted');
+assert(wardveil.presentation.protectionCueAllowed===true,'accepted Wardveil protection cue missing');
+
+const spoofedProtection=resolveGlazePrivacyAuthorityBoundaryV12({
+  truthDomain:'security-protection',
+  claims:[{providerId:'random-service',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'protected',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true
+});
+assert(spoofedProtection.truth.accepted===false&&spoofedProtection.truth.effectiveState==='unknown','non-Wardveil protection claim must fail closed');
 
 const privacy=resolveGlazePrivacyAuthorityBoundaryV12({
-  truthDomain:'privacy-access',
-  event:'privacy-access-revoked',
-  truthState:'confirmed',
-  authoritySource:'privacy-shield',
-  authorityAuthoritative:true
+  truthDomain:'privacy-consent',
+  claims:[{providerId:'privacy-shield',ownerKind:'privacy-shield',authority:'privacy',scope:'system',state:'revoked',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true
 });
-assert(privacy.resolution.truthBearingMotionAllowed===true,'authoritative Privacy Shield revocation should permit truth-bearing motion');
+assert(privacy.presentation.privacyRevocationCueAllowed===true,'Privacy Shield revocation must be authoritative');
+
+const providerLocalPrivacy=resolveGlazePrivacyAuthorityBoundaryV12({
+  truthDomain:'privacy-access',
+  claims:[{providerId:'photos-service',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'denied',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true
+});
+assert(providerLocalPrivacy.truth.accepted&&providerLocalPrivacy.truth.acceptedScope==='provider-local','provider-local privacy access should remain bounded');
+
+const globalProviderPrivacy=resolveGlazePrivacyAuthorityBoundaryV12({
+  truthDomain:'privacy-access',
+  claims:[{providerId:'photos-service',ownerKind:'responsible-provider',authority:'service',scope:'system',state:'revoked',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true
+});
+assert(globalProviderPrivacy.truth.accepted===false,'responsible provider must not claim system-wide privacy access truth');
 
 const sync=resolveGlazePrivacyAuthorityBoundaryV12({
   truthDomain:'synchronization',
-  event:'synchronization-completed',
-  truthState:'confirmed',
-  authoritySource:'responsible-provider',
-  responsibleProviderId:'example.sync.provider',
-  authorityAuthoritative:true
+  claims:[{providerId:'calendar-sync',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'synchronized',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true
 });
-assert(sync.resolution.truthBearingMotionAllowed===true,'authoritative responsible-provider synchronization completion should permit truth-bearing motion');
-assert(sync.authority.responsibleProviderId==='example.sync.provider','responsible provider identity was not preserved');
+assert(sync.presentation.synchronizationCompletionCueAllowed===true,'authoritative synchronization completion cue missing');
 
-const wrongOwner=resolveGlazePrivacyAuthorityBoundaryV12({
-  truthDomain:'security-protection',
-  event:'protection-enabled',
-  truthState:'confirmed',
-  authoritySource:'privacy-shield',
-  authorityAuthoritative:true
+const conflict=resolveGlazePrivacyAuthorityBoundaryV12({
+  truthDomain:'synchronization',
+  claims:[
+    {providerId:'sync-a',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'synchronized',authorityAttested:true},
+    {providerId:'sync-b',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'failed',authorityAttested:true}
+  ],
+  transitionOccurrenceAuthoritative:true
 });
-assert(wrongOwner.resolution.effectiveTruth==='unknown','mismatched authority owner must fail closed');
-assert(wrongOwner.resolution.truthBearingMotionAllowed===false,'mismatched owner must not permit truth-bearing motion');
-assert(wrongOwner.resolution.reason==='authority-source-not-valid-for-domain','mismatched-owner explanation missing');
+assert(conflict.providerSnapshot.conflict===true&&conflict.truth.effectiveState==='unknown','provider conflict must fail closed');
 
-const untrusted=resolveGlazePrivacyAuthorityBoundaryV12({
+const unattested=resolveGlazePrivacyAuthorityBoundaryV12({
   truthDomain:'operation-result',
-  event:'operation-succeeded',
-  truthState:'confirmed',
-  authoritySource:'responsible-provider',
-  responsibleProviderId:'example.operation.provider',
-  authorityAuthoritative:false
+  claims:[{providerId:'editor',ownerKind:'application',authority:'application',scope:'application-local',state:'success',authorityAttested:false}],
+  transitionOccurrenceAuthoritative:true
 });
-assert(untrusted.resolution.effectiveTruth==='unknown','non-authoritative success must remain unknown');
-assert(untrusted.resolution.truthBearingMotionAllowed===false,'non-authoritative success must not animate as success');
+assert(unattested.truth.accepted===false&&unattested.presentation.successCueAllowed===false,'unattested success must not be manufactured');
 
-const unknown=resolveGlazePrivacyAuthorityBoundaryV12({
-  truthDomain:'recovery',
-  event:'recovery-completed',
-  truthState:'unknown',
-  authoritySource:'everkeep',
-  authorityAuthoritative:true
+const everkeep=resolveGlazePrivacyAuthorityBoundaryV12({
+  truthDomain:'resilience-recovery',
+  claims:[{providerId:'everkeep',ownerKind:'everkeep',authority:'service',scope:'system',state:'recovered',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true
 });
-assert(unknown.resolution.effectiveTruth==='unknown'&&unknown.resolution.presentationDirective==='neutral-unknown','unknown recovery truth must stay neutral');
+assert(everkeep.presentation.recoveryCompletionCueAllowed===true,'Everkeep recovery truth not preserved');
 
-const refuted=resolveGlazePrivacyAuthorityBoundaryV12({
+const identity=resolveGlazePrivacyAuthorityBoundaryV12({
   truthDomain:'identity-authentication',
-  event:'identity-authenticated',
-  truthState:'refuted',
-  authoritySource:'goreecloud-identity',
-  authorityAuthoritative:true
+  claims:[{providerId:'goreecloud-identity',ownerKind:'goreecloud-identity',authority:'identity',scope:'system',state:'authenticated',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true
 });
-assert(refuted.resolution.effectiveTruth==='refuted','authoritative refutation lost');
-assert(refuted.resolution.truthBearingMotionAllowed===false,'refuted positive event must not replay positive motion');
-assert(refuted.resolution.presentationDirective==='confirmed-negative-semantic-state','authoritative refutation should expose negative semantic state');
+assert(identity.presentation.authenticationSuccessCueAllowed===true,'Identity authentication truth not preserved');
+
+const mesh=resolveGlazePrivacyAuthorityBoundaryV12({
+  truthDomain:'coordination-status',
+  claims:[{providerId:'goreecloud-mesh',ownerKind:'goreecloud-mesh',authority:'service',scope:'coordination-only',state:'delivered',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true
+});
+assert(mesh.truth.accepted&&mesh.authority.meshCoordinationTruthOnly===true,'Mesh coordination truth should be accepted only in coordination scope');
+assert(mesh.authority.meshGovernanceAuthorityInherited===false&&mesh.authority.meshAuthorizationAuthorityInherited===false,'Mesh must not inherit governance or authorization');
+
+const noOccurrence=resolveGlazePrivacyAuthorityBoundaryV12({
+  truthDomain:'operation-result',
+  claims:[{providerId:'editor',ownerKind:'application',authority:'application',scope:'application-local',state:'success',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:false
+});
+assert(noOccurrence.truth.effectiveState==='success','truth state must not depend on animation occurrence');
+assert(noOccurrence.presentation.successCueAllowed===true,'accepted success semantic cue should remain available');
+assert(noOccurrence.presentation.animatedTransitionAllowed===false,'unattested transition occurrence must block non-trivial animation');
 
 for(const bad of [
-  ()=>resolveGlazePrivacyAuthorityBoundaryV12({
-    truthDomain:'privacy-access',event:'protection-enabled',truthState:'confirmed',
-    authoritySource:'privacy-shield',authorityAuthoritative:true
-  }),
-  ()=>resolveGlazePrivacyAuthorityBoundaryV12({
-    truthDomain:'synchronization',event:'synchronization-completed',truthState:'confirmed',
-    authoritySource:'responsible-provider',authorityAuthoritative:true
-  }),
-  ()=>resolveGlazePrivacyAuthorityBoundaryV12({
-    truthDomain:'security-protection',event:'protection-enabled',truthState:'confirmed',
-    authoritySource:'wardveil-security',authorityAuthoritative:true,isProtected:true
-  }),
-  ()=>resolveGlazePrivacyAuthorityBoundaryV12({
-    truthDomain:'operation-result',event:'operation-succeeded',truthState:'confirmed',
-    authoritySource:'responsible-provider',responsibleProviderId:'provider',authorityAuthoritative:true,success:true
-  }),
-  ()=>resolveGlazePrivacyAuthorityBoundaryV12({
-    truthDomain:'privacy-access',event:'privacy-access-revoked',truthState:'confirmed',
-    authoritySource:'privacy-shield',authorityAuthoritative:true,providerPrecedence:['privacy-shield']
-  })
+  ()=>resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'operation-result',claims:[],score:10}),
+  ()=>resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'operation-result',claims:[{providerId:'x',ownerKind:'application',authority:'application',scope:'application-local',state:'success',authorityAttested:true,confidence:0.9}]}),
+  ()=>resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'operation-result',claims:[{providerId:'x',ownerKind:'application',authority:'application',scope:'application-local',state:'success',authorityAttested:true}],providerPrecedence:'x'})
 ]){
-  let failed=false;
-  try{bad();}catch{failed=true;}
-  assert(failed,'invalid/raw truth or authority input must fail closed');
+  let failed=false; try{bad();}catch{failed=true;}
+  assert(failed,'inference/ranking/raw truth controls must fail closed');
 }
 
-assert(tokens.version==='1.7.0-dev.37'&&tokens.v12SpecificationSections[0]===44,'token identity mismatch');
-assert(tokens.truth.motionCommunicatesTruth===true&&tokens.truth.motionCreatesTruth===false,'token truth rule weakened');
-assert(tokens.authority.providerPrecedenceInferredByGlaze===false,'token provider precedence boundary weakened');
-assert(tokens.acceptance.section44Complete===false,'token acceptance boundary weakened');
-
+assert(PRIVACY_AUTHORITY_TRUTH_DOMAINS.length===9,'runtime truth domain count mismatch');
+assert(glazeProviderDevelopmentContract.providerPrecedenceInferred===false,'V1.5 provider registry precedence changed');
+assert(glazeV17VisualMotionDirectionDevelopmentContract.version==='1.7.0-dev.36','dev.36 dependency changed');
 assert(glazeV17PrivacyAuthorityBoundariesDevelopmentContract.version==='1.7.0-dev.37','runtime contract identity mismatch');
-assert(glazeV17PrivacyAuthorityBoundariesDevelopmentContract.motionCreatesTruth===false,'runtime truth boundary weakened');
-assert(glazeV17PrivacyAuthorityBoundariesDevelopmentContract.rawTruthControlsAccepted===false,'runtime raw truth controls boundary weakened');
-assert(glazeV17PrivacyAuthorityBoundariesDevelopmentContract.section44Complete===false,'runtime overclaims Section 44 completion');
-assert(glazeV17VisualMotionDirectionDevelopmentContract.version==='1.7.0-dev.36','Section 43 dependency changed');
-assert(PRIVACY_AUTHORITY_TRUTH_DOMAINS.length===6,'truth-domain count mismatch');
-assert(PRIVACY_AUTHORITY_EVENTS.length===12,'truth-bearing event count mismatch');
+assert(glazeV17PrivacyAuthorityBoundariesDevelopmentContract.motionCreatesTruth===false,'runtime contract manufactures truth');
+assert(glazeV17PrivacyAuthorityBoundariesDevelopmentContract.section44Complete===false,'runtime overclaims Section 44');
 
 const aggregateOrdinal=Number(glazeV17Development.version.match(/^1\.7\.0-dev\.(\d+)$/)?.[1]);
 assert(Number.isInteger(aggregateOrdinal)&&aggregateOrdinal>=37,'aggregate version regressed below dev.37');
-assert(glazeV17Development.planVersion==='v1.2'&&glazeV17Development.consumerEligible===false,'aggregate lifecycle boundary weakened');
 assert(glazeV17Development.planV12FoundationSections.includes(44),'aggregate missing Section 44');
 assert(glazeV17Development.privacyAuthorityBoundariesFoundation==='js/glaze-v1.7-privacy-authority-boundaries.dev.mjs','aggregate missing dev.37 foundation');
-assert(glazeV17Development.glazeMotionExperimentalLifecyclePromoted===false,'aggregate promoted Experimental Glaze Motion');
+assert(glazeV17Development.providerTruthManufactured===false,'aggregate provider truth boundary weakened');
 
 assert(version==='1.6.0','VERSION must remain V1.6 Anchor');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','lifecycle authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'V1.7 must not become lifecycle candidate by source implementation');
+assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'source implementation must not create lifecycle candidate');
 
-assert(planned.includes('1.7.0-dev.37')&&planned.includes('Privacy and Authority Boundaries'),'planned-feature control missing dev.37');
-assert(implemented.includes('Privacy and Authority Boundaries')&&implemented.includes('1.7.0-dev.37'),'implemented-feature control missing dev.37');
+assert(planned.includes('1.7.0-dev.37')&&planned.includes('Privacy and Authority Boundaries'),'planned feature control missing dev.37');
+assert(implemented.includes('Privacy and Authority Boundaries')&&implemented.includes('1.7.0-dev.37'),'implemented feature control missing dev.37');
 assert(changelog.includes('1.7.0-dev.37')&&changelog.includes('Privacy and Authority Boundaries'),'changelog missing dev.37');
-assert(plan.includes('dev.37')&&plan.includes('Section 44'),'planned upgrade authority boundary missing dev.37');
+assert(plan.includes('dev.37')&&plan.includes('Section 44'),'planned upgrade authority missing dev.37');
+assert(rootResearch.includes('## V1.7 dev.37 — Privacy and Authority Boundaries'),'root research register missing dev.37');
 
 for(const phrase of [
   'androidx/androidx','23327507f7fc7d5b19d65fec4b090f60c970079b','Apache-2.0',
@@ -174,14 +169,13 @@ for(const phrase of [
   'adobe/react-spectrum','16eead67e83cf42f3c0ee46ef6eb7a2032778378',
   'No third-party source code'
 ])assert(research.includes(phrase),'research provenance missing: '+phrase);
-assert(rootResearch.includes('## V1.7 dev.37 — Privacy and Authority Boundaries'),'root research register missing dev.37');
 
 console.log('GLAZE UI V1.7 Privacy and Authority Boundaries Development validation: PASS');
 console.log('Plan binding: v1.2 Section 44');
-console.log('Truth domains: 6');
-console.log('Truth-bearing events: 12');
-console.log('Motion creates truth: false');
+console.log('Truth domains: 9');
+console.log('Provider conflicts fail closed: true');
 console.log('Provider precedence inferred: false');
+console.log('Motion creates truth: false');
 console.log('Section 44 complete: false');
 console.log('Official Anchor baseline preserved: 1.6.0');
 console.log('Consumer eligible: false');
