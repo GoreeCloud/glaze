@@ -1,0 +1,44 @@
+{
+  "version": "1.7.0-dev.37",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [44],
+  "principle": {
+    "motionCommunicatesTruth": true,
+    "motionCreatesTruth": false,
+    "presentationCreatesTruth": false,
+    "providerPrecedenceInferred": false,
+    "conflictsFailClosed": true
+  },
+  "owners": {
+    "securityProtection": "wardveil-security",
+    "privacyConsent": "privacy-shield",
+    "resilienceRecovery": "everkeep",
+    "identityAuthentication": "goreecloud-identity",
+    "coordinationStatus": "goreecloud-mesh"
+  },
+  "meshBoundary": {
+    "coordinationTruthAllowed": true,
+    "securityTruthInherited": false,
+    "privacyTruthInherited": false,
+    "governanceAuthorityInherited": false,
+    "authorizationAuthorityInherited": false
+  },
+  "truthBearingMotion": {
+    "acceptedTruthRequired": true,
+    "transitionOccurrenceAuthorityRequired": true,
+    "successCannotBeManufactured": true,
+    "protectionCannotBeManufactured": true,
+    "privacyRevocationCannotBeManufactured": true,
+    "synchronizationCompletionCannotBeManufactured": true
+  },
+  "acceptance": {
+    "section44Complete": false,
+    "privacyBoundaryAcceptanceEstablished": false,
+    "securityBoundaryAcceptanceEstablished": false,
+    "providerIntegrationAcceptanceEstablished": false,
+    "humanTruthCommunicationReviewEstablished": false
+  }
+}

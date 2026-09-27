@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze-ui/v1.7-privacy-authority-boundaries.schema.json",
+  "title": "Glaze UI V1.7 Privacy and Authority Boundaries Development Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","contractId","name","version","lifecycle","stableBaseline",
+    "consumerEligible","planVersion","v12SpecificationSections","governingPrinciple",
+    "truthDomains","authorityOwners","authorityPolicy","motionPolicy","dependencies",
+    "acceptanceBoundary","runtimeEntrypoint","developmentAggregateEntrypoint","tokenMap",
+    "researchRecord"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7-privacy-authority-boundaries.schema.json"},
+    "schemaVersion": {"const":1},
+    "contractId": {"const":"goreecloud.glaze-ui.v1.7.privacy-authority-boundaries"},
+    "name": {"const":"Glaze UI V1.7 Privacy and Authority Boundaries Development Contract"},
+    "version": {"const":"1.7.0-dev.37"},
+    "lifecycle": {"const":"Development"},
+    "stableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "planVersion": {"const":"v1.2"},
+    "v12SpecificationSections": {"const":[44]},
+    "governingPrinciple": {"const":"motion-communicates-truth-motion-does-not-create-truth"},
+    "truthDomains": {"type":"array","minItems":9,"maxItems":9,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "authorityOwners": {"type":"object","minProperties":9},
+    "authorityPolicy": {"type":"object","minProperties":12},
+    "motionPolicy": {"type":"object","minProperties":8},
+    "dependencies": {"type":"object","minProperties":4},
+    "acceptanceBoundary": {"type":"object","minProperties":14},
+    "runtimeEntrypoint": {"const":"js/glaze-v1.7-privacy-authority-boundaries.dev.mjs"},
+    "developmentAggregateEntrypoint": {"const":"js/glaze-v1.7-development.mjs"},
+    "tokenMap": {"const":"tokens/glaze-v1.7-privacy-authority-boundaries.dev.json"},
+    "researchRecord": {"const":"research/v1.7-privacy-authority-boundaries.md"}
+  }
+}

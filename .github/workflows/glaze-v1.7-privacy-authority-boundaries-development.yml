@@ -1,0 +1,47 @@
+name: Glaze UI V1.7 Privacy and Authority Boundaries Development
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  privacy-authority-boundaries:
+    name: Validate V1.7 Privacy and Authority Boundaries source foundation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Validate Section 44 source foundation
+        run: |
+          python -m json.tool contracts/v1.7/privacy-authority-boundaries.dev.json >/dev/null
+          python -m json.tool schemas/v1.7-privacy-authority-boundaries.schema.json >/dev/null
+          python -m json.tool tokens/glaze-v1.7-privacy-authority-boundaries.dev.json >/dev/null
+          node --check js/glaze-v1.7-privacy-authority-boundaries.dev.mjs
+          node --check js/glaze-v1.7-development.mjs
+          node --check scripts/validate_glaze_v1_7_privacy_authority_boundaries_development.mjs
+          node scripts/validate_glaze_v1_7_privacy_authority_boundaries_development.mjs
+  retained-authority-foundations:
+    name: Preserve provider truth, activity, and visual-motion boundaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: node scripts/verify_glaze_v1_5_stable.mjs
+      - run: node scripts/validate_glaze_v1_7_notification_activity_surfaces_v1_2_development.mjs
+      - run: node scripts/validate_glaze_v1_7_visual_motion_direction_development.mjs
+  v1-6-anchor:
+    name: Preserve GLAZE UI V1.6 Anchor authority
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
+      - run: node scripts/verify_glaze_v1_6_stable.mjs

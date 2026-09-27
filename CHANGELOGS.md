@@ -4,6 +4,17 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.37` **Privacy and Authority Boundaries** source for V1.7 v1.2 Section 44.
+- Hardened nine truth domains—security protection, privacy consent/access, synchronization, operation results, resilience/recovery, identity/authentication, connectivity/availability, and coordination status—on top of the existing V1.5 provider registry rather than creating a second authority system.
+- Non-unknown truth now requires provider provenance, an allowed authority class, product/domain ownership, bounded scope, and explicit authority attestation. Duplicate provider claims fail closed through the inherited provider snapshot and no provider winner or precedence is inferred.
+- Preserved Wardveil Security, Privacy Shield, Everkeep, and GoreeCloud Identity as system truth owners; responsible providers remain provider-local, platform connectivity remains platform-local, and GoreeCloud Mesh is coordination-only with no inherited governance, privacy, security, consent, permission, or authorization authority.
+- Protection, privacy-revocation, synchronization-completion, success, recovery-completion, and authentication-success cues are enabled only for accepted authoritative state. State itself remains immediate and independent from animation completion; non-trivial motion additionally requires authoritative transition occurrence.
+- Routed accepted truth through the Section 43 visual/motion direction layer so accessibility or authoritative performance pressure may simplify presentation without changing provider truth.
+- Rejected inferred/assumed state, confidence/probability, forced success, provider-precedence/ranking, scores/ratings/winner inputs, raw animation controls, and pixel/screenshot scoring.
+- Recorded exact-revision AndroidX Compose Foundation, Microsoft Fluent UI, and Adobe React Aria research under the GoreeCloud Reforge boundary without incorporating upstream source, state machines, components, or presentation constants.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.37`; Section 44 remains incomplete pending applicable provider-integration/privacy/security/rendered/native/assistive-technology/representative-device/human truth-communication review. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.36` **Visual and Motion Direction** source for V1.7 v1.2 Section 43.
 - Made comprehension-before-spectacle, semantic-purpose-before-effect, localized material richness, native adaptation, accessibility precedence, performance precedence, and truth precedence explicit Development policy.
 - Added a semantic visual/motion resolver that keeps readability and critical certainty solid-first, allows localized Glaze only for governed hierarchy/continuity purposes, requires authoritative transition occurrence for non-trivial motion, and suppresses decorative continuous animation by default.
