@@ -100,3 +100,15 @@ Detailed requirements research is retained in `research/v1.7-visual-motion-direc
 
 No third-party source code, animation constants, numeric motion values, duration/easing/spring/keyframe definitions, visual effects, material recipes, components, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
 
+## V1.7 dev.37 — Privacy and Authority Boundaries
+
+Research date: 2026-09-27.
+
+- AndroidX Compose Foundation at `23327507f7fc7d5b19d65fec4b090f60c970079b` — Apache-2.0. Studied for explicit determinate/indeterminate progress semantics driven by supplied state rather than visual inference.
+- Microsoft Fluent UI at `8add8c8750c34c85acd811e32ab324abf8f1562e` — MIT. Studied for progress accessibility semantics bound to supplied current/max values instead of animation-derived completion.
+- Adobe React Spectrum / React Aria at `16eead67e83cf42f3c0ee46ef6eb7a2032778378` — Apache-2.0. Studied for explicit progress-state semantics in which determinate values are supplied and indeterminate state remains distinct from completion.
+
+Detailed requirements research is retained in `research/v1.7-privacy-authority-boundaries.md`.
+
+No third-party source code, state machines, provider models, animation values, components, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
+
