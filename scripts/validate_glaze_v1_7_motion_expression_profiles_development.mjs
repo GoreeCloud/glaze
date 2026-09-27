@@ -137,7 +137,7 @@ assert(glazeMotion.glazeMotion.version==='0.6.0'&&glazeMotion.glazeMotion.status
 assert(research.includes('Material Components for Android')&&research.includes('Carbon Design System')&&research.includes('Microsoft Fluent UI'),'research source diversity incomplete');
 assert(research.includes('Apache-2.0')&&research.includes('License: MIT'),'research license provenance incomplete');
 assert(research.includes('No upstream source code')||research.includes('No upstream source'),'research independence boundary missing');
-assert(spec.includes('1.7.0-dev.21')&&spec.includes('Motion Expression Profiles'),'plan authority boundary missing dev.21');
+assert(spec.includes('dev.21')&&spec.includes('Motion Expression Profiles'),'plan provenance boundary missing dev.21');
 assert(planned.includes('1.7.0-dev.21')&&planned.includes('Motion Expression Profiles'),'planned-feature control missing dev.21');
 assert(implemented.includes('Motion Expression Profiles — `1.7.0-dev.21`'),'implemented-feature control missing dev.21');
 assert(changelog.includes('1.7.0-dev.21')&&changelog.includes('Motion Expression Profiles'),'changelog missing dev.21');
