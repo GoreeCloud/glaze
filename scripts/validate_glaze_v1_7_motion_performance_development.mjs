@@ -55,7 +55,8 @@ assert(contract.degradationPolicy.semanticStateReduced===false&&contract.degrada
 assert(contract.degradationPolicy.directManipulationTrackingPreserved===true,'direct manipulation invariant missing');
 assert(contract.degradationPolicy.offscreenOptionalWorkSuspended===true&&contract.degradationPolicy.idleRenderLoopsAllowed===false,'offscreen/idle work policy weakened');
 assert(contract.renderingPolicy.compositorFriendlyTechniquesPreferred===true,'compositor-friendly preference missing');
-assert(contract.requestPolicy.callerPerformanceThresholdsAccepted===false&&contract.requestPolicy.callerFrameBudgetAccepted===false,'caller performance authority expanded');
+assert(contract.requestPolicy.callerPerformanceThresholdsAccepted===false&&contract.requestPolicy.callerFrameBudgetAccepted===false&&contract.requestPolicy.measurementsAcceptedByResolver===false,'caller performance authority expanded');
+assert(contract.environmentSignals.authorityRequired===true&&contract.degradationPolicy.untrustedNonNeutralSignalsIgnored===true,'environment authority boundary missing');
 assert(contract.requestPolicy.acceptanceMeasurementsAcceptedByResolver===false,'resolver accepts acceptance measurements');
 assert(contract.evidence.measurementsManufactured===false&&contract.evidence.environmentSignalsRequireCallerOrProviderAuthority===true,'performance evidence/authority boundary weakened');
 assert(contract.acceptanceBoundary.section33Complete===false&&contract.acceptanceBoundary.measuredPerformanceAcceptanceEstablished===false,'Section 33 acceptance overclaimed');
@@ -88,7 +89,8 @@ assert(normal.performanceBudgetReference.acceptanceMayBeInferredFromThisResolver
 
 const untrustedSevere=resolveGlazeMotionPerformance({
   motionKind:'task-transition',
-  runtimePressure:'severe'
+  runtimePressure:'severe',
+  environmentSignalsAuthoritative:true
 });
 assert(untrustedSevere.performance.mode==='full','untrusted severe runtime pressure changed presentation');
 assert(untrustedSevere.performance.runtimePressure.effective==='none'&&untrustedSevere.performance.runtimePressure.fallbackUsed===true,'untrusted runtime pressure did not fail closed');
@@ -143,6 +145,16 @@ const untrustedBackground=resolveGlazeMotionPerformance({
 assert(untrustedBackground.performance.mode==='full','untrusted background visibility changed presentation');
 assert(untrustedBackground.performance.visibility.effective==='visible'&&untrustedBackground.performance.visibility.fallbackUsed===true,'untrusted visibility did not fail closed');
 
+const untrusted=resolveGlazeMotionPerformance({motionKind:'material',powerSaving:true,thermalState:'critical'});
+assert(untrusted.performance.mode==='full','untrusted non-neutral environment signals must be ignored');
+assert(untrusted.performance.untrustedNonNeutralSignalIgnored===true,'untrusted signal ignore flag missing');
+assert(untrusted.evidence.environmentSignalsRequireAuthority===true,'environment authority requirement missing');
+
+const background=resolveGlazeMotionPerformance({motionKind:'decorative',visibility:'background',environmentSignalsAuthoritative:true});
+assert(background.performance.mode==='minimal','background presentation should minimize optional motion');
+assert(background.presentation.directive==='suspend-or-immediately-resolve-offscreen-optional-motion','background optional-work directive mismatch');
+assert(background.presentation.offscreenOptionalWorkSuspended===true,'background optional work not suspended');
+
 const fatigue=resolveGlazeMotionPerformance({
   motionKind:'decorative',
   activeMotion:{decorativeMovements:3}
@@ -188,7 +200,9 @@ assert(badPressure,'unknown runtime pressure accepted');
 assert(tokens.version==='1.7.0-dev.25'&&tokens.planVersion==='v1.2','token identity mismatch');
 assert(tokens.rendering.compositorFriendlyPreferred===true&&tokens.rendering.offscreenOptionalWorkSuspended===true&&tokens.rendering.idleRenderLoopsAllowed===false,'token rendering policy mismatch');
 assert(tokens.boundaries.environmentSignalsRequireAuthority===true&&tokens.boundaries.measurementsAcceptedByResolver===false,'token authority/evidence boundary weakened');
+assert(tokens.boundaries.environmentSignalsRequireAuthority===true&&tokens.boundaries.measurementsAcceptedByResolver===false,'token authority/evidence boundary missing');
 assert(tokens.boundaries.measurementsManufactured===false&&tokens.boundaries.section33Complete===false,'token evidence boundary weakened');
+assert(tokens.rendering.offscreenOptionalWorkSuspended===true&&tokens.rendering.idleRenderLoopsAllowed===false,'token offscreen efficiency policy missing');
 assert(tokens.boundaries.callerMaySetFrameBudget===false&&tokens.boundaries.callerMaySetPerformanceThresholds===false,'token caller authority expanded');
 
 assert(glazeV17MotionFatigueProtectionDevelopmentContract.version==='1.7.0-dev.24','dev.24 dependency changed');
@@ -197,6 +211,7 @@ assert(glazeV16PerformanceDiagnosticsDevelopmentContract.version==='1.6.0-dev.9'
 assert(glazeV16PerformanceDiagnosticsDevelopmentContract.performanceMeasurementsMayBeManufactured===false,'V1.6 evidence boundary weakened');
 assert(glazeV17MotionPerformanceDevelopmentContract.version==='1.7.0-dev.25','runtime contract version mismatch');
 assert(glazeV17MotionPerformanceDevelopmentContract.section33Complete===false,'runtime contract completion overclaim');
+assert(glazeV17MotionPerformanceDevelopmentContract.environmentSignalsRequireAuthority===true&&glazeV17MotionPerformanceDevelopmentContract.measurementsAcceptedByResolver===false,'runtime authority/evidence boundary mismatch');
 assert(glazeV17MotionPerformanceDevelopmentContract.environmentSignalsRequireAuthority===true,'runtime contract environment authority weakened');
 
 const aggregateOrdinal=Number(glazeV17Development.version.match(/^1\.7\.0-dev\.(\d+)$/)?.[1]);
