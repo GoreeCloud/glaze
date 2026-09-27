@@ -115,7 +115,7 @@ function focusModality(modes,input){
   if(set.has('voice-access'))return 'voice-focus';
   if(set.has('screen-reader')||set.has('switch-access'))return 'assistive-input';
   if(set.has('keyboard-navigation'))return 'keyboard';
-  return 'keyboard';
+  return 'mixed';
 }
 
 function expectedInputModels(modes){
