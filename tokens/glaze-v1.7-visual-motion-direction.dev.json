@@ -1,0 +1,59 @@
+{
+  "version": "1.7.0-dev.36",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [43],
+  "advancementObjectives": [
+    "adaptive-composition",
+    "theme-architecture",
+    "semantic-color",
+    "connected-transitions",
+    "spatial-continuity",
+    "microinteractions",
+    "native-platform-adaptation",
+    "quiet-recognizable-motion"
+  ],
+  "direction": {
+    "comprehensionBeforeSpectacle": true,
+    "semanticPurposeBeforeEffect": true,
+    "glassEverywhereAllowed": false,
+    "animationEverywhereAllowed": false,
+    "continuousDecorativeMotionDefault": false,
+    "localizedMaterialRichnessPreferred": true,
+    "nativeAdaptationRequired": true
+  },
+  "material": {
+    "defaultRichness": "restrained",
+    "criticalCertaintyFirst": true,
+    "reducedTransparencySolidEquivalent": true,
+    "forcedColorsSemanticEquivalent": true,
+    "nestedBackdropBlurDefault": false
+  },
+  "motion": {
+    "authoritativeOccurrenceRequired": true,
+    "semanticPurposeRequired": true,
+    "accessibilityMayReduceOptionalMotion": true,
+    "performanceMayReduceOptionalMotion": true,
+    "animationCompletionGatesState": false
+  },
+  "authority": {
+    "providerTruthCreatedByGlaze": false,
+    "accessibilityTruthCreatedByGlaze": false,
+    "performanceTruthCreatedByGlaze": false,
+    "applicationStateChangedByGlaze": false,
+    "navigationExecutedByGlaze": false,
+    "acceptanceGrantedByGlaze": false
+  },
+  "acceptance": {
+    "section43Complete": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "representativeDeviceAcceptanceEstablished": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "energyAcceptanceEstablished": false,
+    "humanVisualMotionReviewEstablished": false
+  }
+}

@@ -4,6 +4,15 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.36` **Visual and Motion Direction** source for V1.7 v1.2 Section 43.
+- Made comprehension-before-spectacle, semantic-purpose-before-effect, localized material richness, native adaptation, accessibility precedence, performance precedence, and truth precedence explicit Development policy.
+- Added a semantic visual/motion resolver that keeps readability and critical certainty solid-first, allows localized Glaze only for governed hierarchy/continuity purposes, requires authoritative transition occurrence for non-trivial motion, and suppresses decorative continuous animation by default.
+- Reduced optional richness under Reduced Motion, Reduced Transparency, Increased Contrast, Forced Colors, Calm expression, or authoritative performance pressure without rewriting durable preferences or authoritative application state.
+- Rejected raw blur/opacity/glass-coverage, duration/delay/easing/spring/keyframe/path, frame-rate/pixel/screenshot, ranking/rating/score, and winner controls from the Section 43 resolver.
+- Recorded exact-revision AndroidX Material 3, Microsoft Fluent UI, and GNOME libadwaita research under the GoreeCloud Reforge boundary without incorporating upstream motion constants, numeric timing values, effects, components, assets, or visual identity.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.36`; Section 43 remains incomplete pending applicable rendered/native/assistive-technology/representative-device/measured-performance/energy/cross-device/human visual-and-motion review. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.35` **Cross-Device Consistency Without Uniformity** source for V1.7 v1.2 Section 42.
 - Added source-level consistency checks for semantic vocabulary, color roles, state vocabulary, motion language, material hierarchy, interaction principles, accessibility expectations, and authority boundaries across Android/Jetpack Compose, Apple/SwiftUI, Web, and supported Linux native mappings.
 - Explicitly kept platform-native controls, adaptive layout composition, rendering primitives, input bindings, windowing mechanics, animation timing/curves/paths, and other native implementation details free to differ when governed semantic meaning remains consistent.

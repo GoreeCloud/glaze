@@ -88,3 +88,15 @@ Detailed requirements research is retained in `research/v1.7-cross-device-consis
 
 No third-party source code, components, native controls, layout algorithms, numeric dimensions, animation values, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
 
+## V1.7 dev.36 — Visual and Motion Direction
+
+Research date: 2026-09-27.
+
+- AndroidX Material 3 at `23327507f7fc7d5b19d65fec4b090f60c970079b` — Apache-2.0. Studied for system-level standard/expressive motion schemes and separation between spatial and effect-oriented motion semantics.
+- Microsoft Fluent UI at `8add8c8750c34c85acd811e32ab324abf8f1562e` — MIT. Studied for centralized, reusable motion vocabulary rather than unrelated per-component animation definitions.
+- GNOME libadwaita at `0ffcd2c80b2260bdae01b89e88d94bb5c856db13` — LGPL-2.1-or-later. Studied for animation suppression when platform settings disable animation and for separately platform-owned appearance/high-contrast settings.
+
+Detailed requirements research is retained in `research/v1.7-visual-motion-direction.md`.
+
+No third-party source code, animation constants, numeric motion values, duration/easing/spring/keyframe definitions, visual effects, material recipes, components, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
+
