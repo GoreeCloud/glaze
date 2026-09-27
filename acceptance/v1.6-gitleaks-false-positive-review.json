@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "recordId": "goreecloud.glaze-ui.v1.6.gitleaks-false-positive-review",
-  "reviewedAt": "2026-09-18T19:48:00-05:00",
+  "reviewedAt": "2026-09-27T21:32:20Z",
   "scanner": {
     "name": "gitleaks",
     "version": "8.30.1"
   },
   "sourceSecurityRun": {
-    "workflowRunId": 35410351722,
-    "artifactId": 10574061902,
-    "reviewedHead": "008af7dbfc09eb5262e0a60cabec03bdf82a5fc6"
+    "workflowRunId": 36351508158,
+    "artifactId": 10942153546,
+    "reviewedHead": "0a2e2bec5ee66e953d58355b4f111b512b9ddc99"
   },
-  "findingCount": 21,
+  "findingCount": 22,
   "disposition": "verified-false-positives",
   "groups": [
     {
@@ -42,6 +42,14 @@
         "7df94942483d478fe2a082370e4b4e840232aead"
       ],
       "rationale": "The scanner matched 40-character Git commit SHAs in release-closure prose immediately following a statement about Cloudflare Pages. The values are source-control revision identifiers, not Cloudflare credentials."
+    },
+    {
+      "count": 1,
+      "ruleId": "generic-api-key",
+      "path": "research/v1.7-performance-energy-awareness.md",
+      "historicalCommit": "68af3bdab5cfbba9759dd15eccce858cc9e85954",
+      "line": 47,
+      "rationale": "The flagged line is prose stating that GoreeCloud does not copy Compose animation APIs. It contains no credential, token, key material, or secret value; the generic API-key rule matched ordinary research text."
     }
   ],
   "suppression": {
@@ -49,7 +57,7 @@
     "broadRuleDisabled": false,
     "pathWideAllowlistUsed": false,
     "futureFindingsRemainFailClosed": true,
-    "fingerprintCount": 21,
+    "fingerprintCount": 22,
     "literalOrLineAllowlistUsed": false,
     "fingerprints": [
       "99510b1d1919604a0f2fa5f4403f2b5be1e9e6d2:tokens/glaze-v1.4-optical-material.candidate.json:generic-api-key:132",
@@ -72,8 +80,9 @@
       "f285b9145e27e6e7027b075c37299d101945c272:contracts/v1.2/artwork-imagery.candidate.json:generic-api-key:140",
       "665e75774ca2940c677d0a35b719fac365942ece:contracts/v1.2/artwork-imagery.candidate.json:generic-api-key:140",
       "9f92a8c7513270ecd5df9524c7e075b6112ca0f2:acceptance/2.2-stable.md:cloudflare-api-key:59",
-      "7df94942483d478fe2a082370e4b4e840232aead:acceptance/2.2-stable.md:cloudflare-api-key:59"
+      "7df94942483d478fe2a082370e4b4e840232aead:acceptance/2.2-stable.md:cloudflare-api-key:59",
+      "68af3bdab5cfbba9759dd15eccce858cc9e85954:research/v1.7-performance-energy-awareness.md:generic-api-key:47"
     ]
   },
-  "boundary": "This review classifies only the exact 21 historical fingerprints observed in the referenced run. No path-wide, rule-wide, line-wide, or literal-wide allowlist is used; future findings remain fail-closed. It does not establish dependency or overall Stable security acceptance."
+  "boundary": "This review classifies only the exact 22 historical fingerprints recorded here. No path-wide, rule-wide, line-wide, or literal-wide allowlist is used; future findings remain fail-closed. It does not establish dependency or overall Stable security acceptance."
 }
