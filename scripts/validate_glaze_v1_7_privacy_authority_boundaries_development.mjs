@@ -31,6 +31,10 @@ assert(contract.planVersion==='v1.2'&&contract.v12SpecificationSections.length==
 assert(contract.consumerEligible===false&&contract.stableBaseline==='1.6.0','contract lifecycle boundary weakened');
 assert(contract.governingRule.motionCommunicatesTruth===true&&contract.governingRule.motionCreatesTruth===false,'truth/motion rule weakened');
 assert(contract.governingRule.providerPrecedenceInferred===false,'provider precedence boundary weakened');
+assert(contract.truthDomains['security-protection'][0]==='wardveil-security','security authority identifier drifted');
+assert(contract.truthDomains['privacy-access'].includes('privacy-shield'),'privacy authority identifier drifted');
+assert(contract.truthDomains.recovery.includes('everkeep'),'recovery authority identifier drifted');
+assert(contract.truthDomains['identity-authentication'][0]==='goreecloud-identity','identity authority identifier drifted');
 assert(contract.acceptanceBoundary.section44Complete===false,'contract overclaims Section 44 completion');
 assert(schema.properties.version.const==='1.7.0-dev.37','schema version mismatch');
 assert(schema.properties.v12SpecificationSections.const[0]===44,'schema plan binding mismatch');
