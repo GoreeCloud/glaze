@@ -29,9 +29,10 @@ export * from './glaze-v1.7-motion-personalization.dev.mjs';
 export * from './glaze-v1.7-reduced-motion-equivalents.dev.mjs';
 export * from './glaze-v1.7-motion-fatigue-protection.dev.mjs';
 export * from './glaze-v1.7-motion-performance.dev.mjs';
+export * from './glaze-v1.7-glaze-motion-lifecycle.dev.mjs';
 
 export const glazeV17Development = Object.freeze({
-  version: '1.7.0-dev.25',
+  version: '1.7.0-dev.26',
   lifecycle: 'development',
   stableBaseline: '1.6.0',
   consumerEligible: false,
@@ -39,7 +40,7 @@ export const glazeV17Development = Object.freeze({
   implementedSpecificationSectionsPlanVersion: 'v1.0-historical-numbering',
   planVersion: 'v1.2',
   planV11FoundationSections: Object.freeze([7, 8, 9, 10, 11, 12, 13, 18, 19, 21, 24, 25, 26, 27, 28]),
-  planV12FoundationSections: Object.freeze([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]),
+  planV12FoundationSections: Object.freeze([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]),
   taskContinuityFoundation: 'js/glaze-v1.7-task-continuity.dev.mjs',
   adaptiveInputFoundation: 'js/glaze-v1.7-adaptive-input.dev.mjs',
   formFactorProfilesFoundation: 'js/glaze-v1.7-form-factor-profiles.dev.mjs',
@@ -65,6 +66,7 @@ export const glazeV17Development = Object.freeze({
   reducedMotionEquivalentsFoundation: 'js/glaze-v1.7-reduced-motion-equivalents.dev.mjs',
   motionFatigueProtectionFoundation: 'js/glaze-v1.7-motion-fatigue-protection.dev.mjs',
   motionPerformanceFoundation: 'js/glaze-v1.7-motion-performance.dev.mjs',
+  glazeMotionLifecycleFoundation: 'js/glaze-v1.7-glaze-motion-lifecycle.dev.mjs',
   glazeMotionExperimentalLifecyclePromoted: false,
   presentationOnly: true,
   accessibilityPrecedence: true,
