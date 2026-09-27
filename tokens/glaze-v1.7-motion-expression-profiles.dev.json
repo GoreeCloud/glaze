@@ -1,0 +1,72 @@
+{
+  "version": "1.7.0-dev.21",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [29],
+  "motionIntensityToProfile": {
+    "minimal": "calm",
+    "standard": "balanced",
+    "expressive": "expressive"
+  },
+  "profiles": {
+    "calm": {
+      "travel": "motion.travel.minimal",
+      "settling": "motion.settle.fast",
+      "connectedTransformations": "motion.connected.fewer",
+      "materialAnimation": "motion.material.restrained",
+      "adaptiveRecomposition": "motion.recomposition.restrained",
+      "depthRelationships": "motion.depth.restrained",
+      "signatureMotion": "motion.signature.restrained",
+      "decorativeMovement": "motion.decorative.almost-none"
+    },
+    "balanced": {
+      "travel": "motion.travel.standard",
+      "settling": "motion.settle.standard",
+      "connectedTransformations": "motion.connected.helpful",
+      "materialAnimation": "motion.material.moderate",
+      "adaptiveRecomposition": "motion.recomposition.moderate",
+      "depthRelationships": "motion.depth.moderate",
+      "signatureMotion": "motion.signature.standard",
+      "decorativeMovement": "motion.decorative.restrained"
+    },
+    "expressive": {
+      "travel": "motion.travel.richer-semantic",
+      "settling": "motion.settle.standard",
+      "connectedTransformations": "motion.connected.richer",
+      "materialAnimation": "motion.material.pronounced-semantic",
+      "adaptiveRecomposition": "motion.recomposition.more-visible",
+      "depthRelationships": "motion.depth.more-pronounced",
+      "signatureMotion": "motion.signature.expanded-semantic",
+      "decorativeMovement": "motion.decorative.semantic-only"
+    }
+  },
+  "fallbacks": {
+    "untrustedMotionIntensity": "balanced-default-no-user-selection-claim",
+    "reducedMotion": "calm-profile-with-reduced-motion-equivalents",
+    "simplifiedVisualEffects": "calm-profile-with-simplified-effects",
+    "constrainedPerformance": "expressive-capped-at-balanced",
+    "severePerformance": "profile-capped-at-calm",
+    "untrustedPerformanceConstraint": "ignore-untrusted-constraint"
+  },
+  "boundaries": {
+    "continuousDecorativeAnimation": false,
+    "hardcodedDurationExposed": false,
+    "hardcodedEasingExposed": false,
+    "rawSpringExposed": false,
+    "rawPhysicsExposed": false,
+    "rawDistanceExposed": false,
+    "rawScaleExposed": false,
+    "storedPreferenceRewrittenByOverride": false,
+    "directManipulationTrackingRequired": true,
+    "section29Complete": false,
+    "glazeMotionExperimentalLifecyclePromoted": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "performanceAcceptanceEstablished": false,
+    "motionFatigueAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false
+  }
+}

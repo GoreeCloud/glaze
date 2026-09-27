@@ -5,6 +5,15 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 ## Unreleased — GLAZE UI V1.7 Development
 
 
+- Added bounded `1.7.0-dev.21` **Motion Expression Profiles** Development source for V1.7 v1.2 Section 29.
+- Connected the existing Personalization 2.0 `motionIntensity` vocabulary to Calm (`minimal`), Balanced (`standard`), and Expressive (`expressive`) profiles without creating a second user-preference authority.
+- Added semantic profile traits for travel, settling, connected transformation use, material animation, adaptive recomposition, depth, signature motion, and decorative movement while explicitly prohibiting continuous decorative animation and raw timing/easing/spring/physics/distance/scale controls.
+- Added accessibility and authoritative performance precedence: Reduced Motion uses Calm plus lower-motion semantic equivalents while preserving direct-manipulation tracking; constrained performance caps Expressive at Balanced; severe performance caps profiles at Calm; effective degradation never rewrites the selected preference.
+- Recorded Material Components, Carbon Design System, and Fluent UI open-source motion/token research with exact revisions and licenses as independent-reimplementation provenance; no upstream source, curves, duration values, components, assets, or visual identity are copied.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.21` with v1.2 foundation sections 22–29 while keeping Sections 22–29 acceptance incomplete, Glaze Motion 0.6 Experimental, V1.6 / `1.6.0` as Official Anchor, and V1.7 non-consumer-eligible.
+
+
+
 - Added bounded `1.7.0-dev.20` **Theme Transition System** Development source for V1.7 v1.2 Section 28.
 - Added governed semantic theme-transition coordination for Canvas color, Surface color, Accent families, Material atmosphere, Icon tint, Selection color, Non-semantic decorative color, and Appearance mode without exposing application-facing raw timing/easing/physics controls.
 - Separated cancellable preview from application state and made the target theme count as applied only after an authoritative `committed` result from the responsible system; pending, failed, cancelled, unchanged, or untrusted results do not manufacture a commit.

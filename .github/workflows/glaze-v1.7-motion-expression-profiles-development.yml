@@ -1,0 +1,129 @@
+name: Glaze UI V1.7 Motion Expression Profiles Development
+on:
+  pull_request:
+    paths:
+      - 'GLAZE_UI_V1_7_PLANNED.md'
+      - 'contracts/v1.7/motion-expression-profiles.dev.json'
+      - 'schemas/v1.7-motion-expression-profiles.schema.json'
+      - 'tokens/glaze-v1.7-motion-expression-profiles.dev.json'
+      - 'js/glaze-v1.7-motion-expression-profiles.dev.mjs'
+      - 'js/glaze-v1.7-personalization.dev.mjs'
+      - 'js/glaze-v1.7-theme-transition-system.dev.mjs'
+      - 'js/glaze-v1.7-development.mjs'
+      - 'scripts/validate_glaze_v1_7_motion_expression_profiles_development.mjs'
+      - 'scripts/validate_glaze_v1_7_theme_transition_system_development.mjs'
+      - 'docs/development/v1.7-motion-expression-profiles-open-source-research-20260926.md'
+      - '.github/workflows/glaze-v1.7-motion-expression-profiles-development.yml'
+      - 'PLANNED-FEATURES.md'
+      - 'IMPLEMENTED-FEATURES.md'
+      - 'CHANGELOGS.md'
+      - 'tokens/glaze-motion.json'
+      - 'VERSION'
+      - 'registry/lifecycle.json'
+  push:
+    branches: [main]
+    paths:
+      - 'GLAZE_UI_V1_7_PLANNED.md'
+      - 'contracts/v1.7/motion-expression-profiles.dev.json'
+      - 'schemas/v1.7-motion-expression-profiles.schema.json'
+      - 'tokens/glaze-v1.7-motion-expression-profiles.dev.json'
+      - 'js/glaze-v1.7-motion-expression-profiles.dev.mjs'
+      - 'js/glaze-v1.7-personalization.dev.mjs'
+      - 'js/glaze-v1.7-theme-transition-system.dev.mjs'
+      - 'js/glaze-v1.7-development.mjs'
+      - 'scripts/validate_glaze_v1_7_motion_expression_profiles_development.mjs'
+      - 'scripts/validate_glaze_v1_7_theme_transition_system_development.mjs'
+      - 'docs/development/v1.7-motion-expression-profiles-open-source-research-20260926.md'
+      - '.github/workflows/glaze-v1.7-motion-expression-profiles-development.yml'
+      - 'PLANNED-FEATURES.md'
+      - 'IMPLEMENTED-FEATURES.md'
+      - 'CHANGELOGS.md'
+      - 'tokens/glaze-motion.json'
+      - 'VERSION'
+      - 'registry/lifecycle.json'
+  workflow_dispatch:
+permissions: {contents: read}
+concurrency:
+  group: glaze-v1-7-motion-expression-profiles-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  motion-expression-profiles-development:
+    name: Validate V1.7 Motion Expression Profiles Development foundation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: {ref: "${{ github.event.pull_request.head.sha || github.sha }}", fetch-depth: 0}
+      - name: Validate JSON syntax
+        run: |
+          python -m json.tool contracts/v1.7/motion-expression-profiles.dev.json >/dev/null
+          python -m json.tool schemas/v1.7-motion-expression-profiles.schema.json >/dev/null
+          python -m json.tool tokens/glaze-v1.7-motion-expression-profiles.dev.json >/dev/null
+      - name: Validate JavaScript syntax
+        run: |
+          node --check js/glaze-v1.7-motion-expression-profiles.dev.mjs
+          node --check js/glaze-v1.7-development.mjs
+          node --check scripts/validate_glaze_v1_7_motion_expression_profiles_development.mjs
+          node --check scripts/validate_glaze_v1_7_theme_transition_system_development.mjs
+      - name: Validate V1.7 Motion Expression Profiles Development foundation
+        run: node scripts/validate_glaze_v1_7_motion_expression_profiles_development.mjs
+
+  v1-7-regression:
+    name: Preserve V1.7 dev.1-dev.20 foundations
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: {ref: "${{ github.event.pull_request.head.sha || github.sha }}", fetch-depth: 0}
+      - name: Verify prior V1.7 Development foundations
+        run: |
+          node scripts/validate_glaze_v1_7_task_continuity_development.mjs
+          node scripts/validate_glaze_v1_7_adaptive_input_development.mjs
+          node scripts/validate_glaze_v1_7_form_factor_profiles_development.mjs
+          node scripts/validate_glaze_v1_7_command_surface_development.mjs
+          node scripts/validate_glaze_v1_7_personalization_development.mjs
+          node scripts/validate_glaze_v1_7_system_shell_continuity_development.mjs
+          node scripts/validate_glaze_v1_7_notification_activity_surfaces_development.mjs
+          node scripts/validate_glaze_v1_7_theme_semantic_color_development.mjs
+          node scripts/validate_glaze_v1_7_native_glaze_kits_development.mjs
+          node scripts/validate_glaze_v1_7_expanded_component_system_development.mjs
+          node scripts/validate_glaze_v1_7_inspector_development.mjs
+          node scripts/validate_glaze_v1_7_studio_development.mjs
+          node scripts/validate_glaze_v1_7_continuity_aware_motion_development.mjs
+          node scripts/validate_glaze_v1_7_signature_motion_system_development.mjs
+          node scripts/validate_glaze_v1_7_signature_motion_principles_development.mjs
+          node scripts/validate_glaze_v1_7_signature_transition_families_development.mjs
+          node scripts/validate_glaze_v1_7_connected_transformation_2_development.mjs
+          node scripts/validate_glaze_v1_7_adaptive_composition_motion_development.mjs
+          node scripts/validate_glaze_v1_7_signature_microinteractions_development.mjs
+          node scripts/validate_glaze_v1_7_theme_transition_system_development.mjs
+
+  experimental-glaze-motion-boundary:
+    name: Preserve separate Glaze Motion Experimental lifecycle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: {ref: "${{ github.event.pull_request.head.sha || github.sha }}", fetch-depth: 0}
+      - name: Verify Experimental lifecycle boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          tokens=json.loads(Path('tokens/glaze-motion.json').read_text())
+          meta=tokens['glazeMotion']
+          assert meta['version']=='0.6.0'
+          assert meta['status']=='experimental'
+          assert meta['runtimeCompatibilityBaseline']=='0.4.0'
+          assert tokens['tiers']['core']['status']=='experimental'
+          assert tokens['tiers']['studio']['status']=='planned'
+          assert tokens['tiers']['spatial']['status']=='planned'
+          PY
+      - name: Run retained Glaze Motion runtime/accessibility/interaction tests
+        run: node --test tests/glaze-motion-runtime.test.mjs tests/glaze-motion-accessibility.test.mjs tests/glaze-motion-interaction.test.mjs
+
+  v1-6-anchor-authority:
+    name: Preserve GLAZE UI V1.6 Anchor authority
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: {ref: "${{ github.event.pull_request.head.sha || github.sha }}", fetch-depth: 0}
+      - run: node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
+      - run: node scripts/verify_glaze_v1_6_stable.mjs

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.com/schemas/glaze-ui/v1.7-motion-expression-profiles.schema.json",
+  "title": "Glaze UI V1.7 Motion Expression Profiles Development Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","contractId","name","version","lifecycle","stableBaseline","consumerEligible",
+    "planVersion","v12SpecificationSections","dependsOn","expressionModel","profiles","requestPolicy",
+    "overridePolicy","authority","accessibility","performance","glazeMotionBoundary","acceptanceBoundary",
+    "runtimeEntrypoint","developmentAggregateEntrypoint","tokenMap","researchRecord","sourceAuthorities"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7-motion-expression-profiles.schema.json"},
+    "schemaVersion": {"const":1},
+    "contractId": {"const":"goreecloud.glaze-ui.v1.7.motion-expression-profiles"},
+    "name": {"const":"Glaze UI V1.7 Motion Expression Profiles Development Contract"},
+    "version": {"const":"1.7.0-dev.21"},
+    "lifecycle": {"const":"Development"},
+    "stableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "planVersion": {"const":"v1.2"},
+    "v12SpecificationSections": {"const":[29]},
+    "dependsOn": {"type":"object","minProperties":6},
+    "expressionModel": {"type":"object","minProperties":6},
+    "profiles": {
+      "type":"object",
+      "required":["calm","balanced","expressive"],
+      "additionalProperties":false,
+      "properties":{
+        "calm":{"type":"object","minProperties":9},
+        "balanced":{"type":"object","minProperties":9},
+        "expressive":{"type":"object","minProperties":9}
+      }
+    },
+    "requestPolicy": {"type":"object","minProperties":11},
+    "overridePolicy": {"type":"object","minProperties":7},
+    "authority": {"type":"object","minProperties":6},
+    "accessibility": {"type":"object","minProperties":9},
+    "performance": {"type":"object","minProperties":4},
+    "glazeMotionBoundary": {"type":"object","minProperties":5},
+    "acceptanceBoundary": {"type":"object","minProperties":20},
+    "runtimeEntrypoint": {"const":"js/glaze-v1.7-motion-expression-profiles.dev.mjs"},
+    "developmentAggregateEntrypoint": {"const":"js/glaze-v1.7-development.mjs"},
+    "tokenMap": {"const":"tokens/glaze-v1.7-motion-expression-profiles.dev.json"},
+    "researchRecord": {"const":"docs/development/v1.7-motion-expression-profiles-open-source-research-20260926.md"},
+    "sourceAuthorities": {"type":"array","minItems":4,"uniqueItems":true,"items":{"type":"string","minLength":1}}
+  }
+}

@@ -24,9 +24,10 @@ export * from './glaze-v1.7-connected-transformation-2.dev.mjs';
 export * from './glaze-v1.7-adaptive-composition-motion.dev.mjs';
 export * from './glaze-v1.7-signature-microinteractions.dev.mjs';
 export * from './glaze-v1.7-theme-transition-system.dev.mjs';
+export * from './glaze-v1.7-motion-expression-profiles.dev.mjs';
 
 export const glazeV17Development = Object.freeze({
-  version: '1.7.0-dev.20',
+  version: '1.7.0-dev.21',
   lifecycle: 'development',
   stableBaseline: '1.6.0',
   consumerEligible: false,
@@ -34,7 +35,7 @@ export const glazeV17Development = Object.freeze({
   implementedSpecificationSectionsPlanVersion: 'v1.0-historical-numbering',
   planVersion: 'v1.2',
   planV11FoundationSections: Object.freeze([7, 8, 9, 10, 11, 12, 13, 18, 19, 21, 24, 25, 26, 27, 28]),
-  planV12FoundationSections: Object.freeze([22, 23, 24, 25, 26, 27, 28]),
+  planV12FoundationSections: Object.freeze([22, 23, 24, 25, 26, 27, 28, 29]),
   taskContinuityFoundation: 'js/glaze-v1.7-task-continuity.dev.mjs',
   adaptiveInputFoundation: 'js/glaze-v1.7-adaptive-input.dev.mjs',
   formFactorProfilesFoundation: 'js/glaze-v1.7-form-factor-profiles.dev.mjs',
@@ -55,6 +56,7 @@ export const glazeV17Development = Object.freeze({
   adaptiveCompositionMotionFoundation: 'js/glaze-v1.7-adaptive-composition-motion.dev.mjs',
   signatureMicrointeractionsFoundation: 'js/glaze-v1.7-signature-microinteractions.dev.mjs',
   themeTransitionSystemFoundation: 'js/glaze-v1.7-theme-transition-system.dev.mjs',
+  motionExpressionProfilesFoundation: 'js/glaze-v1.7-motion-expression-profiles.dev.mjs',
   glazeMotionExperimentalLifecyclePromoted: false,
   presentationOnly: true,
   accessibilityPrecedence: true,

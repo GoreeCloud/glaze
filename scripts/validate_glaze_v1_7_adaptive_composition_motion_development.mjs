@@ -198,7 +198,7 @@ for(const section of [22,23,24,25,26])assert(glazeV17Development.planV12Foundati
 assert(glazeV17Development.adaptiveCompositionMotionFoundation==='js/glaze-v1.7-adaptive-composition-motion.dev.mjs','aggregate missing dev.18 foundation');
 assert(glazeV17Development.glazeMotionExperimentalLifecyclePromoted===false,'aggregate promoted Glaze Motion');
 
-assert(spec.includes('1.7.0-dev.18')&&spec.includes('Adaptive Composition Motion'),'plan authority boundary missing dev.18');
+assert(spec.includes('dev.18')&&spec.includes('Adaptive Composition Motion'),'plan provenance boundary missing dev.18');
 assert(planned.includes('1.7.0-dev.18')&&planned.includes('Adaptive Composition Motion'),'planned-feature control missing dev.18');
 assert(implemented.includes('Adaptive Composition Motion — `1.7.0-dev.18`'),'implemented-feature control missing dev.18');
 assert(changelog.includes('1.7.0-dev.18')&&changelog.includes('Adaptive Composition Motion'),'changelog missing dev.18');

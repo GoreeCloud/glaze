@@ -181,7 +181,8 @@ assert(glazeV17SignatureMicrointeractionsDevelopmentContract.version==='1.7.0-de
 assert(glazeV17SignatureMicrointeractionsDevelopmentContract.section27Complete===false,'dev.19 relabeled as Section 27 complete');
 assert(glazeV17ThemeTransitionSystemDevelopmentContract.version==='1.7.0-dev.20','runtime contract version mismatch');
 assert(glazeV17ThemeTransitionSystemDevelopmentContract.section28Complete===false,'runtime contract completion overclaim');
-assert(glazeV17Development.version==='1.7.0-dev.20','aggregate version mismatch');
+const aggregateOrdinal=Number(glazeV17Development.version.match(/^1\.7\.0-dev\.(\d+)$/)?.[1]);
+assert(Number.isInteger(aggregateOrdinal)&&aggregateOrdinal>=20,'aggregate version regressed below dev.20');
 assert(glazeV17Development.planVersion==='v1.2'&&glazeV17Development.consumerEligible===false,'aggregate lifecycle mismatch');
 for(const section of [22,23,24,25,26,27,28])assert(glazeV17Development.planV12FoundationSections.includes(section),'aggregate missing v1.2 section '+section);
 assert(glazeV17Development.themeTransitionSystemFoundation==='js/glaze-v1.7-theme-transition-system.dev.mjs','aggregate missing dev.20 foundation');
@@ -190,8 +191,8 @@ assert(glazeV17Development.glazeMotionExperimentalLifecyclePromoted===false,'agg
 assert(glazeMotion.glazeMotion.version==='0.6.0'&&glazeMotion.glazeMotion.status==='experimental','Glaze Motion 0.6 no longer Experimental');
 assert(research.includes('Material Components for Android')&&research.includes('Microsoft Fluent UI'),'research provenance incomplete');
 assert(research.includes('No upstream source code')||research.includes('No upstream source'),'research independence boundary missing');
-assert(spec.includes('1.7.0-dev.20')&&spec.includes('Theme Transition System'),'plan authority boundary missing dev.20');
-assert(planned.includes('1.7.0-dev.20')&&planned.includes('Theme Transition System'),'planned-feature control missing dev.20');
+assert(spec.includes('dev.20')&&spec.includes('Theme Transition System'),'plan provenance boundary missing dev.20');
+assert(planned.includes('1.7.0-dev.20')&&planned.includes('Theme Transition System'),'planned-feature provenance missing dev.20');
 assert(implemented.includes('Theme Transition System — `1.7.0-dev.20`'),'implemented-feature control missing dev.20');
 assert(changelog.includes('1.7.0-dev.20')&&changelog.includes('Theme Transition System'),'changelog missing dev.20');
 

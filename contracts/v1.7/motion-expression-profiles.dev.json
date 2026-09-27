@@ -1,0 +1,155 @@
+{
+  "$schema": "../../schemas/v1.7-motion-expression-profiles.schema.json",
+  "schemaVersion": 1,
+  "contractId": "goreecloud.glaze-ui.v1.7.motion-expression-profiles",
+  "name": "Glaze UI V1.7 Motion Expression Profiles Development Contract",
+  "version": "1.7.0-dev.21",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [29],
+  "dependsOn": {
+    "personalizationVersion": "1.7.0-dev.5",
+    "signatureTransitionFamiliesVersion": "1.7.0-dev.16",
+    "connectedTransformationVersion": "1.7.0-dev.17",
+    "adaptiveCompositionMotionVersion": "1.7.0-dev.18",
+    "signatureMicrointeractionsVersion": "1.7.0-dev.19",
+    "themeTransitionSystemVersion": "1.7.0-dev.20"
+  },
+  "expressionModel": {
+    "source": "Personalization 2.0 motionIntensity",
+    "sourceLevels": ["minimal", "standard", "expressive"],
+    "profileMapping": {
+      "minimal": "calm",
+      "standard": "balanced",
+      "expressive": "expressive"
+    },
+    "defaultSourceLevel": "standard",
+    "defaultProfile": "balanced",
+    "createsNewUserPreference": false
+  },
+  "profiles": {
+    "calm": {
+      "travel": "minimal",
+      "settling": "fast",
+      "connectedTransformations": "fewer",
+      "materialAnimation": "restrained",
+      "adaptiveRecomposition": "restrained",
+      "depthRelationships": "restrained",
+      "signatureMotion": "restrained",
+      "decorativeMovement": "almost-none",
+      "continuousDecorativeAnimation": false
+    },
+    "balanced": {
+      "travel": "standard",
+      "settling": "standard",
+      "connectedTransformations": "helpful",
+      "materialAnimation": "moderate",
+      "adaptiveRecomposition": "moderate",
+      "depthRelationships": "moderate",
+      "signatureMotion": "standard",
+      "decorativeMovement": "restrained",
+      "continuousDecorativeAnimation": false
+    },
+    "expressive": {
+      "travel": "richer-semantic",
+      "settling": "standard",
+      "connectedTransformations": "richer",
+      "materialAnimation": "pronounced-semantic",
+      "adaptiveRecomposition": "more-visible",
+      "depthRelationships": "more-pronounced",
+      "signatureMotion": "expanded-semantic",
+      "decorativeMovement": "semantically-justified-only",
+      "continuousDecorativeAnimation": false
+    }
+  },
+  "requestPolicy": {
+    "authoritativeMotionIntensityRequiredForSelectedProfileClaim": true,
+    "performanceConstraintAuthorityRequiredWhenConstrained": true,
+    "supportedPerformanceConstraints": ["none", "constrained", "severe"],
+    "accessibilityProfilesCallerOrPlatformSupplied": true,
+    "rawTimingAccepted": false,
+    "rawEasingAccepted": false,
+    "rawSpringAccepted": false,
+    "rawPhysicsAccepted": false,
+    "rawDistanceAccepted": false,
+    "rawScaleAccepted": false,
+    "rawChoreographyAccepted": false
+  },
+  "overridePolicy": {
+    "accessibilityPrecedence": true,
+    "performancePrecedence": true,
+    "reducedMotionCapsProfileAtCalm": true,
+    "simplifiedVisualEffectsCapsProfileAtCalm": true,
+    "constrainedPerformanceCapsExpressiveAtBalanced": true,
+    "severePerformanceCapsProfileAtCalm": true,
+    "overridesDoNotRewriteStoredPreference": true,
+    "directManipulationTrackingPreserved": true
+  },
+  "authority": {
+    "boundary": "presentation-only",
+    "motionPreferenceCreatedByGlaze": false,
+    "motionPreferencePersistedByGlaze": false,
+    "performanceStateCreatedByGlaze": false,
+    "accessibilityStateCreatedByGlaze": false,
+    "applicationStateChangedByGlaze": false,
+    "providerTruthCreatedByGlaze": false
+  },
+  "accessibility": {
+    "reducedMotionPrecedence": true,
+    "reducedMotionTravel": "none",
+    "reducedMotionSettling": "immediate-state",
+    "reducedMotionConnectedTransformations": "none",
+    "reducedMotionAdaptiveRecomposition": "immediate-recomposition",
+    "reducedMotionDecorativeMovement": "none",
+    "reducedMotionSignatureMotion": "reduced-motion-equivalent",
+    "directManipulationTrackingRequired": true,
+    "motionRequiredToUnderstandState": false
+  },
+  "performance": {
+    "optionalRichnessMayDegrade": true,
+    "authoritativeApplicationStateMustRemainCorrect": true,
+    "degradationMayRewriteUserPreference": false,
+    "measuredPerformanceAcceptanceEstablished": false
+  },
+  "glazeMotionBoundary": {
+    "experimentalFoundationVersion": "0.6.0",
+    "runtimeCompatibilityBaseline": "0.4.0",
+    "experimentalLifecyclePromoted": false,
+    "motionStudioPromoted": false,
+    "motionSpatialPromoted": false
+  },
+  "acceptanceBoundary": {
+    "sourceFoundationOnly": true,
+    "section22Complete": false,
+    "section23Complete": false,
+    "section24Complete": false,
+    "section25Complete": false,
+    "section26Complete": false,
+    "section27Complete": false,
+    "section28Complete": false,
+    "section29Complete": false,
+    "motionExpressionProfileCatalogImplemented": true,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "performanceAcceptanceEstablished": false,
+    "motionFatigueAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "releasePromotionAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "runtimeEntrypoint": "js/glaze-v1.7-motion-expression-profiles.dev.mjs",
+  "developmentAggregateEntrypoint": "js/glaze-v1.7-development.mjs",
+  "tokenMap": "tokens/glaze-v1.7-motion-expression-profiles.dev.json",
+  "researchRecord": "docs/development/v1.7-motion-expression-profiles-open-source-research-20260926.md",
+  "sourceAuthorities": [
+    "GLAZE_UI_V1_7_PLANNED.md",
+    "PLANNED-FEATURES.md",
+    "IMPLEMENTED-FEATURES.md",
+    "CHANGELOGS.md"
+  ]
+}
