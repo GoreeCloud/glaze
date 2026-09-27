@@ -5,7 +5,7 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 ## Unreleased — GLAZE UI V1.7 Development
 
 - Added bounded `1.7.0-dev.25` **Motion Performance** Development source for V1.7 v1.2 Section 33.
-- Added deterministic Full, Restrained, Simplified, Minimal, and Reduced Motion modes driven by explicitly authoritative non-neutral runtime, power, thermal, hardware, refresh, degraded-performance, and visibility signals plus Reduced Motion and inherited dev.24 budget pressure; untrusted non-neutral environment signals fail closed to neutral.
+- Added deterministic Full, Restrained, Simplified, Minimal, and Reduced Motion modes driven by independently authorized, per-signal non-neutral runtime, power, thermal, hardware, refresh, degraded-performance, and visibility signals plus Reduced Motion and inherited dev.24 budget pressure; untrusted non-neutral environment signals fail closed to neutral.
 - Added off-screen/background/obscured optional-work suspension, prohibited ordinary idle render loops, and preserved direct-manipulation tracking while simplifying post-release settling when constraints require it.
 - Preferred compositor-friendly transforms, opacity, bounded clipping, and appropriate platform-native primitives when equivalent; discouraged layout-driven animation, synchronous measurement loops, unbounded repainting, continuous main-thread rendering, and unbounded shader complexity.
 - Imported the V1.6 approved Glaze UI Performance Budget as a reference-only governance source while rejecting caller frame budgets, performance thresholds, raw timing/physics controls, and acceptance-measurement payloads; representative exact-revision evidence is still required and no performance pass is inferred.
