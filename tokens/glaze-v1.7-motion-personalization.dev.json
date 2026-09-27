@@ -1,0 +1,64 @@
+{
+  "version": "1.7.0-dev.22",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [30],
+  "modes": {
+    "minimal": "motion.personalization.minimal-preview",
+    "calm": "motion.personalization.calm",
+    "balanced": "motion.personalization.balanced",
+    "expressive": "motion.personalization.expressive"
+  },
+  "durablePreferenceMapping": {
+    "authority": "Personalization 2.0 motionIntensity",
+    "calm": "minimal",
+    "balanced": "standard",
+    "expressive": "expressive",
+    "minimal": null
+  },
+  "minimalMode": {
+    "previewOnly": true,
+    "optionalConnectedTransformations": "suppressed",
+    "decorativeMovement": "none",
+    "optionalDepthMotion": "suppressed",
+    "optionalMaterialMotion": "suppressed",
+    "settling": "immediate-or-minimal",
+    "accessibilityStateImplied": false
+  },
+  "themePackagePolicy": {
+    "semanticProfileRequestAllowed": true,
+    "userSelectionPrecedence": true,
+    "automaticPersistence": false,
+    "automaticApplication": false,
+    "executableAnimationAccepted": false,
+    "remoteAnimationResourceAccepted": false
+  },
+  "fallbacks": {
+    "untrustedUserSelection": "balanced-default-no-user-selection-claim",
+    "untrustedThemePackageRequest": "ignore-package-request",
+    "minimalApply": "preview-only-until-durable-encoding-exists",
+    "reducedMotion": "delegate-to-dev21-reduced-motion-equivalent",
+    "performancePressure": "delegate-to-dev21-effective-profile-degradation"
+  },
+  "boundaries": {
+    "secondPersistenceAuthorityCreated": false,
+    "rawTimingExposed": false,
+    "rawEasingExposed": false,
+    "rawSpringExposed": false,
+    "rawPhysicsExposed": false,
+    "rawDistanceExposed": false,
+    "rawScaleExposed": false,
+    "themePackageExecutableAnimationAccepted": false,
+    "storedPreferenceRewrittenByOverride": false,
+    "section30Complete": false,
+    "glazeMotionExperimentalLifecyclePromoted": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "performanceAcceptanceEstablished": false,
+    "motionFatigueAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false
+  }
+}
