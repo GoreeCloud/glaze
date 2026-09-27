@@ -203,7 +203,7 @@ export function resolveGlazeSystemShellContinuityV12(input={}){
     ?transitionFamily.choreography.family
     :'Standard transition';
   const reducedEquivalent=reducedMotion.equivalent.applied===true
-    ?reducedMotion.equivalent.mode
+    ?reducedMotion.equivalent.presentation
     :null;
 
   return Object.freeze({
