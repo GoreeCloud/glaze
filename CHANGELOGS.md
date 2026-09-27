@@ -4,6 +4,15 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.26` **Glaze Motion Lifecycle** Development reconciliation for V1.7 v1.2 Section 34.
+- Evaluated all ten required promotion dimensions—accessibility, native-platform behavior, frame pacing, interaction latency, interruption, reversal, Reduced Motion, physical-device behavior, energy impact, and human motion review—against current Glaze Motion 0.6 source evidence and exact historical provenance.
+- Recorded every promotion dimension as unsatisfied for lifecycle promotion: existing unit/reference/emulator/native-test evidence remains development evidence only, representative physical-device/frame-pacing/latency/energy/human-motion acceptance is absent, and no missing evidence is inferred.
+- Kept the promotion-ready subset empty and retained Glaze Motion 0.6 as Experimental; Motion Core remains on runtime implementation baseline 0.4.0 while Motion Studio and Motion Spatial remain Planned.
+- Reconciled the inherited Glaze Motion validator to the current GLAZE UI V1.6 / `1.6.0` Anchor consumer registry, current Launcher repository identity, and adoption-required consumer state without rewriting historical 1.5-era Motion evaluations as V1.6 acceptance.
+- Removed the stale current-tree dependency on the retired `acceptance/glaze-motion-0.6-experimental.md` path while preserving its exact historical provenance at commit `974c6043281db1497973ef2b5ebc149440cd476b`; the retirement remains traceable to inherited-version normalization commit `f16f87c20be97ebab020cabadc56825f0baf3e37`.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.26` with v1.2 foundation/evaluation sections 22–34 while keeping Sections 22–34 acceptance incomplete, V1.6 / `1.6.0` as Official Anchor, and V1.7 non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.25` **Motion Performance** Development source for V1.7 v1.2 Section 33.
 - Added deterministic Full, Restrained, Simplified, Minimal, and Reduced Motion modes driven by independently authorized, per-signal non-neutral runtime, power, thermal, hardware, refresh, degraded-performance, and visibility signals plus Reduced Motion and inherited dev.24 budget pressure; untrusted non-neutral environment signals fail closed to neutral.
 - Added off-screen/background/obscured optional-work suspension, prohibited ordinary idle render loops, and preserved direct-manipulation tracking while simplifying post-release settling when constraints require it.
