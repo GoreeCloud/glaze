@@ -58,6 +58,15 @@ const MOTION_RELATIONSHIPS=Object.freeze([
   'posture-partition','source-destination-continuity','direct-manipulation-settle',
   'focus-transfer','color-state-change','material-role-change'
 ]);
+const LEGACY_ACCESSIBILITY_PROFILE_BY_EXPECTATION=Object.freeze({
+  'large-text':'large-text',
+  'reduced-motion':'reduced-motion',
+  'reduced-transparency':'reduced-transparency',
+  'increased-contrast':'increased-contrast',
+  'screen-reader':'screen-reader-optimized',
+  'touch-assistance':'touch-assistance',
+  'keyboard-navigation':'keyboard-first'
+});
 const PROHIBITED_KEYS=Object.freeze([
   'pixelHash','screenshot','screenshotSimilarity','screenshotSimilarityScore','layoutTree',
   'fontSize','fontSizePx','spacingPx','colorHex','duration','durationMs','easing','curve',
@@ -177,6 +186,12 @@ function canonicalSemantics(input){
   });
 }
 
+function legacyAccessibilityProfiles(expectations){
+  return Object.freeze([...new Set(
+    expectations.map(item=>LEGACY_ACCESSIBILITY_PROFILE_BY_EXPECTATION[item]).filter(Boolean)
+  )]);
+}
+
 function targetMapping(target,semantic,input){
   if(!plainObject(target))throw new TypeError('Each cross-device target must be a plain object');
   rejectRawControls(target,'cross-device target');
@@ -206,7 +221,7 @@ function targetMapping(target,semantic,input){
     connectedIdentityAuthoritative:semantic.motion.connectedIdentityAuthoritative,
     nativeMotionCapabilityState:target.nativeMotionCapabilityState??'unknown',
     nativeMotionCapabilityAuthoritative:target.nativeMotionCapabilityAuthoritative,
-    accessibilityProfiles:semantic.accessibilityExpectations,
+    accessibilityProfiles:legacyAccessibilityProfiles(semantic.accessibilityExpectations),
     availableInputs:target.availableInputs,
     inputCapabilityAuthoritative:target.inputCapabilityAuthoritative,
     posture:target.posture,
