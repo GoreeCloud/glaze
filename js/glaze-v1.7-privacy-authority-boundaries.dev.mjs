@@ -142,6 +142,7 @@ function ownerRule(domain,claim){
 
 function capabilityDomain(domain,authority){
   if(domain==='operation-result')return authority==='application'?'application':'service';
+  if(domain==='privacy-access')return authority==='privacy'?'authorization':'service';
   return CAPABILITY_DOMAIN_BY_TRUTH[domain];
 }
 
@@ -162,7 +163,7 @@ function normalizeClaim(domain,claim,index){
 
 function providerSnapshotFor(domain,claims){
   const byProvider=new Map();
-  for(const claim of claims){
+  for(const claim of claims.filter(claim=>claim.ownerAllowed)){
     if(!byProvider.has(claim.providerId)){
       byProvider.set(claim.providerId,{
         id:claim.providerId,
