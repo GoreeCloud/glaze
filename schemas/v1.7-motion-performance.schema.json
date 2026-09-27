@@ -15,85 +15,40 @@
     "environmentSignals",
     "performanceModes",
     "motionKinds",
+    "performanceBudgetReference",
     "degradationPolicy",
     "renderingPolicy",
     "requestPolicy",
     "evidence",
     "authority",
+    "glazeMotionBoundary",
     "acceptanceBoundary"
   ],
   "properties": {
-    "schemaVersion": {
-      "const": 1
-    },
-    "contractId": {
-      "const": "goreecloud.glaze-ui.v1.7.motion-performance"
-    },
-    "version": {
-      "const": "1.7.0-dev.25"
-    },
-    "lifecycle": {
-      "const": "Development"
-    },
-    "stableBaseline": {
-      "const": "1.6.0"
-    },
-    "consumerEligible": {
-      "const": false
-    },
-    "planVersion": {
-      "const": "v1.2"
-    },
-    "v12SpecificationSections": {
-      "const": [
-        33
-      ]
-    },
-    "dependsOn": {
-      "type": "object"
-    },
-    "environmentSignals": {
-      "type": "object"
-    },
-    "performanceModes": {
-      "type": "array"
-    },
-    "motionKinds": {
-      "type": "array"
-    },
-    "degradationPolicy": {
-      "type": "object"
-    },
-    "renderingPolicy": {
-      "type": "object"
-    },
-    "requestPolicy": {
-      "type": "object"
-    },
-    "evidence": {
-      "type": "object"
-    },
-    "authority": {
-      "type": "object"
-    },
-    "glazeMotionBoundary": {
-      "type": "object"
-    },
-    "acceptanceBoundary": {
-      "type": "object"
-    },
-    "runtimeEntrypoint": {
-      "type": "string"
-    },
-    "developmentAggregateEntrypoint": {
-      "type": "string"
-    },
-    "tokenMap": {
-      "type": "string"
-    },
-    "researchRecord": {
-      "type": "string"
-    }
+    "schemaVersion": {"const": 1},
+    "contractId": {"const": "goreecloud.glaze-ui.v1.7.motion-performance"},
+    "version": {"const": "1.7.0-dev.25"},
+    "lifecycle": {"const": "Development"},
+    "stableBaseline": {"const": "1.6.0"},
+    "consumerEligible": {"const": false},
+    "planVersion": {"const": "v1.2"},
+    "v12SpecificationSections": {"const": [33]},
+    "dependsOn": {"type": "object"},
+    "environmentSignals": {"type": "object"},
+    "performanceModes": {"type": "array"},
+    "motionKinds": {"type": "array"},
+    "performanceBudgetReference": {"type": "object"},
+    "degradationPolicy": {"type": "object"},
+    "renderingPolicy": {"type": "object"},
+    "requestPolicy": {"type": "object"},
+    "evidence": {"type": "object"},
+    "authority": {"type": "object"},
+    "glazeMotionBoundary": {"type": "object"},
+    "acceptanceBoundary": {"type": "object"},
+    "runtimeEntrypoint": {"type": "string"},
+    "developmentAggregateEntrypoint": {"type": "string"},
+    "tokenMap": {"type": "string"},
+    "researchRecord": {"type": "string"}
   },
   "additionalProperties": true
 }
