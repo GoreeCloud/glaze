@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze-ui/v1.7-glaze-inspector-v1-2.schema.json",
+  "title": "Glaze UI V1.7 Glaze Inspector v1.2 Development Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","contractId","name","version","lifecycle","stableBaseline",
+    "consumerEligible","planVersion","v12SpecificationSections","historicalFoundation","inspectionDomains",
+    "semanticTiming","motionMagnitude","motionBudget","explainability","authority","privacy","dependencies",
+    "acceptanceBoundary","runtimeEntrypoint","developmentAggregateEntrypoint","tokenMap","researchRecord","sourceAuthorities"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7-glaze-inspector-v1-2.schema.json"},
+    "schemaVersion": {"const":1},
+    "contractId": {"const":"goreecloud.glaze-ui.v1.7.glaze-inspector-v1-2"},
+    "name": {"const":"Glaze UI V1.7 Glaze Inspector v1.2 Development Contract"},
+    "version": {"const":"1.7.0-dev.32"},
+    "lifecycle": {"const":"Development"},
+    "stableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "planVersion": {"const":"v1.2"},
+    "v12SpecificationSections": {"const":[39]},
+    "historicalFoundation": {
+      "type":"object","additionalProperties":false,
+      "required":["version","planNumbering","historicalSpecificationSection","reinterpretedAsV12Section39"],
+      "properties":{
+        "version":{"const":"1.7.0-dev.11"},
+        "planNumbering":{"const":"v1.1-historical-numbering"},
+        "historicalSpecificationSection":{"const":26},
+        "reinterpretedAsV12Section39":{"const":false}
+      }
+    },
+    "inspectionDomains": {"type":"array","minItems":14,"maxItems":14,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "semanticTiming": {"type":"object"},
+    "motionMagnitude": {"type":"object"},
+    "motionBudget": {"type":"object"},
+    "explainability": {"type":"object"},
+    "authority": {
+      "type":"object","additionalProperties":false,
+      "required":[
+        "boundary","advisoryOnly","sourceModifiedAutomatically","animationExecutedByInspector","motionFamilyCreatedByInspector",
+        "transitionTruthCreatedByInspector","connectedIdentityCreatedByInspector","timingAuthorityCreatedByInspector",
+        "performanceTruthCreatedByInspector","providerTruthCreatedByInspector","semanticTruthCreatedByInspector",
+        "themeTruthCreatedByInspector","accessibilityStateCreatedByInspector","focusStateCreatedByInspector",
+        "acceptanceGrantedByInspector","lifecyclePromotionAutomatic","deploymentAcceptanceAutomatic","productionAcceptanceAutomatic"
+      ],
+      "properties":{
+        "boundary":{"const":"development-inspection-support-only"},
+        "advisoryOnly":{"const":true},
+        "sourceModifiedAutomatically":{"const":false},
+        "animationExecutedByInspector":{"const":false},
+        "motionFamilyCreatedByInspector":{"const":false},
+        "transitionTruthCreatedByInspector":{"const":false},
+        "connectedIdentityCreatedByInspector":{"const":false},
+        "timingAuthorityCreatedByInspector":{"const":false},
+        "performanceTruthCreatedByInspector":{"const":false},
+        "providerTruthCreatedByInspector":{"const":false},
+        "semanticTruthCreatedByInspector":{"const":false},
+        "themeTruthCreatedByInspector":{"const":false},
+        "accessibilityStateCreatedByInspector":{"const":false},
+        "focusStateCreatedByInspector":{"const":false},
+        "acceptanceGrantedByInspector":{"const":false},
+        "lifecyclePromotionAutomatic":{"const":false},
+        "deploymentAcceptanceAutomatic":{"const":false},
+        "productionAcceptanceAutomatic":{"const":false}
+      }
+    },
+    "privacy": {"type":"object"},
+    "dependencies": {"type":"object"},
+    "acceptanceBoundary": {"type":"object"},
+    "runtimeEntrypoint": {"const":"js/glaze-v1.7-inspector-v1-2.dev.mjs"},
+    "developmentAggregateEntrypoint": {"const":"js/glaze-v1.7-development.mjs"},
+    "tokenMap": {"const":"tokens/glaze-v1.7-inspector-v1-2.dev.json"},
+    "researchRecord": {"const":"research/v1.7-glaze-inspector-v1-2.md"},
+    "sourceAuthorities": {"type":"array","minItems":4,"uniqueItems":true,"items":{"type":"string","minLength":1}}
+  }
+}
