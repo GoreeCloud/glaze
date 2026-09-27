@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "name": "Glaze UI V1.7 System Shell Continuity v1.2 Development Semantic Map",
+  "version": "1.7.0-dev.27",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [35],
+  "sourceAuthorities": [
+    "tokens/glaze-v1.7-system-shell-continuity.dev.json",
+    "tokens/glaze-v1.7-signature-transition-families.dev.json",
+    "tokens/glaze-v1.7-reduced-motion-equivalents.dev.json",
+    "tokens/glaze-v1.7-motion-fatigue-protection.dev.json",
+    "tokens/glaze-v1.7-motion-performance.dev.json"
+  ],
+  "shellRelationships": {
+    "notification-activity-presentation": "transient-elevation",
+    "control-center": "workspace-recomposition",
+    "multi-window": "workspace-recomposition",
+    "split-view": "posture-partition",
+    "compact-expanded-navigation": "workspace-recomposition",
+    "window-restoration": "workspace-recomposition",
+    "application-system-handoff": "source-destination-continuity",
+    "task-switching": "source-destination-continuity",
+    "universal-search": "same-object-expansion",
+    "contextual-commands": "transient-elevation"
+  },
+  "stateFirst": {
+    "navigationImmediate": true,
+    "focusImmediate": true,
+    "taskStateImmediate": true,
+    "shellExecutionImmediateWhenProviderCommits": true,
+    "finalStateDependsOnAnimationCompletion": false,
+    "artificialDelayAllowed": false,
+    "motionRequiredToUnderstandState": false
+  },
+  "degradation": {
+    "reducedMotionPrecedence": true,
+    "performanceMaySimplifyOptionalMotion": true,
+    "performanceMayRemoveOptionalMotion": true,
+    "semanticStateMayBeReduced": false,
+    "authoritativeStateMayBeReduced": false,
+    "shellNavigationMayBeSlowedForMotion": false
+  },
+  "boundaries": {
+    "presentationOnly": true,
+    "transitionOccurrenceAuthorityRequired": true,
+    "identityAuthorityRequiredWhereApplicable": true,
+    "providerTruthCreatedByGlaze": false,
+    "shellExecutionPerformedByGlaze": false,
+    "navigationExecutedByGlaze": false,
+    "focusAuthorityCreatedByGlaze": false,
+    "performanceTruthCreatedByGlaze": false,
+    "section35Complete": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "physicalDeviceAcceptanceEstablished": false,
+    "energyAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "glazeMotionExperimentalLifecyclePromoted": false
+  }
+}
