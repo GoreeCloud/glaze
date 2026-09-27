@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze-ui/v1.7-performance-energy-awareness.schema.json",
+  "title": "Glaze UI V1.7 Performance and Energy Awareness Development Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","contractId","name","version","lifecycle","stableBaseline",
+    "consumerEligible","planVersion","v12SpecificationSections","governingPrinciple",
+    "presentationDomains","performanceModes","dependencies","degradationPolicy",
+    "energyPolicy","requestPolicy","evidence","acceptanceBoundary","runtimeEntrypoint",
+    "developmentAggregateEntrypoint","tokenMap","researchRecord"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7-performance-energy-awareness.schema.json"},
+    "schemaVersion": {"const":1},
+    "contractId": {"const":"goreecloud.glaze-ui.v1.7.performance-energy-awareness"},
+    "name": {"const":"Glaze UI V1.7 Performance and Energy Awareness Development Contract"},
+    "version": {"const":"1.7.0-dev.38"},
+    "lifecycle": {"const":"Development"},
+    "stableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "planVersion": {"const":"v1.2"},
+    "v12SpecificationSections": {"const":[45]},
+    "governingPrinciple": {"const":"task-continuity-accessibility-responsiveness-and-semantic-state-outrank-animation-fidelity"},
+    "presentationDomains": {"type":"array","minItems":6,"maxItems":6,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "performanceModes": {"const":["full","restrained","simplified","minimal","reduced-motion"]},
+    "dependencies": {"type":"object","minProperties":5},
+    "degradationPolicy": {"type":"object","minProperties":14},
+    "energyPolicy": {"type":"object","minProperties":9},
+    "requestPolicy": {"type":"object","minProperties":8},
+    "evidence": {"type":"object","minProperties":6},
+    "acceptanceBoundary": {"type":"object","minProperties":16},
+    "runtimeEntrypoint": {"const":"js/glaze-v1.7-performance-energy-awareness.dev.mjs"},
+    "developmentAggregateEntrypoint": {"const":"js/glaze-v1.7-development.mjs"},
+    "tokenMap": {"const":"tokens/glaze-v1.7-performance-energy-awareness.dev.json"},
+    "researchRecord": {"const":"research/v1.7-performance-energy-awareness.md"}
+  }
+}
