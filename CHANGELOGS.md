@@ -4,6 +4,13 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.32` **Glaze Inspector v1.2** source for V1.7 Section 39, extending historical dev.11 / v1.1 Section 26 without relabeling it.
+- Added structured inspection for the current semantic motion family, authoritative transition endpoints and connected identity, semantic duration/easing families, motion magnitude, motion-budget pressure, Reduced Motion mapping, theme/semantic-color/material/focus/accessibility resolution, and the decision path explaining why motion was selected or failed closed.
+- Kept Inspector advisory and local-first: raw animation values and raw measurement payloads remain outside its contract, missing/untrusted evidence remains unknown, and Inspector cannot mutate source, execute animation, manufacture provider/theme/accessibility/focus truth, grant acceptance, or promote lifecycle state.
+- Recorded exact-revision Chrome DevTools, Storybook, and Redux DevTools research under the GoreeCloud Reforge boundary without copying upstream source, UI implementation, animation constants, assets, or visual identity.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.32`; Section 39 remains incomplete pending rendered/native/assistive-technology/measured-performance/representative-device/energy/human-motion acceptance. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.31` **Advanced Theme System** source reconciliation for current V1.7 v1.2 Sections 6–21 without relabeling historical dev.5/dev.8/dev.20/dev.21/dev.22 foundations.
 - Added Follow System plus Light/Dark/Deep Dark handling, governed application/device preference proposal scopes, local multi-color palette derivation, live/accessibility/color-vision previews, theme history/undo/duplication proposals, and caller-owned persistence boundaries.
 - Added declarative inspectible non-executable theme packages with protected-semantic override rejection and no trackers, analytics dependencies, remote runtime resources, automatic apply, or automatic persistence.
