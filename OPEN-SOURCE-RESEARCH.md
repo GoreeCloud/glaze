@@ -38,3 +38,16 @@ Research date: 2026-09-27.
 Detailed requirements research is retained in `research/v1.7-advanced-theme-system-v1-2.md`.
 
 No third-party source code, algorithms, exact palette constants, token implementations, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
+
+## V1.7 dev.32 — Glaze Inspector v1.2
+
+Research date: 2026-09-27.
+
+- Chrome DevTools frontend at `83c5c56d700f2065d9a0fb530ccc383f49ee6ae2` — BSD-3-Clause. Studied for animation-model inspection, grouped timeline context, and separation between observed animation state and developer controls.
+- Storybook at `5efca7a6ab523726d4a0f2fbea00bbf5b66c3fe1` — MIT. Studied for component-control inspection, explicit unknown/loading state, and deferring expensive diagnostics until a useful lifecycle point.
+- Redux DevTools at `89ae6ee57c6879c0da39d1f03d6ad8de029c5390` — MIT. Studied for keeping selected events/actions, previous/current state, and derived delta/provenance distinguishable in an inspector.
+
+Detailed requirements research is retained in `research/v1.7-glaze-inspector-v1-2.md`.
+
+No third-party source code, UI implementation, algorithms, numeric animation values, curves, spring constants, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
+
