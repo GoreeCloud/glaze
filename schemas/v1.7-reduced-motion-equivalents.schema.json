@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.com/schemas/glaze-ui/v1.7-reduced-motion-equivalents.schema.json",
+  "title": "Glaze UI V1.7 Reduced Motion Equivalents Development Contract",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "contractId",
+    "version",
+    "lifecycle",
+    "stableBaseline",
+    "consumerEligible",
+    "planVersion",
+    "v12SpecificationSections",
+    "equivalents",
+    "preservationRequirements",
+    "requestPolicy",
+    "authority",
+    "acceptanceBoundary"
+  ],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "contractId": {"const": "goreecloud.glaze-ui.v1.7.reduced-motion-equivalents"},
+    "version": {"const": "1.7.0-dev.23"},
+    "lifecycle": {"const": "Development"},
+    "stableBaseline": {"const": "1.6.0"},
+    "consumerEligible": {"const": false},
+    "planVersion": {"const": "v1.2"},
+    "v12SpecificationSections": {"const": [31]},
+    "equivalents": {"type": "object"},
+    "preservationRequirements": {"type": "object"},
+    "requestPolicy": {"type": "object"},
+    "authority": {"type": "object"},
+    "glazeMotionBoundary": {"type": "object"},
+    "acceptanceBoundary": {"type": "object"},
+    "runtimeEntrypoint": {"type": "string"},
+    "developmentAggregateEntrypoint": {"type": "string"},
+    "tokenMap": {"type": "string"},
+    "researchRecord": {"type": "string"},
+    "sourceAuthorities": {"type": "array","items":{"type":"string"}}
+  },
+  "additionalProperties": true
+}
