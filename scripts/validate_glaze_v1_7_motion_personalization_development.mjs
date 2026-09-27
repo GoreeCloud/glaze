@@ -156,7 +156,7 @@ assert(research.includes('No upstream source code')||research.includes('No upstr
 assert(spec.includes('1.7.0-dev.22')&&spec.includes('Motion Personalization'),'plan authority boundary missing dev.22');
 assert(planned.includes('1.7.0-dev.22')&&planned.includes('Motion Personalization'),'planned-feature control missing dev.22');
 assert(implemented.includes('Motion Personalization — `1.7.0-dev.22`'),'implemented-feature control missing dev.22');
-assert(changelog.includes('1.7.0-dev.22')&&changelog.includes('Motion Personalization'),'changelog missing dev.22');
+assert(changelog.includes('1.7.0-dev.22')&&changelog.includes('Motion Personalization'),'changelog missing dev.22');\nassert(!changelog.includes('\\\\n'),'changelog contains literal escaped newline text');
 
 console.log('GLAZE UI V1.7 Motion Personalization Development foundation: PASS');
 console.log('Plan binding: v1.2 Section 30');
