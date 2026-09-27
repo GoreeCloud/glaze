@@ -122,6 +122,20 @@ const mesh=resolveGlazePrivacyAuthorityBoundaryV12({
 assert(mesh.truth.accepted&&mesh.authority.meshCoordinationTruthOnly===true,'Mesh coordination truth should be accepted only in coordination scope');
 assert(mesh.authority.meshGovernanceAuthorityInherited===false&&mesh.authority.meshAuthorizationAuthorityInherited===false,'Mesh must not inherit governance or authorization');
 
+const meshSecuritySpoof=resolveGlazePrivacyAuthorityBoundaryV12({
+  truthDomain:'security-protection',
+  claims:[{providerId:'goreecloud-mesh',ownerKind:'goreecloud-mesh',authority:'service',scope:'coordination-only',state:'protected',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true
+});
+assert(meshSecuritySpoof.truth.accepted===false&&meshSecuritySpoof.truth.effectiveState==='unknown','Mesh must not acquire Wardveil security truth authority');
+
+const platformConnectivity=resolveGlazePrivacyAuthorityBoundaryV12({
+  truthDomain:'connectivity-availability',
+  claims:[{providerId:'android-platform',ownerKind:'platform',authority:'platform',scope:'platform-local',state:'online',authorityAttested:true}],
+  transitionOccurrenceAuthoritative:true
+});
+assert(platformConnectivity.truth.accepted&&platformConnectivity.truth.acceptedScope==='platform-local','platform connectivity truth must remain platform-local');
+
 const noOccurrence=resolveGlazePrivacyAuthorityBoundaryV12({
   truthDomain:'operation-result',
   claims:[{providerId:'editor',ownerKind:'application',authority:'application',scope:'application-local',state:'success',authorityAttested:true}],
