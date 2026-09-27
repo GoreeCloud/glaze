@@ -1032,6 +1032,8 @@ V1.7 qualification should cover:
 - Artifact provenance
 Automated tests alone must not establish complete motion acceptance.
 
+Development source status — September 27, 2026: `1.7.0-dev.39` implements a bounded Section 46 qualification-control framework covering all 37 listed V1.7 acceptance dimensions. Missing or mismatched evidence remains unverified; terminal evidence must be bound to one exact reviewed source revision with explicit evidence references; multi-group lanes require every evidence group; automated tests alone cannot establish motion acceptance; and only Wearable where claimed and Energy behavior where applicable may use a specifically justified not-applicable disposition. The framework can summarize evidence inventory completeness but cannot grant V1.7 acceptance, lifecycle promotion, consumer eligibility, deployment acceptance, or production acceptance. Section 46 remains incomplete until authoritative exact-revision evidence is gathered, governed review accepts the applicable matrix, and the separate lifecycle process is completed.
+
 ## 47. Proposed V1.7 Identity
 
 **Product:** GLAZE UI
