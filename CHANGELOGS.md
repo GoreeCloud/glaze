@@ -4,6 +4,14 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.33` **Glaze Studio v1.2** source for V1.7 Section 40, extending historical dev.12 / v1.1 Section 27 without relabeling it.
+- Added semantic preview/comparison coverage for Signature transitions, motion profiles, components, adaptive layout changes, form-factor transitions, themes, color palettes, accessibility modes, Reduced Motion, input models, and semantic states through the current dev.32 Inspector and retained governed foundations.
+- Added deterministic side-by-side Calm, Balanced, Expressive, and Reduced Motion behavior comparison while keeping Studio-selected modes simulation-only and never creating or persisting durable user preferences.
+- Rejected raw animation/performance and ranking/winner controls; Studio remains local-first, advisory, non-executing, non-persistent, and unable to mutate source, execute application actions/navigation, manufacture provider/semantic/accessibility/platform truth, grant acceptance, or promote lifecycle state.
+- Recorded exact-revision Storybook, React Cosmos, and Ladle research under the GoreeCloud Reforge boundary without copying upstream source, UI/control implementations, animation constants, components, assets, or visual identity.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.33`; Section 40 remains incomplete pending rendered/native/assistive-technology/measured-performance/representative-device/energy/human visual-and-motion acceptance. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.32` **Glaze Inspector v1.2** source for V1.7 Section 39, extending historical dev.11 / v1.1 Section 26 without relabeling it.
 - Added structured inspection for the current semantic motion family, authoritative transition endpoints and connected identity, semantic duration/easing families, motion magnitude, motion-budget pressure, Reduced Motion mapping, theme/semantic-color/material/focus/accessibility resolution, and the decision path explaining why motion was selected or failed closed.
 - Kept Inspector advisory and local-first: raw animation values and raw measurement payloads remain outside its contract, missing/untrusted evidence remains unknown, and Inspector cannot mutate source, execute animation, manufacture provider/theme/accessibility/focus truth, grant acceptance, or promote lifecycle state.

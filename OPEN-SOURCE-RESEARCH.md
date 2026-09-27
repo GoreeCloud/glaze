@@ -51,3 +51,15 @@ Detailed requirements research is retained in `research/v1.7-glaze-inspector-v1-
 
 No third-party source code, UI implementation, algorithms, numeric animation values, curves, spring constants, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
 
+## V1.7 dev.33 — Glaze Studio v1.2
+
+Research date: 2026-09-27.
+
+- Storybook at `5efca7a6ab523726d4a0f2fbea00bbf5b66c3fe1` — MIT. Studied for explicit preview/view-mode and bounded layout context in a component workbench.
+- React Cosmos at `aae77c654b9b437ea5f6e635e6df7fc28924e606` — MIT. Studied for explicit isolated fixture/scenario state and renderer separation.
+- Ladle at `592a3fc3bb83a2fe945cb0d8ab2c3ef35d19bc3e` — MIT. Studied for bounded declared component controls and multiple comparable variants.
+
+Detailed requirements research is retained in `research/v1.7-glaze-studio-v1-2.md`.
+
+No third-party source code, UI/control implementation, algorithms, animation values, components, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
+

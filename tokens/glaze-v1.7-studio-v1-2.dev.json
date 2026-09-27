@@ -1,0 +1,52 @@
+{
+  "version": "1.7.0-dev.33",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [40],
+  "previewDomains": [
+    "signature-transitions",
+    "motion-profiles",
+    "components",
+    "adaptive-layout-changes",
+    "form-factor-transitions",
+    "themes",
+    "color-palettes",
+    "accessibility-modes",
+    "reduced-motion",
+    "input-models",
+    "semantic-states"
+  ],
+  "comparisonModes": ["calm", "balanced", "expressive", "reduced-motion"],
+  "preview": {
+    "localFirst": true,
+    "networkRequired": false,
+    "telemetryRequired": false,
+    "animationExecuted": false,
+    "sourceMutationPerformed": false,
+    "themePersistenceAutomatic": false,
+    "providerTruthCreated": false,
+    "userPreferenceCreated": false,
+    "rankingPerformed": false
+  },
+  "evidence": {
+    "renderedEvidenceClaimed": false,
+    "nativeAcceptanceClaimed": false,
+    "assistiveTechnologyAcceptanceClaimed": false,
+    "measuredPerformanceAcceptanceClaimed": false,
+    "representativeDeviceAcceptanceClaimed": false,
+    "energyAcceptanceClaimed": false,
+    "humanReviewClaimed": false
+  },
+  "boundaries": {
+    "historicalDev12Reinterpreted": false,
+    "rawAnimationValuesAccepted": false,
+    "rawPerformanceMeasurementsAccepted": false,
+    "section40Complete": false,
+    "consumerEligibilityAutomatic": false,
+    "releasePromotionAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  }
+}
