@@ -4,6 +4,16 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.37` **Privacy and Authority Boundaries** source for V1.7 v1.2 Section 44.
+- Added a fail-closed truth-authority resolver for security protection, privacy access, synchronization, operation results, recovery, and identity/authentication.
+- Truth-bearing motion now requires a valid event/domain pairing plus authoritative ownership from the applicable provider; unknown, mismatched-owner, and non-authoritative claims remain neutral/unknown.
+- Preserved Wardveil Security, Privacy Shield, Everkeep, GoreeCloud Identity, and responsible-provider ownership without inferring provider precedence or creating permission, consent, authorization, revocation, protection, synchronization, success, recovery, or authentication truth.
+- Added authoritative refutation handling so confirmed negative semantic state can be represented without replaying the positive event transition.
+- Rejected raw truth booleans, provider-precedence/ranking controls, scores/ratings/winner inputs, and raw effect/animation controls.
+- Recorded exact-revision AndroidX Compose Foundation, Microsoft Fluent UI, and Adobe React Aria research under the GoreeCloud Reforge boundary without incorporating upstream source, state machines, components, or presentation constants.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.37`; Section 44 remains incomplete pending applicable provider-integration/privacy/security/rendered/native/assistive-technology/representative-device/performance/energy/human review. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.36` **Visual and Motion Direction** source for V1.7 v1.2 Section 43.
 - Made comprehension-before-spectacle, semantic-purpose-before-effect, localized material richness, native adaptation, accessibility precedence, performance precedence, and truth precedence explicit Development policy.
 - Added a semantic visual/motion resolver that keeps readability and critical certainty solid-first, allows localized Glaze only for governed hierarchy/continuity purposes, requires authoritative transition occurrence for non-trivial motion, and suppresses decorative continuous animation by default.
