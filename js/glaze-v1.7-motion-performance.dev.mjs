@@ -1,11 +1,14 @@
 /* GLAZE UI V1.7 — Motion Performance Development foundation.
  *
- * Bounded v1.2 Section 33 source layer. Resolves caller/provider-supplied
- * environmental pressure into deterministic motion simplification guidance.
- * It does not manufacture measurements, mutate application state, or create
- * release/acceptance authority.
+ * Bounded v1.2 Section 33 source layer. Resolves caller/platform-supplied
+ * authoritative environmental pressure into deterministic presentation
+ * simplification. It does not manufacture measurements, application state,
+ * environmental truth, lifecycle promotion, or performance acceptance.
  */
 
+import {
+  glazeV16PerformanceDiagnosticsDevelopmentContract
+} from './glaze-v1.6-performance-diagnostics.dev.mjs';
 import {
   resolveGlazeMotionFatigueProtection,
   glazeV17MotionFatigueProtectionDevelopmentContract
@@ -15,6 +18,7 @@ const RUNTIME_PRESSURE=Object.freeze(['none','elevated','severe']);
 const THERMAL_STATE=Object.freeze(['none','constrained','critical']);
 const HARDWARE_CLASS=Object.freeze(['standard','constrained']);
 const REFRESH_CLASS=Object.freeze(['normal','low']);
+const VISIBILITY_CLASS=Object.freeze(['visible','offscreen','background','obscured']);
 const MOTION_KINDS=Object.freeze([
   'direct-manipulation',
   'task-transition',
@@ -30,7 +34,10 @@ const PROHIBITED_KEYS=Object.freeze([
   'duration','durationMs','easing','curve','spring','physics','keyframes','path',
   'travelPx','distance','distancePx','rotation','scale','scaleFactor','overshoot',
   'bounce','wobble','stiffness','damping','dampingRatio','frameBudget','frameBudgetMs',
-  'fpsTarget','targetFps','refreshRateHz','cpuThreshold','gpuThreshold','thermalThreshold'
+  'fpsTarget','targetFps','refreshRateHz','cpuThreshold','gpuThreshold','thermalThreshold',
+  'measurements','samples','frameIntervals','longTasks','performanceEvidence',
+  'resolverP95Ms','resolverP99Ms','interactionPaintP95Ms','interactionPaintP99Ms',
+  'severeFrameStallRate'
 ]);
 
 function plainObject(value){
@@ -58,12 +65,42 @@ function profiles(value){
 function rejectRawControls(input){
   for(const key of PROHIBITED_KEYS){
     if(Object.prototype.hasOwnProperty.call(input,key)){
-      throw new RangeError('Motion Performance accepts semantic/environmental signals, not raw animation or performance thresholds: '+key);
+      throw new RangeError('Motion Performance accepts governed semantic/environment signals, not raw animation controls, thresholds, or acceptance measurements: '+key);
     }
   }
 }
 
-function directiveFor(kind,mode){
+function enumSignal(input,field,authorityField,allowed,label,neutral){
+  const requested=member(input[field],allowed,label,neutral);
+  const authoritative=requested===neutral||input[authorityField]===true;
+  return Object.freeze({
+    requested,
+    effective:authoritative?requested:neutral,
+    authoritative,
+    accepted:authoritative,
+    fallbackUsed:!authoritative,
+    fallback:!authoritative?neutral:null
+  });
+}
+
+function booleanSignal(input,field,authorityField){
+  const requested=input[field]===true;
+  const authoritative=!requested||input[authorityField]===true;
+  return Object.freeze({
+    requested,
+    effective:authoritative?requested:false,
+    authoritative,
+    accepted:authoritative,
+    fallbackUsed:!authoritative,
+    fallback:!authoritative?false:null
+  });
+}
+
+function directiveFor(kind,mode,visibility){
+  if(visibility!=='visible'){
+    if(kind==='direct-manipulation')return 'preserve-active-input-tracking-otherwise-suspend-optional-motion';
+    return 'suspend-or-immediately-resolve-offscreen-optional-motion';
+  }
   if(kind==='direct-manipulation'){
     return mode==='full'
       ? 'preserve-input-tracking-with-governed-settle'
@@ -88,28 +125,31 @@ function directiveFor(kind,mode){
       : 'immediate-state-with-brief-semantic-emphasis';
 }
 
-function performanceMode(input,fatigue,reducedMotion){
-  const runtimePressure=member(input.runtimePressure,RUNTIME_PRESSURE,'runtime pressure','none');
-  const thermalState=member(input.thermalState,THERMAL_STATE,'thermal state','none');
-  const hardwareClass=member(input.hardwareClass,HARDWARE_CLASS,'hardware class','standard');
-  const refreshClass=member(input.refreshClass,REFRESH_CLASS,'refresh class','normal');
-  const powerSaving=input.powerSaving===true;
-  const performanceDegraded=input.performanceDegraded===true;
+function environmentState(input,fatigue,reducedMotion){
+  const runtimePressure=enumSignal(input,'runtimePressure','runtimePressureAuthoritative',RUNTIME_PRESSURE,'runtime pressure','none');
+  const powerSaving=booleanSignal(input,'powerSaving','powerSavingAuthoritative');
+  const thermalState=enumSignal(input,'thermalState','thermalStateAuthoritative',THERMAL_STATE,'thermal state','none');
+  const hardwareClass=enumSignal(input,'hardwareClass','hardwareClassAuthoritative',HARDWARE_CLASS,'hardware class','standard');
+  const refreshClass=enumSignal(input,'refreshClass','refreshClassAuthoritative',REFRESH_CLASS,'refresh class','normal');
+  const performanceDegraded=booleanSignal(input,'performanceDegraded','performanceDegradedAuthoritative');
+  const visibility=enumSignal(input,'visibilityClass','visibilityClassAuthoritative',VISIBILITY_CLASS,'visibility class','visible');
 
   const reasons=[];
-  if(runtimePressure!=='none')reasons.push('runtime-pressure-'+runtimePressure);
-  if(powerSaving)reasons.push('power-saving');
-  if(thermalState!=='none')reasons.push('thermal-'+thermalState);
-  if(hardwareClass==='constrained')reasons.push('constrained-hardware');
-  if(refreshClass==='low')reasons.push('low-refresh');
-  if(performanceDegraded)reasons.push('performance-degraded');
+  if(runtimePressure.effective!=='none')reasons.push('runtime-pressure-'+runtimePressure.effective);
+  if(powerSaving.effective)reasons.push('power-saving');
+  if(thermalState.effective!=='none')reasons.push('thermal-'+thermalState.effective);
+  if(hardwareClass.effective==='constrained')reasons.push('constrained-hardware');
+  if(refreshClass.effective==='low')reasons.push('low-refresh');
+  if(performanceDegraded.effective)reasons.push('performance-degraded');
+  if(visibility.effective!=='visible')reasons.push('visibility-'+visibility.effective);
   if(fatigue.budget.exhausted)reasons.push('motion-budget-pressure');
   if(reducedMotion)reasons.push('reduced-motion');
 
   let severity=0;
-  if(reasons.length>0)severity=1;
-  if(reasons.filter(reason=>reason!=='reduced-motion').length>=2)severity=2;
-  if(runtimePressure==='severe'||thermalState==='critical')severity=3;
+  const nonAccessibilityReasons=reasons.filter(reason=>reason!=='reduced-motion');
+  if(nonAccessibilityReasons.length>0)severity=1;
+  if(nonAccessibilityReasons.length>=2)severity=2;
+  if(runtimePressure.effective==='severe'||thermalState.effective==='critical'||visibility.effective!=='visible')severity=3;
 
   const mode=reducedMotion
     ? 'reduced-motion'
@@ -130,7 +170,12 @@ function performanceMode(input,fatigue,reducedMotion){
     thermalState,
     hardwareClass,
     refreshClass,
-    performanceDegraded
+    performanceDegraded,
+    visibility,
+    untrustedSignalsIgnored:Object.freeze(
+      [runtimePressure,powerSaving,thermalState,hardwareClass,refreshClass,performanceDegraded,visibility]
+        .filter(signal=>signal.fallbackUsed).length
+    )
   });
 }
 
@@ -148,9 +193,13 @@ export function resolveGlazeMotionPerformance(input={}){
     majorTransitionActive:input.majorTransitionActive===true,
     decorativeMotionRequested:input.decorativeMotionRequested===true
   });
-  const performance=performanceMode(input,fatigue,reducedMotion);
+  const performance=environmentState(input,fatigue,reducedMotion);
   const directManipulation=motionKind==='direct-manipulation'||input.directManipulation===true;
-  const directive=directiveFor(directManipulation?'direct-manipulation':motionKind,performance.mode);
+  const directive=directiveFor(
+    directManipulation?'direct-manipulation':motionKind,
+    performance.mode,
+    performance.visibility.effective
+  );
 
   return Object.freeze({
     version:'1.7.0-dev.25',
@@ -172,10 +221,19 @@ export function resolveGlazeMotionPerformance(input={}){
         'continuous-main-thread-rendering',
         'unbounded-shader-complexity'
       ]),
+      offscreenOptionalWorkSuspended:performance.visibility.effective!=='visible',
+      idleRenderLoopsAllowed:false,
       optionalMotionMayDegrade:true,
       directManipulationTrackingPreserved:true,
       taskRelevantStateChangePreserved:true,
       semanticMeaningPreserved:true
+    }),
+    performanceBudgetReference:Object.freeze({
+      source:glazeV16PerformanceDiagnosticsDevelopmentContract.approvedPerformanceBudget.source,
+      sourceVersion:glazeV16PerformanceDiagnosticsDevelopmentContract.approvedPerformanceBudget.sourceVersion,
+      thresholds:glazeV16PerformanceDiagnosticsDevelopmentContract.approvedPerformanceBudget,
+      acceptanceMayBeInferredFromThisResolver:false,
+      exactRevisionRepresentativeMeasurementsRequired:true
     }),
     inheritedFatigueProtection:fatigue,
     accessibility:Object.freeze({
@@ -186,7 +244,8 @@ export function resolveGlazeMotionPerformance(input={}){
       criticalInteractionMayRequireObservingMotion:false
     }),
     evidence:Object.freeze({
-      environmentSignalsSuppliedByCallerOrProvider:true,
+      environmentSignalsRequireCallerOrProviderAuthority:true,
+      measurementsAcceptedByThisResolver:false,
       measurementsManufactured:false,
       measuredFramePacingEstablished:false,
       measuredInteractionLatencyEstablished:false,
@@ -198,15 +257,21 @@ export function resolveGlazeMotionPerformance(input={}){
       navigationExecutedByGlaze:false,
       providerTruthCreatedByGlaze:false,
       performanceTruthCreatedByGlaze:false,
+      powerStateCreatedByGlaze:false,
+      thermalStateCreatedByGlaze:false,
+      hardwareCapabilityCreatedByGlaze:false,
+      refreshCapabilityCreatedByGlaze:false,
       semanticStatePreserved:true,
       authoritativeStatePreserved:true,
       focusPreserved:true,
       taskContinuityPreserved:true,
       finalStateDependsOnAnimationCompletion:false,
-      directManipulationTrackingPreserved:true
+      directManipulationTrackingPreserved:true,
+      inputMayWaitForDecorativeMotion:false
     }),
     glazeMotionBoundary:Object.freeze({
       experimentalFoundationVersion:'0.6.0',
+      runtimeCompatibilityBaseline:'0.4.0',
       experimentalLifecyclePromoted:false
     }),
     acceptanceBoundary:Object.freeze({
@@ -218,6 +283,9 @@ export function resolveGlazeMotionPerformance(input={}){
       nativePlatformAcceptanceEstablished:false,
       assistiveTechnologyAcceptanceEstablished:false,
       thermalPowerAcceptanceEstablished:false,
+      lowEndHardwareAcceptanceEstablished:false,
+      lowRefreshAcceptanceEstablished:false,
+      highRefreshAcceptanceEstablished:false,
       humanMotionReviewEstablished:false,
       downstreamConsumerAcceptanceAutomatic:false,
       releasePromotionAutomatic:false,
@@ -238,9 +306,15 @@ export const glazeV17MotionPerformanceDevelopmentContract=Object.freeze({
   thermalState:THERMAL_STATE,
   hardwareClass:HARDWARE_CLASS,
   refreshClass:REFRESH_CLASS,
+  visibilityClass:VISIBILITY_CLASS,
   motionKinds:MOTION_KINDS,
   performanceModes:PERFORMANCE_MODES,
+  approvedPerformanceBudget:glazeV16PerformanceDiagnosticsDevelopmentContract.approvedPerformanceBudget,
+  environmentSignalsRequireAuthority:true,
+  measurementsAcceptedByResolver:false,
   compositorFriendlyTechniquesPreferred:true,
+  offscreenOptionalWorkSuspended:true,
+  idleRenderLoopsAllowed:false,
   directManipulationTrackingPreserved:true,
   semanticStatePreserved:true,
   measurementsManufactured:false,
