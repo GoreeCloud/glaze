@@ -1,0 +1,80 @@
+{
+  "$schema": "../../schemas/v1.7-notification-activity-surfaces-v1-2.schema.json",
+  "schemaVersion": 1,
+  "contractId": "goreecloud.glaze-ui.v1.7.notification-activity-surfaces-v1-2",
+  "name": "Glaze UI V1.7 Notification and Activity Surfaces v1.2 Development Contract",
+  "version": "1.7.0-dev.28",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [36],
+  "historicalFoundation": {
+    "version": "1.7.0-dev.7",
+    "planNumbering": "v1.0-historical-numbering",
+    "historicalSpecificationSection": 8,
+    "reinterpretedAsV12Section36": false
+  },
+  "components": ["GlzNotificationSurface","GlzActivityItem","GlzActivityGroup","GlzStatusFeed","GlzBackgroundTask","GlzProgressSurface"],
+  "meaningfulTransitions": ["progress","completion","recovery","arrival","expansion","dismissal"],
+  "transitionRelationships": {
+    "progress": "color-state-change",
+    "completion": "material-role-change",
+    "recovery": "material-role-change",
+    "arrival": "transient-elevation",
+    "expansion": "same-object-expansion",
+    "dismissal": "transient-elevation"
+  },
+  "motionPolicy": {
+    "transitionOccurrenceAuthorityRequired": true,
+    "progressTruthAuthorityRequiredForProgressMotion": true,
+    "providerTruthAuthorityRequiredForCompletionRecoveryMotion": true,
+    "authoritativeConnectedIdentityRequiredForExpansion": true,
+    "persistentPulsingDefault": false,
+    "continuousAttentionAnimationAllowed": false,
+    "staticSemanticAttentionEmphasisAvailable": true,
+    "reducedMotionPrecedence": true,
+    "performanceMaySimplifyOptionalMotion": true,
+    "performanceMayRemoveOptionalMotion": true,
+    "finalStateDependsOnAnimationCompletion": false,
+    "motionRequiredToUnderstandState": false
+  },
+  "authority": {
+    "boundary": "presentation-only",
+    "providerTruthOwnedByProvider": true,
+    "progressTruthOwnedByProvider": true,
+    "transitionOccurrenceOwnedByCallerOrProvider": true,
+    "notificationTruthCreatedByGlaze": false,
+    "activityTruthCreatedByGlaze": false,
+    "progressTruthCreatedByGlaze": false,
+    "completionTruthCreatedByGlaze": false,
+    "recoveryTruthCreatedByGlaze": false,
+    "objectIdentityCreatedByGlaze": false,
+    "actionExecutionPerformedByGlaze": false,
+    "backgroundTaskExecutionPerformedByGlaze": false,
+    "systemNotificationPermissionGrantedByGlaze": false
+  },
+  "dependencies": {
+    "historicalNotificationActivitySurfaces": "1.7.0-dev.7",
+    "signatureTransitionFamilies": "1.7.0-dev.16",
+    "motionPerformance": "1.7.0-dev.25"
+  },
+  "acceptanceBoundary": {
+    "sourceFoundationOnly": true,
+    "section36Complete": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "physicalDeviceAcceptanceEstablished": false,
+    "energyAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "releasePromotionAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "runtimeEntrypoint": "js/glaze-v1.7-notification-activity-surfaces-v1-2.dev.mjs",
+  "developmentAggregateEntrypoint": "js/glaze-v1.7-development.mjs",
+  "tokenMap": "tokens/glaze-v1.7-notification-activity-surfaces-v1-2.dev.json"
+}
