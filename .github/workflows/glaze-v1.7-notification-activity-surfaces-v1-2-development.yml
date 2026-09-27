@@ -1,0 +1,73 @@
+name: Glaze UI V1.7 Notification and Activity Surfaces v1.2 Development
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  section36:
+    name: Validate V1.7 Notification and Activity Surfaces v1.2 Development foundation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Validate Section 36
+        run: |
+          python -m json.tool contracts/v1.7/notification-activity-surfaces-v1-2.dev.json >/dev/null
+          python -m json.tool schemas/v1.7-notification-activity-surfaces-v1-2.schema.json >/dev/null
+          python -m json.tool tokens/glaze-v1.7-notification-activity-surfaces-v1-2.dev.json >/dev/null
+          node --check js/glaze-v1.7-notification-activity-surfaces-v1-2.dev.mjs
+          node --check js/glaze-v1.7-development.mjs
+          node --check scripts/validate_glaze_v1_7_notification_activity_surfaces_v1_2_development.mjs
+          node scripts/validate_glaze_v1_7_notification_activity_surfaces_v1_2_development.mjs
+  prior-foundations:
+    name: Preserve V1.7 dev.1-dev.27 foundations
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Verify prior V1.7 foundations
+        run: |
+          node scripts/validate_glaze_v1_7_task_continuity_development.mjs
+          node scripts/validate_glaze_v1_7_adaptive_input_development.mjs
+          node scripts/validate_glaze_v1_7_form_factor_profiles_development.mjs
+          node scripts/validate_glaze_v1_7_command_surface_development.mjs
+          node scripts/validate_glaze_v1_7_personalization_development.mjs
+          node scripts/validate_glaze_v1_7_system_shell_continuity_development.mjs
+          node scripts/validate_glaze_v1_7_notification_activity_surfaces_development.mjs
+          node scripts/validate_glaze_v1_7_theme_semantic_color_development.mjs
+          node scripts/validate_glaze_v1_7_native_glaze_kits_development.mjs
+          node scripts/validate_glaze_v1_7_expanded_component_system_development.mjs
+          node scripts/validate_glaze_v1_7_inspector_development.mjs
+          node scripts/validate_glaze_v1_7_studio_development.mjs
+          node scripts/validate_glaze_v1_7_continuity_aware_motion_development.mjs
+          node scripts/validate_glaze_v1_7_signature_motion_system_development.mjs
+          node scripts/validate_glaze_v1_7_signature_motion_principles_development.mjs
+          node scripts/validate_glaze_v1_7_signature_transition_families_development.mjs
+          node scripts/validate_glaze_v1_7_connected_transformation_2_development.mjs
+          node scripts/validate_glaze_v1_7_adaptive_composition_motion_development.mjs
+          node scripts/validate_glaze_v1_7_signature_microinteractions_development.mjs
+          node scripts/validate_glaze_v1_7_theme_transition_system_development.mjs
+          node scripts/validate_glaze_v1_7_motion_expression_profiles_development.mjs
+          node scripts/validate_glaze_v1_7_motion_personalization_development.mjs
+          node scripts/validate_glaze_v1_7_reduced_motion_equivalents_development.mjs
+          node scripts/validate_glaze_v1_7_motion_fatigue_protection_development.mjs
+          node scripts/validate_glaze_v1_7_motion_performance_development.mjs
+          node scripts/validate_glaze_v1_7_glaze_motion_lifecycle_development.mjs
+          node scripts/validate_glaze_v1_7_system_shell_continuity_v1_2_development.mjs
+  v1-6-anchor:
+    name: Preserve GLAZE UI V1.6 Anchor authority
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
+      - run: node scripts/verify_glaze_v1_6_stable.mjs
