@@ -4,6 +4,16 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.30` **Expanded Component System** source for V1.7 v1.2 Section 38, extending historical dev.10 / v1.1 Section 25 without renumbering it.
+- Preserved the existing 14-component catalog while adding component-specific semantic transition allowlists so components request governed Glaze relationships instead of embedding arbitrary local animation.
+- Rejected direct Signature Motion family selection and raw timing/easing/spring/physics/keyframe/path/distance/scale/performance controls; transition occurrence, semantic state, connected identity, provider truth, and application state remain externally authoritative.
+- Required GlzNotificationSurface and GlzProgressSurface truth-bearing transitions to route through the existing Section 36 Notification and Activity Surfaces authority model rather than duplicating progress/completion/recovery truth rules.
+- Preserved accessible semantics, keyboard/focus behavior, semantic color meaning, Task Continuity, Reduced Motion, platform interaction ownership, and dev.25 performance degradation while keeping final state independent of animation completion.
+- Recorded exact-revision research across Radix Primitives, Material Web, Microsoft Fluent UI, and W3C ARIA Authoring Practices as Reforge provenance without copying upstream component code, animation values, assets, fonts/icons, or visual identity.
+- Kept Section 38 acceptance incomplete pending rendered, native-platform, assistive-technology, measured-performance, representative-device, energy, and human-motion evidence; V1.6 / `1.6.0` remains Official Anchor, V1.7 remains non-consumer-eligible, and Glaze Motion 0.6 remains Experimental.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.30` with v1.2 source foundations/evaluation through Section 38.
+
+
 - Added bounded `1.7.0-dev.29` **Native Glaze Kits** source for V1.7 v1.2 Section 37, extending historical dev.9 without renumbering it.
 - Preserved shared Glaze semantic motion across Android/Jetpack Compose, Apple/SwiftUI, Web, and supported Linux native mappings while keeping platform interaction, accessibility, rendering, and performance behavior native-owned.
 - Section 37 remains Development-only and incomplete; V1.6 / `1.6.0` remains Official Anchor and Glaze Motion remains Experimental.
