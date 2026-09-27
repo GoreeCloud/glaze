@@ -4,6 +4,15 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.25` **Motion Performance** Development source for V1.7 v1.2 Section 33.
+- Added deterministic performance modes — full, restrained, simplified, minimal, and Reduced Motion — driven only by caller/provider-supplied semantic environment pressure plus inherited dev.24 motion-budget pressure.
+- Added bounded adaptation for runtime pressure, power-saving, thermal constraint, constrained hardware, low-refresh presentation, degraded-performance environments, and Reduced Motion while preserving task-relevant state and direct manipulation.
+- Preferred compositor-friendly transforms, opacity, bounded clipping, and appropriate platform-native primitives when equivalent; discouraged layout-driven animation, synchronous measurement loops, unbounded repainting, continuous main-thread rendering, and unbounded shader complexity.
+- Kept quantitative performance truth in the V1.6 evidence evaluator: dev.25 does not manufacture measurements, set caller-controlled frame budgets/thresholds, or claim frame-pacing, interaction-latency, thermal, energy, rendered, native, or human-motion acceptance.
+- Recorded Material Components, Carbon Design System, Fluent UI, V1.6 performance diagnostics/budget, System-Wide Motion Continuity and Performance, dev.23 Reduced Motion, and dev.24 fatigue-protection research as independent-reimplementation provenance without copying upstream source, exact timing values, curves, components, assets, or visual identity.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.25` with v1.2 foundation sections 22–33 while keeping Sections 22–33 acceptance incomplete, Glaze Motion 0.6 Experimental, V1.6 / `1.6.0` as Official Anchor, and V1.7 non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.24` **Motion Fatigue Protection** Development source for V1.7 v1.2 Section 32.
 - Preserved the established V1.6 reference motion budget without expansion: 6 simultaneous transitions, 4 skeleton motion elements, 1 background material animation, 2 decorative movements, 1 large-area transformation, and 4 continuous animated elements.
 - Added deterministic over-budget simplification that suppresses decorative movement first, then continuous animation, excess skeleton motion, background material animation, large-area transformation richness, and finally excess simultaneous transition richness while preserving semantic and authoritative state.
