@@ -1,0 +1,76 @@
+{
+  "version": "1.7.0-dev.31",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+  "appearanceModes": {
+    "follow-system": "theme.appearance.follow-system",
+    "light": "theme.appearance.light",
+    "dark": "theme.appearance.dark",
+    "deep-dark": "theme.appearance.deep-dark"
+  },
+  "expressionProfiles": {
+    "calm": "theme.expression.calm",
+    "balanced": "theme.expression.balanced",
+    "expressive": "theme.expression.expressive"
+  },
+  "scopeRoles": {
+    "session-preview": "theme.scope.session-preview",
+    "global": "theme.scope.global",
+    "application": "theme.scope.application",
+    "device": "theme.scope.device"
+  },
+  "themeColorRoles": [
+    "primary-accent","secondary-accent","tertiary-accent","canvas-atmosphere",
+    "interactive-highlight","selection","decorative-tint","material-atmosphere",
+    "application-identity","wallpaper-influence"
+  ],
+  "colorCoding": {
+    "navigation": "theme.context.navigation",
+    "system": "theme.context.system",
+    "connectivity": "theme.context.connectivity",
+    "synchronization": "theme.context.synchronization",
+    "dataVisualization": "theme.context.data-visualization"
+  },
+  "accessibility": {
+    "diagnosticRoles": [
+      "text-contrast","focus-visibility","selection-visibility","semantic-state-separation",
+      "categorical-color-separation","glaze-readability","disabled-state-clarity",
+      "color-vision-accessibility","grayscale-usability","forced-colors-compatibility"
+    ],
+    "safeAutomaticAdjustments": ["tone","chroma","foreground","material-opacity"],
+    "semanticMeaningMayChange": false,
+    "forcedColorsAuthorityPreserved": true
+  },
+  "themePackage": {
+    "format": "goreecloud.glaze-theme",
+    "version": 1,
+    "declarative": true,
+    "nonExecutable": true,
+    "remoteRuntimeResourcesAllowed": false,
+    "trackersAllowed": false,
+    "analyticsDependenciesAllowed": false,
+    "automaticApplyAllowed": false,
+    "automaticPersistenceAllowed": false
+  },
+  "fallbacks": {
+    "untrustedSystemAppearance": "light-without-system-appearance-claim",
+    "untrustedApplicationOrDeviceScope": "session-preview",
+    "unsafeTheme": "glaze-default",
+    "untrustedTruthBearingColorState": "unknown",
+    "unsafePackage": "reject-package"
+  },
+  "boundaries": {
+    "historicalFoundationsReinterpreted": false,
+    "sourceRequirementsMapped": true,
+    "sections6Through21Complete": false,
+    "protectedSemanticOverrideAllowed": false,
+    "colorOnlyMeaningAllowed": false,
+    "themePreferencePersistedByGlaze": false,
+    "providerTruthCreatedByGlaze": false,
+    "executableThemeContentAccepted": false,
+    "consumerEligible": false
+  }
+}
