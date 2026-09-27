@@ -1,7 +1,7 @@
 # Glaze UI — Planned Features
 
 **Status:** Active planned-feature control  
-**As of:** 2026-09-26  
+**As of:** 2026-09-27  
 **Canonical lifecycle authority:** `registry/lifecycle.json`  
 **Canonical repository:** `GoreeCloud/glaze-ui`  
 **Current Official Anchor:** GLAZE UI V1.6 / `1.6.0` (Stable compatibility channel)
