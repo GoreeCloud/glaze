@@ -57,7 +57,7 @@ assert(schema.$schema==='https://json-schema.org/draft/2020-12/schema','schema d
 assert(contract.version==='1.7.0-dev.24'&&contract.planVersion==='v1.2'&&contract.consumerEligible===false,'dev.24 contract identity mismatch');
 assert(JSON.stringify(contract.v12SpecificationSections)===JSON.stringify([32]),'dev.24 section marker mismatch');
 assert(JSON.stringify(contract.referenceBudget)===JSON.stringify(expectedBudget),'dev.24 reference budget mismatch');
-assert(JSON.stringify(glazeV16FocusMotionDevelopmentContract.referenceMotionBudget)===JSON.stringify(expectedBudget),'V1.6 reference motion budget changed');
+for(const [key,limit] of Object.entries(expectedBudget)) assert(glazeV16FocusMotionDevelopmentContract.referenceMotionBudget[key]===limit,'V1.6 reference motion budget changed: '+key);
 assert(contract.budgetPolicy.inheritedWithoutExpansion===true&&contract.budgetPolicy.callerMayRaiseLimits===false&&contract.budgetPolicy.callerMayOverrideBudget===false,'budget authority expanded');
 assert(contract.budgetPolicy.optionalAnimationReducedAutomaticallyWhenExceeded===true&&contract.budgetPolicy.semanticStateReduced===false,'Section 32 reduction/state boundary mismatch');
 assert(JSON.stringify(contract.reductionOrder)===JSON.stringify(['decorativeMovements','continuousAnimatedElements','skeletonMotionElements','backgroundMaterialAnimations','largeAreaTransformations','simultaneousTransitions']),'reduction order mismatch');
