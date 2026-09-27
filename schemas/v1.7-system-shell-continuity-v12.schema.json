@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.com/schemas/glaze-ui/v1.7-system-shell-continuity-v12.schema.json",
+  "title": "Glaze UI V1.7 System Shell Continuity v1.2 Development Reconciliation",
+  "type": "object",
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "contractId",
+    "name",
+    "version",
+    "lifecycle",
+    "stableBaseline",
+    "consumerEligible",
+    "planVersion",
+    "v12SpecificationSections",
+    "historicalFoundation",
+    "section35Areas",
+    "semanticMotionPolicy",
+    "dependsOn",
+    "motionPolicy",
+    "authority",
+    "acceptanceBoundary",
+    "runtimeEntrypoint",
+    "developmentAggregateEntrypoint",
+    "tokenMap",
+    "researchRecord"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../../schemas/v1.7-system-shell-continuity-v12.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "contractId": {
+      "const": "goreecloud.glaze-ui.v1.7.system-shell-continuity-v12"
+    },
+    "name": {
+      "const": "Glaze UI V1.7 System Shell Continuity v1.2 Development Reconciliation"
+    },
+    "version": {
+      "const": "1.7.0-dev.27"
+    },
+    "lifecycle": {
+      "const": "Development"
+    },
+    "stableBaseline": {
+      "const": "1.6.0"
+    },
+    "consumerEligible": {
+      "const": false
+    },
+    "planVersion": {
+      "const": "v1.2"
+    },
+    "v12SpecificationSections": {
+      "const": [
+        35
+      ]
+    },
+    "historicalFoundation": {
+      "type": "object"
+    },
+    "section35Areas": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true
+    },
+    "semanticMotionPolicy": {
+      "type": "object"
+    },
+    "dependsOn": {
+      "type": "object"
+    },
+    "motionPolicy": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "acceptanceBoundary": {
+      "type": "object"
+    },
+    "runtimeEntrypoint": {
+      "const": "js/glaze-v1.7-system-shell-continuity-v12.dev.mjs"
+    },
+    "developmentAggregateEntrypoint": {
+      "const": "js/glaze-v1.7-development.mjs"
+    },
+    "tokenMap": {
+      "const": "tokens/glaze-v1.7-system-shell-continuity-v12.dev.json"
+    },
+    "researchRecord": {
+      "const": "docs/development/v1.7-system-shell-continuity-v12-open-source-research-20260926.md"
+    }
+  },
+  "additionalProperties": false
+}
