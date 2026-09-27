@@ -5,13 +5,14 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 ## Unreleased — GLAZE UI V1.7 Development
 
 - Added bounded `1.7.0-dev.37` **Privacy and Authority Boundaries** source for V1.7 v1.2 Section 44.
-- Added a fail-closed truth-authority resolver for security protection, privacy access, synchronization, operation results, recovery, and identity/authentication.
-- Truth-bearing motion now requires a valid event/domain pairing plus authoritative ownership from the applicable provider; unknown, mismatched-owner, and non-authoritative claims remain neutral/unknown.
-- Preserved Wardveil Security, Privacy Shield, Everkeep, GoreeCloud Identity, and responsible-provider ownership without inferring provider precedence or creating permission, consent, authorization, revocation, protection, synchronization, success, recovery, or authentication truth.
-- Added authoritative refutation handling so confirmed negative semantic state can be represented without replaying the positive event transition.
-- Rejected raw truth booleans, provider-precedence/ranking controls, scores/ratings/winner inputs, and raw effect/animation controls.
+- Hardened nine truth domains—security protection, privacy consent/access, synchronization, operation results, resilience/recovery, identity/authentication, connectivity/availability, and coordination status—on top of the existing V1.5 provider registry rather than creating a second authority system.
+- Non-unknown truth now requires provider provenance, an allowed authority class, product/domain ownership, bounded scope, and explicit authority attestation. Duplicate provider claims fail closed through the inherited provider snapshot and no provider winner or precedence is inferred.
+- Preserved Wardveil Security, Privacy Shield, Everkeep, and GoreeCloud Identity as system truth owners; responsible providers remain provider-local, platform connectivity remains platform-local, and GoreeCloud Mesh is coordination-only with no inherited governance, privacy, security, consent, permission, or authorization authority.
+- Protection, privacy-revocation, synchronization-completion, success, recovery-completion, and authentication-success cues are enabled only for accepted authoritative state. State itself remains immediate and independent from animation completion; non-trivial motion additionally requires authoritative transition occurrence.
+- Routed accepted truth through the Section 43 visual/motion direction layer so accessibility or authoritative performance pressure may simplify presentation without changing provider truth.
+- Rejected inferred/assumed state, confidence/probability, forced success, provider-precedence/ranking, scores/ratings/winner inputs, raw animation controls, and pixel/screenshot scoring.
 - Recorded exact-revision AndroidX Compose Foundation, Microsoft Fluent UI, and Adobe React Aria research under the GoreeCloud Reforge boundary without incorporating upstream source, state machines, components, or presentation constants.
-- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.37`; Section 44 remains incomplete pending applicable provider-integration/privacy/security/rendered/native/assistive-technology/representative-device/performance/energy/human review. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.37`; Section 44 remains incomplete pending applicable provider-integration/privacy/security/rendered/native/assistive-technology/representative-device/human truth-communication review. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
 
 
 - Added bounded `1.7.0-dev.36` **Visual and Motion Direction** source for V1.7 v1.2 Section 43.

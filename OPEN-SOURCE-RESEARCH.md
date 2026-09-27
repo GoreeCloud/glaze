@@ -108,7 +108,7 @@ Research date: 2026-09-27.
 - Microsoft Fluent UI at `8add8c8750c34c85acd811e32ab324abf8f1562e` — MIT. Studied for progress accessibility semantics bound to supplied current/max values instead of animation-derived completion.
 - Adobe React Spectrum / React Aria at `16eead67e83cf42f3c0ee46ef6eb7a2032778378` — Apache-2.0. Studied for explicit progress-state semantics in which determinate values are supplied and indeterminate state remains distinct from completion.
 
-Detailed requirements research is retained in `research/v1.7-privacy-authority-boundaries.md`.
+Detailed requirements research is retained in `research/v1.7-privacy-authority-boundaries.md`. The GoreeCloud implementation reuses the existing V1.5 provider registry for provenance, authority ownership, conflict handling, and no-inferred-precedence behavior; the external projects above inform only state-projection requirements.
 
 No third-party source code, state machines, provider models, animation values, components, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
 
