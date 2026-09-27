@@ -4,6 +4,15 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.28` **Notification and Activity Surfaces** Development source for V1.7 v1.2 Section 36 without relabeling the historical dev.7 v1.0 Section 8 foundation.
+- Added governed semantic motion relationships for progress, completion, recovery, arrival, expansion, and dismissal across the six existing notification/activity components.
+- Required authoritative transition occurrence before Signature Motion is eligible; progress motion additionally requires authoritative progress truth, completion/recovery motion requires authoritative provider truth, and expansion Bloom requires authoritative connected identity.
+- Kept persistent pulsing out of the default attention mechanism and exposed static semantic emphasis instead, so critical state and attention never require observing continuous animation.
+- Integrated Reduced Motion and dev.25 Motion Performance so optional notification/activity motion can simplify or disappear without changing progress, completion, recovery, navigation, focus, task, or provider-owned state.
+- Kept Section 36 acceptance incomplete pending rendered, native-platform, assistive-technology, measured-performance, physical-device, energy, and human-motion evidence; V1.6 / `1.6.0` remains Official Anchor, V1.7 remains non-consumer-eligible, and Glaze Motion 0.6 remains Experimental.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.28` with v1.2 source foundations/evaluation through Section 36.
+
+
 - Added bounded `1.7.0-dev.27` **System Shell Continuity** Development source for V1.7 v1.2 Section 35 without relabeling the historical dev.6 v1.0 Section 7 foundation.
 - Added governed semantic shell-motion relationships for notification/activity presentation, Control Center, multi-window, split view, compact/expanded navigation, restoration, application/system handoff, task switching, Universal Search, overlays, and contextual commands.
 - Required authoritative shell-transition occurrence before Signature Motion is eligible, and retained authoritative connected-identity requirements for Bloom/Trace relationships so Glaze cannot manufacture shell or object relationships.
