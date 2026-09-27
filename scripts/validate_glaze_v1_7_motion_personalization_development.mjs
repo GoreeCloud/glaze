@@ -142,7 +142,7 @@ assert(tokens.boundaries.section30Complete===false&&tokens.boundaries.secondPers
 
 assert(glazeV17MotionPersonalizationDevelopmentContract.version==='1.7.0-dev.22','runtime contract version mismatch');
 assert(glazeV17MotionPersonalizationDevelopmentContract.section30Complete===false,'runtime contract completion overclaim');
-assert(glazeV17Development.version==='1.7.0-dev.22','aggregate version mismatch');
+const aggregateOrdinal=Number(glazeV17Development.version.match(/^1\\.7\\.0-dev\\.(\\d+)$/)?.[1]);\nassert(Number.isInteger(aggregateOrdinal)&&aggregateOrdinal>=22,'aggregate version regressed below dev.22');
 assert(glazeV17Development.planVersion==='v1.2'&&glazeV17Development.consumerEligible===false,'aggregate lifecycle mismatch');
 for(const section of [22,23,24,25,26,27,28,29,30])assert(glazeV17Development.planV12FoundationSections.includes(section),'aggregate missing v1.2 section '+section);
 assert(glazeV17Development.motionPersonalizationFoundation==='js/glaze-v1.7-motion-personalization.dev.mjs','aggregate missing dev.22 foundation');
