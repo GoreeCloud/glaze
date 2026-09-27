@@ -1,0 +1,119 @@
+{
+  "$schema": "../../schemas/v1.7-motion-personalization.schema.json",
+  "schemaVersion": 1,
+  "contractId": "goreecloud.glaze-ui.v1.7.motion-personalization",
+  "name": "Glaze UI V1.7 Motion Personalization Development Contract",
+  "version": "1.7.0-dev.22",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [30],
+  "dependsOn": {
+    "personalizationVersion": "1.7.0-dev.5",
+    "motionExpressionProfilesVersion": "1.7.0-dev.21"
+  },
+  "preferenceModel": {
+    "surface": "Theme Manager",
+    "modes": ["minimal", "calm", "balanced", "expressive"],
+    "defaultMode": "balanced",
+    "durableAuthority": "Personalization 2.0 motionIntensity",
+    "persistableModeMapping": {
+      "calm": "minimal",
+      "balanced": "standard",
+      "expressive": "expressive"
+    },
+    "minimalMode": {
+      "previewOnly": true,
+      "durableEncodingEstablished": false,
+      "reason": "Current Personalization 2.0 durable vocabulary has no distinct fourth encoding. Glaze must not silently invent one."
+    },
+    "createsSecondPersistenceAuthority": false
+  },
+  "actions": {
+    "supported": ["preview", "apply-proposal"],
+    "explicitUserIntentRequiredForApply": true,
+    "authoritativeUserSelectionRequiredForApply": true,
+    "callerOwnsPersistence": true,
+    "persistencePerformedByGlaze": false,
+    "minimalApplyAllowed": false
+  },
+  "themePackages": {
+    "mayRequestApprovedSemanticMotionProfiles": true,
+    "supportedRequestedProfiles": ["minimal", "calm", "balanced", "expressive"],
+    "authoritativePackageDeclarationRequired": true,
+    "explicitPreviewRequestRequired": true,
+    "mayOverrideAuthoritativeUserSelection": false,
+    "mayPersistPreference": false,
+    "mayAutoApply": false,
+    "executableAnimationCodeAllowed": false,
+    "animationScriptsAllowed": false,
+    "animationModulesAllowed": false,
+    "rawKeyframesAllowed": false,
+    "remoteAnimationResourcesAllowed": false
+  },
+  "requestPolicy": {
+    "rawTimingAccepted": false,
+    "rawEasingAccepted": false,
+    "rawSpringAccepted": false,
+    "rawPhysicsAccepted": false,
+    "rawDistanceAccepted": false,
+    "rawScaleAccepted": false,
+    "rawChoreographyAccepted": false
+  },
+  "accessibilityAndPerformance": {
+    "delegatesEffectiveProfileResolutionTo": "Motion Expression Profiles dev.21",
+    "accessibilityPrecedence": true,
+    "performancePrecedence": true,
+    "directManipulationTrackingPreserved": true,
+    "effectiveDegradationMayRewriteStoredPreference": false
+  },
+  "authority": {
+    "boundary": "presentation-only",
+    "personalization2DurablePreferenceAuthorityPreserved": true,
+    "motionPreferencePersistedByGlaze": false,
+    "themePackagePreferenceAuthorityCreated": false,
+    "accessibilityStateCreatedByGlaze": false,
+    "performanceStateCreatedByGlaze": false,
+    "applicationStateChangedByGlaze": false,
+    "providerTruthCreatedByGlaze": false
+  },
+  "glazeMotionBoundary": {
+    "experimentalFoundationVersion": "0.6.0",
+    "runtimeCompatibilityBaseline": "0.4.0",
+    "experimentalLifecyclePromoted": false
+  },
+  "acceptanceBoundary": {
+    "sourceFoundationOnly": true,
+    "section22Complete": false,
+    "section23Complete": false,
+    "section24Complete": false,
+    "section25Complete": false,
+    "section26Complete": false,
+    "section27Complete": false,
+    "section28Complete": false,
+    "section29Complete": false,
+    "section30Complete": false,
+    "motionPersonalizationSemanticLayerImplemented": true,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "performanceAcceptanceEstablished": false,
+    "motionFatigueAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "releasePromotionAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "runtimeEntrypoint": "js/glaze-v1.7-motion-personalization.dev.mjs",
+  "developmentAggregateEntrypoint": "js/glaze-v1.7-development.mjs",
+  "tokenMap": "tokens/glaze-v1.7-motion-personalization.dev.json",
+  "researchRecord": "docs/development/v1.7-motion-personalization-open-source-research-20260926.md",
+  "sourceAuthorities": [
+    "GLAZE_UI_V1_7_PLANNED.md",
+    "PLANNED-FEATURES.md",
+    "IMPLEMENTED-FEATURES.md",
+    "CHANGELOGS.md"
+  ]
+}
