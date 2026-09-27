@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "name": "Glaze UI V1.7 System Shell Continuity v1.2 Development Semantic Map",
+  "version": "1.7.0-dev.27",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [
+    35
+  ],
+  "historicalFoundation": {
+    "version": "1.7.0-dev.6",
+    "preservedAsHistoricalProvenance": true,
+    "reinterpretedAsSection35": false
+  },
+  "shellRelationships": {
+    "notification-activity-presentation": {
+      "historical": "notification-activity-presentation",
+      "motionRelationship": "transient-elevation",
+      "family": "Glaze Lift"
+    },
+    "control-center": {
+      "historical": "control-center",
+      "motionRelationship": "context-overlay",
+      "family": "Glaze Veil"
+    },
+    "multi-window": {
+      "historical": "multi-window",
+      "motionRelationship": "workspace-recomposition",
+      "family": "Glaze Flow"
+    },
+    "split-view": {
+      "historical": "split-view",
+      "motionRelationship": "workspace-recomposition",
+      "family": "Glaze Flow"
+    },
+    "compact-expanded-navigation": {
+      "historical": "compact-expanded-navigation",
+      "motionRelationship": "workspace-recomposition",
+      "family": "Glaze Flow"
+    },
+    "window-restoration": {
+      "historical": "window-restoration",
+      "motionRelationship": "workspace-recomposition",
+      "family": "Glaze Flow"
+    },
+    "application-system-handoff": {
+      "historical": "application-system-handoff",
+      "motionRelationship": "source-destination-continuity",
+      "family": "Glaze Trace",
+      "identityAuthorityRequired": true
+    },
+    "task-switching": {
+      "historical": "task-switching",
+      "motionRelationship": "focus-transfer",
+      "family": "Glaze Focus Transfer"
+    },
+    "universal-search": {
+      "historical": "search-continuity",
+      "motionRelationship": "context-overlay",
+      "family": "Glaze Veil"
+    },
+    "contextual-commands": {
+      "historical": "contextual-command-surfaces",
+      "motionRelationship": "transient-elevation",
+      "family": "Glaze Lift"
+    }
+  },
+  "navigationPolicy": {
+    "stateFirst": true,
+    "artificialDelayAllowed": false,
+    "motionMayDelayNavigation": false,
+    "motionMayDelayProviderExecution": false,
+    "finalStateDependsOnAnimationCompletion": false,
+    "signatureMotionProposalOnly": true,
+    "reducedMotionPrecedence": true,
+    "performanceDegradationPrecedence": true,
+    "fatigueProtectionRequired": true
+  },
+  "boundaries": {
+    "presentationOnly": true,
+    "shellCapabilityOwnedByCallerOrPlatform": true,
+    "providerTruthOwnedByProvider": true,
+    "objectIdentityCreatedByGlaze": false,
+    "navigationExecutedByMotion": false,
+    "actionExecutedByMotion": false,
+    "persistencePerformedByGlaze": false,
+    "section35Complete": false,
+    "renderedAcceptanceEstablished": false,
+    "nativePlatformAcceptanceEstablished": false,
+    "assistiveTechnologyAcceptanceEstablished": false,
+    "measuredPerformanceAcceptanceEstablished": false,
+    "physicalDeviceAcceptanceEstablished": false,
+    "energyImpactAcceptanceEstablished": false,
+    "humanMotionReviewEstablished": false,
+    "consumerEligible": false
+  }
+}
