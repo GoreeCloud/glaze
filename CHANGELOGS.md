@@ -4,6 +4,13 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.31` **Advanced Theme System** source reconciliation for current V1.7 v1.2 Sections 6–21 without relabeling historical dev.5/dev.8/dev.20/dev.21/dev.22 foundations.
+- Added Follow System plus Light/Dark/Deep Dark handling, governed application/device preference proposal scopes, local multi-color palette derivation, live/accessibility/color-vision previews, theme history/undo/duplication proposals, and caller-owned persistence boundaries.
+- Added declarative inspectible non-executable theme packages with protected-semantic override rejection and no trackers, analytics dependencies, remote runtime resources, automatic apply, or automatic persistence.
+- Added explicit color-coded navigation/system/connectivity/synchronization/data-visualization governance, provider-owned truth boundaries, full source-level theme accessibility diagnostics, safe automatic-adjustment allowlists, and Theme Safety fallback/repair reachability.
+- Recorded exact-revision Material Color Utilities, Fluent UI, and Carbon research under the GoreeCloud Reforge boundary without copying upstream code, palette constants, visual identity, assets, or token implementations.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.31`; Sections 6–21 remain incomplete pending applicable rendered/native/assistive-technology/representative-device/performance/energy/human-visual evidence. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
+
 - Added bounded `1.7.0-dev.30` **Expanded Component System** source for V1.7 v1.2 Section 38, extending historical dev.10 / v1.1 Section 25 without renumbering it.
 - Preserved the existing 14-component catalog while adding component-specific semantic transition allowlists so components request governed Glaze relationships instead of embedding arbitrary local animation.
 - Rejected direct Signature Motion family selection and raw timing/easing/spring/physics/keyframe/path/distance/scale/performance controls; transition occurrence, semantic state, connected identity, provider truth, and application state remain externally authoritative.
