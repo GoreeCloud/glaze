@@ -180,7 +180,9 @@ assert(tokens.version==='1.7.0-dev.34'&&tokens.v12SpecificationSections[0]===41,
 assert(JSON.stringify(tokens.accessibilityChanges)===JSON.stringify(modes),'token accessibility catalog mismatch');
 assert(tokens.continuity.taskResetAllowed===false&&tokens.continuity.accessibilityOutranksMotionRichness===true,'token continuity boundary weakened');
 assert(tokens.presentation.colorOnlyMeaningAllowed===false&&tokens.presentation.forcedColorsAuthorityPreserved===true,'token accessibility presentation boundary weakened');
+assert(tokens.presentation.switchAccessSemanticAlternativesRequired===true&&tokens.presentation.voiceAccessSemanticAddressabilityRequired===true,'token assistive-input semantics missing');
 assert(tokens.authority.accessibilityStateCreatedByGlaze===false&&tokens.authority.preferencePersistedByGlaze===false,'token authority boundary weakened');
+assert(tokens.authority.inputModelCreatedByGlaze===false&&tokens.authority.focusExecutedByGlaze===false,'token input/focus authority boundary weakened');
 assert(tokens.acceptance.section41Complete===false,'token completion overclaimed');
 
 assert(glazeV17AccessibilityContinuityDevelopmentContract.version==='1.7.0-dev.34','runtime contract identity mismatch');
