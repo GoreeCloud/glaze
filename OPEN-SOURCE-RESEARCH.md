@@ -27,3 +27,14 @@ Detailed requirements research is retained in `research/v1.7-expanded-component-
 
 No third-party source code, component implementation, animation values, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
 
+## V1.7 dev.31 — Advanced Theme System v1.2
+
+Research date: 2026-09-27.
+
+- Material Color Utilities at `5b3618b16fdc3825e21d5679bafd144662088ea1` — Apache-2.0. Studied for bounded seed-derived palette architecture and post-derivation accessibility constraints.
+- Microsoft Fluent UI at `8add8c8750c34c85acd811e32ab324abf8f1562e` — MIT for reviewed repository source; referenced fonts/icons have separate terms and are not incorporated. Studied for semantic token and theme-role separation.
+- Carbon Design System at `7e8c8f7db6dd2ed98c4947b78b37614f43eda920` — Apache-2.0. Studied for coherent theme families and categorical/data-visualization color governance.
+
+Detailed requirements research is retained in `research/v1.7-advanced-theme-system-v1-2.md`.
+
+No third-party source code, algorithms, exact palette constants, token implementations, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
