@@ -32,9 +32,10 @@ export * from './glaze-v1.7-motion-performance.dev.mjs';
 export * from './glaze-v1.7-glaze-motion-lifecycle.dev.mjs';
 export * from './glaze-v1.7-system-shell-continuity-v1-2.dev.mjs';
 export * from './glaze-v1.7-notification-activity-surfaces-v1-2.dev.mjs';
+export * from './glaze-v1.7-native-glaze-kits-v1-2.dev.mjs';
 
 export const glazeV17Development = Object.freeze({
-  version: '1.7.0-dev.28',
+  version: '1.7.0-dev.29',
   lifecycle: 'development',
   stableBaseline: '1.6.0',
   consumerEligible: false,
@@ -42,7 +43,7 @@ export const glazeV17Development = Object.freeze({
   implementedSpecificationSectionsPlanVersion: 'v1.0-historical-numbering',
   planVersion: 'v1.2',
   planV11FoundationSections: Object.freeze([7, 8, 9, 10, 11, 12, 13, 18, 19, 21, 24, 25, 26, 27, 28]),
-  planV12FoundationSections: Object.freeze([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]),
+  planV12FoundationSections: Object.freeze([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]),
   taskContinuityFoundation: 'js/glaze-v1.7-task-continuity.dev.mjs',
   adaptiveInputFoundation: 'js/glaze-v1.7-adaptive-input.dev.mjs',
   formFactorProfilesFoundation: 'js/glaze-v1.7-form-factor-profiles.dev.mjs',
@@ -73,6 +74,9 @@ export const glazeV17Development = Object.freeze({
   systemShellContinuityHistoricalFoundationReinterpretedAsV12: false,
   notificationActivitySurfacesV12Foundation: 'js/glaze-v1.7-notification-activity-surfaces-v1-2.dev.mjs',
   notificationActivitySurfacesHistoricalFoundationReinterpretedAsV12: false,
+  nativeGlazeKitsV12Foundation: 'js/glaze-v1.7-native-glaze-kits-v1-2.dev.mjs',
+  nativeGlazeKitsHistoricalFoundationReinterpretedAsV12: false,
+  nativeGlazeKitsV12ResearchRecord: 'research/v1.7-native-glaze-kits-v1-2.md',
   glazeMotionExperimentalLifecyclePromoted: false,
   presentationOnly: true,
   accessibilityPrecedence: true,
