@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze-ui/v1.7-qualification-evidence.schema.json",
+  "title": "Glaze UI V1.7 Qualification Evidence Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "recordId",
+    "lifecycle",
+    "sourceRevision",
+    "acceptanceModelVersion",
+    "stableBaseline",
+    "applicability",
+    "notApplicableJustifications",
+    "review",
+    "evidence",
+    "reviewDecision",
+    "authority",
+    "boundary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/v1.7-qualification-evidence.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "recordId": {
+      "const": "goreecloud.glaze-ui.v1.7.qualification-evidence"
+    },
+    "lifecycle": {
+      "const": "DevelopmentQualification"
+    },
+    "sourceRevision": {
+      "oneOf": [
+        {
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        {
+          "const": "REPLACE_WITH_FROZEN_V17_SOURCE_REVISION"
+        }
+      ]
+    },
+    "acceptanceModelVersion": {
+      "const": "1.7.0-dev.39"
+    },
+    "stableBaseline": {
+      "const": "1.6.0"
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wearable": {
+          "type": "boolean"
+        },
+        "energy-behavior": {
+          "type": "boolean"
+        }
+      }
+    },
+    "notApplicableJustifications": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wearable": {
+          "type": "string"
+        },
+        "energy-behavior": {
+          "type": "string"
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewedAt",
+        "reviewer",
+        "reviewerRole",
+        "scope",
+        "representativeRevisionConfirmed",
+        "notes"
+      ],
+      "properties": {
+        "reviewedAt": {
+          "type": "string"
+        },
+        "reviewer": {
+          "type": "string"
+        },
+        "reviewerRole": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "representativeRevisionConfirmed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 2000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "verified",
+          "revision",
+          "evidenceType",
+          "reference",
+          "finding",
+          "observedAt",
+          "reviewer"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "task-continuity",
+              "adaptive-composition",
+              "semantic-color",
+              "theme-safety",
+              "custom-theme-accessibility",
+              "signature-motion",
+              "connected-transformations",
+              "animation-interruption",
+              "animation-reversal",
+              "reduced-motion",
+              "frame-pacing",
+              "input-latency",
+              "mobile",
+              "tablet",
+              "desktop",
+              "foldable",
+              "tv",
+              "wearable",
+              "keyboard",
+              "pointer",
+              "touch",
+              "alternative-input",
+              "reduced-transparency",
+              "increased-contrast",
+              "forced-colors",
+              "large-text",
+              "rtl",
+              "representative-rendering",
+              "native-behavior",
+              "performance",
+              "energy-behavior",
+              "regression",
+              "human-visual-motion-review",
+              "assistive-technology",
+              "privacy-boundaries",
+              "security-boundaries",
+              "artifact-provenance"
+            ]
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "revision": {
+            "type": "string"
+          },
+          "evidenceType": {
+            "enum": [
+              "machine",
+              "rendered",
+              "device",
+              "human",
+              "assistive-technology",
+              "performance",
+              "energy",
+              "provenance"
+            ]
+          },
+          "reference": {
+            "type": "string"
+          },
+          "finding": {
+            "type": "string"
+          },
+          "observedAt": {
+            "type": "string"
+          },
+          "reviewer": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "reviewDecision": {
+      "enum": [
+        "not-accepted",
+        "accepted-for-governed-qualification-review"
+      ]
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packetIsV17Acceptance",
+        "section46Complete",
+        "lifecyclePromotionAutomatic",
+        "anchorStatusGranted",
+        "consumerEligibilityGranted",
+        "deploymentAcceptanceGranted",
+        "productionAcceptanceGranted"
+      ],
+      "properties": {
+        "packetIsV17Acceptance": {
+          "const": false
+        },
+        "section46Complete": {
+          "const": false
+        },
+        "lifecyclePromotionAutomatic": {
+          "const": false
+        },
+        "anchorStatusGranted": {
+          "const": false
+        },
+        "consumerEligibilityGranted": {
+          "const": false
+        },
+        "deploymentAcceptanceGranted": {
+          "const": false
+        },
+        "productionAcceptanceGranted": {
+          "const": false
+        }
+      }
+    },
+    "boundary": {
+      "type": "string",
+      "minLength": 40
+    }
+  }
+}
