@@ -112,3 +112,14 @@ Detailed requirements research is retained in `research/v1.7-privacy-authority-b
 
 No third-party source code, state machines, provider models, animation values, components, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.
 
+## V1.7 dev.38 — Performance and Energy Awareness
+
+Research date: 2026-09-27.
+
+- Flutter at `8db55268667c738b90677d49857ff42938e9c9fa` — BSD-3-Clause. Studied `TickerMode` for suppressible ticker work and its explicit warning that forcing frames while a device would otherwise be idle can significantly increase battery usage.
+- AndroidX Compose Animation Core at `23327507f7fc7d5b19d65fec4b090f60c970079b` — Apache-2.0. Studied continuous/infinite animation lifecycle as a reason to govern optional repeated visual work explicitly rather than treating it as a free default.
+- GNOME libadwaita at `0ffcd2c80b2260bdae01b89e88d94bb5c856db13` — examined source is LGPL-2.1-or-later. Studied automatic animation skipping when a widget is unmapped or animations are disabled.
+
+Detailed requirements research is retained in `research/v1.7-performance-energy-awareness.md`.
+
+No third-party source code, scheduling/frame-loop implementation, animation specifications, timing constants, energy thresholds, components, assets, fonts, icons, visual identity, trademarks, or branding are incorporated by this tranche.

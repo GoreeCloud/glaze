@@ -4,6 +4,15 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.38` **Performance and Energy Awareness** source for V1.7 v1.2 Section 45.
+- Reused Motion Performance dev.25 as the single authority for runtime-pressure, power-saving, thermal, hardware, refresh, performance-degraded, visibility, fatigue-budget, and Reduced Motion constraints rather than creating a second performance signal system.
+- Added deterministic visual-complexity degradation across themes, materials, motion, adaptive transitions, decoration, and optional background visual work while preserving task continuity, accessibility, responsiveness, semantic state, provider truth, protected semantic color meaning, theme identity, material hierarchy meaning, and direct manipulation.
+- Prohibited optional background/off-screen visual work from requiring idle render loops or forced frames; non-visible optional work may suspend or resolve immediately, continuous decorative animation remains non-default, and constrained environments may use static/solid/immediate semantic equivalents.
+- Rejected raw blur/shader/particle/layer/forced-frame controls, caller performance/energy budgets or thresholds, measurement payloads, and acceptance claims.
+- Recorded exact-revision Flutter, AndroidX Compose Animation Core, and GNOME libadwaita research under the GoreeCloud Reforge boundary without incorporating upstream scheduling logic, animation implementation, numeric energy thresholds, or visual identity.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.38`; Section 45 remains incomplete pending applicable measured performance/energy, battery/thermal, lifecycle/background-work, rendered/native/assistive-technology/representative-device, regression, and human visual/motion review. V1.6 / `1.6.0` remains Official Anchor and V1.7 remains non-consumer-eligible.
+
+
 - Added bounded `1.7.0-dev.37` **Privacy and Authority Boundaries** source for V1.7 v1.2 Section 44.
 - Hardened nine truth domains—security protection, privacy consent/access, synchronization, operation results, resilience/recovery, identity/authentication, connectivity/availability, and coordination status—on top of the existing V1.5 provider registry rather than creating a second authority system.
 - Non-unknown truth now requires provider provenance, an allowed authority class, product/domain ownership, bounded scope, and explicit authority attestation. Duplicate provider claims fail closed through the inherited provider snapshot and no provider winner or precedence is inferred.
