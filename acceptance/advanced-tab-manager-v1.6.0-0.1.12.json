@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "recordType": "advanced-tab-manager-glaze-v1.6.0-consumer-acceptance",
+  "consumer": "GoreeCloud Advanced Tab Manager",
+  "repository": "GoreeCloud/firefox-addons",
+  "componentPath": "extensions/advanced-tab-manager/",
+  "productVersion": "0.1.12",
+  "glazeTargetVersion": "1.6.0",
+  "consumerSourceRevision": "43f3010607550d7d4380353b97f85a4dd0186695",
+  "deterministicUnsignedXpiSha256": "3db751f3a2c80d8d339ea0648d00a8ff016840f6587b58e5a61c484bf687588f",
+  "mozillaSignedXpiSha256": "2e54bdf2aa312c9cfe2895fd456f6d088a58eab6d24de80339e996e3e9ae11ba",
+  "targetAcceptanceRecordSha256": "922e7f0eb1ceb3c9f0bbab23c63bfe72d99556da1661ae1abee17ab1c7ccabde",
+  "targetAcceptanceProvenancePath": "extensions/advanced-tab-manager/docs/target-acceptance-provenance-0.1.12.json",
+  "ownerHumanReview": {
+    "decision": "accepted",
+    "allGovernedChecksPassed": true,
+    "representativeRenderedAcceptanceComplete": true,
+    "assistiveTechnologyAcceptanceComplete": true,
+    "largeTextAndZoomAcceptanceComplete": true,
+    "alternateAppearanceAcceptanceComplete": true,
+    "constrainedLayoutAcceptanceComplete": true,
+    "keyboardAcceptanceComplete": true,
+    "reviewedAt": "2026-09-28T04:12:43Z"
+  },
+  "automatedEvidence": {
+    "repositoryValidation": "passed",
+    "releaseQualification": "passed",
+    "realFirefoxRuntime": "passed",
+    "stableSecurityBlockers": "passed",
+    "sourceMappingValidated": true,
+    "mozillaSigningRunId": 36378135958,
+    "mozillaSigning": "passed",
+    "signedPayloadParity": "passed",
+    "persistentInstallRestart": "passed",
+    "firefoxVersion": "156.0"
+  },
+  "acceptedV1Authorized": true,
+  "consumerStatus": "accepted-v1",
+  "productionEligible": false,
+  "stableProductPromotionAllowed": false,
+  "decision": "accepted",
+  "summary": "GLAZE UI V1.6 / 1.6.0 consumer acceptance is granted for Advanced Tab Manager 0.1.12 at the exact reviewed source and package identities above. This record authorizes the Glaze consumer registry state only; it does not independently grant product Stable or production status."
+}
