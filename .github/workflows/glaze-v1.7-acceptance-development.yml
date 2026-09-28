@@ -1,20 +1,43 @@
 name: Glaze UI V1.7 Acceptance Control Development
+
 on:
   pull_request:
   push:
     branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: read
+
+concurrency:
+  group: glaze-v1.7-acceptance-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   acceptance-control:
     name: Validate V1.7 Section 46 acceptance-control source
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Check out exact acceptance-control revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact acceptance-control head
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
       - name: Validate Section 46 source foundation
         run: |
           python -m json.tool contracts/v1.7/acceptance.dev.json >/dev/null
@@ -24,25 +47,68 @@ jobs:
           node --check js/glaze-v1.7-development.mjs
           node --check scripts/validate_glaze_v1_7_acceptance_development.mjs
           node scripts/validate_glaze_v1_7_acceptance_development.mjs
+
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code -- .
+
   retained-v1-7-boundaries:
     name: Preserve Section 45, privacy, accessibility, and motion boundaries
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Check out exact retained-boundary revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact retained-boundary head
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
       - run: node scripts/validate_glaze_v1_7_performance_energy_awareness_development.mjs
       - run: node scripts/validate_glaze_v1_7_privacy_authority_boundaries_development.mjs
       - run: node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs
       - run: node scripts/validate_glaze_v1_7_signature_motion_system_development.mjs
+
+      - name: Verify retained-boundary validation did not mutate tracked source
+        run: git diff --exit-code -- .
+
   v1-6-anchor:
     name: Preserve GLAZE UI V1.6 Anchor authority
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Check out exact V1.6 Anchor verification revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact V1.6 Anchor verification head
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
       - run: node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
       - run: node scripts/verify_glaze_v1_6_stable.mjs
+
+      - name: Verify V1.6 Anchor validation did not mutate tracked source
+        run: git diff --exit-code -- .
