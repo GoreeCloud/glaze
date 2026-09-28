@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {throws as assertThrows} from 'node:assert/strict';
 
 import {createGlazeV17AcceptanceMatrix} from '../js/glaze-v1.7-acceptance.dev.mjs';
 
@@ -168,11 +169,11 @@ assert(complete.authority.packetIsV17Acceptance===false&&complete.authority.anch
 
 const wrongRevision=clone(fixture);
 wrongRevision.evidence[0].revision='b'.repeat(40);
-assert.throws(()=>validateGlazeV17QualificationPacket(wrongRevision),/revision mismatch/);
+assertThrows(()=>validateGlazeV17QualificationPacket(wrongRevision),/revision mismatch/);
 
 const wrongType=clone(fixture);
 wrongType.evidence[0].evidenceType='energy';
-assert.throws(()=>validateGlazeV17QualificationPacket(wrongType),/not allowed/);
+assertThrows(()=>validateGlazeV17QualificationPacket(wrongType),/not allowed/);
 
 const args=process.argv.slice(2);
 if(args.length){
