@@ -131,7 +131,7 @@ def main() -> int:
 
     false_positive_review = load_json(ROOT / "acceptance/v1.6-gitleaks-false-positive-review.json")
     require(false_positive_review.get("disposition") == "verified-false-positives", "Gitleaks false-positive review must be accepted")
-    require(false_positive_review.get("findingCount") == 21, "Gitleaks false-positive review count mismatch")
+    require(false_positive_review.get("findingCount") == 22, "Gitleaks false-positive review count mismatch")
 
     dependency_classification = load_json(ROOT / "acceptance/v1.6-dependency-vulnerability-classification.json")
     security_review = load_json(ROOT / "acceptance/v1.6-stable-security-review.json")
@@ -178,12 +178,12 @@ def main() -> int:
         for line in ignore_path.read_text(encoding="utf-8").splitlines()
         if line.strip() and not line.lstrip().startswith("#")
     ]
-    require(len(ignore_entries) == 21, "Gitleaks ignore file must contain exactly the 21 reviewed fingerprints")
-    require(len(set(ignore_entries)) == 21, "Gitleaks ignore fingerprints must be unique")
+    require(len(ignore_entries) == 22, "Gitleaks ignore file must contain exactly the 22 reviewed fingerprints")
+    require(len(set(ignore_entries)) == 22, "Gitleaks ignore fingerprints must be unique")
     reviewed_fingerprints = false_positive_review.get("suppression", {}).get("fingerprints")
     require(isinstance(reviewed_fingerprints, list), "Gitleaks false-positive review must bind the reviewed fingerprints")
-    require(len(reviewed_fingerprints) == 21, "Gitleaks false-positive review fingerprint count mismatch")
-    require(len(set(reviewed_fingerprints)) == 21, "Gitleaks reviewed fingerprints must be unique")
+    require(len(reviewed_fingerprints) == 22, "Gitleaks false-positive review fingerprint count mismatch")
+    require(len(set(reviewed_fingerprints)) == 22, "Gitleaks reviewed fingerprints must be unique")
     require(set(ignore_entries) == set(reviewed_fingerprints), ".gitleaksignore must match the exact reviewed fingerprint set")
 
     gitleaks = load_json(Path(args.gitleaks_report))
