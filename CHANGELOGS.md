@@ -4,6 +4,8 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added per-lane V1.7 qualification gap reporting to the evidence intake validator.
+
 - Added a fail-closed V1.7 Section 46 qualification evidence packet schema, empty intake template, and external-evidence validator. Verified observations must bind to one frozen exact revision, use only lane-approved evidence types, and carry durable reference/finding/time/reviewer metadata; conditional not-applicable claims remain limited to Wearable and Energy behavior with specific justification.
 - Extended the V1.7 acceptance workflow to validate the new packet controls. The template contains zero verified evidence, validator fixtures remain self-test-only, and even a complete reviewed packet is only ready for governed qualification review; it cannot establish V1.7 acceptance, Section 46 completion, Anchor, consumer, deployment, or production status.
 
