@@ -4,6 +4,11 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Hardened V1.7 qualification evidence provenance: verified references now require content-addressed credential-safe logical locators, verified observations require timezone-qualified timestamps, and observations cannot postdate the accepted packet review.
+- Kept the evidence packet non-authorizing: provenance hardening does not verify reviewer authority, create missing rendered/device/human evidence, complete Section 46, or promote V1.7.
+
+
+
 - Added per-lane V1.7 qualification gap reporting to the evidence intake validator.
 
 - Added a fail-closed V1.7 Section 46 qualification evidence packet schema, empty intake template, and external-evidence validator. Verified observations must bind to one frozen exact revision, use only lane-approved evidence types, and carry durable reference/finding/time/reviewer metadata; conditional not-applicable claims remain limited to Wearable and Energy behavior with specific justification.
