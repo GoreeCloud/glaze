@@ -19,6 +19,8 @@ const AUTHORITY_FALSE_KEYS=[
   'packetIsV17Acceptance','section46Complete','lifecyclePromotionAutomatic','anchorStatusGranted',
   'consumerEligibilityGranted','deploymentAcceptanceGranted','productionAcceptanceGranted'
 ];
+const EVIDENCE_REFERENCE=/^evidence\\+sha256:([0-9a-f]{64}):(.{1,700})$/;
+const EVIDENCE_LOCATOR=/^(?:[A-Za-z0-9._-][A-Za-z0-9._/-]*|[A-Za-z0-9._-]+:[A-Za-z0-9._-][A-Za-z0-9._/-]*)$/;
 
 function assert(value,message){if(!value)throw new Error(message);}
 function plainObject(value){
@@ -30,6 +32,23 @@ function placeholder(value){
   return typeof value==='string'&&(value.startsWith('REPLACE_WITH_')||value.includes('Template placeholder'));
 }
 function usable(value){return typeof value==='string'&&value.trim().length>0&&!placeholder(value);}
+function evidenceReference(value,name){
+  assert(usable(value)&&value.length<=800,name+' must be a bounded evidence reference');
+  const match=EVIDENCE_REFERENCE.exec(value);
+  const locator=match?.[2];
+  assert(
+    match&&EVIDENCE_LOCATOR.test(locator)&&!locator.startsWith('/')&&!locator.endsWith('/')&&
+    locator.split(':').length<=2&&!locator.split('/').some(segment=>!segment||segment==='.'||segment==='..'),
+    name+' must be a content-addressed evidence+sha256 reference with a credential-safe logical locator'
+  );
+  return value;
+}
+function timestamp(value,name){
+  assert(usable(value)&&value.length<=40&&/(?:Z|[+-]\\d{2}:\\d{2})$/.test(value),name+' must be a timezone-qualified timestamp');
+  const milliseconds=Date.parse(value);
+  assert(Number.isFinite(milliseconds),name+' must be a valid timestamp');
+  return milliseconds;
+}
 function revision(value){return typeof value==='string'&&/^[0-9a-f]{40}$/.test(value);}
 function allowedEvidenceType(id,type){
   const groups=requirements.get(id)||[];
@@ -65,6 +84,7 @@ export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}
 
   assert(Array.isArray(record.evidence)&&record.evidence.length<=2000,'packet evidence must be a bounded array');
   const coreEvidence=[];
+  const verifiedObservationTimes=[];
   for(const item of record.evidence){
     assert(plainObject(item),'each evidence item must be a plain object');
     assert(laneIds.has(item.id),'unknown V1.7 qualification lane: '+item.id);
@@ -74,7 +94,10 @@ export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}
     if(item.verified===true){
       assert(revision(record.sourceRevision),'verified evidence requires a frozen exact source revision');
       assert(item.revision===record.sourceRevision,'verified evidence revision mismatch for lane '+item.id);
-      for(const key of ['reference','finding','observedAt','reviewer'])assert(usable(item[key]),'verified evidence missing '+key+' for lane '+item.id);
+      evidenceReference(item.reference,'verified evidence reference for lane '+item.id);
+      const observedAt=timestamp(item.observedAt,'verified evidence observedAt for lane '+item.id);
+      for(const key of ['finding','reviewer'])assert(usable(item[key]),'verified evidence missing '+key+' for lane '+item.id);
+      verifiedObservationTimes.push({id:item.id,observedAt});
     }
     coreEvidence.push({
       id:item.id,verified:item.verified===true,revision:item.revision,evidenceType:item.evidenceType,reference:item.reference
@@ -85,7 +108,11 @@ export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}
   if(record.reviewDecision==='accepted-for-governed-qualification-review'){
     assert(revision(record.sourceRevision),'accepted intake requires an exact source revision');
     assert(record.review.representativeRevisionConfirmed===true,'accepted intake requires representative exact-revision confirmation');
-    for(const key of ['reviewedAt','reviewer','reviewerRole','scope','notes'])assert(usable(record.review[key]),'accepted intake review metadata missing: '+key);
+    const reviewedAt=timestamp(record.review.reviewedAt,'accepted intake reviewedAt');
+    for(const key of ['reviewer','reviewerRole','scope','notes'])assert(usable(record.review[key]),'accepted intake review metadata missing: '+key);
+    for(const observation of verifiedObservationTimes){
+      assert(observation.observedAt<=reviewedAt,'verified evidence observation cannot postdate packet review for lane '+observation.id);
+    }
   }else{
     assert(record.reviewDecision==='not-accepted','unsupported qualification packet review decision');
     assert(record.review.representativeRevisionConfirmed===false,'not-accepted packet must not claim representative revision confirmation');
@@ -176,7 +203,7 @@ for(const [id,groups] of Object.entries(contract.evidenceRequirements)){
     index+=1;
     fixture.evidence.push({
       id,verified:true,revision:exact,evidenceType:group[0],
-      reference:'fixture://v1.7/'+id+'/'+index,
+      reference:'evidence+sha256:'+index.toString(16).padStart(64,'0')+':v1.7/'+id+'/'+index,
       finding:'Synthetic validator self-test observation for '+id+'.',
       observedAt:'2026-09-28T09:00:00-05:00',
       reviewer:'Qualification reviewer fixture'
@@ -211,6 +238,18 @@ assertThrows(()=>validateGlazeV17QualificationPacket(wrongRevision),/revision mi
 const wrongType=clone(fixture);
 wrongType.evidence[0].evidenceType='energy';
 assertThrows(()=>validateGlazeV17QualificationPacket(wrongType),/not allowed/);
+
+const unsafeReference=clone(fixture);
+unsafeReference.evidence[0].reference='evidence+sha256:'+('f'.repeat(64))+':https://example.test/evidence?token=secret';
+assertThrows(()=>validateGlazeV17QualificationPacket(unsafeReference),/credential-safe logical locator/);
+
+const timezoneLessObservation=clone(fixture);
+timezoneLessObservation.evidence[0].observedAt='2026-09-28T09:00:00';
+assertThrows(()=>validateGlazeV17QualificationPacket(timezoneLessObservation),/timezone-qualified timestamp/);
+
+const postReviewObservation=clone(fixture);
+postReviewObservation.evidence[0].observedAt='2026-09-28T14:00:01Z';
+assertThrows(()=>validateGlazeV17QualificationPacket(postReviewObservation),/cannot postdate packet review/);
 
 const args=process.argv.slice(2);
 if(args.length){
