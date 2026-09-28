@@ -6,6 +6,10 @@
 **Canonical repository:** `GoreeCloud/glaze-ui`  
 **Current Official Anchor:** GLAZE UI V1.6 / `1.6.0` (Stable compatibility channel)
 
+## Current V1.7 Development evidence-control hardening
+
+The Section 46 qualification intake now combines deterministic lane-gap reporting with credential-safe content-addressed evidence locators, timezone-qualified verified observation timestamps, and review-order enforcement. This is Development evidence infrastructure only; it does not create V1.7 qualification evidence or grant acceptance, Anchor, consumer, deployment, or production authority.
+
 ## Purpose
 
 This file records verified implemented Glaze UI feature and lifecycle obligations migrated from the retired mixed-state feature roadmap. It does not replace exact-revision source, acceptance records, release artifacts, lifecycle registry authority, or downstream consumer acceptance.
