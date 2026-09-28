@@ -100,6 +100,22 @@ export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}
     notApplicableJustifications:justifications
   });
   const packetAcceptedForIntake=record.reviewDecision==='accepted-for-governed-qualification-review';
+  const blockingLanes=Object.freeze(matrix.lanes
+    .filter(lane=>!['externally-verified','not-applicable-justified'].includes(lane.status))
+    .map(lane=>Object.freeze({
+      id:lane.id,
+      label:lane.label,
+      status:lane.status,
+      failureReason:lane.failureReason,
+      requiredEvidenceGroups:Object.freeze(
+        lane.requiredEvidenceGroups.map(group=>Object.freeze([...group]))
+      ),
+      missingEvidenceGroups:Object.freeze(
+        (lane.evidenceGroupResults||[])
+          .filter(group=>!group.satisfied)
+          .map(group=>Object.freeze([...group.allowedEvidenceTypes]))
+      )
+    })));
   return Object.freeze({
     recordId:record.recordId,
     sourceRevision:exactRevision,
@@ -109,6 +125,7 @@ export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}
     notApplicableJustifiedCount:matrix.notApplicableJustifiedCount,
     unverifiedCount:matrix.unverifiedCount,
     blockingLaneIds:matrix.blockingLaneIds,
+    blockingLanes,
     evidenceInventoryComplete:matrix.evidenceInventoryComplete,
     readyForGovernedQualificationReview:packetAcceptedForIntake&&matrix.readyForGovernedQualificationReview,
     authority:Object.freeze({
@@ -125,6 +142,13 @@ export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}
 
 const templateResult=validateGlazeV17QualificationPacket(template,{allowTemplate:true});
 assert(templateResult.unverifiedCount===37,'template must leave all 37 lanes unverified');
+assert(templateResult.blockingLanes.length===37,'template gap report must enumerate all 37 blocking lanes');
+const templateTaskContinuity=templateResult.blockingLanes.find(lane=>lane.id==='task-continuity');
+assert(templateTaskContinuity?.failureReason==='matrix-exact-revision-missing','template gap report must retain exact-revision failure');
+assert(
+  JSON.stringify(templateTaskContinuity?.missingEvidenceGroups)===JSON.stringify([['machine'],['rendered','human']]),
+  'template gap report must expose missing task-continuity evidence groups'
+);
 assert(templateResult.readyForGovernedQualificationReview===false,'template must not be qualification-review-ready');
 assert(template.evidence.length===0,'template must not manufacture evidence');
 
@@ -164,8 +188,21 @@ const complete=validateGlazeV17QualificationPacket(fixture);
 assert(complete.externallyVerifiedCount===35,'self-test must verify all 35 required lanes');
 assert(complete.notApplicableJustifiedCount===2,'self-test must justify both conditional lanes');
 assert(complete.unverifiedCount===0&&complete.evidenceInventoryComplete===true,'self-test complete matrix mismatch');
+assert(complete.blockingLanes.length===0,'complete reviewed fixture must have no qualification gaps');
 assert(complete.readyForGovernedQualificationReview===true,'complete reviewed fixture must be review-ready');
 assert(complete.authority.packetIsV17Acceptance===false&&complete.authority.anchorStatusGranted===false,'complete packet must remain non-authorizing');
+
+const partial=clone(fixture);
+partial.evidence=partial.evidence.filter(item=>!(item.id==='task-continuity'&&item.evidenceType==='rendered'));
+partial.reviewDecision='accepted-for-governed-qualification-review';
+const partialResult=validateGlazeV17QualificationPacket(partial);
+const partialTaskContinuity=partialResult.blockingLanes.find(lane=>lane.id==='task-continuity');
+assert(partialTaskContinuity?.failureReason==='required-evidence-group-unsatisfied','partial packet must identify unsatisfied evidence group');
+assert(
+  JSON.stringify(partialTaskContinuity?.missingEvidenceGroups)===JSON.stringify([['rendered','human']]),
+  'partial packet must report only the missing task-continuity evidence group'
+);
+assert(partialResult.readyForGovernedQualificationReview===false,'partial packet must remain blocked');
 
 const wrongRevision=clone(fixture);
 wrongRevision.evidence[0].revision='b'.repeat(40);
