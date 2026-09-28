@@ -4,6 +4,9 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added a fail-closed V1.7 Section 46 qualification evidence packet schema, empty intake template, and external-evidence validator. Verified observations must bind to one frozen exact revision, use only lane-approved evidence types, and carry durable reference/finding/time/reviewer metadata; conditional not-applicable claims remain limited to Wearable and Energy behavior with specific justification.
+- Extended the V1.7 acceptance workflow to validate the new packet controls. The template contains zero verified evidence, validator fixtures remain self-test-only, and even a complete reviewed packet is only ready for governed qualification review; it cannot establish V1.7 acceptance, Section 46 completion, Anchor, consumer, deployment, or production status.
+
 - Hardened the V1.7 Section 46 acceptance-control workflow onto explicit Ubuntu 24.04 runners with exact-head verification, disabled persisted checkout credentials, immutable approved Node setup, Node.js 22 pinning, bounded job timeouts, and tracked-source mutation checks.
 - Added fail-closed validator coverage for those workflow-integrity requirements. This CI hardening does not add qualification evidence, complete Section 46, promote V1.7, or change the V1.6 / 1.6.0 Official Anchor.
 

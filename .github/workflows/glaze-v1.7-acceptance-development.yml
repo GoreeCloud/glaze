@@ -42,11 +42,15 @@ jobs:
         run: |
           python -m json.tool contracts/v1.7/acceptance.dev.json >/dev/null
           python -m json.tool schemas/v1.7-acceptance.schema.json >/dev/null
+          python -m json.tool schemas/v1.7-qualification-evidence.schema.json >/dev/null
           python -m json.tool tokens/glaze-v1.7-acceptance.dev.json >/dev/null
+          python -m json.tool acceptance/v1.7-qualification-evidence.template.json >/dev/null
           node --check js/glaze-v1.7-acceptance.dev.mjs
           node --check js/glaze-v1.7-development.mjs
           node --check scripts/validate_glaze_v1_7_acceptance_development.mjs
+          node --check scripts/validate_glaze_v1_7_qualification_evidence.mjs
           node scripts/validate_glaze_v1_7_acceptance_development.mjs
+          node scripts/validate_glaze_v1_7_qualification_evidence.mjs
 
       - name: Verify validation did not mutate tracked source
         run: git diff --exit-code -- .

@@ -1,0 +1,34 @@
+{
+  "$schema": "../schemas/v1.7-qualification-evidence.schema.json",
+  "schemaVersion": 1,
+  "recordId": "goreecloud.glaze-ui.v1.7.qualification-evidence",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "REPLACE_WITH_FROZEN_V17_SOURCE_REVISION",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.6.0",
+  "applicability": {
+    "wearable": true,
+    "energy-behavior": true
+  },
+  "notApplicableJustifications": {},
+  "review": {
+    "reviewedAt": "REPLACE_WITH_ISO_8601_TIMESTAMP_WITH_TIMEZONE",
+    "reviewer": "REPLACE_WITH_AUTHORIZED_REVIEWER",
+    "reviewerRole": "REPLACE_WITH_REVIEWER_ROLE",
+    "scope": "REPLACE_WITH_REVIEW_SCOPE",
+    "representativeRevisionConfirmed": false,
+    "notes": "Template placeholder; not evidence."
+  },
+  "evidence": [],
+  "reviewDecision": "not-accepted",
+  "authority": {
+    "packetIsV17Acceptance": false,
+    "section46Complete": false,
+    "lifecyclePromotionAutomatic": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false
+  },
+  "boundary": "Fail-closed intake template only. Populate this packet only from real exact-revision machine, rendered, device, human, assistive-technology, performance, energy, and provenance observations. A complete packet can become ready for governed qualification review but never establishes V1.7 acceptance, Section 46 completion, Anchor, consumer, deployment, or production authority by itself."
+}
