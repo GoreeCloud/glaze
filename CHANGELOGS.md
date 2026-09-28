@@ -4,6 +4,10 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Hardened the V1.7 Section 46 acceptance-control workflow onto explicit Ubuntu 24.04 runners with exact-head verification, disabled persisted checkout credentials, immutable approved Node setup, Node.js 22 pinning, bounded job timeouts, and tracked-source mutation checks.
+- Added fail-closed validator coverage for those workflow-integrity requirements. This CI hardening does not add qualification evidence, complete Section 46, promote V1.7, or change the V1.6 / 1.6.0 Official Anchor.
+
+
 - Added bounded `1.7.0-dev.39` **V1.7 Acceptance Control** source for V1.7 v1.2 Section 46.
 - Enumerated all 37 planned V1.7 qualification dimensions with 35 required lanes and two conditional lanes: Wearable where claimed and Energy behavior where applicable.
 - Required exact-revision evidence references and complete evidence groups; missing, stale, mismatched, wrong-type, and partial evidence remains unverified instead of being inferred as passing.
