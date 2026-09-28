@@ -19,7 +19,7 @@ const AUTHORITY_FALSE_KEYS=[
   'packetIsV17Acceptance','section46Complete','lifecyclePromotionAutomatic','anchorStatusGranted',
   'consumerEligibilityGranted','deploymentAcceptanceGranted','productionAcceptanceGranted'
 ];
-const EVIDENCE_REFERENCE=/^evidence\\+sha256:([0-9a-f]{64}):(.{1,700})$/;
+const EVIDENCE_REFERENCE=/^evidence\+sha256:([0-9a-f]{64}):(.{1,700})$/;
 const EVIDENCE_LOCATOR=/^(?:[A-Za-z0-9._-][A-Za-z0-9._/-]*|[A-Za-z0-9._-]+:[A-Za-z0-9._-][A-Za-z0-9._/-]*)$/;
 
 function assert(value,message){if(!value)throw new Error(message);}
@@ -44,7 +44,7 @@ function evidenceReference(value,name){
   return value;
 }
 function timestamp(value,name){
-  assert(usable(value)&&value.length<=40&&/(?:Z|[+-]\\d{2}:\\d{2})$/.test(value),name+' must be a timezone-qualified timestamp');
+  assert(usable(value)&&value.length<=40&&/(?:Z|[+-]\d{2}:\d{2})$/.test(value),name+' must be a timezone-qualified timestamp');
   const milliseconds=Date.parse(value);
   assert(Number.isFinite(milliseconds),name+' must be a valid timestamp');
   return milliseconds;
