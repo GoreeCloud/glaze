@@ -3,7 +3,7 @@
   "officialBaseline": "1.6.0",
   "officialProductLabel": "GLAZE UI V1.6",
   "requiredConsumerVersion": "1.6.0",
-  "auditedAt": "2026-09-26",
+  "auditedAt": "2026-09-28",
   "statusVocabulary": [
     "adoption-required",
     "unverified",
@@ -125,14 +125,14 @@
     },
     {
       "name": "GoreeCloud Advanced Tab Manager",
-      "repository": "GoreeCloud/firefox-extensions",
-      "status": "adoption-required",
-      "targetVersion": null,
+      "repository": "GoreeCloud/firefox-addons",
+      "status": "accepted-v1",
+      "targetVersion": "1.6.0",
       "requiredTargetVersion": "1.6.0",
-      "referenceRevision": null,
-      "evidence": null,
+      "referenceRevision": "43f3010607550d7d4380353b97f85a4dd0186695",
+      "evidence": "acceptance/consumer-advanced-tab-manager-v1.6.0.json",
       "productionEligible": false,
-      "notes": "Advanced Tab Manager 0.1.12 source on GoreeCloud/firefox-extensions main d9761d6e046ef25f93f391a848e2dfc597c98498 has repository-local GLAZE UI V1.6 / 1.6.0 source mapping, but current-target rendered, assistive-technology, large-text/high-zoom, alternate-appearance/environmental, signing/restart, and governed product Stable acceptance remain incomplete. Accepted product Stable 0.1.11 retains historical V1.5.1 provenance."
+      "notes": "Advanced Tab Manager 0.1.12 completed repository-local GLAZE UI V1.6 / 1.6.0 rendered, keyboard, assistive-technology, alternate-appearance, large-text/reflow, and constrained-layout acceptance for exact reviewed runtime revision 43f3010607550d7d4380353b97f85a4dd0186695. Mozilla-signed parity plus persistent-install/full-restart acceptance passed in GoreeCloud/firefox-addons workflow run 36378135958. Glaze consumer acceptance does not grant product production eligibility or Stable lifecycle authority."
     },
     {
       "name": "GoreeCloud Security Center",
