@@ -188,7 +188,14 @@ assert.equal(consumers.officialProductLabel,'GLAZE UI V1.6');
 assert.ok(consumers.consumers.length>0);
 assert.ok(consumers.consumers.every(item=>item.requiredTargetVersion===VERSION));
 assert.ok(consumers.consumers.every(item=>item.productionEligible===false));
-assert.ok(consumers.consumers.every(item=>item.status==='adoption-required'||item.status==='unverified'));
+assert.ok(consumers.consumers.every(item=>['adoption-required','unverified','accepted-v1'].includes(item.status)));
+for(const item of consumers.consumers){
+  if(item.status==='accepted-v1'){
+    assert.equal(item.targetVersion,VERSION);
+    assert.match(item.referenceRevision,/^[0-9a-f]{40}$/);
+    assert.ok(typeof item.evidence==='string'&&item.evidence.length>0);
+  }
+}
 
 const sourcePaths=[
   'GLAZE_UI_V1_6_PLANNED.md',
