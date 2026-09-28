@@ -86,7 +86,16 @@
       ],
       "properties": {
         "reviewedAt": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "maxLength": 40
+            },
+            {
+              "const": "REPLACE_WITH_ISO_8601_TIMESTAMP_WITH_TIMEZONE"
+            }
+          ]
         },
         "reviewer": {
           "type": "string"
@@ -182,16 +191,24 @@
             ]
           },
           "reference": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^evidence\\\\+sha256:[0-9a-f]{64}:(?:[A-Za-z0-9._-][A-Za-z0-9._/-]*|[A-Za-z0-9._-]+:[A-Za-z0-9._-][A-Za-z0-9._/-]*)$",
+            "maxLength": 800
           },
           "finding": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
           },
           "observedAt": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time",
+            "maxLength": 40
           },
           "reviewer": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
           }
         }
       }
