@@ -1,0 +1,550 @@
+{
+  "$schema": "../../schemas/v1.7-acceptance.schema.json",
+  "schemaVersion": 1,
+  "contractId": "goreecloud.glaze-ui.v1.7.acceptance-control",
+  "name": "Glaze UI V1.7 Acceptance Control Development Contract",
+  "version": "1.7.0-dev.39",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [
+    46
+  ],
+  "qualification": {
+    "laneCount": 37,
+    "exactRevisionRequired": true,
+    "evidenceReferenceRequired": true,
+    "allEvidenceGroupsRequired": true,
+    "missingEvidenceMayInferPass": false,
+    "revisionMismatchMayPass": false,
+    "partialEvidenceGroupMayPass": false,
+    "automatedTestsAloneMayEstablishMotionAcceptance": false,
+    "matrixCompletionEqualsV17Acceptance": false,
+    "matrixCompletionEqualsLifecyclePromotion": false
+  },
+  "evidenceTypes": [
+    "machine",
+    "rendered",
+    "device",
+    "human",
+    "assistive-technology",
+    "performance",
+    "energy",
+    "provenance"
+  ],
+  "conditionalApplicabilityLanes": [
+    "wearable",
+    "energy-behavior"
+  ],
+  "lanes": [
+    {
+      "id": "task-continuity",
+      "label": "Task continuity",
+      "applicability": "required"
+    },
+    {
+      "id": "adaptive-composition",
+      "label": "Adaptive composition",
+      "applicability": "required"
+    },
+    {
+      "id": "semantic-color",
+      "label": "Semantic color",
+      "applicability": "required"
+    },
+    {
+      "id": "theme-safety",
+      "label": "Theme safety",
+      "applicability": "required"
+    },
+    {
+      "id": "custom-theme-accessibility",
+      "label": "Custom-theme accessibility",
+      "applicability": "required"
+    },
+    {
+      "id": "signature-motion",
+      "label": "Signature motion",
+      "applicability": "required"
+    },
+    {
+      "id": "connected-transformations",
+      "label": "Connected transformations",
+      "applicability": "required"
+    },
+    {
+      "id": "animation-interruption",
+      "label": "Animation interruption",
+      "applicability": "required"
+    },
+    {
+      "id": "animation-reversal",
+      "label": "Animation reversal",
+      "applicability": "required"
+    },
+    {
+      "id": "reduced-motion",
+      "label": "Reduced Motion",
+      "applicability": "required"
+    },
+    {
+      "id": "frame-pacing",
+      "label": "Frame pacing",
+      "applicability": "required"
+    },
+    {
+      "id": "input-latency",
+      "label": "Input latency",
+      "applicability": "required"
+    },
+    {
+      "id": "mobile",
+      "label": "Mobile",
+      "applicability": "required"
+    },
+    {
+      "id": "tablet",
+      "label": "Tablet",
+      "applicability": "required"
+    },
+    {
+      "id": "desktop",
+      "label": "Desktop",
+      "applicability": "required"
+    },
+    {
+      "id": "foldable",
+      "label": "Foldable",
+      "applicability": "required"
+    },
+    {
+      "id": "tv",
+      "label": "TV",
+      "applicability": "required"
+    },
+    {
+      "id": "wearable",
+      "label": "Wearable where claimed",
+      "applicability": "conditional"
+    },
+    {
+      "id": "keyboard",
+      "label": "Keyboard",
+      "applicability": "required"
+    },
+    {
+      "id": "pointer",
+      "label": "Pointer",
+      "applicability": "required"
+    },
+    {
+      "id": "touch",
+      "label": "Touch",
+      "applicability": "required"
+    },
+    {
+      "id": "alternative-input",
+      "label": "Alternative input",
+      "applicability": "required"
+    },
+    {
+      "id": "reduced-transparency",
+      "label": "Reduced Transparency",
+      "applicability": "required"
+    },
+    {
+      "id": "increased-contrast",
+      "label": "Increased Contrast",
+      "applicability": "required"
+    },
+    {
+      "id": "forced-colors",
+      "label": "Forced Colors",
+      "applicability": "required"
+    },
+    {
+      "id": "large-text",
+      "label": "Large text",
+      "applicability": "required"
+    },
+    {
+      "id": "rtl",
+      "label": "RTL",
+      "applicability": "required"
+    },
+    {
+      "id": "representative-rendering",
+      "label": "Representative rendering",
+      "applicability": "required"
+    },
+    {
+      "id": "native-behavior",
+      "label": "Native behavior",
+      "applicability": "required"
+    },
+    {
+      "id": "performance",
+      "label": "Performance",
+      "applicability": "required"
+    },
+    {
+      "id": "energy-behavior",
+      "label": "Energy behavior where applicable",
+      "applicability": "conditional"
+    },
+    {
+      "id": "regression",
+      "label": "Regression",
+      "applicability": "required"
+    },
+    {
+      "id": "human-visual-motion-review",
+      "label": "Human visual and motion review",
+      "applicability": "required"
+    },
+    {
+      "id": "assistive-technology",
+      "label": "Assistive technology",
+      "applicability": "required"
+    },
+    {
+      "id": "privacy-boundaries",
+      "label": "Privacy boundaries",
+      "applicability": "required"
+    },
+    {
+      "id": "security-boundaries",
+      "label": "Security boundaries",
+      "applicability": "required"
+    },
+    {
+      "id": "artifact-provenance",
+      "label": "Artifact provenance",
+      "applicability": "required"
+    }
+  ],
+  "evidenceRequirements": {
+    "task-continuity": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "adaptive-composition": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "device"
+      ]
+    ],
+    "semantic-color": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "theme-safety": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "custom-theme-accessibility": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human",
+        "assistive-technology"
+      ]
+    ],
+    "signature-motion": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "connected-transformations": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "animation-interruption": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "animation-reversal": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "reduced-motion": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "frame-pacing": [
+      [
+        "performance"
+      ]
+    ],
+    "input-latency": [
+      [
+        "performance"
+      ]
+    ],
+    "mobile": [
+      [
+        "device"
+      ],
+      [
+        "rendered"
+      ]
+    ],
+    "tablet": [
+      [
+        "device"
+      ],
+      [
+        "rendered"
+      ]
+    ],
+    "desktop": [
+      [
+        "device"
+      ],
+      [
+        "rendered"
+      ]
+    ],
+    "foldable": [
+      [
+        "device"
+      ],
+      [
+        "rendered"
+      ]
+    ],
+    "tv": [
+      [
+        "device"
+      ],
+      [
+        "rendered"
+      ]
+    ],
+    "wearable": [
+      [
+        "device"
+      ],
+      [
+        "rendered"
+      ]
+    ],
+    "keyboard": [
+      [
+        "machine"
+      ],
+      [
+        "human"
+      ]
+    ],
+    "pointer": [
+      [
+        "machine"
+      ],
+      [
+        "human"
+      ]
+    ],
+    "touch": [
+      [
+        "device"
+      ],
+      [
+        "human"
+      ]
+    ],
+    "alternative-input": [
+      [
+        "assistive-technology"
+      ],
+      [
+        "human"
+      ]
+    ],
+    "reduced-transparency": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "increased-contrast": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "forced-colors": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "large-text": [
+      [
+        "machine"
+      ],
+      [
+        "rendered",
+        "human"
+      ]
+    ],
+    "rtl": [
+      [
+        "machine"
+      ],
+      [
+        "rendered"
+      ]
+    ],
+    "representative-rendering": [
+      [
+        "rendered"
+      ],
+      [
+        "human"
+      ]
+    ],
+    "native-behavior": [
+      [
+        "device"
+      ],
+      [
+        "human"
+      ]
+    ],
+    "performance": [
+      [
+        "performance"
+      ]
+    ],
+    "energy-behavior": [
+      [
+        "energy"
+      ],
+      [
+        "device"
+      ]
+    ],
+    "regression": [
+      [
+        "machine"
+      ],
+      [
+        "rendered"
+      ]
+    ],
+    "human-visual-motion-review": [
+      [
+        "human"
+      ]
+    ],
+    "assistive-technology": [
+      [
+        "assistive-technology"
+      ]
+    ],
+    "privacy-boundaries": [
+      [
+        "machine"
+      ],
+      [
+        "human"
+      ]
+    ],
+    "security-boundaries": [
+      [
+        "machine"
+      ],
+      [
+        "human"
+      ]
+    ],
+    "artifact-provenance": [
+      [
+        "provenance"
+      ]
+    ]
+  },
+  "authority": {
+    "boundary": "qualification-control-only",
+    "evidenceManufactured": false,
+    "staleEvidenceAccepted": false,
+    "mismatchedRevisionAccepted": false,
+    "unsupportedNotApplicableAccepted": false,
+    "lifecyclePromotionAutomatic": false,
+    "stableStatusGranted": false,
+    "v17AcceptanceGranted": false,
+    "consumerAcceptanceAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "acceptanceBoundary": {
+    "sourceFrameworkOnly": true,
+    "section46Complete": false,
+    "qualificationEvidenceAccepted": false,
+    "humanReviewRequired": true,
+    "securityAcceptanceSeparate": true,
+    "lifecyclePromotionSeparate": true,
+    "releasePublicationSeparate": true,
+    "downstreamConsumerAcceptanceAutomatic": false
+  },
+  "runtimeEntrypoint": "js/glaze-v1.7-acceptance.dev.mjs",
+  "developmentAggregateEntrypoint": "js/glaze-v1.7-development.mjs",
+  "tokenMap": "tokens/glaze-v1.7-acceptance.dev.json",
+  "acceptanceRecord": "acceptance/v1.7-development.md",
+  "boundary": "Development qualification-control source only. It enumerates the planned Section 46 evidence matrix and evaluates supplied exact-revision evidence without manufacturing evidence or granting V1.7 acceptance, lifecycle promotion, consumer eligibility, deployment acceptance, or production acceptance."
+}

@@ -4,6 +4,14 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.39` **V1.7 Acceptance Control** source for V1.7 v1.2 Section 46.
+- Enumerated all 37 planned V1.7 qualification dimensions with 35 required lanes and two conditional lanes: Wearable where claimed and Energy behavior where applicable.
+- Required exact-revision evidence references and complete evidence groups; missing, stale, mismatched, wrong-type, and partial evidence remains unverified instead of being inferred as passing.
+- Required separate rendered/human evidence for motion-related qualification so automated tests alone cannot establish complete motion acceptance.
+- Restricted not-applicable dispositions to the two explicitly conditional lanes and require specific justification; required qualification lanes cannot be disabled.
+- Added a Development acceptance record and a fail-closed matrix evaluator that can report evidence inventory completeness and readiness for governed review but cannot grant V1.7 acceptance, lifecycle promotion, consumer eligibility, deployment acceptance, or production acceptance.
+- Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.39`; Section 46 remains incomplete and V1.6 / `1.6.0` remains Official Anchor.
+
 - Added bounded `1.7.0-dev.38` **Performance and Energy Awareness** source for V1.7 v1.2 Section 45.
 - Reused Motion Performance dev.25 as the single authority for runtime-pressure, power-saving, thermal, hardware, refresh, performance-degraded, visibility, fatigue-budget, and Reduced Motion constraints rather than creating a second performance signal system.
 - Added deterministic visual-complexity degradation across themes, materials, motion, adaptive transitions, decoration, and optional background visual work while preserving task continuity, accessibility, responsiveness, semantic state, provider truth, protected semantic color meaning, theme identity, material hierarchy meaning, and direct manipulation.

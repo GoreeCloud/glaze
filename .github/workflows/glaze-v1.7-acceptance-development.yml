@@ -1,0 +1,48 @@
+name: Glaze UI V1.7 Acceptance Control Development
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acceptance-control:
+    name: Validate V1.7 Section 46 acceptance-control source
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Validate Section 46 source foundation
+        run: |
+          python -m json.tool contracts/v1.7/acceptance.dev.json >/dev/null
+          python -m json.tool schemas/v1.7-acceptance.schema.json >/dev/null
+          python -m json.tool tokens/glaze-v1.7-acceptance.dev.json >/dev/null
+          node --check js/glaze-v1.7-acceptance.dev.mjs
+          node --check js/glaze-v1.7-development.mjs
+          node --check scripts/validate_glaze_v1_7_acceptance_development.mjs
+          node scripts/validate_glaze_v1_7_acceptance_development.mjs
+  retained-v1-7-boundaries:
+    name: Preserve Section 45, privacy, accessibility, and motion boundaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: node scripts/validate_glaze_v1_7_performance_energy_awareness_development.mjs
+      - run: node scripts/validate_glaze_v1_7_privacy_authority_boundaries_development.mjs
+      - run: node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs
+      - run: node scripts/validate_glaze_v1_7_signature_motion_system_development.mjs
+  v1-6-anchor:
+    name: Preserve GLAZE UI V1.6 Anchor authority
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
+      - run: node scripts/verify_glaze_v1_6_stable.mjs

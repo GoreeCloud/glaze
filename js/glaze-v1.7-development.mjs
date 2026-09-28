@@ -42,9 +42,10 @@ export * from './glaze-v1.7-cross-device-consistency.dev.mjs';
 export * from './glaze-v1.7-visual-motion-direction.dev.mjs';
 export * from './glaze-v1.7-privacy-authority-boundaries.dev.mjs';
 export * from './glaze-v1.7-performance-energy-awareness.dev.mjs';
+export * from './glaze-v1.7-acceptance.dev.mjs';
 
 export const glazeV17Development = Object.freeze({
-  version: '1.7.0-dev.38',
+  version: '1.7.0-dev.39',
   lifecycle: 'development',
   stableBaseline: '1.6.0',
   consumerEligible: false,
@@ -53,7 +54,7 @@ export const glazeV17Development = Object.freeze({
   planVersion: 'v1.2',
   planV12ThemeSystemFoundationSections: Object.freeze([6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]),
   planV11FoundationSections: Object.freeze([7, 8, 9, 10, 11, 12, 13, 18, 19, 21, 24, 25, 26, 27, 28]),
-  planV12FoundationSections: Object.freeze([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]),
+  planV12FoundationSections: Object.freeze([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]),
   taskContinuityFoundation: 'js/glaze-v1.7-task-continuity.dev.mjs',
   adaptiveInputFoundation: 'js/glaze-v1.7-adaptive-input.dev.mjs',
   formFactorProfilesFoundation: 'js/glaze-v1.7-form-factor-profiles.dev.mjs',
@@ -109,6 +110,8 @@ export const glazeV17Development = Object.freeze({
   privacyAuthorityBoundariesResearchRecord: 'research/v1.7-privacy-authority-boundaries.md',
   performanceEnergyAwarenessFoundation: 'js/glaze-v1.7-performance-energy-awareness.dev.mjs',
   performanceEnergyAwarenessResearchRecord: 'research/v1.7-performance-energy-awareness.md',
+  acceptanceFoundation: 'js/glaze-v1.7-acceptance.dev.mjs',
+  acceptanceRecord: 'acceptance/v1.7-development.md',
   glazeMotionExperimentalLifecyclePromoted: false,
   presentationOnly: true,
   accessibilityPrecedence: true,

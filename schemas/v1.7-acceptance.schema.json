@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze-ui/v1.7-acceptance.schema.json",
+  "title": "Glaze UI V1.7 Acceptance Control Development Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "contractId",
+    "name",
+    "version",
+    "lifecycle",
+    "stableBaseline",
+    "consumerEligible",
+    "planVersion",
+    "v12SpecificationSections",
+    "qualification",
+    "evidenceTypes",
+    "conditionalApplicabilityLanes",
+    "lanes",
+    "evidenceRequirements",
+    "authority",
+    "acceptanceBoundary",
+    "runtimeEntrypoint",
+    "developmentAggregateEntrypoint",
+    "tokenMap",
+    "acceptanceRecord",
+    "boundary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../../schemas/v1.7-acceptance.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "contractId": {
+      "const": "goreecloud.glaze-ui.v1.7.acceptance-control"
+    },
+    "name": {
+      "const": "Glaze UI V1.7 Acceptance Control Development Contract"
+    },
+    "version": {
+      "const": "1.7.0-dev.39"
+    },
+    "lifecycle": {
+      "const": "Development"
+    },
+    "stableBaseline": {
+      "const": "1.6.0"
+    },
+    "consumerEligible": {
+      "const": false
+    },
+    "planVersion": {
+      "const": "v1.2"
+    },
+    "v12SpecificationSections": {
+      "const": [
+        46
+      ]
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "laneCount",
+        "exactRevisionRequired",
+        "evidenceReferenceRequired",
+        "allEvidenceGroupsRequired",
+        "missingEvidenceMayInferPass",
+        "revisionMismatchMayPass",
+        "partialEvidenceGroupMayPass",
+        "automatedTestsAloneMayEstablishMotionAcceptance",
+        "matrixCompletionEqualsV17Acceptance",
+        "matrixCompletionEqualsLifecyclePromotion"
+      ],
+      "properties": {
+        "laneCount": {
+          "const": 37
+        },
+        "exactRevisionRequired": {
+          "const": true
+        },
+        "evidenceReferenceRequired": {
+          "const": true
+        },
+        "allEvidenceGroupsRequired": {
+          "const": true
+        },
+        "missingEvidenceMayInferPass": {
+          "const": false
+        },
+        "revisionMismatchMayPass": {
+          "const": false
+        },
+        "partialEvidenceGroupMayPass": {
+          "const": false
+        },
+        "automatedTestsAloneMayEstablishMotionAcceptance": {
+          "const": false
+        },
+        "matrixCompletionEqualsV17Acceptance": {
+          "const": false
+        },
+        "matrixCompletionEqualsLifecyclePromotion": {
+          "const": false
+        }
+      }
+    },
+    "evidenceTypes": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "conditionalApplicabilityLanes": {
+      "const": [
+        "wearable",
+        "energy-behavior"
+      ]
+    },
+    "lanes": {
+      "type": "array",
+      "minItems": 37,
+      "maxItems": 37,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "applicability"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "applicability": {
+            "enum": [
+              "required",
+              "conditional"
+            ]
+          }
+        }
+      }
+    },
+    "evidenceRequirements": {
+      "type": "object",
+      "minProperties": 37,
+      "maxProperties": 37
+    },
+    "authority": {
+      "type": "object",
+      "minProperties": 10
+    },
+    "acceptanceBoundary": {
+      "type": "object",
+      "minProperties": 8
+    },
+    "runtimeEntrypoint": {
+      "const": "js/glaze-v1.7-acceptance.dev.mjs"
+    },
+    "developmentAggregateEntrypoint": {
+      "const": "js/glaze-v1.7-development.mjs"
+    },
+    "tokenMap": {
+      "const": "tokens/glaze-v1.7-acceptance.dev.json"
+    },
+    "acceptanceRecord": {
+      "const": "acceptance/v1.7-development.md"
+    },
+    "boundary": {
+      "type": "string",
+      "minLength": 40
+    }
+  }
+}

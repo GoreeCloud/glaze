@@ -1,0 +1,226 @@
+{
+  "version": "1.7.0-dev.39",
+  "lifecycle": "Development",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.2",
+  "v12SpecificationSections": [
+    46
+  ],
+  "qualification": {
+    "laneCount": 37,
+    "requiredLaneCount": 35,
+    "conditionalLaneCount": 2,
+    "conditionalApplicabilityLanes": [
+      "wearable",
+      "energy-behavior"
+    ],
+    "evidenceTypes": [
+      "machine",
+      "rendered",
+      "device",
+      "human",
+      "assistive-technology",
+      "performance",
+      "energy",
+      "provenance"
+    ],
+    "exactRevisionRequired": true,
+    "allEvidenceGroupsRequired": true,
+    "automatedTestsAloneMayEstablishMotionAcceptance": false
+  },
+  "lanes": [
+    {
+      "id": "task-continuity",
+      "label": "Task continuity",
+      "applicability": "required"
+    },
+    {
+      "id": "adaptive-composition",
+      "label": "Adaptive composition",
+      "applicability": "required"
+    },
+    {
+      "id": "semantic-color",
+      "label": "Semantic color",
+      "applicability": "required"
+    },
+    {
+      "id": "theme-safety",
+      "label": "Theme safety",
+      "applicability": "required"
+    },
+    {
+      "id": "custom-theme-accessibility",
+      "label": "Custom-theme accessibility",
+      "applicability": "required"
+    },
+    {
+      "id": "signature-motion",
+      "label": "Signature motion",
+      "applicability": "required"
+    },
+    {
+      "id": "connected-transformations",
+      "label": "Connected transformations",
+      "applicability": "required"
+    },
+    {
+      "id": "animation-interruption",
+      "label": "Animation interruption",
+      "applicability": "required"
+    },
+    {
+      "id": "animation-reversal",
+      "label": "Animation reversal",
+      "applicability": "required"
+    },
+    {
+      "id": "reduced-motion",
+      "label": "Reduced Motion",
+      "applicability": "required"
+    },
+    {
+      "id": "frame-pacing",
+      "label": "Frame pacing",
+      "applicability": "required"
+    },
+    {
+      "id": "input-latency",
+      "label": "Input latency",
+      "applicability": "required"
+    },
+    {
+      "id": "mobile",
+      "label": "Mobile",
+      "applicability": "required"
+    },
+    {
+      "id": "tablet",
+      "label": "Tablet",
+      "applicability": "required"
+    },
+    {
+      "id": "desktop",
+      "label": "Desktop",
+      "applicability": "required"
+    },
+    {
+      "id": "foldable",
+      "label": "Foldable",
+      "applicability": "required"
+    },
+    {
+      "id": "tv",
+      "label": "TV",
+      "applicability": "required"
+    },
+    {
+      "id": "wearable",
+      "label": "Wearable where claimed",
+      "applicability": "conditional"
+    },
+    {
+      "id": "keyboard",
+      "label": "Keyboard",
+      "applicability": "required"
+    },
+    {
+      "id": "pointer",
+      "label": "Pointer",
+      "applicability": "required"
+    },
+    {
+      "id": "touch",
+      "label": "Touch",
+      "applicability": "required"
+    },
+    {
+      "id": "alternative-input",
+      "label": "Alternative input",
+      "applicability": "required"
+    },
+    {
+      "id": "reduced-transparency",
+      "label": "Reduced Transparency",
+      "applicability": "required"
+    },
+    {
+      "id": "increased-contrast",
+      "label": "Increased Contrast",
+      "applicability": "required"
+    },
+    {
+      "id": "forced-colors",
+      "label": "Forced Colors",
+      "applicability": "required"
+    },
+    {
+      "id": "large-text",
+      "label": "Large text",
+      "applicability": "required"
+    },
+    {
+      "id": "rtl",
+      "label": "RTL",
+      "applicability": "required"
+    },
+    {
+      "id": "representative-rendering",
+      "label": "Representative rendering",
+      "applicability": "required"
+    },
+    {
+      "id": "native-behavior",
+      "label": "Native behavior",
+      "applicability": "required"
+    },
+    {
+      "id": "performance",
+      "label": "Performance",
+      "applicability": "required"
+    },
+    {
+      "id": "energy-behavior",
+      "label": "Energy behavior where applicable",
+      "applicability": "conditional"
+    },
+    {
+      "id": "regression",
+      "label": "Regression",
+      "applicability": "required"
+    },
+    {
+      "id": "human-visual-motion-review",
+      "label": "Human visual and motion review",
+      "applicability": "required"
+    },
+    {
+      "id": "assistive-technology",
+      "label": "Assistive technology",
+      "applicability": "required"
+    },
+    {
+      "id": "privacy-boundaries",
+      "label": "Privacy boundaries",
+      "applicability": "required"
+    },
+    {
+      "id": "security-boundaries",
+      "label": "Security boundaries",
+      "applicability": "required"
+    },
+    {
+      "id": "artifact-provenance",
+      "label": "Artifact provenance",
+      "applicability": "required"
+    }
+  ],
+  "authority": {
+    "evidenceManufactured": false,
+    "missingEvidenceMayInferPass": false,
+    "matrixCompletionEqualsV17Acceptance": false,
+    "lifecyclePromotionAutomatic": false,
+    "consumerEligibilityAutomatic": false
+  }
+}
