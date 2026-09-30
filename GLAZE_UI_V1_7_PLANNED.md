@@ -1064,7 +1064,7 @@ The existing Signature Motion families — Bloom, Flow, Lift, Veil, Fold, Trace,
 
 The objective is not "more glass," "more animation," or "more AI." The objective is a system that feels **more alive, more personal, more capable, more understandable, and more continuous** while remaining controlled, accessible, performant, private, and truthful.
 
-Section 48 is planned-only. Existing dev.39 Section 46 acceptance control does not automatically cover or accept these new requirements; applicable acceptance must be extended before V1.7 lifecycle promotion.
+Section 48 is partially implemented in bounded Development source. `1.7.0-dev.40` implements the Expression System Core (Semantic Geometry, visual scale/emphasis, Expressive Typography, Semantic Containment, Component Expression, and Expression Resolution). `1.7.0-dev.41` implements the first provider-driven adaptive surfaces: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center. Glaze Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, and Care Surface remain planned. No dev.40/dev.41 source tranche establishes Section 48 completion or acceptance, and existing dev.39 Section 46 acceptance control does not automatically cover or accept v1.3 requirements; applicable acceptance must be extended before V1.7 lifecycle promotion.
 
 ## Final Direction
 
