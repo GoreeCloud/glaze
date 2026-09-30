@@ -4,7 +4,7 @@
 **Project type:** Shared GoreeCloud visual, interaction, accessibility, adaptive-presentation, and component design system  
 **Current Official Stable:** GLAZE UI V1.6 / `1.6.0`  
 **Immediate Stable rollback:** `1.5.1`  
-**Current Development line:** GLAZE UI V1.7 / frozen v1.2 aggregate `1.7.0-dev.39` / latest bounded v1.3 source tranche `1.7.0-dev.41`  
+**Current Development line:** GLAZE UI V1.7 / frozen v1.2 aggregate `1.7.0-dev.39` / current bounded v1.3 aggregate `1.7.0-dev.41`  
 **Migration baseline:** `8e8d37886692cada9ebbaf5c5c17783a96c93892`  
 **Canonical lifecycle authority:** `registry/lifecycle.json`  
 **Canonical machine version:** `VERSION`  
