@@ -1,0 +1,18 @@
+{
+  "id":"goreecloud.glaze-ui.v1.7.expression-system-core",
+  "version":"1.7.0-dev.40",
+  "lifecycle":"Development",
+  "stableBaseline":"1.6.0",
+  "consumerEligible":false,
+  "planVersion":"v1.3",
+  "section":48,
+  "requirementGroup":"expression-system-core",
+  "capabilities":["semantic-geometry","visual-scale-emphasis","expressive-typography","semantic-containment","component-expression","expression-resolution"],
+  "rawDesignValuesAccepted":false,
+  "visualProminenceEstablishesSemanticSeverity":false,
+  "personalizationMayChangeExpression":true,
+  "personalizationMayChangeTruth":false,
+  "adaptiveExperienceSurfacesImplemented":false,
+  "section48Complete":false,
+  "runtime":"js/glaze-v1.7-expression-system.dev.mjs"
+}
