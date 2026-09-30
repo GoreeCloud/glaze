@@ -9,6 +9,7 @@ import {
   glazeV17ProviderAdaptiveSurfacesDevelopmentContract
 } from '../js/glaze-v1.7-provider-adaptive-surfaces.dev.mjs';
 import {glazeV17V13Development} from '../js/glaze-v1.7-development-v1-3.dev.mjs';
+import {glazeV17V13Development} from '../js/glaze-v1.7-development-v1-3.dev.mjs';
 
 const root=new URL('../',import.meta.url);
 const read=p=>readFileSync(new URL(p,root),'utf8');
@@ -25,8 +26,13 @@ assert(manifest.planVersion==='v1.3'&&manifest.section===48,'manifest plan bindi
 assert(manifest.consumerEligible===false&&manifest.stableBaseline==='1.6.0','manifest lifecycle boundary weakened');
 assert(manifest.expressionSystemDependency==='1.7.0-dev.40','dev.40 dependency missing');
 assert(manifest.section48Complete===false,'manifest overclaims Section 48');
+assert(manifest.developmentAggregate==='js/glaze-v1.7-development-v1-3.dev.mjs','manifest aggregate binding missing');
+assert(manifest.priorV12AggregateVersion==='1.7.0-dev.39','manifest rewrites v1.2 aggregate provenance');
 assert(glazeV17ProviderAdaptiveSurfacesDevelopmentContract.version==='1.7.0-dev.41','runtime contract mismatch');
 assert(glazeV17ProviderAdaptiveSurfacesDevelopmentContract.section48Complete===false,'runtime contract overclaims Section 48');
+assert(glazeV17V13Development.version==='1.7.0-dev.41'&&glazeV17V13Development.planVersion==='v1.3','v1.3 aggregate mismatch');
+assert(glazeV17V13Development.priorAggregateVersion==='1.7.0-dev.39'&&glazeV17V13Development.priorAggregatePlanVersion==='v1.2','v1.2 aggregate provenance changed');
+assert(glazeV17V13Development.acceptanceControlAutomaticallyCoversV13===false,'v1.3 acceptance inferred from dev.39');
 assert(glazeV17V13Development.version==='1.7.0-dev.41','v1.3 aggregate version mismatch');
 assert(glazeV17V13Development.priorAggregateVersion==='1.7.0-dev.39','frozen v1.2 aggregate provenance changed');
 assert(glazeV17V13Development.expressionSystemCoreVersion==='1.7.0-dev.40','dev.40 expression dependency missing from v1.3 aggregate');
