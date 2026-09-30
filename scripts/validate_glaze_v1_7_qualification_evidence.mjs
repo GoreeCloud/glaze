@@ -100,7 +100,10 @@ export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}
       assert(typeof justifications[id]==='string'&&justifications[id].trim().length>=20,'not-applicable lane requires a specific justification: '+id);
     }
   }
-  for(const id of Object.keys(justifications))assert(conditionalIds.has(id),'unknown not-applicable justification lane: '+id);
+  for(const [id,value] of Object.entries(justifications)){
+    assert(conditionalIds.has(id),'unknown not-applicable justification lane: '+id);
+    assert(typeof value==='string','not-applicable justification must be a string: '+id);
+  }
 
   assert(Array.isArray(record.evidence)&&record.evidence.length<=2000,'packet evidence must be a bounded array');
   const coreEvidence=[];
@@ -301,7 +304,11 @@ assertThrows(()=>validateGlazeV17QualificationPacket(schemeLikeReference),/crede
 for(const unsafeLocator of [
   'C:/qualification/evidence.json',
   'file:qualification/evidence.json',
-  'https:qualification/evidence.json'
+  'https:qualification/evidence.json',
+  'v1.7/../qualification/evidence.json',
+  'v1.7/./qualification/evidence.json',
+  'v1.7//qualification/evidence.json',
+  'v1.7/qualification/'
 ]){
   const unsafeSchemaReference='evidence+sha256:'+('f'.repeat(64))+':'+unsafeLocator;
   assert(!schemaEvidencePattern.test(unsafeSchemaReference),'qualification evidence schema must reject unsafe locator: '+unsafeLocator);
@@ -331,6 +338,11 @@ assertThrows(()=>validateGlazeV17QualificationPacket(extraReviewField),/packet r
 const extraEvidenceField=clone(fixture);
 extraEvidenceField.evidence[0].unexpected='value';
 assertThrows(()=>validateGlazeV17QualificationPacket(extraEvidenceField),/qualification evidence item contains unsupported key/);
+
+const nonStringJustification=clone(fixture);
+nonStringJustification.applicability.wearable=true;
+nonStringJustification.notApplicableJustifications.wearable=123;
+assertThrows(()=>validateGlazeV17QualificationPacket(nonStringJustification),/not-applicable justification must be a string/);
 
 const malformedUnverified=clone(fixture);
 malformedUnverified.evidence[0].verified=false;
