@@ -1090,6 +1090,6 @@ Glaze UI should have transitions that users can recognize as distinctly GoreeClo
 
 The defining qualities of Glaze UI V1.7 should therefore be:
 
-**Continuous. Adaptive. Expressive. Context-aware. Capable. Fluid. Accessible. Semantic. Native. Truthful.**
+**Continuous. Adaptive. Expressive. Fluid. Accessible. Semantic. Native. Truthful.**
 
 .
