@@ -9,7 +9,6 @@ import {
   glazeV17ProviderAdaptiveSurfacesDevelopmentContract
 } from '../js/glaze-v1.7-provider-adaptive-surfaces.dev.mjs';
 import {glazeV17V13Development} from '../js/glaze-v1.7-development-v1-3.dev.mjs';
-import {glazeV17V13Development} from '../js/glaze-v1.7-development-v1-3.dev.mjs';
 
 const root=new URL('../',import.meta.url);
 const read=p=>readFileSync(new URL(p,root),'utf8');
