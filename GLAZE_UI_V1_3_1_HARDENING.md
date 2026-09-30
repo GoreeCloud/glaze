@@ -1,17 +1,17 @@
 # GLAZE UI V1.3.1 — Accessibility, Interaction + Qualification Hardening
 
-**Status:** Active follow-up hardening  
-**Lifecycle authority:** Separate future patch decision  
-**Current Stable:** GLAZE UI V1.3 — Adaptive Resonance / `1.3.0`  
-**Current Stable consumer eligibility:** Yes  
-**V1.3.1 consumer eligibility:** No until separately released  
-**Source line:** Official GLAZE UI V1.3 / `1.3.0` Stable
+**Status:** Historical superseded hardening track  
+**Lifecycle authority:** No separate V1.3.1 release was promoted; retained as historical development provenance  
+**Historical baseline:** GLAZE UI V1.3 — Adaptive Resonance / `1.3.0` Stable  
+**Superseded release path:** V1.4.0 and V1.4.1 Stable; later V1.5.x releases; current V1.6 / `1.6.0` Anchor  
+**V1.3.1 consumer eligibility:** Never separately promoted  
+**Current lifecycle authority:** `registry/lifecycle.json`
 
-V1.3.1 is the governed follow-up track for hardening work that should not hold GLAZE UI V1.3.0 back from being Official, Stable, and consumer-eligible. It strengthens the released V1.3 line without rewriting V1.3.0 evidence history or pretending unfinished human/manual/physical-device work has passed.
+V1.3.1 was the governed follow-up track for hardening work that was intentionally kept separate from the V1.3.0 release. The separate V1.3.1 patch was not promoted as a release. This file is retained as historical development and qualification provenance; it is not an active lifecycle or consumer-target authority, and later release records govern current acceptance and rollout state.
 
 ## Owner-directed carry-forward scope
 
-The following workstreams were previously treated as V1.3 lifecycle blockers and are now V1.3.1 obligations:
+The following workstreams were originally transferred from V1.3 lifecycle blockers into the V1.3.1 follow-up track:
 
 1. Human optical, visual-finish, and icon/artwork collision qualification, including all V1.3 quality rules.
 2. Manual assistive-technology sessions for the support matrix actually claimed.
@@ -20,7 +20,7 @@ The following workstreams were previously treated as V1.3 lifecycle blockers and
 5. Native Personalization persistence, system-appearance, wallpaper-source, and fallback adapter qualification where claimed.
 6. Stable activation/source-namespace cleanup with migration, equivalence, import-closure, and rollback hardening.
 
-These obligations remain unresolved until real evidence exists. Their transfer to V1.3.1 is a release-scope decision, not an evidence pass.
+Their historical transfer into V1.3.1 was a release-scope decision, not an evidence pass. Current completion and lifecycle authority for equivalent or successor requirements comes only from the later qualified release records; this historical list must not be read as a current V1.3.1 backlog.
 
 ## Accessibility and interaction hardening slice
 
@@ -51,12 +51,13 @@ The first implemented V1.3.1 slice makes the interaction layer explicit and mach
 
 Automated checks establish implementation contracts and reference behavior only. They do not establish human optical acceptance, screen-reader acceptance, switch/voice acceptance, physical-device acceptance, native-platform parity, production-performance acceptance, or downstream consumer conformance.
 
-V1.3.0 remains Official Stable while V1.3.1 hardening proceeds. V1.3.1 requires its own future lifecycle decision before it becomes a Stable consumer target.
+Historically, V1.3.0 remained Official Stable while this follow-up work was explored. V1.3.1 was never separately promoted as a Stable consumer target; later release lines superseded this track.
 
 ## Release relationship
 
-- V1.3.0: current Official/Stable/consumer-eligible release.
-- V1.3.1: active hardening and deferred-qualification follow-up.
-- V1.2.0: retained historical Stable rollback baseline.
+- V1.3.0: historical Stable release.
+- V1.3.1: historical unpromoted hardening/deferred-qualification track.
+- V1.4.0 / V1.4.1 and later releases: superseding governed release path.
+- V1.6 / `1.6.0`: current Official Anchor authority.
 
-No V1.3.1 artifact may silently replace the V1.3.0 Stable entrypoints before a separate governed V1.3.1 release action.
+No V1.3.1 artifact or historical wording may be interpreted as current lifecycle authority or as replacing the release state in `registry/lifecycle.json`.
