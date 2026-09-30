@@ -273,6 +273,10 @@ const wrongType=clone(fixture);
 wrongType.evidence[0].evidenceType='energy';
 assertThrows(()=>validateGlazeV17QualificationPacket(wrongType),/not allowed/);
 
+assert(
+  evidenceSchema.properties.sourceRevision.oneOf[0].type==='string',
+  'qualification evidence schema exact sourceRevision branch must require a string'
+);
 const schemaEvidencePattern=new RegExp(evidenceSchema.properties.evidence.items.properties.reference.pattern);
 const safeSchemaReference='evidence+sha256:'+('e'.repeat(64))+':v1.7/schema-parity/reference.json';
 evidenceReference(safeSchemaReference,'schema parity reference');
@@ -310,6 +314,11 @@ assertThrows(()=>validateGlazeV17QualificationPacket(timezoneLessObservation),/t
 const postReviewObservation=clone(fixture);
 postReviewObservation.evidence[0].observedAt='2026-09-28T14:00:01Z';
 assertThrows(()=>validateGlazeV17QualificationPacket(postReviewObservation),/cannot postdate packet review/);
+
+
+const nonStringSourceRevision=clone(fixture);
+nonStringSourceRevision.sourceRevision=123;
+assertThrows(()=>validateGlazeV17QualificationPacket(nonStringSourceRevision),/frozen exact V1\.7 source revision/);
 
 const extraTopLevel=clone(fixture);
 extraTopLevel.unexpected=true;
