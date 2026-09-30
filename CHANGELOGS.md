@@ -4,6 +4,12 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+
+- Advanced the planned V1.7 specification to **v1.3** with the theme **Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion**.
+- Added the planned Glaze Expression System and detailed expression/adaptive-intelligence supplement under `docs/v1.7/`, covering Semantic Geometry, visual scale/emphasis, Expressive Typography, Semantic Containment, Component Expression, Expression Resolution, Contextual Actions, Brief, Control Center, Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, and Care Surface.
+- Preserved the existing Signature Motion vocabulary and explicitly retained accessibility precedence, graceful performance/thermal/power/energy degradation, provider-owned truth boundaries, and the rule that personalization may change expression but must not change truth.
+- Kept all existing dev.1–dev.39 provenance intact. This documentation change does not claim Section 48 implementation or acceptance and does not change V1.6 / `1.6.0` Official Anchor authority, consumer eligibility, deployment, or production status.
+
 - Aligned the V1.7 qualification packet runtime validator with the closed JSON Schema structure: exact packet/review/evidence/authority fields are enforced, unsupported fields fail closed, and unverified evidence can no longer carry malformed references, timestamps, findings, or reviewer metadata that the schema would reject.
 - Added regression coverage for unknown packet/review/evidence fields and malformed unverified evidence. This hardening creates no qualification evidence and grants no lifecycle, Anchor, consumer, deployment, or production authority.
 
