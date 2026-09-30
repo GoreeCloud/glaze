@@ -11,6 +11,7 @@ const read=rel=>fs.readFileSync(path.isAbsolute(rel)?rel:path.join(root,rel),'ut
 const json=rel=>JSON.parse(read(rel));
 const contract=json('contracts/v1.7/acceptance.dev.json');
 const template=json('acceptance/v1.7-qualification-evidence.template.json');
+const evidenceSchema=json('schemas/v1.7-qualification-evidence.schema.json');
 const laneIds=new Set(contract.lanes.map(x=>x.id));
 const conditionalIds=new Set(contract.conditionalApplicabilityLanes);
 const requirements=new Map(Object.entries(contract.evidenceRequirements));
@@ -238,6 +239,11 @@ assertThrows(()=>validateGlazeV17QualificationPacket(wrongRevision),/revision mi
 const wrongType=clone(fixture);
 wrongType.evidence[0].evidenceType='energy';
 assertThrows(()=>validateGlazeV17QualificationPacket(wrongType),/not allowed/);
+
+const schemaEvidencePattern=new RegExp(evidenceSchema.properties.evidence.items.properties.reference.pattern);
+const safeSchemaReference='evidence+sha256:'+('e'.repeat(64))+':v1.7/schema-parity/reference.json';
+evidenceReference(safeSchemaReference,'schema parity reference');
+assert(schemaEvidencePattern.test(safeSchemaReference),'qualification evidence schema must accept the same canonical evidence+sha256 reference as the runtime validator');
 
 const unsafeReference=clone(fixture);
 unsafeReference.evidence[0].reference='evidence+sha256:'+('f'.repeat(64))+':https://example.test/evidence?token=secret';
