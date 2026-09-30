@@ -501,7 +501,7 @@ export function resolveGlazeControl(input={}){
     }),
     presentation:Object.freeze({
       expression,
-      enabled:provider.complete&&available,
+      enabled:ready,
       stateRequired,
       knownState:stateKnown,
       accessibleNameRequired:true,
