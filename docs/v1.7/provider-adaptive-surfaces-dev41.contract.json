@@ -33,5 +33,6 @@
   "section48Complete": false,
   "runtime": "js/glaze-v1.7-provider-adaptive-surfaces.dev.mjs",
   "developmentAggregate": "js/glaze-v1.7-development-v1-3.dev.mjs",
-  "priorV12AggregateVersion": "1.7.0-dev.39"
+  "priorV12AggregateVersion": "1.7.0-dev.39",
+  "researchRecord": "docs/research/v1.7-provider-adaptive-surfaces.md"
 }
