@@ -30,6 +30,7 @@ jobs:
         run: |
           python -m json.tool docs/v1.7/provider-adaptive-surfaces-dev41.contract.json >/dev/null
           node --check js/glaze-v1.7-provider-adaptive-surfaces.dev.mjs
+          node --check js/glaze-v1.7-development-v1-3.dev.mjs
           node --check scripts/validate_glaze_v1_7_provider_adaptive_surfaces_dev41.mjs
           node scripts/validate_glaze_v1_7_provider_adaptive_surfaces_dev41.mjs
 
