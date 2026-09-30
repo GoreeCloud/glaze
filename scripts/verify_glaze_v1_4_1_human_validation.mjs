@@ -59,19 +59,17 @@ function validateSource() {
   const template = json(TEMPLATE_PATH);
   const lifecycle = json('registry/lifecycle.json');
 
-  if (lifecycle.currentStable === '1.4.1') {
-    assert.equal(lifecycle.currentOfficial, '1.4.1', 'promoted V1.4.1 source protocol requires matching Official authority');
-    assert.equal(lifecycle.plannedNext, null, 'promoted V1.4.1 source protocol must not leave a candidate plannedNext');
-    assert.equal(lifecycle.activeCandidate, null, 'promoted V1.4.1 source protocol must not leave an active candidate');
-    assert.equal(lifecycle.activePatchReleaseCandidate, null, 'promoted V1.4.1 source protocol must not leave an active patch RC');
-    const promoted = lifecycle.releases.find(item => item.version === '1.4.1');
-    assert.ok(promoted, 'promoted lifecycle must contain the 1.4.1 release record');
-    assert.equal(promoted.status, 'stable', 'promoted 1.4.1 release record must be Stable');
+  const promoted = lifecycle.releases.find(item => item.version === '1.4.1');
+  if (promoted?.status === 'stable') {
+    assert.equal(promoted.consumerEligible, true, 'promoted 1.4.1 release record must remain consumer-eligible historical authority');
     assert.equal(promoted.stableBaseline, '1.4.0', 'promoted 1.4.1 must retain V1.4.0 as its Stable baseline');
+    assert.equal(promoted.sourceQualificationAnchor, '66478aed461b83c49b2ed027c3e4afc26520e98c', 'promoted 1.4.1 must retain its qualified implementation anchor');
+    assert.equal(lifecycle.activeCandidate, null, 'historical Stable source protocol must not leave an active candidate');
+    assert.equal(lifecycle.activePatchReleaseCandidate, null, 'historical Stable source protocol must not leave an active patch RC');
   } else {
-    assert.equal(lifecycle.currentStable, '1.4.0', 'V1.4.1 hardening must preserve V1.4.0 Stable authority');
-    assert.equal(lifecycle.currentOfficial, '1.4.0', 'V1.4.1 hardening must preserve V1.4.0 Official authority');
-    assert.equal(lifecycle.plannedNext, '1.4.1-candidate', 'lifecycle plannedNext must remain 1.4.1-candidate');
+    assert.equal(lifecycle.currentStable, '1.4.0', 'pre-promotion V1.4.1 hardening must preserve V1.4.0 Stable authority');
+    assert.equal(lifecycle.currentOfficial, '1.4.0', 'pre-promotion V1.4.1 hardening must preserve V1.4.0 Official authority');
+    assert.equal(lifecycle.plannedNext, '1.4.1-candidate', 'pre-promotion lifecycle plannedNext must remain 1.4.1-candidate');
   }
   assert.equal(contract.schemaVersion, 2);
   assert.equal(contract.version, '1.4.1-candidate');
