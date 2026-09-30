@@ -8,7 +8,7 @@
 
 ## Current V1.7 Development evidence-control hardening
 
-The Section 46 qualification intake now combines deterministic lane-gap reporting with credential-safe content-addressed evidence locators, timezone-qualified verified observation timestamps, and review-order enforcement. This is Development evidence infrastructure only; it does not create V1.7 qualification evidence or grant acceptance, Anchor, consumer, deployment, or production authority.
+The Section 46 qualification intake now combines deterministic lane-gap reporting with credential-safe content-addressed evidence locators, timezone-qualified verified observation timestamps, review-order enforcement, and executable JSON-Schema/runtime reference-pattern parity. This is Development evidence infrastructure only; it does not create V1.7 qualification evidence or grant acceptance, Anchor, consumer, deployment, or production authority.
 
 ## Purpose
 
