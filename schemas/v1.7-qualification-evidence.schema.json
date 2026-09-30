@@ -36,7 +36,8 @@
     "sourceRevision": {
       "oneOf": [
         {
-          "pattern": "^[0-9a-f]{40}$"
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
         },
         {
           "const": "REPLACE_WITH_FROZEN_V17_SOURCE_REVISION"
