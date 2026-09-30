@@ -4,6 +4,31 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.41` **Provider Adaptive Surfaces** source for V1.7 plan v1.3 Section 48: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
+- Contextual Actions now require authoritative provider/context/availability state, preserve stable provider ordering, keep unavailable/unknown actions explainable, and never manufacture user intent, ranking, permissions, authorization, execution, navigation, or success.
+- Glaze Brief now supports provider-owned activity/event/task/media/device/synchronization/security/privacy/recovery cards, authoritative attention states, governed personalization/reordering, and protected visibility for required/critical communication. Personalization may change expression but cannot change provider truth.
+- Glaze Control Center now presents reusable semantic action/toggle/selection/range/navigation controls while keeping availability, current state, policy, permissions, authorization, execution, and result truth owned by the responsible provider/system; Glaze produces presentation proposals only.
+- Added exact-source dev.41 validation and a dedicated CI workflow that retains dev.40 Expression System, privacy/authority, accessibility-continuity, performance/energy, and V1.6 Anchor checks.
+- Reconciled V1.7 plan, supplement, project specification, implemented/planned feature registers, and project record so the frozen v1.2 aggregate remains `1.7.0-dev.39` while dev.40/dev.41 are explicitly v1.3 Section 48 source tranches.
+- Section 48 remains incomplete: Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, Care Surface, and v1.3 acceptance are still open. V1.7 remains Development-only and non-consumer-eligible; V1.6 / `1.6.0` remains Official Anchor.
+
+- Added bounded `1.7.0-dev.41` **Provider Adaptive Surfaces** source for V1.7 plan v1.3 Section 48: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
+- Contextual Actions require authoritative provider/context identity plus provider-owned availability before enabling action presentation, preserve stable ordering, and do not invent user intent, ranking, permission, authorization, execution, navigation, or success.
+- Glaze Brief presents provider-owned cards with authoritative attention/state boundaries; personalization may change ordering, visibility of ordinary cards, density, or expression but cannot change truth or suppress authoritative required/critical communication.
+- Glaze Control Center keeps availability, current state, policy, permissions, authorization, execution, and result truth provider/system-owned; Glaze emits presentation proposals only and never assumes execution or result.
+- Added exact-source dev.41 validation and dedicated CI retaining dev.40 expression, V1.7 privacy/accessibility/performance boundaries, and the V1.6 / `1.6.0` Anchor.
+- Reconciled V1.7 v1.3 planning and project records so dev.39 remains the frozen v1.2 aggregate while dev.40/dev.41 are bounded Section 48 source tranches. Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, Care Surface, and Section 48 acceptance remain open.
+- Added bounded `1.7.0-dev.40` **Expression System Core** source for V1.7 plan v1.3 Section 48, covering Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution without changing provider truth or V1.6 Anchor authority.
+
+- Added bounded `1.7.0-dev.40` **Expression System Core** source for V1.7 plan v1.3 Section 48, covering Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution while rejecting unrestricted raw design, truth, ranking, measurement, and acceptance controls.
+- Added bounded `1.7.0-dev.41` **Provider Adaptive Surfaces** source for V1.7 plan v1.3 Section 48: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
+- Contextual Actions now require provider/context/availability authority before actionable presentation and never manufacture user intent, ranking, permission, authorization, navigation, execution, or success.
+- Glaze Brief now supports provider-owned activity/event/task/media/device/synchronization/security/privacy/recovery cards with explicit personalization boundaries: ordinary expression/order may change, but provider truth cannot change and authoritative required/critical communication cannot be suppressed.
+- Glaze Control Center now presents reusable semantic controls whose availability, current state, policy, permissions, authorization, execution, and result truth remain external to Glaze; user interaction produces proposals only.
+- Added dev.41 exact-source validation, dedicated CI, machine-readable manifest, implementation-boundary record, and multi-source Reforge research notes. Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, Care Surface, and Section 48 acceptance remain open.
+- Preserved the frozen v1.2 aggregate at `1.7.0-dev.39`, V1.6 / `1.6.0` Official Anchor authority, V1.7 non-consumer-eligibility, and the rule that dev.39 acceptance control does not automatically accept v1.3 requirements.
+
+
 
 - Advanced the planned V1.7 specification to **v1.3** with the theme **Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion**.
 - Added the planned Glaze Expression System and detailed expression/adaptive-intelligence supplement under `docs/v1.7/`, covering Semantic Geometry, visual scale/emphasis, Expressive Typography, Semantic Containment, Component Expression, Expression Resolution, Contextual Actions, Brief, Control Center, Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, and Care Surface.

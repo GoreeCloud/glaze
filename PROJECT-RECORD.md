@@ -3,7 +3,7 @@
 **Repository:** `GoreeCloud/glaze-ui`  
 **Record type:** Significant lifecycle, architecture, governance, release, and migration record  
 **Current Official Stable:** GLAZE UI V1.6 / `1.6.0`  
-**Current Development line:** GLAZE UI V1.7 / latest bounded aggregate `1.7.0-dev.39`  
+**Current Development line:** GLAZE UI V1.7 / frozen v1.2 aggregate `1.7.0-dev.39` / latest bounded v1.3 aggregate `1.7.0-dev.41`  
 **Migration baseline:** `8e8d37886692cada9ebbaf5c5c17783a96c93892`  
 **Canonical lifecycle authority:** `registry/lifecycle.json`
 
@@ -220,7 +220,7 @@ The current plan retains the 47 v1.2 sections and adds Section 48, expanding:
 - governed visual expression through the Glaze Expression System;
 - presentation-focused Adaptive Intelligence and its contextual, workspace, compact, agent-activity, accessibility, creative, comparison, privacy-attention, control, brief, and care surfaces.
 
-The plan does not change Stable lifecycle authority merely by existing. Section 48 is planned-only and is detailed in `docs/v1.7/GLAZE_UI_V1_7_EXPRESSION_ADAPTIVE_INTELLIGENCE.md`; existing dev.39 acceptance control does not automatically accept it.
+The plan does not change Stable lifecycle authority merely by existing. Section 48 is now partially implemented in bounded Development source: dev.40 provides the Expression System Core and dev.41 provides Glaze Contextual Actions, Glaze Brief, and Glaze Control Center. The remaining Section 48 surfaces and all Section 48 acceptance remain open; existing dev.39 acceptance control does not automatically accept v1.3 requirements.
 
 ## September 30, 2026 — V1.7 v1.3 planning expansion
 
@@ -228,7 +228,20 @@ V1.7 planning now includes the Glaze Expression System and presentation-focused 
 
 The expansion preserves Signature Motion, makes accessibility higher priority than optional expression, permits performance/thermal/power/energy constraints to reduce optional richness without reducing task continuity or authoritative meaning, and establishes: **Personalization may change expression. Personalization must not change truth.**
 
-This is a planning change only. It does not change the `1.7.0-dev.39` implementation boundary, V1.6 Anchor authority, V1.7 acceptance, consumer eligibility, deployment, or production status.
+This September 30 planning expansion did not itself change implementation state. Subsequent bounded v1.3 source tranches dev.40 and dev.41 now implement part of Section 48 without changing V1.6 Anchor authority, V1.7 acceptance, consumer eligibility, deployment, or production status.
+
+## September 30, 2026 — V1.7 v1.3 source implementation begins
+
+The first two bounded V1.7 plan v1.3 Section 48 source tranches are now represented in the repository:
+
+- `1.7.0-dev.40` — Expression System Core: Semantic Geometry, visual scale/emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution.
+- `1.7.0-dev.41` — Provider Adaptive Surfaces: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
+
+The v1.2 aggregate remains frozen at `1.7.0-dev.39` to preserve historical plan/evidence compatibility. dev.40 and dev.41 begin a separate v1.3 Section 48 source lineage rather than relabeling prior tranches.
+
+Provider identity/state, user intent, availability, permissions, authorization, policy, execution, results, privacy/security truth, success, completion, and other provider-owned truth remain external to Glaze. Personalization may change expression but not truth, and authoritative required/critical Brief communication may not be suppressed.
+
+Section 48 remains incomplete. Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, and Care Surface remain planned, and v1.3 acceptance requires separate exact-revision evidence and acceptance-control extension.
 
 ## V1.7 Development tranche provenance
 
@@ -292,6 +305,25 @@ Post-merge readback verified authoritative `main` at that commit. All 54 workflo
 
 This integration did not modify V1.6 Stable lifecycle authority.
 
+## September 30, 2026 — V1.7 v1.3 Section 48 bounded source implementation
+
+The v1.3 Section 48 line has moved from planning-only into bounded Development source while preserving the historical v1.2 aggregate and its evidence.
+
+`1.7.0-dev.40` implements the **Expression System Core**: Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis separated from semantic severity, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution. It rejects unrestricted raw design, measurement, ranking, provider-truth, and acceptance controls.
+
+`1.7.0-dev.41` implements the first provider-driven adaptive surfaces: **Glaze Contextual Actions**, **Glaze Brief**, and **Glaze Control Center**. Provider/context identity, action availability, Brief state/attention, control state, policy, permission, authorization, execution, success, completion, and other provider-owned truth remain external and fail closed when authority is absent. Brief personalization may alter expression, ordering, density, and ordinary-card visibility but cannot change truth or suppress authoritative required/critical communication.
+
+Glaze Workspace, Glaze Compact Surface, Glaze Agent Activity, Glaze Privacy Attention, Glaze Accessibility Presentation, Glaze Creative Surface, Glaze Compare, and Glaze Care Surface remain planned. Section 48 remains incomplete and has no new rendered/native/assistive-technology/representative-device/performance/energy/human acceptance from these source tranches.
+
+The historical v1.2 aggregate remains `1.7.0-dev.39`. Its Section 46 acceptance-control framework is not automatically extended to v1.3. V1.6 / `1.6.0` remains Official Anchor, and V1.7 remains Development-only and non-consumer-eligible.
+
+### v1.3-plan foundations
+
+- `1.7.0-dev.40` — Section 48 Expression System Core.
+- `1.7.0-dev.41` — Section 48 Provider Adaptive Surfaces: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
+
+The separate v1.3 aggregate extends the frozen dev.39/v1.2 aggregate without rewriting historical provenance. These source tranches do not complete Section 48 or inherit v1.2 acceptance.
+
 ## Current lifecycle boundary
 
 Current lifecycle authority:
@@ -299,7 +331,8 @@ Current lifecycle authority:
 - immediate rollback Stable: `1.5.1`;
 - active Stable consumer target: `1.6.0`;
 - V1.7: Development-only;
-- V1.7 latest bounded aggregate: `1.7.0-dev.39`;
+- V1.7 frozen v1.2 aggregate: `1.7.0-dev.39`;
+- V1.7 latest bounded v1.3 aggregate: `1.7.0-dev.41`;
 - V1.7 consumer eligibility: false;
 - downstream application acceptance: separate.
 

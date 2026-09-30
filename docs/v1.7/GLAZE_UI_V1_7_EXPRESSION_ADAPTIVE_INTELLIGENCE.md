@@ -180,4 +180,9 @@ This supplement extends `GLAZE_UI_V1_7_PLANNED.md` and does not renumber or rein
 
 Existing V1.7 Development work through `1.7.0-dev.39` remains bound to the plan revision and section contracts under which it was implemented.
 
-These expression and adaptive-intelligence requirements require separate implementation and applicable exact-revision acceptance evidence before they can contribute to any V1.7 lifecycle promotion.
+Current v1.3 source status in this revision is bounded and partial:
+- `1.7.0-dev.40` implements the Expression System Core: Semantic Geometry, visual scale/emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution.
+- `1.7.0-dev.41` implements Glaze Contextual Actions, Glaze Brief, and Glaze Control Center as provider-driven presentation surfaces.
+- Glaze Workspace, Glaze Compact Surface, Glaze Agent Activity, Glaze Privacy Attention, Glaze Accessibility Presentation, Glaze Creative Surface, Glaze Compare, and Glaze Care Surface remain planned.
+
+These source foundations do not establish Section 48 completion or acceptance. The dev.39 acceptance-control framework remains bound to v1.2 and does not automatically accept v1.3 requirements. All applicable v1.3 requirements still require exact-revision implementation and acceptance evidence before they can contribute to any V1.7 lifecycle promotion.

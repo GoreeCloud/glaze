@@ -4,7 +4,7 @@
 **Project type:** Shared GoreeCloud visual, interaction, accessibility, adaptive-presentation, and component design system  
 **Current Official Stable:** GLAZE UI V1.6 / `1.6.0`  
 **Immediate Stable rollback:** `1.5.1`  
-**Current Development line:** GLAZE UI V1.7 / latest bounded aggregate `1.7.0-dev.39`  
+**Current Development line:** GLAZE UI V1.7 / frozen v1.2 aggregate `1.7.0-dev.39` / current bounded v1.3 aggregate `1.7.0-dev.41`  
 **Migration baseline:** `8e8d37886692cada9ebbaf5c5c17783a96c93892`  
 **Canonical lifecycle authority:** `registry/lifecycle.json`  
 **Canonical machine version:** `VERSION`  
@@ -410,7 +410,7 @@ Accessibility outranks optional expression. Performance, thermal, power, and ene
 
 Personalization may change expression. **Personalization must not change truth.**
 
-The latest bounded Development aggregate remains `1.7.0-dev.39`. Section 48 is planned-only until separately implemented and qualified; existing dev.39 acceptance control does not automatically accept it.
+The historical v1.2 Development aggregate remains frozen at `1.7.0-dev.39`. V1.7 plan v1.3 Section 48 has begun bounded source implementation: `1.7.0-dev.40` implements the Expression System Core and `1.7.0-dev.41` implements Glaze Contextual Actions, Glaze Brief, and Glaze Control Center. The remaining Section 48 adaptive surfaces are still planned, Section 48 is incomplete, and existing dev.39 acceptance control does not automatically accept any v1.3 requirement.
 
 Current Development integration does not change `VERSION`, Stable runtime entrypoints, V1.6 published evidence, consumer eligibility, or downstream acceptance.
 
