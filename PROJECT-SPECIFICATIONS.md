@@ -4,7 +4,7 @@
 **Project type:** Shared GoreeCloud visual, interaction, accessibility, adaptive-presentation, and component design system  
 **Current Official Stable:** GLAZE UI V1.6 / `1.6.0`  
 **Immediate Stable rollback:** `1.5.1`  
-**Current Development line:** GLAZE UI V1.7 / latest bounded aggregate `1.7.0-dev.14`  
+**Current Development line:** GLAZE UI V1.7 / latest bounded aggregate `1.7.0-dev.39`  
 **Migration baseline:** `8e8d37886692cada9ebbaf5c5c17783a96c93892`  
 **Canonical lifecycle authority:** `registry/lifecycle.json`  
 **Canonical machine version:** `VERSION`  
@@ -42,13 +42,16 @@ It governs, where applicable:
 - command/search surfaces;
 - notification/activity presentation;
 - personalization presentation;
-- conformance and adoption evidence.
+- conformance and adoption evidence;
+- governed expression resolution;
+- contextual and adaptive experience surfaces;
+- transparent AI and agent-activity presentation.
 
 Glaze UI is a **presentation system**. It does not become the authority for security, privacy, identity, authorization, consent, permissions, recovery, backup, synchronization, availability, capability, policy, or other provider-owned truth.
 
 ## 2. Governing principle
 
-The interface may change shape, material, density, color, motion, input mapping, or composition as the environment changes; the user's task, intent, accessibility, identity, and authoritative system truth must remain continuous.
+The interface may change shape, scale, typography, containment, material, color, composition, motion, density, or input mapping as the environment changes; the user's task, intent, accessibility requirements, preferences, identity, and authoritative system truth must remain continuous.
 
 Presentation may adapt from authoritative context and capability truth, but must never manufacture or expand that truth.
 
@@ -388,14 +391,26 @@ Downstream consumer conformance remains separate.
 
 V1.7 is Development-only and non-consumer-eligible.
 
-The detailed planned successor specification is `GLAZE_UI_V1_7_PLANNED.md` v1.2, themed:
+The detailed planned successor specification is `GLAZE_UI_V1_7_PLANNED.md` v1.3, themed:
 
-**Interaction Continuity + Personal Expression + Signature Motion**
+**Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion**
 
 Historical Development tranche numbers remain bound to the plan revision under which they were implemented:
 - dev.1–dev.7: historical v1.0-plan provenance;
 - dev.8–dev.13: historical v1.1-plan provenance;
-- dev.14: first v1.2-bound foundation, limited to Section 22 Signature Motion System.
+- dev.14–dev.39: v1.2-bound source foundations and acceptance-control work.
+
+Plan v1.3 appends Section 48 without renumbering or reinterpreting the existing v1.2 sections. The detailed expansion is maintained in `docs/v1.7/GLAZE_UI_V1_7_EXPRESSION_ADAPTIVE_INTELLIGENCE.md`.
+
+The v1.3 expansion adds the Glaze Expression System, Semantic Geometry, Visual Scale and Emphasis, Expressive Typography, Semantic Containment, Component Expression, Expression Resolution, Glaze Contextual Actions, Glaze Brief, Glaze Control Center, Glaze Workspace, Glaze Compact Surface, Glaze Agent Activity, Glaze Privacy Attention, Glaze Accessibility Presentation, Glaze Creative Surface, Glaze Compare, and Glaze Care Surface.
+
+Adaptive intelligence remains presentation-focused and cannot manufacture user intent, consent, authorization, permission, privacy/security status, identity, connectivity, availability, success, completion, recovery, or other provider-owned truth.
+
+Accessibility outranks optional expression. Performance, thermal, power, and energy constraints may simplify optional richness without reducing task continuity, direct manipulation, semantic meaning, accessibility, essential interaction, or authoritative state.
+
+Personalization may change expression. **Personalization must not change truth.**
+
+The latest bounded Development aggregate remains `1.7.0-dev.39`. Section 48 is planned-only until separately implemented and qualified; existing dev.39 acceptance control does not automatically accept it.
 
 Current Development integration does not change `VERSION`, Stable runtime entrypoints, V1.6 published evidence, consumer eligibility, or downstream acceptance.
 
