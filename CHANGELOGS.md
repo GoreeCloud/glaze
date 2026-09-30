@@ -4,6 +4,14 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.41` **Provider Adaptive Surfaces** source for V1.7 plan v1.3 Section 48: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
+- Contextual Actions require authoritative provider/context identity plus provider-owned availability before enabling action presentation, preserve stable ordering, and do not invent user intent, ranking, permission, authorization, execution, navigation, or success.
+- Glaze Brief presents provider-owned cards with authoritative attention/state boundaries; personalization may change ordering, visibility of ordinary cards, density, or expression but cannot change truth or suppress authoritative required/critical communication.
+- Glaze Control Center keeps availability, current state, policy, permissions, authorization, execution, and result truth provider/system-owned; Glaze emits presentation proposals only and never assumes execution or result.
+- Added exact-source dev.41 validation and dedicated CI retaining dev.40 expression, V1.7 privacy/accessibility/performance boundaries, and the V1.6 / `1.6.0` Anchor.
+- Reconciled V1.7 v1.3 planning and project records so dev.39 remains the frozen v1.2 aggregate while dev.40/dev.41 are bounded Section 48 source tranches. Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, Care Surface, and Section 48 acceptance remain open.
+- Added bounded `1.7.0-dev.40` **Expression System Core** source for V1.7 plan v1.3 Section 48, covering Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution without changing provider truth or V1.6 Anchor authority.
+
 - Added bounded `1.7.0-dev.40` **Expression System Core** source for V1.7 plan v1.3 Section 48, covering Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution while rejecting unrestricted raw design, truth, ranking, measurement, and acceptance controls.
 - Added bounded `1.7.0-dev.41` **Provider Adaptive Surfaces** source for V1.7 plan v1.3 Section 48: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
 - Contextual Actions now require provider/context/availability authority before actionable presentation and never manufacture user intent, ranking, permission, authorization, navigation, execution, or success.
