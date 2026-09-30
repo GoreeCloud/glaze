@@ -20,12 +20,14 @@ const lifecycle=json('registry/lifecycle.json');
 const version=read('VERSION').trim();
 const status=read('docs/v1.7/GLAZE_UI_V1_7_DEV41_PROVIDER_ADAPTIVE_SURFACES.md');
 const research=read('docs/research/v1.7-provider-adaptive-surfaces.md');
+const research=read('docs/research/v1.7-provider-adaptive-surfaces.md');
 
 assert(manifest.version==='1.7.0-dev.41','manifest version mismatch');
 assert(manifest.planVersion==='v1.3'&&manifest.section===48,'manifest plan binding mismatch');
 assert(manifest.consumerEligible===false&&manifest.stableBaseline==='1.6.0','manifest lifecycle boundary weakened');
 assert(manifest.expressionSystemDependency==='1.7.0-dev.40','dev.40 dependency missing');
 assert(manifest.section48Complete===false,'manifest overclaims Section 48');
+assert(manifest.researchRecord==='docs/research/v1.7-provider-adaptive-surfaces.md','manifest research binding missing');
 assert(manifest.developmentAggregate==='js/glaze-v1.7-development-v1-3.dev.mjs','manifest aggregate binding missing');
 assert(manifest.priorV12AggregateVersion==='1.7.0-dev.39','manifest rewrites v1.2 aggregate provenance');
 assert(glazeV17ProviderAdaptiveSurfacesDevelopmentContract.version==='1.7.0-dev.41','runtime contract mismatch');
@@ -178,6 +180,7 @@ assert(control.authority.permissionGrantedByGlaze===false&&control.authority.aut
 
 const controlUnknown=resolveGlazeControl({...controlBase,stateAuthoritative:false});
 assert(controlUnknown.state.accepted==='unknown','untrusted control state not withheld');
+assert(controlUnknown.presentation.enabled===false,'stateful control remained enabled with unknown state');
 assert(controlUnknown.proposal.eligible===false,'control proposal allowed without authoritative state');
 
 const actionControl=resolveGlazeControl({
@@ -212,6 +215,8 @@ assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'source im
 assert(status.includes('Glaze Contextual Actions')&&status.includes('Glaze Brief')&&status.includes('Glaze Control Center'),'dev.41 status record missing implemented surfaces');
 assert(status.includes('Section 48 remains incomplete'),'dev.41 status record overclaims completion');
 assert(status.includes('No third-party implementation is incorporated'),'Reforge boundary missing');
+assert(research.includes('GAction')&&research.includes('Material Web')&&research.includes('Fluent UI')&&research.includes('WAI-ARIA'),'multi-source Reforge research missing');
+assert(research.includes('No third-party component implementation'),'Reforge no-copy boundary missing');
 assert(manifest.researchRecord==='docs/research/v1.7-provider-adaptive-surfaces.md','manifest research binding missing');
 assert(research.includes('GLib / GIO GAction')&&research.includes('GNOME Shell')&&research.includes('Material Web')&&research.includes('Fluent UI')&&research.includes('W3C WAI-ARIA'),'Reforge source diversity missing');
 assert(research.includes('No mechanical rewriting or line-by-line translation was performed.'),'Reforge independence boundary missing');
