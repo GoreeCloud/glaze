@@ -1,0 +1,62 @@
+name: Glaze UI Wearable Authority Validation
+
+on:
+  pull_request:
+    paths:
+      - 'VERSION'
+      - 'registry/lifecycle.json'
+      - 'WEARABLES.md'
+      - 'WEARABLE_COMPONENTS.md'
+      - 'acceptance/wearable-native-evidence.template.json'
+      - 'scripts/validate_wearables.py'
+      - '.github/workflows/glaze-wearable-authority-validation.yml'
+      - '.github/workflows/glaze-wear-build-toolchain-validation.yml'
+      - '.github/workflows/wear-os-emulator.yml'
+      - 'reference/native/wear-os/**'
+      - 'reference/native/watchos/**'
+  push:
+    branches: [main]
+    paths:
+      - 'VERSION'
+      - 'registry/lifecycle.json'
+      - 'WEARABLES.md'
+      - 'WEARABLE_COMPONENTS.md'
+      - 'acceptance/wearable-native-evidence.template.json'
+      - 'scripts/validate_wearables.py'
+      - '.github/workflows/glaze-wearable-authority-validation.yml'
+      - '.github/workflows/glaze-wear-build-toolchain-validation.yml'
+      - '.github/workflows/wear-os-emulator.yml'
+      - 'reference/native/wear-os/**'
+      - 'reference/native/watchos/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glaze-wearable-authority-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-wearable-authority:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Verify exact source revision
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+
+      - name: Validate wearable authority boundary
+        run: python3 scripts/validate_wearables.py
+
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code -- .

@@ -2,7 +2,7 @@ name: Glaze UI Wear OS Emulator Runtime — Deferred Manual Validation
 
 # Wear OS is intentionally deferred to a later Glaze UI upgrade. This workflow
 # is preserved as a manual development/reference check and is not a Glaze UI
-# 1.5 merge, Candidate-promotion, Stable-promotion, or production-conformance gate.
+# V1.6 Anchor expansion, V1.7 acceptance, or production-conformance gate.
 on:
   workflow_dispatch:
 
