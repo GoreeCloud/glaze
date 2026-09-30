@@ -36,7 +36,8 @@
     "sourceRevision": {
       "oneOf": [
         {
-          "pattern": "^[0-9a-f]{40}$"
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
         },
         {
           "const": "REPLACE_WITH_FROZEN_V17_SOURCE_REVISION"
@@ -192,7 +193,7 @@
           },
           "reference": {
             "type": "string",
-            "pattern": "^evidence\\+sha256:[0-9a-f]{64}:[A-Za-z0-9._-][A-Za-z0-9._/-]*$",
+            "pattern": "^evidence\\+sha256:[0-9a-f]{64}:(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+(?:/(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+)*$",
             "maxLength": 800
           },
           "finding": {
