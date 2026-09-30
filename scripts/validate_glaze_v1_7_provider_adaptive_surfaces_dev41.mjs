@@ -20,7 +20,6 @@ const lifecycle=json('registry/lifecycle.json');
 const version=read('VERSION').trim();
 const status=read('docs/v1.7/GLAZE_UI_V1_7_DEV41_PROVIDER_ADAPTIVE_SURFACES.md');
 const research=read('docs/research/v1.7-provider-adaptive-surfaces.md');
-const research=read('docs/research/v1.7-provider-adaptive-surfaces.md');
 
 assert(manifest.version==='1.7.0-dev.41','manifest version mismatch');
 assert(manifest.planVersion==='v1.3'&&manifest.section===48,'manifest plan binding mismatch');
