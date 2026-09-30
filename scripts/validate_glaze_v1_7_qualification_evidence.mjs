@@ -261,6 +261,15 @@ const schemeLikeReference=clone(fixture);
 schemeLikeReference.evidence[0].reference='evidence+sha256:'+('f'.repeat(64))+':https:qualification/evidence.json';
 assertThrows(()=>validateGlazeV17QualificationPacket(schemeLikeReference),/credential-safe logical locator/);
 
+for(const unsafeLocator of [
+  'C:/qualification/evidence.json',
+  'file:qualification/evidence.json',
+  'https:qualification/evidence.json'
+]){
+  const unsafeSchemaReference='evidence+sha256:'+('f'.repeat(64))+':'+unsafeLocator;
+  assert(!schemaEvidencePattern.test(unsafeSchemaReference),'qualification evidence schema must reject unsafe locator: '+unsafeLocator);
+}
+
 const timezoneLessObservation=clone(fixture);
 timezoneLessObservation.evidence[0].observedAt='2026-09-28T09:00:00';
 assertThrows(()=>validateGlazeV17QualificationPacket(timezoneLessObservation),/timezone-qualified timestamp/);
