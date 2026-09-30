@@ -1,0 +1,64 @@
+name: Glaze UI V1.7 Expression System Core Development
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  expression-system-core:
+    name: Validate V1.7 Expression System Core source foundation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact candidate revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Validate JSON syntax
+        run: python -m json.tool contracts/v1.7/expression-system.dev.json >/dev/null
+      - name: Validate JavaScript syntax
+        run: |
+          node --check js/glaze-v1.7-expression-system.dev.mjs
+          node --check js/glaze-v1.7-development.mjs
+          node --check scripts/validate_glaze_v1_7_expression_system_development.mjs
+      - name: Validate Expression System Core
+        run: node scripts/validate_glaze_v1_7_expression_system_development.mjs
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code
+
+  retained-expression-foundations:
+    name: Preserve accessibility, theme, visual-motion, and performance foundations
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out exact candidate revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - run: node scripts/validate_glaze_v1_7_visual_motion_direction_development.mjs
+      - run: node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs
+      - run: node scripts/validate_glaze_v1_7_advanced_theme_system_v1_2_development.mjs
+      - run: node scripts/validate_glaze_v1_7_performance_energy_awareness_development.mjs
+
+  v1-6-anchor:
+    name: Preserve GLAZE UI V1.6 Anchor authority
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact candidate revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - run: node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
+      - run: node scripts/verify_glaze_v1_6_stable.mjs

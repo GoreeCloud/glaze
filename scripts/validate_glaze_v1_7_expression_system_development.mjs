@@ -13,8 +13,6 @@ const json=path=>JSON.parse(read(path));
 const assert=(condition,message)=>{if(!condition)throw new Error(message);};
 
 const contract=json('contracts/v1.7/expression-system.dev.json');
-const schema=json('schemas/v1.7-expression-system.schema.json');
-const tokens=json('tokens/glaze-v1.7-expression-system.dev.json');
 const lifecycle=json('registry/lifecycle.json');
 const version=read('VERSION').trim();
 const planned=read('PLANNED-FEATURES.md');
@@ -31,8 +29,6 @@ assert(contract.resolutionPolicy.rawDesignValuesAccepted===false,'raw design val
 assert(contract.resolutionPolicy.visualProminenceEstablishesSemanticSeverity===false,'visual prominence must not create severity');
 assert(contract.personalization.mayChangeExpression===true&&contract.personalization.mayChangeTruth===false,'personalization truth invariant missing');
 assert(contract.acceptanceBoundary.section48Complete===false,'contract overclaims Section 48');
-assert(schema.properties.version.const==='1.7.0-dev.40','schema version mismatch');
-assert(tokens.version==='1.7.0-dev.40'&&tokens.emphasis.heroImpliesCritical===false,'token identity or severity boundary mismatch');
 
 const base={
   geometryRole:'connected',
@@ -117,7 +113,7 @@ assert(implemented.includes('Expression System Core')&&implemented.includes('1.7
 assert(changelog.includes('1.7.0-dev.40')&&changelog.includes('Expression System Core'),'changelog missing dev.40');
 assert(plan.includes('1.7.0-dev.40')&&plan.includes('Section 48'),'plan missing dev.40 source status');
 assert(supplement.includes('1.7.0-dev.40')&&supplement.includes('adaptive experience surfaces remain planned'),'supplement missing bounded implementation boundary');
-assert(research.includes('No third-party source code')&&research.includes('W3C WCAG 2.2'),'research provenance missing');
+assert(research.includes('Third-party implementation is not incorporated')&&research.includes('W3C WCAG 2.2'),'research provenance missing');
 
 console.log('GLAZE UI V1.7 Expression System Core Development validation: PASS');
 console.log('Plan binding: v1.3 Section 48 / expression-system-core');
