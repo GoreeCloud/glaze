@@ -8,6 +8,7 @@ import {
   resolveGlazeControlCenter,
   glazeV17ProviderAdaptiveSurfacesDevelopmentContract
 } from '../js/glaze-v1.7-provider-adaptive-surfaces.dev.mjs';
+import {glazeV17V13Development} from '../js/glaze-v1.7-development-v1-3.dev.mjs';
 
 const root=new URL('../',import.meta.url);
 const read=p=>readFileSync(new URL(p,root),'utf8');
@@ -26,6 +27,11 @@ assert(manifest.expressionSystemDependency==='1.7.0-dev.40','dev.40 dependency m
 assert(manifest.section48Complete===false,'manifest overclaims Section 48');
 assert(glazeV17ProviderAdaptiveSurfacesDevelopmentContract.version==='1.7.0-dev.41','runtime contract mismatch');
 assert(glazeV17ProviderAdaptiveSurfacesDevelopmentContract.section48Complete===false,'runtime contract overclaims Section 48');
+assert(glazeV17V13Development.version==='1.7.0-dev.41','v1.3 aggregate version mismatch');
+assert(glazeV17V13Development.priorAggregateVersion==='1.7.0-dev.39','frozen v1.2 aggregate provenance changed');
+assert(glazeV17V13Development.expressionSystemCoreVersion==='1.7.0-dev.40','dev.40 expression dependency missing from v1.3 aggregate');
+assert(glazeV17V13Development.providerAdaptiveSurfacesVersion==='1.7.0-dev.41','dev.41 adaptive surfaces missing from v1.3 aggregate');
+assert(glazeV17V13Development.section48Complete===false&&glazeV17V13Development.acceptanceControlAutomaticallyCoversV13===false,'v1.3 aggregate overclaims Section 48 acceptance');
 
 const actionBase={
   actionId:'open-details',
