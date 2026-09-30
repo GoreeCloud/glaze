@@ -21,7 +21,7 @@ const AUTHORITY_FALSE_KEYS=[
   'consumerEligibilityGranted','deploymentAcceptanceGranted','productionAcceptanceGranted'
 ];
 const EVIDENCE_REFERENCE=/^evidence\+sha256:([0-9a-f]{64}):(.{1,700})$/;
-const EVIDENCE_LOCATOR=/^(?:[A-Za-z0-9._-][A-Za-z0-9._/-]*|[A-Za-z0-9._-]+:[A-Za-z0-9._-][A-Za-z0-9._/-]*)$/;
+const EVIDENCE_LOCATOR=/^[A-Za-z0-9._-][A-Za-z0-9._/-]*$/;
 
 function assert(value,message){if(!value)throw new Error(message);}
 function plainObject(value){
@@ -39,7 +39,7 @@ function evidenceReference(value,name){
   const locator=match?.[2];
   assert(
     match&&EVIDENCE_LOCATOR.test(locator)&&!locator.startsWith('/')&&!locator.endsWith('/')&&
-    locator.split(':').length<=2&&!locator.split('/').some(segment=>!segment||segment==='.'||segment==='..'),
+    !locator.split('/').some(segment=>!segment||segment==='.'||segment==='..'),
     name+' must be a content-addressed evidence+sha256 reference with a credential-safe logical locator'
   );
   return value;
@@ -248,6 +248,27 @@ assert(schemaEvidencePattern.test(safeSchemaReference),'qualification evidence s
 const unsafeReference=clone(fixture);
 unsafeReference.evidence[0].reference='evidence+sha256:'+('f'.repeat(64))+':https://example.test/evidence?token=secret';
 assertThrows(()=>validateGlazeV17QualificationPacket(unsafeReference),/credential-safe logical locator/);
+
+const windowsAbsoluteReference=clone(fixture);
+windowsAbsoluteReference.evidence[0].reference='evidence+sha256:'+('f'.repeat(64))+':C:/qualification/evidence.json';
+assertThrows(()=>validateGlazeV17QualificationPacket(windowsAbsoluteReference),/credential-safe logical locator/);
+
+const fileSchemeReference=clone(fixture);
+fileSchemeReference.evidence[0].reference='evidence+sha256:'+('f'.repeat(64))+':file:qualification/evidence.json';
+assertThrows(()=>validateGlazeV17QualificationPacket(fileSchemeReference),/credential-safe logical locator/);
+
+const schemeLikeReference=clone(fixture);
+schemeLikeReference.evidence[0].reference='evidence+sha256:'+('f'.repeat(64))+':https:qualification/evidence.json';
+assertThrows(()=>validateGlazeV17QualificationPacket(schemeLikeReference),/credential-safe logical locator/);
+
+for(const unsafeLocator of [
+  'C:/qualification/evidence.json',
+  'file:qualification/evidence.json',
+  'https:qualification/evidence.json'
+]){
+  const unsafeSchemaReference='evidence+sha256:'+('f'.repeat(64))+':'+unsafeLocator;
+  assert(!schemaEvidencePattern.test(unsafeSchemaReference),'qualification evidence schema must reject unsafe locator: '+unsafeLocator);
+}
 
 const timezoneLessObservation=clone(fixture);
 timezoneLessObservation.evidence[0].observedAt='2026-09-28T09:00:00';
