@@ -305,6 +305,18 @@ Post-merge readback verified authoritative `main` at that commit. All 54 workflo
 
 This integration did not modify V1.6 Stable lifecycle authority.
 
+## September 30, 2026 — V1.7 v1.3 Section 48 bounded source implementation
+
+The v1.3 Section 48 line has moved from planning-only into bounded Development source while preserving the historical v1.2 aggregate and its evidence.
+
+`1.7.0-dev.40` implements the **Expression System Core**: Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis separated from semantic severity, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution. It rejects unrestricted raw design, measurement, ranking, provider-truth, and acceptance controls.
+
+`1.7.0-dev.41` implements the first provider-driven adaptive surfaces: **Glaze Contextual Actions**, **Glaze Brief**, and **Glaze Control Center**. Provider/context identity, action availability, Brief state/attention, control state, policy, permission, authorization, execution, success, completion, and other provider-owned truth remain external and fail closed when authority is absent. Brief personalization may alter expression, ordering, density, and ordinary-card visibility but cannot change truth or suppress authoritative required/critical communication.
+
+Glaze Workspace, Glaze Compact Surface, Glaze Agent Activity, Glaze Privacy Attention, Glaze Accessibility Presentation, Glaze Creative Surface, Glaze Compare, and Glaze Care Surface remain planned. Section 48 remains incomplete and has no new rendered/native/assistive-technology/representative-device/performance/energy/human acceptance from these source tranches.
+
+The historical v1.2 aggregate remains `1.7.0-dev.39`. Its Section 46 acceptance-control framework is not automatically extended to v1.3. V1.6 / `1.6.0` remains Official Anchor, and V1.7 remains Development-only and non-consumer-eligible.
+
 ## Current lifecycle boundary
 
 Current lifecycle authority:
