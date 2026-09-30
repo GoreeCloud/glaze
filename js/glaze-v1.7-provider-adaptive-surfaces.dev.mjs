@@ -363,9 +363,11 @@ export function resolveGlazeBriefCard(input={}){
     }),
     presentation:Object.freeze({
       expression,
-      visible:!hidden,
+      eligible:provider.complete,
+      visible:provider.complete&&!hidden,
       semanticStructureRequired:true,
-      readingOrderMustMatchVisualOrder:true
+      readingOrderMustMatchVisualOrder:true,
+      missingProviderIdentityFailsClosed:true
     }),
     authority:Object.freeze({
       presentationOnly:true,
@@ -454,7 +456,9 @@ export function resolveGlazeControl(input={}){
   const stateAuthoritative=input.stateAuthoritative===true;
   const acceptedState=stateAuthoritative?requestedState:'unknown';
   const available=availability.availability.acceptedState==='available';
-  const ready=provider.complete&&available&&acceptedState!=='unknown';
+  const stateRequired=!['action','navigation'].includes(kind);
+  const stateKnown=!stateRequired||acceptedState!=='unknown';
+  const ready=provider.complete&&available&&stateKnown;
 
   const requestedTargetState=boundedText(input.requestedTargetState,120);
   const userIntentAuthoritative=input.userIntentAuthoritative===true;
@@ -498,7 +502,8 @@ export function resolveGlazeControl(input={}){
     presentation:Object.freeze({
       expression,
       enabled:provider.complete&&available,
-      knownState:acceptedState!=='unknown',
+      stateRequired,
+      knownState:stateKnown,
       accessibleNameRequired:true,
       keyboardEquivalentRequired:true,
       visibleFocusRequired:true
