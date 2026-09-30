@@ -4,7 +4,7 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
-- Corrected the V1.7 qualification-evidence JSON Schema escape sequence so canonical `evidence+sha256:` references accepted by the runtime validator are also accepted by the schema; added an executable schema/runtime parity regression guard.
+- Tightened V1.7 qualification evidence locators to repository-style relative logical paths only, closing Windows drive-letter and URI-scheme ambiguity while preserving canonical `evidence+sha256:<digest>:v1.7/...` references; added runtime/schema regression coverage for `C:/...`, `file:...`, and scheme-like locators.\n- This provenance hardening creates no qualification evidence and grants no V1.7 acceptance, Anchor, consumer, deployment, or production authority.\n\n- Corrected the V1.7 qualification-evidence JSON Schema escape sequence so canonical `evidence+sha256:` references accepted by the runtime validator are also accepted by the schema; added an executable schema/runtime parity regression guard.
 - This correction changes evidence validation consistency only; it creates no qualification evidence and grants no V1.7 acceptance, Anchor, consumer, deployment, or production authority.
 
 - Hardened V1.7 qualification evidence provenance: verified references now require content-addressed credential-safe logical locators, verified observations require timezone-qualified timestamps, and observations cannot postdate the accepted packet review.
