@@ -3,7 +3,7 @@
 **Repository:** `GoreeCloud/glaze-ui`  
 **Record type:** Significant lifecycle, architecture, governance, release, and migration record  
 **Current Official Stable:** GLAZE UI V1.6 / `1.6.0`  
-**Current Development line:** GLAZE UI V1.7 / frozen v1.2 aggregate `1.7.0-dev.39` / latest bounded v1.3 source tranche `1.7.0-dev.41`  
+**Current Development line:** GLAZE UI V1.7 / frozen v1.2 aggregate `1.7.0-dev.39` / latest bounded v1.3 aggregate `1.7.0-dev.41`  
 **Migration baseline:** `8e8d37886692cada9ebbaf5c5c17783a96c93892`  
 **Canonical lifecycle authority:** `registry/lifecycle.json`
 
@@ -228,7 +228,7 @@ V1.7 planning now includes the Glaze Expression System and presentation-focused 
 
 The expansion preserves Signature Motion, makes accessibility higher priority than optional expression, permits performance/thermal/power/energy constraints to reduce optional richness without reducing task continuity or authoritative meaning, and establishes: **Personalization may change expression. Personalization must not change truth.**
 
-This is a planning change only. It does not change the `1.7.0-dev.39` implementation boundary, V1.6 Anchor authority, V1.7 acceptance, consumer eligibility, deployment, or production status.
+This September 30 planning expansion did not itself change implementation state. Subsequent bounded v1.3 source tranches dev.40 and dev.41 now implement part of Section 48 without changing V1.6 Anchor authority, V1.7 acceptance, consumer eligibility, deployment, or production status.
 
 ## September 30, 2026 — V1.7 v1.3 source implementation begins
 
@@ -317,6 +317,13 @@ Glaze Workspace, Glaze Compact Surface, Glaze Agent Activity, Glaze Privacy Atte
 
 The historical v1.2 aggregate remains `1.7.0-dev.39`. Its Section 46 acceptance-control framework is not automatically extended to v1.3. V1.6 / `1.6.0` remains Official Anchor, and V1.7 remains Development-only and non-consumer-eligible.
 
+### v1.3-plan foundations
+
+- `1.7.0-dev.40` — Section 48 Expression System Core.
+- `1.7.0-dev.41` — Section 48 Provider Adaptive Surfaces: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
+
+The separate v1.3 aggregate extends the frozen dev.39/v1.2 aggregate without rewriting historical provenance. These source tranches do not complete Section 48 or inherit v1.2 acceptance.
+
 ## Current lifecycle boundary
 
 Current lifecycle authority:
@@ -325,7 +332,7 @@ Current lifecycle authority:
 - active Stable consumer target: `1.6.0`;
 - V1.7: Development-only;
 - V1.7 frozen v1.2 aggregate: `1.7.0-dev.39`;
-- V1.7 latest bounded v1.3 source tranche: `1.7.0-dev.41`;
+- V1.7 latest bounded v1.3 aggregate: `1.7.0-dev.41`;
 - V1.7 consumer eligibility: false;
 - downstream application acceptance: separate.
 
