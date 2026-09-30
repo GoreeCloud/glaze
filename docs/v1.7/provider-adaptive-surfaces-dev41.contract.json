@@ -1,0 +1,35 @@
+{
+  "id":"goreecloud.glaze-ui.v1.7.provider-adaptive-surfaces",
+  "version":"1.7.0-dev.41",
+  "lifecycle":"Development",
+  "stableBaseline":"1.6.0",
+  "consumerEligible":false,
+  "planVersion":"v1.3",
+  "section":48,
+  "requirementGroup":"provider-adaptive-surfaces",
+  "implementedSurfaces":[
+    "glaze-contextual-actions",
+    "glaze-brief",
+    "glaze-control-center"
+  ],
+  "expressionSystemDependency":"1.7.0-dev.40",
+  "providerTruthCreatedByGlaze":false,
+  "userIntentCreatedByGlaze":false,
+  "actionRankingInventedByGlaze":false,
+  "controlExecutionPerformedByGlaze":false,
+  "personalizationMayChangeExpression":true,
+  "personalizationMayChangeTruth":false,
+  "criticalCommunicationMayBeSuppressed":false,
+  "stillPlanned":[
+    "glaze-workspace",
+    "glaze-compact-surface",
+    "glaze-agent-activity",
+    "glaze-privacy-attention",
+    "glaze-accessibility-presentation",
+    "glaze-creative-surface",
+    "glaze-compare",
+    "glaze-care-surface"
+  ],
+  "section48Complete":false,
+  "runtime":"js/glaze-v1.7-provider-adaptive-surfaces.dev.mjs"
+}
