@@ -1,14 +1,16 @@
 # GLAZE UI V1.4.1 — Human Validation & Optical Hardening
 
-**Lifecycle:** Planned follow-up  
-**Baseline:** GLAZE UI V1.4 / `1.4.0` Stable  
-**Purpose:** Human validation, human verification, physical-device qualification, subjective optical polish, additive optical-runtime hardening, and fail-closed review preparation.
+**Lifecycle:** Historical Stable qualification provenance  
+**Baseline:** GLAZE UI V1.4 / `1.4.0` historical Stable baseline  
+**Qualified release:** GLAZE UI V1.4.1 / `1.4.1` Stable, qualified implementation anchor `66478aed461b83c49b2ed027c3e4afc26520e98c`  
+**Current lifecycle authority:** GLAZE UI V1.6 / `1.6.0` Anchor via `registry/lifecycle.json`  
+**Purpose:** Retained human-validation, physical-device qualification, optical-polish, runtime-hardening, and fail-closed review provenance for the historical V1.4.1 release.
 
-V1.4.1 is the explicit home for human-dependent validation deferred from the V1.4.0 Stable release by owner direction. Deferral does not mean these checks passed; it means they are non-blocking for V1.4.0 lifecycle activation and remain open work for this patch track.
+V1.4.1 was the explicit home for human-dependent validation deferred from the V1.4.0 Stable release. Those qualification obligations were later reconciled through the governed V1.4.1 acceptance and promotion path recorded in `acceptance/v1.4.1-stable.md`. This document is therefore historical qualification provenance, not an open-work tracker.
 
-V1.4.1 may also contain additive runtime hardening that preserves the accepted V1.4.0 Stable source unchanged. Machine-verifiable hardening does not replace or satisfy the human-dependent work below.
+V1.4.1 also introduced additive runtime hardening while preserving the accepted V1.4.0 Stable source. The historical machine and human requirements below remain evidence context; they do not override current V1.6 Anchor authority or reopen completed V1.4.1 lifecycle work.
 
-## Required human-validation work
+## Historical human-validation requirements
 
 - Review Content-Aware Frost over calm, noisy, bright, dark, photographic, video, and high-motion backgrounds.
 - Review Semantic Blur Protection around text, icons, faces, labels, controls, and critical status regions.
