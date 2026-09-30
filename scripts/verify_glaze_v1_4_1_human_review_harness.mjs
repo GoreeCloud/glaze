@@ -32,9 +32,16 @@ async function main() {
   assert.equal(contract.automaticHumanAcceptance, false);
   assert.equal(contract.automaticPromotionEligibility, false);
 
-  assert.equal(lifecycle.currentStable, '1.4.0');
-  assert.equal(lifecycle.currentOfficial, '1.4.0');
-  assert.equal(lifecycle.plannedNext, '1.4.1-candidate');
+  const v140 = lifecycle.releases.find(item => item.version === '1.4.0');
+  const v141 = lifecycle.releases.find(item => item.version === '1.4.1');
+  assert.ok(v140, 'lifecycle must retain the V1.4.0 historical Stable baseline');
+  assert.equal(v140.status, 'stable');
+  assert.equal(v140.consumerEligible, true);
+  assert.ok(v141, 'lifecycle must retain the V1.4.1 historical Stable release');
+  assert.equal(v141.status, 'stable');
+  assert.equal(v141.consumerEligible, true);
+  assert.equal(v141.stableBaseline, '1.4.0');
+  assert.equal(v141.sourceQualificationAnchor, '66478aed461b83c49b2ed027c3e4afc26520e98c');
   assert.equal(lifecycle.activeCandidate, null);
 
   const canonicalIds = new Set(humanContract.requiredChecks.map(check => check.id));
