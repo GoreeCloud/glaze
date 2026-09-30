@@ -4,6 +4,15 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 
 ## Unreleased — GLAZE UI V1.7 Development
 
+- Added bounded `1.7.0-dev.40` **Expression System Core** source for V1.7 plan v1.3 Section 48, covering Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution while rejecting unrestricted raw design, truth, ranking, measurement, and acceptance controls.
+- Added bounded `1.7.0-dev.41` **Provider Adaptive Surfaces** source for V1.7 plan v1.3 Section 48: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
+- Contextual Actions now require provider/context/availability authority before actionable presentation and never manufacture user intent, ranking, permission, authorization, navigation, execution, or success.
+- Glaze Brief now supports provider-owned activity/event/task/media/device/synchronization/security/privacy/recovery cards with explicit personalization boundaries: ordinary expression/order may change, but provider truth cannot change and authoritative required/critical communication cannot be suppressed.
+- Glaze Control Center now presents reusable semantic controls whose availability, current state, policy, permissions, authorization, execution, and result truth remain external to Glaze; user interaction produces proposals only.
+- Added dev.41 exact-source validation, dedicated CI, machine-readable manifest, implementation-boundary record, and multi-source Reforge research notes. Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, Care Surface, and Section 48 acceptance remain open.
+- Preserved the frozen v1.2 aggregate at `1.7.0-dev.39`, V1.6 / `1.6.0` Official Anchor authority, V1.7 non-consumer-eligibility, and the rule that dev.39 acceptance control does not automatically accept v1.3 requirements.
+
+
 
 - Advanced the planned V1.7 specification to **v1.3** with the theme **Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion**.
 - Added the planned Glaze Expression System and detailed expression/adaptive-intelligence supplement under `docs/v1.7/`, covering Semantic Geometry, visual scale/emphasis, Expressive Typography, Semantic Containment, Component Expression, Expression Resolution, Contextual Actions, Brief, Control Center, Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, and Care Surface.
