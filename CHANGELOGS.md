@@ -14,6 +14,7 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 - Preserved V1.6 / `1.6.0` Official Anchor authority, V1.7 non-consumer-eligibility, and the rule that dev.39 acceptance control does not automatically accept v1.3 requirements.
 - Section 48 remains incomplete: Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, Care Surface, and v1.3 acceptance remain open.
 - Stabilization: consolidated duplicate dev.40/dev.41 changelog entries without changing implementation, lifecycle, acceptance, deployment, or production authority.
+- Stabilization: reconciled retained V1.3.1/V1.4.1 hardening documents with authoritative lifecycle history, marking V1.3.1 as an unpromoted superseded track and V1.4.1 as historical Stable qualification provenance while preserving V1.6 / `1.6.0` Anchor and V1.7 Development boundaries.
 
 - Advanced the planned V1.7 specification to **v1.3** with the theme **Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion**.
 - Added the planned Glaze Expression System and detailed expression/adaptive-intelligence supplement under `docs/v1.7/`, covering Semantic Geometry, visual scale/emphasis, Expressive Typography, Semantic Containment, Component Expression, Expression Resolution, Contextual Actions, Brief, Control Center, Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, and Care Surface.
