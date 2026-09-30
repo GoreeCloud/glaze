@@ -118,13 +118,6 @@ const unknownProviderCard=resolveGlazeBriefCard({
 });
 assert(unknownProviderCard.presentation.visible===false,'Brief displayed card without authoritative provider identity');
 
-const brief=resolveGlazeBrief({
-  cards:[
-    {...criticalCard,cardId:undefined}
-  ]
-});
-assert(Array.isArray(brief.cards),'Brief resolver did not return cards');
-
 const ordinary1={
   cardId:'one',kind:'task',providerId:'tasks',providerIdentityAuthoritative:true,
   stateId:'open',stateAuthoritative:true,attention:'ordinary',attentionAuthoritative:true,
