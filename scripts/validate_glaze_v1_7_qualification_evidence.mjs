@@ -20,6 +20,13 @@ const AUTHORITY_FALSE_KEYS=[
   'packetIsV17Acceptance','section46Complete','lifecyclePromotionAutomatic','anchorStatusGranted',
   'consumerEligibilityGranted','deploymentAcceptanceGranted','productionAcceptanceGranted'
 ];
+const TOP_LEVEL_KEYS=new Set([
+  '$schema','schemaVersion','recordId','lifecycle','sourceRevision','acceptanceModelVersion','stableBaseline',
+  'applicability','notApplicableJustifications','review','evidence','reviewDecision','authority','boundary'
+]);
+const REVIEW_KEYS=new Set(['reviewedAt','reviewer','reviewerRole','scope','representativeRevisionConfirmed','notes']);
+const EVIDENCE_ITEM_KEYS=new Set(['id','verified','revision','evidenceType','reference','finding','observedAt','reviewer']);
+const AUTHORITY_KEYS=new Set(AUTHORITY_FALSE_KEYS);
 const EVIDENCE_REFERENCE=/^evidence\+sha256:([0-9a-f]{64}):(.{1,700})$/;
 const EVIDENCE_LOCATOR=/^[A-Za-z0-9._-][A-Za-z0-9._/-]*$/;
 
@@ -28,6 +35,11 @@ function plainObject(value){
   if(value===null||typeof value!=='object'||Array.isArray(value))return false;
   const proto=Object.getPrototypeOf(value);
   return proto===Object.prototype||proto===null;
+}
+function exactKeys(value,allowed,name){
+  const keys=Object.keys(value);
+  for(const key of keys)assert(allowed.has(key),name+' contains unsupported key: '+key);
+  for(const key of allowed)assert(Object.hasOwn(value,key),name+' missing required key: '+key);
 }
 function placeholder(value){
   return typeof value==='string'&&(value.startsWith('REPLACE_WITH_')||value.includes('Template placeholder'));
@@ -59,12 +71,17 @@ function clone(value){return JSON.parse(JSON.stringify(value));}
 
 export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}={}){
   assert(plainObject(record),'qualification packet must be a plain object');
+  exactKeys(record,TOP_LEVEL_KEYS,'qualification packet');
+  assert(record.$schema==='../schemas/v1.7-qualification-evidence.schema.json','qualification packet $schema mismatch');
+  assert(record.schemaVersion===1,'qualification packet schemaVersion mismatch');
   assert(record.recordId==='goreecloud.glaze-ui.v1.7.qualification-evidence','recordId mismatch');
   assert(record.lifecycle==='DevelopmentQualification','packet lifecycle mismatch');
   assert(record.acceptanceModelVersion==='1.7.0-dev.39','acceptance model mismatch');
   assert(record.stableBaseline==='1.6.0','Stable baseline mismatch');
   assert(plainObject(record.authority),'packet authority block missing');
+  exactKeys(record.authority,AUTHORITY_KEYS,'packet authority');
   for(const key of AUTHORITY_FALSE_KEYS)assert(record.authority[key]===false,'packet must not grant authority: '+key);
+  assert(typeof record.boundary==='string'&&record.boundary.length>=40,'packet boundary must be a descriptive string');
 
   const isTemplate=record.reviewDecision==='not-accepted';
   assert(
@@ -72,8 +89,10 @@ export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}
     'packet sourceRevision must identify the frozen exact V1.7 source revision'
   );
 
-  const applicability=plainObject(record.applicability)?record.applicability:{};
-  const justifications=plainObject(record.notApplicableJustifications)?record.notApplicableJustifications:{};
+  assert(plainObject(record.applicability),'packet applicability must be an object');
+  assert(plainObject(record.notApplicableJustifications),'packet notApplicableJustifications must be an object');
+  const applicability=record.applicability;
+  const justifications=record.notApplicableJustifications;
   for(const [id,value] of Object.entries(applicability)){
     assert(conditionalIds.has(id),'only conditional V1.7 lanes may override applicability: '+id);
     assert(value===true||value===false,'applicability must be boolean: '+id);
@@ -88,14 +107,19 @@ export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}
   const verifiedObservationTimes=[];
   for(const item of record.evidence){
     assert(plainObject(item),'each evidence item must be a plain object');
+    exactKeys(item,EVIDENCE_ITEM_KEYS,'qualification evidence item');
     assert(laneIds.has(item.id),'unknown V1.7 qualification lane: '+item.id);
     assert(evidenceTypes.has(item.evidenceType),'unsupported V1.7 evidence type: '+item.evidenceType);
     assert(allowedEvidenceType(item.id,item.evidenceType),'evidence type is not allowed for lane '+item.id+': '+item.evidenceType);
     assert(item.verified===true||item.verified===false,'evidence verified flag must be boolean');
+    assert(typeof item.revision==='string','evidence revision must be a string for lane '+item.id);
+    evidenceReference(item.reference,'evidence reference for lane '+item.id);
+    timestamp(item.observedAt,'evidence observedAt for lane '+item.id);
+    assert(typeof item.finding==='string'&&item.finding.length>=1&&item.finding.length<=2000,'evidence finding must be a bounded non-empty string for lane '+item.id);
+    assert(typeof item.reviewer==='string'&&item.reviewer.length>=1&&item.reviewer.length<=240,'evidence reviewer must be a bounded non-empty string for lane '+item.id);
     if(item.verified===true){
       assert(revision(record.sourceRevision),'verified evidence requires a frozen exact source revision');
       assert(item.revision===record.sourceRevision,'verified evidence revision mismatch for lane '+item.id);
-      evidenceReference(item.reference,'verified evidence reference for lane '+item.id);
       const observedAt=timestamp(item.observedAt,'verified evidence observedAt for lane '+item.id);
       for(const key of ['finding','reviewer'])assert(usable(item[key]),'verified evidence missing '+key+' for lane '+item.id);
       verifiedObservationTimes.push({id:item.id,observedAt});
@@ -106,6 +130,15 @@ export function validateGlazeV17QualificationPacket(record,{allowTemplate=false}
   }
 
   assert(plainObject(record.review),'packet review metadata missing');
+  exactKeys(record.review,REVIEW_KEYS,'packet review');
+  assert(typeof record.review.reviewedAt==='string','packet review reviewedAt must be a string');
+  assert(
+    record.review.reviewedAt==='REPLACE_WITH_ISO_8601_TIMESTAMP_WITH_TIMEZONE' ||
+    Number.isFinite(timestamp(record.review.reviewedAt,'packet review reviewedAt')),
+    'packet review reviewedAt must be a timezone-qualified timestamp or template placeholder'
+  );
+  for(const key of ['reviewer','reviewerRole','scope','notes'])assert(typeof record.review[key]==='string','packet review '+key+' must be a string');
+  assert(record.review.representativeRevisionConfirmed===true||record.review.representativeRevisionConfirmed===false,'packet review representativeRevisionConfirmed must be boolean');
   if(record.reviewDecision==='accepted-for-governed-qualification-review'){
     assert(revision(record.sourceRevision),'accepted intake requires an exact source revision');
     assert(record.review.representativeRevisionConfirmed===true,'accepted intake requires representative exact-revision confirmation');
@@ -277,6 +310,28 @@ assertThrows(()=>validateGlazeV17QualificationPacket(timezoneLessObservation),/t
 const postReviewObservation=clone(fixture);
 postReviewObservation.evidence[0].observedAt='2026-09-28T14:00:01Z';
 assertThrows(()=>validateGlazeV17QualificationPacket(postReviewObservation),/cannot postdate packet review/);
+
+const extraTopLevel=clone(fixture);
+extraTopLevel.unexpected=true;
+assertThrows(()=>validateGlazeV17QualificationPacket(extraTopLevel),/qualification packet contains unsupported key/);
+
+const extraReviewField=clone(fixture);
+extraReviewField.review.unexpected='value';
+assertThrows(()=>validateGlazeV17QualificationPacket(extraReviewField),/packet review contains unsupported key/);
+
+const extraEvidenceField=clone(fixture);
+extraEvidenceField.evidence[0].unexpected='value';
+assertThrows(()=>validateGlazeV17QualificationPacket(extraEvidenceField),/qualification evidence item contains unsupported key/);
+
+const malformedUnverified=clone(fixture);
+malformedUnverified.evidence[0].verified=false;
+malformedUnverified.evidence[0].reference='not-content-addressed';
+assertThrows(()=>validateGlazeV17QualificationPacket(malformedUnverified),/content-addressed evidence\+sha256 reference/);
+
+const malformedUnverifiedTimestamp=clone(fixture);
+malformedUnverifiedTimestamp.evidence[0].verified=false;
+malformedUnverifiedTimestamp.evidence[0].observedAt='2026-09-28T09:00:00';
+assertThrows(()=>validateGlazeV17QualificationPacket(malformedUnverifiedTimestamp),/timezone-qualified timestamp/);
 
 const args=process.argv.slice(2);
 if(args.length){
