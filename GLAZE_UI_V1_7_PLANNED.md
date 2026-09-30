@@ -2,14 +2,14 @@
 title: "Glaze UI V1.7 — Planned Upgrade"
 document_type: "Planned Design-System Upgrade Specification"
 status: "Planned"
-document_version: "v1.2"
+document_version: "v1.3"
 product: "GLAZE UI"
 planned_family: "GLAZE UI V1.7"
-planned_theme: "Interaction Continuity + Personal Expression + Signature Motion"
+planned_theme: "Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion"
 current_stable_predecessor: "GLAZE UI V1.6 / 1.6.0 (Official Anchor; Stable compatibility channel)"
 canonical_repository: "GoreeCloud/glaze-ui"
 consumer_eligible: false
-last_updated: "2026-09-27"
+last_updated: "2026-09-30"
 authoritative_scope: "Planned V1.7 upgrade requirements; does not alter current Anchor release authority"
 ---
 
@@ -18,6 +18,8 @@ authoritative_scope: "Planned V1.7 upgrade requirements; does not alter current 
 ## Authority Boundary
 
 This document records the planned direction for **GLAZE UI V1.7**. It is a planning and requirements artifact. It does not by itself establish implementation, qualification, release, deployment, consumer eligibility, or production acceptance.
+
+Plan v1.3 extends v1.2 with a governed expression model and presentation-focused Adaptive Intelligence requirements. Existing v1.2 section numbering and Development provenance through `1.7.0-dev.39` remain unchanged; the expansion is appended as Section 48 and is not retroactively implemented or accepted.
 
 The current verified Official Anchor authority remains **GLAZE UI V1.6 / 1.6.0**. Stable compatibility fields remain in the lifecycle registry for existing tooling and historical evidence.
 
@@ -33,7 +35,7 @@ V1.7 should build upon the established Glaze foundations for adaptive presentati
 
 The release should focus on four major areas:
 
-**Interaction Continuity. Advanced Personalization. Semantic Color Intelligence. Signature Motion.**
+**Interaction Continuity. Personal Expression. Adaptive Intelligence. Semantic Color Intelligence. Signature Motion.**
 
 The governing V1.7 principle is:
 
@@ -1038,10 +1040,32 @@ Development source status — September 27, 2026: `1.7.0-dev.39` implements a bo
 
 **Product:** GLAZE UI
 **Version:** V1.7
-**Planned theme:** Interaction Continuity + Personal Expression + Signature Motion
+**Planned theme:** Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion
 **Lifecycle:** Planned
 **Consumer eligibility:** No until separately implemented, qualified, and promoted
 **Primary objective:** Preserve user task and authoritative meaning while allowing Glaze UI to adapt deeply across themes, color, movement, form factors, input systems, accessibility configurations, platforms, and presentation environments.
+## 48. Expression System and Adaptive Intelligence Expansion
+
+V1.7 should add a governed **Glaze Expression System** coordinating geometry, scale, typography, containment, material, color, composition, and motion while preserving semantic truth, accessibility, continuity, and provider authority.
+
+The expansion includes **Semantic Geometry**, **Visual Scale and Emphasis** (Supporting, Standard, Prominent, Hero), **Expressive Typography**, **Semantic Containment**, **Component Expression**, and a governed **Expression Resolution** layer that prevents applications from treating unrestricted raw design values as semantic authority.
+
+V1.7 should also add **Glaze Contextual Actions**, **Glaze Brief**, **Glaze Control Center**, **Glaze Workspace**, **Glaze Compact Surface**, **Glaze Agent Activity**, **Glaze Privacy Attention**, **Glaze Accessibility Presentation**, **Glaze Creative Surface**, **Glaze Compare**, and **Glaze Care Surface**.
+
+The detailed requirements for this expansion are maintained in [`docs/v1.7/GLAZE_UI_V1_7_EXPRESSION_ADAPTIVE_INTELLIGENCE.md`](docs/v1.7/GLAZE_UI_V1_7_EXPRESSION_ADAPTIVE_INTELLIGENCE.md).
+
+Adaptive intelligence remains presentation-focused. Glaze may present context, suggestions, capabilities, AI activity, and provider-supplied state, but it must never manufacture user intent, consent, authorization, permission, privacy status, security status, identity, connectivity, availability, success, completion, recovery, or other provider-owned truth.
+
+Accessibility always outranks optional expression. Performance, thermal, power, and energy constraints may reduce optional visual richness, material effects, motion, and background presentation without reducing task continuity, direct manipulation, semantic meaning, accessibility, essential interaction, or authoritative state.
+
+Personalization may change expression. **Personalization must not change truth.**
+
+The existing Signature Motion families — Bloom, Flow, Lift, Veil, Fold, Trace, Settle, Focus Transfer, Color Shift, and Material Shift — remain part of the coordinated expression system, with Calm, Balanced, Expressive, and Reduced Motion behavior.
+
+The objective is not "more glass," "more animation," or "more AI." The objective is a system that feels **more alive, more personal, more capable, more understandable, and more continuous** while remaining controlled, accessible, performant, private, and truthful.
+
+Section 48 is planned-only. Existing dev.39 Section 46 acceptance control does not automatically cover or accept these new requirements; applicable acceptance must be extended before V1.7 lifecycle promotion.
+
 ## Final Direction
 
 Glaze UI V1.7 should move GoreeCloud beyond a shared visual design language.
@@ -1066,6 +1090,6 @@ Glaze UI should have transitions that users can recognize as distinctly GoreeClo
 
 The defining qualities of Glaze UI V1.7 should therefore be:
 
-**Continuous. Adaptive. Expressive. Fluid. Accessible. Semantic. Native. Truthful.**
+**Continuous. Adaptive. Expressive. Context-aware. Capable. Fluid. Accessible. Semantic. Native. Truthful.**
 
 .
