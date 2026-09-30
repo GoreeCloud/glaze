@@ -34,7 +34,7 @@ These are source requirements, not rendered or assistive-technology acceptance e
 
 The design was informed by multiple open-source and standards sources reviewed on September 30, 2026:
 
-- **GTK / GAction** (LGPL-2.1-or-later): action functionality is modeled independently from presentation, with enabled/state information carried by the action model. GoreeCloud adopts the implementation-neutral requirement that presentation must not become execution authority.
+- **GLib/GIO GAction** (LGPL-2.1-or-later): action functionality is modeled independently from presentation, with enabled/state information carried by the action model. GoreeCloud adopts the implementation-neutral requirement that presentation must not become execution authority.
 - **GNOME Shell** (GPL-2.0-or-later): action handling is bounded by explicit shell modes/context. GoreeCloud extracts the requirement that contextual presentation must be scoped rather than globally assumed.
 - **Material Web** (Apache-2.0): menu/button patterns distinguish temporary choice surfaces, disabled items, keyboard interaction, and visual emphasis. GoreeCloud independently implements semantic action presentation without copying Material components, tokens, values, or source.
 - **Fluent UI** (MIT): open-source design-system patterns reinforce reusable semantic action/control surfaces. GoreeCloud does not import Fluent UI components, assets, fonts, icons, source structures, or visual identity.
