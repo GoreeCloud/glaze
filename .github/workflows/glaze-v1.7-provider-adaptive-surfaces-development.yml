@@ -1,0 +1,77 @@
+name: Glaze UI V1.7 Provider Adaptive Surfaces Development
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  provider-adaptive-surfaces:
+    name: Validate V1.7 dev.41 provider adaptive surfaces
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out candidate revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+
+      - name: Validate dev.41 source
+        run: |
+          python -m json.tool docs/v1.7/provider-adaptive-surfaces-dev41.contract.json >/dev/null
+          node --check js/glaze-v1.7-provider-adaptive-surfaces.dev.mjs
+          node --check scripts/validate_glaze_v1_7_provider_adaptive_surfaces_dev41.mjs
+          node scripts/validate_glaze_v1_7_provider_adaptive_surfaces_dev41.mjs
+
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code -- .
+
+  retained-v1-7-source:
+    name: Preserve dev.40 and retained V1.7 boundaries
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out candidate revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+
+      - run: node scripts/validate_glaze_v1_7_expression_core_dev40.mjs
+      - run: node scripts/validate_glaze_v1_7_privacy_authority_boundaries_development.mjs
+      - run: node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs
+      - run: node scripts/validate_glaze_v1_7_performance_energy_awareness_development.mjs
+
+  v1-6-anchor:
+    name: Preserve GLAZE UI V1.6 Anchor authority
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out candidate revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+
+      - run: node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
+      - run: node scripts/verify_glaze_v1_6_stable.mjs
