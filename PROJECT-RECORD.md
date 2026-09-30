@@ -3,7 +3,7 @@
 **Repository:** `GoreeCloud/glaze-ui`  
 **Record type:** Significant lifecycle, architecture, governance, release, and migration record  
 **Current Official Stable:** GLAZE UI V1.6 / `1.6.0`  
-**Current Development line:** GLAZE UI V1.7 / latest bounded aggregate `1.7.0-dev.14`  
+**Current Development line:** GLAZE UI V1.7 / latest bounded aggregate `1.7.0-dev.39`  
 **Migration baseline:** `8e8d37886692cada9ebbaf5c5c17783a96c93892`  
 **Canonical lifecycle authority:** `registry/lifecycle.json`
 
@@ -188,13 +188,13 @@ The current consumer registry records V1.6.0 as the required shared target while
 
 ## V1.7 planned successor
 
-The current successor plan is `GLAZE_UI_V1_7_PLANNED.md` v1.2.
+The current successor plan is `GLAZE_UI_V1_7_PLANNED.md` v1.3.
 
 Theme:
 
-**Interaction Continuity + Personal Expression + Signature Motion**
+**Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion**
 
-The current plan contains 47 sections and expands:
+The current plan retains the 47 v1.2 sections and adds Section 48, expanding:
 - Task Continuity;
 - Adaptive Input 2.0;
 - first-class form-factor profiles;
@@ -216,9 +216,19 @@ The current plan contains 47 sections and expands:
 - notification/activity surfaces;
 - performance/energy awareness;
 - accessibility continuity;
-- evidence-driven acceptance.
+- evidence-driven acceptance;
+- governed visual expression through the Glaze Expression System;
+- presentation-focused Adaptive Intelligence and its contextual, workspace, compact, agent-activity, accessibility, creative, comparison, privacy-attention, control, brief, and care surfaces.
 
-The plan does not change Stable lifecycle authority merely by existing.
+The plan does not change Stable lifecycle authority merely by existing. Section 48 is planned-only and is detailed in `docs/v1.7/GLAZE_UI_V1_7_EXPRESSION_ADAPTIVE_INTELLIGENCE.md`; existing dev.39 acceptance control does not automatically accept it.
+
+## September 30, 2026 — V1.7 v1.3 planning expansion
+
+V1.7 planning now includes the Glaze Expression System and presentation-focused Adaptive Intelligence. The expansion formalizes semantic geometry, scale/emphasis, typography, containment, component expression, expression resolution, contextual actions, Brief, Control Center, Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, and Care Surface.
+
+The expansion preserves Signature Motion, makes accessibility higher priority than optional expression, permits performance/thermal/power/energy constraints to reduce optional richness without reducing task continuity or authoritative meaning, and establishes: **Personalization may change expression. Personalization must not change truth.**
+
+This is a planning change only. It does not change the `1.7.0-dev.39` implementation boundary, V1.6 Anchor authority, V1.7 acceptance, consumer eligibility, deployment, or production status.
 
 ## V1.7 Development tranche provenance
 
@@ -289,7 +299,7 @@ Current lifecycle authority:
 - immediate rollback Stable: `1.5.1`;
 - active Stable consumer target: `1.6.0`;
 - V1.7: Development-only;
-- V1.7 latest bounded aggregate: `1.7.0-dev.14`;
+- V1.7 latest bounded aggregate: `1.7.0-dev.39`;
 - V1.7 consumer eligibility: false;
 - downstream application acceptance: separate.
 
