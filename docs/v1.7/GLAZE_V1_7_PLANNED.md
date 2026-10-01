@@ -103,7 +103,7 @@ Mobile and Tablet should continue to receive first design, implementation, optim
 
 Each profile should intentionally define navigation, reachability, density, typography, safe areas, viewing distance, action placement, pane behavior, input assumptions, motion behavior, and target sizing.
 
-Wearable support should move toward a complete first-class Glaze UI contract.
+Wearable support should move toward a complete first-class Glaze contract.
 
 Spatial presentation should remain separately governed until sufficient evidence exists.
 
@@ -233,7 +233,7 @@ Each family should provide suitable treatments for text, icons, symbols, borders
 
 ## 9. Semantic Color Prominence
 
-Glaze UI should preserve the hierarchy:
+Glaze should preserve the hierarchy:
 
 Subtle → Standard → Prominent → Critical
 
@@ -326,7 +326,7 @@ Everkeep remains authoritative for backup, preservation, continuity, and recover
 
 GoreeCloud Identity remains authoritative for applicable identity and authentication truth.
 
-Glaze UI presents supplied states without manufacturing them.
+Glaze presents supplied states without manufacturing them.
 
 ## 16. Connectivity and Synchronization Color
 
@@ -804,7 +804,7 @@ A visually elaborate transition that produces poor responsiveness should fail to
 
 The repository already preserves Glaze Motion as a separately governed experimental foundation.
 
-V1.7 should evaluate whether a bounded subset of that work is ready to become part of the official Glaze UI contract.
+V1.7 should evaluate whether a bounded subset of that work is ready to become part of the official Glaze contract.
 
 Promotion should require independent validation of:
 
@@ -940,7 +940,7 @@ Accessibility always outranks motion richness.
 
 ## 42. Cross-Device Consistency Without Uniformity
 
-Glaze UI should retain common:
+Glaze should retain common:
 
 - Semantic vocabulary
 - Color roles
@@ -1041,12 +1041,12 @@ Development source status — September 27, 2026: `1.7.0-dev.39` implements a bo
 
 ## 47. Proposed V1.7 Identity
 
-**Product:** GLAZE UI
+**Product:** GLAZE
 **Version:** V1.7
 **Planned theme:** Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion
 **Lifecycle:** Planned
 **Consumer eligibility:** No until separately implemented, qualified, and promoted
-**Primary objective:** Preserve user task and authoritative meaning while allowing Glaze UI to adapt deeply across themes, color, movement, form factors, input systems, accessibility configurations, platforms, and presentation environments.
+**Primary objective:** Preserve user task and authoritative meaning while allowing Glaze to adapt deeply across themes, color, movement, form factors, input systems, accessibility configurations, platforms, and presentation environments.
 ## 48. Expression System and Adaptive Intelligence Expansion
 
 V1.7 should add a governed **Glaze Expression System** coordinating geometry, scale, typography, containment, material, color, composition, and motion while preserving semantic truth, accessibility, continuity, and provider authority.
@@ -1089,7 +1089,7 @@ It should become a complete adaptive presentation language in which:
 
 A GoreeCloud interface should be capable of moving from phone to tablet, folded to unfolded, touch to keyboard, Light to Deep Dark, default theme to a custom theme, compact control to expanded workspace, or ordinary presentation to an accessibility configuration without making the user lose track of where they are or what they were doing.
 
-Glaze UI should have transitions that users can recognize as distinctly GoreeCloud—not because they are excessive, but because they are coherent.
+Glaze should have transitions that users can recognize as distinctly GoreeCloud—not because they are excessive, but because they are coherent.
 
 The defining qualities of Glaze V1.7 should therefore be:
 
