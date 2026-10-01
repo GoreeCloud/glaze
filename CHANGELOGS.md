@@ -1,8 +1,13 @@
 # Changelogs
 
-All notable changes to the Glaze UI reference implementation are recorded here.
+All notable changes to the Glaze reference implementation are recorded here.
 
-## Unreleased — GLAZE UI V1.7 Development
+## Unreleased — GLAZE V1.7 Development
+
+- Adopted **Glaze** as the canonical system identity for the 1.7 line, with the formal description **Glaze — GoreeCloud Design & Experience System**; Glaze UI remains the former name.
+- Canonical repository identity is now `GoreeCloud/glaze`; the former `GoreeCloud/glaze-ui` name is treated as a legacy compatibility reference during migration.
+- Added `docs/GLAZE_RENAMING_AND_MIGRATION.md`, established Glaze-native canonical V1.7 planning paths, and retained the former V1.7 paths as full compatibility mirrors for existing validators and workflows.
+- Recorded the 1.7 rename boundary in `registry/lifecycle.json` while preserving **GLAZE UI V1.6 / 1.6.0** and every earlier historical release label unchanged. The rename does not grant V1.7 acceptance, consumer eligibility, deployment authority, or lifecycle promotion.
 
 - Added bounded `1.7.0-dev.40` **Expression System Core** source for V1.7 plan v1.3 Section 48, covering Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution while rejecting unrestricted raw design, truth, ranking, measurement, and acceptance controls.
 - Added bounded `1.7.0-dev.41` **Provider Adaptive Surfaces** source for V1.7 plan v1.3 Section 48: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
@@ -261,7 +266,7 @@ All notable changes to the Glaze UI reference implementation are recorded here.
 - Preserved Glaze Motion 0.6 as a separately governed Experimental foundation with Motion Core 0.4 runtime compatibility; dev.14 does not promote Motion Core, Motion Studio, or Motion Spatial and does not claim Section 22/23/24 completion or downstream acceptance.
 - Advanced the bounded V1.7 Development aggregate to `1.7.0-dev.14` / plan v1.2 while retaining all v1.0/v1.1 provenance, V1.6 / `1.6.0` as Official Stable, and V1.7 as non-consumer-eligible.
 
-- Expanded `GLAZE_UI_V1_7_PLANNED.md` to planning revision v1.2 with 47 sections and the theme **Interaction Continuity + Personal Expression + Signature Motion**.
+- Expanded `docs/v1.7/GLAZE_V1_7_PLANNED.md` to planning revision v1.2 with 47 sections and the theme **Interaction Continuity + Personal Expression + Signature Motion**.
 - Added the Glaze Signature Motion System, ten named transition families (Bloom, Flow, Lift, Veil, Fold, Trace, Settle, Focus Transfer, Color Shift, Material Shift), Connected Transformation 2.0, adaptive-composition motion, signature microinteractions, theme transitions, motion-expression profiles, Reduced Motion equivalents, motion-fatigue protection, motion performance, and explicit Glaze Motion lifecycle reconciliation.
 - Added a strict numbering-provenance boundary: dev.1–dev.7 remain v1.0-plan evidence and dev.8–dev.13 remain v1.1-plan evidence. Historical dev.13 “v1.1 Section 28 Continuity-Aware Motion” must not be reinterpreted as v1.2 Section 28 Theme Transition System or as completion of newly added Signature Motion requirements.
 - Preserved GLAZE UI V1.6 / `1.6.0` as current Official Stable; the planning expansion does not change lifecycle state, consumer eligibility, release evidence, deployment, or production acceptance.
