@@ -68,7 +68,7 @@ The canonical current V1.7 planning records are:
 - `docs/v1.7/GLAZE_V1_7_PLANNED.md`
 - `docs/v1.7/GLAZE_V1_7_EXPRESSION_ADAPTIVE_INTELLIGENCE.md`
 
-Former-name V1.7 paths may remain temporarily as compatibility pointers.
+Former-name V1.7 paths remain temporarily as full compatibility mirrors because existing validators and workflows still consume those paths. They must not be removed or reduced to pointers until those dependencies are migrated and revalidated.
 
 ## Completion boundary
 
