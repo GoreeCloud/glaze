@@ -1,22 +1,1095 @@
 ---
-title: "Compatibility Pointer — Glaze UI V1.7 Planned Upgrade"
-document_type: "Compatibility Alias"
-status: "Compatibility"
-former_name: "Glaze UI"
-canonical_name: "Glaze"
-canonical_document: "docs/v1.7/GLAZE_V1_7_PLANNED.md"
-canonical_repository: "GoreeCloud/glaze"
-last_updated: "2026-10-01"
+title: "Glaze UI V1.7 — Planned Upgrade"
+document_type: "Planned Design-System Upgrade Specification"
+status: "Planned"
+document_version: "v1.3"
+product: "GLAZE UI"
+planned_family: "GLAZE UI V1.7"
+planned_theme: "Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion"
+current_stable_predecessor: "GLAZE UI V1.6 / 1.6.0 (Official Anchor; Stable compatibility channel)"
+canonical_repository: "GoreeCloud/glaze-ui"
+consumer_eligible: false
+last_updated: "2026-09-30"
+authoritative_scope: "Planned V1.7 upgrade requirements; does not alter current Anchor release authority"
 ---
 
-# Glaze UI V1.7 compatibility pointer
+# Glaze UI V1.7 Planned Upgrade
 
-**Glaze UI** was renamed to **Glaze**. Beginning with the 1.7 release line, the canonical system identity is **Glaze — GoreeCloud Design & Experience System**.
+## Authority Boundary
 
-The active V1.7 plan is now:
+This document records the planned direction for **GLAZE UI V1.7**. It is a planning and requirements artifact. It does not by itself establish implementation, qualification, release, deployment, consumer eligibility, or production acceptance.
 
-`docs/v1.7/GLAZE_V1_7_PLANNED.md`
+Plan v1.3 extends v1.2 with a governed expression model and presentation-focused Adaptive Intelligence requirements. Existing v1.2 section numbering and Development provenance through `1.7.0-dev.39` remain unchanged; the expansion is appended as Section 48 and is not retroactively implemented or accepted.
 
-This legacy path is retained temporarily as a compatibility pointer so existing links and tooling do not silently break during migration.
+The current verified Official Anchor authority remains **GLAZE UI V1.6 / 1.6.0**. Stable compatibility fields remain in the lifecycle registry for existing tooling and historical evidence.
 
-Historical **Glaze UI 1.6.x and earlier** release labels, contracts, acceptance records, tags, artifacts, and other evidence remain unchanged. This pointer does not relabel historical evidence or grant V1.7 acceptance, consumer eligibility, deployment authority, or lifecycle promotion.
+As of 2026-09-27, the canonical repository contains bounded V1.7 Development foundations through **1.7.0-dev.39**. Historical implementation references remain bound to the plan revision they were built against: dev.1–dev.7 use the earlier v1.0 numbering, dev.8–dev.13 use the prior v1.1 35-section numbering, dev.14 is the first explicitly v1.2-bound source foundation for **Section 22 — Glaze Signature Motion System**, dev.15 adds the bounded **Section 23 — Signature Motion Principles** source layer, dev.16 adds the bounded **Section 24 — Glaze Signature Transition Families** semantic choreography layer, dev.17 adds the bounded **Section 25 — Connected Transformation 2.0** source layer, dev.18 adds the bounded **Section 26 — Adaptive Composition Motion** source layer, dev.19 adds the bounded **Section 27 — Signature Microinteractions** source layer, dev.20 adds the bounded **Section 28 — Theme Transition System** source layer, dev.21 adds the bounded **Section 29 — Motion Expression Profiles** source layer, dev.22 adds the bounded **Section 30 — Motion Personalization** source layer, dev.23 adds the bounded **Section 31 — Reduced Motion Equivalents** source layer, dev.24 adds the bounded **Section 32 — Motion Fatigue Protection** source layer, dev.25 adds the bounded **Section 33 — Motion Performance** source layer, and dev.26 adds the bounded **Section 34 — Glaze Motion Lifecycle** evidence-reconciliation layer. dev.21 connects the existing Personalization 2.0 motionIntensity values to Calm, Balanced, and Expressive profiles (`minimal` → Calm, `standard` → Balanced, `expressive` → Expressive) without creating a second preference authority. Calm minimizes travel and decorative movement; Balanced preserves the standard GoreeCloud motion character; Expressive permits richer semantic connected transformations, depth, recomposition, and signature motion without allowing constant animation. Accessibility and authoritative performance constraints may reduce effective richness while preserving the selected preference and authoritative application state; Reduced Motion uses lower-motion semantic equivalents and preserves direct-manipulation tracking. dev.22 exposes bounded Theme Manager Motion Expression choices for Minimal, Calm, Balanced, and Expressive while preserving Personalization 2.0 as the sole durable preference authority. Calm/Balanced/Expressive map to existing durable `motionIntensity` values; Minimal remains preview-only until a distinct durable encoding is explicitly designed. Theme packages may request approved semantic profiles for preview but cannot override an authoritative user selection, persist or auto-apply a preference, or carry executable animation behavior. dev.23 formalizes deterministic Reduced Motion equivalents for all ten Signature Transition Families: Bloom uses opacity/shape-state replacement; Flow immediate recomposition with brief emphasis; Lift opacity without travel; Veil immediate hierarchy change with restrained fade; Fold immediate layout replacement; Trace static destination highlighting; Settle preserves direct-manipulation tracking then uses the immediate final position; Focus Transfer updates focus state immediately; Color Shift uses immediate or restrained palette replacement; and Material Shift uses immediate material replacement. The layer requires preservation of state, meaning, focus, navigation, task continuity, and direct-manipulation tracking, and no critical interaction may require observing motion. dev.24 preserves the established V1.6 six-dimension motion budget without expanding caller authority, automatically reduces optional motion when a budget dimension is exceeded, suppresses decorative/continuous motion before task-relevant transitions, converts excess skeleton/material animation to static equivalents, preserves direct manipulation, and never reduces semantic or authoritative state. dev.25 adds a bounded Motion Performance policy that consumes explicitly authoritative non-neutral runtime pressure, power-saving, thermal, hardware-class, refresh-class, degraded-performance, and visibility signals alongside Reduced Motion and dev.24 budget pressure; untrusted non-neutral environment signals fail closed to neutral. It prefers compositor-friendly techniques, suspends optional non-visible work, prohibits ordinary idle render loops, fails optional richness toward restrained, simplified, minimal, or Reduced Motion equivalents, preserves direct manipulation and semantic state, references the approved V1.6 performance budget without inferring acceptance, and does not accept or manufacture quantitative performance evidence. dev.26 evaluates the separately governed Glaze Motion 0.6 Experimental foundation against all ten Section 34 promotion dimensions and retains it as Experimental: current evidence is partial or absent across accessibility, native-platform behavior, frame pacing, interaction latency, interruption, reversal, Reduced Motion, physical-device behavior, energy impact, and human motion review, so the eligible promotion subset is empty. dev.27 adds the bounded v1.2 Section 35 System Shell Continuity layer over the historical dev.6 shell foundation: authoritative shell occurrences map to semantic Signature Motion relationships, identity-dependent Bloom/Trace behavior still requires authoritative connected identity, Reduced Motion and dev.25 performance pressure may simplify or remove optional animation, and task state, focus, navigation, shell/provider truth, and execution remain state-first and independent of animation completion. Historical dev.6 remains bound to v1.0 Section 7 and is not reinterpreted as v1.2 Section 35. dev.28 adds the bounded v1.2 Section 36 Notification and Activity Surfaces layer over the historical dev.7 foundation: the six planned notification/activity components retain provider-owned truth, authoritative progress/completion/recovery/arrival/expansion/dismissal transitions map to governed Signature Motion relationships, progress motion requires authoritative progress truth, completion/recovery motion requires authoritative provider truth, expansion Bloom requires authoritative connected identity, Reduced Motion and dev.25 performance pressure may simplify or remove optional motion, and persistent pulsing is not used as the default attention mechanism. Historical dev.7 remains bound to v1.0 Section 8 and is not reinterpreted as v1.2 Section 36. dev.29 adds the bounded v1.2 Section 37 Native Glaze Kits layer over the historical dev.9 v1.1 Section 24 foundation: Android/Jetpack Compose, Apple/SwiftUI, Web, and supported Linux native environments preserve the same governed Glaze Signature Motion family, semantic intent, state meaning, and motion character while native platforms retain authority over animation primitives, accessibility motion preferences, rendering architecture, interaction behavior, and performance characteristics. All ten Signature Motion relationships are available semantically, identity-dependent Bloom/Trace behavior still requires authoritative connected identity, Reduced Motion and dev.25 performance pressure may simplify or remove optional motion, and raw cross-platform timing/easing/spring/keyframe/path controls are rejected. Identical animation implementation, timing, curves, paths, or physics are explicitly not required. Historical dev.9 remains bound to v1.1 Section 24 and is not reinterpreted as v1.2 Section 37. dev.30 adds the bounded v1.2 Section 38 Expanded Component System layer over the historical dev.10 v1.1 Section 25 foundation: the existing 14-component catalog exposes only component-appropriate semantic transition relationships, direct Signature Motion family selection and arbitrary local/raw animation controls are rejected, transition/state/identity authority remains external, Notification/Progress motion delegates provider-truth semantics to Section 36, and Reduced Motion plus dev.25 performance pressure may simplify or remove optional motion without changing focus, navigation, task continuity, semantic color meaning, or provider/application state. Historical dev.10 remains bound to v1.1 Section 25 and is not reinterpreted as v1.2 Section 38. dev.31 adds the bounded v1.2 Sections 6–21 Advanced Theme System reconciliation over the retained dev.5 Personalization 2.0 and dev.8 Theme/Semantic Color foundations, with current-plan source coverage for Follow System, scoped application/device preferences, live/accessibility/color-vision previews, theme history/undo/duplication, safe declarative theme-package import/export, semantic color layering, color-coded navigation/system/connectivity/synchronization/data visualization, complete accessibility diagnostics, Theme Safety repair/reset reachability, and local-first offline theme generation. Historical dev.5/dev.8/dev.20/dev.21/dev.22 identities remain unchanged and are not relabeled. dev.32 adds the bounded v1.2 Section 39 Glaze Inspector explainability layer over the historical dev.11 / v1.1 Section 26 foundation: developers can inspect governed motion-family selection, transition endpoints and authoritative connected identity, semantic timing and magnitude families, motion-budget state, Reduced Motion resolution, theme/color/material/focus/accessibility resolution, and the reasons a governed presentation path was selected, while the Inspector remains advisory and local-first and cannot mutate source state, execute animation, expose raw implementation controls, manufacture provider/theme/accessibility/focus truth, grant acceptance, or change lifecycle authority. Historical dev.11 remains bound to v1.1 Section 26 and is not reinterpreted as v1.2 Section 39. dev.33 adds the bounded v1.2 Section 40 Glaze Studio preview/comparison layer over historical dev.12 / v1.1 Section 27: designers and developers can preview Signature transitions, motion profiles, components, adaptive-layout/form-factor changes, themes/palettes, accessibility modes, Reduced Motion, input models, and semantic states and compare Calm, Balanced, Expressive, and Reduced Motion behavior side by side, while Studio-selected modes remain simulation-only and Studio cannot persist preferences, rank/select a winner, mutate source, execute animation/actions/navigation, manufacture provider/semantic/accessibility/platform truth, grant acceptance, or change lifecycle authority. Historical dev.12 remains bound to v1.1 Section 27 and is not reinterpreted as v1.2 Section 40. dev.34 adds the bounded v1.2 Section 41 Accessibility Continuity layer: authoritative changes for Large Text, Reduced Motion, Reduced Transparency, Increased Contrast, Forced Colors, screen readers, switch access, voice access, Touch Assistance, and keyboard navigation preserve current task state wherever technically possible; caller/platform accessibility and input truth remain external; logical focus restoration is proposal-only; Reduced Motion/accessibility precedence may simplify optional presentation without rewriting durable preferences or authoritative application state. dev.35 adds the bounded v1.2 Section 42 Cross-Device Consistency Without Uniformity layer: common semantic vocabulary, color roles, state vocabulary, motion language, material hierarchy, interaction principles, accessibility expectations, and authority boundaries remain invariant across governed Android/Jetpack Compose, Apple/SwiftUI, Web, and supported Linux native mappings while native controls, layout composition, rendering primitives, input bindings, windowing mechanics, and animation implementation details may differ. Pixel/screenshot similarity scoring, raw visual/animation/performance controls, platform ranking, ratings, and winner selection remain outside the contract; semantic/provider/platform/accessibility truth stays externally authoritative. dev.36 adds the bounded v1.2 Section 43 Visual and Motion Direction layer: comprehension-before-spectacle becomes explicit source policy; “more glass everywhere” and “animation everywhere” are rejected as default strategies; material richness stays localized and semantic; authoritative transition occurrence gates non-trivial motion; decorative continuous motion remains non-default; accessibility and authoritative performance pressure may reduce optional richness without rewriting durable preferences or authoritative application state; and raw blur/opacity/glass-coverage, animation timing/physics, pixel/screenshot, scoring/ranking, and winner controls remain outside the contract. dev.37 adds the bounded v1.2 Section 44 Privacy and Authority Boundaries layer on top of the existing V1.5 provider registry: provider provenance, authority ownership, and duplicate-conflict fail-closed behavior are inherited rather than reimplemented; nine truth domains cover security protection, privacy consent/access, synchronization, operation results, resilience/recovery, identity/authentication, connectivity/availability, and coordination status; Wardveil Security, Privacy Shield, Everkeep, and GoreeCloud Identity retain system truth ownership; responsible providers are provider-local, platform connectivity is platform-local, and GoreeCloud Mesh is coordination-only with no inherited governance/authorization; accepted truth can drive semantic presentation but non-trivial motion additionally requires authoritative transition occurrence; raw inference, precedence/ranking, forced truth, animation controls, and pixel/screenshot scoring remain outside the contract. dev.14 does **not** establish Section 22 completion, dev.15 does **not** establish Section 23 completion, dev.16 does **not** establish Section 24 completion, dev.17 does **not** establish Section 25 completion, dev.18 does **not** establish Section 26 completion, dev.19 does **not** establish Section 27 completion, dev.20 does **not** establish Section 28 completion, dev.21 does **not** establish Section 29 completion, dev.22 does **not** establish Section 30 completion, dev.23 does **not** establish Section 31 completion, dev.24 does **not** establish Section 32 completion, dev.25 does **not** establish Section 33 completion, and dev.26 does **not** establish Section 34 completion or any Glaze Motion Candidate/Anchor promotion. dev.27 does **not** establish Section 35 completion. dev.28 does **not** establish Section 36 completion. dev.29 does **not** establish Section 37 completion, finished native reference implementations, native-platform/rendered/assistive-technology/measured-performance/representative-device/energy/interruption-reversal/human-motion acceptance. dev.30 does **not** establish Section 38 completion, rendered/native-platform/assistive-technology/measured-performance/representative-device/energy/human-motion acceptance, or any later v1.2 section. dev.31 does **not** establish Sections 6–21 completion, rendered/native-platform/assistive-technology/representative-device/performance/energy/human-visual acceptance, or downstream consumer eligibility. dev.32 does **not** establish Section 39 completion, rendered/native-platform/assistive-technology/measured-performance/representative-device/energy/human-review acceptance, downstream consumer eligibility, or any lifecycle promotion. dev.33 does **not** establish Section 40 completion, rendered/native-platform/assistive-technology/measured-performance/representative-device/energy/human visual-and-motion acceptance, downstream consumer eligibility, or any lifecycle promotion. dev.34 does **not** establish Section 41 completion, rendered/native-platform/assistive-technology/large-text/Forced-Colors/switch/voice/Touch-Assistance/keyboard-navigation/representative-device/measured-performance/energy/human accessibility acceptance, downstream consumer eligibility, or any lifecycle promotion. dev.35 does **not** establish Section 42 completion, cross-platform rendered/native-platform/assistive-technology/representative-device/measured-performance/energy/human cross-device acceptance, downstream consumer eligibility, or any lifecycle promotion. dev.36 does **not** establish Section 43 completion, rendered/native-platform/assistive-technology/representative-device/measured-performance/energy/cross-device/human visual-and-motion acceptance, downstream consumer eligibility, or any lifecycle promotion. dev.37 does **not** establish Section 44 completion, provider-integration/privacy/security/rendered/native-platform/assistive-technology/representative-device/measured-performance/energy/human acceptance, downstream consumer eligibility, or any lifecycle promotion. dev.38 does **not** establish Section 45 completion, measured-performance/energy/battery/thermal/background-lifecycle/rendered/native-platform/assistive-technology/representative-device/regression/human visual-and-motion acceptance, downstream consumer eligibility, or any lifecycle promotion. These tranches do not establish consumer eligibility, Release Candidate, Anchor, deployment, or production acceptance. The separate Glaze Motion 0.6 lifecycle remains Experimental. dev.13's “v1.1 Section 28 Continuity-Aware Motion” remains historical implementation provenance and must **not** be reinterpreted as v1.2 Section 28 Theme Transition System.
+
+All V1.7 Development work remains non-consumer-eligible. Nothing in this document independently changes `VERSION`, `registry/lifecycle.json`, the V1.6 Anchor runtime or release evidence, downstream consumer eligibility, or provider-owned security, privacy, permission, capability, connectivity, recovery, identity, consent, authorization, or availability truth.
+
+### Overview
+
+Glaze UI V1.7 is planned as the next major evolution of the GoreeCloud visual and interaction design system.
+
+V1.7 should build upon the established Glaze foundations for adaptive presentation, semantic state, accessibility, material behavior, dynamic color, personalization, motion, responsive composition, resilience, performance, and conformance.
+
+The release should focus on four major areas:
+
+**Interaction Continuity. Personal Expression. Adaptive Intelligence. Semantic Color Intelligence. Signature Motion.**
+
+The governing V1.7 principle is:
+
+> **The interface may change shape, material, density, color, motion, input mapping, or composition as the environment changes; the user's task, intent, accessibility, identity, and authoritative system truth must remain continuous.**
+
+Glaze UI remains a presentation system. It may visually represent supplied context and state, but it must never manufacture authorization, capability, security, privacy, permission, consent, availability, or other provider-owned truth.
+
+Motion should become one of the recognizable characteristics of GoreeCloud software, but animation must always explain interaction, hierarchy, continuity, state, or identity rather than exist merely as decoration.
+
+## 1. Task Continuity System
+
+V1.7 should introduce a first-class Task Continuity contract governing how interface state survives changes in environment and presentation.
+
+Continuity should preserve appropriate:
+
+- Navigation destination
+- Focus
+- Selection
+- Scroll position
+- Expanded state
+- Drafts
+- Form input
+- Filters
+- Search queries
+- Pane state
+- Media state
+- Safe pending interactions
+These states should survive window resizing, rotation, foldable posture transitions, compact-to-expanded layouts, input changes, accessibility changes, theme changes, appearance changes, connectivity changes, and multi-pane recomposition.
+
+A presentation change must not silently become a task reset.
+
+## 2. Adaptive Input 2.0
+
+Glaze UI V1.7 should define a unified semantic interaction model for:
+
+- Touch
+- Pointer
+- Keyboard
+- Stylus
+- Remote/D-pad
+- Rotary input
+- Switch access
+- Voice access
+- Assistive input systems
+Actions should be defined by intent rather than by a specific gesture.
+
+Drag, swipe, hover, long press, precision-pointer interactions, and multi-touch gestures must have appropriate alternatives when unavailable.
+
+Changing input methods must not change command meaning or unnecessarily disturb the current task.
+
+## 3. First-Class Form-Factor Profiles
+
+V1.7 should formalize reusable composition profiles for:
+
+- Mobile
+- Tablet
+- Desktop
+- Foldable and posture-aware devices
+- TV and far-view environments
+- Wearables
+Mobile and Tablet should continue to receive first design, implementation, optimization, and validation priority wherever supported.
+
+Each profile should intentionally define navigation, reachability, density, typography, safe areas, viewing distance, action placement, pane behavior, input assumptions, motion behavior, and target sizing.
+
+Wearable support should move toward a complete first-class Glaze UI contract.
+
+Spatial presentation should remain separately governed until sufficient evidence exists.
+
+## 4. Adaptive Composition
+
+V1.7 should make adaptive composition a core Glaze capability.
+
+The same semantic surface may appear as:
+
+- A bottom sheet on Mobile
+- A side pane on Tablet
+- A secondary pane on Desktop
+- A constrained full-screen experience
+- A floating surface where appropriate
+- A far-view panel on TV
+A new GlzAdaptivePane component should provide governed mappings between these forms.
+
+The surface should retain semantic identity during recomposition.
+
+Focus, selection, scroll state, drafts, navigation state, and accessibility relationships should remain continuous.
+
+## 5. Glaze Command Surface
+
+V1.7 should introduce GlzCommandSurface as a shared foundation for:
+
+- Universal Search
+- Application search
+- Commands
+- Actions
+- Contextual actions
+- Navigation shortcuts
+- Keyboard command palettes
+- Touch search
+- Remote-friendly command selection
+Its presentation should adapt to form factor and input while retaining the same conceptual interaction model.
+
+Search scope, source, availability, provenance, and authority must remain explicit.
+
+## 6. Advanced Theme Manager 2.0
+
+V1.7 should introduce a significantly more capable Glaze Theme Manager.
+
+The Theme Manager should support:
+
+- Follow System
+- Light
+- Dark
+- Deep Dark
+- GoreeCloud theme presets
+- User-created themes
+- Accent palettes
+- Multi-color palettes
+- Primary, secondary, and tertiary color families
+- Surface atmosphere
+- Material intensity
+- Glaze clarity
+- Calm, Balanced, and Expressive profiles
+- Density profiles
+- Governed geometry profiles
+- Motion-expression profiles
+- Wallpaper-derived palettes
+- Application-aware themes
+- Per-application overrides where appropriate
+- Per-device preferences
+- Live previews
+- Preview-before-Apply
+- Accessibility previews
+- Color-vision previews
+- Contrast diagnostics
+- Theme history
+- Undo
+- Theme duplication
+- Safe import/export
+- Versioned theme packages
+Users should gain substantial visual freedom without gaining the ability to redefine security, privacy, destructive, warning, critical, or other protected semantic meanings.
+
+## 7. Theme Architecture
+
+Themes should resolve through a governed hierarchy:
+
+Accessibility → Protected Semantic State → Product Identity → User Theme → Contextual Accent → Glaze Default
+
+Accessibility has highest presentation priority.
+
+Semantic truth must override personalization where required.
+
+Product identity remains recognizable.
+
+User themes control permitted expressive presentation.
+
+Contextual color provides bounded environmental influence.
+
+The default Glaze presentation remains the final fallback.
+
+## 8. Semantic Color System 2.0
+
+V1.7 should make color an even stronger information system.
+
+Coordinated semantic families should exist for states such as:
+
+- Information
+- Success
+- Warning
+- Error
+- Danger
+- Critical
+- Destructive
+- Privacy
+- Security
+- Protected
+- Restricted
+- Trusted
+- Unverified
+- Online
+- Offline
+- Connecting
+- Synchronizing
+- Pending
+- Unavailable
+- Selected
+- Focused
+- Active
+- Disabled
+- Attention
+- Recovery
+Each family should provide suitable treatments for text, icons, symbols, borders, surfaces, Glaze materials, progress, badges, selection, and prominence levels.
+
+## 9. Semantic Color Prominence
+
+Glaze UI should preserve the hierarchy:
+
+Subtle → Standard → Prominent → Critical
+
+Critical treatment must remain rare and reserved for genuinely consequential situations.
+
+Ordinary events must never be visually escalated merely to attract attention.
+
+## 10. Protected Semantic Colors
+
+User themes must not redefine protected meaning.
+
+For example:
+
+- A red theme must not make ordinary actions look destructive.
+- A green theme must not imply that ordinary states are safe or verified.
+- A custom theme must not suppress Privacy Shield warnings.
+- A theme must not make an unprotected security condition appear protected.
+**Personalization may change expression. Personalization must not change truth.**
+
+## 11. Semantic Color Layering
+
+Application identity and semantic state should coexist.
+
+An application's identity should remain recognizable while Error, Warning, Privacy, Security, Sync, or other states are presented around or alongside that identity.
+
+V1.7 should define priority rules for compound states to avoid excessive colored borders, badges, surfaces, and competing visual treatments.
+
+## 12. Intelligent Palette Generation
+
+Theme Manager should generate complete perceptually coordinated color families.
+
+Seeds may come from:
+
+- User-selected colors
+- GoreeCloud presets
+- Wallpaper summaries
+- Approved application identity
+- Other locally supplied approved inputs
+Palette generation should remain contrast-aware and perceptually coherent.
+
+Accessibility validation must occur after derivation.
+
+Generated theme colors must never replace protected semantic palettes.
+
+## 13. Theme Color Roles
+
+Users should customize understandable presentation roles rather than raw implementation tokens.
+
+Examples include:
+
+- Primary accent
+- Secondary accent
+- Tertiary accent
+- Canvas atmosphere
+- Interactive highlight
+- Selection treatment
+- Decorative tint
+- Material atmosphere
+- Product-identity integration
+- Wallpaper influence
+Critical semantic roles remain protected.
+
+## 14. Color-Coded Navigation and Interaction
+
+Color may reinforce:
+
+- Current destination
+- Current workspace
+- Selection
+- Focus
+- Editing mode
+- Drag state
+- Active filters
+- Search scope
+- Current profile
+- Related information groups
+Focus and selection must remain distinguishable.
+
+Color must never be the only indication of state.
+
+## 15. Color-Coded System State
+
+Shared GoreeCloud state should receive consistent visual treatment.
+
+Wardveil Security remains authoritative for security.
+
+Privacy Shield remains authoritative for privacy.
+
+Everkeep remains authoritative for backup, preservation, continuity, and recovery.
+
+GoreeCloud Identity remains authoritative for applicable identity and authentication truth.
+
+Glaze UI presents supplied states without manufacturing them.
+
+## 16. Connectivity and Synchronization Color
+
+Glaze should clearly distinguish:
+
+- Online
+- Offline
+- Connecting
+- Limited connectivity
+- Synchronized
+- Synchronizing
+- Pending
+- Paused
+- Conflict
+- Unavailable
+- Failed
+Network connectivity and service synchronization must not be visually conflated.
+
+## 17. Data Visualization Color
+
+V1.7 should provide theme-compatible categorical palettes for:
+
+- Charts
+- Analytics
+- Calendars
+- Timelines
+- Maps
+- Dashboards
+- Other information visualization
+Ordinary data colors must not accidentally resemble protected Warning, Error, Critical, Privacy, or Security roles.
+
+Important differences must remain understandable without color alone.
+
+## 18. Theme Accessibility Engine
+
+Every custom theme should be evaluated for:
+
+- Text contrast
+- Focus visibility
+- Selection visibility
+- Semantic-state separation
+- Categorical-color separation
+- Glaze readability
+- Disabled-state clarity
+- Color-vision accessibility
+- Grayscale usability
+- Forced Colors compatibility
+Where safe, Glaze may adjust tone, chroma, foreground selection, or material opacity.
+
+Automatic correction must not alter semantic meaning.
+
+## 19. Theme Safety Mode
+
+Invalid or incompatible themes must fail safely.
+
+Glaze should be able to disable unsafe properties or return to a known-good GoreeCloud theme.
+
+A damaged theme must never prevent users from accessing Theme Manager to repair or reset it.
+
+## 20. Theme Packages
+
+V1.7 may define a declarative Glaze Theme Package.
+
+Theme packages should be:
+
+- Versioned
+- Inspectible
+- Non-executable
+- Bounded
+- Portable where appropriate
+They must not contain arbitrary executable code, trackers, analytics dependencies, remote runtime resources, or authority to redefine protected semantics.
+
+## 21. Local-First Theme Generation
+
+Theme generation should remain local-first.
+
+Glaze itself should not require wallpaper uploads, screenshots, user content, telemetry, or remote analysis merely to generate themes.
+
+A complete theme experience must remain possible offline.
+
+## 22. Glaze Signature Motion System
+
+V1.7 should introduce a distinct Glaze Signature Motion System.
+
+Motion should become recognizable as part of GoreeCloud's identity in the same way material, color, geometry, and typography are recognizable.
+
+The objective is not simply to animate more elements.
+
+The objective is to create a recognizable motion vocabulary built around:
+
+**Continuity. Depth. Material. Precision. Quiet settling.**
+
+V1.7 should define named, reusable transition families that map to semantic relationships.
+
+Applications should request motion by semantic intent instead of inventing arbitrary animations.
+
+## 23. Signature Motion Principles
+
+Glaze motion should follow these principles:
+
+**Respond immediately.**
+
+Controls acknowledge input without perceptible artificial delay.
+
+**Move with purpose.**
+
+Motion explains what changed or how two states relate.
+
+**Preserve identity.**
+
+The same conceptual object should appear to transform rather than disappear and be recreated whenever appropriate.
+
+**Use depth meaningfully.**
+
+Movement through depth should communicate hierarchy, not merely spectacle.
+
+**Settle quietly.**
+
+Routine Glaze motion should avoid unnecessary bouncing, wobbling, oscillation, or repetitive overshoot.
+
+**Remain interruptible.**
+
+User-controlled transitions must be reversible or interruptible where appropriate.
+
+**Never block state.**
+
+State updates, focus changes, navigation, close actions, and task completion must never depend on an animation finishing.
+
+**Respect accessibility.**
+
+Reduced Motion and other accessibility requirements take precedence over visual expression.
+
+## 24. Glaze Signature Transition Families
+
+V1.7 should introduce a recognizable collection of named motion patterns.
+
+### Glaze Bloom
+
+A compact control expands into its connected larger surface while preserving visual identity.
+
+Examples:
+
+- Search capsule → Search panel
+- Mini player → Full player
+- Quick control → Detailed control
+- Notification → Event detail
+- Thumbnail → Detail viewer
+Shape, material, content hierarchy, and position transition together where technically appropriate.
+
+Bloom should communicate:
+
+**“This is the same thing, expanded.”**
+
+### Glaze Flow
+
+A pane or group reorganizes fluidly into a new composition.
+
+Examples:
+
+- Mobile stacked layout → Tablet split view
+- Compact navigation → Navigation rail
+- Tablet pane → Desktop side panel
+- Folded layout → Unfolded dual-pane layout
+Elements should move toward their new semantic destinations rather than disappearing and reappearing arbitrarily.
+
+Flow should communicate:
+
+**“The workspace changed shape, but your task did not.”**
+
+### Glaze Lift
+
+Transient controls emerge from the surface hierarchy through restrained depth, material clarification, opacity, and movement.
+
+Appropriate uses include:
+
+- Menus
+- Popovers
+- Contextual controls
+- Command surfaces
+- Temporary toolbars
+- Small system overlays
+Lift should feel responsive and spatial without becoming theatrical.
+
+### Glaze Veil
+
+Sheets, dialogs, and system overlays may appear through a coordinated transition between the underlying context, scrim, and foreground material.
+
+Rather than simply fading a modal onto the screen, the interface should establish hierarchy progressively.
+
+Veil should communicate:
+
+**“Your current context remains here, but attention has moved above it.”**
+
+Critical dialogs should remain certainty-first and must not depend on translucent effects.
+
+### Glaze Fold
+
+Used when the physical or logical workspace changes posture or partitioning.
+
+Examples include:
+
+- Foldable device posture changes
+- Pane splitting
+- Pane merging
+- Window docking
+- Workspace subdivision
+Fold should preserve content identity and spatial relationships.
+
+It must not imitate a literal folding animation merely for decoration.
+
+### Glaze Trace
+
+A subtle continuity cue may connect a source interaction with its resulting destination.
+
+Examples:
+
+- Selected navigation item → destination header
+- Selected object → inspector pane
+- Search result → opened content
+- Command → corresponding control surface
+Trace may use restrained position, highlight, material, edge, or emphasis continuity.
+
+It must not become a continuous decorative trail.
+
+### Glaze Settle
+
+After user-driven movement such as dragging, resizing, reordering, or direct manipulation, the interface may use a short governed settling transition.
+
+Settle should feel precise rather than springy.
+
+Routine exaggerated bounce or rubber-band motion should not become part of the Glaze identity.
+
+### Glaze Focus Transfer
+
+When focus moves between clearly related interface regions, the visual focus treatment may transition coherently between them.
+
+This is especially useful for:
+
+- Keyboard navigation
+- TV directional navigation
+- Command surfaces
+- Pane transitions
+- Dialog restoration
+- Adaptive recomposition
+The actual focus state must update independently from the animation.
+
+### Glaze Color Shift
+
+Theme, state, or contextual color changes may transition through coordinated perceptual interpolation rather than abrupt independent token replacement.
+
+Uses may include:
+
+- Light ↔ Dark
+- Dark ↔ Deep Dark
+- Applying a new user theme
+- Accent changes
+- Wallpaper atmosphere changes
+- Non-critical semantic-state changes
+Protected semantic meaning must remain immediately recognizable throughout the transition.
+
+### Glaze Material Shift
+
+A surface may transition between:
+
+- Surface
+- Soft Glaze
+- Glaze
+- Deep Glaze
+- Solid fallback
+when its semantic role legitimately changes.
+
+Blur, transparency, tint, border, luminosity, and depth should behave as one coordinated transition rather than unrelated effects.
+
+Reduced Transparency should substitute a suitable non-translucent equivalent.
+
+## 25. Connected Transformation 2.0
+
+V1.7 should significantly expand Connected Transformation.
+
+When two states represent the same object or task, the system should preferentially preserve identity through transformation.
+
+Governed relationships may include:
+
+- Search control → Search interface
+- Navigation item → Destination
+- App icon → Application surface where platform appropriate
+- Card → Detail view
+- Thumbnail → Viewer
+- Quick setting → Expanded setting
+- Compact player → Full player
+- Folder → Folder contents
+- Notification → Related event
+- Widget → Expanded experience
+- Command result → Resulting interface
+- Compact pane → Expanded pane
+A connected animation must never invent a relationship that does not actually exist.
+
+When identity is unclear, Glaze should fall back to a standard transition.
+
+## 26. Adaptive Composition Motion
+
+Adaptive layout transitions should become a major visual signature of V1.7.
+
+When layouts recompose, Glaze should preserve spatial understanding.
+
+Elements may:
+
+- Reposition
+- Resize
+- Change hierarchy
+- Move between panes
+- Merge
+- Separate
+- Reorder
+- Change material level
+without creating unnecessary disappearance/reappearance.
+
+This is particularly important for Mobile ↔ Tablet-like resizing, foldable posture changes, desktop window resizing, and multi-pane workspaces.
+
+## 27. Signature Microinteractions
+
+Common actions should receive small, consistent Glaze microinteractions.
+
+Applicable actions include:
+
+- Toggle
+- Select
+- Favorite
+- Save
+- Copy
+- Pin
+- Expand
+- Collapse
+- Refresh
+- Retry
+- Send
+- Download
+- Upload
+- Completion
+- Reorder
+Microinteractions should typically combine only a small number of properties such as:
+
+- Geometry
+- Position
+- Material
+- Icon transformation
+- Color
+- Opacity
+- Bounded scale
+They should be quick, readable, and non-disruptive.
+
+Repeated actions must not produce tiring or distracting animation.
+
+## 28. Theme Transition System
+
+Theme Manager should include polished transitions for theme preview and application.
+
+Applying a theme may coordinate:
+
+- Canvas color
+- Surface color
+- Accent families
+- Material atmosphere
+- Icon tint
+- Selection color
+- Non-semantic decorative color
+- Appearance mode
+The transition should make the relationship between old and new themes understandable without creating a full-screen spectacle.
+
+Theme previews should be cancellable.
+
+A theme should not be considered applied until its configuration state is actually committed by the responsible system.
+
+## 29. Motion Expression Profiles
+
+V1.7 should connect motion to the existing expression model.
+
+### Calm
+
+- Minimal travel
+- Fast settling
+- Fewer connected transformations
+- Restrained material animation
+- Almost no decorative movement
+### Balanced
+
+- Standard Glaze transitions
+- Connected transformations where helpful
+- Moderate material and composition continuity
+- Default GoreeCloud motion character
+### Expressive
+
+- Richer connected transformations
+- More pronounced depth relationships
+- More visible adaptive recomposition
+- Expanded use of signature Glaze motion where semantically justified
+Expressive must not mean constant animation.
+
+Accessibility and performance constraints override the selected expression profile.
+
+## 30. Motion Personalization
+
+Theme Manager may expose a bounded Motion Expression preference.
+
+Users may choose governed modes such as:
+
+- Minimal
+- Calm
+- Balanced
+- Expressive
+Users should not normally need raw duration, easing, spring, or physics controls.
+
+Theme packages may request approved motion profiles but must not include executable animation code.
+
+## 31. Reduced Motion Equivalents
+
+Every signature transition must define a Reduced Motion equivalent.
+
+Examples:
+
+- Bloom → opacity/shape-state replacement
+- Flow → immediate recomposition with brief emphasis
+- Lift → opacity change without travel
+- Veil → immediate hierarchy change with restrained fade
+- Fold → immediate layout replacement
+- Trace → static destination highlight
+- Settle → immediate final position
+- Focus Transfer → immediate focus-ring update
+- Color Shift → shortened or immediate palette replacement
+- Material Shift → immediate material replacement
+Reduced Motion must preserve:
+
+- State
+- Meaning
+- Focus
+- Navigation
+- Task continuity
+- Direct-manipulation tracking
+No critical interaction should require observing motion.
+
+## 32. Motion Fatigue Protection
+
+V1.7 should preserve and strengthen motion budgeting.
+
+The system should limit excessive simultaneous:
+
+- Transitions
+- Skeleton animations
+- Material animations
+- Decorative movements
+- Large-area transformations
+- Continuous animated elements
+When the motion budget is exceeded, optional animation should be reduced automatically.
+
+Semantic state must not be reduced.
+
+## 33. Motion Performance
+
+Signature animation must be designed around predictable rendering performance.
+
+Implementations should prefer compositor-friendly techniques where appropriate.
+
+Glaze should gracefully reduce optional motion under:
+
+- Runtime pressure
+- Power-saving conditions
+- Thermal constraints
+- Low-end hardware
+- Low refresh conditions
+- Reduced Motion
+- Performance-degraded environments
+A visually elaborate transition that produces poor responsiveness should fail toward a simpler Glaze transition.
+
+## 34. Glaze Motion Lifecycle
+
+The repository already preserves Glaze Motion as a separately governed experimental foundation.
+
+V1.7 should evaluate whether a bounded subset of that work is ready to become part of the official Glaze UI contract.
+
+Promotion should require independent validation of:
+
+- Accessibility
+- Native-platform behavior
+- Frame pacing
+- Interaction latency
+- Interruption
+- Reversal
+- Reduced Motion
+- Physical-device behavior
+- Energy impact
+- Human motion review
+Experimental motion must not become Stable merely because it is visually attractive.
+
+## 35. System Shell Continuity
+
+V1.7 should strengthen System Shell continuity across:
+
+- Notification/activity presentation
+- Control Center
+- Multi-window
+- Split view
+- Compact/expanded navigation
+- Window restoration
+- Application/system handoff
+- Task switching
+- Universal Search
+- Contextual commands
+Signature motion should reinforce shell relationships without making shell navigation slower.
+
+## 36. Notification and Activity Surfaces
+
+V1.7 should standardize components such as:
+
+- GlzNotificationSurface
+- GlzActivityItem
+- GlzActivityGroup
+- GlzStatusFeed
+- GlzBackgroundTask
+- GlzProgressSurface
+Motion may reinforce meaningful transitions such as progress, completion, recovery, arrival, expansion, or dismissal.
+
+Persistent pulsing should not become the default way to communicate attention.
+
+## 37. Native Glaze Kits
+
+V1.7 should provide stronger native mappings for applicable:
+
+- Android / Jetpack Compose
+- Apple / SwiftUI
+- Web
+- Linux native environments
+Native implementations should preserve Glaze semantic motion while respecting platform interaction behavior, accessibility, rendering architecture, and performance.
+
+The goal is shared motion character, not identical animation implementation.
+
+## 38. Expanded Component System
+
+Potential additions include:
+
+- GlzAdaptivePane
+- GlzCommandSurface
+- GlzActivitySurface
+- GlzNotificationSurface
+- GlzAdaptiveToolbar
+- GlzActionCluster
+- GlzRecoverySurface
+- GlzProgressSurface
+- GlzPreferenceGroup
+- GlzAppearancePicker
+- GlzThemePreview
+- GlzColorRolePicker
+- GlzPalettePreview
+- GlzAdaptiveSplitView
+Components should expose semantic transition relationships where appropriate instead of embedding arbitrary local animations.
+
+## 39. Glaze Inspector
+
+Glaze Inspector should expose:
+
+- Current motion family
+- Transition source and destination
+- Connected-identity relationship
+- Duration family
+- Easing family
+- Motion magnitude
+- Motion budget
+- Reduced Motion mapping
+- Theme resolution
+- Semantic color resolution
+- Material resolution
+- Focus state
+- Accessibility overrides
+Developers should be able to understand why a given animation was selected.
+
+## 40. Glaze Studio
+
+Glaze Studio should provide interactive preview and development tools for:
+
+- Signature transitions
+- Motion profiles
+- Components
+- Adaptive layout changes
+- Form-factor transitions
+- Themes
+- Color palettes
+- Accessibility modes
+- Reduced Motion
+- Input models
+- Semantic states
+Designers should be able to compare Calm, Balanced, Expressive, and Reduced Motion behavior side by side.
+
+## 41. Accessibility Continuity
+
+Accessibility remains part of continuity.
+
+Changes involving:
+
+- Large text
+- Reduced Motion
+- Reduced Transparency
+- Increased Contrast
+- Forced Colors
+- Screen readers
+- Switch access
+- Voice access
+- Touch Assistance
+- Keyboard navigation
+must preserve the current task wherever technically possible.
+
+Accessibility always outranks motion richness.
+
+## 42. Cross-Device Consistency Without Uniformity
+
+Glaze UI should retain common:
+
+- Semantic vocabulary
+- Color roles
+- State vocabulary
+- Motion language
+- Material hierarchy
+- Interaction principles
+- Accessibility expectations
+- Authority boundaries
+while mapping appropriately to each platform.
+
+A Glaze Bloom on Android, Web, Linux, or another platform does not have to use identical implementation details to communicate the same relationship.
+
+## 43. Visual and Motion Direction
+
+V1.7 should not become “more glass everywhere” or “animation everywhere.”
+
+Its advancement should come from:
+
+- Better adaptive composition
+- Stronger theme architecture
+- More meaningful semantic color
+- Distinctive connected transitions
+- Better spatial continuity
+- Refined microinteractions
+- Native platform adaptation
+- Quiet but recognizable GoreeCloud motion
+Animation should increase comprehension before it increases spectacle.
+
+## 44. Privacy and Authority Boundaries
+
+Motion and adaptive presentation must not imply state that does not exist.
+
+For example:
+
+- A protection animation must not imply Wardveil protection without authoritative state.
+- A synchronization completion animation must not play unless the responsible provider reports completion.
+- A success transition must not manufacture success.
+- A privacy transition must not imply that access was revoked unless Privacy Shield or the responsible provider confirms it.
+Motion communicates truth.
+
+Motion does not create truth.
+
+## 45. Performance and Energy Awareness
+
+Advanced themes, materials, animations, and adaptive transitions must remain performance-conscious.
+
+Optional visual complexity should degrade gracefully under constrained conditions.
+
+Task continuity, accessibility, responsiveness, and semantic state always outrank animation fidelity.
+
+Development source status — September 27, 2026: `1.7.0-dev.38` implements the bounded v1.2 Section 45 Performance and Energy Awareness source foundation. It reuses Motion Performance dev.25 for authoritative runtime/power/thermal/hardware/refresh/visibility constraints and extends deterministic degradation across themes, materials, motion, adaptive transitions, decoration, and optional background visual work. Task continuity, accessibility, responsiveness, semantic state, protected semantic color meaning, and provider truth remain non-degradable; optional visual work may simplify or suspend, idle render loops remain prohibited, and optional visuals may not force frames. Section 45 remains incomplete pending applicable exact-revision measured performance/energy, battery/thermal, background-lifecycle, rendered/native/assistive-technology/representative-device, regression, and human visual/motion evidence.
+
+## 46. V1.7 Acceptance
+
+V1.7 qualification should cover:
+
+- Task continuity
+- Adaptive composition
+- Semantic color
+- Theme safety
+- Custom-theme accessibility
+- Signature motion
+- Connected transformations
+- Animation interruption
+- Animation reversal
+- Reduced Motion
+- Frame pacing
+- Input latency
+- Mobile
+- Tablet
+- Desktop
+- Foldable
+- TV
+- Wearable where claimed
+- Keyboard
+- Pointer
+- Touch
+- Alternative input
+- Reduced Transparency
+- Increased Contrast
+- Forced Colors
+- Large text
+- RTL
+- Representative rendering
+- Native behavior
+- Performance
+- Energy behavior where applicable
+- Regression
+- Human visual and motion review
+- Assistive technology
+- Privacy boundaries
+- Security boundaries
+- Artifact provenance
+Automated tests alone must not establish complete motion acceptance.
+
+Development source status — September 27, 2026: `1.7.0-dev.39` implements a bounded Section 46 qualification-control framework covering all 37 listed V1.7 acceptance dimensions. Missing or mismatched evidence remains unverified; terminal evidence must be bound to one exact reviewed source revision with explicit evidence references; multi-group lanes require every evidence group; automated tests alone cannot establish motion acceptance; and only Wearable where claimed and Energy behavior where applicable may use a specifically justified not-applicable disposition. The framework can summarize evidence inventory completeness but cannot grant V1.7 acceptance, lifecycle promotion, consumer eligibility, deployment acceptance, or production acceptance. Section 46 remains incomplete until authoritative exact-revision evidence is gathered, governed review accepts the applicable matrix, and the separate lifecycle process is completed.
+
+## 47. Proposed V1.7 Identity
+
+**Product:** GLAZE UI
+**Version:** V1.7
+**Planned theme:** Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion
+**Lifecycle:** Planned
+**Consumer eligibility:** No until separately implemented, qualified, and promoted
+**Primary objective:** Preserve user task and authoritative meaning while allowing Glaze UI to adapt deeply across themes, color, movement, form factors, input systems, accessibility configurations, platforms, and presentation environments.
+## 48. Expression System and Adaptive Intelligence Expansion
+
+V1.7 should add a governed **Glaze Expression System** coordinating geometry, scale, typography, containment, material, color, composition, and motion while preserving semantic truth, accessibility, continuity, and provider authority.
+
+The expansion includes **Semantic Geometry**, **Visual Scale and Emphasis** (Supporting, Standard, Prominent, Hero), **Expressive Typography**, **Semantic Containment**, **Component Expression**, and a governed **Expression Resolution** layer that prevents applications from treating unrestricted raw design values as semantic authority.
+
+V1.7 should also add **Glaze Contextual Actions**, **Glaze Brief**, **Glaze Control Center**, **Glaze Workspace**, **Glaze Compact Surface**, **Glaze Agent Activity**, **Glaze Privacy Attention**, **Glaze Accessibility Presentation**, **Glaze Creative Surface**, **Glaze Compare**, and **Glaze Care Surface**.
+
+The detailed requirements for this expansion are maintained in [`docs/v1.7/GLAZE_UI_V1_7_EXPRESSION_ADAPTIVE_INTELLIGENCE.md`](docs/v1.7/GLAZE_UI_V1_7_EXPRESSION_ADAPTIVE_INTELLIGENCE.md).
+
+Adaptive intelligence remains presentation-focused. Glaze may present context, suggestions, capabilities, AI activity, and provider-supplied state, but it must never manufacture user intent, consent, authorization, permission, privacy status, security status, identity, connectivity, availability, success, completion, recovery, or other provider-owned truth.
+
+Accessibility always outranks optional expression. Performance, thermal, power, and energy constraints may reduce optional visual richness, material effects, motion, and background presentation without reducing task continuity, direct manipulation, semantic meaning, accessibility, essential interaction, or authoritative state.
+
+Personalization may change expression. **Personalization must not change truth.**
+
+The existing Signature Motion families — Bloom, Flow, Lift, Veil, Fold, Trace, Settle, Focus Transfer, Color Shift, and Material Shift — remain part of the coordinated expression system, with Calm, Balanced, Expressive, and Reduced Motion behavior.
+
+The objective is not "more glass," "more animation," or "more AI." The objective is a system that feels **more alive, more personal, more capable, more understandable, and more continuous** while remaining controlled, accessible, performant, private, and truthful.
+
+Section 48 is partially implemented in bounded Development source. `1.7.0-dev.40` implements the Expression System Core (Semantic Geometry, visual scale/emphasis, Expressive Typography, Semantic Containment, Component Expression, and Expression Resolution). `1.7.0-dev.41` implements the first provider-driven adaptive surfaces: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center. Glaze Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, and Care Surface remain planned. No dev.40/dev.41 source tranche establishes Section 48 completion or acceptance, and existing dev.39 Section 46 acceptance control does not automatically cover or accept v1.3 requirements; applicable acceptance must be extended before V1.7 lifecycle promotion.
+
+## Final Direction
+
+Glaze UI V1.7 should move GoreeCloud beyond a shared visual design language.
+
+It should become a complete adaptive presentation language in which:
+
+**Color communicates meaning.**
+
+**Material communicates hierarchy.**
+
+**Motion communicates relationship.**
+
+**Composition communicates structure.**
+
+**Themes communicate personal expression.**
+
+**Accessibility governs how all of them resolve.**
+
+A GoreeCloud interface should be capable of moving from phone to tablet, folded to unfolded, touch to keyboard, Light to Deep Dark, default theme to a custom theme, compact control to expanded workspace, or ordinary presentation to an accessibility configuration without making the user lose track of where they are or what they were doing.
+
+Glaze UI should have transitions that users can recognize as distinctly GoreeCloud—not because they are excessive, but because they are coherent.
+
+The defining qualities of Glaze UI V1.7 should therefore be:
+
+**Continuous. Adaptive. Expressive. Fluid. Accessible. Semantic. Native. Truthful.**
+
+.
