@@ -6,7 +6,7 @@ All notable changes to the Glaze reference implementation are recorded here.
 
 - Adopted **Glaze** as the canonical system identity for the 1.7 line, with the formal description **Glaze — GoreeCloud Design & Experience System**; Glaze UI remains the former name.
 - Canonical repository identity is now `GoreeCloud/glaze`; the former `GoreeCloud/glaze-ui` name is treated as a legacy compatibility reference during migration.
-- Added `docs/GLAZE_RENAMING_AND_MIGRATION.md`, established Glaze-native canonical V1.7 planning paths, and retained the former V1.7 paths as compatibility pointers.
+- Added `docs/GLAZE_RENAMING_AND_MIGRATION.md`, established Glaze-native canonical V1.7 planning paths, and retained the former V1.7 paths as full compatibility mirrors for existing validators and workflows.
 - Recorded the 1.7 rename boundary in `registry/lifecycle.json` while preserving **GLAZE UI V1.6 / 1.6.0** and every earlier historical release label unchanged. The rename does not grant V1.7 acceptance, consumer eligibility, deployment authority, or lifecycle promotion.
 
 - Added bounded `1.7.0-dev.40` **Expression System Core** source for V1.7 plan v1.3 Section 48, covering Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution while rejecting unrestricted raw design, truth, ranking, measurement, and acceptance controls.
