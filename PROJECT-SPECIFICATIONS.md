@@ -373,7 +373,7 @@ Evidence must remain bound to the exact reviewed source and claimed environment.
 
 ## 19. Stable lifecycle
 
-Current Stable authority is GLAZE UI V1.6 / `1.6.0`.
+Current Stable/Anchor authority is Glaze V1.7 / `1.7.0`; GLAZE UI V1.6 / `1.6.0` is the retained rollback release.
 
 The shared release is consumer-eligible as a design-system source release.
 
