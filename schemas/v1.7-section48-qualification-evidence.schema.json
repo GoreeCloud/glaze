@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze/v1.7-section48-qualification-evidence.schema.json",
+  "title": "Glaze V1.7 Section 48 Qualification Evidence Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "recordId",
+    "lifecycle",
+    "sourceRevision",
+    "acceptanceModelVersion",
+    "stableBaseline",
+    "predecessorQualification",
+    "review",
+    "evidence",
+    "reviewDecision",
+    "authority",
+    "boundary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/v1.7-section48-qualification-evidence.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "recordId": {
+      "const": "goreecloud.glaze.v1.7.section48-qualification-evidence"
+    },
+    "lifecycle": {
+      "const": "DevelopmentQualification"
+    },
+    "sourceRevision": {
+      "oneOf": [
+        {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        {"const": "REPLACE_WITH_FROZEN_V17_SOURCE_REVISION"}
+      ]
+    },
+    "acceptanceModelVersion": {
+      "const": "1.7.0-dev.45"
+    },
+    "stableBaseline": {
+      "const": "1.6.0"
+    },
+    "predecessorQualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceRevision", "reference", "acceptedByGovernedReview"],
+      "properties": {
+        "sourceRevision": {
+          "oneOf": [
+            {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+            {"const": "REPLACE_WITH_FROZEN_V17_SOURCE_REVISION"}
+          ]
+        },
+        "reference": {"type": "string", "maxLength": 800},
+        "acceptedByGovernedReview": {"type": "boolean"}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewedAt", "reviewer", "reviewerRole", "scope", "representativeRevisionConfirmed", "notes"],
+      "properties": {
+        "reviewedAt": {
+          "oneOf": [
+            {"type": "string", "format": "date-time", "maxLength": 40},
+            {"const": "REPLACE_WITH_ISO_8601_TIMESTAMP_WITH_TIMEZONE"}
+          ]
+        },
+        "reviewer": {"type": "string", "maxLength": 240},
+        "reviewerRole": {"type": "string", "maxLength": 240},
+        "scope": {"type": "string", "maxLength": 1000},
+        "representativeRevisionConfirmed": {"type": "boolean"},
+        "notes": {"type": "string", "maxLength": 2000}
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["laneId", "type", "sourceRevision", "reference", "finding", "observedAt", "reviewer", "acceptedByGovernedReview"],
+        "properties": {
+          "laneId": {
+            "enum": [
+              "expression-system",
+              "workspace-continuity",
+              "compact-surface",
+              "agent-activity",
+              "privacy-attention",
+              "accessibility-presentation",
+              "creative-surface",
+              "compare",
+              "care-surface",
+              "cross-platform",
+              "performance-energy",
+              "artifact-provenance"
+            ]
+          },
+          "type": {
+            "enum": [
+              "machine",
+              "rendered",
+              "device",
+              "human",
+              "assistive-technology",
+              "provider-integration",
+              "privacy-security",
+              "performance",
+              "energy",
+              "provenance"
+            ]
+          },
+          "sourceRevision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+          "reference": {
+            "type": "string",
+            "pattern": "^evidence\\+sha256:[0-9a-f]{64}:(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+(?:/(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+)*$",
+            "maxLength": 800
+          },
+          "finding": {"type": "string", "minLength": 1, "maxLength": 2000},
+          "observedAt": {"type": "string", "format": "date-time", "maxLength": 40},
+          "reviewer": {"type": "string", "minLength": 1, "maxLength": 240},
+          "acceptedByGovernedReview": {"type": "boolean"}
+        }
+      }
+    },
+    "reviewDecision": {
+      "enum": ["not-accepted", "accepted-for-governed-qualification-review"]
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packetIsV17Acceptance",
+        "section48Accepted",
+        "lifecyclePromotionAutomatic",
+        "anchorStatusGranted",
+        "consumerEligibilityGranted",
+        "deploymentAcceptanceGranted",
+        "productionAcceptanceGranted"
+      ],
+      "properties": {
+        "packetIsV17Acceptance": {"const": false},
+        "section48Accepted": {"const": false},
+        "lifecyclePromotionAutomatic": {"const": false},
+        "anchorStatusGranted": {"const": false},
+        "consumerEligibilityGranted": {"const": false},
+        "deploymentAcceptanceGranted": {"const": false},
+        "productionAcceptanceGranted": {"const": false}
+      }
+    },
+    "boundary": {"type": "string", "minLength": 40}
+  }
+}

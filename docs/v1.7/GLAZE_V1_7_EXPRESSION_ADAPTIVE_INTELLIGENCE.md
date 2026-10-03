@@ -1,7 +1,7 @@
 ---
 title: "Glaze V1.7 — Expression and Adaptive Intelligence Expansion"
 document_type: "V1.7 Planned Requirements Supplement"
-status: "Planned"
+status: "Development — source complete; acceptance pending"
 document_version: "v1.0"
 product: "GLAZE"
 formal_identity: "Glaze — GoreeCloud Design & Experience System"
@@ -10,7 +10,7 @@ planned_family: "GLAZE V1.7"
 planned_theme: "Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion"
 canonical_repository: "GoreeCloud/glaze"
 consumer_eligible: false
-last_updated: "2026-09-30"
+last_updated: "2026-10-03"
 authoritative_scope: "Detailed planned expression and adaptive-intelligence requirements supplement to GLAZE_V1_7_PLANNED.md"
 ---
 
@@ -22,7 +22,7 @@ Glaze V1.7 evolves GoreeCloud's shared design and experience system into a more 
 
 The interface may change **shape, scale, typography, containment, material, color, composition, motion, density, and input mapping** as context changes, while preserving the user's task, intent, accessibility requirements, preferences, and authoritative system state.
 
-This supplement is planned-only. It does not establish implementation, qualification, release, deployment, consumer eligibility, or production acceptance.
+This supplement remains the requirements authority for Section 48. Bounded source implementation now exists for every planned Section 48 surface, but this document does not itself establish qualification, release, deployment, consumer eligibility, or production acceptance.
 
 ## Glaze Expression System
 
@@ -182,9 +182,12 @@ This supplement extends `GLAZE_V1_7_PLANNED.md` and does not renumber or reinter
 
 Existing V1.7 Development work through `1.7.0-dev.39` remains bound to the plan revision and section contracts under which it was implemented.
 
-Current v1.3 source status in this revision is bounded and partial:
+Current v1.3 source status is bounded and source-complete:
 - `1.7.0-dev.40` implements the Expression System Core: Semantic Geometry, visual scale/emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution.
 - `1.7.0-dev.41` implements Glaze Contextual Actions, Glaze Brief, and Glaze Control Center as provider-driven presentation surfaces.
-- Glaze Workspace, Glaze Compact Surface, Glaze Agent Activity, Glaze Privacy Attention, Glaze Accessibility Presentation, Glaze Creative Surface, Glaze Compare, and Glaze Care Surface remain planned.
+- `1.7.0-dev.42` implements Glaze Workspace, Glaze Compact Surface, and Glaze Accessibility Presentation.
+- `1.7.0-dev.43` implements Glaze Agent Activity, Glaze Privacy Attention, and Glaze Care Surface.
+- `1.7.0-dev.44` implements Glaze Creative Surface and Glaze Compare.
+- `1.7.0-dev.45` adds a Section 48-specific exact-revision qualification-control layer without rewriting the frozen v1.2/dev.39 acceptance model.
 
-These source foundations do not establish Section 48 completion or acceptance. The dev.39 acceptance-control framework remains bound to v1.2 and does not automatically accept v1.3 requirements. All applicable v1.3 requirements still require exact-revision implementation and acceptance evidence before they can contribute to any V1.7 lifecycle promotion.
+All planned Section 48 adaptive surfaces now have bounded source implementations. **Section 48 source-complete does not mean Section 48 accepted.** The dev.39 acceptance-control framework remains bound to v1.2 and does not automatically accept v1.3 requirements. The dev.45 control identifies the additional v1.3 evidence boundary; rendered, native-platform, assistive-technology, representative-device, accessibility-mode, provider-integration, privacy/security, measured-performance, energy, cross-platform, human-review, and provenance evidence remains required before Section 48 can contribute to any V1.7 lifecycle promotion.
