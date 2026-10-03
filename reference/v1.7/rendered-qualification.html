@@ -41,6 +41,16 @@
     .compare-pane{min-height:220px;display:grid;align-content:start;gap:8px}
     pre{white-space:pre-wrap;overflow-wrap:anywhere;font:11px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin-top:14px;padding:14px}
     body[data-mode="accessibility-forced-colors"] .surface{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--solid)}
+    body[data-mode="compact-cover"] .shell{padding:8px}
+    body[data-mode="compact-cover"] .hero{padding:10px 12px;margin-bottom:8px}
+    body[data-mode="compact-cover"] .hero h1{font-size:1rem;margin-bottom:6px}
+    body[data-mode="compact-cover"] .hero p{display:none}
+    body[data-mode="compact-cover"] .hero .pill{font-size:.68rem;padding:3px 6px}
+    body[data-mode="compact-cover"] #revision-pill,
+    body[data-mode="compact-cover"] #aggregate-pill{display:none}
+    body[data-mode="compact-cover"] .panel{padding:10px}
+    body[data-mode="compact-cover"] .card{padding:8px}
+    body[data-mode="compact-cover"] pre{display:none}
     @media(forced-colors:active){
       :root{--canvas:Canvas;--surface:Canvas;--solid:Canvas;--raised:Canvas;--line:CanvasText;--text:CanvasText;--muted:CanvasText;--accent:Highlight}
       body{background:Canvas;color:CanvasText}
@@ -283,6 +293,13 @@
   await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
   const rootFont=parseFloat(getComputedStyle(document.documentElement).fontSize);
   assertions.noHorizontalOverflow=document.documentElement.scrollWidth<=innerWidth+1;
+  if(scene==='compact-cover'){
+    const compactPanel=stage.querySelector('.panel');
+    const compactRect=compactPanel?.getBoundingClientRect();
+    assertions.compactPrimarySurfaceVisibleInFirstViewport=Boolean(
+      compactRect&&compactRect.top>=0&&compactRect.bottom<=innerHeight+1
+    );
+  }
   if(scene==='accessibility-large-text')assertions.renderedLargeText=rootFont>=30;
   if(scene==='accessibility-forced-colors'){
     const surface=getComputedStyle(document.querySelector('.surface'));
