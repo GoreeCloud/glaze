@@ -1,0 +1,30 @@
+{
+  "version": "1.7.0-dev.46",
+  "lifecycle": "DevelopmentQualification",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.3",
+  "section": 48,
+  "retainedV12AcceptanceVersion": "1.7.0-dev.39",
+  "section48SourceCompletionVersion": "1.7.0-dev.45",
+  "retainedV12LaneCount": 37,
+  "section48LaneCount": 21,
+  "totalLaneCount": 58,
+  "exactRevisionRequired": true,
+  "allEvidenceGroupsRequired": true,
+  "predecessorAcceptanceAssertionSufficient": false,
+  "conditionalSection48Lanes": ["energy-v13"],
+  "sourceCoverageRequired": true,
+  "section48SourceComplete": true,
+  "section48Accepted": false,
+  "v17Accepted": false,
+  "authority": {
+    "matrixCompletionEqualsSection48Acceptance": false,
+    "matrixCompletionEqualsV17Acceptance": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "lifecyclePromotionAutomatic": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false
+  }
+}
