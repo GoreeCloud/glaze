@@ -6,6 +6,11 @@ on:
       - 'contracts/v1.7/qualification.v1.2.working-set.plan.json'
       - 'docs/v1.7/v1.2-qualification-working-set-dev47.contract.json'
       - 'scripts/assemble_glaze_v1_7_v1_2_qualification_working_set.mjs'
+      - 'contracts/v1.7/qualification.v1.2.rendered.plan.json'
+      - 'reference/v1.7/rendered-v1.2-qualification.html'
+      - 'reference/v1.7/rendered-v1.2-*.mjs'
+      - 'scripts/capture_glaze_v1_7_v1_2_rendered_qualification.py'
+      - 'scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs'
       - '.github/workflows/glaze-v1.7-v1.2-qualification-working-set.yml'
       - 'CHANGELOGS.md'
       - 'IMPLEMENTED-FEATURES.md'
@@ -65,7 +70,7 @@ jobs:
           node --check scripts/assemble_glaze_v1_7_v1_2_qualification_working_set.mjs
           node scripts/assemble_glaze_v1_7_v1_2_qualification_working_set.mjs --plan-only
           node scripts/validate_glaze_v1_7_v1_2_machine_qualification.mjs
-          node scripts/validate_glaze_v1_7_v1_3_rendered_qualification_harness.mjs
+          node scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs
           node scripts/validate_glaze_v1_7_v1_3_provenance_qualification.mjs
           node scripts/validate_glaze_v1_7_acceptance_development.mjs
 
@@ -115,9 +120,13 @@ jobs:
           mkdir -p _v17-render-root/reference/v1.7
           cp -a _v17-source/js _v17-render-root/js
           cp -a _v17-source/css _v17-render-root/css
-          cp reference/v1.7/rendered-qualification.html _v17-render-root/reference/v1.7/rendered-qualification.html
+          cp reference/v1.7/rendered-v1.2-qualification.html _v17-render-root/reference/v1.7/rendered-v1.2-qualification.html
+          cp reference/v1.7/rendered-v1.2-qualification.mjs _v17-render-root/reference/v1.7/rendered-v1.2-qualification.mjs
+          cp reference/v1.7/rendered-v1.2-qualification-shared.mjs _v17-render-root/reference/v1.7/rendered-v1.2-qualification-shared.mjs
+          cp reference/v1.7/rendered-v1.2-scenes-*.mjs _v17-render-root/reference/v1.7/
           test -f _v17-render-root/js/glaze-v1.7-development-v1-3.dev.mjs
-          test -f _v17-render-root/reference/v1.7/rendered-qualification.html
+          test -f _v17-render-root/reference/v1.7/rendered-v1.2-qualification.html
+          test -f _v17-render-root/reference/v1.7/rendered-v1.2-qualification.mjs
 
       - name: Capture retained machine evidence
         run: |
@@ -128,7 +137,7 @@ jobs:
 
       - name: Capture exact-source rendered browser evidence
         run: |
-          python scripts/capture_glaze_v1_7_v1_3_rendered_qualification.py \
+          python scripts/capture_glaze_v1_7_v1_2_rendered_qualification.py \
             --render-root _v17-render-root \
             --source-root _v17-source \
             --tooling-root . \
@@ -177,18 +186,22 @@ jobs:
           assert manifest['sourceRevision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'
           assert manifest['sourceModelVersion']=='1.7.0-dev.47'
           assert manifest['acceptanceModelVersion']=='1.7.0-dev.39'
-          assert manifest['matrixExternallyVerifiedCount']==5
-          assert manifest['matrixUnverifiedCount']==32
+          assert manifest['matrixExternallyVerifiedCount']==16
+          assert manifest['matrixUnverifiedCount']==21
           assert manifest['evidenceInventoryComplete'] is False
           assert manifest['readyForGovernedQualificationReview'] is False
-          assert summary['evidenceRecordCounts']=={'machine':20,'rendered':7,'provenance':1,'combined':28}
-          assert summary['matrix']['externallyVerifiedCount']==5
+          assert summary['evidenceRecordCounts']=={'machine':20,'rendered':22,'provenance':1,'combined':43}
+          assert summary['matrix']['externallyVerifiedCount']==16
           assert sorted(summary['matrix']['externallyVerifiedLaneIds'])==sorted([
-              'task-continuity','adaptive-composition','forced-colors','large-text','artifact-provenance'
+              'task-continuity','adaptive-composition','semantic-color','theme-safety',
+              'custom-theme-accessibility','signature-motion','connected-transformations',
+              'animation-interruption','animation-reversal','reduced-motion',
+              'reduced-transparency','increased-contrast','forced-colors','large-text','rtl',
+              'artifact-provenance'
           ])
-          assert summary['matrix']['unverifiedCount']==32
+          assert summary['matrix']['unverifiedCount']==21
           assert summary['matrix']['evidenceInventoryComplete'] is False
-          assert len(combined)==28
+          assert len(combined)==43
           assert manifest['authority']['workingSetOnly'] is True
           for key in (
               'governedReviewAcceptanceClaimed','section46CompleteClaimed','v17AcceptanceClaimed',
