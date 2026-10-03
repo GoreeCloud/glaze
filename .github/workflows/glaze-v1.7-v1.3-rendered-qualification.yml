@@ -73,7 +73,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Check out frozen dev.46 source
+      - name: Check out frozen dev.47 source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: ${{ env.V17_SOURCE_SHA }}
