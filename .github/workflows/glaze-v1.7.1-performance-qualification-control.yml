@@ -1,0 +1,107 @@
+name: Glaze V1.7.1 Performance Qualification Control
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/v1.7/qualification.v1.2.performance.plan.json'
+      - 'schemas/v1.7.1-performance-qualification-plan.schema.json'
+      - 'acceptance/v1.7.1-performance-evidence.template.json'
+      - 'reference/v1.7/performance-qualification.html'
+      - 'scripts/prepare_glaze_v1_7_1_performance_qualification.py'
+      - 'scripts/validate_glaze_v1_7_1_performance_qualification_plan.mjs'
+      - 'acceptance/v1.7-development.md'
+      - 'GLAZE_V1_7_1_HARDENING.md'
+      - '.github/workflows/glaze-v1.7.1-performance-qualification-control.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glaze-v1-7-1-performance-control-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  V171_SOURCE_SHA: 4b9d085a5177b96cc31d4270b38d792a59872e37
+
+jobs:
+  verify-performance-qualification-control:
+    name: Verify V1.7.1 performance qualification control
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact tooling revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact tooling revision and frozen source availability
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          git cat-file -e "${V171_SOURCE_SHA}^{commit}"
+          git merge-base --is-ancestor "$V171_SOURCE_SHA" HEAD
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: Syntax-check qualification tooling
+        run: |
+          python -m json.tool contracts/v1.7/qualification.v1.2.performance.plan.json >/dev/null
+          python -m json.tool schemas/v1.7.1-performance-qualification-plan.schema.json >/dev/null
+          python -m json.tool acceptance/v1.7.1-performance-evidence.template.json >/dev/null
+          node --check scripts/validate_glaze_v1_7_1_performance_qualification_plan.mjs
+          python -m py_compile scripts/prepare_glaze_v1_7_1_performance_qualification.py
+
+      - name: Validate performance qualification control and fail-closed behavior
+        run: node scripts/validate_glaze_v1_7_1_performance_qualification_plan.mjs
+
+      - name: Prepare exact-source review root as a structural smoke test
+        run: |
+          python scripts/prepare_glaze_v1_7_1_performance_qualification.py --out _v171-performance-control-smoke
+          test -f _v171-performance-control-smoke/qualification-source.json
+          test -f _v171-performance-control-smoke/js/glaze-v1.7-development-v1-3.dev.mjs
+          test -f _v171-performance-control-smoke/js/glaze-v1.6-performance-diagnostics.dev.mjs
+          test -f _v171-performance-control-smoke/reference/v1.7/performance-qualification.html
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('_v171-performance-control-smoke/qualification-source.json').read_text())
+          assert data['sourceRevision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'
+          assert data['sourceModelVersion']=='1.7.0-dev.47'
+          assert data['acceptanceModelVersion']=='1.7.0-dev.39'
+          assert data['stableBaseline']=='1.7.0'
+          assert data['historicalSourceStableBaseline']=='1.6.0'
+          assert data['candidateLaneIds']==['frame-pacing','input-latency','performance']
+          assert data['performanceEvidenceClaimed'] is False
+          assert data['energyEvidenceClaimed'] is False
+          assert data['deviceEvidenceClaimed'] is False
+          assert data['representativeEnvironmentClaimed'] is False
+          print('Exact-source V1.7.1 performance review-root preparation smoke test: PASS')
+          PY
+
+      - name: Preserve V1.7 performance and energy source boundaries
+        run: |
+          node scripts/validate_glaze_v1_7_motion_performance_development.mjs
+          node scripts/validate_glaze_v1_7_performance_energy_awareness_development.mjs
+
+      - name: Preserve V1.7 retained acceptance-control behavior
+        run: node scripts/validate_glaze_v1_7_acceptance_development.mjs
+
+      - name: Preserve bounded V1.7 Stable authority
+        run: node scripts/verify_glaze_v1_7_stable.mjs
+
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code -- .

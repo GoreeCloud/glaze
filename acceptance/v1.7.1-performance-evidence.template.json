@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "recordType": "glaze-v1.7.1-representative-performance-candidate-evidence",
+  "lifecycle": "DevelopmentQualification",
+  "evidenceType": "performance",
+  "successorReleaseLine": "1.7.1",
+  "developmentIdentity": "1.7.1-dev.1",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "measuredAt": null,
+  "environment": {
+    "exactRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+    "lifecycle": "DevelopmentQualification",
+    "operatingSystem": "",
+    "runtime": "",
+    "hardware": "",
+    "foregroundState": "foreground",
+    "presentationMode": "normal",
+    "measurementDate": "",
+    "displayRefreshRateHz": null
+  },
+  "representativeEnvironmentConfirmed": false,
+  "authorityObservationReviewed": false,
+  "candidateLaneIds": ["frame-pacing","input-latency","performance"],
+  "representativeCoverage": [
+    "normal-available","offline-or-degraded","permission-required-or-restricted",
+    "runtime-resource-pressure","reduced-motion","expanded-window","constrained-window",
+    "pointer-or-keyboard","v1.7-adaptive-composition","v1.7-semantic-color",
+    "v1.7-motion-performance","v1.7-performance-energy-awareness","v1.7-expression-system"
+  ],
+  "samples": {
+    "resolver": 0,
+    "interactionPaint": 0,
+    "idleFrames": 0,
+    "activeFrames": 0
+  },
+  "measurements": {
+    "resolverP95Ms": null,
+    "resolverP99Ms": null,
+    "interactionPaintP95Ms": null,
+    "interactionPaintP99Ms": null,
+    "idleMedianFrameIntervalMs": null,
+    "activeFrameP95Ms": null,
+    "severeFrameStallRate": null,
+    "catastrophicForegroundStallCount": null,
+    "taskStateResetCount": null,
+    "pageReloadRequiredCount": null,
+    "automaticAuthorityActionCount": null
+  },
+  "evaluation": null,
+  "candidateDisposition": "unverified",
+  "authority": {
+    "localOnly": true,
+    "telemetryRequired": false,
+    "rawPrivateContentIncluded": false,
+    "credentialsIncluded": false,
+    "durableEvidenceRecorded": false,
+    "performanceLanesClosed": false,
+    "energyEvidenceClaimed": false,
+    "deviceEvidenceClaimed": false,
+    "section48Accepted": false,
+    "v171AcceptanceClaimed": false,
+    "lifecyclePromotionAutomatic": false,
+    "consumerAcceptanceAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "boundary": "Template placeholder only. A candidate measurement cannot close frame pacing, input latency, or performance until an authorized reviewer confirms the environment and authority observations, every applicable budget threshold passes, and a separate durable accepted evidence record is governed into the retained working set. Energy behavior requires separate energy plus device evidence."
+}

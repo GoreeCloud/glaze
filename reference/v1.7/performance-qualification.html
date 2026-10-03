@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en" data-review-harness="glaze-v1.7.1-representative-performance-qualification">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Glaze V1.7.1 — Representative Performance Qualification</title>
+  <style>
+    :root{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color-scheme:light dark;
+      --canvas:#0b111a;--surface:#1a2434;--raised:#263348;--line:#526078;
+      --text:#f5f8ff;--muted:#bac6d8;--accent:#9fc6ff;--success:#89e3b0;
+      --warning:#ffd184;--danger:#ff9ca8;--radius:18px
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--canvas);color:var(--text)}
+    main{width:min(1080px,100%);margin:auto;padding:24px}
+    .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+    h1,h2{margin-top:0}p{line-height:1.55}.muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    label{display:grid;gap:6px;font-weight:600}
+    input,select,button{font:inherit;color:inherit;background:var(--raised);border:1px solid var(--line);border-radius:12px;min-height:44px;padding:.65rem .8rem}
+    input[type="checkbox"]{min-height:auto;width:20px;height:20px}
+    button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.55}
+    button:focus-visible,input:focus-visible,select:focus-visible{outline:4px solid var(--accent);outline-offset:3px}
+    .check{display:flex;align-items:flex-start;gap:10px;font-weight:500}
+    .metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .metric{background:var(--raised);border:1px solid var(--line);border-radius:14px;padding:12px}
+    .metric strong{display:block;font-size:1.3rem;margin-top:4px}
+    .status{font-weight:700}.pass{color:var(--success)}.fail{color:var(--danger)}.pending{color:var(--warning)}
+    #interaction-target{width:100%;min-height:72px;font-size:1.05rem}
+    #interaction-surface{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+    #task-marker{width:100%}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.45}
+    @media(max-width:760px){main{padding:12px}.grid,.metrics{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <section class="panel">
+    <h1>Glaze V1.7.1 — Representative Performance Qualification</h1>
+    <p>This local-only harness measures the frozen historical V1.7 dev.47 source under V1.7.1 Development against the approved GoreeCloud Glaze UI Performance Budget v1.0. It does not decide whether this computer is representative, does not close the acceptance lane automatically, and cannot promote lifecycle state.</p>
+    <p class="muted" id="source-status">Checking exact-source manifest…</p>
+  </section>
+
+  <section class="panel">
+    <h2>Reviewed environment</h2>
+    <div class="grid">
+      <label>Operating system and version
+        <input id="os" autocomplete="off" placeholder="Example: Zorin OS 17.3">
+      </label>
+      <label>Browser or native runtime and version
+        <input id="runtime" autocomplete="off" placeholder="Example: Firefox 156.0">
+      </label>
+      <label>Representative device / hardware
+        <input id="hardware" autocomplete="off" placeholder="Exact reviewed hardware identity">
+      </label>
+      <label>Presentation mode
+        <select id="presentation-mode">
+          <option value="normal">Normal</option>
+          <option value="constrained-low-power">Constrained / low-power</option>
+        </select>
+      </label>
+      <label>Display refresh rate (Hz, optional)
+        <input id="refresh-rate" inputmode="decimal" type="number" min="1" step="0.1" placeholder="Measured idle median is always recorded">
+      </label>
+      <label>Observed automatic authority actions
+        <input id="authority-count" inputmode="numeric" type="number" min="0" step="1" value="0">
+      </label>
+    </div>
+    <p class="check"><input id="representative-confirmed" type="checkbox"><span>I confirm this hardware/runtime environment is representative for the V1.7.1 retained performance qualification scope being reviewed.</span></p>
+    <p class="check"><input id="authority-reviewed" type="checkbox"><span>I reviewed the run for automatic navigation, permission requests, consequential execution, or fallback execution caused by Glaze performance adaptation, and the count above reflects what I observed.</span></p>
+  </section>
+
+  <section class="panel">
+    <h2>Measurement sequence</h2>
+    <p>Start once the page is foregrounded and stable. The harness collects at least 120 idle frame intervals, warms the resolver, records at least 200 representative resolver samples, then enables the interaction control. Activate that control at least 30 times using the input method under review. Active frame sampling continues until at least 240 intervals are recorded.</p>
+    <button id="start" type="button" disabled>Start exact-source measurement</button>
+    <div id="interaction-surface" aria-live="polite">
+      <label for="task-marker">Task continuity marker</label>
+      <input id="task-marker" value="V1.7.1-PERFORMANCE-QUALIFICATION-TASK-STATE">
+      <button id="interaction-target" type="button" disabled>Measured interaction — activate 30 times</button>
+      <p id="progress" class="status pending">Not started.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Live measurements</h2>
+    <div class="metrics">
+      <div class="metric">Resolver samples<strong id="resolver-count">0</strong></div>
+      <div class="metric">Interaction samples<strong id="interaction-count">0</strong></div>
+      <div class="metric">Idle frames<strong id="idle-count">0</strong></div>
+      <div class="metric">Active frames<strong id="active-count">0</strong></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Result</h2>
+    <button id="finalize" type="button" disabled>Evaluate and prepare evidence JSON</button>
+    <button id="download" type="button" disabled>Download candidate evidence JSON</button>
+    <p id="result-status" class="status pending">No result yet.</p>
+    <pre id="result"></pre>
+  </section>
+</main>
+
+<script type="module">
+import {
+  glazeV17V13Development,
+  resolveGlazeAdaptiveComposition,
+  resolveGlazeSemanticColor,
+  resolveGlazeMotionPerformance,
+  resolveGlazePerformanceEnergyAwareness,
+  resolveGlazeExpressionV13,
+  resolveGlazeTaskContinuity
+} from '../../js/glaze-v1.7-development-v1-3.dev.mjs';
+import {evaluateGlazePerformanceMeasurements} from '../../js/glaze-v1.6-performance-diagnostics.dev.mjs';
+
+const SOURCE='4b9d085a5177b96cc31d4270b38d792a59872e37';
+const SOURCE_MODEL='1.7.0-dev.47';
+const ACCEPTANCE='1.7.0-dev.39';
+const STABLE='1.7.0';
+const HISTORICAL_STABLE='1.6.0';
+const MIN={resolver:200,interaction:30,idle:120,active:240};
+const SESSION_KEY='goreecloud.glaze.v1.7.1.performance-measurement-running';
+const $=id=>document.getElementById(id);
+const state={
+  sourceVerified:false,sourceManifest:null,
+  reloadDetected:sessionStorage.getItem(SESSION_KEY)==='running',
+  idle:[],active:[],resolver:[],interaction:[],
+  activeRunning:false,interactionBusy:false,toggle:false,
+  taskMarkerInitial:$('task-marker').value,
+  taskStateResetCount:0,
+  evidence:null
+};
+sessionStorage.removeItem(SESSION_KEY);
+
+function percentile(values,p){
+  if(!values.length)return null;
+  const sorted=[...values].sort((a,b)=>a-b);
+  const index=Math.max(0,Math.ceil(p*sorted.length)-1);
+  return sorted[index];
+}
+function median(values){return percentile(values,0.5)}
+function finiteNumber(value){
+  const n=Number(value);
+  return Number.isFinite(n)?n:null;
+}
+function nextFrame(){
+  return new Promise(resolve=>requestAnimationFrame(resolve));
+}
+async function collectFrameIntervals(target,minimum){
+  let previous=await nextFrame();
+  while(target.length<minimum){
+    const now=await nextFrame();
+    target.push(now-previous);
+    previous=now;
+    if(target===state.idle)$('idle-count').textContent=String(target.length);
+    if(target===state.active)$('active-count').textContent=String(target.length);
+  }
+}
+function startActiveFrames(){
+  state.activeRunning=true;
+  let previous=null;
+  const tick=now=>{
+    if(!state.activeRunning)return;
+    if(previous!==null){
+      state.active.push(now-previous);
+      $('active-count').textContent=String(state.active.length);
+      maybeReadyToFinalize();
+    }
+    previous=now;
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+function resolverCase(index){
+  const variant=index%8;
+  const profile=['desktop','tablet','mobile','foldable'][variant%4];
+  const reducedMotion=variant===4;
+  const pressured=variant===3||variant===6;
+  resolveGlazeAdaptiveComposition({
+    profile,
+    semanticSurfaceId:'qualification-surface',
+    surfaceRole:variant%2?'detail':'task',
+    posture:profile==='foldable'?(variant===3?'folded':'unfolded'):'unknown',
+    accessibilityProfiles:variant===5?['large-text']:[]
+  });
+  resolveGlazeSemanticColor({
+    role:variant===2?'security':'information',
+    prominence:variant===2?'critical':'standard',
+    authoritative:true
+  });
+  resolveGlazeMotionPerformance({
+    motionKind:variant===7?'direct-manipulation':'task-transition',
+    runtimePressure:pressured?'severe':undefined,
+    runtimePressureAuthoritative:pressured,
+    accessibilityProfiles:reducedMotion?['reduced-motion']:[]
+  });
+  resolveGlazePerformanceEnergyAwareness({
+    presentationDomain:variant===1?'adaptive-transition':variant===6?'background-visual-work':'material',
+    runtimePressure:pressured?'severe':undefined,
+    runtimePressureAuthoritative:pressured,
+    visibilityClass:variant===6?'background':'visible',
+    visibilityClassAuthoritative:true,
+    accessibilityProfiles:reducedMotion?['reduced-motion']:[]
+  });
+  resolveGlazeExpressionV13({
+    geometryRole:'connected',emphasisRole:variant===2?'prominent':'standard',typographyRole:'body',
+    containmentRole:'task-region',componentRole:'content',formFactor:profile,
+    inputContext:variant===7?'keyboard':'pointer',densityRole:variant===5?'compact':'standard',
+    colorIntent:variant===2?'protected-state':'semantic-state',compositionRole:'primary-secondary',
+    motionPurpose:'state-change',transitionOccurrenceAuthoritative:true,
+    expressionProfile:variant===3?'calm':'balanced',expressionProfileAuthoritative:true,
+    performancePressure:pressured?'severe':'neutral',performancePressureAuthoritative:true,
+    accessibility:{largeText:variant===5,reducedMotion,reducedTransparency:variant===1,increasedContrast:false,forcedColors:false},
+    accessibilityAuthoritative:true,semanticSeverity:variant===2?'critical':'ordinary',semanticSeverityAuthoritative:true
+  });
+  resolveGlazeTaskContinuity({
+    environmentChange:variant===1?'connectivity':variant===4?'accessibility-mode':variant===7?'input-method':'window-resize',
+    previous:{draftText:'retained',focusId:'qualification-control'},
+    incoming:{},
+    stateClasses:{draftText:'recoverable',focusId:'session-scoped'}
+  });
+}
+
+function measureResolvers(){
+  for(let i=0;i<20;i++)resolverCase(i);
+  for(let i=0;i<220;i++){
+    const start=performance.now();
+    resolverCase(i);
+    state.resolver.push(performance.now()-start);
+  }
+  $('resolver-count').textContent=String(state.resolver.length);
+}
+function maybeReadyToFinalize(){
+  const ready=state.interaction.length>=MIN.interaction&&state.active.length>=MIN.active;
+  $('finalize').disabled=!ready;
+  if(ready){
+    state.activeRunning=false;
+    $('progress').textContent='Minimum sample counts reached. Confirm the environment review fields, then evaluate.';
+    $('progress').className='status pass';
+  }
+}
+async function recordInteraction(){
+  if(state.interactionBusy||state.interaction.length>=MIN.interaction)return;
+  state.interactionBusy=true;
+  $('interaction-target').disabled=true;
+  const start=performance.now();
+  resolverCase(state.interaction.length);
+  state.toggle=!state.toggle;
+  $('interaction-surface').dataset.phase=state.toggle?'alternate':'base';
+  $('interaction-target').textContent=state.toggle?'Measured interaction — alternate state':'Measured interaction — base state';
+  await nextFrame();
+  await nextFrame();
+  state.interaction.push(performance.now()-start);
+  if($('task-marker').value!==state.taskMarkerInitial)state.taskStateResetCount=1;
+  $('interaction-count').textContent=String(state.interaction.length);
+  $('progress').textContent='Interaction samples: '+state.interaction.length+'/'+MIN.interaction+
+    '; active frames: '+Math.min(state.active.length,MIN.active)+'/'+MIN.active+'.';
+  state.interactionBusy=false;
+  if(state.interaction.length<MIN.interaction)$('interaction-target').disabled=false;
+  maybeReadyToFinalize();
+}
+async function loadSourceManifest(){
+  try{
+    const response=await fetch('../../qualification-source.json',{cache:'no-store'});
+    if(!response.ok)throw new Error('source manifest HTTP '+response.status);
+    const manifest=await response.json();
+    const good=manifest.sourceRevision===SOURCE&&
+      manifest.acceptanceModelVersion===ACCEPTANCE&&
+      manifest.stableBaseline===STABLE&&
+      manifest.historicalSourceStableBaseline===HISTORICAL_STABLE&&
+      manifest.sourceModelVersion===SOURCE_MODEL&&
+      glazeV17V13Development.version===SOURCE_MODEL&&
+      glazeV17V13Development.lifecycle==='Development'&&
+      glazeV17V13Development.stableBaseline===HISTORICAL_STABLE&&
+      glazeV17V13Development.consumerEligible===false;
+    if(!good)throw new Error('exact-source or lifecycle identity mismatch');
+    state.sourceVerified=true;
+    state.sourceManifest=manifest;
+    $('source-status').textContent='Exact frozen source verified: '+SOURCE+'. Tooling: '+manifest.toolingRevision+'.';
+    $('source-status').className='status pass';
+    $('start').disabled=false;
+  }catch(error){
+    $('source-status').textContent='BLOCKED — '+error.message+'. Prepare the review root with scripts/prepare_glaze_v1_7_1_performance_qualification.py.';
+    $('source-status').className='status fail';
+  }
+}
+async function startMeasurement(){
+  if(!state.sourceVerified)return;
+  state.idle=[];state.active=[];state.resolver=[];state.interaction=[];state.evidence=null;
+  state.taskMarkerInitial=$('task-marker').value;
+  state.taskStateResetCount=0;
+  $('start').disabled=true;$('finalize').disabled=true;$('download').disabled=true;
+  $('interaction-target').disabled=true;
+  $('progress').textContent='Collecting idle frame baseline…';
+  sessionStorage.setItem(SESSION_KEY,'running');
+  await collectFrameIntervals(state.idle,MIN.idle);
+  $('progress').textContent='Measuring representative resolver work…';
+  measureResolvers();
+  startActiveFrames();
+  $('interaction-target').disabled=false;
+  $('progress').textContent='Resolver and idle samples complete. Activate the measured interaction control 30 times.';
+}
+function environmentInput(){
+  return {
+    exactRevision:SOURCE,
+    lifecycle:'DevelopmentQualification',
+    operatingSystem:$('os').value.trim(),
+    runtime:$('runtime').value.trim(),
+    hardware:$('hardware').value.trim(),
+    foregroundState:document.visibilityState==='visible'?'foreground':'background',
+    presentationMode:$('presentation-mode').value,
+    measurementDate:new Date().toISOString().slice(0,10),
+    displayRefreshRateHz:finiteNumber($('refresh-rate').value)
+  };
+}
+function canFinalizeReview(){
+  return state.sourceVerified&&
+    $('representative-confirmed').checked&&
+    $('authority-reviewed').checked&&
+    $('os').value.trim()&&$('runtime').value.trim()&&$('hardware').value.trim()&&
+    Number.isInteger(Number($('authority-count').value))&&Number($('authority-count').value)>=0;
+}
+function finalizeMeasurement(){
+  if(!canFinalizeReview()){
+    $('result-status').textContent='BLOCKED — complete environment fields and both review confirmations.';
+    $('result-status').className='status fail';
+    return;
+  }
+  if(state.interaction.length<MIN.interaction||state.active.length<MIN.active||state.idle.length<MIN.idle||state.resolver.length<MIN.resolver){
+    $('result-status').textContent='BLOCKED — required sample counts are incomplete.';
+    $('result-status').className='status fail';
+    return;
+  }
+  const idleMedian=median(state.idle);
+  const activeP95=percentile(state.active,0.95);
+  const severeThreshold=2*idleMedian;
+  const severeCount=state.active.filter(value=>value>severeThreshold).length;
+  const catastrophic=state.active.filter(value=>value>100).length;
+  const authorityCount=Number($('authority-count').value);
+  const pageReloadCount=state.reloadDetected?1:0;
+  const input={
+    environment:environmentInput(),
+    samples:{
+      resolver:state.resolver.length,
+      interactionPaint:state.interaction.length,
+      idleFrames:state.idle.length,
+      activeFrames:state.active.length
+    },
+    measurements:{
+      resolverP95Ms:percentile(state.resolver,0.95),
+      resolverP99Ms:percentile(state.resolver,0.99),
+      interactionPaintP95Ms:percentile(state.interaction,0.95),
+      interactionPaintP99Ms:percentile(state.interaction,0.99),
+      idleMedianFrameIntervalMs:idleMedian,
+      activeFrameP95Ms:activeP95,
+      severeFrameStallRate:severeCount/state.active.length,
+      catastrophicForegroundStallCount:catastrophic,
+      taskStateResetCount:state.taskStateResetCount,
+      pageReloadRequiredCount:pageReloadCount,
+      automaticAuthorityActionCount:authorityCount
+    }
+  };
+  const evaluation=evaluateGlazePerformanceMeasurements(input);
+  const candidatePass=evaluation.status==='pass'&&$('representative-confirmed').checked&&$('authority-reviewed').checked;
+  state.evidence={
+    schemaVersion:1,
+    recordType:'glaze-v1.7.1-representative-performance-candidate-evidence',
+    successorReleaseLine:'1.7.1',
+    developmentIdentity:'1.7.1-dev.1',
+    lifecycle:'DevelopmentQualification',
+    evidenceType:'performance',
+    sourceRevision:SOURCE,
+    sourceModelVersion:SOURCE_MODEL,
+    acceptanceModelVersion:ACCEPTANCE,
+    stableBaseline:STABLE,
+    historicalSourceStableBaseline:HISTORICAL_STABLE,
+    measuredAt:new Date().toISOString(),
+    environment:input.environment,
+    representativeEnvironmentConfirmed:$('representative-confirmed').checked,
+    candidateLaneIds:['frame-pacing','input-latency','performance'],
+    authorityObservationReviewed:$('authority-reviewed').checked,
+    representativeCoverage:[
+      'normal-available','offline-or-degraded','permission-required-or-restricted',
+      'runtime-resource-pressure','reduced-motion','expanded-window','constrained-window','pointer-or-keyboard',
+      'v1.7-adaptive-composition','v1.7-semantic-color','v1.7-motion-performance',
+      'v1.7-performance-energy-awareness','v1.7-expression-system'
+    ],
+    samples:input.samples,
+    measurements:input.measurements,
+    evaluation,
+    candidateDisposition:candidatePass?'pass':'fail',
+    authority:{
+      localOnly:true,
+      telemetryRequired:false,
+      rawPrivateContentIncluded:false,
+      credentialsIncluded:false,
+      durableEvidenceRecorded:false,
+      performanceLanesClosed:false,
+      energyEvidenceClaimed:false,
+      deviceEvidenceClaimed:false,
+      section48Accepted:false,
+      v171AcceptanceClaimed:false,
+      lifecyclePromotionAutomatic:false,
+      candidateStatusGranted:false,
+      releaseCandidateStatusGranted:false,
+      stableStatusGranted:false,
+      consumerAcceptanceAutomatic:false,
+      deploymentAcceptanceAutomatic:false,
+      productionAcceptanceAutomatic:false
+    }
+  };
+  sessionStorage.removeItem(SESSION_KEY);
+  $('result').textContent=JSON.stringify(state.evidence,null,2);
+  $('result-status').textContent=candidatePass
+    ?'Candidate measurement PASS — separate exact-source review and durable evidence recording are still required before frame pacing, input latency, or performance can close. Energy behavior remains outside this tranche.'
+    :'Measurement FAIL — one or more approved performance thresholds or integrity checks did not pass.';
+  $('result-status').className='status '+(candidatePass?'pass':'fail');
+  $('download').disabled=false;
+}
+function downloadEvidence(){
+  if(!state.evidence)return;
+  const blob=new Blob([JSON.stringify(state.evidence,null,2)+'\n'],{type:'application/json'});
+  const link=document.createElement('a');
+  link.href=URL.createObjectURL(blob);
+  link.download='glaze-v1.7.1-performance-candidate-evidence.json';
+  link.click();
+  setTimeout(()=>URL.revokeObjectURL(link.href),1000);
+}
+$('start').addEventListener('click',startMeasurement);
+$('interaction-target').addEventListener('click',recordInteraction);
+$('finalize').addEventListener('click',finalizeMeasurement);
+$('download').addEventListener('click',downloadEvidence);
+loadSourceManifest();
+</script>
+</body>
+</html>
