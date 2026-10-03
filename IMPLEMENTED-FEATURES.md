@@ -6,6 +6,10 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** GLAZE UI V1.6 / `1.6.0` (Stable compatibility channel)
 
+## V1.7 v1.3 qualification coverage extension
+
+`1.7.0-dev.47` adds explicit required evidence lanes for the Expression System, Contextual Actions, Glaze Brief, and Glaze Control Center. This closes a qualification-model coverage gap without creating acceptance evidence: the current combined matrix has 62 lanes and still requires exact-revision rendered, provider-integration, human, and other applicable evidence before governed qualification can proceed.
+
 ## V1.7 v1.3 combined qualification hardening
 
 `1.7.0-dev.46` adds a combined exact-revision qualification evaluator over the retained 37-lane v1.2/dev.39 matrix plus 21 granular Section 48 lanes. It removes reliance on a predecessor-qualification assertion as sufficient evidence and explicitly requires provider-integration and privacy/security evidence where applicable. This is qualification infrastructure only; it grants no V1.7 lifecycle promotion.
