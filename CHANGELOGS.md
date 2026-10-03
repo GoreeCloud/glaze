@@ -15,6 +15,8 @@ All notable changes to the Glaze reference implementation are recorded here.
 
 ## Unreleased — Glaze V1.7.1 Development
 
+- Recorded the successful PR #393 retained-v1.2 rendered Regression qualification as durable V1.7.1 evidence, bound to exact tooling head `83c8d783dc57a78ad87d0819e06bd59782978989`, merge `8508f2636fe2364d041bb36f1d4a78c154978018`, run `37157473094`, and artifact `11286278764`. The retained historical-source matrix now has 17 evidence-group-complete lanes and 20 still-open lanes; no V1.7.1 lifecycle, Section 48, consumer, deployment, or production authority is granted.
+
 - Added successor-track retained-v1.2 rendered Regression qualification for V1.7.1. The qualification binds the historical dev.47 exact source to its prior semantic evidence, performs two fresh deterministic Chromium captures, and requires exact decoded-pixel SHA-256 equality at zero tolerance after capture-only harness normalization. The current V1.7.1 stable baseline is 1.7.0; the frozen dev.47 source-capture baseline remains explicitly historical at 1.6.0. The prior rendered artifact is not reclassified as a pixel baseline, and no lifecycle, consumer, deployment, production, human, device/native, assistive-technology, performance, energy, privacy, security, or Section 48 authority is granted.
 
 ## Historical — Glaze V1.7 Development provenance

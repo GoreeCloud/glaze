@@ -1,0 +1,357 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze/v1.7.1-regression-evidence.schema.json",
+  "title": "Glaze V1.7.1 Retained V1.2 Exact-Source Rendered Regression Evidence Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "recordId",
+    "name",
+    "lifecycle",
+    "successorReleaseLine",
+    "developmentIdentity",
+    "sourceRevision",
+    "sourceModelVersion",
+    "acceptanceModelVersion",
+    "stableBaseline",
+    "historicalSourceStableBaseline",
+    "tooling",
+    "qualificationRun",
+    "artifact",
+    "comparison",
+    "regressionEvidence",
+    "matrixDisposition",
+    "authority",
+    "boundary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/v1.7.1-regression-evidence.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "recordId": {
+      "const": "goreecloud.glaze.v1.7.1.retained-v1.2.rendered-regression-evidence"
+    },
+    "name": {
+      "const": "Glaze V1.7.1 Retained V1.2 Exact-Source Rendered Regression Evidence"
+    },
+    "lifecycle": {
+      "const": "DevelopmentQualification"
+    },
+    "successorReleaseLine": {
+      "const": "1.7.1"
+    },
+    "developmentIdentity": {
+      "const": "1.7.1-dev.1"
+    },
+    "sourceRevision": {
+      "const": "4b9d085a5177b96cc31d4270b38d792a59872e37"
+    },
+    "sourceModelVersion": {
+      "const": "1.7.0-dev.47"
+    },
+    "acceptanceModelVersion": {
+      "const": "1.7.0-dev.39"
+    },
+    "stableBaseline": {
+      "const": "1.7.0"
+    },
+    "historicalSourceStableBaseline": {
+      "const": "1.6.0"
+    },
+    "tooling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pullRequest",
+        "toolingHeadRevision",
+        "mergeRevision"
+      ],
+      "properties": {
+        "pullRequest": {
+          "const": 393
+        },
+        "toolingHeadRevision": {
+          "const": "83c8d783dc57a78ad87d0819e06bd59782978989"
+        },
+        "mergeRevision": {
+          "const": "8508f2636fe2364d041bb36f1d4a78c154978018"
+        }
+      }
+    },
+    "qualificationRun": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runId",
+        "verificationJobId",
+        "comparisonJobId",
+        "conclusion",
+        "observedAt",
+        "reference"
+      ],
+      "properties": {
+        "runId": {
+          "const": 37157473094
+        },
+        "verificationJobId": {
+          "const": 111303763574
+        },
+        "comparisonJobId": {
+          "const": 111303887933
+        },
+        "conclusion": {
+          "const": "success"
+        },
+        "observedAt": {
+          "const": "2026-10-03T22:11:18Z"
+        },
+        "reference": {
+          "const": "GitHub Actions run 37157473094 / verification job 111303763574 / comparison job 111303887933"
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "sizeBytes",
+        "digest",
+        "createdAt",
+        "expiresAt",
+        "expiredAtObservation",
+        "sceneCount",
+        "pixelTolerance"
+      ],
+      "properties": {
+        "id": {
+          "const": 11286278764
+        },
+        "name": {
+          "const": "glaze-v1.7-v1.2-rendered-regression-37157473094"
+        },
+        "sizeBytes": {
+          "const": 3486665
+        },
+        "digest": {
+          "const": "sha256:cb55b581668f6007b9ed56d53fca3a318ae773639f6a9e7620b22a4cf4d2e2e5"
+        },
+        "createdAt": {
+          "const": "2026-10-03T22:11:13Z"
+        },
+        "expiresAt": {
+          "const": "2027-01-01T22:09:26Z"
+        },
+        "expiredAtObservation": {
+          "const": false
+        },
+        "sceneCount": {
+          "const": 22
+        },
+        "pixelTolerance": {
+          "const": 0
+        }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "priorRenderedEvidenceRunId",
+        "priorRenderedEvidenceArtifactId",
+        "priorRenderedEvidenceArtifactDigest",
+        "semanticBaselineMatched",
+        "freshVisualRepeatabilityMatched",
+        "freshCaptureCount",
+        "pixelTolerance",
+        "regressionResultSha256",
+        "regressionEvidenceSha256"
+      ],
+      "properties": {
+        "kind": {
+          "const": "semantic-baseline-plus-double-render-pixel-sha256-exact"
+        },
+        "priorRenderedEvidenceRunId": {
+          "const": 37144536213
+        },
+        "priorRenderedEvidenceArtifactId": {
+          "const": 11281038583
+        },
+        "priorRenderedEvidenceArtifactDigest": {
+          "const": "sha256:9b862d7da7d5aaf389507f9005edcdf141095593c8c4b30c26ff354e46da5018"
+        },
+        "semanticBaselineMatched": {
+          "const": true
+        },
+        "freshVisualRepeatabilityMatched": {
+          "const": true
+        },
+        "freshCaptureCount": {
+          "const": 2
+        },
+        "pixelTolerance": {
+          "const": 0
+        },
+        "regressionResultSha256": {
+          "const": "f7b3c120dc04200954ea5b8db947d364b9ec2ebaa78f2346aeea6775fa9b5f2c"
+        },
+        "regressionEvidenceSha256": {
+          "const": "671b1bef2ca668c5c0878370b3bc6866e47b92fd53c4ee80f80cbfe2e551d0ea"
+        }
+      }
+    },
+    "regressionEvidence": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "verified",
+          "revision",
+          "evidenceType",
+          "reference"
+        ],
+        "properties": {
+          "id": {
+            "const": "regression"
+          },
+          "verified": {
+            "const": true
+          },
+          "revision": {
+            "const": "4b9d085a5177b96cc31d4270b38d792a59872e37"
+          },
+          "evidenceType": {
+            "const": "rendered"
+          },
+          "reference": {
+            "const": "evidence+sha256:f7b3c120dc04200954ea5b8db947d364b9ec2ebaa78f2346aeea6775fa9b5f2c:v1.7/v1.2-regression/regression-result.json"
+          }
+        }
+      }
+    },
+    "matrixDisposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "externallyVerifiedLaneIds",
+        "partialLaneIds",
+        "untouchedLaneIds",
+        "externallyVerifiedCount",
+        "unverifiedCount",
+        "notApplicableJustifiedCount",
+        "evidenceInventoryComplete",
+        "readyForGovernedQualificationReview"
+      ],
+      "properties": {
+        "externallyVerifiedLaneIds": {
+          "type": "array",
+          "minItems": 17,
+          "maxItems": 17,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "partialLaneIds": {
+          "type": "array",
+          "minItems": 11,
+          "maxItems": 11,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "untouchedLaneIds": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "externallyVerifiedCount": {
+          "const": 17
+        },
+        "unverifiedCount": {
+          "const": 20
+        },
+        "notApplicableJustifiedCount": {
+          "const": 0
+        },
+        "evidenceInventoryComplete": {
+          "const": false
+        },
+        "readyForGovernedQualificationReview": {
+          "const": false
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "renderedRegressionEvidenceClaimed",
+        "historicalSourceEvidenceOnly",
+        "governedReviewAcceptanceClaimed",
+        "section46CompleteClaimed",
+        "section48Accepted",
+        "v171AcceptanceClaimed",
+        "anchorStatusGranted",
+        "consumerEligibilityGranted",
+        "deploymentAcceptanceGranted",
+        "productionAcceptanceGranted",
+        "lifecyclePromotionAutomatic"
+      ],
+      "properties": {
+        "renderedRegressionEvidenceClaimed": {
+          "const": true
+        },
+        "historicalSourceEvidenceOnly": {
+          "const": true
+        },
+        "governedReviewAcceptanceClaimed": {
+          "const": false
+        },
+        "section46CompleteClaimed": {
+          "const": false
+        },
+        "section48Accepted": {
+          "const": false
+        },
+        "v171AcceptanceClaimed": {
+          "const": false
+        },
+        "anchorStatusGranted": {
+          "const": false
+        },
+        "consumerEligibilityGranted": {
+          "const": false
+        },
+        "deploymentAcceptanceGranted": {
+          "const": false
+        },
+        "productionAcceptanceGranted": {
+          "const": false
+        },
+        "lifecyclePromotionAutomatic": {
+          "const": false
+        }
+      }
+    },
+    "boundary": {
+      "const": "This durable record binds PR #393 exact-head rendered Regression qualification to the frozen historical dev.47 source. Combined with the retained machine record for the same source, Regression becomes evidence-group-complete for that frozen revision. The record does not rebind evidence to a changed V1.7.1 candidate and grants no governed review, Section 48, V1.7.1 lifecycle, Anchor, consumer, deployment, or production authority."
+    }
+  }
+}

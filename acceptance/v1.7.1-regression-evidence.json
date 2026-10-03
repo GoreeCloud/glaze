@@ -1,0 +1,123 @@
+{
+  "$schema": "../schemas/v1.7.1-regression-evidence.schema.json",
+  "schemaVersion": 1,
+  "recordId": "goreecloud.glaze.v1.7.1.retained-v1.2.rendered-regression-evidence",
+  "name": "Glaze V1.7.1 Retained V1.2 Exact-Source Rendered Regression Evidence",
+  "lifecycle": "DevelopmentQualification",
+  "successorReleaseLine": "1.7.1",
+  "developmentIdentity": "1.7.1-dev.1",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "tooling": {
+    "pullRequest": 393,
+    "toolingHeadRevision": "83c8d783dc57a78ad87d0819e06bd59782978989",
+    "mergeRevision": "8508f2636fe2364d041bb36f1d4a78c154978018"
+  },
+  "qualificationRun": {
+    "runId": 37157473094,
+    "verificationJobId": 111303763574,
+    "comparisonJobId": 111303887933,
+    "conclusion": "success",
+    "observedAt": "2026-10-03T22:11:18Z",
+    "reference": "GitHub Actions run 37157473094 / verification job 111303763574 / comparison job 111303887933"
+  },
+  "artifact": {
+    "id": 11286278764,
+    "name": "glaze-v1.7-v1.2-rendered-regression-37157473094",
+    "sizeBytes": 3486665,
+    "digest": "sha256:cb55b581668f6007b9ed56d53fca3a318ae773639f6a9e7620b22a4cf4d2e2e5",
+    "createdAt": "2026-10-03T22:11:13Z",
+    "expiresAt": "2027-01-01T22:09:26Z",
+    "expiredAtObservation": false,
+    "sceneCount": 22,
+    "pixelTolerance": 0
+  },
+  "comparison": {
+    "kind": "semantic-baseline-plus-double-render-pixel-sha256-exact",
+    "priorRenderedEvidenceRunId": 37144536213,
+    "priorRenderedEvidenceArtifactId": 11281038583,
+    "priorRenderedEvidenceArtifactDigest": "sha256:9b862d7da7d5aaf389507f9005edcdf141095593c8c4b30c26ff354e46da5018",
+    "semanticBaselineMatched": true,
+    "freshVisualRepeatabilityMatched": true,
+    "freshCaptureCount": 2,
+    "pixelTolerance": 0,
+    "regressionResultSha256": "f7b3c120dc04200954ea5b8db947d364b9ec2ebaa78f2346aeea6775fa9b5f2c",
+    "regressionEvidenceSha256": "671b1bef2ca668c5c0878370b3bc6866e47b92fd53c4ee80f80cbfe2e551d0ea"
+  },
+  "regressionEvidence": [
+    {
+      "id": "regression",
+      "verified": true,
+      "revision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+      "evidenceType": "rendered",
+      "reference": "evidence+sha256:f7b3c120dc04200954ea5b8db947d364b9ec2ebaa78f2346aeea6775fa9b5f2c:v1.7/v1.2-regression/regression-result.json"
+    }
+  ],
+  "matrixDisposition": {
+    "externallyVerifiedLaneIds": [
+      "task-continuity",
+      "adaptive-composition",
+      "semantic-color",
+      "theme-safety",
+      "custom-theme-accessibility",
+      "signature-motion",
+      "connected-transformations",
+      "animation-interruption",
+      "animation-reversal",
+      "reduced-motion",
+      "reduced-transparency",
+      "increased-contrast",
+      "forced-colors",
+      "large-text",
+      "rtl",
+      "regression",
+      "artifact-provenance"
+    ],
+    "partialLaneIds": [
+      "mobile",
+      "tablet",
+      "desktop",
+      "foldable",
+      "tv",
+      "wearable",
+      "keyboard",
+      "pointer",
+      "representative-rendering",
+      "privacy-boundaries",
+      "security-boundaries"
+    ],
+    "untouchedLaneIds": [
+      "frame-pacing",
+      "input-latency",
+      "touch",
+      "alternative-input",
+      "native-behavior",
+      "performance",
+      "energy-behavior",
+      "human-visual-motion-review",
+      "assistive-technology"
+    ],
+    "externallyVerifiedCount": 17,
+    "unverifiedCount": 20,
+    "notApplicableJustifiedCount": 0,
+    "evidenceInventoryComplete": false,
+    "readyForGovernedQualificationReview": false
+  },
+  "authority": {
+    "renderedRegressionEvidenceClaimed": true,
+    "historicalSourceEvidenceOnly": true,
+    "governedReviewAcceptanceClaimed": false,
+    "section46CompleteClaimed": false,
+    "section48Accepted": false,
+    "v171AcceptanceClaimed": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false,
+    "lifecyclePromotionAutomatic": false
+  },
+  "boundary": "This durable record binds PR #393 exact-head rendered Regression qualification to the frozen historical dev.47 source. Combined with the retained machine record for the same source, Regression becomes evidence-group-complete for that frozen revision. The record does not rebind evidence to a changed V1.7.1 candidate and grants no governed review, Section 48, V1.7.1 lifecycle, Anchor, consumer, deployment, or production authority."
+}

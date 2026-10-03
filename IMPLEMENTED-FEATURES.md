@@ -7,6 +7,10 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** Glaze V1.7 / `1.7.0` (bounded Stable compatibility channel); GLAZE UI V1.6 / `1.6.0` is the immediate rollback baseline.
 
+## V1.7.1 durable retained Regression evidence
+
+The successful PR #393 exact-source Regression qualification is represented by the durable canonical record `acceptance/v1.7.1-regression-evidence.json`. It binds exact tooling head `83c8d783dc57a78ad87d0819e06bd59782978989`, merge `8508f2636fe2364d041bb36f1d4a78c154978018`, run `37157473094`, verification job `111303763574`, comparison job `111303887933`, and artifact `11286278764` with digest `sha256:cb55b581668f6007b9ed56d53fca3a318ae773639f6a9e7620b22a4cf4d2e2e5` to frozen historical source `4b9d085a5177b96cc31d4270b38d792a59872e37`. Combined with retained machine evidence, Regression is evidence-group-complete for that frozen source; the retained matrix is now 17 complete / 20 unverified. This does not rebind evidence to a changed V1.7.1 candidate or create lifecycle, consumer, deployment, production, Section 48, privacy/security, device/native, human, assistive-technology, performance, or energy acceptance.
+
 ## V1.7.1 retained v1.2 rendered Regression qualification
 
 A dedicated V1.7.1 regression-control path binds the prior 22-scene semantic artifact to frozen historical source `4b9d085a5177b96cc31d4270b38d792a59872e37` and requires two fresh deterministic exact-source captures. The current successor stable baseline is `1.7.0`; the historical source-capture baseline remains `1.6.0`. Semantic scene evidence must match the prior artifact, while decoded pixels from both fresh captures must match exactly with zero tolerance after capture-only harness normalization. Prior pixel drift remains informational and is not retroactively treated as a governed pixel baseline. This work can satisfy only the rendered evidence group for retained `regression`; it does not establish V1.7.1 lifecycle, consumer, deployment, production, human, assistive-technology, physical-device/native, representative-performance, energy, privacy, security, governed-review, or Section 48 authority.
@@ -16,14 +20,14 @@ A dedicated V1.7.1 regression-control path binds the prior 22-scene semantic art
 
 The retained dev.39 / v1.2 matrix now has a dedicated exact-source Chromium harness and capture path for 22 of the 23 lanes that accept rendered evidence. The scenes cover Task Continuity, Adaptive Composition, semantic/theme behavior, Signature Motion and connected transformations, interruption/reversal, Reduced Motion, six form-factor profiles, Reduced Transparency, Increased Contrast, Forced Colors, Large Text, RTL, and Representative Rendering. Browser form-factor scenes are presentation evidence only and do not stand in for physical-device or native-platform acceptance.
 
-The rendered `regression` group remains open because the repository does not yet have a governed V1.7 rendered regression baseline. The harness explicitly refuses regression-baseline, human, assistive-technology, device/native, performance, energy, Section 46, V1.7, consumer, deployment, production, and Anchor authority.
+Within this historical 22-scene browser capture, `regression` remains intentionally absent because the capture itself is not a governed regression comparison. PR #393 later established the separate rendered Regression evidence checkpoint without reclassifying this artifact as a pixel baseline. The harness still refuses regression-baseline, human, assistive-technology, device/native, performance, energy, Section 46, V1.7/V1.7.1 lifecycle, consumer, deployment, production, and Anchor authority.
 
 
-## V1.7 retained v1.2 qualification working set
+## V1.7.1 retained v1.2 qualification working set
 
-The retained dev.39 / v1.2 qualification path now has a reproducible exact-source working set over frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37`. It composes 20 machine records, the 22 dedicated retained rendered-browser records, and deterministic artifact-provenance evidence without translating the v1.3 lane model.
+The retained dev.39 / v1.2 qualification path now has a reproducible successor-track exact-source working set over frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37`. It composes 20 machine records, the 22 dedicated historical rendered-browser records, one durable rendered Regression record, and deterministic artifact-provenance evidence for 44 records total without translating the v1.3 lane model.
 
-The dev.39 matrix reports 16 lanes with all required evidence groups structurally satisfied: Task Continuity, Adaptive Composition, Semantic Color, Theme Safety, Custom-theme Accessibility, Signature Motion, Connected Transformations, Animation Interruption, Animation Reversal, Reduced Motion, Reduced Transparency, Increased Contrast, Forced Colors, Large Text, RTL, and Artifact Provenance. Twenty-one lanes remain unverified. Rendered Regression remains open because no governed V1.7 rendered regression baseline exists, and representative performance, physical-device/native-platform, human, assistive-technology, energy, and other applicable evidence remain blocking. Matrix evidence-group completeness is not governed review acceptance; Section 46, V1.7 acceptance, lifecycle promotion, consumer eligibility, deployment, and production authority remain false.
+The retained matrix now reports 17 lanes with all required evidence groups structurally satisfied: Task Continuity, Adaptive Composition, Semantic Color, Theme Safety, Custom-theme Accessibility, Signature Motion, Connected Transformations, Animation Interruption, Animation Reversal, Reduced Motion, Reduced Transparency, Increased Contrast, Forced Colors, Large Text, RTL, Regression, and Artifact Provenance. Twenty lanes remain unverified; representative performance, physical-device/native-platform, human, assistive-technology, energy, input/form-factor completion, privacy/security completion, and other applicable evidence remain blocking. Matrix evidence-group completeness is not governed review acceptance; Section 48, V1.7.1 acceptance, lifecycle promotion, consumer eligibility, deployment, and production authority remain false.
 
 ## V1.7 retained v1.2 machine qualification capture
 
@@ -42,11 +46,11 @@ The retained dev.39 / v1.2 acceptance matrix now has exact-source machine-eviden
 
 The v1.3 Section 48 source surface is now complete through `1.7.0-dev.45`. dev.42 adds Glaze Workspace, Compact Surface, and Accessibility Presentation; dev.43 adds Agent Activity, Privacy Attention, and Care Surface; dev.44 adds Creative Surface and Compare; and dev.45 adds a Section 48-specific exact-revision qualification-control layer. Together with dev.40/dev.41, all eleven planned Section 48 adaptive surfaces now have bounded source implementations.
 
-This is source completion only. Section 48 remains acceptance-incomplete; V1.7 remains non-consumer-eligible; the v1.2/dev.39 qualification boundary is not silently extended; and V1.6 / `1.6.0` remains the Official Anchor.
+This is source completion only. Section 48 remains acceptance-incomplete and continues as V1.7.1 Development scope; the bounded V1.7 / `1.7.0` Stable runtime does not include this retained dev.40–dev.45 behavior, and the v1.2/dev.39 qualification boundary is not silently extended.
 
-## Current V1.7 Development evidence-control hardening
+## Current V1.7.1 qualification evidence-control hardening
 
-The Section 46 qualification intake now combines deterministic lane-gap reporting with credential-safe content-addressed evidence locators restricted to repository-style relative logical paths, closed JSON-Schema/runtime packet-structure parity, timezone-qualified observation timestamps for every supplied evidence record, review-order enforcement, and executable reference-pattern parity. This is Development evidence infrastructure only; it does not create V1.7 qualification evidence or grant acceptance, Anchor, consumer, deployment, or production authority.
+The retained v1.2 qualification path combines deterministic lane-gap reporting with credential-safe content-addressed evidence locators, closed JSON-Schema/runtime packet-structure parity, timezone-qualified observations, exact-source working-set assembly, and durable rendered Regression evidence. The current retained checkpoint is 44 evidence records, 17 evidence-group-complete lanes, and 20 unverified lanes for frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37`. This remains historical-source Development evidence only; it does not establish governed review, Section 48 acceptance, V1.7.1 lifecycle promotion, consumer eligibility, deployment, or production authority.
 
 ## Purpose
 
@@ -56,13 +60,13 @@ This file records verified implemented Glaze UI feature and lifecycle obligation
 
 | ID | Feature / obligation | Priority | Verified disposition |
 | --- | --- | --- | --- |
-| FR-004 | Preserve GLAZE UI V1.6 / `1.6.0` as current Official Anchor authority and `1.5.1` as the immediate rollback baseline. | P0 | Verified Anchor invariant; current lifecycle authority is `1.6.0`, with Stable compatibility fields retained for existing tooling and historical evidence. |
+| FR-004 | Preserve Glaze V1.7 / `1.7.0` as current Official Anchor authority and GLAZE UI V1.6 / `1.6.0` as the immediate rollback baseline. | P0 | Verified current lifecycle authority is `1.7.0`; bounded Stable behavior inherits accepted V1.6.0 runtime behavior, while V1.7.1 Development remains non-consumer-eligible. |
 | FR-005 | Preserve the V1.5 Context + Capability Resolution architecture and its fail-closed authority, accessibility, continuity, diagnostics, degradation, and truth-preservation invariants. | P0 | Stable invariant; regression protection remains mandatory. |
 | FR-006 | Maintain presentation-only authority boundaries so Glaze never creates consent, grants permissions, invents provider precedence, executes consequential operations, or upgrades Privacy Shield, Wardveil Security, Everkeep, Mesh, or application truth. | P0 | Stable invariant; V1.5.1 promotion preserves it. |
 | FR-007 | Complete V1.5.1 representative performance qualification against the approved budget using exact-revision, privacy-minimized evidence from a representative reviewed environment. | P0 | Accepted — exact revision `5b59d0e36950d737dba35b58ae58058684e0831b`; PR #230 comment `5697516074`. |
 | FR-008 | Complete V1.5.1 platform/posture continuity qualification using a representative physical device or approved target runtime for every claimed applicable transition family. | P0 | Accepted — approved Pixel Fold target runtime under `GCU-ADR-GLAZE-V151-POSTURE-TR-001`; PR #230 comment `5705230782`. |
-| FR-009 | Complete the governed V1.5.1 lifecycle transition through Release Candidate and separate Stable promotion with exact-head and post-merge verification. | P0 | Completed historically for shared source/lifecycle authority; V1.5.1 is retained as the immediate known-good rollback Stable beneath current V1.6.0. |
-| FR-012 | Preserve V1.5.0 and earlier release evidence as historical rollback/audit provenance without conflating it with current V1.6.0 Stable authority. | High | Historical/rollback control. |
+| FR-009 | Complete the governed V1.5.1 lifecycle transition through Release Candidate and separate Stable promotion with exact-head and post-merge verification. | P0 | Completed historically for shared source/lifecycle authority; V1.5.1 remains older rollback/audit provenance beneath the retained V1.6.0 immediate rollback and current V1.7 / 1.7.0 Anchor. |
+| FR-012 | Preserve V1.5.0 and earlier release evidence as historical rollback/audit provenance without conflating it with current Glaze V1.7 / `1.7.0` Stable authority. | High | Historical/rollback control. |
 | FR-013 | Implement the V1.6 Glaze Skeleton Motion System and intelligent loading decision/escalation foundation. | P0 | Completed in the qualified V1.6.0 Stable shared scope; future changes require a new governed lifecycle. |
 | FR-014 | Expand V1.6 semantic loading/skeleton tokens, accessibility fallbacks, motion-fatigue controls, and configurable thresholds through governed machine contracts. | P0 | Completed for the accepted V1.6.0 shared scope and covered by qualification evidence. |
 | FR-015 | Expand V1.6 across semantic states, accessibility, focus, motion, materials, typography, density, responsive behavior, recovery, diagnostics, and conformance metadata. | P0 | Completed for the accepted V1.6.0 shared scope; aggregate implementation remains traceable to the frozen qualification source. |
@@ -147,9 +151,9 @@ This file records verified implemented Glaze UI feature and lifecycle obligation
 
 ## Current Verified Stable Boundary
 
-GLAZE UI V1.6 / `1.6.0` is the current Official Stable shared target. The accepted release source remains `a7180679ea851389e0f3004515f9a25f420e716d`; the frozen V1.6 qualification matrix remains 24 verified / 0 unverified / 0 not applicable. V1.5.1 remains the immediate known-good Stable rollback baseline.
+Glaze V1.7 / `1.7.0` is the current bounded Official Stable/Anchor shared target. Its Stable runtime inherits the accepted V1.6.0 runtime behavior; historical dev.47 and Section 48 behavior remains outside Stable and continues under V1.7.1 Development. GLAZE UI V1.6 / `1.6.0` is the immediate known-good rollback baseline; V1.5.1 remains older rollback/audit provenance. Immutable V1.7 tag/GitHub Release publication remains a separate governed transition and is not implied by repository Stable authority.
 
-Downstream consumer adoption, rendered/native application acceptance, deployment, and production acceptance remain separately governed and are not inherited from the shared Glaze UI Stable state.
+Downstream consumer adoption, rendered/native application acceptance, deployment, publication, and production acceptance remain separately governed and are not inherited from the shared Glaze Stable state.
 
 ## Evidence Boundary
 
