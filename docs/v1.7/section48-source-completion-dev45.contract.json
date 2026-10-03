@@ -1,0 +1,35 @@
+{
+  "id": "goreecloud.glaze.v1.7.section48-source-completion",
+  "version": "1.7.0-dev.45",
+  "lifecycle": "DevelopmentQualification",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.3",
+  "section": 48,
+  "sourceTranches": {
+    "adaptiveExperienceSurfaces": "1.7.0-dev.42",
+    "trustCareSurfaces": "1.7.0-dev.43",
+    "creativeCompareSurfaces": "1.7.0-dev.44",
+    "section48QualificationControl": "1.7.0-dev.45"
+  },
+  "surfaces": [
+    "glaze-contextual-actions",
+    "glaze-brief",
+    "glaze-control-center",
+    "glaze-workspace",
+    "glaze-compact-surface",
+    "glaze-agent-activity",
+    "glaze-privacy-attention",
+    "glaze-accessibility-presentation",
+    "glaze-creative-surface",
+    "glaze-compare",
+    "glaze-care-surface"
+  ],
+  "section48SourceComplete": true,
+  "section48Accepted": false,
+  "predecessorAcceptanceModelVersion": "1.7.0-dev.39",
+  "predecessorAcceptanceAutomaticallyInherited": false,
+  "runtimeAggregate": "js/glaze-v1.7-development-v1-3.dev.mjs",
+  "validator": "scripts/validate_glaze_v1_7_section48_source_completion_dev45.mjs",
+  "officialAnchorUnchanged": "1.6.0"
+}
