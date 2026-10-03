@@ -15,6 +15,17 @@ const SOURCE_MODEL='1.7.0-dev.47';
 const ACCEPTANCE_MODEL='1.7.0-dev.39';
 const plan=json('contracts/v1.7/qualification.v1.2.rendered.plan.json');
 const html=read('reference/v1.7/rendered-v1.2-qualification.html');
+const modulePaths=[
+  'reference/v1.7/rendered-v1.2-qualification.mjs',
+  'reference/v1.7/rendered-v1.2-qualification-shared.mjs',
+  'reference/v1.7/rendered-v1.2-scenes-core.mjs',
+  'reference/v1.7/rendered-v1.2-scenes-signature.mjs',
+  'reference/v1.7/rendered-v1.2-scenes-motion-policy.mjs',
+  'reference/v1.7/rendered-v1.2-scenes-form-factor.mjs',
+  'reference/v1.7/rendered-v1.2-scenes-accessibility.mjs'
+];
+const modules=modulePaths.map(read);
+const sourceBundle=[html,...modules].join('\n');
 
 assert.equal(plan.schemaVersion,1);
 assert.equal(plan.planId,'goreecloud.glaze.v1.7.v1.2.rendered-browser-qualification');
@@ -102,6 +113,9 @@ assert.equal(regression.status,'unverified');
 assert.equal(matrix.authority.v17AcceptanceEstablished,false);
 assert.equal(matrix.authority.stableStatusGranted,false);
 
+assert.ok(html.includes('type="module" src="./rendered-v1.2-qualification.mjs"'),'HTML must load the local retained qualification module');
+assert.equal(modulePaths.length,7);
+
 const markers=[
   "import {glazeV17V13Development} from '../../js/glaze-v1.7-development-v1-3.dev.mjs'",
   'resolveGlazeTaskContinuity',
@@ -123,7 +137,7 @@ const markers=[
   'v17AcceptanceClaimed:false',
   'anchorStatusGranted:false'
 ];
-for(const marker of markers)assert.ok(html.includes(marker),'retained rendered harness missing marker: '+marker);
+for(const marker of markers)assert.ok(sourceBundle.includes(marker),'retained rendered harness missing marker: '+marker);
 
 const forbidden=[
   /<(?:script|link|img|iframe|video|audio|source)\b[^>]*(?:src|href)\s*=\s*["']https?:\/\//i,
@@ -139,7 +153,7 @@ const forbidden=[
   /v17AcceptanceClaimed\s*:\s*true/i,
   /anchorStatusGranted\s*:\s*true/i
 ];
-for(const pattern of forbidden)assert.equal(pattern.test(html),false,'rendered harness violates local/fail-closed boundary: '+pattern);
+for(const pattern of forbidden)assert.equal(pattern.test(sourceBundle),false,'rendered harness violates local/fail-closed boundary: '+pattern);
 
 const args=process.argv.slice(2);
 if(args.length>1)throw new Error('at most one rendered evidence file may be supplied');
