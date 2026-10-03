@@ -4,6 +4,9 @@ All notable changes to the Glaze reference implementation are recorded here.
 
 ## Unreleased — GLAZE V1.7 Development
 
+- Added retained-v1.2 exact-source machine qualification capture against frozen V1.7 source `4b9d085a5177b96cc31d4270b38d792a59872e37`. The capture maps all 20 machine-eligible groups in the 37-lane dev.39 matrix to repository-local validators, including inherited RTL accessibility and repository-wide regression integrity.
+- Machine-only evidence intentionally leaves all 37 retained lanes unverified for full qualification because every machine-eligible lane still requires at least one separate rendered, human, device, assistive-technology, performance, energy, or provenance group. No Section 46 completion, V1.7 acceptance, consumer eligibility, deployment authority, production authority, or Anchor promotion is created.
+
 - Added `1.7.0-dev.47` qualification coverage extension: four required v1.3 lanes now explicitly cover the Expression System, Contextual Actions, Glaze Brief, and Glaze Control Center. The combined V1.7 matrix now contains 62 lanes (37 retained v1.2 + 21 dev.46 Section 48 + 4 dev.47 coverage lanes); implicit surface coverage is not accepted and lifecycle promotion remains external.
 
 - Added `1.7.0-dev.46` combined v1.3 qualification control: the same exact candidate revision must satisfy the retained 37-lane v1.2/dev.39 matrix plus 21 granular Section 48 lanes; a predecessor qualification assertion is no longer sufficient by itself. This is evidence-control hardening only and does not promote V1.7.
