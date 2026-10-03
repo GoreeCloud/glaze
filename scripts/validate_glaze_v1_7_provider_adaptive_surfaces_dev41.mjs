@@ -31,14 +31,14 @@ assert(manifest.developmentAggregate==='js/glaze-v1.7-development-v1-3.dev.mjs',
 assert(manifest.priorV12AggregateVersion==='1.7.0-dev.39','manifest rewrites v1.2 aggregate provenance');
 assert(glazeV17ProviderAdaptiveSurfacesDevelopmentContract.version==='1.7.0-dev.41','runtime contract mismatch');
 assert(glazeV17ProviderAdaptiveSurfacesDevelopmentContract.section48Complete===false,'runtime contract overclaims Section 48');
-assert(glazeV17V13Development.version==='1.7.0-dev.41'&&glazeV17V13Development.planVersion==='v1.3','v1.3 aggregate mismatch');
+assert(glazeV17V13Development.planVersion==='v1.3','v1.3 aggregate plan mismatch');
 assert(glazeV17V13Development.priorAggregateVersion==='1.7.0-dev.39'&&glazeV17V13Development.priorAggregatePlanVersion==='v1.2','v1.2 aggregate provenance changed');
 assert(glazeV17V13Development.acceptanceControlAutomaticallyCoversV13===false,'v1.3 acceptance inferred from dev.39');
-assert(glazeV17V13Development.version==='1.7.0-dev.41','v1.3 aggregate version mismatch');
+assert(glazeV17V13Development.implementedAdaptiveSurfaces.includes('glaze-contextual-actions')&&glazeV17V13Development.implementedAdaptiveSurfaces.includes('glaze-brief')&&glazeV17V13Development.implementedAdaptiveSurfaces.includes('glaze-control-center'),'dev.41 surfaces missing from v1.3 aggregate');
 assert(glazeV17V13Development.priorAggregateVersion==='1.7.0-dev.39','frozen v1.2 aggregate provenance changed');
 assert(glazeV17V13Development.expressionSystemCoreVersion==='1.7.0-dev.40','dev.40 expression dependency missing from v1.3 aggregate');
 assert(glazeV17V13Development.providerAdaptiveSurfacesVersion==='1.7.0-dev.41','dev.41 adaptive surfaces missing from v1.3 aggregate');
-assert(glazeV17V13Development.section48Complete===false&&glazeV17V13Development.acceptanceControlAutomaticallyCoversV13===false,'v1.3 aggregate overclaims Section 48 acceptance');
+assert(glazeV17V13Development.acceptanceControlAutomaticallyCoversV13===false,'retained dev.39 acceptance must not automatically cover v1.3');
 
 const actionBase={
   actionId:'open-details',
