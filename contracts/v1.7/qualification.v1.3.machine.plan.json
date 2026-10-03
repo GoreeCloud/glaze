@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.v1.3.machine-qualification",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "e165007292878fd268298055c39b2f4a36a33ecf",
+  "acceptanceModelVersion": "1.7.0-dev.46",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "networkPolicy": "repository-local-only",
+  "evidenceType": "machine",
+  "checks": [
+    {
+      "id": "section48-source",
+      "command": "node scripts/validate_glaze_v1_7_section48_source_completion_dev45.mjs",
+      "laneIds": [
+        "workspace-continuity-v13",
+        "compact-surface-v13",
+        "agent-activity-authority-v13",
+        "privacy-attention-authority-v13",
+        "accessibility-presentation-v13",
+        "creative-state-separation-v13",
+        "compare-neutrality-v13",
+        "care-authority-v13"
+      ]
+    },
+    {
+      "id": "accessibility-continuity",
+      "command": "node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs",
+      "laneIds": [
+        "large-text-reflow-v13",
+        "forced-colors-v13",
+        "keyboard-continuity-v13"
+      ]
+    },
+    {
+      "id": "provider-boundaries",
+      "command": "node scripts/validate_glaze_v1_7_provider_adaptive_surfaces_dev41.mjs",
+      "laneIds": ["provider-integration-v13"]
+    },
+    {
+      "id": "privacy-security-boundaries",
+      "command": "node scripts/validate_glaze_v1_7_privacy_authority_boundaries_development.mjs",
+      "laneIds": ["privacy-security-integration-v13"]
+    },
+    {
+      "id": "combined-qualification-control",
+      "command": "node scripts/validate_glaze_v1_7_v1_3_qualification_dev46.mjs",
+      "laneIds": []
+    }
+  ],
+  "expectedMachineLaneIds": [
+    "workspace-continuity-v13",
+    "compact-surface-v13",
+    "agent-activity-authority-v13",
+    "privacy-attention-authority-v13",
+    "accessibility-presentation-v13",
+    "creative-state-separation-v13",
+    "compare-neutrality-v13",
+    "care-authority-v13",
+    "large-text-reflow-v13",
+    "forced-colors-v13",
+    "keyboard-continuity-v13",
+    "provider-integration-v13",
+    "privacy-security-integration-v13"
+  ],
+  "authority": {
+    "machineEvidenceOnly": true,
+    "renderedEvidenceClaimed": false,
+    "humanEvidenceClaimed": false,
+    "assistiveTechnologyEvidenceClaimed": false,
+    "deviceEvidenceClaimed": false,
+    "providerIntegrationEvidenceClaimed": false,
+    "privacySecurityIntegrationEvidenceClaimed": false,
+    "performanceEvidenceClaimed": false,
+    "energyEvidenceClaimed": false,
+    "provenanceEvidenceClaimed": false,
+    "section48AcceptanceClaimed": false,
+    "v17AcceptanceClaimed": false,
+    "anchorStatusGranted": false,
+    "lifecyclePromotionAutomatic": false
+  }
+}
