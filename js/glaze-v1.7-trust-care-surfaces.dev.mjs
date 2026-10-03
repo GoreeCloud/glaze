@@ -134,6 +134,7 @@ export function resolveGlazeAgentActivity(input={}){
       scopeDisclosureRequired:scopeId!==null,
       historyMeaningMustRemainProviderOwned:true,
       expression:expression(input,{
+        componentRole:'agent-activity',
         emphasisRole:acceptedResult==='failed'?'prominent':'standard',
         colorIntent:'protected-state',
         semanticSeverity:acceptedResult==='failed'?'attention':'ordinary',
@@ -261,6 +262,7 @@ export function resolveGlazeCareSurface(input={}){
       unknownStateExplicit:acceptedState==='unknown',
       degradation,
       expression:expression(input,{
+        componentRole:'care',
         emphasisRole:'standard',
         colorIntent:acceptedState==='unknown'?'none':'semantic-state',
         semanticSeverity:'ordinary',
