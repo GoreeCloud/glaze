@@ -4,6 +4,8 @@ All notable changes to the Glaze reference implementation are recorded here.
 
 ## Unreleased — GLAZE V1.7 Development
 
+- Added retained-v1.2 exact-source rendered Regression qualification using the same evidence architecture proven for V1.6: prior exact-source semantic baseline plus two fresh Chromium captures whose decoded-pixel SHA-256 values must match exactly at zero tolerance. The prior rendered artifact is not reclassified as a pixel baseline, and the tranche closes only the rendered evidence group for the dev.39 `regression` lane.
+
 - Added dedicated retained-v1.2 exact-source rendered-browser qualification for frozen V1.7 source `4b9d085a5177b96cc31d4270b38d792a59872e37`, with 22 repository-local Chromium scenes covering every dev.39 lane that permits rendered evidence except Regression.
 - Regression rendered evidence remains intentionally open because no governed V1.7 rendered regression baseline exists yet; the harness does not treat self-comparison as regression evidence. Browser form-factor scenes do not claim physical-device or native-platform acceptance, and no human, assistive-technology, performance, energy, Section 46, V1.7, consumer, deployment, production, or Anchor authority is granted.
 

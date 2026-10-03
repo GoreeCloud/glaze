@@ -105,6 +105,7 @@ def create_session() -> str:
                 "--disable-background-networking","--disable-component-update",
                 "--disable-default-apps","--disable-extensions","--disable-sync",
                 "--metrics-recording-only","--no-first-run","--hide-scrollbars",
+                "--font-render-hinting=none","--disable-lcd-text",
                 "--window-size=1440,1200"
             ]}
         }}

@@ -6,6 +6,11 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** GLAZE UI V1.6 / `1.6.0` (Stable compatibility channel)
 
+## V1.7 retained v1.2 rendered Regression qualification
+
+A dedicated regression-control path now binds the prior 22-scene exact-source rendered artifact to the frozen V1.7 source and requires two fresh exact-source captures. Semantic scene evidence must match the prior artifact, while decoded pixels from both fresh captures must match exactly with zero tolerance. Prior pixel drift remains informational and is not retroactively treated as a governed pixel baseline. This closes only the rendered group for `regression`; human, assistive-technology, physical-device/native, representative-performance, energy, governed review, Section 46, V1.7 acceptance, and Anchor authority remain separate.
+
+
 ## V1.7 retained v1.2 rendered-browser qualification capture
 
 The retained dev.39 / v1.2 matrix now has a dedicated exact-source Chromium harness and capture path for 22 of the 23 lanes that accept rendered evidence. The scenes cover Task Continuity, Adaptive Composition, semantic/theme behavior, Signature Motion and connected transformations, interruption/reversal, Reduced Motion, six form-factor profiles, Reduced Transparency, Increased Contrast, Forced Colors, Large Text, RTL, and Representative Rendering. Browser form-factor scenes are presentation evidence only and do not stand in for physical-device or native-platform acceptance.
