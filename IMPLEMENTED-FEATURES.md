@@ -6,6 +6,10 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** GLAZE UI V1.6 / `1.6.0` (Stable compatibility channel)
 
+## V1.7 v1.3 combined qualification hardening
+
+`1.7.0-dev.46` adds a combined exact-revision qualification evaluator over the retained 37-lane v1.2/dev.39 matrix plus 21 granular Section 48 lanes. It removes reliance on a predecessor-qualification assertion as sufficient evidence and explicitly requires provider-integration and privacy/security evidence where applicable. This is qualification infrastructure only; it grants no V1.7 lifecycle promotion.
+
 ## V1.7 v1.3 Section 48 source completion
 
 The v1.3 Section 48 source surface is now complete through `1.7.0-dev.45`. dev.42 adds Glaze Workspace, Compact Surface, and Accessibility Presentation; dev.43 adds Agent Activity, Privacy Attention, and Care Surface; dev.44 adds Creative Surface and Compare; and dev.45 adds a Section 48-specific exact-revision qualification-control layer. Together with dev.40/dev.41, all eleven planned Section 48 adaptive surfaces now have bounded source implementations.
