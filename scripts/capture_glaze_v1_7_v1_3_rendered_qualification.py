@@ -24,8 +24,8 @@ WEB_PORT=8817
 DRIVER_PORT=9567
 SERVER=f"http://{HOST}:{WEB_PORT}"
 DRIVER=f"http://{HOST}:{DRIVER_PORT}"
-SOURCE_REVISION="e165007292878fd268298055c39b2f4a36a33ecf"
-MODEL_VERSION="1.7.0-dev.46"
+SOURCE_REVISION="414ec21921cbcfd5e7efb4828027ecebeb11aae8"
+MODEL_VERSION="1.7.0-dev.47"
 
 class QualificationError(RuntimeError):
     pass
@@ -234,7 +234,7 @@ def capture(render_root: Path, source_root: Path, tooling_root: Path, plan_path:
     require(plan.get("acceptanceModelVersion")==MODEL_VERSION,"rendered plan model version drifted")
     require(plan.get("networkPolicy")=="repository-local-only","rendered plan network policy drifted")
     scenes=plan.get("scenes")
-    require(isinstance(scenes,list) and len(scenes)==10,"rendered plan must contain exactly ten scenes")
+    require(isinstance(scenes,list) and len(scenes)==14,"rendered plan must contain exactly fourteen scenes")
 
     require(git_revision(source_root)==SOURCE_REVISION,f"frozen source mismatch: expected {SOURCE_REVISION}")
     require(git_clean(source_root),"frozen V1.7 source has tracked modifications")
