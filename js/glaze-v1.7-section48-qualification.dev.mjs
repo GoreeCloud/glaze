@@ -82,7 +82,9 @@ function sourceCoverage(){
     expressionSystemCoreImplemented:glazeV17ExpressionSystemDevelopmentContract.expressionSystemCoreImplemented===true,
     implementedSurfaces:implemented,
     missingSurfaces:Object.freeze(SECTION48_SURFACES.filter(surface=>!implemented.includes(surface))),
-    allPlannedSurfacesSourceImplemented:SECTION48_SURFACES.every(surface=>implemented.includes(surface))
+    allPlannedSurfacesSourceImplemented:SECTION48_SURFACES.every(surface=>implemented.includes(surface)),
+    section48SourceComplete:glazeV17ExpressionSystemDevelopmentContract.expressionSystemCoreImplemented===true
+      && SECTION48_SURFACES.every(surface=>implemented.includes(surface))
   });
 }
 
@@ -112,7 +114,7 @@ export function evaluateGlazeV17Section48Qualification(input={}){
 
   const blockingLanes=Object.freeze(lanes.filter(lane=>!lane.complete).map(lane=>lane.id));
   const evidenceComplete=blockingLanes.length===0;
-  const readyForGovernedQualificationReview=coverage.allPlannedSurfacesSourceImplemented
+  const readyForGovernedQualificationReview=coverage.section48SourceComplete
     && predecessorAccepted
     && evidenceComplete;
 
