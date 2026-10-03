@@ -4,6 +4,9 @@ All notable changes to the Glaze reference implementation are recorded here.
 
 ## Unreleased — GLAZE V1.7 Development
 
+- Added a retained-v1.2 exact-source qualification working set that reproducibly combines the 20 machine records, seven non-duplicative rendered-browser bridge records derived from the existing dev.47 browser harness, and the retained artifact-provenance record for frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37`.
+- The dev.39 matrix now has five evidence-complete lanes at the evidence-group level—Task continuity, Adaptive composition, Forced Colors, Large text, and Artifact provenance—while 32 lanes remain unverified. This working set is not a governed qualification review, does not complete Section 46, and grants no V1.7 acceptance, consumer eligibility, deployment/production authority, or Anchor promotion.
+
 - Added retained-v1.2 exact-source machine qualification capture against frozen V1.7 source `4b9d085a5177b96cc31d4270b38d792a59872e37`. The capture maps all 20 machine-eligible groups in the 37-lane dev.39 matrix to repository-local validators, including inherited RTL accessibility and repository-wide regression integrity.
 - Machine-only evidence intentionally leaves all 37 retained lanes unverified for full qualification because every machine-eligible lane still requires at least one separate rendered, human, device, assistive-technology, performance, energy, or provenance group. No Section 46 completion, V1.7 acceptance, consumer eligibility, deployment authority, production authority, or Anchor promotion is created.
 
