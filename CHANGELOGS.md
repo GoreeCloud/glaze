@@ -4,6 +4,8 @@ All notable changes to the Glaze reference implementation are recorded here.
 
 ## Unreleased — GLAZE V1.7 Development
 
+- Added `1.7.0-dev.47` qualification coverage extension: four required v1.3 lanes now explicitly cover the Expression System, Contextual Actions, Glaze Brief, and Glaze Control Center. The combined V1.7 matrix now contains 62 lanes (37 retained v1.2 + 21 dev.46 Section 48 + 4 dev.47 coverage lanes); implicit surface coverage is not accepted and lifecycle promotion remains external.
+
 - Added `1.7.0-dev.46` combined v1.3 qualification control: the same exact candidate revision must satisfy the retained 37-lane v1.2/dev.39 matrix plus 21 granular Section 48 lanes; a predecessor qualification assertion is no longer sufficient by itself. This is evidence-control hardening only and does not promote V1.7.
 
 - Adopted **Glaze** as the canonical system identity for the 1.7 line, with the formal description **Glaze — GoreeCloud Design & Experience System**; Glaze UI remains the former name.
