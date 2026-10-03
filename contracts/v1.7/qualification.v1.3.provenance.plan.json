@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.v1.3.provenance-qualification",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "414ec21921cbcfd5e7efb4828027ecebeb11aae8",
+  "acceptanceModelVersion": "1.7.0-dev.47",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "networkPolicy": "repository-local-only",
+  "archiveName": "glaze-v1.7.0-dev.47-source-qualification.tar.gz",
+  "includedPaths": [
+    "VERSION",
+    "registry/lifecycle.json",
+    "js",
+    "contracts/v1.7",
+    "docs/v1.7"
+  ],
+  "evidenceLanes": {
+    "v12": ["artifact-provenance"],
+    "section48": ["artifact-provenance-v13"]
+  },
+  "deterministicDoubleBuildRequired": true,
+  "publishesTag": false,
+  "publishesGithubRelease": false,
+  "authority": {
+    "provenanceEvidenceOnly": true,
+    "renderedEvidenceClaimed": false,
+    "humanEvidenceClaimed": false,
+    "assistiveTechnologyEvidenceClaimed": false,
+    "deviceEvidenceClaimed": false,
+    "providerIntegrationEvidenceClaimed": false,
+    "privacySecurityIntegrationEvidenceClaimed": false,
+    "performanceEvidenceClaimed": false,
+    "energyEvidenceClaimed": false,
+    "section48AcceptanceClaimed": false,
+    "v17AcceptanceClaimed": false,
+    "anchorStatusGranted": false,
+    "lifecyclePromotionAutomatic": false,
+    "publicationAuthorized": false
+  }
+}
