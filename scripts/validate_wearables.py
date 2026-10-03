@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate current Glaze UI wearable authority and retained evidence boundaries."""
+"""Validate current Glaze wearable authority and retained evidence boundaries."""
 from __future__ import annotations
 
 import json
@@ -85,7 +85,7 @@ def main() -> None:
     require("Build Wear OS reference APK" in build_workflow, "Wear OS build workflow missing compile check")
     require("workflow_dispatch" in runtime_workflow, "Wear OS runtime workflow must remain manual")
     require("Deferred Manual Validation" in runtime_workflow, "Wear OS runtime workflow must remain explicitly deferred")
-    require("not a Glaze UI" in runtime_workflow, "Wear OS runtime workflow missing non-promotion boundary")
+    require("production-conformance gate" in runtime_workflow, "Wear OS runtime workflow missing non-promotion boundary")
     require("V1.7.0 Anchor expansion" in runtime_workflow, "Wear OS runtime workflow missing current Anchor boundary")
 
     print(
