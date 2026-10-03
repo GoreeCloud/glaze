@@ -104,7 +104,7 @@ if(args.length===1){
     }
   }
   assert.equal(matrix.authority.v17AcceptanceEstablished,false);
-  assert.equal(matrix.authority.anchorStatusGranted,false);
+  assert.equal(matrix.authority.stableStatusGranted,false);
 }
 
 console.log('Glaze V1.7 retained-v1.2 machine qualification plan validation: PASS');
