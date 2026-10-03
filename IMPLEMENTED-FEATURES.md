@@ -6,6 +6,12 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** GLAZE UI V1.6 / `1.6.0` (Stable compatibility channel)
 
+## V1.7 retained v1.2 qualification working set
+
+The retained dev.39 / v1.2 qualification path now has a reproducible exact-source working set over frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37`. It reuses the existing machine, rendered-browser, and deterministic provenance capture tools instead of creating parallel evidence formats. Seven rendered-browser bridge records are admitted only where the already-captured dev.47 scenes directly prove the retained rendered group: Task continuity, Adaptive composition, Mobile rendering, Desktop rendering, Large Text, Forced Colors, and Representative rendering.
+
+Combined with the 20 machine records and retained artifact provenance, the dev.39 matrix reports five lanes with all required evidence groups structurally satisfied: Task continuity, Adaptive composition, Forced Colors, Large Text, and Artifact provenance. Thirty-two lanes remain unverified. Matrix evidence-group completeness is not governed review acceptance; Section 46, V1.7 acceptance, lifecycle promotion, consumer eligibility, deployment, and production authority remain false.
+
 ## V1.7 retained v1.2 machine qualification capture
 
 The retained dev.39 / v1.2 acceptance matrix now has exact-source machine-evidence capture tooling bound to frozen V1.7 source `4b9d085a5177b96cc31d4270b38d792a59872e37`. It covers all 20 lanes that permit a machine evidence group and verifies that machine-only evidence satisfies only those groups, not complete lanes. The other required rendered, human, device, assistive-technology, performance, energy, and provenance evidence remains external and blocking; V1.7 remains Development and non-consumer-eligible.

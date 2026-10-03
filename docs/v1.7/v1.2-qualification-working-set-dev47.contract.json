@@ -1,0 +1,54 @@
+{
+  "recordType": "glaze-v1.7-retained-v1.2-qualification-working-set-tooling",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "retainedAcceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "retainedLaneCount": 37,
+  "inputEvidence": {
+    "machineRecords": 20,
+    "renderedBridgeRecords": 7,
+    "provenanceRecords": 1,
+    "combinedRecords": 28
+  },
+  "renderedBridgeLaneIds": [
+    "task-continuity",
+    "adaptive-composition",
+    "mobile",
+    "desktop",
+    "large-text",
+    "forced-colors",
+    "representative-rendering"
+  ],
+  "expectedMatrixExternallyVerifiedLaneIds": [
+    "task-continuity",
+    "adaptive-composition",
+    "forced-colors",
+    "large-text",
+    "artifact-provenance"
+  ],
+  "expectedMatrixExternallyVerifiedCount": 5,
+  "expectedMatrixUnverifiedCount": 32,
+  "sourceReuse": {
+    "machineCapture": "scripts/capture_glaze_v1_7_v1_2_machine_qualification.py",
+    "renderedCapture": "scripts/capture_glaze_v1_7_v1_3_rendered_qualification.py",
+    "renderedHarness": "reference/v1.7/rendered-qualification.html",
+    "provenanceCapture": "scripts/capture_glaze_v1_7_v1_3_provenance.py",
+    "workingSetAssembler": "scripts/assemble_glaze_v1_7_v1_2_qualification_working_set.mjs",
+    "workflow": ".github/workflows/glaze-v1.7-v1.2-qualification-working-set.yml"
+  },
+  "remainingEvidenceBoundary": "The working set does not create human, assistive-technology, physical-device/native-platform, representative-performance, energy, provider/privacy-security integration, cross-platform, regression-baseline, governed-review, deployment, production, or lifecycle authority.",
+  "authority": {
+    "workingSetOnly": true,
+    "governedReviewAcceptanceClaimed": false,
+    "section46CompleteClaimed": false,
+    "v17AcceptanceClaimed": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false,
+    "lifecyclePromotionAutomatic": false
+  }
+}
