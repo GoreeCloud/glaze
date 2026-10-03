@@ -1,7 +1,7 @@
 ---
 title: "Glaze V1.7 — Planned Upgrade"
 document_type: "Planned Design-System Upgrade Specification"
-status: "Planned requirements; Development source complete through 1.7.0-dev.45; acceptance pending"
+status: "Historical V1.7 development requirements; bounded 1.7.0 Stable; unfinished/unverified scope transferred to V1.7.1"
 document_version: "v1.3"
 product: "GLAZE"
 formal_identity: "Glaze — GoreeCloud Design & Experience System"
@@ -9,11 +9,11 @@ former_name: "Glaze UI"
 identity_boundary: "Glaze 1.7 is the first release line under the Glaze identity; Glaze UI 1.6.x and earlier remain historical identities."
 planned_family: "GLAZE V1.7"
 planned_theme: "Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion"
-current_stable_predecessor: "GLAZE UI V1.6 / 1.6.0 (Official Anchor; Stable compatibility channel)"
+current_stable_release: "Glaze V1.7 / 1.7.0 (bounded Official Anchor; Stable compatibility channel)"\nstable_rollback_baseline: "GLAZE UI V1.6 / 1.6.0"\nsuccessor_development_line: "Glaze V1.7.1 / 1.7.1-dev.1"
 canonical_repository: "GoreeCloud/glaze"
-consumer_eligible: false
+consumer_eligible_for_historical_development_scope: false
 last_updated: "2026-10-03"
-authoritative_scope: "Planned V1.7 upgrade requirements; does not alter current Anchor release authority"
+authoritative_scope: "Historical V1.7 development requirements and provenance; current 1.7.0 Stable scope is contracts/v1.7/stable-scope.json; remaining work is V1.7.1"
 ---
 
 # Glaze V1.7 Planned Upgrade
