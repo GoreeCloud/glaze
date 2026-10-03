@@ -15,6 +15,8 @@ const SOURCE='4b9d085a5177b96cc31d4270b38d792a59872e37';
 const SOURCE_MODEL='1.7.0-dev.47';
 const ACCEPTANCE_MODEL='1.7.0-dev.39';
 const PLAN_DEFAULT='contracts/v1.7/qualification.v1.2.working-set.plan.json';
+const CURRENT_STABLE_BASELINE='1.7.0';
+const HISTORICAL_SOURCE_STABLE_BASELINE='1.6.0';
 
 function readJson(file){
   return JSON.parse(fs.readFileSync(path.isAbsolute(file)?file:path.join(root,file),'utf8'));
@@ -43,12 +45,15 @@ function validateEvidenceRecord(item,type,allowedIds,referencePattern){
 
 function validatePlan(plan){
   assert.equal(plan.schemaVersion,1);
-  assert.equal(plan.planId,'goreecloud.glaze.v1.7.v1.2.qualification-working-set');
+  assert.equal(plan.planId,'goreecloud.glaze.v1.7.1.v1.2.qualification-working-set');
+  assert.equal(plan.successorReleaseLine,'1.7.1');
+  assert.equal(plan.developmentIdentity,'1.7.1-dev.1');
   assert.equal(plan.lifecycle,'DevelopmentQualification');
   assert.equal(plan.sourceRevision,SOURCE);
   assert.equal(plan.sourceModelVersion,SOURCE_MODEL);
   assert.equal(plan.acceptanceModelVersion,ACCEPTANCE_MODEL);
-  assert.equal(plan.stableBaseline,'1.6.0');
+  assert.equal(plan.stableBaseline,CURRENT_STABLE_BASELINE);
+  assert.equal(plan.historicalSourceStableBaseline,HISTORICAL_SOURCE_STABLE_BASELINE);
   assert.equal(plan.consumerEligible,false);
   assert.equal(plan.networkPolicy,'repository-local-only');
 
@@ -65,11 +70,14 @@ function validatePlan(plan){
   assert.equal(renderedPlan.acceptanceModelVersion,ACCEPTANCE_MODEL);
   assert.equal(machinePlan.expectedMachineLaneIds.length,plan.expectedMachineEvidenceRecordCount);
   assert.equal(renderedPlan.eligibleRenderedEvidenceLaneIds.length,plan.expectedRenderedEvidenceRecordCount);
-  assert.deepEqual(renderedPlan.openRenderedEvidenceLaneIds,plan.openRenderedEvidenceLaneIds);
+  assert.deepEqual(renderedPlan.openRenderedEvidenceLaneIds,plan.historicalRenderedOpenEvidenceLaneIds);
+  assert.deepEqual(plan.openRenderedEvidenceLaneIds,[]);
+  assert.equal(plan.expectedRegressionRenderedEvidenceRecordCount,1);
   assert.equal(plan.expectedProvenanceEvidenceRecordCount,1);
   assert.equal(
     plan.expectedMachineEvidenceRecordCount+
     plan.expectedRenderedEvidenceRecordCount+
+    plan.expectedRegressionRenderedEvidenceRecordCount+
     plan.expectedProvenanceEvidenceRecordCount,
     plan.expectedCombinedEvidenceRecordCount
   );
@@ -79,6 +87,7 @@ function validatePlan(plan){
   const synthetic=[
     ...machinePlan.expectedMachineLaneIds.map(id=>({id,verified:true,revision:SOURCE,evidenceType:'machine',reference:'synthetic://machine/'+id})),
     ...renderedPlan.eligibleRenderedEvidenceLaneIds.map(id=>({id,verified:true,revision:SOURCE,evidenceType:'rendered',reference:'synthetic://rendered/'+id})),
+    {id:'regression',verified:true,revision:SOURCE,evidenceType:'rendered',reference:'synthetic://regression'},
     {id:'artifact-provenance',verified:true,revision:SOURCE,evidenceType:'provenance',reference:'synthetic://provenance'}
   ];
   const matrix=createGlazeV17AcceptanceMatrix({exactRevision:SOURCE,evidence:synthetic});
@@ -92,6 +101,7 @@ function validatePlan(plan){
   assert.equal(plan.authority.workingSetOnly,true);
   for(const key of [
     'governedReviewAcceptanceClaimed','section46CompleteClaimed','v17AcceptanceClaimed',
+    'v171AcceptanceClaimed','section48Accepted',
     'anchorStatusGranted','consumerEligibilityGranted','deploymentAcceptanceGranted',
     'productionAcceptanceGranted','lifecyclePromotionAutomatic'
   ])assert.equal(plan.authority[key],false,key);
@@ -99,7 +109,7 @@ function validatePlan(plan){
   return {machinePlan,renderedPlan};
 }
 
-function assemble({planFile,machineFile,renderedDir,provenanceFile,outDir}){
+function assemble({planFile,machineFile,renderedDir,regressionFile,provenanceFile,outDir}){
   const plan=readJson(planFile);
   const {machinePlan,renderedPlan}=validatePlan(plan);
 
@@ -131,7 +141,7 @@ function assemble({planFile,machineFile,renderedDir,provenanceFile,outDir}){
   assert.equal(renderedManifest.stableBaseline,'1.6.0');
   assert.equal(renderedManifest.sceneCount,22);
   assert.equal(renderedManifest.passed,true);
-  assert.deepEqual(renderedManifest.openRenderedEvidenceLaneIds,plan.openRenderedEvidenceLaneIds);
+  assert.deepEqual(renderedManifest.openRenderedEvidenceLaneIds,plan.historicalRenderedOpenEvidenceLaneIds);
   assert.deepEqual(sorted(renderedManifest.renderedEvidenceLaneIds),sorted(renderedPlan.eligibleRenderedEvidenceLaneIds));
   assert.equal(renderedManifest.authority?.renderedBrowserOnly,true);
   assert.equal(renderedManifest.authority?.regressionBaselineClaimed,false);
@@ -154,7 +164,17 @@ function assemble({planFile,machineFile,renderedDir,provenanceFile,outDir}){
     const expected='evidence+sha256:'+scene.evidenceSha256+':v1.7/v1.2-rendered/'+item.id+'.json';
     assert.equal(item.reference,expected,'rendered content-address mismatch: '+item.id);
   }
-  assert.equal(rendered.some(item=>item.id==='regression'),false,'rendered regression evidence must remain open');
+  assert.equal(rendered.some(item=>item.id==='regression'),false,'historical rendered capture must not invent Regression evidence');
+
+  const regressionRecord=readJson(regressionFile);
+  assert.equal(regressionRecord.sourceRevision,SOURCE);
+  assert.equal(regressionRecord.stableBaseline,CURRENT_STABLE_BASELINE);
+  assert.equal(regressionRecord.historicalSourceStableBaseline,HISTORICAL_SOURCE_STABLE_BASELINE);
+  assert.equal(regressionRecord.authority?.historicalSourceEvidenceOnly,true);
+  assert.equal(regressionRecord.authority?.v171AcceptanceClaimed,false);
+  assert.equal(regressionRecord.regressionEvidence.length,plan.expectedRegressionRenderedEvidenceRecordCount);
+  const regression=regressionRecord.regressionEvidence;
+  validateEvidenceRecord(regression[0],'rendered',new Set(['regression']),/^evidence\+sha256:[0-9a-f]{64}:v1\.7\/v1\.2-regression\/regression-result\.json$/);
 
   const provenance=readJson(provenanceFile);
   assert.ok(Array.isArray(provenance));
@@ -165,7 +185,7 @@ function assemble({planFile,machineFile,renderedDir,provenanceFile,outDir}){
   assert.equal(provenance[0].evidenceType,'provenance');
   assert.match(provenance[0].reference,/^evidence\+sha256:[0-9a-f]{64}:v1\.7\/v1\.3-provenance\/provenance\.json$/);
 
-  const combined=[...machine,...rendered,...provenance];
+  const combined=[...machine,...rendered,...regression,...provenance];
   assert.equal(combined.length,plan.expectedCombinedEvidenceRecordCount);
   const matrix=createGlazeV17AcceptanceMatrix({exactRevision:SOURCE,evidence:combined});
   const verifiedIds=matrix.lanes.filter(lane=>lane.status==='externally-verified').map(lane=>lane.id);
@@ -184,21 +204,26 @@ function assemble({planFile,machineFile,renderedDir,provenanceFile,outDir}){
   writeJson(combinedFile,combined);
   const summary={
     schemaVersion:1,
-    recordType:'glaze-v1.7-retained-v1.2-qualification-working-set-summary',
+    recordType:'glaze-v1.7.1-retained-v1.2-qualification-working-set-summary',
     lifecycle:'DevelopmentQualification',
     sourceRevision:SOURCE,
     sourceModelVersion:SOURCE_MODEL,
     acceptanceModelVersion:ACCEPTANCE_MODEL,
-    stableBaseline:'1.6.0',
+    stableBaseline:CURRENT_STABLE_BASELINE,
+    historicalSourceStableBaseline:HISTORICAL_SOURCE_STABLE_BASELINE,
+    successorReleaseLine:'1.7.1',
+    developmentIdentity:'1.7.1-dev.1',
     evidenceRecordCounts:{
       machine:machine.length,
-      rendered:rendered.length,
+      historicalRendered:rendered.length,
+      regressionRendered:regression.length,
       provenance:provenance.length,
       combined:combined.length
     },
     rendered:{
       sceneCount:renderedManifest.sceneCount,
-      openLaneIds:plan.openRenderedEvidenceLaneIds,
+      historicalOpenLaneIds:plan.historicalRenderedOpenEvidenceLaneIds,
+      currentOpenLaneIds:plan.openRenderedEvidenceLaneIds,
       evidenceRecordSha256:sha256(renderedEvidenceFile),
       manifestSha256:sha256(renderedManifestFile)
     },
@@ -216,15 +241,19 @@ function assemble({planFile,machineFile,renderedDir,provenanceFile,outDir}){
   writeJson(summaryFile,summary);
   const manifest={
     schemaVersion:1,
-    recordType:'glaze-v1.7-retained-v1.2-qualification-working-set',
+    recordType:'glaze-v1.7.1-retained-v1.2-qualification-working-set',
     lifecycle:'DevelopmentQualification',
     sourceRevision:SOURCE,
     sourceModelVersion:SOURCE_MODEL,
     acceptanceModelVersion:ACCEPTANCE_MODEL,
-    stableBaseline:'1.6.0',
+    stableBaseline:CURRENT_STABLE_BASELINE,
+    historicalSourceStableBaseline:HISTORICAL_SOURCE_STABLE_BASELINE,
+    successorReleaseLine:'1.7.1',
+    developmentIdentity:'1.7.1-dev.1',
     machineEvidenceSha256:sha256(machineFile),
     renderedEvidenceSha256:sha256(renderedEvidenceFile),
     renderedManifestSha256:sha256(renderedManifestFile),
+    regressionEvidenceRecordSha256:sha256(regressionFile),
     provenanceEvidenceSha256:sha256(provenanceFile),
     combinedEvidenceSha256:sha256(combinedFile),
     matrixSummarySha256:sha256(summaryFile),
@@ -243,25 +272,28 @@ const planFile=arg('--plan',args)||PLAN_DEFAULT;
 const plan=readJson(planFile);
 validatePlan(plan);
 if(args.includes('--plan-only')){
-  console.log('Glaze V1.7 retained-v1.2 qualification working-set plan validation: PASS');
+  console.log('Glaze V1.7.1 retained-v1.2 qualification working-set plan validation: PASS');
   console.log('Expected combined evidence records: '+plan.expectedCombinedEvidenceRecordCount);
   console.log('Expected fully satisfied lanes: '+plan.expectedMatrixExternallyVerifiedCount+' / 37');
-  console.log('Open rendered lane: '+plan.openRenderedEvidenceLaneIds.join(', '));
+  console.log('Current open rendered lanes: '+(plan.openRenderedEvidenceLaneIds.join(', ')||'none'));
+  console.log('Historical rendered capture open lane: '+plan.historicalRenderedOpenEvidenceLaneIds.join(', '));
   process.exit(0);
 }
 
 const machineFile=arg('--machine',args)||plan.inputs.machineEvidence;
 const renderedDir=arg('--rendered',args)||path.dirname(plan.inputs.renderedEvidence);
+const regressionFile=arg('--regression',args)||plan.inputs.regressionEvidenceRecord;
 const provenanceFile=arg('--provenance',args)||plan.inputs.provenanceEvidence;
 const outDir=path.resolve(root,arg('--out',args)||'artifacts/v1.7-v1.2-working-set/working-set');
 const {manifest}=assemble({
   planFile,
   machineFile:path.resolve(root,machineFile),
   renderedDir:path.resolve(root,renderedDir),
+  regressionFile:path.resolve(root,regressionFile),
   provenanceFile:path.resolve(root,provenanceFile),
   outDir
 });
-console.log('Glaze V1.7 retained-v1.2 qualification working set: PASS');
+console.log('Glaze V1.7.1 retained-v1.2 qualification working set: PASS');
 console.log('Fully satisfied lanes: '+manifest.matrixExternallyVerifiedCount+' / 37');
 console.log('Unverified lanes: '+manifest.matrixUnverifiedCount+' / 37');
-console.log('Boundary: evidence working set only; governed review, Section 46, V1.7 acceptance, Anchor, consumer, deployment, and production authority remain false.');
+console.log('Boundary: historical exact-source evidence working set only; governed review, Section 48, V1.7.1 acceptance, Anchor, consumer, deployment, and production authority remain false.');

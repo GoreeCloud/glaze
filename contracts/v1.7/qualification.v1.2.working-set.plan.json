@@ -1,26 +1,25 @@
 {
   "schemaVersion": 1,
-  "planId": "goreecloud.glaze.v1.7.v1.2.qualification-working-set",
+  "planId": "goreecloud.glaze.v1.7.1.v1.2.qualification-working-set",
   "lifecycle": "DevelopmentQualification",
   "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
   "sourceModelVersion": "1.7.0-dev.47",
   "acceptanceModelVersion": "1.7.0-dev.39",
-  "stableBaseline": "1.6.0",
+  "stableBaseline": "1.7.0",
   "consumerEligible": false,
   "networkPolicy": "repository-local-only",
   "inputs": {
     "machineEvidence": "artifacts/v1.7-v1.2-working-set/machine/machine-evidence.json",
     "renderedEvidence": "artifacts/v1.7-v1.2-working-set/rendered/rendered-evidence.json",
     "renderedManifest": "artifacts/v1.7-v1.2-working-set/rendered/manifest.json",
-    "provenanceEvidence": "artifacts/v1.7-v1.2-working-set/provenance/v12-provenance-evidence.json"
+    "provenanceEvidence": "artifacts/v1.7-v1.2-working-set/provenance/v12-provenance-evidence.json",
+    "regressionEvidenceRecord": "acceptance/v1.7.1-regression-evidence.json"
   },
   "expectedMachineEvidenceRecordCount": 20,
   "expectedRenderedEvidenceRecordCount": 22,
   "expectedProvenanceEvidenceRecordCount": 1,
-  "expectedCombinedEvidenceRecordCount": 43,
-  "openRenderedEvidenceLaneIds": [
-    "regression"
-  ],
+  "expectedCombinedEvidenceRecordCount": 44,
+  "openRenderedEvidenceLaneIds": [],
   "expectedMatrixExternallyVerifiedLaneIds": [
     "task-continuity",
     "adaptive-composition",
@@ -37,10 +36,11 @@
     "forced-colors",
     "large-text",
     "rtl",
+    "regression",
     "artifact-provenance"
   ],
-  "expectedMatrixExternallyVerifiedCount": 16,
-  "expectedMatrixUnverifiedCount": 21,
+  "expectedMatrixExternallyVerifiedCount": 17,
+  "expectedMatrixUnverifiedCount": 20,
   "authority": {
     "workingSetOnly": true,
     "governedReviewAcceptanceClaimed": false,
@@ -50,6 +50,15 @@
     "consumerEligibilityGranted": false,
     "deploymentAcceptanceGranted": false,
     "productionAcceptanceGranted": false,
-    "lifecyclePromotionAutomatic": false
-  }
+    "lifecyclePromotionAutomatic": false,
+    "v171AcceptanceClaimed": false,
+    "section48Accepted": false
+  },
+  "successorReleaseLine": "1.7.1",
+  "developmentIdentity": "1.7.1-dev.1",
+  "historicalSourceStableBaseline": "1.6.0",
+  "expectedRegressionRenderedEvidenceRecordCount": 1,
+  "historicalRenderedOpenEvidenceLaneIds": [
+    "regression"
+  ]
 }

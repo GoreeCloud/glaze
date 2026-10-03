@@ -8,6 +8,9 @@ on:
       - 'scripts/validate_glaze_v1_7_v1_2_regression_qualification_plan.mjs'
       - 'docs/v1.7/v1.2-regression-qualification-dev47.contract.json'
       - 'docs/v1.7/V1_2_EXTERNAL_QUALIFICATION_COLLECTION.md'
+      - 'acceptance/v1.7.1-regression-evidence.json'
+      - 'schemas/v1.7.1-regression-evidence.schema.json'
+      - 'scripts/validate_glaze_v1_7_1_regression_evidence_record.mjs'
       - '.github/workflows/glaze-v1.7-v1.2-regression-qualification.yml'
       - 'CHANGELOGS.md'
       - 'IMPLEMENTED-FEATURES.md'
@@ -52,6 +55,7 @@ jobs:
           node scripts/validate_glaze_v1_7_v1_2_regression_qualification_plan.mjs
           node scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs
           node scripts/validate_glaze_v1_7_acceptance_development.mjs
+          node scripts/validate_glaze_v1_7_1_regression_evidence_record.mjs
           node scripts/verify_glaze_v1_7_stable.mjs
           node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
       - run: git diff --exit-code -- .

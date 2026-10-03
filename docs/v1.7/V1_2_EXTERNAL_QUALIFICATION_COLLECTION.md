@@ -7,7 +7,7 @@
 **Successor qualification line:** Glaze V1.7.1 / `1.7.1-dev.1`
 **Current bounded Anchor:** Glaze V1.7 / `1.7.0`
 
-PR #391 established the current retained working set: 43 exact-source records, 16 evidence-group-complete lanes, and 21 unverified lanes. This protocol does not create evidence or grant lifecycle authority.
+PR #391 established the historical retained working set at 43 exact-source records, 16 evidence-group-complete lanes, and 21 unverified lanes. PR #393 subsequently established exact-source rendered Regression evidence for the same frozen dev.47 source. The current retained checkpoint is 44 evidence records, 17 evidence-group-complete lanes, and 20 unverified lanes. This protocol does not create evidence or grant lifecycle authority.
 
 Use the existing canonical packet `acceptance/v1.7-qualification-evidence.template.json`. Every verified observation must match the frozen source revision, use a lane-allowed evidence type, carry a content-addressed `evidence+sha256:` reference, and include a concrete finding, timestamp, and reviewer/operator identity.
 
@@ -18,9 +18,14 @@ Use the existing canonical packet `acceptance/v1.7-qualification-evidence.templa
 - **Human:** Keyboard, Pointer, Touch, Alternative input, Representative rendering, Native behavior, Human visual and motion review, Privacy boundaries, Security boundaries.
 - **Assistive technology:** Alternative input, Assistive technology.
 - **Energy:** Energy behavior.
-- **Rendered:** Regression.
 
 The retained browser form-factor scenes are rendered presentation evidence only. They do not satisfy physical-device or native-behavior evidence.
+
+## Durable Regression checkpoint
+
+PR #393 established the separate rendered Regression evidence group for frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37`. GitHub Actions run `37157473094` passed on exact tooling head `83c8d783dc57a78ad87d0819e06bd59782978989`; verification job `111303763574` and comparison job `111303887933` passed. Artifact `11286278764` is recorded with digest `sha256:cb55b581668f6007b9ed56d53fca3a318ae773639f6a9e7620b22a4cf4d2e2e5`. The durable record is `acceptance/v1.7.1-regression-evidence.json`.
+
+This evidence is bound to the frozen historical source and is not automatically valid for a materially changed V1.7.1 candidate.
 
 ## Non-equivalences
 
@@ -30,7 +35,7 @@ The retained browser form-factor scenes are rendered presentation evidence only.
 - Automated assertions are not human review.
 - CI timing is not representative performance evidence.
 - Synthetic resource estimates are not energy evidence.
-- The existing rendered artifact is not automatically Regression evidence.
+- The prior generic rendered artifact alone is not Regression evidence; the separate PR #393 comparison is the retained rendered Regression checkpoint.
 - Packet completeness is not V1.7 acceptance or Anchor promotion.
 
 ## Intake sequence

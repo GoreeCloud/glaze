@@ -1,4 +1,4 @@
-name: Glaze V1.7 Retained V1.2 Qualification Working Set
+name: Glaze V1.7.1 Retained V1.2 Qualification Working Set
 
 on:
   pull_request:
@@ -6,6 +6,9 @@ on:
       - 'contracts/v1.7/qualification.v1.2.working-set.plan.json'
       - 'docs/v1.7/v1.2-qualification-working-set-dev47.contract.json'
       - 'scripts/assemble_glaze_v1_7_v1_2_qualification_working_set.mjs'
+      - 'acceptance/v1.7.1-regression-evidence.json'
+      - 'schemas/v1.7.1-regression-evidence.schema.json'
+      - 'scripts/validate_glaze_v1_7_1_regression_evidence_record.mjs'
       - 'contracts/v1.7/qualification.v1.2.rendered.plan.json'
       - 'reference/v1.7/rendered-v1.2-qualification.html'
       - 'reference/v1.7/rendered-v1.2-*.mjs'
@@ -21,6 +24,9 @@ on:
       - 'contracts/v1.7/qualification.v1.2.working-set.plan.json'
       - 'docs/v1.7/v1.2-qualification-working-set-dev47.contract.json'
       - 'scripts/assemble_glaze_v1_7_v1_2_qualification_working_set.mjs'
+      - 'acceptance/v1.7.1-regression-evidence.json'
+      - 'schemas/v1.7.1-regression-evidence.schema.json'
+      - 'scripts/validate_glaze_v1_7_1_regression_evidence_record.mjs'
       - 'contracts/v1.7/qualification.v1.2.rendered.plan.json'
       - 'reference/v1.7/rendered-v1.2-qualification.html'
       - 'reference/v1.7/rendered-v1.2-*.mjs'
@@ -78,6 +84,7 @@ jobs:
           node scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs
           node scripts/validate_glaze_v1_7_v1_3_provenance_qualification.mjs
           node scripts/validate_glaze_v1_7_acceptance_development.mjs
+          node scripts/validate_glaze_v1_7_1_regression_evidence_record.mjs
 
       - run: git diff --exit-code -- .
 
@@ -176,6 +183,7 @@ jobs:
           node scripts/assemble_glaze_v1_7_v1_2_qualification_working_set.mjs \
             --machine artifacts/v1.7-v1.2-working-set/machine/machine-evidence.json \
             --rendered artifacts/v1.7-v1.2-working-set/rendered \
+            --regression acceptance/v1.7.1-regression-evidence.json \
             --provenance artifacts/v1.7-v1.2-working-set/provenance/v12-provenance-evidence.json \
             --out artifacts/v1.7-v1.2-working-set/working-set
 
@@ -191,25 +199,31 @@ jobs:
           assert manifest['sourceRevision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'
           assert manifest['sourceModelVersion']=='1.7.0-dev.47'
           assert manifest['acceptanceModelVersion']=='1.7.0-dev.39'
-          assert manifest['matrixExternallyVerifiedCount']==16
-          assert manifest['matrixUnverifiedCount']==21
+          assert manifest['stableBaseline']=='1.7.0'
+          assert manifest['historicalSourceStableBaseline']=='1.6.0'
+          assert manifest['successorReleaseLine']=='1.7.1'
+          assert manifest['developmentIdentity']=='1.7.1-dev.1'
+          assert manifest['matrixExternallyVerifiedCount']==17
+          assert manifest['matrixUnverifiedCount']==20
           assert manifest['evidenceInventoryComplete'] is False
           assert manifest['readyForGovernedQualificationReview'] is False
-          assert summary['evidenceRecordCounts']=={'machine':20,'rendered':22,'provenance':1,'combined':43}
-          assert summary['matrix']['externallyVerifiedCount']==16
+          assert summary['evidenceRecordCounts']=={'machine':20,'historicalRendered':22,'regressionRendered':1,'provenance':1,'combined':44}
+          assert summary['matrix']['externallyVerifiedCount']==17
           assert sorted(summary['matrix']['externallyVerifiedLaneIds'])==sorted([
               'task-continuity','adaptive-composition','semantic-color','theme-safety',
               'custom-theme-accessibility','signature-motion','connected-transformations',
               'animation-interruption','animation-reversal','reduced-motion',
               'reduced-transparency','increased-contrast','forced-colors','large-text','rtl',
-              'artifact-provenance'
+              'regression','artifact-provenance'
           ])
-          assert summary['matrix']['unverifiedCount']==21
+          assert summary['matrix']['unverifiedCount']==20
           assert summary['matrix']['evidenceInventoryComplete'] is False
-          assert len(combined)==43
+          assert len(combined)==44
+          assert any(item['id']=='regression' and item['evidenceType']=='rendered' for item in combined)
           assert manifest['authority']['workingSetOnly'] is True
           for key in (
               'governedReviewAcceptanceClaimed','section46CompleteClaimed','v17AcceptanceClaimed',
+              'v171AcceptanceClaimed','section48Accepted',
               'anchorStatusGranted','consumerEligibilityGranted','deploymentAcceptanceGranted',
               'productionAcceptanceGranted','lifecyclePromotionAutomatic'
           ):
