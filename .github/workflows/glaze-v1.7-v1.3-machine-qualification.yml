@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  V17_SOURCE_SHA: e165007292878fd268298055c39b2f4a36a33ecf
+  V17_SOURCE_SHA: 414ec21921cbcfd5e7efb4828027ecebeb11aae8
 
 jobs:
   verify-machine-tooling:
@@ -55,6 +55,7 @@ jobs:
           node --check scripts/validate_glaze_v1_7_v1_3_machine_qualification.mjs
           node scripts/validate_glaze_v1_7_v1_3_machine_qualification.mjs
           node scripts/validate_glaze_v1_7_v1_3_qualification_dev46.mjs
+          node scripts/validate_glaze_v1_7_v1_3_qualification_coverage_dev47.mjs
 
       - run: git diff --exit-code -- .
 
@@ -70,7 +71,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Check out frozen dev.46 source
+      - name: Check out frozen dev.47 source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: ${{ env.V17_SOURCE_SHA }}
@@ -107,17 +108,25 @@ jobs:
           root=Path('artifacts/v1.7-v1.3-machine')
           manifest=json.loads((root/'manifest.json').read_text())
           evidence=json.loads((root/'section48-machine-evidence.json').read_text())
-          assert manifest['sourceRevision']=='e165007292878fd268298055c39b2f4a36a33ecf'
-          assert manifest['acceptanceModelVersion']=='1.7.0-dev.46'
+          coverage=json.loads((root/'coverage-machine-evidence.json').read_text())
+          assert manifest['sourceRevision']=='414ec21921cbcfd5e7efb4828027ecebeb11aae8'
+          assert manifest['acceptanceModelVersion']=='1.7.0-dev.47'
           assert manifest['stableBaseline']=='1.6.0'
-          assert manifest['checkCount']==5
-          assert len(manifest['machineEvidenceLaneIds'])==13
+          assert manifest['checkCount']==7
+          assert len(manifest['machineEvidenceLaneIds'])==17
+          assert len(manifest['section48MachineEvidenceLaneIds'])==13
+          assert len(manifest['coverageMachineEvidenceLaneIds'])==4
           assert manifest['passed'] is True
           assert len(evidence)==13
+          assert len(coverage)==4
           assert all(item['verified'] is True for item in evidence)
+          assert all(item['verified'] is True for item in coverage)
           assert all(item['revision']==manifest['sourceRevision'] for item in evidence)
+          assert all(item['revision']==manifest['sourceRevision'] for item in coverage)
           assert all(item['evidenceType']=='machine' for item in evidence)
+          assert all(item['evidenceType']=='machine' for item in coverage)
           assert all(item['reference'].startswith('evidence+sha256:') for item in evidence)
+          assert all(item['reference'].startswith('evidence+sha256:') for item in coverage)
           assert manifest['authority']['machineEvidenceOnly'] is True
           for key in (
               'renderedEvidenceClaimed','humanEvidenceClaimed','assistiveTechnologyEvidenceClaimed',
