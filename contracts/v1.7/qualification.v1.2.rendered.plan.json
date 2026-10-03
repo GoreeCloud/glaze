@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.v1.2.rendered-browser-qualification",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "harness": "reference/v1.7/rendered-v1.2-qualification.html",
+  "captureScript": "scripts/capture_glaze_v1_7_v1_2_rendered_qualification.py",
+  "validator": "scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs",
+  "workflow": ".github/workflows/glaze-v1.7-v1.2-rendered-qualification.yml",
+  "artifactDirectory": "artifacts/v1.7-v1.2-rendered",
+  "networkPolicy": "repository-local-only",
+  "browserClass": "chromium-headless",
+  "eligibleRenderedEvidenceLaneIds": [
+    "task-continuity",
+    "adaptive-composition",
+    "semantic-color",
+    "theme-safety",
+    "custom-theme-accessibility",
+    "signature-motion",
+    "connected-transformations",
+    "animation-interruption",
+    "animation-reversal",
+    "reduced-motion",
+    "mobile",
+    "tablet",
+    "desktop",
+    "foldable",
+    "tv",
+    "wearable",
+    "reduced-transparency",
+    "increased-contrast",
+    "forced-colors",
+    "large-text",
+    "rtl",
+    "representative-rendering"
+  ],
+  "openRenderedEvidenceLaneIds": [
+    "regression"
+  ],
+  "scenes": [
+    {
+      "id": "task-continuity",
+      "viewport": [
+        1080,
+        760
+      ],
+      "mobile": false,
+      "mode": "task-continuity",
+      "laneIds": [
+        "task-continuity"
+      ]
+    },
+    {
+      "id": "adaptive-composition",
+      "viewport": [
+        1180,
+        780
+      ],
+      "mobile": false,
+      "mode": "adaptive-composition",
+      "laneIds": [
+        "adaptive-composition"
+      ]
+    },
+    {
+      "id": "semantic-color",
+      "viewport": [
+        1080,
+        760
+      ],
+      "mobile": false,
+      "mode": "semantic-color",
+      "laneIds": [
+        "semantic-color"
+      ]
+    },
+    {
+      "id": "theme-safety",
+      "viewport": [
+        1080,
+        760
+      ],
+      "mobile": false,
+      "mode": "theme-safety",
+      "laneIds": [
+        "theme-safety"
+      ]
+    },
+    {
+      "id": "custom-theme-accessibility",
+      "viewport": [
+        1080,
+        820
+      ],
+      "mobile": false,
+      "mode": "custom-theme-accessibility",
+      "laneIds": [
+        "custom-theme-accessibility"
+      ]
+    },
+    {
+      "id": "signature-motion",
+      "viewport": [
+        1080,
+        760
+      ],
+      "mobile": false,
+      "mode": "signature-motion",
+      "laneIds": [
+        "signature-motion"
+      ]
+    },
+    {
+      "id": "connected-transformations",
+      "viewport": [
+        1080,
+        760
+      ],
+      "mobile": false,
+      "mode": "connected-transformations",
+      "laneIds": [
+        "connected-transformations"
+      ]
+    },
+    {
+      "id": "animation-interruption",
+      "viewport": [
+        1080,
+        760
+      ],
+      "mobile": false,
+      "mode": "animation-interruption",
+      "laneIds": [
+        "animation-interruption"
+      ]
+    },
+    {
+      "id": "animation-reversal",
+      "viewport": [
+        1080,
+        760
+      ],
+      "mobile": false,
+      "mode": "animation-reversal",
+      "laneIds": [
+        "animation-reversal"
+      ]
+    },
+    {
+      "id": "reduced-motion",
+      "viewport": [
+        1080,
+        760
+      ],
+      "mobile": false,
+      "mode": "reduced-motion",
+      "laneIds": [
+        "reduced-motion"
+      ],
+      "mediaFeatures": [
+        {
+          "name": "prefers-reduced-motion",
+          "value": "reduce"
+        }
+      ]
+    },
+    {
+      "id": "mobile",
+      "viewport": [
+        390,
+        844
+      ],
+      "mobile": true,
+      "mode": "form-factor",
+      "profile": "mobile",
+      "laneIds": [
+        "mobile"
+      ]
+    },
+    {
+      "id": "tablet",
+      "viewport": [
+        820,
+        1180
+      ],
+      "mobile": true,
+      "mode": "form-factor",
+      "profile": "tablet",
+      "laneIds": [
+        "tablet"
+      ]
+    },
+    {
+      "id": "desktop",
+      "viewport": [
+        1440,
+        960
+      ],
+      "mobile": false,
+      "mode": "form-factor",
+      "profile": "desktop",
+      "laneIds": [
+        "desktop"
+      ]
+    },
+    {
+      "id": "foldable",
+      "viewport": [
+        720,
+        900
+      ],
+      "mobile": true,
+      "mode": "form-factor",
+      "profile": "foldable",
+      "posture": "unfolded",
+      "laneIds": [
+        "foldable"
+      ]
+    },
+    {
+      "id": "tv",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "mobile": false,
+      "mode": "form-factor",
+      "profile": "tv",
+      "laneIds": [
+        "tv"
+      ]
+    },
+    {
+      "id": "wearable",
+      "viewport": [
+        360,
+        360
+      ],
+      "mobile": true,
+      "mode": "form-factor",
+      "profile": "wearable",
+      "laneIds": [
+        "wearable"
+      ]
+    },
+    {
+      "id": "reduced-transparency",
+      "viewport": [
+        900,
+        760
+      ],
+      "mobile": false,
+      "mode": "reduced-transparency",
+      "laneIds": [
+        "reduced-transparency"
+      ]
+    },
+    {
+      "id": "increased-contrast",
+      "viewport": [
+        900,
+        760
+      ],
+      "mobile": false,
+      "mode": "increased-contrast",
+      "laneIds": [
+        "increased-contrast"
+      ]
+    },
+    {
+      "id": "forced-colors",
+      "viewport": [
+        900,
+        760
+      ],
+      "mobile": false,
+      "mode": "forced-colors",
+      "laneIds": [
+        "forced-colors"
+      ],
+      "mediaFeatures": [
+        {
+          "name": "forced-colors",
+          "value": "active"
+        }
+      ]
+    },
+    {
+      "id": "large-text",
+      "viewport": [
+        800,
+        1000
+      ],
+      "mobile": false,
+      "mode": "large-text",
+      "laneIds": [
+        "large-text"
+      ]
+    },
+    {
+      "id": "rtl",
+      "viewport": [
+        900,
+        760
+      ],
+      "mobile": false,
+      "mode": "rtl",
+      "laneIds": [
+        "rtl"
+      ]
+    },
+    {
+      "id": "representative-rendering",
+      "viewport": [
+        1280,
+        900
+      ],
+      "mobile": false,
+      "mode": "representative-rendering",
+      "laneIds": [
+        "representative-rendering"
+      ]
+    }
+  ],
+  "authority": {
+    "renderedBrowserOnly": true,
+    "regressionBaselineClaimed": false,
+    "humanEvidenceClaimed": false,
+    "assistiveTechnologyEvidenceClaimed": false,
+    "physicalDeviceEvidenceClaimed": false,
+    "nativePlatformEvidenceClaimed": false,
+    "representativePerformanceEvidenceClaimed": false,
+    "energyEvidenceClaimed": false,
+    "v12QualificationClaimed": false,
+    "section46CompleteClaimed": false,
+    "v17AcceptanceClaimed": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false,
+    "lifecyclePromotionAutomatic": false
+  }
+}
