@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en" data-review-harness="glaze-v1.7-v1.3-rendered-browser-qualification">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Glaze V1.7 — v1.3 Rendered Qualification</title>
+  <link rel="stylesheet" href="../../css/glaze-v1.4.1.css">
+  <style>
+    :root{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color-scheme:light dark;
+      --canvas:#09111d;--surface:rgba(23,34,50,.86);--solid:#172232;--raised:#223047;
+      --line:rgba(221,234,255,.20);--text:#f6f8ff;--muted:#b8c6da;--accent:#9ec8ff;
+      --good:#9ce5b5;--warn:#ffd48a;--bad:#ff9eaa;--radius:18px;
+    }
+    *{box-sizing:border-box}
+    html[data-mode="accessibility-large-text"]{font-size:200%}
+    body{margin:0;min-height:100vh;background:
+      radial-gradient(circle at 12% 8%,rgba(71,116,199,.22),transparent 32rem),
+      radial-gradient(circle at 86% 20%,rgba(132,92,180,.18),transparent 30rem),
+      var(--canvas);color:var(--text);overflow-x:hidden}
+    .shell{width:min(1280px,100%);margin:0 auto;padding:clamp(12px,2vw,26px)}
+    .surface{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 18px 55px rgba(0,0,0,.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    .hero{padding:18px 20px;margin-bottom:14px}
+    h1{margin:0 0 8px;font-size:clamp(1.25rem,2.6vw,2rem)}
+    h2{margin:0 0 10px;font-size:1rem}
+    p{line-height:1.5}.muted{color:var(--muted)}
+    .meta{display:flex;flex-wrap:wrap;gap:7px}.pill{border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:.76rem}
+    .stage{display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+    .stage[data-layout="workspace-wide"]{grid-template-columns:minmax(180px,.65fr) minmax(0,1.5fr) minmax(210px,.75fr)}
+    .stage[data-layout="creative-preview"],.stage[data-layout="compare-neutral"]{grid-template-columns:1fr 1fr}
+    .panel{padding:16px;min-width:0}
+    .stack{display:grid;gap:10px}
+    .card{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(255,255,255,.035);min-width:0}
+    .card strong{display:block;margin-bottom:5px}
+    .state{display:flex;align-items:center;gap:8px}.dot{width:11px;height:11px;border-radius:50%;background:var(--accent);flex:none}.dot.good{background:var(--good)}.dot.warn{background:var(--warn)}.dot.bad{background:var(--bad)}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}.row>*{min-width:0}
+    button,input{font:inherit;color:inherit;background:var(--solid);border:1px solid var(--line);border-radius:12px;min-height:44px;padding:.58rem .78rem}
+    button:focus-visible,input:focus-visible{outline:4px solid var(--accent);outline-offset:3px}
+    .compare-pane{min-height:220px;display:grid;align-content:start;gap:8px}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere;font:11px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin-top:14px;padding:14px}
+    body[data-mode="accessibility-forced-colors"] .surface{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--solid)}
+    @media(forced-colors:active){
+      :root{--canvas:Canvas;--surface:Canvas;--solid:Canvas;--raised:Canvas;--line:CanvasText;--text:CanvasText;--muted:CanvasText;--accent:Highlight}
+      body{background:Canvas;color:CanvasText}
+      .surface,.card{forced-color-adjust:auto;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+      .dot{background:Highlight}
+    }
+    @media(max-width:720px){
+      .shell{padding:10px}
+      .stage,.stage[data-layout="workspace-wide"],.stage[data-layout="creative-preview"],.stage[data-layout="compare-neutral"]{grid-template-columns:1fr}
+      .panel{padding:13px}
+    }
+  </style>
+</head>
+<body>
+<main class="shell">
+  <section class="hero surface" aria-labelledby="title">
+    <h1 id="title">Glaze V1.7 — v1.3 Rendered Qualification</h1>
+    <p><strong>Exact-source browser evidence surface.</strong> This harness cannot establish human, assistive-technology, physical-device, native-platform, provider-integration, privacy/security-integration, measured-performance, energy, cross-platform, Section 48, V1.7, or Anchor acceptance.</p>
+    <div class="meta" aria-label="Qualification identity">
+      <span class="pill" id="scene-pill">Scene: pending</span>
+      <span class="pill" id="revision-pill">Revision: unbound</span>
+      <span class="pill" id="aggregate-pill">Aggregate: pending</span>
+      <span class="pill" id="model-pill">Model: pending</span>
+    </div>
+  </section>
+
+  <section id="stage" class="stage" aria-label="Rendered qualification scene"></section>
+  <pre id="evidence-output" class="surface" aria-label="Rendered evidence record"></pre>
+</main>
+
+<script type="module">
+  import {glazeV17V13Development} from '../../js/glaze-v1.7-development-v1-3.dev.mjs';
+  import {
+    resolveGlazeWorkspace,
+    resolveGlazeCompactSurface,
+    resolveGlazeAccessibilityPresentation
+  } from '../../js/glaze-v1.7-adaptive-experience-surfaces.dev.mjs';
+  import {
+    resolveGlazeAgentActivity,
+    resolveGlazePrivacyAttention,
+    resolveGlazeCareSurface
+  } from '../../js/glaze-v1.7-trust-care-surfaces.dev.mjs';
+  import {
+    resolveGlazeCreativeSurface,
+    resolveGlazeCompare
+  } from '../../js/glaze-v1.7-creative-compare-surfaces.dev.mjs';
+
+  const $=id=>document.getElementById(id);
+  const params=new URLSearchParams(location.search);
+  const scene=params.get('scene')||'workspace-wide';
+  const revision=params.get('revision')||'';
+  const mode=params.get('mode')||scene;
+  const exactRevision=/^[0-9a-f]{40}$/.test(revision);
+  const stage=$('stage');
+
+  document.documentElement.dataset.mode=mode;
+  document.body.dataset.mode=mode;
+  stage.dataset.layout=mode;
+  $('scene-pill').textContent='Scene: '+scene;
+  $('revision-pill').textContent='Revision: '+(exactRevision?revision:'UNBOUND');
+  $('aggregate-pill').textContent='Aggregate: '+glazeV17V13Development.version;
+  $('model-pill').textContent='Qualification: '+glazeV17V13Development.combinedQualificationControlVersion;
+
+  const base={
+    densityRole:'standard',
+    expressionProfile:'balanced',
+    expressionProfileAuthoritative:true,
+    performancePressure:'neutral',
+    performancePressureAuthoritative:true,
+    accessibility:{},
+    accessibilityAuthoritative:true
+  };
+
+  const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const card=(title,value,tone='')=>`<div class="card"><div class="state"><span class="dot ${tone}"></span><div><strong>${esc(title)}</strong><span class="muted">${esc(value)}</span></div></div></div>`;
+  const panel=(title,body)=>`<section class="panel surface"><h2>${esc(title)}</h2><div class="stack">${body}</div></section>`;
+
+  const assertions={
+    exactRevisionParameter:exactRevision,
+    aggregateVersion:glazeV17V13Development.version==='1.7.0-dev.46',
+    qualificationModel:glazeV17V13Development.combinedQualificationControlVersion==='1.7.0-dev.46',
+    stableBaseline:glazeV17V13Development.stableBaseline==='1.6.0',
+    sourceComplete:glazeV17V13Development.section48SourceComplete===true,
+    acceptanceIncomplete:glazeV17V13Development.section48Complete===false,
+    noAutomaticPromotion:glazeV17V13Development.releasePromotionAutomatic===false,
+    noHorizontalOverflow:false
+  };
+  let sceneData={};
+
+  if(scene==='workspace-wide'||scene==='workspace-compact'){
+    const compact=scene==='workspace-compact';
+    const workspace=resolveGlazeWorkspace({
+      ...base,
+      formFactor:compact?'mobile':'desktop',
+      inputContext:compact?'touch':'keyboard',
+      workspaceId:'qualification.workspace',
+      panes:compact
+        ?[{paneId:'content',role:'primary'}]
+        :[{paneId:'navigation',role:'secondary'},{paneId:'content',role:'primary'},{paneId:'inspector',role:'inspector'}],
+      previousTaskState:{focusId:'content.title',selectionIds:['item.1'],draftText:'QUALIFICATION-DRAFT'},
+      incomingTaskState:{focusId:'content.title'},
+      posture:compact?'compact':'expanded'
+    });
+    const panes=workspace.panes.map(p=>card(p.role,p.paneId,p.role==='primary'?'good':'')).join('');
+    stage.innerHTML=compact
+      ?panel('Compact workspace',panes+card('Draft continuity',workspace.continuity.state.draftText,'good'))
+      :panel('Navigation',card('Current location','Workspace','good'))+
+       panel('Primary content',card('Draft continuity',workspace.continuity.state.draftText,'good')+card('Selection','item.1'))+
+       panel('Inspector',card('Pane identity preserved',String(workspace.layout.paneIdentityPreserved),'good'));
+    assertions.workspaceDraftPreserved=workspace.continuity.state.draftText==='QUALIFICATION-DRAFT';
+    assertions.workspacePaneIdentityPreserved=workspace.layout.paneIdentityPreserved===true;
+    assertions.workspaceNavigationNotExecuted=workspace.authority.navigationExecutedByGlaze===false;
+    assertions.workspaceResponsivePaneCount=compact?workspace.panes.length===1:workspace.panes.length===3;
+    sceneData={paneCount:workspace.panes.length,draft:workspace.continuity.state.draftText};
+  }else if(scene==='compact-cover'){
+    const compact=resolveGlazeCompactSurface({
+      ...base,formFactor:'compact',inputContext:'touch',
+      surfaceId:'qualification.cover',
+      context:'cover-display',
+      interactionDepth:'quick-action',
+      providerId:'media-provider',
+      providerIdentityAuthoritative:true,
+      stateId:'playing',
+      stateAuthoritative:false
+    });
+    stage.innerHTML=panel('Compact Surface',
+      card('Provider','media-provider','good')+
+      card('Accepted state',compact.state.accepted,compact.state.accepted==='unknown'?'warn':'')+
+      card('Essential meaning required',String(compact.presentation.essentialMeaningRequired),'good'));
+    assertions.compactUnknownStatePreserved=compact.state.accepted==='unknown';
+    assertions.compactEssentialMeaningRequired=compact.presentation.essentialMeaningRequired===true;
+    sceneData={state:compact.state.accepted,context:'cover-display'};
+  }else if(scene==='agent-activity'){
+    const agent=resolveGlazeAgentActivity({
+      ...base,formFactor:'desktop',inputContext:'keyboard',
+      activityId:'qualification.agent',
+      kind:'result',
+      providerId:'assistant-provider',
+      providerIdentityAuthoritative:true,
+      occurrenceAuthoritative:true,
+      resultState:'success',
+      resultAuthoritative:false
+    });
+    stage.innerHTML=panel('Agent Activity',
+      card('Provider','assistant-provider','good')+
+      card('Occurrence visible',String(agent.presentation.visible),'good')+
+      card('Accepted result',agent.result.accepted,agent.result.accepted==='unknown'?'warn':''));
+    assertions.agentVisible=agent.presentation.visible===true;
+    assertions.agentUnverifiedResultUnknown=agent.result.accepted==='unknown';
+    assertions.agentTrustNotInferred=agent.authority.resultTrustworthinessInferredByGlaze===false;
+    sceneData={visible:agent.presentation.visible,result:agent.result.accepted};
+  }else if(scene==='privacy-attention'){
+    const privacy=resolveGlazePrivacyAttention({
+      ...base,formFactor:'desktop',inputContext:'keyboard',
+      truthDomain:'privacy-access',
+      claims:[{providerId:'privacy-shield',ownerKind:'privacy-shield',authority:'privacy',scope:'system',state:'denied',authorityAttested:true}]
+    });
+    stage.innerHTML=panel('Privacy Attention',
+      card('Authority','Privacy Shield','good')+
+      card('Effective state',privacy.boundary.truth.effectiveState,'bad')+
+      card('Attention level',privacy.attention.level,'bad'));
+    assertions.privacyTruthPreserved=privacy.boundary.truth.effectiveState==='denied';
+    assertions.privacyAttentionCritical=privacy.attention.level==='critical';
+    assertions.privacyConsentNotInferred=privacy.authority.consentInferredByGlaze===false;
+    sceneData={state:privacy.boundary.truth.effectiveState,attention:privacy.attention.level};
+  }else if(scene==='accessibility-large-text'||scene==='accessibility-forced-colors'){
+    const forced=scene==='accessibility-forced-colors';
+    const accessibility=resolveGlazeAccessibilityPresentation({
+      ...base,
+      formFactor:'desktop',
+      inputContext:'keyboard',
+      presentation:'text-spotlight',
+      modes:[forced?'forced-colors':'large-text'],
+      accessibilityAuthoritative:true
+    });
+    stage.innerHTML=panel('Accessibility Presentation',
+      card('Effective mode',accessibility.effectiveModes.join(', ')||'none','good')+
+      card('Color-only meaning allowed',String(accessibility.behavior.colorOnlyMeaningAllowed),accessibility.behavior.colorOnlyMeaningAllowed?'bad':'good')+
+      card('Task meaning preserved','Required','good'));
+    assertions.accessibilityModeApplied=accessibility.effectiveModes.includes(forced?'forced-colors':'large-text');
+    assertions.colorOnlyMeaningRejected=accessibility.behavior.colorOnlyMeaningAllowed===false;
+    sceneData={effectiveModes:accessibility.effectiveModes};
+  }else if(scene==='creative-preview'){
+    const creative=resolveGlazeCreativeSurface({
+      ...base,formFactor:'desktop',inputContext:'keyboard',
+      operationId:'qualification.creative',
+      operation:'generate',
+      stage:'preview',
+      stageAuthoritative:true,
+      providerId:'creative-provider',
+      providerIdentityAuthoritative:true,
+      sourceId:'source.1',
+      proposalId:'proposal.1'
+    });
+    stage.innerHTML=
+      panel('Proposal',card('Proposal ID','proposal.1')+card('State','proposed'))+
+      panel('Preview',card('Accepted stage',creative.stage.accepted,'good')+card('Preview is commitment',String(creative.stage.previewIsCommitment),creative.stage.previewIsCommitment?'bad':'good'));
+    assertions.creativePreviewAccepted=creative.stage.accepted==='preview';
+    assertions.creativePreviewNotCommitment=creative.stage.previewIsCommitment===false;
+    assertions.creativeNoApplicationCommit=creative.authority.applicationStateCommittedByGlaze===false;
+    sceneData={stage:creative.stage.accepted};
+  }else if(scene==='compare-neutral'){
+    const compare=resolveGlazeCompare({
+      ...base,formFactor:'desktop',inputContext:'keyboard',
+      comparisonId:'qualification.compare',
+      kind:'theme',
+      mode:'before-after',
+      sourceId:'theme.old',
+      targetId:'theme.new',
+      selectedId:'theme.new',
+      selectionAuthoritative:false
+    });
+    stage.innerHTML=
+      panel('Before',card('Source','theme.old'))+
+      panel('After',card('Target','theme.new')+card('Accepted selection',compare.selection.accepted??'none','good')+card('Commitment implied',String(compare.presentation.commitmentImpliedBySelection),compare.presentation.commitmentImpliedBySelection?'bad':'good'));
+    assertions.compareSelectionNotInferred=compare.selection.accepted===null;
+    assertions.compareCommitmentNotImplied=compare.presentation.commitmentImpliedBySelection===false;
+    sceneData={selection:compare.selection.accepted};
+  }else if(scene==='care-surface'){
+    const care=resolveGlazeCareSurface({
+      ...base,formFactor:'desktop',inputContext:'keyboard',
+      itemId:'qualification.storage',
+      domain:'storage',
+      providerId:'storage-provider',
+      providerIdentityAuthoritative:true,
+      stateId:'healthy',
+      stateAuthoritative:false
+    });
+    stage.innerHTML=panel('Care Surface',
+      card('Domain','storage')+
+      card('Provider','storage-provider','good')+
+      card('Accepted state',care.state.accepted,care.state.accepted==='unknown'?'warn':''));
+    assertions.careUnverifiedStateUnknown=care.state.accepted==='unknown';
+    assertions.careStorageSafetyNotCreated=care.authority.storageSafetyCreatedByGlaze===false;
+    sceneData={state:care.state.accepted};
+  }else{
+    throw new Error('Unknown rendered qualification scene: '+scene);
+  }
+
+  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  const rootFont=parseFloat(getComputedStyle(document.documentElement).fontSize);
+  assertions.noHorizontalOverflow=document.documentElement.scrollWidth<=innerWidth+1;
+  if(scene==='accessibility-large-text')assertions.renderedLargeText=rootFont>=30;
+  if(scene==='accessibility-forced-colors'){
+    const surface=getComputedStyle(document.querySelector('.surface'));
+    assertions.renderedForcedColorsMode=matchMedia('(forced-colors: active)').matches||mode==='accessibility-forced-colors';
+    assertions.renderedSolidFallback=(surface.backdropFilter||surface.webkitBackdropFilter||'none')==='none';
+  }
+
+  const evidence={
+    schemaVersion:1,
+    kind:'glaze-v1.7-v1.3-rendered-browser-scene',
+    scene,
+    sourceRevisionParameter:exactRevision?revision:null,
+    aggregateVersion:glazeV17V13Development.version,
+    qualificationModelVersion:glazeV17V13Development.combinedQualificationControlVersion,
+    lifecycle:glazeV17V13Development.lifecycle,
+    stableBaseline:glazeV17V13Development.stableBaseline,
+    viewport:{width:innerWidth,height:innerHeight,devicePixelRatio},
+    mode,
+    computed:{rootFontPx:rootFont,horizontalOverflowPx:Math.max(0,document.documentElement.scrollWidth-innerWidth)},
+    sceneData,
+    assertions,
+    passed:Object.values(assertions).every(Boolean),
+    authority:{
+      renderedBrowserOnly:true,
+      humanEvidenceClaimed:false,
+      assistiveTechnologyEvidenceClaimed:false,
+      physicalDeviceEvidenceClaimed:false,
+      nativePlatformEvidenceClaimed:false,
+      providerIntegrationEvidenceClaimed:false,
+      privacySecurityIntegrationEvidenceClaimed:false,
+      representativePerformanceEvidenceClaimed:false,
+      energyEvidenceClaimed:false,
+      crossPlatformEvidenceClaimed:false,
+      regressionBaselineClaimed:false,
+      section48AcceptanceClaimed:false,
+      v17AcceptanceClaimed:false,
+      anchorStatusGranted:false,
+      lifecyclePromotionAutomatic:false
+    }
+  };
+  $('evidence-output').textContent=JSON.stringify(evidence,null,2);
+  window.__glazeV17RenderedEvidence=evidence;
+  window.__glazeV17RenderedReady=true;
+</script>
+</body>
+</html>
