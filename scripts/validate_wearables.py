@@ -40,39 +40,39 @@ def main() -> None:
     build_workflow = read(WEAR_OS_BUILD_WORKFLOW)
     runtime_workflow = read(WEAR_OS_RUNTIME_WORKFLOW)
 
-    require(version == "1.6.0", "VERSION must remain current V1.6 Anchor 1.6.0")
+    require(version == "1.7.0", "VERSION must identify bounded Glaze V1.7 Stable/Anchor 1.7.0")
     require(lifecycle.get("currentOfficial") == version, "currentOfficial must match VERSION")
     require(lifecycle.get("currentStable") == version, "currentStable compatibility field must match VERSION")
-    require(lifecycle.get("officialProductLabel") == "GLAZE UI V1.6", "official product label drifted")
-
     current_release = next(
         (item for item in lifecycle.get("releases", []) if item.get("version") == version),
         None,
     )
-    require(current_release is not None, "current V1.6 release record missing")
-    require(current_release.get("consumerEligible") is True, "current V1.6 release must remain consumer eligible")
-    require(current_release.get("lifecycle") == "anchor", "current V1.6 canonical lifecycle must remain Anchor")
-    require(current_release.get("tag") == "v1.6.0", "current V1.6 release tag binding drifted")
+    require(current_release is not None, "current Glaze V1.7 release record missing")
+    require(lifecycle.get("officialProductLabel") == current_release.get("label"), "official product label must match current release label")
+
+    require(current_release.get("consumerEligible") is True, "current Glaze V1.7 release must remain consumer eligible")
+    require(current_release.get("lifecycle") == "anchor", "current Glaze V1.7 canonical lifecycle must remain Anchor")
+    require(current_release.get("runtimeEntrypoint") == "js/glaze-v1.7.0.mjs", "current Glaze V1.7 runtime binding drifted")
 
     capabilities = lifecycle.get("capabilities", {})
     require("wearable" not in capabilities, "wearable must not silently become a first-class capability")
 
     for phrase in (
-        "GLAZE UI V1.6 / `1.6.0` Anchor",
+        "Glaze V1.7 / `1.7.0` Stable/Anchor",
         "no first-class wearable capability is currently promoted",
-        "does not establish V1.7 acceptance",
+        "does not establish V1.7.1 acceptance",
     ):
         require(phrase in wearable_doc, f"WEARABLES.md missing current boundary: {phrase}")
 
     for phrase in (
-        "GLAZE UI V1.6 / `1.6.0` Anchor",
+        "Glaze V1.7 / `1.7.0` Stable/Anchor",
         "Development/reference mapping only",
         "application-specific acceptance",
     ):
         require(phrase in component_doc, f"WEARABLE_COMPONENTS.md missing current boundary: {phrase}")
 
     require(evidence.get("status") == "template-only", "wearable native evidence must remain template-only")
-    require(evidence.get("glazeUiStableBaseline") == "1.6.0", "wearable evidence baseline must be current V1.6")
+    require(evidence.get("glazeUiStableBaseline") == "1.7.0", "wearable evidence baseline must be current bounded V1.7")
     promotion = evidence.get("promotion", {})
     require(promotion.get("stableEligible") is False, "wearable evidence template must remain promotion-ineligible")
     require(promotion.get("reviewedBy") is None, "template must not contain a reviewer")
@@ -86,11 +86,11 @@ def main() -> None:
     require("workflow_dispatch" in runtime_workflow, "Wear OS runtime workflow must remain manual")
     require("Deferred Manual Validation" in runtime_workflow, "Wear OS runtime workflow must remain explicitly deferred")
     require("not a Glaze UI" in runtime_workflow, "Wear OS runtime workflow missing non-promotion boundary")
-    require("V1.6 Anchor expansion" in runtime_workflow, "Wear OS runtime workflow missing current Anchor boundary")
+    require("V1.7.0 Anchor expansion" in runtime_workflow, "Wear OS runtime workflow missing current Anchor boundary")
 
     print(
-        "Glaze UI wearable authority validated: V1.6/1.6.0 Anchor remains current; "
-        "wearable source is deferred and native/product acceptance remains separate"
+        "Glaze wearable authority validated: V1.7/1.7.0 Stable/Anchor remains current; "
+        "wearable source is deferred to V1.7.1 and native/product acceptance remains separate"
     )
 
 
