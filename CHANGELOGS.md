@@ -4,6 +4,9 @@ All notable changes to the Glaze reference implementation are recorded here.
 
 ## Unreleased — GLAZE V1.7 Development
 
+- Added retained-v1.2 rendered-browser qualification tooling bound to frozen V1.7 source `4b9d085a5177b96cc31d4270b38d792a59872e37`. The plan covers 22 of the 23 dev.39 lanes that permit rendered evidence and deliberately leaves the `regression` rendered group open until a governed V1.7 visual-regression baseline exists.
+- Rendered-browser evidence remains partial and non-authorizing: it cannot substitute for human, assistive-technology, physical/native-device, representative-performance, energy, or regression-baseline evidence and cannot grant Section 46 completion, V1.7 acceptance, consumer eligibility, deployment/production authority, or Anchor status.
+
 - Added retained-v1.2 exact-source machine qualification capture against frozen V1.7 source `4b9d085a5177b96cc31d4270b38d792a59872e37`. The capture maps all 20 machine-eligible groups in the 37-lane dev.39 matrix to repository-local validators, including inherited RTL accessibility and repository-wide regression integrity.
 - Machine-only evidence intentionally leaves all 37 retained lanes unverified for full qualification because every machine-eligible lane still requires at least one separate rendered, human, device, assistive-technology, performance, energy, or provenance group. No Section 46 completion, V1.7 acceptance, consumer eligibility, deployment authority, production authority, or Anchor promotion is created.
 
