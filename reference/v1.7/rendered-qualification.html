@@ -83,6 +83,8 @@
 
 <script type="module">
   import {glazeV17V13Development} from '../../js/glaze-v1.7-development-v1-3.dev.mjs';
+  import {resolveGlazeExpressionV13} from '../../js/glaze-v1.7-expression-system.dev.mjs';
+  import {resolveGlazeContextualActions,resolveGlazeBrief,resolveGlazeControlCenter} from '../../js/glaze-v1.7-provider-adaptive-surfaces.dev.mjs';
   import {
     resolveGlazeWorkspace,
     resolveGlazeCompactSurface,
@@ -112,7 +114,7 @@
   $('scene-pill').textContent='Scene: '+scene;
   $('revision-pill').textContent='Revision: '+(exactRevision?revision:'UNBOUND');
   $('aggregate-pill').textContent='Aggregate: '+glazeV17V13Development.version;
-  $('model-pill').textContent='Qualification: '+glazeV17V13Development.combinedQualificationControlVersion;
+  $('model-pill').textContent='Qualification: '+glazeV17V13Development.qualificationCoverageControlVersion;
 
   const base={
     densityRole:'standard',
@@ -130,8 +132,8 @@
 
   const assertions={
     exactRevisionParameter:exactRevision,
-    aggregateVersion:glazeV17V13Development.version==='1.7.0-dev.46',
-    qualificationModel:glazeV17V13Development.combinedQualificationControlVersion==='1.7.0-dev.46',
+    aggregateVersion:glazeV17V13Development.version==='1.7.0-dev.47',
+    qualificationModel:glazeV17V13Development.qualificationCoverageControlVersion==='1.7.0-dev.47',
     stableBaseline:glazeV17V13Development.stableBaseline==='1.6.0',
     sourceComplete:glazeV17V13Development.section48SourceComplete===true,
     acceptanceIncomplete:glazeV17V13Development.section48Complete===false,
@@ -140,7 +142,97 @@
   };
   let sceneData={};
 
-  if(scene==='workspace-wide'||scene==='workspace-compact'){
+  if(scene==='expression-system'){
+    const expression=resolveGlazeExpressionV13({
+      ...base,
+      geometryRole:'connected',
+      emphasisRole:'prominent',
+      typographyRole:'title',
+      containmentRole:'task-region',
+      componentRole:'content',
+      formFactor:'desktop',
+      inputContext:'keyboard',
+      densityRole:'standard',
+      colorIntent:'identity',
+      compositionRole:'primary-secondary',
+      semanticSeverity:'ordinary',
+      semanticSeverityAuthoritative:false,
+      motionPurpose:'connected-identity',
+      transitionOccurrenceAuthoritative:true
+    });
+    stage.innerHTML=panel('Expression System',
+      card('Geometry',expression.expression.geometryDirective,'good')+
+      card('Typography',expression.expression.typographyDirective,'good')+
+      card('Composition',expression.expression.compositionDirective,'good')+
+      card('Raw design values accepted',String(expression.expression.rawDesignValuesAccepted),expression.expression.rawDesignValuesAccepted?'bad':'good'));
+    assertions.expressionSemanticMeaningPreserved=expression.continuity.semanticMeaningPreserved===true;
+    assertions.expressionTaskContinuityPreserved=expression.continuity.taskContinuityPreserved===true;
+    assertions.expressionRawDesignRejected=expression.expression.rawDesignValuesAccepted===false;
+    assertions.expressionProviderTruthNotCreated=expression.authority.providerTruthCreatedByGlaze===false;
+    sceneData={richness:expression.expression.richness,geometry:expression.expression.geometryDirective};
+  }else if(scene==='contextual-actions'){
+    const actions=resolveGlazeContextualActions({
+      previousActionIds:['open','delete'],
+      selectedActionId:'open',
+      actions:[
+        {...base,formFactor:'desktop',inputContext:'keyboard',actionId:'open',label:'Open',role:'primary',roleAuthoritative:true,providerId:'files-provider',providerIdentityAuthoritative:true,contextId:'item.1',contextIdentityAuthoritative:true,availabilityState:'available',availabilityAuthoritative:true},
+        {...base,formFactor:'desktop',inputContext:'keyboard',actionId:'delete',label:'Delete',role:'destructive',roleAuthoritative:false,providerId:'files-provider',providerIdentityAuthoritative:true,contextId:'item.1',contextIdentityAuthoritative:true,availabilityState:'unknown',availabilityAuthoritative:false}
+      ]
+    });
+    const open=actions.actions.find(action=>action.actionId==='open');
+    const destructive=actions.actions.find(action=>action.actionId==='delete');
+    stage.innerHTML=panel('Contextual Actions',
+      card('Selected action',actions.continuity.selectedActionId??'none','good')+
+      card('Open enabled',String(open.presentation.enabled),open.presentation.enabled?'good':'bad')+
+      card('Untrusted destructive role',destructive.role.accepted,destructive.role.accepted==='standard'?'good':'bad')+
+      card('Unknown action enabled',String(destructive.presentation.enabled),destructive.presentation.enabled?'bad':'good'));
+    assertions.contextualSelectionPreserved=actions.continuity.selectedActionId==='open';
+    assertions.contextualAvailableActionEnabled=open.presentation.enabled===true;
+    assertions.contextualDestructiveRoleWithheld=destructive.role.accepted==='standard';
+    assertions.contextualUnknownActionDisabled=destructive.presentation.enabled===false;
+    assertions.contextualExecutionNotAutomatic=actions.authority.actionExecutionAutomatic===false;
+    sceneData={selected:actions.continuity.selectedActionId,stableIds:actions.continuity.stableActionIds};
+  }else if(scene==='brief'){
+    const brief=resolveGlazeBrief({
+      orderPreferenceAuthoritative:true,
+      preferredCardIds:['ordinary','critical'],
+      cards:[
+        {...base,formFactor:'desktop',inputContext:'keyboard',cardId:'critical',kind:'privacy',providerId:'privacy-shield',providerIdentityAuthoritative:true,attention:'critical',attentionAuthoritative:true,stateId:'attention-required',stateAuthoritative:true,title:'Privacy attention',summary:'Critical provider-owned communication remains visible.',sourceLabel:'Privacy Shield',personalizationIntentAuthoritative:true,requestedHidden:true},
+        {...base,formFactor:'desktop',inputContext:'keyboard',cardId:'ordinary',kind:'task',providerId:'tasks-provider',providerIdentityAuthoritative:true,attention:'ordinary',attentionAuthoritative:false,stateId:'ready',stateAuthoritative:true,title:'Task',summary:'Ordinary provider-owned information.',sourceLabel:'Tasks'}
+      ]
+    });
+    const critical=brief.cards.find(item=>item.cardId==='critical');
+    stage.innerHTML=panel('Glaze Brief',
+      card('Visible cards',brief.visibleCards.map(item=>item.cardId).join(', '),'good')+
+      card('Critical hidden',String(critical.personalization.hidden),critical.personalization.hidden?'bad':'good')+
+      card('Protected visibility',String(critical.personalization.protectedVisibility),'good')+
+      card('Truth changed by personalization',String(brief.personalization.truthChangedByPersonalization),brief.personalization.truthChangedByPersonalization?'bad':'good'));
+    assertions.briefCriticalVisible=critical.presentation.visible===true;
+    assertions.briefCriticalNotHidden=critical.personalization.hidden===false;
+    assertions.briefProtectedCommunication=critical.personalization.protectedVisibility===true;
+    assertions.briefTruthNotChanged=brief.personalization.truthChangedByPersonalization===false;
+    sceneData={visibleCardIds:brief.visibleCards.map(item=>item.cardId)};
+  }else if(scene==='control-center'){
+    const center=resolveGlazeControlCenter({
+      previousControlIds:['sync','backup'],
+      controls:[
+        {...base,formFactor:'desktop',inputContext:'keyboard',controlId:'sync',kind:'toggle',label:'Sync',providerId:'sync-provider',providerIdentityAuthoritative:true,availabilityState:'available',availabilityAuthoritative:true,state:'active',stateAuthoritative:true,requestedTargetState:'inactive',userIntentAuthoritative:false},
+        {...base,formFactor:'desktop',inputContext:'keyboard',controlId:'backup',kind:'toggle',label:'Backup',providerId:'backup-provider',providerIdentityAuthoritative:true,availabilityState:'available',availabilityAuthoritative:true,state:'active',stateAuthoritative:false}
+      ]
+    });
+    const sync=center.controls.find(control=>control.controlId==='sync');
+    const backup=center.controls.find(control=>control.controlId==='backup');
+    stage.innerHTML=panel('Glaze Control Center',
+      card('Stable control order',center.continuity.stableControlIds.join(', '),'good')+
+      card('Sync state',sync.state.accepted,'good')+
+      card('Untrusted backup state',backup.state.accepted,backup.state.accepted==='unknown'?'warn':'bad')+
+      card('Sync proposal eligible',String(sync.proposal.eligible),sync.proposal.eligible?'bad':'good'));
+    assertions.controlOrderPreserved=center.continuity.stableControlIds.join(',')==='sync,backup';
+    assertions.controlUntrustedStateUnknown=backup.state.accepted==='unknown';
+    assertions.controlIntentNotManufactured=sync.proposal.eligible===false;
+    assertions.controlExecutionNotPerformed=center.authority.executionPerformedByGlaze===false;
+    sceneData={stableControlIds:center.continuity.stableControlIds,syncState:sync.state.accepted,backupState:backup.state.accepted};
+  }else if(scene==='workspace-wide'||scene==='workspace-compact'){
     const compact=scene==='workspace-compact';
     const workspace=resolveGlazeWorkspace({
       ...base,
@@ -313,7 +405,7 @@
     scene,
     sourceRevisionParameter:exactRevision?revision:null,
     aggregateVersion:glazeV17V13Development.version,
-    qualificationModelVersion:glazeV17V13Development.combinedQualificationControlVersion,
+    qualificationModelVersion:glazeV17V13Development.qualificationCoverageControlVersion,
     lifecycle:glazeV17V13Development.lifecycle,
     stableBaseline:glazeV17V13Development.stableBaseline,
     viewport:{width:innerWidth,height:innerHeight,devicePixelRatio},

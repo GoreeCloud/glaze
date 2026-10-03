@@ -4,13 +4,17 @@ import {
   createGlazeV17V13QualificationMatrix,
   V13_SECTION48_QUALIFICATION_LANES
 } from '../js/glaze-v1.7-v1-3-qualification.dev.mjs';
+import {
+  createGlazeV17V13QualificationCoverageMatrix,
+  V13_SECTION48_COVERAGE_LANES
+} from '../js/glaze-v1.7-v1-3-qualification-coverage.dev.mjs';
 
 const root=new URL('../',import.meta.url);
 const read=path=>readFileSync(new URL(path,root),'utf8');
 const json=path=>JSON.parse(read(path));
 
-const SOURCE='e165007292878fd268298055c39b2f4a36a33ecf';
-const MODEL='1.7.0-dev.46';
+const SOURCE='4b9d085a5177b96cc31d4270b38d792a59872e37';
+const MODEL='1.7.0-dev.47';
 const plan=json('contracts/v1.7/qualification.v1.3.rendered.plan.json');
 const html=read('reference/v1.7/rendered-qualification.html');
 const sorted=values=>[...values].sort();
@@ -30,14 +34,14 @@ assert.equal(plan.artifactDirectory,'artifacts/v1.7-v1.3-rendered');
 assert.equal(plan.networkPolicy,'repository-local-only');
 assert.equal(plan.browserClass,'chromium-headless');
 
-assert.equal(plan.scenes.length,10);
-assert.equal(new Set(plan.scenes.map(scene=>scene.id)).size,10);
+assert.equal(plan.scenes.length,14);
+assert.equal(new Set(plan.scenes.map(scene=>scene.id)).size,14);
 for(const scene of plan.scenes){
   assert.ok(Array.isArray(scene.viewport)&&scene.viewport.length===2,'scene viewport invalid: '+scene.id);
   assert.ok(Array.isArray(scene.laneIds)&&scene.laneIds.length>=1,'scene lane coverage missing: '+scene.id);
 }
 
-const expected=[
+const baseRendered=[
   'workspace-continuity-v13',
   'compact-surface-v13',
   'agent-activity-authority-v13',
@@ -50,15 +54,28 @@ const expected=[
   'forced-colors-v13',
   'compact-device-behavior-v13'
 ];
+const coverageRendered=[
+  'expression-system-v13',
+  'contextual-actions-v13',
+  'brief-v13',
+  'control-center-v13'
+];
+const expected=[...coverageRendered,...baseRendered];
 assert.deepEqual(sorted(plan.eligibleRenderedEvidenceLaneIds),sorted(expected));
 const covered=new Set(plan.scenes.flatMap(scene=>scene.laneIds));
 assert.deepEqual(sorted(covered),sorted(expected),'scene coverage must exactly match eligible rendered lanes');
 
-const laneMap=new Map(V13_SECTION48_QUALIFICATION_LANES.map(lane=>[lane.id,lane]));
-for(const id of expected){
-  const lane=laneMap.get(id);
-  assert.ok(lane,'rendered plan references unknown lane: '+id);
-  assert.ok(lane.evidenceTypes.includes('rendered'),'rendered plan claims lane without rendered evidence type: '+id);
+const baseMap=new Map(V13_SECTION48_QUALIFICATION_LANES.map(lane=>[lane.id,lane]));
+for(const id of baseRendered){
+  const lane=baseMap.get(id);
+  assert.ok(lane,'rendered plan references unknown dev.46 lane: '+id);
+  assert.ok(lane.evidenceTypes.includes('rendered'),'rendered plan claims dev.46 lane without rendered evidence type: '+id);
+}
+const coverageMap=new Map(V13_SECTION48_COVERAGE_LANES.map(lane=>[lane.id,lane]));
+for(const id of coverageRendered){
+  const lane=coverageMap.get(id);
+  assert.ok(lane,'rendered plan references unknown dev.47 coverage lane: '+id);
+  assert.ok(lane.evidenceTypes.includes('rendered'),'rendered plan claims dev.47 lane without rendered evidence type: '+id);
 }
 
 assert.equal(plan.authority.renderedBrowserOnly,true);
@@ -73,33 +90,52 @@ for(const key of [
   assert.equal(plan.authority[key],false,'plan authority drift: '+key);
 }
 
-const renderedEvidence=expected.map(id=>({
-  id,
-  verified:true,
-  revision:SOURCE,
-  evidenceType:'rendered',
+const baseEvidence=baseRendered.map(id=>({
+  id,verified:true,revision:SOURCE,evidenceType:'rendered',
   reference:'STRUCTURAL-SELF-TEST rendered lane '+id
 }));
-const matrix=createGlazeV17V13QualificationMatrix({
+const coverageEvidence=coverageRendered.map(id=>({
+  id,verified:true,revision:SOURCE,evidenceType:'rendered',
+  reference:'STRUCTURAL-SELF-TEST rendered coverage lane '+id
+}));
+
+const dev46=createGlazeV17V13QualificationMatrix({
   exactRevision:SOURCE,
-  section48Evidence:renderedEvidence
+  section48Evidence:baseEvidence
 });
-assert.equal(matrix.readyForGovernedQualificationReview,false);
-assert.equal(matrix.evidenceInventoryComplete,false);
-assert.equal(matrix.retainedV12.evidenceInventoryComplete,false);
-assert.equal(matrix.retainedV12.blockingLaneIds.length,37);
-assert.equal(matrix.authority.section48Accepted,false);
-assert.equal(matrix.authority.v17AcceptanceEstablished,false);
-assert.equal(matrix.authority.anchorStatusGranted,false);
-for(const id of expected){
-  const lane=matrix.section48.lanes.find(candidate=>candidate.id===id);
-  assert.ok(lane,'missing matrix lane: '+id);
-  assert.ok(lane.satisfiedEvidenceGroupCount>=1,'rendered evidence did not satisfy rendered group: '+id);
-  assert.equal(lane.status,'unverified','browser rendered evidence alone unexpectedly completed lane: '+id);
+assert.equal(dev46.readyForGovernedQualificationReview,false);
+assert.equal(dev46.evidenceInventoryComplete,false);
+for(const id of baseRendered){
+  const lane=dev46.section48.lanes.find(candidate=>candidate.id===id);
+  assert.ok(lane,'missing dev.46 matrix lane: '+id);
+  assert.ok(lane.satisfiedEvidenceGroupCount>=1,'rendered evidence did not satisfy dev.46 rendered group: '+id);
+  assert.equal(lane.status,'unverified','browser rendered evidence alone unexpectedly completed dev.46 lane: '+id);
+}
+
+const dev47=createGlazeV17V13QualificationCoverageMatrix({
+  exactRevision:SOURCE,
+  section48Evidence:baseEvidence,
+  coverageEvidence
+});
+assert.equal(dev47.readyForGovernedQualificationReview,false);
+assert.equal(dev47.evidenceInventoryComplete,false);
+assert.equal(dev47.retainedCombinedQualification.evidenceInventoryComplete,false);
+assert.equal(dev47.authority.section48Accepted,false);
+assert.equal(dev47.authority.v17AcceptanceEstablished,false);
+assert.equal(dev47.authority.anchorStatusGranted,false);
+for(const id of coverageRendered){
+  const lane=dev47.coverage.lanes.find(candidate=>candidate.id===id);
+  assert.ok(lane,'missing dev.47 coverage lane: '+id);
+  assert.ok(lane.satisfiedEvidenceGroupCount>=1,'rendered evidence did not satisfy dev.47 rendered group: '+id);
+  assert.equal(lane.status,'unverified','browser rendered evidence alone unexpectedly completed dev.47 lane: '+id);
 }
 
 const requiredMarkers=[
   "import {glazeV17V13Development} from '../../js/glaze-v1.7-development-v1-3.dev.mjs'",
+  'resolveGlazeExpressionV13',
+  'resolveGlazeContextualActions',
+  'resolveGlazeBrief',
+  'resolveGlazeControlCenter',
   'resolveGlazeWorkspace',
   'resolveGlazeCompactSurface',
   'resolveGlazeAccessibilityPresentation',
@@ -110,6 +146,7 @@ const requiredMarkers=[
   'resolveGlazeCompare',
   'window.__glazeV17RenderedEvidence=evidence',
   'window.__glazeV17RenderedReady=true',
+  'qualificationCoverageControlVersion',
   'renderedBrowserOnly:true',
   'humanEvidenceClaimed:false',
   'assistiveTechnologyEvidenceClaimed:false',

@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  V17_SOURCE_SHA: e165007292878fd268298055c39b2f4a36a33ecf
+  V17_SOURCE_SHA: 4b9d085a5177b96cc31d4270b38d792a59872e37
 
 jobs:
   verify-rendered-tooling:
@@ -56,6 +56,7 @@ jobs:
           node --check scripts/validate_glaze_v1_7_v1_3_rendered_qualification_harness.mjs
           node scripts/validate_glaze_v1_7_v1_3_rendered_qualification_harness.mjs
           node scripts/validate_glaze_v1_7_v1_3_qualification_dev46.mjs
+          node scripts/validate_glaze_v1_7_v1_3_qualification_coverage_dev47.mjs
           node scripts/validate_glaze_v1_7_section48_source_completion_dev45.mjs
 
       - run: git diff --exit-code -- .
@@ -72,7 +73,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Check out frozen dev.46 source
+      - name: Check out frozen dev.47 source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: ${{ env.V17_SOURCE_SHA }}
@@ -115,10 +116,10 @@ jobs:
           import json
           from pathlib import Path
           manifest=json.loads(Path('artifacts/v1.7-v1.3-rendered/manifest.json').read_text())
-          assert manifest['sourceRevision']=='e165007292878fd268298055c39b2f4a36a33ecf'
-          assert manifest['acceptanceModelVersion']=='1.7.0-dev.46'
+          assert manifest['sourceRevision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'
+          assert manifest['acceptanceModelVersion']=='1.7.0-dev.47'
           assert manifest['stableBaseline']=='1.6.0'
-          assert manifest['sceneCount']==10
+          assert manifest['sceneCount']==14
           assert manifest['passed'] is True
           assert manifest['authority']['renderedBrowserOnly'] is True
           for key in (

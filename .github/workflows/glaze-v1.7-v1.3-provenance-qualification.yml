@@ -1,0 +1,142 @@
+name: Glaze V1.7 v1.3 Provenance Qualification
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/v1.7/qualification.v1.3.provenance.plan.json'
+      - 'scripts/capture_glaze_v1_7_v1_3_provenance.py'
+      - 'scripts/validate_glaze_v1_7_v1_3_provenance_qualification.mjs'
+      - '.github/workflows/glaze-v1.7-v1.3-provenance-qualification.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glaze-v1-7-v1-3-provenance-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  V17_SOURCE_SHA: 4b9d085a5177b96cc31d4270b38d792a59872e37
+
+jobs:
+  verify-provenance-tooling:
+    name: Verify V1.7 v1.3 provenance tooling
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify exact tooling head and frozen source ancestry
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          git cat-file -e "${V17_SOURCE_SHA}^{commit}"
+          git merge-base --is-ancestor "$V17_SOURCE_SHA" HEAD
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Validate provenance qualification tooling
+        run: |
+          python -m json.tool contracts/v1.7/qualification.v1.3.provenance.plan.json >/dev/null
+          python -m py_compile scripts/capture_glaze_v1_7_v1_3_provenance.py
+          node --check scripts/validate_glaze_v1_7_v1_3_provenance_qualification.mjs
+          node scripts/validate_glaze_v1_7_v1_3_provenance_qualification.mjs
+          node scripts/validate_glaze_v1_7_v1_3_qualification_dev46.mjs
+          node scripts/validate_glaze_v1_7_v1_3_qualification_coverage_dev47.mjs
+      - run: git diff --exit-code -- .
+
+  capture-provenance:
+    name: Capture frozen-source V1.7 provenance evidence
+    needs: verify-provenance-tooling
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check out frozen dev.47 source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ env.V17_SOURCE_SHA }}
+          path: _v17-source
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+
+      - name: Verify source and tooling identities
+        env:
+          EXPECTED_TOOLING_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_TOOLING_SHA"
+          test "$(git -C _v17-source rev-parse HEAD)" = "$V17_SOURCE_SHA"
+          git -C _v17-source diff --exit-code -- .
+
+      - name: Build deterministic provenance evidence twice
+        run: |
+          set -euo pipefail
+          rm -rf artifacts/v1.7-v1.3-provenance "$RUNNER_TEMP/v17-provenance-second"
+          mkdir -p artifacts/v1.7-v1.3-provenance "$RUNNER_TEMP/v17-provenance-second"
+          python scripts/capture_glaze_v1_7_v1_3_provenance.py             --source-root _v17-source             --tooling-root .             --out artifacts/v1.7-v1.3-provenance
+          python scripts/capture_glaze_v1_7_v1_3_provenance.py             --source-root _v17-source             --tooling-root .             --out "$RUNNER_TEMP/v17-provenance-second"
+          for name in             glaze-v1.7.0-dev.47-source-qualification.tar.gz             provenance.json             v12-provenance-evidence.json             section48-provenance-evidence.json             SHA256SUMS             summary.json; do
+            cmp "artifacts/v1.7-v1.3-provenance/$name" "$RUNNER_TEMP/v17-provenance-second/$name"
+          done
+
+      - name: Verify provenance evidence boundary
+        run: |
+          set -euo pipefail
+          cd artifacts/v1.7-v1.3-provenance
+          sha256sum --check --strict SHA256SUMS
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          provenance=json.loads(Path('provenance.json').read_text())
+          v12=json.loads(Path('v12-provenance-evidence.json').read_text())
+          v13=json.loads(Path('section48-provenance-evidence.json').read_text())
+          summary=json.loads(Path('summary.json').read_text())
+          assert provenance['sourceRevision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'
+          assert provenance['acceptanceModelVersion']=='1.7.0-dev.47'
+          assert provenance['archive']['deterministic'] is True
+          assert provenance['publication']['tagCreated'] is False
+          assert provenance['publication']['githubReleaseCreated'] is False
+          assert provenance['publication']['artifactPublished'] is False
+          assert provenance['authority']['provenanceEvidenceOnly'] is True
+          assert provenance['authority']['anchorStatusGranted'] is False
+          assert len(v12)==1 and v12[0]['id']=='artifact-provenance'
+          assert len(v13)==1 and v13[0]['id']=='artifact-provenance-v13'
+          assert v12[0]['evidenceType']=='provenance'
+          assert v13[0]['evidenceType']=='provenance'
+          assert v12[0]['revision']==provenance['sourceRevision']
+          assert v13[0]['revision']==provenance['sourceRevision']
+          assert summary['publicationAuthorized'] is False
+          assert summary['anchorStatusGranted'] is False
+          print('V1.7 provenance evidence verification: PASS')
+          PY
+          cd ../..
+          git -C _v17-source diff --exit-code -- .
+          git diff --exit-code -- .
+
+      - name: Upload V1.7 provenance evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: glaze-v1.7-v1.3-provenance-${{ github.run_id }}
+          path: artifacts/v1.7-v1.3-provenance/
+          if-no-files-found: error
+          retention-days: 90
