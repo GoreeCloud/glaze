@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze/v1.7.1-performance-qualification-plan.schema.json",
+  "title": "Glaze V1.7.1 Representative Performance Qualification Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","planId","name","lifecycle","successorReleaseLine",
+    "developmentIdentity","sourceRevision","sourceModelVersion","acceptanceModelVersion",
+    "stableBaseline","historicalSourceStableBaseline","consumerEligible","laneIds",
+    "evidenceType","energyLaneIncluded","energyLaneExclusionReason","budget",
+    "environmentRequirements","representativeCoverage","harness","preparationHelper",
+    "budgetEvaluator","acceptanceMatrix","acceptanceRecord","candidateEvidenceTemplate",
+    "execution","evidenceBoundary","boundary"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7.1-performance-qualification-plan.schema.json"},
+    "schemaVersion": {"const":1},
+    "planId": {"const":"goreecloud.glaze.v1.7.1.representative-performance-qualification"},
+    "name": {"type":"string","minLength":1},
+    "lifecycle": {"const":"DevelopmentQualification"},
+    "successorReleaseLine": {"const":"1.7.1"},
+    "developmentIdentity": {"const":"1.7.1-dev.1"},
+    "sourceRevision": {"const":"4b9d085a5177b96cc31d4270b38d792a59872e37"},
+    "sourceModelVersion": {"const":"1.7.0-dev.47"},
+    "acceptanceModelVersion": {"const":"1.7.0-dev.39"},
+    "stableBaseline": {"const":"1.7.0"},
+    "historicalSourceStableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "laneIds": {
+      "const":["frame-pacing","input-latency","performance"]
+    },
+    "evidenceType": {"const":"performance"},
+    "energyLaneIncluded": {"const":false},
+    "energyLaneExclusionReason": {"type":"string","minLength":1},
+    "budget": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":[
+        "authority","version","motionAuthority","resolverP95MsMax","resolverP99MsMax",
+        "interactionPaintP95MsMax","interactionPaintP99MsMax","activeFrameP95Rule",
+        "severeFrameStallRateMax","catastrophicForegroundStallCountMax",
+        "taskStateResetCountMax","pageReloadRequiredCountMax",
+        "automaticAuthorityActionCountMax","minimumSamples"
+      ],
+      "properties": {
+        "authority":{"const":"GoreeCloud Standard — Glaze UI Performance Budget"},
+        "version":{"const":"v1.0"},
+        "motionAuthority":{"const":"GoreeCloud Standard — System-Wide Motion Continuity and Performance"},
+        "resolverP95MsMax":{"const":10},
+        "resolverP99MsMax":{"const":16.7},
+        "interactionPaintP95MsMax":{"const":100},
+        "interactionPaintP99MsMax":{"const":200},
+        "activeFrameP95Rule":{"const":"max(20ms,1.25*idle-median-frame-interval)"},
+        "severeFrameStallRateMax":{"const":0.01},
+        "catastrophicForegroundStallCountMax":{"const":0},
+        "taskStateResetCountMax":{"const":0},
+        "pageReloadRequiredCountMax":{"const":0},
+        "automaticAuthorityActionCountMax":{"const":0},
+        "minimumSamples":{
+          "type":"object",
+          "additionalProperties":false,
+          "required":["resolver","interactionPaint","idleFrames","activeFrames"],
+          "properties":{
+            "resolver":{"const":200},
+            "interactionPaint":{"const":30},
+            "idleFrames":{"const":120},
+            "activeFrames":{"const":240}
+          }
+        }
+      }
+    },
+    "environmentRequirements":{"type":"array","minItems":8,"uniqueItems":true,"items":{"type":"string"}},
+    "representativeCoverage":{"type":"array","minItems":13,"uniqueItems":true,"items":{"type":"string"}},
+    "harness":{"const":"reference/v1.7/performance-qualification.html"},
+    "preparationHelper":{"const":"scripts/prepare_glaze_v1_7_1_performance_qualification.py"},
+    "budgetEvaluator":{"const":"js/glaze-v1.6-performance-diagnostics.dev.mjs"},
+    "acceptanceMatrix":{"const":"js/glaze-v1.7-acceptance.dev.mjs"},
+    "acceptanceRecord":{"const":"acceptance/v1.7-development.md"},
+    "candidateEvidenceTemplate":{"const":"acceptance/v1.7.1-performance-evidence.template.json"},
+    "execution":{"type":"object","minProperties":8},
+    "evidenceBoundary":{"type":"object","minProperties":10},
+    "boundary":{"type":"string","minLength":1}
+  }
+}

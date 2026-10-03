@@ -49,6 +49,14 @@ The comparison preserved the historical dev.47 semantic baseline, captured all 2
 
 Combined with the already retained machine evidence for the same frozen source, this makes 17 of 37 retained v1.2 lanes evidence-group-complete and leaves 20 lanes unverified. This checkpoint is historical-source evidence only: it is not automatically rebound to any changed V1.7.1 candidate and creates no Section 48, governed-review, lifecycle, consumer, deployment, production, privacy, security, device/native, human, assistive-technology, performance, or energy acceptance.
 
+## Representative performance qualification control — 2026-10-03
+
+V1.7.1 now has a local-first exact-source performance qualification control for the frozen historical dev.47 source. `contracts/v1.7/qualification.v1.2.performance.plan.json`, `reference/v1.7/performance-qualification.html`, and `scripts/prepare_glaze_v1_7_1_performance_qualification.py` bind the measurement to source `4b9d085a5177b96cc31d4270b38d792a59872e37`, source model `1.7.0-dev.47`, retained acceptance model `1.7.0-dev.39`, current Stable baseline `1.7.0`, and historical source baseline `1.6.0`.
+
+The control targets the three retained lanes whose complete evidence group is `performance`: Frame pacing, Input latency, and Performance. It uses the approved GoreeCloud Glaze UI Performance Budget v1.0, requires at least 200 resolver samples, 30 real user-triggered interaction-to-painted-update samples, 120 idle frame intervals, and 240 active frame intervals, and exercises actual V1.7 adaptive-composition, semantic-color, Motion Performance, Performance and Energy Awareness, Expression System, and Task Continuity resolvers. Hosted CI may validate only this control plane; it may not claim representative performance.
+
+The harness requires explicit reviewer confirmation that the observed hardware/runtime remains representative and explicit review of automatic authority incidents before it can emit a passing candidate measurement. A passing candidate still cannot close any lane automatically; separate durable exact-source review and evidence governance are required. Energy behavior is intentionally outside this tranche because its acceptance model requires both `energy` and `device` evidence. No representative performance measurement or performance-lane acceptance is claimed by the control itself.
+
 ## Section 48
 
 All Section 48 Expression System and Adaptive Intelligence surfaces move to V1.7.1 for qualification and release purposes:
