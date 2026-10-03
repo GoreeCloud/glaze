@@ -69,12 +69,14 @@ def validate_live_stable() -> dict:
         isinstance(official_product_label, str) and official_product_label,
         "live product label must identify the current Stable product family",
     )
-    stable_parts = current_stable.split(".")
-    req(len(stable_parts) >= 2, "live currentStable must use a major.minor release family")
-    stable_family = ".".join(stable_parts[:2])
+    current_label = current.get("label")
     req(
-        official_product_label.startswith(f"GLAZE UI V{stable_family}"),
-        "live product label must identify the current Stable release family",
+        isinstance(current_label, str) and current_label,
+        "live currentStable release must declare a label",
+    )
+    req(
+        official_product_label == current_label,
+        "live product label must match the current Stable release label",
     )
 
     stable = release_for(lifecycle, "1.2.0")
