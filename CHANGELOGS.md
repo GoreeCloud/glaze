@@ -425,7 +425,7 @@ Entries below that describe earlier 1.x or 2.x releases as current or Stable are
 - Fixed the Candidate 200% Mobile evidence reflow defect before promotion; the acceptance gate was not weakened.
 - Candidate promotion evidence head `9a632e8df5ddd3a66c19ef2bb90efb7e65678048` passed Glaze UI CI #460, Icon Construction #145, Icon Identity #137, and Semantic Color #180 before merge as `cc50ad8debce49b254da424399768741b0a5a96e`.
 - Glaze Motion remains Experimental and wearable production support remains deferred/production-blocked.
-- `1.6.0` becomes the mandatory current Stable consumer target; existing 1.5 and older application evidence becomes migration input only until each consumer completes 1.6 adoption and application-specific acceptance.
+- Historical V1.6 promotion record: `1.6.0` became the mandatory current Stable consumer target at that time; existing 1.5 and older application evidence became migration input until each consumer completed 1.6 adoption and application-specific acceptance.
 
 ## Unreleased
 
