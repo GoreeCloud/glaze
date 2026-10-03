@@ -1,9 +1,9 @@
-# Glaze UI — Project Record
+# Glaze — Project Record
 
-**Repository:** `GoreeCloud/glaze-ui`  
+**Repository:** `GoreeCloud/glaze`  
 **Record type:** Significant lifecycle, architecture, governance, release, and migration record  
-**Current Official Stable:** GLAZE UI V1.6 / `1.6.0`  
-**Current Development line:** GLAZE UI V1.7 / frozen v1.2 aggregate `1.7.0-dev.39` / latest bounded v1.3 aggregate `1.7.0-dev.41`  
+**Current Official Stable / Anchor:** Glaze V1.7 / `1.7.0`  
+**Current Development line:** Glaze V1.7.1 / `1.7.1-dev.1`; historical V1.7 dev.1–dev.47 provenance is retained without relabeling  
 **Migration baseline:** `8e8d37886692cada9ebbaf5c5c17783a96c93892`  
 **Canonical lifecycle authority:** `registry/lifecycle.json`
 
