@@ -31,5 +31,8 @@
   "predecessorAcceptanceAutomaticallyInherited": false,
   "runtimeAggregate": "js/glaze-v1.7-development-v1-3.dev.mjs",
   "validator": "scripts/validate_glaze_v1_7_section48_source_completion_dev45.mjs",
-  "officialAnchorUnchanged": "1.6.0"
+  "officialAnchorUnchanged": "1.6.0",
+  "evidenceSchema": "schemas/v1.7-section48-qualification-evidence.schema.json",
+  "evidenceTemplate": "acceptance/v1.7-section48-qualification-evidence.template.json",
+  "evidenceValidator": "scripts/validate_glaze_v1_7_section48_qualification_evidence.mjs"
 }

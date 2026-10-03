@@ -43,6 +43,7 @@ jobs:
           node --check js/glaze-v1.7-section48-qualification.dev.mjs
           node --check scripts/validate_glaze_v1_7_section48_source_completion_dev45.mjs
           node scripts/validate_glaze_v1_7_section48_source_completion_dev45.mjs
+          node scripts/validate_glaze_v1_7_section48_qualification_evidence.mjs
 
       - name: Verify retained V1.7 boundaries
         run: |

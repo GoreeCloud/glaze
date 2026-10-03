@@ -39,6 +39,10 @@ The new Section 48 qualification control requires exact-revision evidence in add
 
 The evaluator can report missing evidence and whether a packet is ready for governed review. It cannot create evidence, infer reviewer authority, accept Section 48, accept V1.7, grant consumer eligibility, grant deployment/production acceptance, or promote Anchor.
 
+## Evidence intake
+
+The repository now includes `schemas/v1.7-section48-qualification-evidence.schema.json`, `acceptance/v1.7-section48-qualification-evidence.template.json`, and `scripts/validate_glaze_v1_7_section48_qualification_evidence.mjs`. The packet is closed-shape, exact-revision-bound, content-addressed, reviewer-attributed, and non-authorizing. Its synthetic complete fixture exists only to test the validator and is never retained as release evidence.
+
 ## Remaining blockers before V1.7 Anchor
 
 Source implementation is no longer the Section 48 blocker. The remaining blockers are evidence and governed lifecycle gates, including the still-open v1.2 qualification obligations and the new v1.3 Section 48 rendered, native-platform, assistive-technology, representative-device, keyboard/switch/voice, Large Text/reflow, Forced Colors, provider-integration, privacy/security, measured performance, energy, cross-platform, human visual/motion, and provenance evidence.
