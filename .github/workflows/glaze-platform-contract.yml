@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 10
     env:
       EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-      PLATFORM_CONTRACT_SHA: 32cfe6395f6e4bc4872a99e8d0c666ea0b1ed7b8
+      PLATFORM_CONTRACT_SHA: 4e5904aa10be988dbd3e19b417b6fca216b0528d
     steps:
       - name: Check out exact Glaze UI revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
