@@ -6,6 +6,10 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** GLAZE UI V1.6 / `1.6.0` (Stable compatibility channel)
 
+## V1.7 retained v1.2 rendered qualification tooling
+
+The retained dev.39 / v1.2 matrix now includes a repository-local Chromium qualification harness and exact-source capture workflow for 22 rendered-capable lanes. The `regression` rendered group is deliberately excluded until a governed V1.7 visual-regression baseline exists. The tooling is fail-closed: rendered-browser observations cannot stand in for human, assistive-technology, physical/native-device, representative-performance, energy, or lifecycle evidence, and rendered-only evidence is not sufficient to fully verify any retained lane.
+
 ## V1.7 retained v1.2 machine qualification capture
 
 The retained dev.39 / v1.2 acceptance matrix now has exact-source machine-evidence capture tooling bound to frozen V1.7 source `4b9d085a5177b96cc31d4270b38d792a59872e37`. It covers all 20 lanes that permit a machine evidence group and verifies that machine-only evidence satisfies only those groups, not complete lanes. The other required rendered, human, device, assistive-technology, performance, energy, and provenance evidence remains external and blocking; V1.7 remains Development and non-consumer-eligible.
