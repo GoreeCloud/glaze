@@ -17,6 +17,8 @@ assert.equal(plan.priorRenderedEvidence.artifactDigest,'sha256:9b862d7da7d5aaf38
 assert.equal(plan.priorRenderedEvidence.pixelBaselineClaimed,false);
 assert.equal(plan.comparison.kind,'semantic-baseline-plus-double-render-pixel-sha256-exact');
 assert.equal(plan.comparison.pixelTolerance,0);
+assert.equal(plan.comparison.freshRasterNormalization.fontRenderHinting,'none');
+assert.equal(plan.comparison.freshRasterNormalization.lcdTextDisabled,true);
 assert.equal(plan.sceneCount,22);
 assert.equal(new Set(plan.sceneIds).size,22);
 const lane=glazeV17AcceptanceDevelopmentContract.acceptanceLanes.find(x=>x.id==='regression');
