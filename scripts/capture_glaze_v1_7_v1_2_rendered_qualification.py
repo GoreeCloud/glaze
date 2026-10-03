@@ -25,7 +25,8 @@ DRIVER_PORT=9567
 SERVER=f"http://{HOST}:{WEB_PORT}"
 DRIVER=f"http://{HOST}:{DRIVER_PORT}"
 SOURCE_REVISION="4b9d085a5177b96cc31d4270b38d792a59872e37"
-SOURCE_MODEL_VERSION="1.7.0-dev.47"\nACCEPTANCE_MODEL_VERSION="1.7.0-dev.39"
+SOURCE_MODEL_VERSION="1.7.0-dev.47"
+ACCEPTANCE_MODEL_VERSION="1.7.0-dev.39"
 
 class QualificationError(RuntimeError):
     pass
@@ -231,7 +232,8 @@ return true;
 def capture(render_root: Path, source_root: Path, tooling_root: Path, plan_path: Path, output: Path) -> dict[str,Any]:
     plan=load_json(plan_path)
     require(plan.get("sourceRevision")==SOURCE_REVISION,"rendered plan source revision drifted")
-    require(plan.get("sourceModelVersion")==SOURCE_MODEL_VERSION,"rendered plan source model version drifted")\n    require(plan.get("acceptanceModelVersion")==ACCEPTANCE_MODEL_VERSION,"rendered plan acceptance model version drifted")
+    require(plan.get("sourceModelVersion")==SOURCE_MODEL_VERSION,"rendered plan source model version drifted")
+    require(plan.get("acceptanceModelVersion")==ACCEPTANCE_MODEL_VERSION,"rendered plan acceptance model version drifted")
     require(plan.get("networkPolicy")=="repository-local-only","rendered plan network policy drifted")
     scenes=plan.get("scenes")
     require(isinstance(scenes,list) and len(scenes)==22,"rendered plan must contain exactly twenty-two scenes")
@@ -278,8 +280,8 @@ def capture(render_root: Path, source_root: Path, tooling_root: Path, plan_path:
             require(evidence.get("passed") is True,f"scene assertions failed: {scene_id}: {evidence.get('assertions')}")
             require(evidence.get("scene")==scene_id,f"scene identity mismatch: {scene_id}")
             require(evidence.get("sourceRevisionParameter")==SOURCE_REVISION,f"source binding failed: {scene_id}")
-            require(evidence.get("aggregateVersion")==MODEL_VERSION,f"aggregate mismatch: {scene_id}")
-            require(evidence.get("qualificationModelVersion")==MODEL_VERSION,f"qualification model mismatch: {scene_id}")
+            require(evidence.get("sourceModelVersion")==SOURCE_MODEL_VERSION,f"source model mismatch: {scene_id}")
+            require(evidence.get("acceptanceModelVersion")==ACCEPTANCE_MODEL_VERSION,f"acceptance model mismatch: {scene_id}")
             require(evidence.get("stableBaseline")=="1.6.0",f"stable baseline mismatch: {scene_id}")
             authority=evidence.get("authority")
             require(isinstance(authority,dict) and authority.get("renderedBrowserOnly") is True,f"rendered authority missing: {scene_id}")
@@ -326,7 +328,8 @@ def capture(render_root: Path, source_root: Path, tooling_root: Path, plan_path:
             "lifecycle":"DevelopmentQualification",
             "sourceRevision":SOURCE_REVISION,
             "toolingRevision":tooling_revision,
-            "sourceModelVersion":SOURCE_MODEL_VERSION,\n            "acceptanceModelVersion":ACCEPTANCE_MODEL_VERSION,
+            "sourceModelVersion":SOURCE_MODEL_VERSION,
+            "acceptanceModelVersion":ACCEPTANCE_MODEL_VERSION,
             "stableBaseline":"1.6.0",
             "observedAt":datetime.now(timezone.utc).isoformat().replace("+00:00","Z"),
             "browser":browser,
@@ -334,7 +337,8 @@ def capture(render_root: Path, source_root: Path, tooling_root: Path, plan_path:
             "planSha256":hashlib.sha256(plan_path.read_bytes()).hexdigest(),
             "harness":plan["harness"],
             "networkPolicy":plan["networkPolicy"],
-            "renderedEvidenceLaneIds":list(plan["eligibleRenderedEvidenceLaneIds"]),\n            "openRenderedEvidenceLaneIds":list(plan.get("openRenderedEvidenceLaneIds",[])),
+            "renderedEvidenceLaneIds":list(plan["eligibleRenderedEvidenceLaneIds"]),
+            "openRenderedEvidenceLaneIds":list(plan.get("openRenderedEvidenceLaneIds",[])),
             "sceneCount":len(captured),
             "scenes":captured,
             "passed":all(scene["passed"] for scene in captured),
