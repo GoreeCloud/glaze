@@ -179,7 +179,7 @@ assert(glazeV17CreativeCompareSurfacesDevelopmentContract.version==='1.7.0-dev.4
 assert(glazeV17Section48QualificationDevelopmentContract.version==='1.7.0-dev.45','dev.45 contract mismatch');
 assert(glazeV17Section48QualificationDevelopmentContract.section48SourceComplete===true,'Section 48 source coverage not marked complete');
 assert(glazeV17Section48QualificationDevelopmentContract.section48Accepted===false,'Section 48 acceptance overclaimed');
-assert(glazeV17V13Development.version==='1.7.0-dev.45','v1.3 aggregate version mismatch');
+assert(glazeV17V13Development.section48QualificationControlVersion==='1.7.0-dev.45','v1.3 aggregate lost dev.45 Section 48 qualification control');
 assert(glazeV17V13Development.section48SourceComplete===true,'v1.3 aggregate missing Section 48 source completion');
 assert(glazeV17V13Development.section48Complete===false,'v1.3 aggregate overclaims Section 48 acceptance');
 assert(glazeV17V13Development.acceptanceControlAutomaticallyCoversV13===false,'v1.2 acceptance control silently covers v1.3');
