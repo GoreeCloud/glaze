@@ -1,3 +1,14 @@
+# 2026-10-03 — Glaze V1.7 bounded Stable promotion
+
+- Established **Glaze V1.7 / 1.7.0** as the current Stable-compatibility / canonical Anchor target.
+- Added `js/glaze-v1.7.0.mjs` as a bounded Stable entrypoint inheriting the already accepted V1.6.0 runtime behavior.
+- Explicitly excluded the retained `1.7.0-dev.47` aggregate and Section 48 Development behavior from the V1.7.0 Stable runtime.
+- Moved all 21 unfinished/unverified retained qualification lanes to **Glaze V1.7.1**, together with Section 48 qualification and release acceptance.
+- Added `GLAZE_V1_7_1_HARDENING.md` and `js/glaze-v1.7.1-development.mjs` so historical dev.1–dev.47 provenance remains immutable while future work advances the patch line.
+- Advanced the shared consumer target to 1.7.0 without grandfathering any prior 1.6.0 consumer acceptance.
+- Preserved the mandatory fail-closed privacy/security Stable gate: unverified dev.47 privacy/security behavior is not shipped by 1.7.0 and cannot become Stable through V1.7.1 until verified.
+- Preserved GLAZE UI V1.6 / 1.6.0 as the immediate known-good rollback release and historical publication/security evidence.
+
 # Changelogs
 
 All notable changes to the Glaze reference implementation are recorded here.
