@@ -10,6 +10,7 @@ export * from './glaze-v1.7-adaptive-experience-surfaces.dev.mjs';
 export * from './glaze-v1.7-trust-care-surfaces.dev.mjs';
 export * from './glaze-v1.7-creative-compare-surfaces.dev.mjs';
 export * from './glaze-v1.7-section48-qualification.dev.mjs';
+export * from './glaze-v1.7-v1-3-qualification.dev.mjs';
 
 import {glazeV17Development as v12Aggregate} from './glaze-v1.7-development.mjs';
 import {glazeV17ExpressionSystemDevelopmentContract} from './glaze-v1.7-expression-system.dev.mjs';
@@ -18,9 +19,10 @@ import {glazeV17AdaptiveExperienceSurfacesDevelopmentContract} from './glaze-v1.
 import {glazeV17TrustCareSurfacesDevelopmentContract} from './glaze-v1.7-trust-care-surfaces.dev.mjs';
 import {glazeV17CreativeCompareSurfacesDevelopmentContract} from './glaze-v1.7-creative-compare-surfaces.dev.mjs';
 import {glazeV17Section48QualificationDevelopmentContract} from './glaze-v1.7-section48-qualification.dev.mjs';
+import {glazeV17V13QualificationDevelopmentContract} from './glaze-v1.7-v1-3-qualification.dev.mjs';
 
 export const glazeV17V13Development=Object.freeze({
-  version:'1.7.0-dev.45',
+  version:'1.7.0-dev.46',
   lifecycle:'Development',
   stableBaseline:'1.6.0',
   consumerEligible:false,
@@ -34,13 +36,15 @@ export const glazeV17V13Development=Object.freeze({
   trustCareSurfacesVersion:glazeV17TrustCareSurfacesDevelopmentContract.version,
   creativeCompareSurfacesVersion:glazeV17CreativeCompareSurfacesDevelopmentContract.version,
   section48QualificationControlVersion:glazeV17Section48QualificationDevelopmentContract.version,
+  combinedQualificationControlVersion:glazeV17V13QualificationDevelopmentContract.version,
   implementedRequirementGroups:Object.freeze([
     'expression-system-core',
     'provider-adaptive-surfaces',
     'adaptive-experience-surfaces',
     'trust-care-surfaces',
     'creative-compare-surfaces',
-    'section48-qualification-control'
+    'section48-qualification-control',
+    'v1.3-combined-qualification-control'
   ]),
   implementedAdaptiveSurfaces:Object.freeze([
     'glaze-contextual-actions',
