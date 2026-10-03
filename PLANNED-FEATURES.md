@@ -1,3 +1,4 @@
+> **Current planning boundary — 2026-10-03:** V1.7.0 is the bounded current Stable/Anchor release. All unfinished or unverified V1.7 Development work, including the 21 retained open qualification lanes and Section 48 acceptance, is now planned under Glaze V1.7.1. Historical V1.7 plan identifiers remain unchanged for provenance.
 # Glaze — Planned Features
 
 **Status:** Active planned-feature control  
