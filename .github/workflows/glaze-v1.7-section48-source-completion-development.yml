@@ -1,0 +1,63 @@
+name: Glaze V1.7 Section 48 Source Completion Development
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  section48-source-completion:
+    name: Validate V1.7 dev.42-dev.45 Section 48 source completion
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact candidate revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact candidate head
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+
+      - name: Validate Section 48 source completion
+        run: |
+          python -m json.tool docs/v1.7/section48-source-completion-dev45.contract.json >/dev/null
+          node --check js/glaze-v1.7-adaptive-experience-surfaces.dev.mjs
+          node --check js/glaze-v1.7-trust-care-surfaces.dev.mjs
+          node --check js/glaze-v1.7-creative-compare-surfaces.dev.mjs
+          node --check js/glaze-v1.7-section48-qualification.dev.mjs
+          node --check scripts/validate_glaze_v1_7_section48_source_completion_dev45.mjs
+          node scripts/validate_glaze_v1_7_section48_source_completion_dev45.mjs
+          node scripts/validate_glaze_v1_7_section48_qualification_evidence.mjs
+
+      - name: Verify retained V1.7 boundaries
+        run: |
+          node scripts/validate_glaze_v1_7_expression_core_dev40.mjs
+          node scripts/validate_glaze_v1_7_provider_adaptive_surfaces_dev41.mjs
+          node scripts/validate_glaze_v1_7_acceptance_development.mjs
+          node scripts/validate_glaze_v1_7_privacy_authority_boundaries_development.mjs
+          node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs
+          node scripts/validate_glaze_v1_7_performance_energy_awareness_development.mjs
+
+      - name: Verify V1.6 Anchor authority
+        run: |
+          node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
+          node scripts/verify_glaze_v1_6_stable.mjs
+
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code -- .

@@ -9,6 +9,13 @@ All notable changes to the Glaze reference implementation are recorded here.
 - Added `docs/GLAZE_RENAMING_AND_MIGRATION.md`, established Glaze-native canonical V1.7 planning paths, and retained the former V1.7 paths as full compatibility mirrors for existing validators and workflows.
 - Recorded the 1.7 rename boundary in `registry/lifecycle.json` while preserving **GLAZE UI V1.6 / 1.6.0** and every earlier historical release label unchanged. The rename does not grant V1.7 acceptance, consumer eligibility, deployment authority, or lifecycle promotion.
 
+- Added bounded `1.7.0-dev.42` **Adaptive Experience Surfaces** source: Glaze Workspace, Glaze Compact Surface, and Glaze Accessibility Presentation, with Task Continuity preservation, explicit compact escalation, accessibility precedence, and no Glaze-created provider/accessibility truth.
+- Added bounded `1.7.0-dev.43` **Trust and Care Surfaces** source: Glaze Agent Activity, Glaze Privacy Attention, and Glaze Care Surface, reusing provider/privacy/security/performance authority rather than creating parallel truth systems.
+- Added bounded `1.7.0-dev.44` **Creative and Compare Surfaces** source: proposal/preview/edit/pending/committed separation, source/target identity preservation, and no inferred approval, selection, commitment, ranking, or winner.
+- Added bounded `1.7.0-dev.45` **Section 48 Qualification Control** with v1.3-specific exact-revision evidence lanes layered on top of the frozen v1.2/dev.39 acceptance model.
+- All eleven planned Section 48 adaptive surfaces now have bounded source implementations. Section 48 remains acceptance-incomplete; rendered/native/device/assistive-technology/provider-integration/privacy-security/performance-energy/human/provenance evidence remains required.
+- Preserved `VERSION=1.6.0`, V1.6 Anchor lifecycle authority, and V1.7 non-consumer-eligibility.
+
 - Added bounded `1.7.0-dev.40` **Expression System Core** source for V1.7 plan v1.3 Section 48, covering Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution while rejecting unrestricted raw design, truth, ranking, measurement, and acceptance controls.
 - Added bounded `1.7.0-dev.41` **Provider Adaptive Surfaces** source for V1.7 plan v1.3 Section 48: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
 - Contextual Actions require authoritative provider/context identity plus provider-owned availability before actionable presentation, preserve stable ordering, and do not manufacture user intent, ranking, permission, authorization, navigation, execution, or success.
@@ -17,7 +24,7 @@ All notable changes to the Glaze reference implementation are recorded here.
 - Added exact-source dev.41 validation and dedicated CI retaining dev.40 expression, V1.7 privacy/accessibility/performance boundaries, and the V1.6 / `1.6.0` Anchor.
 - Reconciled V1.7 v1.3 planning and project records so dev.39 remains the frozen v1.2 aggregate while dev.40/dev.41 are bounded Section 48 source tranches.
 - Preserved V1.6 / `1.6.0` Official Anchor authority, V1.7 non-consumer-eligibility, and the rule that dev.39 acceptance control does not automatically accept v1.3 requirements.
-- Section 48 remains incomplete: Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, Care Surface, and v1.3 acceptance remain open.
+- At the dev.41 milestone, Workspace, Compact Surface, Agent Activity, Privacy Attention, Accessibility Presentation, Creative Surface, Compare, and Care Surface were still open. Those source gaps are now closed by dev.42–dev.44; v1.3 acceptance remains open through the dev.45 evidence boundary.
 - Stabilization: consolidated duplicate dev.40/dev.41 changelog entries without changing implementation, lifecycle, acceptance, deployment, or production authority.
 - Stabilization: reconciled retained V1.3.1/V1.4.1 hardening documents with authoritative lifecycle history, marking V1.3.1 as an unpromoted superseded track and V1.4.1 as historical Stable qualification provenance while preserving V1.6 / `1.6.0` Anchor and V1.7 Development boundaries.
 - Stabilization: made retained V1.4.1 human-review and human-validation source checks history-aware so they validate the preserved V1.4.0/V1.4.1 release records after later Stable/Anchor promotions instead of incorrectly requiring `currentStable` to remain at V1.4.x.
@@ -501,11 +508,3 @@ Stable expressive-hierarchy release based on the documented Glaze UI lineage of 
 - Expressive action and tile primitives with bounded shape morphing.
 - Adaptive button groups with visual emphasis that preserves logical/action order.
 - Compact reachability composition helpers that support lower action zones without DOM or keyboard reordering.
-
-
-## 2026-10-03 — V1.7 dev.42 / dev.43
-
-- Added the eight remaining V1.7 Section 48 adaptive experience surface resolvers with fail-closed authority and task-continuity boundaries.
-- Added a v1.3 Section 48 qualification control that composes 21 new evidence lanes with the retained 37-lane v1.2/dev.39 acceptance matrix.
-- Updated the V1.3 development aggregate to dev.43 and preserved V1.6.0 as the current Anchor.
-- Decoupled the retained dev.41 provider-surface validator from later V1.3 aggregate revision identity while preserving dev.41 provenance.

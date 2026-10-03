@@ -1,0 +1,34 @@
+{
+  "$schema": "../schemas/v1.7-section48-qualification-evidence.schema.json",
+  "schemaVersion": 1,
+  "recordId": "goreecloud.glaze.v1.7.section48-qualification-evidence",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "REPLACE_WITH_FROZEN_V17_SOURCE_REVISION",
+  "acceptanceModelVersion": "1.7.0-dev.45",
+  "stableBaseline": "1.6.0",
+  "predecessorQualification": {
+    "sourceRevision": "REPLACE_WITH_FROZEN_V17_SOURCE_REVISION",
+    "reference": "REPLACE_WITH_ACCEPTED_V12_QUALIFICATION_REFERENCE",
+    "acceptedByGovernedReview": false
+  },
+  "review": {
+    "reviewedAt": "REPLACE_WITH_ISO_8601_TIMESTAMP_WITH_TIMEZONE",
+    "reviewer": "REPLACE_WITH_AUTHORIZED_REVIEWER",
+    "reviewerRole": "REPLACE_WITH_REVIEWER_ROLE",
+    "scope": "REPLACE_WITH_SECTION48_REVIEW_SCOPE",
+    "representativeRevisionConfirmed": false,
+    "notes": "Template placeholder; not evidence."
+  },
+  "evidence": [],
+  "reviewDecision": "not-accepted",
+  "authority": {
+    "packetIsV17Acceptance": false,
+    "section48Accepted": false,
+    "lifecyclePromotionAutomatic": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false
+  },
+  "boundary": "Fail-closed Section 48 evidence intake template only. Populate from real exact-revision observations accepted by the governed review process. Completeness can make the packet ready for governed review but cannot establish V1.7 acceptance, Section 48 acceptance, Anchor, consumer, deployment, or production authority by itself."
+}

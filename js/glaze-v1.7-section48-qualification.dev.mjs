@@ -1,197 +1,178 @@
-/* Glaze V1.7 - v1.3 Section 48 qualification-control foundation.
+/* Glaze V1.7 — Section 48 Qualification Control Development foundation.
  *
- * Extends the frozen v1.2/dev.39 qualification matrix without rewriting its
- * evidence or lifecycle authority. Matrix completeness permits governed review
- * only; it does not establish Section 48 acceptance, Seal, Anchor, consumer
- * eligibility, deployment acceptance, or production acceptance.
+ * This layer records V1.7 v1.3 Section 48 source coverage and the additional
+ * evidence groups required before Section 48 can be accepted. It does not
+ * create evidence, accept external reviewers, or promote lifecycle state.
  */
 
-import {
-  createGlazeV17AcceptanceMatrix,
-  glazeV17AcceptanceDevelopmentContract
-} from './glaze-v1.7-acceptance.dev.mjs';
 import {glazeV17ExpressionSystemDevelopmentContract} from './glaze-v1.7-expression-system.dev.mjs';
 import {glazeV17ProviderAdaptiveSurfacesDevelopmentContract} from './glaze-v1.7-provider-adaptive-surfaces.dev.mjs';
 import {glazeV17AdaptiveExperienceSurfacesDevelopmentContract} from './glaze-v1.7-adaptive-experience-surfaces.dev.mjs';
+import {glazeV17TrustCareSurfacesDevelopmentContract} from './glaze-v1.7-trust-care-surfaces.dev.mjs';
+import {glazeV17CreativeCompareSurfacesDevelopmentContract} from './glaze-v1.7-creative-compare-surfaces.dev.mjs';
 
-const defs=[
- ['workspace-continuity-v13','Workspace continuity','required',[['machine'],['rendered','device'],['human']]],
- ['compact-surface-v13','Compact surface behavior','required',[['machine'],['rendered','device']]],
- ['agent-activity-authority-v13','Agent Activity authority','required',[['machine'],['human']]],
- ['privacy-attention-authority-v13','Privacy Attention authority','required',[['machine'],['human']]],
- ['accessibility-presentation-v13','Accessibility Presentation','required',[['machine'],['assistive-technology'],['human']]],
- ['creative-state-separation-v13','Creative state separation','required',[['machine'],['human']]],
- ['compare-neutrality-v13','Compare neutrality','required',[['machine'],['human']]],
- ['care-authority-v13','Care authority','required',[['machine'],['human']]],
- ['large-text-reflow-v13','Large text reflow','required',[['machine'],['rendered','device'],['human']]],
- ['forced-colors-v13','Forced Colors','required',[['machine'],['rendered'],['human']]],
- ['keyboard-continuity-v13','Keyboard continuity','required',[['machine'],['human']]],
- ['switch-access-v13','Switch access','required',[['assistive-technology'],['human']]],
- ['voice-access-v13','Voice access','required',[['assistive-technology'],['human']]],
- ['compact-device-behavior-v13','Representative compact device behavior','required',[['device'],['rendered']]],
- ['provider-integration-v13','Provider integration','required',[['machine'],['device','human']]],
- ['privacy-security-integration-v13','Privacy and security integration','required',[['machine'],['human']]],
- ['cross-platform-expression-v13','Cross-platform expression consistency','required',[['rendered','device'],['human']]],
- ['performance-v13','Measured performance','required',[['performance']]],
- ['energy-v13','Energy behavior where applicable','conditional',[['energy'],['device']]],
- ['human-visual-v13','Human visual and interaction review','required',[['human']]],
- ['artifact-provenance-v13','V1.3 artifact provenance','required',[['provenance']]]
-];
-export const SECTION48_ACCEPTANCE_LANES=Object.freeze(defs.map(d=>Object.freeze({
-  id:d[0],label:d[1],applicability:d[2],
-  evidenceGroups:Object.freeze(d[3].map(g=>Object.freeze([...g]))),
-  evidenceTypes:Object.freeze([...new Set(d[3].flat())])
-})));
-
-const LANE_IDS=new Set(SECTION48_ACCEPTANCE_LANES.map(l=>l.id));
-const CONDITIONAL_IDS=new Set(SECTION48_ACCEPTANCE_LANES.filter(l=>l.applicability==='conditional').map(l=>l.id));
-const EVIDENCE_TYPES=new Set(['machine','rendered','device','human','assistive-technology','performance','energy','provenance']);
-const TOP_KEYS=new Set([
-  'exactRevision','v12Evidence','v12Applicability','v12NotApplicableJustifications',
-  'section48Evidence','section48Applicability','section48NotApplicableJustifications'
+export const SECTION48_SURFACES=Object.freeze([
+  'glaze-contextual-actions','glaze-brief','glaze-control-center','glaze-workspace',
+  'glaze-compact-surface','glaze-agent-activity','glaze-privacy-attention',
+  'glaze-accessibility-presentation','glaze-creative-surface','glaze-compare','glaze-care-surface'
 ]);
-const RECORD_KEYS=new Set(['id','verified','revision','evidenceType','reference']);
 
-function plainObject(v){
-  if(v===null||typeof v!=='object'||Array.isArray(v))return false;
-  const proto=Object.getPrototypeOf(v);
+export const SECTION48_QUALIFICATION_LANES=Object.freeze([
+  Object.freeze({id:'expression-system',groups:Object.freeze(['machine','rendered','human'])}),
+  Object.freeze({id:'workspace-continuity',groups:Object.freeze(['machine','rendered','device','human'])}),
+  Object.freeze({id:'compact-surface',groups:Object.freeze(['machine','rendered','device','assistive-technology'])}),
+  Object.freeze({id:'agent-activity',groups:Object.freeze(['machine','rendered','provider-integration','human'])}),
+  Object.freeze({id:'privacy-attention',groups:Object.freeze(['machine','rendered','privacy-security','human'])}),
+  Object.freeze({id:'accessibility-presentation',groups:Object.freeze(['machine','rendered','assistive-technology','human'])}),
+  Object.freeze({id:'creative-surface',groups:Object.freeze(['machine','rendered','human'])}),
+  Object.freeze({id:'compare',groups:Object.freeze(['machine','rendered','human'])}),
+  Object.freeze({id:'care-surface',groups:Object.freeze(['machine','rendered','provider-integration','human'])}),
+  Object.freeze({id:'cross-platform',groups:Object.freeze(['rendered','device','human'])}),
+  Object.freeze({id:'performance-energy',groups:Object.freeze(['performance','energy','device'])}),
+  Object.freeze({id:'artifact-provenance',groups:Object.freeze(['provenance'])})
+]);
+
+const EVIDENCE_TYPES=Object.freeze([
+  'machine','rendered','device','human','assistive-technology',
+  'provider-integration','privacy-security','performance','energy','provenance'
+]);
+
+function plainObject(value){
+  if(value===null||typeof value!=='object'||Array.isArray(value))return false;
+  const proto=Object.getPrototypeOf(value);
   return proto===Object.prototype||proto===null;
 }
-function text(v){return String(v??'').trim();}
-function validRevision(v){return /^[0-9a-f]{40}$/.test(text(v));}
-function rejectUnknownKeys(input,allowed,label){
-  for(const key of Object.keys(input))if(!allowed.has(key))throw new RangeError(label+' contains unsupported key: '+key);
+function revision(value){
+  const v=String(value??'').trim().toLowerCase();
+  if(!/^[0-9a-f]{40}$/.test(v))throw new RangeError('sourceRevision must be a 40-character Git commit SHA');
+  return v;
 }
-function validateMapKeys(map,label){
-  if(!plainObject(map))return;
-  for(const key of Object.keys(map))if(!LANE_IDS.has(key))throw new RangeError(label+' references unknown Section 48 lane: '+key);
+function text(value,label,max=300){
+  const v=String(value??'').trim();
+  if(!v)throw new TypeError(label+' is required');
+  return v.slice(0,max);
 }
-function normalizeRecords(records,exactRevision){
-  const out=new Map();
-  if(records===undefined)return out;
-  if(!Array.isArray(records))throw new TypeError('Section 48 evidence must be an array');
-  if(records.length>1000)throw new RangeError('Section 48 evidence exceeds bounded record limit');
-  for(const raw of records){
-    if(!plainObject(raw))throw new TypeError('Each Section 48 evidence record must be a plain object');
-    rejectUnknownKeys(raw,RECORD_KEYS,'Section 48 evidence record');
-    const id=text(raw.id);
-    if(!LANE_IDS.has(id))throw new RangeError('Unknown Section 48 qualification lane: '+id);
-    const evidenceType=text(raw.evidenceType).toLowerCase();
-    if(!EVIDENCE_TYPES.has(evidenceType))throw new RangeError('Unsupported Section 48 evidence type: '+evidenceType);
-    const revision=validRevision(raw.revision)?text(raw.revision):null;
-    const record=Object.freeze({
-      externallyVerified:raw.verified===true,evidenceRevision:revision,evidenceType,
-      evidenceReference:text(raw.reference)||null,
-      revisionMatches:Boolean(exactRevision&&revision===exactRevision)
-    });
-    const list=out.get(id)||[]; list.push(record); out.set(id,list);
-  }
-  return out;
-}
-function groupSatisfied(group,records){
-  return records.some(r=>r.externallyVerified&&r.revisionMatches&&r.evidenceReference&&group.includes(r.evidenceType));
-}
-function failure(exactRevision,groups,records){
-  if(!exactRevision)return 'matrix-exact-revision-missing';
-  if(records.length===0)return 'missing-evidence';
-  if(records.some(r=>r.externallyVerified&&!r.evidenceRevision))return 'evidence-revision-invalid';
-  if(records.some(r=>r.externallyVerified&&r.evidenceRevision&&!r.revisionMatches))return 'evidence-revision-mismatch';
-  if(records.some(r=>r.externallyVerified&&r.revisionMatches&&!r.evidenceReference))return 'evidence-reference-missing';
-  const allowed=[...new Set(groups.flat())];
-  if(records.some(r=>r.externallyVerified&&r.revisionMatches&&r.evidenceReference&&!allowed.includes(r.evidenceType)))return 'evidence-type-not-allowed';
-  if(records.some(r=>r.externallyVerified!==true))return 'evidence-not-externally-verified';
-  return 'required-evidence-group-unsatisfied';
-}
-function section48Matrix(input,exactRevision){
-  const applicability=plainObject(input.section48Applicability)?input.section48Applicability:{};
-  const justifications=plainObject(input.section48NotApplicableJustifications)?input.section48NotApplicableJustifications:{};
-  validateMapKeys(applicability,'Section 48 applicability');
-  validateMapKeys(justifications,'Section 48 not-applicable justification');
-  for(const [id,value] of Object.entries(applicability)){
-    if(value!==true&&value!==false)throw new TypeError('Section 48 applicability values must be boolean: '+id);
-    if(value===false&&!CONDITIONAL_IDS.has(id))throw new RangeError('Required Section 48 lane cannot be marked not applicable: '+id);
-  }
-  const evidence=normalizeRecords(input.section48Evidence,exactRevision);
-  const lanes=SECTION48_ACCEPTANCE_LANES.map(def=>{
-    const applicable=applicability[def.id]!==false;
-    const records=evidence.get(def.id)||[];
-    const justification=text(justifications[def.id]);
-    if(!applicable){
-      return Object.freeze({
-        id:def.id,label:def.label,applicability:def.applicability,applicable:false,
-        status:justification.length>=20?'not-applicable-justified':'unverified',
-        requiredEvidenceGroups:def.evidenceGroups,failureReason:justification.length>=20?null:'not-applicable-requires-specific-justification'
-      });
-    }
-    const groupResults=def.evidenceGroups.map(group=>Object.freeze({
-      allowedEvidenceTypes:group,satisfied:groupSatisfied(group,records)
-    }));
-    const status=Boolean(exactRevision)&&groupResults.every(g=>g.satisfied)?'externally-verified':'unverified';
+function normalizeEvidence(value,sourceRevision){
+  if(!Array.isArray(value))return Object.freeze([]);
+  return Object.freeze(value.map((item,index)=>{
+    if(!plainObject(item))throw new TypeError('Evidence item '+index+' must be a plain object');
+    const laneId=text(item.laneId,'laneId',80).toLowerCase();
+    const type=text(item.type,'type',80).toLowerCase();
+    if(!EVIDENCE_TYPES.includes(type))throw new RangeError('Unsupported evidence type: '+type);
+    const evidenceRevision=revision(item.sourceRevision);
     return Object.freeze({
-      id:def.id,label:def.label,applicability:def.applicability,applicable:true,status,
-      requiredEvidenceGroups:def.evidenceGroups,evidenceGroupResults:Object.freeze(groupResults),
-      failureReason:status==='externally-verified'?null:failure(exactRevision,def.evidenceGroups,records)
+      laneId,type,
+      sourceRevision:evidenceRevision,
+      exactRevisionMatch:evidenceRevision===sourceRevision,
+      reference:text(item.reference,'reference',500),
+      reviewer:text(item.reviewer,'reviewer',160),
+      acceptedByGovernedReview:item.acceptedByGovernedReview===true
     });
-  });
-  const blocking=lanes.filter(l=>!['externally-verified','not-applicable-justified'].includes(l.status));
+  }));
+}
+
+function sourceCoverage(){
+  const implemented=Object.freeze([
+    ...glazeV17ProviderAdaptiveSurfacesDevelopmentContract.surfaces,
+    ...glazeV17AdaptiveExperienceSurfacesDevelopmentContract.surfaces,
+    ...glazeV17TrustCareSurfacesDevelopmentContract.surfaces,
+    ...glazeV17CreativeCompareSurfacesDevelopmentContract.surfaces
+  ]);
   return Object.freeze({
-    lanes:Object.freeze(lanes),laneCount:lanes.length,
-    externallyVerifiedCount:lanes.filter(l=>l.status==='externally-verified').length,
-    notApplicableJustifiedCount:lanes.filter(l=>l.status==='not-applicable-justified').length,
-    unverifiedCount:lanes.filter(l=>l.status==='unverified').length,
-    evidenceInventoryComplete:Boolean(exactRevision)&&blocking.length===0,
-    blockingLaneIds:Object.freeze(blocking.map(l=>l.id))
+    expressionSystemCoreImplemented:glazeV17ExpressionSystemDevelopmentContract.expressionSystemCoreImplemented===true,
+    implementedSurfaces:implemented,
+    missingSurfaces:Object.freeze(SECTION48_SURFACES.filter(surface=>!implemented.includes(surface))),
+    allPlannedSurfacesSourceImplemented:SECTION48_SURFACES.every(surface=>implemented.includes(surface)),
+    section48SourceComplete:glazeV17ExpressionSystemDevelopmentContract.expressionSystemCoreImplemented===true
+      && SECTION48_SURFACES.every(surface=>implemented.includes(surface))
   });
 }
 
-export function createGlazeV17V13QualificationMatrix(input={}){
-  if(!plainObject(input))throw new TypeError('V1.7 v1.3 qualification input must be a plain object');
-  rejectUnknownKeys(input,TOP_KEYS,'V1.7 v1.3 qualification input');
-  const exactRevision=validRevision(input.exactRevision)?text(input.exactRevision):null;
-  const v12=createGlazeV17AcceptanceMatrix({
-    exactRevision,
-    evidence:input.v12Evidence,
-    applicability:input.v12Applicability,
-    notApplicableJustifications:input.v12NotApplicableJustifications
-  });
-  const section48=section48Matrix(input,exactRevision);
-  const complete=v12.evidenceInventoryComplete&&section48.evidenceInventoryComplete;
+export function evaluateGlazeV17Section48Qualification(input={}){
+  if(!plainObject(input))throw new TypeError('Section 48 qualification input must be a plain object');
+  const sourceRevision=revision(input.sourceRevision);
+  const predecessor=plainObject(input.predecessorQualification)?input.predecessorQualification:{};
+  const predecessorRevision=String(predecessor.sourceRevision??'').trim().toLowerCase();
+  const predecessorAccepted=predecessor.acceptedByGovernedReview===true
+    && predecessorRevision===sourceRevision
+    && String(predecessor.reference??'').trim()!=='';
+  const evidence=normalizeEvidence(input.evidence,sourceRevision);
+  const coverage=sourceCoverage();
+
+  const lanes=Object.freeze(SECTION48_QUALIFICATION_LANES.map(lane=>{
+    const laneEvidence=evidence.filter(item=>item.laneId===lane.id&&item.exactRevisionMatch&&item.acceptedByGovernedReview);
+    const presentTypes=new Set(laneEvidence.map(item=>item.type));
+    const missingGroups=lane.groups.filter(group=>!presentTypes.has(group));
+    return Object.freeze({
+      id:lane.id,
+      requiredGroups:lane.groups,
+      acceptedEvidenceCount:laneEvidence.length,
+      missingGroups:Object.freeze(missingGroups),
+      complete:missingGroups.length===0
+    });
+  }));
+
+  const blockingLanes=Object.freeze(lanes.filter(lane=>!lane.complete).map(lane=>lane.id));
+  const evidenceComplete=blockingLanes.length===0;
+  const readyForGovernedQualificationReview=coverage.section48SourceComplete
+    && predecessorAccepted
+    && evidenceComplete;
+
   return Object.freeze({
-    version:'1.7.0-dev.43',lifecycle:'Development',stableBaseline:'1.6.0',consumerEligible:false,
-    planVersion:'v1.3',v13SpecificationSections:Object.freeze([48]),exactRevision,
-    retainedV12:Object.freeze({version:glazeV17AcceptanceDevelopmentContract.version,laneCount:v12.laneCount,
-      evidenceInventoryComplete:v12.evidenceInventoryComplete,blockingLaneIds:v12.blockingLaneIds}),
-    section48,
-    totalLaneCount:v12.laneCount+section48.laneCount,
-    evidenceInventoryComplete:complete,
-    readyForGovernedQualificationReview:complete,
-    blockingLaneIds:Object.freeze([
-      ...v12.blockingLaneIds.map(id=>'v1.2:'+id),
-      ...section48.blockingLaneIds.map(id=>'v1.3:'+id)
-    ]),
+    version:'1.7.0-dev.45',
+    lifecycle:'DevelopmentQualification',
+    stableBaseline:'1.6.0',
+    consumerEligible:false,
+    planVersion:'v1.3',
+    section:48,
+    sourceRevision,
+    sourceCoverage:coverage,
+    predecessor:Object.freeze({
+      required:true,
+      acceptanceModelVersion:'1.7.0-dev.39',
+      exactRevisionRequired:true,
+      accepted:predecessorAccepted
+    }),
+    lanes,
+    blockingLanes,
+    evidenceComplete,
+    readyForGovernedQualificationReview,
     authority:Object.freeze({
-      evidenceManufactured:false,externalEvidenceTrustInferred:false,staleEvidenceAccepted:false,
-      mismatchedRevisionAccepted:false,missingEvidenceInferredPassing:false,
-      matrixCompletionEqualsSection48Acceptance:false,matrixCompletionEqualsV17Acceptance:false,
-      section48Complete:false,v17AcceptanceEstablished:false,sealStatusGranted:false,anchorStatusGranted:false,
-      stableStatusGranted:false,consumerEligibilityGranted:false,lifecyclePromotionAutomatic:false,
-      deploymentAcceptanceGranted:false,productionAcceptanceGranted:false
+      evidenceCreatedByEvaluator:false,
+      reviewerAuthorityInferred:false,
+      section48Accepted:false,
+      v17Accepted:false,
+      lifecyclePromotionAutomatic:false,
+      anchorStatusGranted:false,
+      consumerEligibilityGranted:false,
+      deploymentAcceptanceGranted:false,
+      productionAcceptanceGranted:false
     })
   });
 }
 
 export const glazeV17Section48QualificationDevelopmentContract=Object.freeze({
-  version:'1.7.0-dev.43',lifecycle:'Development',stableBaseline:'1.6.0',consumerEligible:false,
-  planVersion:'v1.3',v13SpecificationSections:Object.freeze([48]),
-  retainedV12AcceptanceVersion:glazeV17AcceptanceDevelopmentContract.version,
-  expressionSystemVersion:glazeV17ExpressionSystemDevelopmentContract.version,
-  providerAdaptiveSurfacesVersion:glazeV17ProviderAdaptiveSurfacesDevelopmentContract.version,
-  adaptiveExperienceSurfacesVersion:glazeV17AdaptiveExperienceSurfacesDevelopmentContract.version,
-  section48Lanes:SECTION48_ACCEPTANCE_LANES,section48LaneCount:SECTION48_ACCEPTANCE_LANES.length,
-  totalLaneCount:glazeV17AcceptanceDevelopmentContract.laneCount+SECTION48_ACCEPTANCE_LANES.length,
-  conditionalSection48Lanes:Object.freeze([...CONDITIONAL_IDS]),exactRevisionRequired:true,
-  allEvidenceGroupsRequired:true,missingEvidenceMayInferPass:false,revisionMismatchMayPass:false,
-  matrixCompletionEqualsSection48Acceptance:false,matrixCompletionEqualsV17Acceptance:false,
-  section48SourceScopeImplemented:true,section48QualificationControlImplemented:true,section48Complete:false,
-  lifecyclePromotionAutomatic:false,authorityBoundary:'qualification-control-only'
+  version:'1.7.0-dev.45',
+  lifecycle:'DevelopmentQualification',
+  stableBaseline:'1.6.0',
+  consumerEligible:false,
+  planVersion:'v1.3',
+  v13SpecificationSections:Object.freeze([48]),
+  requirementGroup:'section48-qualification-control',
+  sourceVersions:Object.freeze({
+    expressionSystem:glazeV17ExpressionSystemDevelopmentContract.version,
+    providerAdaptiveSurfaces:glazeV17ProviderAdaptiveSurfacesDevelopmentContract.version,
+    adaptiveExperienceSurfaces:glazeV17AdaptiveExperienceSurfacesDevelopmentContract.version,
+    trustCareSurfaces:glazeV17TrustCareSurfacesDevelopmentContract.version,
+    creativeCompareSurfaces:glazeV17CreativeCompareSurfacesDevelopmentContract.version
+  }),
+  surfaces:SECTION48_SURFACES,
+  qualificationLanes:SECTION48_QUALIFICATION_LANES,
+  predecessorAcceptanceModelVersion:'1.7.0-dev.39',
+  predecessorAcceptanceAutomaticallyInherited:false,
+  section48SourceComplete:true,
+  section48Accepted:false,
+  v17Accepted:false,
+  lifecyclePromotionAutomatic:false,
+  anchorStatusGranted:false
 });
