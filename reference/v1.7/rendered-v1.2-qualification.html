@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-review-harness="glaze-v1.7-v1.2-rendered-browser-qualification">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Glaze V1.7 - Retained v1.2 Rendered Qualification</title>
+  <link rel="stylesheet" href="../../css/glaze-v1.4.1.css">
+  <style>
+    :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:light dark;--canvas:#09111d;--surface:rgba(24,35,51,.88);--solid:#182333;--line:rgba(225,235,255,.22);--text:#f6f8ff;--muted:#b8c6da;--accent:#9ec8ff}
+    *{box-sizing:border-box}html[data-mode="large-text"]{font-size:200%}
+    body{margin:0;min-height:100vh;background:var(--canvas);color:var(--text);overflow-x:hidden}
+    body[data-mode="reduced-transparency"] .glass{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:var(--solid)!important}
+    body[data-mode="increased-contrast"]{--line:rgba(255,255,255,.8);--muted:#fff}
+    body[data-mode="reduced-motion"] *,body[data-mode="reduced-motion"] *::before,body[data-mode="reduced-motion"] *::after{animation:none!important;transition:none!important}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+    @media(forced-colors:active){.glass,.card,.pane{forced-color-adjust:auto!important;background:Canvas!important;color:CanvasText!important;border-color:CanvasText!important;box-shadow:none!important}}
+    .shell{width:min(1260px,100%);margin:auto;padding:clamp(8px,2vw,24px)}
+    .glass{background:var(--surface);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .banner{padding:14px 16px;margin-bottom:12px}h1{font-size:clamp(1.05rem,2.5vw,1.8rem);margin:0 0 6px}h2{font-size:1rem;margin:0 0 10px}h3{font-size:.88rem;margin:0 0 5px}p{line-height:1.45}.muted{color:var(--muted)}
+    .pills{display:flex;flex-wrap:wrap;gap:6px}.pill{border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:.72rem}
+    .stage{display:grid;gap:12px;grid-template-columns:1fr;padding:14px}.stage[data-composition="dual-pane"]{grid-template-columns:.85fr 1.35fr}.stage[data-composition="multi-pane"]{grid-template-columns:.65fr 1.35fr .75fr}
+    .panel,.card,.pane{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(255,255,255,.035);min-width:0}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.value{font-weight:700;overflow-wrap:anywhere}
+    .skeleton-line{height:16px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,.28),rgba(255,255,255,.08));background-size:220% 100%;animation:shimmer 1.4s linear infinite}@keyframes shimmer{to{background-position:-120% 0}}
+    pre{font:10px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:auto;padding:10px;margin-top:12px}
+    body[data-scene="wearable"] .banner{padding:7px 8px;margin-bottom:6px}body[data-scene="wearable"] .banner p{display:none}body[data-scene="wearable"] .pill{font-size:.6rem;padding:2px 4px}body[data-scene="wearable"] .stage{padding:7px}
+    @media(max-width:760px){.stage,.stage[data-composition="dual-pane"],.stage[data-composition="multi-pane"],.grid{grid-template-columns:1fr}.shell{padding:7px}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <section class="banner glass">
+    <h1>Glaze V1.7 - Retained v1.2 Rendered Qualification</h1>
+    <p><strong>Exact-source Chromium evidence only.</strong> No human, assistive-technology, physical-device, native-platform, representative-performance, energy, regression-baseline, V1.7 acceptance, or Anchor authority is granted.</p>
+    <div class="pills">
+      <span class="pill" id="scene-pill">Scene: loading</span>
+      <span class="pill" id="revision-pill">Revision: unbound</span>
+      <span class="pill" id="source-pill">Source: pending</span>
+      <span class="pill">Acceptance: 1.7.0-dev.39</span>
+    </div>
+  </section>
+  <section id="stage" class="stage glass" data-composition="single-pane"></section>
+  <pre id="evidence-output" class="glass" aria-label="Rendered evidence details"></pre>
+</main>
+<script type="module" src="./rendered-v1.2-qualification.mjs"></script>
+</body>
+</html>
