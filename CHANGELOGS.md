@@ -4,6 +4,10 @@ All notable changes to the Glaze reference implementation are recorded here.
 
 ## Unreleased — GLAZE V1.7 Development
 
+- Added dedicated retained-v1.2 exact-source rendered-browser qualification for frozen V1.7 source `4b9d085a5177b96cc31d4270b38d792a59872e37`, with 22 repository-local Chromium scenes covering every dev.39 lane that permits rendered evidence except Regression.
+- Regression rendered evidence remains intentionally open because no governed V1.7 rendered regression baseline exists yet; the harness does not treat self-comparison as regression evidence. Browser form-factor scenes do not claim physical-device or native-platform acceptance, and no human, assistive-technology, performance, energy, Section 46, V1.7, consumer, deployment, production, or Anchor authority is granted.
+
+
 - Added a retained-v1.2 exact-source qualification working set that reproducibly combines the 20 machine records, seven non-duplicative rendered-browser bridge records derived from the existing dev.47 browser harness, and the retained artifact-provenance record for frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37`.
 - The dev.39 matrix now has five evidence-complete lanes at the evidence-group level—Task continuity, Adaptive composition, Forced Colors, Large text, and Artifact provenance—while 32 lanes remain unverified. This working set is not a governed qualification review, does not complete Section 46, and grants no V1.7 acceptance, consumer eligibility, deployment/production authority, or Anchor promotion.
 
