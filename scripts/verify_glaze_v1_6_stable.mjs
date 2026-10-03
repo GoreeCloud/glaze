@@ -23,14 +23,20 @@ const ARCHIVE_SHA='687268b5eb76917eccae9d935ffa1bead333d5dee50b6098e996a3f44cee5
 const SBOM_SHA='3ffbb8bfe372d20642cd58f34fc0faaec2a74657d90e10742b75c5adf52dde82';
 const PROVENANCE_SHA='711b58d5854085fb104dbae8bb5e7f7cfe4e8846e2e1fb314441c5212821ddd8';
 
-assert.equal(read('VERSION').trim(),VERSION);
+const currentVersion=read('VERSION').trim();
+assert.match(currentVersion,/^\d+\.\d+\.\d+$/);
 const lifecycle=json('registry/lifecycle.json');
-assert.equal(lifecycle.currentOfficial,VERSION);
-assert.equal(lifecycle.currentStable,VERSION);
+assert.equal(lifecycle.currentOfficial,currentVersion);
+assert.equal(lifecycle.currentStable,currentVersion);
 assert.equal(lifecycle.currentLifecycle,'anchor');
 assert.equal(lifecycle.lifecycleVocabulary,'goreecloud-release-lifecycle/v0.7');
 assert.equal(lifecycle.activeCandidate,null);
-assert.equal(lifecycle.officialProductLabel,'GLAZE UI V1.6');
+const currentRelease=lifecycle.releases.find(item=>item.version===currentVersion);
+assert.ok(currentRelease,'missing current Stable/Anchor lifecycle record');
+assert.equal(currentRelease.status,'stable');
+assert.equal(currentRelease.lifecycle,'anchor');
+assert.equal(currentRelease.consumerEligible,true);
+assert.equal(lifecycle.officialProductLabel,currentRelease.label);
 
 const stable=lifecycle.releases.find(item=>item.version===VERSION);
 assert.ok(stable,'missing 1.6.0 lifecycle record');
@@ -182,16 +188,16 @@ for(const token of [
 assert.ok(!/resolveGlaze[A-Za-z0-9_]*\s*\(/.test(runtime),'Stable identity wrapper must not add resolver behavior');
 
 const consumers=json('consumers/registry.json');
-assert.equal(consumers.officialBaseline,VERSION);
-assert.equal(consumers.requiredConsumerVersion,VERSION);
-assert.equal(consumers.officialProductLabel,'GLAZE UI V1.6');
+assert.equal(consumers.officialBaseline,currentVersion);
+assert.equal(consumers.requiredConsumerVersion,currentVersion);
+assert.equal(consumers.officialProductLabel,lifecycle.officialProductLabel);
 assert.ok(consumers.consumers.length>0);
-assert.ok(consumers.consumers.every(item=>item.requiredTargetVersion===VERSION));
+assert.ok(consumers.consumers.every(item=>item.requiredTargetVersion===currentVersion));
 assert.ok(consumers.consumers.every(item=>item.productionEligible===false));
 assert.ok(consumers.consumers.every(item=>['adoption-required','unverified','accepted-v1'].includes(item.status)));
 for(const item of consumers.consumers){
   if(item.status==='accepted-v1'){
-    assert.equal(item.targetVersion,VERSION);
+    assert.equal(item.targetVersion,currentVersion);
     assert.match(item.referenceRevision,/^[0-9a-f]{40}$/);
     assert.ok(typeof item.evidence==='string'&&item.evidence.length>0);
   }
@@ -230,7 +236,7 @@ for(const rel of ['js/glaze-v1.5.1.mjs','contracts/v1.5.1/stable-scope.json','ac
   assert.ok(fs.existsSync(path.join(root,rel)),'missing V1.5.1 rollback provenance: '+rel);
 }
 
-console.log('GLAZE UI V1.6.0 Stable repository authority: PASS');
+console.log('GLAZE UI V1.6.0 retained Stable/Anchor release integrity: PASS');
 console.log('Published source: '+ACCEPTED_SOURCE);
 console.log('Published archive SHA-256: '+ARCHIVE_SHA);
 console.log('Qualification: 24 verified / 0 unverified / 0 not applicable');
