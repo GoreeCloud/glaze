@@ -27,6 +27,7 @@ DRIVER=f"http://{HOST}:{DRIVER_PORT}"
 SOURCE_REVISION="4b9d085a5177b96cc31d4270b38d792a59872e37"
 SOURCE_MODEL_VERSION="1.7.0-dev.47"
 ACCEPTANCE_MODEL_VERSION="1.7.0-dev.39"
+HISTORICAL_SOURCE_STABLE_BASELINE="1.6.0"
 
 class QualificationError(RuntimeError):
     pass
@@ -106,6 +107,7 @@ def create_session() -> str:
                 "--disable-default-apps","--disable-extensions","--disable-sync",
                 "--metrics-recording-only","--no-first-run","--hide-scrollbars",
                 "--font-render-hinting=none","--disable-lcd-text",
+                "--disable-gpu","--force-color-profile=srgb",
                 "--window-size=1440,1200"
             ]}
         }}
@@ -220,7 +222,7 @@ let style=document.getElementById('glz17-capture-freeze');
 if(!style){
   style=document.createElement('style');
   style.id='glz17-capture-freeze';
-  style.textContent='*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;scroll-behavior:auto!important}';
+  style.textContent='*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;scroll-behavior:auto!important}.pill{border-radius:0!important}';
   document.head.appendChild(style);
 }
 window.scrollTo(0,0);
@@ -283,7 +285,7 @@ def capture(render_root: Path, source_root: Path, tooling_root: Path, plan_path:
             require(evidence.get("sourceRevisionParameter")==SOURCE_REVISION,f"source binding failed: {scene_id}")
             require(evidence.get("sourceModelVersion")==SOURCE_MODEL_VERSION,f"source model mismatch: {scene_id}")
             require(evidence.get("acceptanceModelVersion")==ACCEPTANCE_MODEL_VERSION,f"acceptance model mismatch: {scene_id}")
-            require(evidence.get("stableBaseline")=="1.6.0",f"stable baseline mismatch: {scene_id}")
+            require(evidence.get("stableBaseline")==HISTORICAL_SOURCE_STABLE_BASELINE,f"historical source stable baseline mismatch: {scene_id}")
             authority=evidence.get("authority")
             require(isinstance(authority,dict) and authority.get("renderedBrowserOnly") is True,f"rendered authority missing: {scene_id}")
             for key in (
@@ -331,7 +333,7 @@ def capture(render_root: Path, source_root: Path, tooling_root: Path, plan_path:
             "toolingRevision":tooling_revision,
             "sourceModelVersion":SOURCE_MODEL_VERSION,
             "acceptanceModelVersion":ACCEPTANCE_MODEL_VERSION,
-            "stableBaseline":"1.6.0",
+            "stableBaseline":HISTORICAL_SOURCE_STABLE_BASELINE,
             "observedAt":datetime.now(timezone.utc).isoformat().replace("+00:00","Z"),
             "browser":browser,
             "plan":str(plan_path.relative_to(tooling_root)),

@@ -13,7 +13,8 @@ from typing import Any
 SOURCE="4b9d085a5177b96cc31d4270b38d792a59872e37"
 SOURCE_MODEL="1.7.0-dev.47"
 ACCEPTANCE_MODEL="1.7.0-dev.39"
-STABLE_BASELINE="1.6.0"
+CURRENT_STABLE_BASELINE="1.7.0"
+HISTORICAL_SOURCE_STABLE_BASELINE="1.6.0"
 PRIOR_RUN_ID=37144536213
 PRIOR_ARTIFACT_ID=11281038583
 PRIOR_ARTIFACT_DIGEST="sha256:9b862d7da7d5aaf389507f9005edcdf141095593c8c4b30c26ff354e46da5018"
@@ -40,7 +41,7 @@ def verify_manifest(manifest: dict[str,Any], label: str) -> dict[str,dict[str,An
     require(manifest.get("sourceRevision")==SOURCE, f"{label} source revision mismatch")
     require(manifest.get("sourceModelVersion")==SOURCE_MODEL, f"{label} source model mismatch")
     require(manifest.get("acceptanceModelVersion")==ACCEPTANCE_MODEL, f"{label} acceptance model mismatch")
-    require(manifest.get("stableBaseline")==STABLE_BASELINE, f"{label} stable baseline mismatch")
+    require(manifest.get("stableBaseline")==HISTORICAL_SOURCE_STABLE_BASELINE, f"{label} historical source stable baseline mismatch")
     require(manifest.get("sceneCount")==SCENE_COUNT, f"{label} scene count mismatch")
     require(manifest.get("passed") is True, f"{label} manifest did not pass")
     authority=manifest.get("authority") or {}
@@ -65,6 +66,10 @@ def compare(prior: Path, fresh_a: Path, fresh_b: Path, output: Path, plan: Path)
     require(plan_data.get("sourceModelVersion")==SOURCE_MODEL, "regression plan source model drifted")
     require(plan_data.get("acceptanceModelVersion")==ACCEPTANCE_MODEL, "regression plan acceptance model drifted")
     require(plan_data.get("laneId")=="regression", "regression plan lane drifted")
+    require(plan_data.get("successorReleaseLine")=="1.7.1", "successor release line drifted")
+    require(plan_data.get("developmentIdentity")=="1.7.1-dev.1", "V1.7.1 development identity drifted")
+    require(plan_data.get("stableBaseline")==CURRENT_STABLE_BASELINE, "current stable baseline drifted")
+    require(plan_data.get("historicalSourceStableBaseline")==HISTORICAL_SOURCE_STABLE_BASELINE, "historical source stable baseline drifted")
     prior_meta=plan_data.get("priorRenderedEvidence") or {}
     require(prior_meta.get("runId")==PRIOR_RUN_ID, "prior run id drifted")
     require(prior_meta.get("artifactId")==PRIOR_ARTIFACT_ID, "prior artifact id drifted")
@@ -120,7 +125,8 @@ def compare(prior: Path, fresh_a: Path, fresh_b: Path, output: Path, plan: Path)
         "sourceRevision":SOURCE,
         "sourceModelVersion":SOURCE_MODEL,
         "acceptanceModelVersion":ACCEPTANCE_MODEL,
-        "stableBaseline":STABLE_BASELINE,
+        "stableBaseline":CURRENT_STABLE_BASELINE,
+        "historicalSourceStableBaseline":HISTORICAL_SOURCE_STABLE_BASELINE,
         "laneId":"regression",
         "toolingRevision":os.environ.get("GITHUB_SHA"),
         "workflowRunId":os.environ.get("GITHUB_RUN_ID"),
@@ -153,6 +159,8 @@ def compare(prior: Path, fresh_a: Path, fresh_b: Path, output: Path, plan: Path)
             "governedReviewAcceptanceClaimed":False,
             "section46CompleteClaimed":False,
             "v17AcceptanceClaimed":False,
+            "v171AcceptanceClaimed":False,
+            "section48Accepted":False,
             "anchorStatusGranted":False,
             "consumerEligibilityGranted":False,
             "deploymentAcceptanceGranted":False,
@@ -179,7 +187,8 @@ def compare(prior: Path, fresh_a: Path, fresh_b: Path, output: Path, plan: Path)
         "sourceRevision":SOURCE,
         "sourceModelVersion":SOURCE_MODEL,
         "acceptanceModelVersion":ACCEPTANCE_MODEL,
-        "stableBaseline":STABLE_BASELINE,
+        "stableBaseline":CURRENT_STABLE_BASELINE,
+        "historicalSourceStableBaseline":HISTORICAL_SOURCE_STABLE_BASELINE,
         "priorRunId":PRIOR_RUN_ID,
         "priorArtifactId":PRIOR_ARTIFACT_ID,
         "priorArtifactDigest":PRIOR_ARTIFACT_DIGEST,

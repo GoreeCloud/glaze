@@ -5,11 +5,11 @@
 **As of:** 2026-10-03  
 **Canonical lifecycle authority:** `registry/lifecycle.json`  
 **Canonical repository:** `GoreeCloud/glaze`  
-**Current Official Anchor:** GLAZE UI V1.6 / `1.6.0` (Stable compatibility channel)
+**Current Official Anchor:** Glaze V1.7 / `1.7.0` (bounded Stable compatibility channel); GLAZE UI V1.6 / `1.6.0` is the immediate rollback baseline.
 
-## V1.7 retained v1.2 rendered Regression qualification
+## V1.7.1 retained v1.2 rendered Regression qualification
 
-A dedicated regression-control path now binds the prior 22-scene exact-source rendered artifact to the frozen V1.7 source and requires two fresh exact-source captures. Semantic scene evidence must match the prior artifact, while decoded pixels from both fresh captures must match exactly with zero tolerance. Prior pixel drift remains informational and is not retroactively treated as a governed pixel baseline. This closes only the rendered group for `regression`; human, assistive-technology, physical-device/native, representative-performance, energy, governed review, Section 46, V1.7 acceptance, and Anchor authority remain separate.
+A dedicated V1.7.1 regression-control path binds the prior 22-scene semantic artifact to frozen historical source `4b9d085a5177b96cc31d4270b38d792a59872e37` and requires two fresh deterministic exact-source captures. The current successor stable baseline is `1.7.0`; the historical source-capture baseline remains `1.6.0`. Semantic scene evidence must match the prior artifact, while decoded pixels from both fresh captures must match exactly with zero tolerance after capture-only harness normalization. Prior pixel drift remains informational and is not retroactively treated as a governed pixel baseline. This work can satisfy only the rendered evidence group for retained `regression`; it does not establish V1.7.1 lifecycle, consumer, deployment, production, human, assistive-technology, physical-device/native, representative-performance, energy, privacy, security, governed-review, or Section 48 authority.
 
 
 ## V1.7 retained v1.2 rendered-browser qualification capture

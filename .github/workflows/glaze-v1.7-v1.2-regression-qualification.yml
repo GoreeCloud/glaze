@@ -1,4 +1,4 @@
-name: Glaze V1.7 Retained V1.2 Rendered Regression Qualification
+name: Glaze V1.7.1 Retained V1.2 Rendered Regression Qualification
 
 on:
   pull_request:
@@ -6,6 +6,8 @@ on:
       - 'contracts/v1.7/qualification.v1.2.regression.plan.json'
       - 'scripts/compare_glaze_v1_7_v1_2_rendered_regression.py'
       - 'scripts/validate_glaze_v1_7_v1_2_regression_qualification_plan.mjs'
+      - 'docs/v1.7/v1.2-regression-qualification-dev47.contract.json'
+      - 'docs/v1.7/V1_2_EXTERNAL_QUALIFICATION_COLLECTION.md'
       - '.github/workflows/glaze-v1.7-v1.2-regression-qualification.yml'
       - 'CHANGELOGS.md'
       - 'IMPLEMENTED-FEATURES.md'
@@ -47,6 +49,7 @@ jobs:
           node scripts/validate_glaze_v1_7_v1_2_regression_qualification_plan.mjs
           node scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs
           node scripts/validate_glaze_v1_7_acceptance_development.mjs
+          node scripts/verify_glaze_v1_7_stable.mjs
           node scripts/verify_glaze_v1_6_stable_qualification_review.mjs
       - run: git diff --exit-code -- .
 
@@ -120,13 +123,17 @@ jobs:
           assert result['semanticBaselineMatched'] is True
           assert result['freshVisualRepeatabilityMatched'] is True
           assert result['pixelTolerance']==0
+          assert result['stableBaseline']=='1.7.0'
+          assert result['historicalSourceStableBaseline']=='1.6.0'
           assert len(evidence)==1 and evidence[0]['id']=='regression'
           assert evidence[0]['evidenceType']=='rendered'
           assert evidence[0]['revision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'
           assert manifest['passed'] is True
           assert manifest['authority']['renderedRegressionOnly'] is True
           assert manifest['authority']['anchorStatusGranted'] is False
-          print('V1.7 retained rendered Regression evidence verification: PASS')
+          assert manifest['authority']['v171AcceptanceClaimed'] is False
+          assert manifest['authority']['section48Accepted'] is False
+          print('V1.7.1 retained rendered Regression evidence verification: PASS')
           PY
       - name: Preserve exact source and tooling cleanliness
         run: |

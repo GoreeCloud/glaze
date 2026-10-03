@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "planId": "goreecloud.glaze.v1.7.v1.2.rendered-regression-qualification",
+  "planId": "goreecloud.glaze.v1.7.1.v1.2.rendered-regression-qualification",
   "lifecycle": "DevelopmentQualification",
   "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
   "sourceModelVersion": "1.7.0-dev.47",
   "acceptanceModelVersion": "1.7.0-dev.39",
-  "stableBaseline": "1.6.0",
+  "stableBaseline": "1.7.0",
   "consumerEligible": false,
   "laneId": "regression",
   "priorRenderedEvidence": {
@@ -33,7 +33,10 @@
     "freshRasterNormalization": {
       "fontRenderHinting": "none",
       "lcdTextDisabled": true,
-      "purpose": "Eliminate one-value headless text-edge raster jitter while preserving zero-tolerance fresh decoded-pixel comparison."
+      "gpuDisabled": true,
+      "forceColorProfile": "srgb",
+      "harnessMetadataPillRadiusPixels": 0,
+      "purpose": "Remove runner-dependent raster/compositing jitter from capture-only harness chrome while preserving exact zero-tolerance comparison of fresh decoded pixels."
     }
   },
   "sceneCount": 22,
@@ -85,6 +88,11 @@
     "consumerEligibilityGranted": false,
     "deploymentAcceptanceGranted": false,
     "productionAcceptanceGranted": false,
-    "lifecyclePromotionAutomatic": false
-  }
+    "lifecyclePromotionAutomatic": false,
+    "v171AcceptanceClaimed": false,
+    "section48Accepted": false
+  },
+  "successorReleaseLine": "1.7.1",
+  "developmentIdentity": "1.7.1-dev.1",
+  "historicalSourceStableBaseline": "1.6.0"
 }
