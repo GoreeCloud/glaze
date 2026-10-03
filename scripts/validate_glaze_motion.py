@@ -108,19 +108,19 @@ def main():
     },'authority mapping changed')
 
     version=(ROOT/'VERSION').read_text().strip()
-    req(version=='1.6.0','current Official Anchor VERSION must remain 1.6.0')
+    req(version=='1.7.0','current bounded Anchor VERSION must remain 1.7.0')
     lifecycle=json.loads(LIFECYCLE.read_text())
-    req(lifecycle.get('currentOfficial')==version and lifecycle.get('currentStable')==version and lifecycle.get('currentLifecycle')=='anchor','Glaze Motion validation must preserve V1.6 Anchor authority')
-    req(lifecycle.get('activeCandidate') is None and lifecycle.get('plannedNext') is None,'Glaze Motion validation must not create lifecycle promotion state')
+    req(lifecycle.get('currentOfficial')==version and lifecycle.get('currentStable')==version and lifecycle.get('currentLifecycle')=='anchor','Glaze Motion validation must preserve current Glaze Anchor authority')
+    req(lifecycle.get('activeCandidate') is None and lifecycle.get('plannedNext') == '1.7.1','Glaze Motion validation must not create lifecycle promotion state')
 
     registry=json.loads(REGISTRY.read_text())
-    req(registry.get('officialBaseline')==version and registry.get('requiredConsumerVersion')==version,'consumer registry does not match current V1.6 Anchor')
+    req(registry.get('officialBaseline')==version and registry.get('requiredConsumerVersion')==version,'consumer registry does not match current Glaze Anchor')
 
     launcher=by_repo(registry.get('consumers',[]),CURRENT_LAUNCHER)
     keyboard=by_repo(registry.get('consumers',[]),KEYBOARD)
     for consumer,label in ((launcher,'Launcher'),(keyboard,'Keyboard')):
         req(consumer.get('status')=='adoption-required',f'{label} must remain adoption-required')
-        req(consumer.get('requiredTargetVersion')==version,f'{label} required target must remain V1.6')
+        req(consumer.get('requiredTargetVersion')==version,f'{label} required target must match current Glaze Anchor')
         req(consumer.get('targetVersion') is None and consumer.get('referenceRevision') is None and consumer.get('evidence') is None,f'{label} must not gain unverified current-target acceptance evidence')
         req(consumer.get('productionEligible') is False,f'{label} must remain production-ineligible in the central registry')
 

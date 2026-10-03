@@ -34,9 +34,9 @@ const requirements=[
   'energy-impact','human-motion-review'
 ];
 
-assert(read('VERSION').trim()==='1.6.0','V1.6 VERSION changed');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'dev.26 must not create lifecycle promotion state');
+assert(read('VERSION').trim()==='1.7.0','bounded V1.7 VERSION changed');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','dev.26 must not create lifecycle promotion state');
 
 for(const phrase of [
   '## 34. Glaze Motion Lifecycle',
@@ -100,12 +100,12 @@ for(const entry of glazeMotion.consumerEvidence.firstPartyEvaluations){
   assert(entry.productionDependency===false&&entry.nativeDeviceCertification===false&&entry.candidatePromotionSufficient===false,'historical Experimental evidence boundary weakened');
 }
 
-assert(registry.officialBaseline==='1.6.0'&&registry.requiredConsumerVersion==='1.6.0','current consumer registry not aligned to V1.6');
+assert(registry.officialBaseline==='1.7.0'&&registry.requiredConsumerVersion==='1.7.0','current consumer registry not aligned to bounded V1.7');
 for(const repo of ['GoreeCloud/launcher','GoreeCloud/goreecloud-keyboard']){
   const matches=registry.consumers.filter(entry=>entry.repository===repo);
   assert(matches.length===1,'current registry entry missing for '+repo);
   const entry=matches[0];
-  assert(entry.status==='adoption-required'&&entry.requiredTargetVersion==='1.6.0'&&entry.productionEligible===false,'current consumer acceptance overclaimed for '+repo);
+  assert(entry.status==='adoption-required'&&entry.requiredTargetVersion==='1.7.0'&&entry.productionEligible===false,'current consumer acceptance overclaimed for '+repo);
   assert(entry.targetVersion===null&&entry.referenceRevision===null&&entry.evidence===null,'unverified current-target evidence present for '+repo);
 }
 
@@ -115,7 +115,7 @@ assert(motionDoc.includes('retains Glaze Motion 0.6 as Experimental'),'current M
 
 assert(!motionValidator.includes("ACCEPTANCE=ROOT/'acceptance/glaze-motion-0.6-experimental.md'"),'current Motion validator still requires retired acceptance path');
 assert(!motionValidator.includes("version=='2.2.0'"),'current Motion validator still expects obsolete 2.2 VERSION');
-assert(motionValidator.includes("version=='1.6.0'"),'current Motion validator does not preserve V1.6 Anchor');
+assert(motionValidator.includes("version=='1.7.0'"),'current Motion validator does not preserve bounded V1.7 Anchor');
 assert(motionValidator.includes("CURRENT_LAUNCHER='GoreeCloud/launcher'"),'current Motion validator does not use current Launcher identity');
 
 for(const phrase of [
@@ -152,5 +152,5 @@ console.log('Promotion requirements satisfied: 0 / 10');
 console.log('Eligible Glaze Motion subset: none');
 console.log('Disposition: retain-experimental');
 console.log('Section 34 complete: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

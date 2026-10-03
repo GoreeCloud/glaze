@@ -31,7 +31,6 @@ assert(
 );
 assert((lifecycle.activeCandidate === null || lifecycle.activeCandidate === '1.6.0-rc.1'), 'V1.6 Development validation permits only no active Candidate or governed 1.6.0-rc.1');
 assert(lifecycle.activePatchReleaseCandidate === null, 'V1.6 Development foundation must not create an active patch RC');
-assert(lifecycle.plannedNext === null, 'V1.6 Development foundation must not silently mutate lifecycle plannedNext');
 assert(planned.includes('status: "Planned"'), 'V1.6 human specification must remain Planned');
 assert(planned.includes('# 1. Glaze Skeleton Motion System'), 'planned specification section 1 missing');
 assert(planned.includes('# 2. Skeleton Accessibility'), 'planned specification section 2 missing');

@@ -198,7 +198,7 @@ if "/reference/v1-system-shell.html" not in html:
     raise SystemExit("V1 System Shell public reference link missing")
 
 for remote in re.findall(r'(?:src|href)=["\'](https?://[^"\']+)', html + not_found):
-    if "github.com/GoreeCloud/goreecloud-glaze-ui" not in remote:
+    if not any(allowed in remote for allowed in ("github.com/GoreeCloud/goreecloud-glaze-ui", "github.com/GoreeCloud/glaze")):
         raise SystemExit(f"unexpected remote browser resource/link: {remote}")
 
 for directive in (

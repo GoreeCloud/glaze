@@ -1,3 +1,4 @@
+> **Current release authority — 2026-10-03:** Glaze V1.7 / `1.7.0` is the current bounded Stable/Anchor release. Its Stable runtime inherits accepted V1.6.0 behavior. Historical `1.7.0-dev.1` through `1.7.0-dev.47` entries below remain implementation provenance, but any behavior not in the bounded Stable runtime is now V1.7.1 Development scope until separately qualified.
 # Glaze — Implemented Features
 
 **Status:** Active implemented-feature control  

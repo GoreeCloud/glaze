@@ -52,10 +52,10 @@ const familyLabels=[
 const baseFamilies=['expand','move','enter','enter','reorder','move','move','focus','replace','replace'];
 const identityRelationships=new Set(['same-object-expansion','source-destination-continuity']);
 
-assert(stable==='1.6.0','dev.14 must preserve GLAZE UI V1.6 / 1.6.0 Stable');
+assert(stable==='1.7.0','dev.14 must coexist with bounded Glaze V1.7 / 1.7.0 Stable');
 assert(lifecycle.currentOfficial===stable&&lifecycle.currentStable===stable,'Stable authority mismatch');
 assert(lifecycle.activeCandidate===null&&lifecycle.activePatchReleaseCandidate===null,'dev.14 must not create Candidate state');
-assert(lifecycle.plannedNext===null,'dev.14 must not mutate lifecycle plannedNext');
+assert(lifecycle.plannedNext==='1.7.1','dev.14 must not mutate lifecycle plannedNext');
 
 assert(spec.includes('## 22. Glaze Signature Motion System'),'V1.7 v1.2 Section 22 missing');
 for(const phrase of [

@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schemaVersion": 1,
-  "updated": "2026-10-01",
-  "officialProductLabel": "GLAZE UI V1.6",
-  "currentOfficial": "1.6.0",
-  "currentStable": "1.6.0",
+  "updated": "2026-10-03",
+  "officialProductLabel": "Glaze V1.7",
+  "currentOfficial": "1.7.0",
+  "currentStable": "1.7.0",
   "activeCandidate": null,
-  "plannedNext": null,
+  "plannedNext": "1.7.1",
   "activePatchReleaseCandidate": null,
   "resetState": "stable",
   "releases": [
@@ -186,6 +186,24 @@
       "artifactSha256": "687268b5eb76917eccae9d935ffa1bead333d5dee50b6098e996a3f44cee50af",
       "note": "Current Official Anchor shared Glaze UI release. The retained status=stable and currentStable fields are compatibility/release-channel vocabulary preserved for existing consumer tooling and historical evidence; canonical GoreeCloud lifecycle is Anchor. Exact security-accepted source/artifact publication and post-publication byte readback are recorded; downstream consumers remain separately acceptance-gated.",
       "lifecycle": "anchor"
+    },
+    {
+      "version": "1.7.0",
+      "label": "Glaze V1.7",
+      "status": "stable",
+      "lifecycle": "anchor",
+      "consumerEligible": true,
+      "stableBaseline": "1.6.0",
+      "contract": "GLAZE_V1_7.md",
+      "qualification": "contracts/v1.7/stable-scope.json",
+      "acceptance": "acceptance/v1.7-stable.md",
+      "runtimeEntrypoint": "js/glaze-v1.7.0.mjs",
+      "sourceQualificationAnchor": "7c4ded83d7a8725165bb6a55dfb175667cc9589e",
+      "inheritedAcceptedRuntime": "js/glaze-v1.6.0.mjs",
+      "retainedDevelopmentSourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+      "deferredFollowUp": "GLAZE_V1_7_1_HARDENING.md",
+      "publicationStatus": "separate-governed-transition",
+      "note": "Current Official Anchor / Stable-compatibility shared Glaze release. V1.7.0 intentionally inherits the accepted V1.6.0 runtime behavior and excludes retained dev.47/Section 48 Development behavior from its Stable runtime. All unfinished or unverified V1.7 Development obligations are transferred to V1.7.1; downstream consumers remain separately acceptance-gated."
     }
   ],
   "capabilities": {
@@ -207,9 +225,9 @@
     },
     "runtime-entrypoint": {
       "status": "stable",
-      "since": "1.6.0",
-      "implementation": "js/glaze-v1.6.0.mjs",
-      "note": "V1.6.0 is the current Stable runtime entrypoint; V1.5.1 remains the known-good rollback runtime."
+      "since": "1.7.0",
+      "implementation": "js/glaze-v1.7.0.mjs",
+      "note": "Glaze V1.7.0 is the current bounded Stable runtime entrypoint and inherits accepted V1.6.0 behavior. V1.6.0 remains the immediate known-good rollback runtime; retained dev.47 behavior continues only through V1.7.1 Development."
     },
     "adaptive-dynamic-color": {
       "status": "stable-inherited",
@@ -470,7 +488,7 @@
   },
   "lifecycleVocabulary": "goreecloud-release-lifecycle/v0.7",
   "currentLifecycle": "anchor",
-  "lifecycleMigrationUpdated": "2026-09-25",
+  "lifecycleMigrationUpdated": "2026-10-03",
   "legacyLifecycleCompatibilityFields": [
     "currentStable",
     "resetState",
@@ -480,11 +498,11 @@
   "formalProductIdentity": "Glaze — GoreeCloud Design & Experience System",
   "formerProductName": "Glaze UI",
   "identityTransition": {
-    "status": "migration-active",
+    "status": "migration-complete",
     "effectiveReleaseLine": "1.7",
     "finalFormerIdentityReleaseLine": "1.6.x",
     "canonicalRepository": "GoreeCloud/glaze",
     "historicalReleaseLabelsImmutable": true,
-    "note": "Product identity changes from Glaze UI to Glaze beginning with the V1.7 line. GLAZE UI V1.6 / 1.6.0 and earlier release labels remain historical evidence and are not retroactively relabeled."
+    "note": "The Glaze identity is current beginning with V1.7 / 1.7.0. GLAZE UI V1.6 / 1.6.0 and earlier labels remain immutable historical evidence."
   }
 }

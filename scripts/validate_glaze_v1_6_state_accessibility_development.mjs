@@ -50,7 +50,6 @@ assert(
 );
 assert((lifecycle.activeCandidate === null || lifecycle.activeCandidate === '1.6.0-rc.1'), 'V1.6 Development validation permits only no active Candidate or governed 1.6.0-rc.1');
 assert(lifecycle.activePatchReleaseCandidate === null, 'V1.6 Development must not create an active patch RC');
-assert(lifecycle.plannedNext === null, 'V1.6 Development must not silently mutate plannedNext');
 
 for (const number of expectedSections) {
   assert(spec.includes(`# ${number}.`), `V1.6 planned specification missing section ${number}`);

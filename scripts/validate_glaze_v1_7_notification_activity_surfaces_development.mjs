@@ -32,11 +32,11 @@ const components = ['GlzNotificationSurface','GlzActivityItem','GlzActivityGroup
 const kinds = ['informational-activity','background-work','required-attention','warning','critical','user-requested-progress','recoverable-failure','security-state','privacy-state'];
 const profiles = ['mobile','tablet','desktop','foldable','tv','wearable'];
 
-assert(stable === '1.6.0', 'V1.7 dev.7 must preserve GLAZE UI V1.6 / 1.6.0 as current Stable');
+assert(stable === '1.7.0', 'V1.7 dev.7 must coexist with bounded Glaze V1.7 / 1.7.0 as current Stable');
 assert(lifecycle.currentOfficial === stable && lifecycle.currentStable === stable, 'VERSION/current Stable authority must agree');
 assert(lifecycle.activeCandidate === null, 'V1.7 dev.7 must not create an active Candidate');
 assert(lifecycle.activePatchReleaseCandidate === null, 'V1.7 dev.7 must not create a patch RC');
-assert(lifecycle.plannedNext === null, 'V1.7 dev.7 must not mutate lifecycle plannedNext');
+assert(lifecycle.plannedNext==='1.7.1', 'V1.7 dev.7 must not mutate lifecycle plannedNext');
 
 assert(spec.includes('## 36. Notification and Activity Surfaces'), 'V1.7 v1.2 specification missing Notification and Activity Surfaces section');
 for (const phrase of ['GlzNotificationSurface','GlzActivityItem','GlzActivityGroup','GlzStatusFeed','GlzBackgroundTask','GlzProgressSurface']) {

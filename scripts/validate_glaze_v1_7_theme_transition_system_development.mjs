@@ -30,9 +30,9 @@ const properties=[
   'icon-tint','selection-color','decorative-color','appearance-mode'
 ];
 
-assert(read('VERSION').trim()==='1.6.0','V1.6 VERSION changed');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'dev.20 must not create lifecycle promotion state');
+assert(read('VERSION').trim()==='1.7.0','bounded V1.7 VERSION changed');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','dev.20 must not create lifecycle promotion state');
 
 for(const phrase of [
   '## 28. Theme Transition System','Canvas color','Surface color','Accent families',
@@ -202,5 +202,5 @@ console.log('Governed theme properties: 8');
 console.log('Applied only after authoritative committed result: true');
 console.log('Section 28 complete: false');
 console.log('Rendered/native/performance/fatigue acceptance: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

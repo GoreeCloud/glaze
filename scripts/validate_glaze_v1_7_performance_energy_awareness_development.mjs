@@ -124,9 +124,9 @@ assert(glazeV17Development.planV12FoundationSections.includes(45),'aggregate mis
 assert.equal(glazeV17Development.performanceEnergyAwarenessFoundation,'js/glaze-v1.7-performance-energy-awareness.dev.mjs');
 assert.equal(glazeV17Development.providerTruthManufactured,false);
 
-assert.equal(version,'1.6.0','VERSION must remain V1.6 Anchor');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'source implementation must not create lifecycle candidate');
+assert.equal(version,'1.7.0','VERSION must identify bounded V1.7 Stable');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','bounded V1.7 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','retained Development source must remain assigned to V1.7.1 without creating an active candidate');
 
 assert(planned.includes('1.7.0-dev.38')&&planned.includes('Performance and Energy Awareness'),'planned feature control missing dev.38');
 assert(implemented.includes('Performance and Energy Awareness')&&implemented.includes('1.7.0-dev.38'),'implemented feature control missing dev.38');
@@ -147,5 +147,5 @@ console.log('Presentation domains: 6');
 console.log('Optional visual complexity may degrade: true');
 console.log('Forced frames for optional visuals allowed: false');
 console.log('Section 45 complete: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; dev.38 work continues under V1.7.1');
 console.log('Consumer eligible: false');

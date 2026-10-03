@@ -211,12 +211,8 @@ def main() -> int:
     official_product_label = lifecycle.get("officialProductLabel")
     if not isinstance(official_product_label, str) or not official_product_label:
         fail("officialProductLabel must identify the live current Stable product family")
-    stable_parts = current_stable.split(".")
-    if len(stable_parts) < 2:
-        fail("currentStable must use a major.minor release family")
-    stable_family = ".".join(stable_parts[:2])
-    if not official_product_label.startswith(f"GLAZE UI V{stable_family}"):
-        fail("officialProductLabel must identify the live current Stable release family")
+    if official_product_label != stable_label:
+        fail("officialProductLabel must match the live current Stable release label")
 
     retained_v12 = release_for(lifecycle, "1.2.0")
     if retained_v12.get("status") != "stable" or retained_v12.get("consumerEligible") is not True:

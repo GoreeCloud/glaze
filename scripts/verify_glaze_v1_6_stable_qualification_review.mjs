@@ -14,14 +14,21 @@ const RELEASE_SOURCE = 'a7180679ea851389e0f3004515f9a25f420e716d';
 const RELEASE_TREE = '9ff0bf7a5f9d64f109d99bf4b76b81bd2a162268';
 const PUBLICATION_CONTROL = '7e8b537b9d1a123bc3e92679774a4d9cc704e03b';
 
-assert.equal(read('VERSION').trim(), VERSION);
+const currentVersion = read('VERSION').trim();
+assert.match(currentVersion, /^\d+\.\d+\.\d+$/);
 
 const lifecycle = json('registry/lifecycle.json');
-assert.equal(lifecycle.currentOfficial, VERSION);
-assert.equal(lifecycle.currentStable, VERSION);
+assert.equal(lifecycle.currentOfficial, currentVersion);
+assert.equal(lifecycle.currentStable, currentVersion);
 assert.equal(lifecycle.currentLifecycle, 'anchor');
 assert.equal(lifecycle.lifecycleVocabulary, 'goreecloud-release-lifecycle/v0.7');
 assert.equal(lifecycle.activeCandidate, null);
+const currentRelease = lifecycle.releases.find(item => item.version === currentVersion);
+assert.ok(currentRelease, 'missing current Stable/Anchor lifecycle record');
+assert.equal(currentRelease.status, 'stable');
+assert.equal(currentRelease.lifecycle, 'anchor');
+assert.equal(currentRelease.consumerEligible, true);
+assert.equal(lifecycle.officialProductLabel, currentRelease.label);
 
 const stable = lifecycle.releases.find(item => item.version === VERSION);
 assert.ok(stable);
@@ -174,9 +181,10 @@ for (const token of [
 ]) assert.ok(runtime.includes(token), `Stable runtime missing token: ${token}`);
 
 const consumers = json('consumers/registry.json');
-assert.equal(consumers.officialBaseline, VERSION);
-assert.equal(consumers.requiredConsumerVersion, VERSION);
-assert.ok(consumers.consumers.every(item => item.requiredTargetVersion === VERSION));
+assert.equal(consumers.officialBaseline, currentVersion);
+assert.equal(consumers.requiredConsumerVersion, currentVersion);
+assert.equal(consumers.officialProductLabel, lifecycle.officialProductLabel);
+assert.ok(consumers.consumers.every(item => item.requiredTargetVersion === currentVersion));
 assert.ok(consumers.consumers.every(item => item.productionEligible === false));
 
 const manifest = read('goreecloud.platform.yaml');
@@ -184,12 +192,13 @@ assert.ok(manifest.includes('schema_version: "2.0"'));
 assert.ok(manifest.includes('lifecycle: anchor'));
 assert.ok(manifest.includes('qualification_state: passed'));
 assert.ok(manifest.includes('goreecloud-platform-contract==2.0'));
-assert.ok(manifest.includes('version: 1.6.0'));
+assert.ok(manifest.includes(`version: ${currentVersion}`));
 assert.ok(manifest.includes('status: conformant'));
 assert.ok(manifest.includes('result: published'));
-assert.ok(manifest.includes('glaze-ui-runtime==1.6.0'));
+assert.ok(manifest.includes('id: v1.6.0'));
+assert.ok(manifest.includes('version: 1.6.0'));
 
-console.log('GLAZE UI V1.6.0 Stable promotion verification: PASS');
+console.log('GLAZE UI V1.6.0 retained Stable/Anchor integrity: PASS');
 console.log(`Qualification: 24/24; release source: ${RELEASE_SOURCE}; rollback: ${ROLLBACK}`);
 console.log('Final security, controlled publication, and post-publication byte readback: PASS');
 console.log('Downstream consumer production acceptance automatic: false');

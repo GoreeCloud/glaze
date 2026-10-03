@@ -2,9 +2,9 @@ schema_version: "2.0"
 
 component:
   type: shared-library
-  id: goreecloud-glaze-ui
-  product_name: GLAZE UI
-  repository: GoreeCloud/glaze-ui
+  id: goreecloud-glaze
+  product_name: Glaze
+  repository: GoreeCloud/glaze
 
 lifecycle: anchor
 lifecycle_metadata:
@@ -13,28 +13,28 @@ lifecycle_metadata:
   qualification_state: passed
   next_gate: sunset
   candidate_identity:
-    source_revision: a7180679ea851389e0f3004515f9a25f420e716d
-    review_identity: "1.6.0-rc.1 / acceptance/v1.6-stable-qualification-review.json"
-    build_identity: "GitHub Actions run 35447623700"
-    artifact_name: glaze-ui-v1.6.0-source-runtime.tar.gz
-    artifact_digest: "sha256:687268b5eb76917eccae9d935ffa1bead333d5dee50b6098e996a3f44cee50af"
+    source_revision: 7c4ded83d7a8725165bb6a55dfb175667cc9589e
+    review_identity: "1.7.0 bounded Stable / acceptance/v1.7-stable.md"
+    build_identity: "GoreeCloud/glaze PR #394 bounded Stable authority"
+    artifact_name: null
+    artifact_digest: null
     container_digest: null
-    package_identity: "GitHub Release 392095913 / tag v1.6.0"
-    sbom_identity: "cyclonedx-1.5.json sha256:3ffbb8bfe372d20642cd58f34fc0faaec2a74657d90e10742b75c5adf52dde82"
+    package_identity: "No separate V1.7.0 GitHub Release publication claimed; V1.6.0 remains published rollback provenance"
+    sbom_identity: "Inherited V1.6.0 runtime dependency boundary; no new dependency surface in bounded V1.7.0 wrapper"
     schema_migration_identity: null
     configuration_boundary: "source-distributed shared-library publication boundary"
-    dependency_state: "selected 206-component dependency graph accepted with 0 OSV advisories"
-    previous_known_good: "1.5.1"
-    rollback_target: "glaze-ui==1.5.1"
-  last_transition: "2026-09-19T14:20:12Z"
+    dependency_state: "Bounded V1.7.0 adds no runtime dependency surface; inherited V1.6.0 dependency/security evidence remains provenance"
+    previous_known_good: "1.6.0"
+    rollback_target: "glaze==1.6.0"
+  last_transition: "2026-10-03T19:34:04Z"
   evidence:
-    - acceptance/v1.6-anchor-reclassification-review.json
+    - acceptance/v1.7-stable.md
+    - contracts/v1.7/stable-scope.json
     - acceptance/v1.6-stable.json
     - acceptance/v1.6-stable-qualification-review.json
     - acceptance/v1.6-final-security-acceptance.json
-    - acceptance/v1.6-production-applicability.json
     - acceptance/v1.6-artifact-provenance-plan.json
-version: 1.6.0
+version: 1.7.0
 
 supported_platforms:
   - cross-platform
@@ -70,19 +70,16 @@ platform_systems:
     evidence:
       - acceptance/v1.6-production-readiness-review.json
       - registry/lifecycle.json
-    notes: The V1.6 Anchor release is stateless and owns no user data, durable application state, backup jobs, restore workflows, or preservation storage. Release rollback remains bound to known-good Glaze UI 1.5.1.
+    notes: The V1.6 Anchor release is stateless and owns no user data, durable application state, backup jobs, restore workflows, or preservation storage. Release rollback remains bound to known-good GLAZE UI V1.6 / 1.6.0.
   glaze_ui:
     result: applicable-conformant
-    version: 1.6.0
+    version: 1.7.0
     evidence:
-      - acceptance/v1.6-qualification-review.json
-      - acceptance/v1.6-machine-evidence.json
-      - acceptance/v1.6-rendered-evidence.json
-      - acceptance/v1.6-regression-evidence.json
-      - acceptance/v1.6-human-evidence.json
-      - acceptance/v1.6-assistive-technology-evidence.json
-      - acceptance/v1.6-performance-evidence.json
-    notes: Glaze UI is the self-authority for this shared design-system release. The frozen V1.6 qualification matrix is 24 verified / 0 unverified / 0 not applicable. Platform Contract 2.0 recognizes this exact 1.6.0 shared-library release as canonical Anchor; the retained currentStable field continues to identify the consumer release channel for compatibility, and CI validates the exact Contract 2.0 evaluator revision.
+      - acceptance/v1.7-stable.md
+      - contracts/v1.7/stable-scope.json
+      - acceptance/v1.6-stable-qualification-review.json
+      - acceptance/v1.6-final-security-acceptance.json
+    notes: Glaze is self-authority for this shared design-system release. V1.7.0 is a bounded Stable/Anchor wrapper over the accepted V1.6.0 runtime and excludes retained dev.47 and Section 48 Development behavior. V1.6 qualification/security evidence remains exact historical provenance for the inherited runtime; V1.7.1 owns all excluded unverified behavior.
   mesh:
     result: not-applicable-justified
     version: null
@@ -127,7 +124,7 @@ continuity:
   restore:
     required: false
     requirements:
-      - Release rollback uses the known-good Glaze UI 1.5.1 source/runtime baseline recorded in registry/lifecycle.json.
+      - Release rollback uses the known-good GLAZE UI V1.6 / 1.6.0 source/runtime baseline recorded in registry/lifecycle.json.
   export:
     required: false
     requirements:
@@ -141,16 +138,72 @@ external_dependencies: []
 
 compatibility:
   platform_contract: "2.0"
-  glaze_ui_required: 1.6.0
+  glaze_ui_required: 1.7.0
   requires:
     - goreecloud-platform-contract==2.0
-    - glaze-ui-stable-baseline==1.6.0
+    - glaze-stable-baseline==1.7.0
   provides:
-    - glaze-ui-runtime==1.6.0
-    - glaze-ui-contract==1.6.0
+    - glaze-runtime==1.7.0
+    - glaze-contract==1.7.0
 
 evidence:
   acceptance_tests:
+    - id: v1.7-bounded-stable
+      category: glaze-ui
+      path: acceptance/v1.7-stable.md
+      revision: 7c4ded83d7a8725165bb6a55dfb175667cc9589e
+      result: passed
+      observed_at: "2026-10-03T19:34:04Z"
+      notes: V1.7.0 Stable is bounded to the already accepted V1.6.0 runtime; retained dev.47 and Section 48 behavior is excluded and moved to V1.7.1.
+    - id: v1.7-accessibility-continuity
+      category: accessibility
+      path: contracts/v1.7/stable-scope.json
+      revision: 7c4ded83d7a8725165bb6a55dfb175667cc9589e
+      result: passed
+      observed_at: "2026-10-03T19:34:04Z"
+      notes: No new V1.7.0 runtime accessibility behavior is introduced; accepted V1.6.0 runtime behavior is inherited unchanged.
+    - id: v1.7-supported-platform-continuity
+      category: supported-platform
+      path: contracts/v1.7/stable-scope.json
+      revision: 7c4ded83d7a8725165bb6a55dfb175667cc9589e
+      result: passed
+      observed_at: "2026-10-03T19:34:04Z"
+      notes: V1.7.0 makes no new native/device claims and inherits the accepted V1.6.0 runtime boundary.
+    - id: v1.7-security-continuity
+      category: security
+      path: contracts/v1.7/stable-scope.json
+      revision: 7c4ded83d7a8725165bb6a55dfb175667cc9589e
+      result: passed
+      observed_at: "2026-10-03T19:34:04Z"
+      notes: Unverified dev.47 security behavior is excluded from Stable; the bounded wrapper adds no new dependency or executable Development surface.
+    - id: v1.7-privacy-continuity
+      category: privacy
+      path: contracts/v1.7/stable-scope.json
+      revision: 7c4ded83d7a8725165bb6a55dfb175667cc9589e
+      result: passed
+      observed_at: "2026-10-03T19:34:04Z"
+      notes: Unverified dev.47 privacy behavior is excluded from Stable; accepted V1.6.0 presentation-only privacy boundaries are inherited.
+    - id: v1.7-documentation
+      category: documentation
+      path: GLAZE_V1_7.md
+      revision: 7c4ded83d7a8725165bb6a55dfb175667cc9589e
+      result: passed
+      observed_at: "2026-10-03T19:34:04Z"
+      notes: The bounded V1.7 contract and V1.7.1 transfer boundary are repository-controlled.
+    - id: v1.7-integration-boundary
+      category: integration
+      path: contracts/v1.7/stable-scope.json
+      revision: 7c4ded83d7a8725165bb6a55dfb175667cc9589e
+      result: passed
+      observed_at: "2026-10-03T19:34:04Z"
+      notes: Downstream consumer acceptance remains separate and no provider authority is expanded.
+    - id: v1.7-release-decision
+      category: release
+      path: acceptance/v1.7-stable.md
+      revision: 7c4ded83d7a8725165bb6a55dfb175667cc9589e
+      result: passed
+      observed_at: "2026-10-03T19:34:04Z"
+      notes: Repository Stable/Anchor scope is accepted; separate V1.7.0 GitHub Release publication is not claimed.
     - id: v1.6-glaze-ui-qualification
       category: glaze-ui
       path: acceptance/v1.6-qualification-review.json
@@ -208,6 +261,14 @@ evidence:
       observed_at: "2026-09-19T14:20:12Z"
       notes: Controlled v1.6.0 publication and post-publication byte readback match the security-accepted artifact.
   release:
+    - id: v1.7.0
+      version: 1.7.0
+      revision: 7c4ded83d7a8725165bb6a55dfb175667cc9589e
+      path: acceptance/v1.7-stable.md
+      result: unverified
+      observed_at: "2026-10-03T19:34:04Z"
+      artifact_digest: null
+      notes: Bounded Stable/Anchor repository release decision; no separate v1.7.0 GitHub Release publication is claimed by this record.
     - id: v1.6-rc.1
       version: 1.6.0-rc.1
       revision: 3f070f6fc01bc7904e3cd8c20851db5a0c40d539
@@ -227,16 +288,17 @@ evidence:
 
 conformance:
   status: conformant
-  validated_at: "2026-09-19T14:20:12Z"
+  validated_at: "2026-10-03T19:34:04Z"
   evidence:
-    - acceptance/v1.6-anchor-reclassification-review.json
+    - acceptance/v1.7-stable.md
+    - contracts/v1.7/stable-scope.json
     - acceptance/v1.6-stable.json
     - acceptance/v1.6-stable-qualification-review.json
     - acceptance/v1.6-final-security-acceptance.json
     - acceptance/v1.6-artifact-provenance-plan.json
   blockers: []
 
-# This manifest represents the governed GLAZE UI V1.6.0 Anchor shared-library authority.
-# Platform Contract 2.0 records the canonical Anchor lifecycle while retaining legacy Stable evidence as provenance.
+# This manifest represents the governed bounded Glaze V1.7 / 1.7.0 Anchor shared-library authority.
+# Platform Contract 2.0 records the canonical Anchor lifecycle while retaining V1.6 qualification/security/publication evidence as inherited-runtime and rollback provenance.
 # The currentStable field and Stable-named evidence remain compatibility/history records and do not replace canonical lifecycle.
 # Downstream consumer migration, repository-local acceptance, deployment, and production acceptance remain separate obligations.

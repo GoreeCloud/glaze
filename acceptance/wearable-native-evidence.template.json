@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "status": "template-only",
-  "glazeUiStableBaseline": "1.6.0",
+  "glazeUiStableBaseline": "1.7.0",
   "candidate": "wearable-development-candidate",
-  "evidenceBoundary": "Template only. This record does not constitute wearable acceptance until populated with current exact-revision native evidence and reviewed for the claimed product/target. V1.6 Anchor authority is not expanded by this template.",
+  "evidenceBoundary": "Template only. This record does not constitute wearable acceptance until populated with current exact-revision native evidence and reviewed for the claimed product/target. Bounded Glaze V1.7 / 1.7.0 Stable/Anchor authority is not expanded by this template; retained wearable qualification belongs to V1.7.1 Development.",
   "targets": {
     "wearOs": {
       "platform": "Wear OS",

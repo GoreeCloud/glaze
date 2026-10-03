@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 10
     env:
       EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-      PLATFORM_CONTRACT_SHA: 32cfe6395f6e4bc4872a99e8d0c666ea0b1ed7b8
+      PLATFORM_CONTRACT_SHA: 4e5904aa10be988dbd3e19b417b6fca216b0528d
     steps:
       - name: Check out exact Glaze UI revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -76,22 +76,22 @@ jobs:
           result = json.loads(Path("goreecloud.conformance-result.json").read_text(encoding="utf-8"))
 
           assert manifest["component"]["type"] == "shared-library"
-          assert manifest["component"]["repository"] == "GoreeCloud/glaze-ui"
+          assert manifest["component"]["repository"] == "GoreeCloud/glaze"
           assert manifest["schema_version"] == "2.0"
           assert manifest["lifecycle"] == "anchor"
           assert manifest["lifecycle_metadata"]["qualification_state"] == "passed"
           assert manifest["lifecycle_metadata"]["next_gate"] == "sunset"
-          assert "acceptance/v1.6-anchor-reclassification-review.json" in manifest["lifecycle_metadata"]["evidence"]
-          assert manifest["version"] == "1.6.0"
+          assert "acceptance/v1.7-stable.md" in manifest["lifecycle_metadata"]["evidence"]
+          assert manifest["version"] == "1.7.0"
           assert manifest["conformance"]["status"] == "conformant"
           assert manifest["conformance"]["validated_at"] is not None
           assert manifest["conformance"]["blockers"] == []
           assert manifest["external_dependencies"] == []
-          assert manifest["compatibility"]["glaze_ui_required"] == "1.6.0"
+          assert manifest["compatibility"]["glaze_ui_required"] == "1.7.0"
           assert manifest["platform_systems"]["glaze_ui"]["result"] == "applicable-conformant"
-          assert manifest["platform_systems"]["glaze_ui"]["version"] == "1.6.0"
-          assert lifecycle["currentStable"] == "1.6.0"
-          assert lifecycle["currentOfficial"] == "1.6.0"
+          assert manifest["platform_systems"]["glaze_ui"]["version"] == "1.7.0"
+          assert lifecycle["currentStable"] == "1.7.0"
+          assert lifecycle["currentOfficial"] == "1.7.0"
           assert lifecycle["currentLifecycle"] == "anchor"
           assert lifecycle["lifecycleVocabulary"] == "goreecloud-release-lifecycle/v0.7"
           assert lifecycle["activeCandidate"] is None
@@ -134,9 +134,12 @@ jobs:
           }
           assert required <= categories
           assert any(entry["result"] == "published" and entry["version"] == "1.6.0" for entry in manifest["evidence"]["release"])
+          current_release = [entry for entry in manifest["evidence"]["release"] if entry["version"] == "1.7.0"]
+          assert len(current_release) == 1 and current_release[0]["result"] == "unverified"
+          assert current_release[0]["artifact_digest"] is None
 
-          print("platform-contract: Glaze UI shared-library Anchor current-authority boundary validated")
-          print("platform-contract: Anchor eligibility true under Contract 2.0 current Glaze target 1.6.0")
+          print("platform-contract: bounded Glaze V1.7 shared-library Anchor current-authority boundary validated")
+          print("platform-contract: Anchor eligibility true under Contract 2.0 current Glaze target 1.7.0; V1.7 GitHub Release publication remains separately unclaimed")
           PY
 
       - name: Verify repository action integrity

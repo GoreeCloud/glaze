@@ -1,11 +1,11 @@
-# GLAZE UI V1.6 Adoption
+# Glaze V1.7 Adoption
 
-The current Glaze UI adoption target is **GLAZE UI V1.6** (`1.6.0`). GLAZE UI `1.5.1` is the immediate known-good Stable rollback baseline. Earlier Stable releases remain historical provenance and must not be presented as the current adoption target.
+The current Glaze adoption target is **Glaze V1.7** (`1.7.0`). GLAZE UI V1.6 / `1.6.0` is the immediate known-good Stable rollback baseline. Earlier Stable releases remain historical provenance and must not be presented as the current adoption target.
 
-Adoption requires repository-local implementation evidence, exact-revision validation, rendered or native acceptance as applicable, accessibility acceptance, supported-form-factor validation, applicable performance evidence, and product-specific production approval. Importing tokens, copying styles, changing a version label, or relying on Glaze UI's own Stable lifecycle does not establish downstream conformance.
+Fresh repository-local V1.7 adoption and acceptance evidence is required for every applicable consumer. Adoption requires exact-revision implementation evidence, rendered or native acceptance as applicable, accessibility acceptance, supported-form-factor validation, applicable performance evidence, privacy/security authority-boundary validation, rollback evidence, and product-specific production approval. Importing tokens, copying styles, changing a version label, or relying on Glaze's own Stable/Anchor lifecycle does not establish downstream conformance.
 
-Consumers remain fail-closed in `consumers/registry.json` until V1.6.0-specific evidence is recorded for the exact consumer revision and applicable target environment. The shared V1.6.0 Stable promotion does not grant downstream conformance automatically.
+V1.7.0 is a bounded release whose public runtime inherits the accepted V1.6.0 behavior. Retained `1.7.0-dev.47` and Section 48 behavior is not part of V1.7.0 consumer conformance; it continues as V1.7.1 Development scope.
 
-V1.6.0 is backed by the complete 24-lane shared qualification matrix, final Stable security acceptance, protected-branch enforcement, deterministic artifact/provenance evidence, controlled `v1.6.0` publication, and post-publication byte readback. Those shared passes remain bounded to their recorded scopes. Consumers retain their own applicable platform, accessibility, privacy, security, performance, deployment, and production evidence obligations.
+Consumers remain fail-closed in `consumers/registry.json` until V1.7.0-specific evidence is recorded for the exact consumer revision and target environment. Prior V1.6.0 consumer evidence remains historical provenance only.
 
-Historical V1.5.1 and earlier qualification remains valid provenance for the exact versions and scopes accepted. It does not replace V1.6.0 consumer migration or repository-local product acceptance.
+Historical V1.6.0 qualification and publication evidence remains valid for the exact inherited runtime and recorded release. It does not replace fresh V1.7.0 consumer migration or repository-local product acceptance.

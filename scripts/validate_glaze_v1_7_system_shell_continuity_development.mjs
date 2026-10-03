@@ -53,11 +53,11 @@ const transitionKinds = [
 ];
 const profiles = ['mobile','tablet','desktop','foldable','tv','wearable'];
 
-assert(stable === '1.6.0', 'V1.7 dev.6 must preserve GLAZE UI V1.6 / 1.6.0 as current Stable');
+assert(stable === '1.7.0', 'V1.7 dev.6 must coexist with bounded Glaze V1.7 / 1.7.0 as current Stable');
 assert(lifecycle.currentOfficial === stable && lifecycle.currentStable === stable, 'VERSION/current Stable authority must agree');
 assert(lifecycle.activeCandidate === null, 'V1.7 dev.6 must not create an active Candidate');
 assert(lifecycle.activePatchReleaseCandidate === null, 'V1.7 dev.6 must not create a patch RC');
-assert(lifecycle.plannedNext === null, 'V1.7 dev.6 must not mutate lifecycle plannedNext');
+assert(lifecycle.plannedNext==='1.7.1', 'V1.7 dev.6 must not mutate lifecycle plannedNext');
 
 assert(spec.includes('## 35. System Shell Continuity'), 'V1.7 v1.2 specification missing System Shell Continuity section');
 for (const phrase of [

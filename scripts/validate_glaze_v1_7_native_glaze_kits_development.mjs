@@ -29,11 +29,11 @@ const changelog=read('CHANGELOGS.md');
 const platforms=['android-compose','apple-swiftui','web','linux-native'];
 const roles=['surface','action','navigation','focus','input','state','progress','recovery','privacy','security'];
 
-assert(stable==='1.6.0','V1.7 dev.9 must preserve GLAZE UI V1.6 / 1.6.0 as current Stable');
+assert(stable==='1.7.0','V1.7 dev.9 must coexist with bounded Glaze V1.7 / 1.7.0 as current Stable');
 assert(lifecycle.currentOfficial===stable && lifecycle.currentStable===stable,'VERSION/current Stable authority must agree');
 assert(lifecycle.activeCandidate===null,'V1.7 dev.9 must not create an active Candidate');
 assert(lifecycle.activePatchReleaseCandidate===null,'V1.7 dev.9 must not create a patch RC');
-assert(lifecycle.plannedNext===null,'V1.7 dev.9 must not mutate lifecycle plannedNext');
+assert(lifecycle.plannedNext==='1.7.1','V1.7 dev.9 must not mutate lifecycle plannedNext');
 
 assert(spec.includes('## 37. Native Glaze Kits'),'V1.7 v1.2 specification missing Native Glaze Kits Section 37');
 assert(spec.includes('dev.8–dev.13 use the prior v1.1 35-section numbering'),'v1.2 plan must preserve v1.1 implementation-numbering provenance');

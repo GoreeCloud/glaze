@@ -1,8 +1,8 @@
-# GLAZE UI V1.6 — Features
+# Glaze V1.7 — Features
 
 ## Status convention
 
-This file describes capabilities present in current Stable GLAZE UI V1.6 at machine version `1.6.0` or required by its active Stable contracts. The governed 24-lane qualification matrix is complete at 24/0/0. Publication, downstream adoption, deployment, and product production acceptance remain separate evidence-bound transitions.
+This file describes capabilities present in current Stable/Anchor Glaze V1.7 at machine version `1.7.0`. V1.7.0 is a bounded release whose runtime inherits the accepted V1.6.0 behavior; the retained dev.47 and Section 48 feature set is V1.7.1 Development scope. Publication, downstream adoption, deployment, and product production acceptance remain separate evidence-bound transitions.
 
 ## Design-system capabilities
 
@@ -32,24 +32,24 @@ This file describes capabilities present in current Stable GLAZE UI V1.6 at mach
 
 ## Stable qualification capabilities
 
-V1.6.0 is accepted for the complete governed 24-lane shared qualification matrix: 24 verified / 0 unverified / 0 not applicable. Exact source, rendered, regression, human, assistive-technology, representative performance, security, branch-protection, artifact/provenance, controlled publication, and readback boundaries are preserved by their authoritative records.
+V1.7.0 inherits the fully accepted V1.6.0 runtime behavior without importing the retained V1.7 Development aggregate. The V1.6 24-lane qualification, final security acceptance, and publication records remain exact historical evidence for the inherited runtime. V1.7.0 adds no new unverified presentation behavior.
 
 ## Stable validation and authority
 
-Current Stable authority is defined by:
+Current Stable/Anchor authority is defined by:
 
-- `VERSION` — `1.6.0`.
-- `contracts/v1.6/stable-release.json` — Stable release contract.
-- `acceptance/v1.6-stable.json` — Stable acceptance.
-- `acceptance/v1.6-stable-qualification-review.json` — complete qualification decision.
-- `js/glaze-v1.6.0.mjs` — Stable runtime.
+- `VERSION` — `1.7.0`.
+- `GLAZE_V1_7.md` — bounded Stable release contract.
+- `contracts/v1.7/stable-scope.json` — bounded release scope.
+- `acceptance/v1.7-stable.md` — current acceptance decision.
+- `js/glaze-v1.7.0.mjs` — Stable runtime wrapper inheriting V1.6.0.
 - `registry/lifecycle.json` — lifecycle authority.
 - `consumers/registry.json` — downstream target/evidence authority.
 
-V1.5.1 is the immediate known-good Stable rollback baseline.
+GLAZE UI V1.6 / `1.6.0` is the immediate known-good Stable rollback baseline.
 
 ## Retained Development and historical boundary
 
 
 
-The repository may contain retained Development-only language, contracts, tokens, validators, reference inputs, or future successor work. Those artifacts do not change the current V1.6.0 Stable authority, lifecycle, runtime/web entrypoints, downstream consumer acceptance, deployment, or production status unless they complete a separate governed lifecycle promotion.
+The repository may contain retained Development-only language, contracts, tokens, validators, reference inputs, or future successor work. Those artifacts do not change the current V1.7.0 Stable authority, lifecycle, runtime/web entrypoints, downstream consumer acceptance, deployment, or production status unless they complete a separate governed lifecycle promotion.

@@ -30,7 +30,7 @@ assert(
   liveTuple[0]>1 || (liveTuple[0]===1 && (liveTuple[1]>5 || (liveTuple[1]===5 && liveTuple[2]>=1))),
   'performance qualification requires live Stable authority at or after its frozen 1.5.1 qualification baseline'
 );
-assert((lifecycle.activeCandidate===null||lifecycle.activeCandidate==='1.6.0-rc.1')&&lifecycle.plannedNext===null&&lifecycle.activePatchReleaseCandidate===null,'performance tooling must preserve Stable authority and tolerate only separately governed V1.6 RC coexistence');
+assert(lifecycle.activeCandidate===null&&lifecycle.activePatchReleaseCandidate===null,'retained V1.6 qualification tooling must not create an active lifecycle candidate');
 
 assert(schema.$schema==='https://json-schema.org/draft/2020-12/schema','performance plan schema dialect mismatch');
 assert(plan.schemaVersion===1,'performance plan schemaVersion drifted');

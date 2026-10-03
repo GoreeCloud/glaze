@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "version": "1.7.0",
+  "product": "Glaze V1.7",
+  "lifecycle": "stable",
+  "canonicalLifecycle": "anchor",
+  "stableBaseline": "1.6.0",
+  "scopeDecisionDate": "2026-10-03",
+  "scopeDecisionAuthority": "project-owner",
+  "consumerEligible": true,
+  "authority": "bounded-stable-identity-and-inherited-runtime",
+  "stableRuntime": {
+    "entrypoint": "js/glaze-v1.7.0.mjs",
+    "inheritedRuntime": "js/glaze-v1.6.0.mjs",
+    "inheritedAcceptedRelease": "1.6.0",
+    "newPresentationBehaviorIncluded": false,
+    "retainedDev47RuntimeIncluded": false,
+    "section48RuntimeIncluded": false
+  },
+  "acceptedFoundation": {
+    "version": "1.6.0",
+    "acceptance": "acceptance/v1.6-stable.json",
+    "qualification": "acceptance/v1.6-stable-qualification-review.json",
+    "finalSecurityAcceptance": "acceptance/v1.6-final-security-acceptance.json",
+    "publishedSourceRevision": "a7180679ea851389e0f3004515f9a25f420e716d",
+    "publicationTag": "v1.6.0"
+  },
+  "retainedDevelopmentSource": {
+    "historicalModelVersion": "1.7.0-dev.47",
+    "exactSourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+    "disposition": "moved-out-of-v1.7.0-stable-scope",
+    "successorTrack": "1.7.1",
+    "successorEntrypoint": "js/glaze-v1.7.1-development.mjs"
+  },
+  "movedOutOfStableScopeToV171": [
+    "frame-pacing",
+    "input-latency",
+    "mobile",
+    "tablet",
+    "desktop",
+    "foldable",
+    "tv",
+    "wearable",
+    "keyboard",
+    "pointer",
+    "touch",
+    "alternative-input",
+    "representative-rendering",
+    "native-behavior",
+    "performance",
+    "energy-behavior",
+    "regression",
+    "human-visual-motion-review",
+    "assistive-technology",
+    "privacy-boundaries",
+    "security-boundaries"
+  ],
+  "movedOutOfStableScopeCount": 21,
+  "section48Disposition": "moved-to-v1.7.1-until-qualified",
+  "stableClaims": {
+    "retainedDev47FeaturesAccepted": false,
+    "section48Accepted": false,
+    "dev47PrivacyBoundaryAccepted": false,
+    "dev47SecurityBoundaryAccepted": false,
+    "dev47NativePlatformAccepted": false,
+    "dev47PhysicalDeviceAccepted": false,
+    "dev47AssistiveTechnologyAccepted": false,
+    "dev47RepresentativePerformanceAccepted": false,
+    "dev47EnergyAccepted": false,
+    "dev47RegressionAccepted": false,
+    "downstreamConsumerAcceptanceAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "productionAcceptanceAutomatic": false,
+    "publicationAutomatic": false
+  },
+  "continuityPolicy": {
+    "inheritedV160RuntimeMustRemainUnmodified": true,
+    "stableEntrypointMayImportV17DevelopmentModules": false,
+    "v171MayConsumeHistoricalDev47SourceAsDevelopmentOnly": true,
+    "missingEvidenceMayBeUpgradedToPassByScopeDecision": false,
+    "privacyOrSecurityRequirementMayBeDeferredForIncludedStableBehavior": false
+  }
+}

@@ -25,7 +25,7 @@ assert(
   liveTuple[0]>1 || (liveTuple[0]===1 && (liveTuple[1]>5 || (liveTuple[1]===5 && liveTuple[2]>=1))),
   'V1.6 retained qualification requires live Stable authority at or after its frozen 1.5.1 baseline'
 );
-assert((lifecycle.activeCandidate===null||lifecycle.activeCandidate==='1.6.0-rc.1')&&lifecycle.plannedNext===null&&lifecycle.activePatchReleaseCandidate===null,'assistive-technology tooling must preserve Stable authority and tolerate only separately governed V1.6 RC coexistence');
+assert(lifecycle.activeCandidate===null&&lifecycle.activePatchReleaseCandidate===null,'retained V1.6 qualification tooling must not create an active lifecycle candidate');
 assert(schema.$schema==='https://json-schema.org/draft/2020-12/schema','schema dialect mismatch');
 assert(plan.planId==='goreecloud.glaze-ui.v1.6.assistive-technology-qualification','plan ID mismatch');
 assert(plan.sourceRevision==='c7509c79256b04b0aa67cb9dd0737d7588e0ae4a','plan must stay bound to frozen source');
