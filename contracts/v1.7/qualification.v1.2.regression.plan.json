@@ -29,7 +29,12 @@
     "freshPixelSha256MustMatchEachOther": true,
     "priorPixelDriftInformationalOnly": true,
     "freshManifestCount": 2,
-    "pixelTolerance": 0
+    "pixelTolerance": 0,
+    "freshRasterNormalization": {
+      "fontRenderHinting": "none",
+      "lcdTextDisabled": true,
+      "purpose": "Eliminate one-value headless text-edge raster jitter while preserving zero-tolerance fresh decoded-pixel comparison."
+    }
   },
   "sceneCount": 22,
   "sceneIds": [
