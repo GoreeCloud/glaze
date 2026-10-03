@@ -6,6 +6,13 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** GLAZE UI V1.6 / `1.6.0` (Stable compatibility channel)
 
+## V1.7 retained v1.2 rendered-browser qualification capture
+
+The retained dev.39 / v1.2 matrix now has a dedicated exact-source Chromium harness and capture path for 22 of the 23 lanes that accept rendered evidence. The scenes cover Task Continuity, Adaptive Composition, semantic/theme behavior, Signature Motion and connected transformations, interruption/reversal, Reduced Motion, six form-factor profiles, Reduced Transparency, Increased Contrast, Forced Colors, Large Text, RTL, and Representative Rendering. Browser form-factor scenes are presentation evidence only and do not stand in for physical-device or native-platform acceptance.
+
+The rendered `regression` group remains open because the repository does not yet have a governed V1.7 rendered regression baseline. The harness explicitly refuses regression-baseline, human, assistive-technology, device/native, performance, energy, Section 46, V1.7, consumer, deployment, production, and Anchor authority.
+
+
 ## V1.7 retained v1.2 qualification working set
 
 The retained dev.39 / v1.2 qualification path now has a reproducible exact-source working set over frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37`. It reuses the existing machine, rendered-browser, and deterministic provenance capture tools instead of creating parallel evidence formats. Seven rendered-browser bridge records are admitted only where the already-captured dev.47 scenes directly prove the retained rendered group: Task continuity, Adaptive composition, Mobile rendering, Desktop rendering, Large Text, Forced Colors, and Representative rendering.

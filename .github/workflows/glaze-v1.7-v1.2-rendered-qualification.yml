@@ -1,0 +1,170 @@
+name: Glaze V1.7 Retained V1.2 Rendered Browser Qualification
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/v1.7/qualification.v1.2.rendered.plan.json'
+      - 'reference/v1.7/rendered-v1.2-qualification.html'
+      - 'reference/v1.7/rendered-v1.2-qualification.mjs'
+      - 'reference/v1.7/rendered-v1.2-qualification-shared.mjs'
+      - 'reference/v1.7/rendered-v1.2-scenes-*.mjs'
+      - 'scripts/capture_glaze_v1_7_v1_2_rendered_qualification.py'
+      - 'scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs'
+      - '.github/workflows/glaze-v1.7-v1.2-rendered-qualification.yml'
+      - 'docs/v1.7/v1.2-rendered-qualification-dev47.contract.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glaze-v1-7-v1-2-rendered-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  V17_SOURCE_SHA: 4b9d085a5177b96cc31d4270b38d792a59872e37
+
+jobs:
+  verify-rendered-tooling:
+    name: Verify retained V1.2 rendered qualification tooling
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact tooling head and frozen source ancestry
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          git cat-file -e "${V17_SOURCE_SHA}^{commit}"
+          git merge-base --is-ancestor "$V17_SOURCE_SHA" HEAD
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+
+      - name: Validate rendered qualification tooling
+        run: |
+          python -m json.tool contracts/v1.7/qualification.v1.2.rendered.plan.json >/dev/null
+          python -m py_compile scripts/capture_glaze_v1_7_v1_2_rendered_qualification.py
+          node --check scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs
+          for file in reference/v1.7/rendered-v1.2-*.mjs; do node --check "$file"; done
+          node scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs
+          node scripts/validate_glaze_v1_7_acceptance_development.mjs
+          node scripts/validate_glaze_v1_7_v1_3_qualification_dev46.mjs
+          node scripts/validate_glaze_v1_7_v1_3_qualification_coverage_dev47.mjs
+          node scripts/validate_glaze_v1_7_section48_source_completion_dev45.mjs
+
+      - run: git diff --exit-code -- .
+
+  capture-rendered-browser:
+    name: Capture frozen-source retained V1.2 rendered browser evidence
+    needs: verify-rendered-tooling
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check out frozen dev.47 source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ env.V17_SOURCE_SHA }}
+          path: _v17-source
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+
+      - name: Verify source and tooling identities
+        env:
+          EXPECTED_TOOLING_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_TOOLING_SHA"
+          test "$(git -C _v17-source rev-parse HEAD)" = "$V17_SOURCE_SHA"
+          git -C _v17-source diff --exit-code -- .
+
+      - name: Assemble repository-local render root
+        run: |
+          set -euo pipefail
+          rm -rf _v17-render-root
+          mkdir -p _v17-render-root/reference/v1.7
+          cp -a _v17-source/js _v17-render-root/js
+          cp -a _v17-source/css _v17-render-root/css
+          cp reference/v1.7/rendered-v1.2-qualification.html _v17-render-root/reference/v1.7/rendered-v1.2-qualification.html
+          cp reference/v1.7/rendered-v1.2-qualification.mjs _v17-render-root/reference/v1.7/rendered-v1.2-qualification.mjs
+          cp reference/v1.7/rendered-v1.2-qualification-shared.mjs _v17-render-root/reference/v1.7/rendered-v1.2-qualification-shared.mjs
+          cp reference/v1.7/rendered-v1.2-scenes-*.mjs _v17-render-root/reference/v1.7/
+          test -f _v17-render-root/js/glaze-v1.7-development-v1-3.dev.mjs
+          test -f _v17-render-root/css/glaze-v1.4.1.css
+          test -f _v17-render-root/reference/v1.7/rendered-v1.2-qualification.html
+          test -f _v17-render-root/reference/v1.7/rendered-v1.2-qualification.mjs
+          test -f _v17-render-root/reference/v1.7/rendered-v1.2-scenes-core.mjs
+
+      - name: Capture exact-source rendered scenes
+        run: |
+          python scripts/capture_glaze_v1_7_v1_2_rendered_qualification.py \
+            --render-root _v17-render-root \
+            --source-root _v17-source \
+            --tooling-root . \
+            --out artifacts/v1.7-v1.2-rendered
+
+      - name: Verify evidence boundary
+        run: |
+          node scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs \
+            artifacts/v1.7-v1.2-rendered/rendered-evidence.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest=json.loads(Path('artifacts/v1.7-v1.2-rendered/manifest.json').read_text())
+          assert manifest['sourceRevision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'
+          assert manifest['sourceModelVersion']=='1.7.0-dev.47'
+          assert manifest['acceptanceModelVersion']=='1.7.0-dev.39'
+          assert manifest['stableBaseline']=='1.6.0'
+          assert manifest['sceneCount']==22
+          assert manifest['passed'] is True
+          assert manifest['authority']['renderedBrowserOnly'] is True
+          assert manifest['openRenderedEvidenceLaneIds']==['regression']
+          evidence=json.loads(Path('artifacts/v1.7-v1.2-rendered/rendered-evidence.json').read_text())
+          assert len(evidence)==22
+          assert 'regression' not in {item['id'] for item in evidence}
+          assert all(item['revision']==manifest['sourceRevision'] for item in evidence)
+          assert all(item['evidenceType']=='rendered' for item in evidence)
+          for key in (
+              'regressionBaselineClaimed','humanEvidenceClaimed','assistiveTechnologyEvidenceClaimed',
+              'physicalDeviceEvidenceClaimed','nativePlatformEvidenceClaimed',
+              'representativePerformanceEvidenceClaimed','energyEvidenceClaimed',
+              'v12QualificationClaimed','section46CompleteClaimed','v17AcceptanceClaimed',
+              'anchorStatusGranted','consumerEligibilityGranted','deploymentAcceptanceGranted',
+              'productionAcceptanceGranted','lifecyclePromotionAutomatic'
+          ):
+              assert manifest['authority'][key] is False, key
+          print('Retained V1.2 rendered manifest authority verification: PASS')
+          PY
+          git -C _v17-source diff --exit-code -- .
+          git diff --exit-code -- .
+
+      - name: Upload retained V1.2 rendered evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: glaze-v1.7-v1.2-rendered-browser-${{ github.run_id }}
+          path: artifacts/v1.7-v1.2-rendered/
+          if-no-files-found: error
+          retention-days: 90
