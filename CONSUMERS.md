@@ -2,7 +2,7 @@
 
 The machine-readable consumer registry authority is `consumers/registry.json`.
 
-The required target for every applicable GoreeCloud user-facing consumer is **Glaze V1.7** (`1.7.0`). Fresh repository-local V1.7.0 adoption and acceptance evidence is required for each consumer. Prior V1.6.0 and earlier evidence remains historical provenance and does not automatically establish current conformance.
+The required target for every applicable GoreeCloud user-facing consumer is **Glaze V1.7** (`1.7.0`). Fresh repository-local V1.7 adoption and acceptance evidence is required for each consumer; the exact required release version is `1.7.0`. Prior V1.6.0 and earlier evidence remains historical provenance and does not automatically establish current conformance.
 
 No consumer is production-eligible merely because Glaze V1.7.0 is the current shared Stable/Anchor target. Each application or service must independently satisfy its own lifecycle, supported-platform, accessibility, security, privacy, integration, deployment, signing/package, and production acceptance requirements.
 
