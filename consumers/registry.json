@@ -1,9 +1,9 @@
 {
   "schemaVersion": 8,
-  "officialBaseline": "1.6.0",
-  "officialProductLabel": "GLAZE UI V1.6",
-  "requiredConsumerVersion": "1.6.0",
-  "auditedAt": "2026-09-28",
+  "officialBaseline": "1.7.0",
+  "officialProductLabel": "Glaze V1.7",
+  "requiredConsumerVersion": "1.7.0",
+  "auditedAt": "2026-10-03",
   "statusVocabulary": [
     "adoption-required",
     "unverified",
@@ -21,7 +21,7 @@
       "smartwatch",
       "other-user-facing"
     ],
-    "unsupportedPlatformRule": "A user-facing platform without applicable repository-local GLAZE UI V1.6.0 acceptance evidence is production-blocked until the required current Stable contract is implemented, validated, and accepted for that consumer."
+    "unsupportedPlatformRule": "A user-facing platform without applicable repository-local Glaze V1.7 / 1.7.0 acceptance evidence is production-blocked until the required current Stable/Anchor contract is implemented, validated, and accepted for that consumer."
   },
   "consumers": [
     {
@@ -29,176 +29,176 @@
       "repository": "GoreeCloud/goreecloud-zorin-os",
       "status": "adoption-required",
       "targetVersion": "1.2.0",
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": "bbc4779454c2887b810aa0ddc9e8a686a4c68ebd",
       "evidence": "acceptance/goreecloud-care-v1.2-0.1.0-exact-source-bridge.json",
       "productionEligible": false,
-      "notes": "Historical V1.2 evidence remains recorded; fresh repository-local V1.6.0 adoption and acceptance evidence is required before current-baseline conformance may be claimed."
+      "notes": "Historical V1.2 evidence remains recorded; fresh repository-local V1.6.0 adoption and acceptance evidence is required before current-baseline conformance may be claimed. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Manager",
       "repository": "GoreeCloud/goreecloud-manager",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Existing V1.5 Development compatibility evidence does not equal Stable consumer adoption; fresh repository-local V1.6.0 Stable acceptance is required."
+      "notes": "Existing V1.5 Development compatibility evidence does not equal Stable consumer adoption; fresh repository-local V1.6.0 Stable acceptance is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Website",
       "repository": "GoreeCloud/static-websites",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Canonical website source is GoreeCloud/static-websites. Fresh repository-local V1.6.0 adoption and acceptance evidence is still required before the website consumer may advance from adoption-required; this registry correction does not grant consumer acceptance or production eligibility."
+      "notes": "Canonical website source is GoreeCloud/static-websites. Fresh repository-local V1.6.0 adoption and acceptance evidence is still required before the website consumer may advance from adoption-required; this registry correction does not grant consumer acceptance or production eligibility. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Tasks",
       "repository": "GoreeCloud/goreecloud-tasks",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required."
+      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Launcher",
       "repository": "GoreeCloud/launcher",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Launcher source maps to current GLAZE UI V1.6 / 1.6.0, but downstream rendered, accessibility, adaptive, device, performance, rollback, localization, visual-quality, release, and product acceptance remain incomplete. Registry status remains adoption-required and production eligibility remains false."
+      "notes": "Launcher source maps to current GLAZE UI V1.6 / 1.6.0, but downstream rendered, accessibility, adaptive, device, performance, rollback, localization, visual-quality, release, and product acceptance remain incomplete. Registry status remains adoption-required and production eligibility remains false. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Keyboard",
       "repository": "GoreeCloud/goreecloud-keyboard",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required."
+      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Notes",
       "repository": "GoreeCloud/goreecloud-notes",
       "status": "unverified",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required."
+      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Monitor",
       "repository": "GoreeCloud/monitor",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Monitor source carries a repository-local GLAZE UI V1.6 / 1.6.0 web adoption candidate, but representative accessibility, recovery-state, reflow, performance, visual-review, rollback, release, and product acceptance remain outstanding."
+      "notes": "Monitor source carries a repository-local GLAZE UI V1.6 / 1.6.0 web adoption candidate, but representative accessibility, recovery-state, reflow, performance, visual-review, rollback, release, and product acceptance remain outstanding. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Browser",
       "repository": "GoreeCloud/browser",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required."
+      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Advanced Tab Manager",
       "repository": "GoreeCloud/firefox-addons",
-      "status": "accepted-v1",
+      "status": "adoption-required",
       "targetVersion": "1.6.0",
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": "89f93d9fcfd77adbdf9296e0d823a6fe8861b1fe",
       "evidence": "acceptance/consumer-advanced-tab-manager-v1.6.0.json",
       "productionEligible": false,
-      "notes": "Advanced Tab Manager 0.1.13 completed repository-local GLAZE UI V1.6 / 1.6.0 rendered, keyboard, assistive-technology, alternate-appearance, large-text/reflow, constrained-layout, and native Firefox icon-surface acceptance for exact reviewed runtime revision 89f93d9fcfd77adbdf9296e0d823a6fe8861b1fe. Mozilla-signed parity plus persistent-install/full-restart acceptance passed in GoreeCloud/firefox-addons workflow run 36431225028 with signed XPI SHA-256 6e77c071d32457d197f841059132adb453350a5df2a847229d39f01d98de510c. Glaze consumer acceptance does not grant product production eligibility or Stable lifecycle authority."
+      "notes": "Advanced Tab Manager 0.1.13 completed repository-local GLAZE UI V1.6 / 1.6.0 rendered, keyboard, assistive-technology, alternate-appearance, large-text/reflow, constrained-layout, and native Firefox icon-surface acceptance for exact reviewed runtime revision 89f93d9fcfd77adbdf9296e0d823a6fe8861b1fe. Mozilla-signed parity plus persistent-install/full-restart acceptance passed in GoreeCloud/firefox-addons workflow run 36431225028 with signed XPI SHA-256 6e77c071d32457d197f841059132adb453350a5df2a847229d39f01d98de510c. Glaze consumer acceptance does not grant product production eligibility or Stable lifecycle authority. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Security Center",
       "repository": "GoreeCloud/wardveil",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Wardveil Security Center source carries a bounded GLAZE UI V1.6 / 1.6.0 mapping, but rendered review, accessibility, representative-target performance, rollback, deployed-source provenance, release, and product acceptance remain required. Wardveil remains the security-state authority."
+      "notes": "Wardveil Security Center source carries a bounded GLAZE UI V1.6 / 1.6.0 mapping, but rendered review, accessibility, representative-target performance, rollback, deployed-source provenance, release, and product acceptance remain required. Wardveil remains the security-state authority. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Privacy Center",
       "repository": "GoreeCloud/privacy-shield",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Privacy Center source still carries its pre-reset Glaze UI 2.1.0 implementation. The current shared target is GLAZE UI V1.6 / 1.6.0, so repository migration plus rendered, accessibility, resilience, rollback, release, and product acceptance remain required. Privacy Shield remains the privacy-state authority."
+      "notes": "Privacy Center source still carries its pre-reset Glaze UI 2.1.0 implementation. The current shared target is GLAZE UI V1.6 / 1.6.0, so repository migration plus rendered, accessibility, resilience, rollback, release, and product acceptance remain required. Privacy Shield remains the privacy-state authority. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Reader",
       "repository": "GoreeCloud/goreecloud-reader",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Existing V1.5 Development compatibility evidence does not equal Stable consumer adoption; fresh repository-local V1.6.0 web, Android/native, accessibility, workflow, rollback, performance, and product production acceptance remain separate obligations."
+      "notes": "Existing V1.5 Development compatibility evidence does not equal Stable consumer adoption; fresh repository-local V1.6.0 web, Android/native, accessibility, workflow, rollback, performance, and product production acceptance remain separate obligations. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Gallery",
       "repository": "GoreeCloud/gallery",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Gallery carries current V1.6.0 source mapping, but fresh repository-local whole-application Glaze acceptance remains open; shared Glaze stability does not grant Gallery consumer or production acceptance."
+      "notes": "Gallery carries current V1.6.0 source mapping, but fresh repository-local whole-application Glaze acceptance remains open; shared Glaze stability does not grant Gallery consumer or production acceptance. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Notify",
       "repository": "GoreeCloud/notify",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Notify carries current V1.6.0 source mapping, but fresh repository-local web/native/accessibility and product acceptance remains open; production eligibility is false."
+      "notes": "Notify carries current V1.6.0 source mapping, but fresh repository-local web/native/accessibility and product acceptance remains open; production eligibility is false. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Since",
       "repository": "GoreeCloud/android-app-defaults",
       "status": "adoption-required",
       "targetVersion": null,
-      "requiredTargetVersion": "1.6.0",
+      "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Since has application-local theme behavior but no accepted repository-local V1.6.0 consumer evidence; fresh downstream Glaze acceptance remains required."
+      "notes": "Since has application-local theme behavior but no accepted repository-local V1.6.0 consumer evidence; fresh downstream Glaze acceptance remains required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     }
   ]
 }
