@@ -18,6 +18,7 @@ permissions:
   actions: read
 
 env:
+  EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
   V17_SOURCE_SHA: 4b9d085a5177b96cc31d4270b38d792a59872e37
   PRIOR_RUN_ID: '37144536213'
   PRIOR_ARTIFACT_ID: '11281038583'
@@ -35,6 +36,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
           persist-credentials: false
+      - name: Verify exact checked-out revision
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
           node-version: '22'
@@ -66,6 +69,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
           persist-credentials: false
+      - name: Verify exact checked-out revision
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: ${{ env.V17_SOURCE_SHA }}
@@ -113,7 +118,7 @@ jobs:
         run: |
           python scripts/compare_glaze_v1_7_v1_2_rendered_regression.py             --prior _prior             --fresh-a artifacts/v1.7-v1.2-regression/fresh-a             --fresh-b artifacts/v1.7-v1.2-regression/fresh-b             --out artifacts/v1.7-v1.2-regression/result
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
           root=Path('artifacts/v1.7-v1.2-regression/result')
           result=json.loads((root/'regression-result.json').read_text())
@@ -125,6 +130,7 @@ jobs:
           assert result['pixelTolerance']==0
           assert result['stableBaseline']=='1.7.0'
           assert result['historicalSourceStableBaseline']=='1.6.0'
+          assert result['toolingRevision']==os.environ['EXPECTED_SHA']
           assert len(evidence)==1 and evidence[0]['id']=='regression'
           assert evidence[0]['evidenceType']=='rendered'
           assert evidence[0]['revision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'

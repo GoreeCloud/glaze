@@ -85,6 +85,9 @@ def compare(prior: Path, fresh_a: Path, fresh_b: Path, output: Path, plan: Path)
     old=verify_manifest(prior_manifest,"prior")
     first=verify_manifest(a_manifest,"fresh-a")
     second=verify_manifest(b_manifest,"fresh-b")
+    fresh_tooling_revision=str(a_manifest.get("toolingRevision") or "").strip()
+    require(len(fresh_tooling_revision)==40 and all(ch in "0123456789abcdef" for ch in fresh_tooling_revision), "fresh-a tooling revision invalid")
+    require(b_manifest.get("toolingRevision")==fresh_tooling_revision, "fresh capture tooling revisions differ")
     scene_ids=sorted(old)
     require(scene_ids==sorted(first)==sorted(second), "scene sets differ")
     expected=sorted(str(value) for value in plan_data.get("sceneIds",[]))
@@ -128,7 +131,7 @@ def compare(prior: Path, fresh_a: Path, fresh_b: Path, output: Path, plan: Path)
         "stableBaseline":CURRENT_STABLE_BASELINE,
         "historicalSourceStableBaseline":HISTORICAL_SOURCE_STABLE_BASELINE,
         "laneId":"regression",
-        "toolingRevision":os.environ.get("GITHUB_SHA"),
+        "toolingRevision":fresh_tooling_revision,
         "workflowRunId":os.environ.get("GITHUB_RUN_ID"),
         "priorRenderedEvidence":{
             "runId":PRIOR_RUN_ID,
