@@ -12,8 +12,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-SOURCE_REVISION="e165007292878fd268298055c39b2f4a36a33ecf"
-MODEL_VERSION="1.7.0-dev.46"
+SOURCE_REVISION="414ec21921cbcfd5e7efb4828027ecebeb11aae8"
+MODEL_VERSION="1.7.0-dev.47"
 
 class QualificationError(RuntimeError):
     pass
@@ -64,7 +64,11 @@ def capture(source_root: Path, tooling_root: Path, plan_path: Path, output: Path
     checks=plan.get("checks")
     require(isinstance(checks,list) and len(checks)>=1,"machine plan must define checks")
     expected=plan.get("expectedMachineLaneIds")
+    expected_section48=plan.get("expectedSection48MachineLaneIds")
+    expected_coverage=plan.get("expectedCoverageMachineLaneIds")
     require(isinstance(expected,list) and len(expected)>=1,"machine plan expected lane list missing")
+    require(isinstance(expected_section48,list) and len(expected_section48)>=1,"machine plan Section 48 lane list missing")
+    require(isinstance(expected_coverage,list) and len(expected_coverage)>=1,"machine plan coverage lane list missing")
 
     actual_source=git_revision(source_root)
     require(actual_source==SOURCE_REVISION,f"frozen source mismatch: expected {SOURCE_REVISION}, got {actual_source}")
@@ -126,8 +130,15 @@ def capture(source_root: Path, tooling_root: Path, plan_path: Path, output: Path
     require(sorted(seen_lanes)==sorted(str(value) for value in expected),"machine evidence lane coverage does not match plan")
     require(git_clean(source_root),"machine validators mutated frozen tracked source")
 
+    section48_evidence=[item for item in evidence if item["id"] in set(str(value) for value in expected_section48)]
+    coverage_evidence=[item for item in evidence if item["id"] in set(str(value) for value in expected_coverage)]
+    require(len(section48_evidence)==len(expected_section48),"Section 48 machine evidence partition mismatch")
+    require(len(coverage_evidence)==len(expected_coverage),"coverage machine evidence partition mismatch")
+
     evidence_path=output/"section48-machine-evidence.json"
-    evidence_path.write_text(json.dumps(evidence,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    evidence_path.write_text(json.dumps(section48_evidence,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    coverage_path=output/"coverage-machine-evidence.json"
+    coverage_path.write_text(json.dumps(coverage_evidence,indent=2,sort_keys=True)+"\n",encoding="utf-8")
 
     manifest={
         "schemaVersion":1,
@@ -144,8 +155,12 @@ def capture(source_root: Path, tooling_root: Path, plan_path: Path, output: Path
         "checkCount":len(check_records),
         "checks":check_records,
         "machineEvidenceLaneIds":sorted(seen_lanes),
+        "section48MachineEvidenceLaneIds":sorted(str(value) for value in expected_section48),
+        "coverageMachineEvidenceLaneIds":sorted(str(value) for value in expected_coverage),
         "evidenceRecord":str(evidence_path.relative_to(output)),
         "evidenceRecordSha256":sha256(evidence_path),
+        "coverageEvidenceRecord":str(coverage_path.relative_to(output)),
+        "coverageEvidenceRecordSha256":sha256(coverage_path),
         "passed":all(record["passed"] for record in check_records),
         "authority":dict(plan["authority"])
     }
