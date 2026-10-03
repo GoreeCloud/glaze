@@ -1,0 +1,33 @@
+{
+  "version": "1.7.0-dev.47",
+  "lifecycle": "DevelopmentQualification",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "planVersion": "v1.3",
+  "section": 48,
+  "retainedCombinedQualificationVersion": "1.7.0-dev.46",
+  "retainedCombinedLaneCount": 58,
+  "addedCoverageLaneCount": 4,
+  "totalLaneCount": 62,
+  "addedCoverageLanes": [
+    "expression-system-v13",
+    "contextual-actions-v13",
+    "brief-v13",
+    "control-center-v13"
+  ],
+  "exactRevisionRequired": true,
+  "allEvidenceGroupsRequired": true,
+  "implicitSurfaceCoverageAccepted": false,
+  "section48SourceComplete": true,
+  "section48Accepted": false,
+  "v17Accepted": false,
+  "authority": {
+    "matrixCompletionEqualsSection48Acceptance": false,
+    "matrixCompletionEqualsV17Acceptance": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "lifecyclePromotionAutomatic": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false
+  }
+}
