@@ -168,6 +168,7 @@ const qualification=evaluateGlazeV17Section48Qualification({
   evidence:[]
 });
 assert(qualification.sourceCoverage.allPlannedSurfacesSourceImplemented===true,'Section 48 planned surface source coverage incomplete');
+assert(qualification.sourceCoverage.section48SourceComplete===true,'Expression System was not included in Section 48 source completeness');
 assert(qualification.blockingLanes.length===glazeV17Section48QualificationDevelopmentContract.qualificationLanes.length,'Empty evidence packet did not block every Section 48 qualification lane');
 assert(qualification.readyForGovernedQualificationReview===false,'Empty Section 48 evidence became ready');
 assert(qualification.authority.section48Accepted===false&&qualification.authority.anchorStatusGranted===false,'Qualification evaluator granted acceptance');
