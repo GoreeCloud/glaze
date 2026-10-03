@@ -189,11 +189,11 @@ assert(manifest.section48SourceComplete===true&&manifest.section48Accepted===fal
 assert(manifest.surfaces.length===11,'manifest surface coverage mismatch');
 assert(status.includes('Section 48 source-complete')&&status.includes('Section 48 remains acceptance-incomplete'),'status record boundary missing');
 
-assert(version==='1.6.0','VERSION changed from V1.6 Anchor');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor lifecycle changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'Source completion created a lifecycle candidate');
+assert(version==='1.7.0','VERSION changed from bounded V1.7 Anchor');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor lifecycle changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','Source completion created a lifecycle candidate');
 
 console.log('Glaze V1.7 dev.42-dev.45 Section 48 source completion validation: PASS');
 console.log('Section 48 planned surfaces source implemented: 11/11');
 console.log('Section 48 acceptance complete: false');
-console.log('Official Anchor preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');

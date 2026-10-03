@@ -207,9 +207,9 @@ for(const bad of [
   assert(failed,'ungoverned provider/adaptive input did not fail closed');
 }
 
-assert(version==='1.6.0','VERSION changed from V1.6 Anchor');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor lifecycle changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'source implementation changed lifecycle candidate');
+assert(version==='1.7.0','VERSION changed from bounded V1.7 Anchor');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor lifecycle changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','source implementation changed lifecycle candidate');
 assert(status.includes('Glaze Contextual Actions')&&status.includes('Glaze Brief')&&status.includes('Glaze Control Center'),'dev.41 status record missing implemented surfaces');
 assert(status.includes('Section 48 remains incomplete'),'dev.41 status record overclaims completion');
 assert(status.includes('No third-party implementation is incorporated'),'Reforge boundary missing');
@@ -222,4 +222,4 @@ assert(research.includes('No mechanical rewriting or line-by-line translation wa
 console.log('GLAZE UI V1.7 dev.41 Provider Adaptive Surfaces validation: PASS');
 console.log('Implemented surfaces: Contextual Actions, Brief, Control Center');
 console.log('Section 48 complete: false');
-console.log('Official Anchor preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');

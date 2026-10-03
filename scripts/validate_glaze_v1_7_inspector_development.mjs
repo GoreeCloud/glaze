@@ -23,10 +23,10 @@ const changelog=read('CHANGELOGS.md');
 const domains=["component-state","token-provenance","semantic-color-resolution","theme-resolution","material-hierarchy","accessibility-overrides","focus-behavior","input-mapping","adaptive-layout-resolution","form-factor-previews","target-sizes","authority-boundaries","migration-state"];
 const provenanceSources=["semantic-state","product-identity","user-theme","context","accessibility","glaze-fallback"];
 
-assert(stable==='1.6.0','dev.11 must preserve V1.6 / 1.6.0 Stable');
+assert(stable==='1.7.0','dev.11 must coexist with bounded Glaze V1.7 / 1.7.0 Stable');
 assert(lifecycle.currentOfficial===stable&&lifecycle.currentStable===stable,'Stable authority mismatch');
 assert(lifecycle.activeCandidate===null&&lifecycle.activePatchReleaseCandidate===null,'dev.11 must not create Candidate state');
-assert(lifecycle.plannedNext===null,'dev.11 must not mutate plannedNext');
+assert(lifecycle.plannedNext==='1.7.1','dev.11 must not mutate plannedNext');
 
 assert(spec.includes('## 39. Glaze Inspector'),'V1.7 v1.2 specification missing Glaze Inspector Section 39');
 assert(spec.includes('dev.8–dev.13 use the prior v1.1 35-section numbering'),'v1.2 plan must preserve v1.1 implementation-numbering provenance');

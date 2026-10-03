@@ -8,8 +8,8 @@ const assert=(v,m)=>{if(!v)throw new Error(m);};
 const lifecycle=json('registry/lifecycle.json');
 const version=readFileSync(new URL('VERSION',root),'utf8').trim();
 
-assert(version==='1.6.0','Stable machine version changed');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0','Stable lifecycle changed');
+assert(version==='1.7.0','bounded Stable machine version changed');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0','Stable lifecycle changed');
 assert(glazeV17ExpressionSystemDevelopmentContract.version==='1.7.0-dev.40','dev.40 identity mismatch');
 assert(glazeV17ExpressionSystemDevelopmentContract.planVersion==='v1.3','plan binding mismatch');
 assert(glazeV17ExpressionSystemDevelopmentContract.section48Complete===false,'Section 48 overclaimed');

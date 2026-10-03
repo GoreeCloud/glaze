@@ -27,9 +27,9 @@ const changelog=read('CHANGELOGS.md');
 const research=read('docs/development/v1.7-reduced-motion-equivalents-open-source-research-20260926.md');
 const glazeMotion=json('tokens/glaze-motion.json');
 
-assert(read('VERSION').trim()==='1.6.0','V1.6 VERSION changed');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'dev.23 must not create lifecycle promotion state');
+assert(read('VERSION').trim()==='1.7.0','bounded V1.7 VERSION changed');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','dev.23 must not create lifecycle promotion state');
 
 for(const phrase of [
   '## 31. Reduced Motion Equivalents',
@@ -162,5 +162,5 @@ console.log('Signature families covered: 10');
 console.log('State/meaning/focus/navigation/task/direct-manipulation preserved: true');
 console.log('Motion required to understand state: false');
 console.log('Section 31 complete: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

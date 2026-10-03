@@ -169,9 +169,9 @@ assert(glazeV17Development.planV12FoundationSections.includes(44),'aggregate mis
 assert(glazeV17Development.privacyAuthorityBoundariesFoundation==='js/glaze-v1.7-privacy-authority-boundaries.dev.mjs','aggregate missing dev.37 foundation');
 assert(glazeV17Development.providerTruthManufactured===false,'aggregate provider truth boundary weakened');
 
-assert(version==='1.6.0','VERSION must remain V1.6 Anchor');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'source implementation must not create lifecycle candidate');
+assert(version==='1.7.0','VERSION must identify bounded V1.7 Anchor');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','source implementation must not create lifecycle candidate');
 
 assert(planned.includes('1.7.0-dev.37')&&planned.includes('Privacy and Authority Boundaries'),'planned feature control missing dev.37');
 assert(implemented.includes('Privacy and Authority Boundaries')&&implemented.includes('1.7.0-dev.37'),'implemented feature control missing dev.37');
@@ -193,5 +193,5 @@ console.log('Provider conflicts fail closed: true');
 console.log('Provider precedence inferred: false');
 console.log('Motion creates truth: false');
 console.log('Section 44 complete: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

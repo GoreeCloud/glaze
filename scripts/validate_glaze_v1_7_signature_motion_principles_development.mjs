@@ -68,11 +68,11 @@ const expected={
 
 const identityRelationships=new Set(['same-object-expansion','source-destination-continuity']);
 
-assert(stable==='1.6.0','dev.15 must preserve GLAZE UI V1.6 / 1.6.0');
+assert(stable==='1.7.0','dev.15 must coexist with bounded Glaze V1.7 / 1.7.0');
 assert(lifecycle.currentOfficial===stable&&lifecycle.currentStable===stable,'V1.6 compatibility authority mismatch');
 assert(lifecycle.currentLifecycle==='anchor','V1.6 must remain canonical Anchor');
 assert(lifecycle.activeCandidate===null&&lifecycle.activePatchReleaseCandidate===null,'dev.15 must not create Candidate state');
-assert(lifecycle.plannedNext===null,'dev.15 must not mutate lifecycle plannedNext');
+assert(lifecycle.plannedNext==='1.7.1','dev.15 must not mutate lifecycle plannedNext');
 
 for(const phrase of [
   '## 23. Signature Motion Principles',
@@ -252,5 +252,5 @@ console.log('Section 23 complete: false');
 console.log('Measured responsiveness acceptance: false');
 console.log('Section 24 choreography complete: false');
 console.log('Glaze Motion Experimental promoted: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

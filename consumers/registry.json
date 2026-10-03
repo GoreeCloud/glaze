@@ -66,7 +66,7 @@
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
+      "notes": "Fresh repository-local V1.7.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Launcher",
@@ -77,7 +77,7 @@
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Launcher source maps to current GLAZE UI V1.6 / 1.6.0, but downstream rendered, accessibility, adaptive, device, performance, rollback, localization, visual-quality, release, and product acceptance remain incomplete. Registry status remains adoption-required and production eligibility remains false. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
+      "notes": "Launcher prior conformance evidence maps to GLAZE UI V1.6 / 1.6.0; but downstream rendered, accessibility, adaptive, device, performance, rollback, localization, visual-quality, release, and product acceptance remain incomplete. Registry status remains adoption-required and production eligibility remains false. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Keyboard",
@@ -88,7 +88,7 @@
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
+      "notes": "Fresh repository-local V1.7.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Notes",
@@ -99,7 +99,7 @@
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
+      "notes": "Fresh repository-local V1.7.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Monitor",
@@ -121,7 +121,7 @@
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Fresh repository-local V1.6.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
+      "notes": "Fresh repository-local V1.7.0 adoption and acceptance evidence is required. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
       "name": "GoreeCloud Advanced Tab Manager",

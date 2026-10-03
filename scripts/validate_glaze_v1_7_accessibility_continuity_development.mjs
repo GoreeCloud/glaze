@@ -38,9 +38,9 @@ const modes=[
   'screen-reader','switch-access','voice-access','touch-assistance','keyboard-navigation'
 ];
 
-assert(read('VERSION').trim()==='1.6.0','dev.34 must preserve V1.6 / 1.6.0 Anchor baseline');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'dev.34 must not create release lifecycle state');
+assert(read('VERSION').trim()==='1.7.0','dev.34 must coexist with bounded Glaze V1.7 / 1.7.0 Anchor');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','dev.34 must not create release lifecycle state');
 
 assert(spec.includes('## 41. Accessibility Continuity'),'V1.7 v1.2 plan missing Section 41');
 for(const phrase of [
@@ -217,5 +217,5 @@ console.log('Accessibility outranks motion richness: true');
 console.log('Task/focus/draft reset allowed: false');
 console.log('Raw presentation/evidence values accepted: false');
 console.log('Section 41 complete: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

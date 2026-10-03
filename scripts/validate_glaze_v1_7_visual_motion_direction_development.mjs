@@ -117,9 +117,9 @@ assert(glazeV17Development.planV12FoundationSections.includes(43),'aggregate mis
 assert(glazeV17Development.visualMotionDirectionFoundation==='js/glaze-v1.7-visual-motion-direction.dev.mjs','aggregate missing dev.36 foundation');
 assert(glazeV17Development.glazeMotionExperimentalLifecyclePromoted===false,'aggregate promoted Experimental Glaze Motion');
 
-assert(version==='1.6.0','VERSION must remain V1.6 Anchor');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','lifecycle authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'V1.7 must not become lifecycle candidate by source implementation');
+assert(version==='1.7.0','VERSION must identify bounded V1.7 Anchor');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','lifecycle authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','V1.7 must not become lifecycle candidate by source implementation');
 
 assert(planned.includes('1.7.0-dev.36')&&planned.includes('Visual and Motion Direction'),'planned-feature control missing dev.36');
 assert(implemented.includes('Visual and Motion Direction')&&implemented.includes('1.7.0-dev.36'),'implemented-feature control missing dev.36');
@@ -142,5 +142,5 @@ console.log('Glass everywhere allowed: false');
 console.log('Animation everywhere allowed: false');
 console.log('Raw effect/ranking controls accepted: false');
 console.log('Section 43 complete: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

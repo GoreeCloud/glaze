@@ -41,11 +41,11 @@ const dimensions = [
   'interaction-targets'
 ];
 
-assert(stable === '1.6.0', 'V1.7 dev.3 must preserve GLAZE UI V1.6 / 1.6.0 as current Stable');
+assert(stable === '1.7.0', 'V1.7 dev.3 must coexist with bounded Glaze V1.7 / 1.7.0 as current Stable');
 assert(lifecycle.currentOfficial === stable && lifecycle.currentStable === stable, 'VERSION/current Stable authority must agree');
 assert(lifecycle.activeCandidate === null, 'V1.7 dev.3 must not create an active Candidate');
 assert(lifecycle.activePatchReleaseCandidate === null, 'V1.7 dev.3 must not create a patch RC');
-assert(lifecycle.plannedNext === null, 'V1.7 dev.3 must not mutate lifecycle plannedNext');
+assert(lifecycle.plannedNext==='1.7.1', 'V1.7 dev.3 must not mutate lifecycle plannedNext');
 
 assert(spec.includes('## 3. First-Class Form-Factor Profiles'), 'V1.7 specification missing form-factor profile section');
 for (const label of ['Mobile','Tablet','Desktop','Foldable','TV','Wearables']) {
