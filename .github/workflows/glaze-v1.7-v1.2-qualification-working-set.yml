@@ -21,6 +21,11 @@ on:
       - 'contracts/v1.7/qualification.v1.2.working-set.plan.json'
       - 'docs/v1.7/v1.2-qualification-working-set-dev47.contract.json'
       - 'scripts/assemble_glaze_v1_7_v1_2_qualification_working_set.mjs'
+      - 'contracts/v1.7/qualification.v1.2.rendered.plan.json'
+      - 'reference/v1.7/rendered-v1.2-qualification.html'
+      - 'reference/v1.7/rendered-v1.2-*.mjs'
+      - 'scripts/capture_glaze_v1_7_v1_2_rendered_qualification.py'
+      - 'scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs'
       - '.github/workflows/glaze-v1.7-v1.2-qualification-working-set.yml'
   workflow_dispatch:
 
