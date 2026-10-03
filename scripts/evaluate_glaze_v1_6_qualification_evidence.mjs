@@ -136,7 +136,7 @@ assert(
   liveTuple[0]>1 || (liveTuple[0]===1 && (liveTuple[1]>5 || (liveTuple[1]===5 && liveTuple[2]>=1))),
   'evidence reconciliation requires live Stable authority at or after frozen baseline '+STABLE
 );
-assert((lifecycle.activeCandidate===null||lifecycle.activeCandidate==='1.6.0-rc.1')&&lifecycle.plannedNext===null&&lifecycle.activePatchReleaseCandidate===null,'evidence intake must preserve Stable authority and tolerate only separately governed V1.6 RC coexistence');
+assert(lifecycle.activeCandidate===null&&lifecycle.activePatchReleaseCandidate===null,'retained V1.6 evidence tooling must not create an active lifecycle candidate');
 assert(intake.sourceRevision===SOURCE&&intake.acceptanceModelVersion===MODEL&&intake.stableBaseline===STABLE,'evidence intake authority binding mismatch');
 assert(intake.authority.externalEvidenceMustBeSeparatelyValidated===true,'external evidence validation must remain mandatory');
 assert(intake.authority.missingExternalEvidenceMayInferPass===false,'missing external evidence must not infer pass');
