@@ -6,6 +6,11 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** GLAZE UI V1.6 / `1.6.0` (Stable compatibility channel)
 
+## V1.7 retained v1.2 machine qualification capture
+
+The retained dev.39 / v1.2 acceptance matrix now has exact-source machine-evidence capture tooling bound to frozen V1.7 source `4b9d085a5177b96cc31d4270b38d792a59872e37`. It covers all 20 lanes that permit a machine evidence group and verifies that machine-only evidence satisfies only those groups, not complete lanes. The other required rendered, human, device, assistive-technology, performance, energy, and provenance evidence remains external and blocking; V1.7 remains Development and non-consumer-eligible.
+
+
 ## V1.7 v1.3 qualification coverage extension
 
 `1.7.0-dev.47` adds explicit required evidence lanes for the Expression System, Contextual Actions, Glaze Brief, and Glaze Control Center. This closes a qualification-model coverage gap without creating acceptance evidence: the current combined matrix has 62 lanes and still requires exact-revision rendered, provider-integration, human, and other applicable evidence before governed qualification can proceed.

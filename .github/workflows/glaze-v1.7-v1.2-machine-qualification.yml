@@ -1,0 +1,163 @@
+name: Glaze V1.7 Retained V1.2 Machine Qualification
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/v1.7/qualification.v1.2.machine.plan.json'
+      - 'docs/v1.7/v1.2-machine-qualification-dev47.contract.json'
+      - 'scripts/capture_glaze_v1_7_v1_2_machine_qualification.py'
+      - 'scripts/validate_glaze_v1_7_v1_2_machine_qualification.mjs'
+      - '.github/workflows/glaze-v1.7-v1.2-machine-qualification.yml'
+      - 'CHANGELOGS.md'
+      - 'IMPLEMENTED-FEATURES.md'
+  push:
+    branches:
+      - main
+    paths:
+      - 'contracts/v1.7/qualification.v1.2.machine.plan.json'
+      - 'docs/v1.7/v1.2-machine-qualification-dev47.contract.json'
+      - 'scripts/capture_glaze_v1_7_v1_2_machine_qualification.py'
+      - 'scripts/validate_glaze_v1_7_v1_2_machine_qualification.mjs'
+      - '.github/workflows/glaze-v1.7-v1.2-machine-qualification.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glaze-v1-7-v1-2-machine-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  V17_SOURCE_SHA: 4b9d085a5177b96cc31d4270b38d792a59872e37
+
+jobs:
+  verify-machine-tooling:
+    name: Verify retained V1.2 machine qualification tooling
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact tooling head and frozen source ancestry
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          git cat-file -e "${V17_SOURCE_SHA}^{commit}"
+          git merge-base --is-ancestor "$V17_SOURCE_SHA" HEAD
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+
+      - name: Validate retained V1.2 machine qualification tooling
+        run: |
+          python -m json.tool contracts/v1.7/qualification.v1.2.machine.plan.json >/dev/null
+          python -m json.tool docs/v1.7/v1.2-machine-qualification-dev47.contract.json >/dev/null
+          python -m py_compile scripts/capture_glaze_v1_7_v1_2_machine_qualification.py
+          node --check scripts/validate_glaze_v1_7_v1_2_machine_qualification.mjs
+          node scripts/validate_glaze_v1_7_v1_2_machine_qualification.mjs
+          node scripts/validate_glaze_v1_7_acceptance_development.mjs
+          node scripts/validate_glaze_v1_7_qualification_evidence.mjs
+
+      - run: git diff --exit-code -- .
+
+  capture-machine-evidence:
+    name: Capture frozen-source retained V1.2 machine evidence
+    needs: verify-machine-tooling
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check out frozen dev.47 source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ env.V17_SOURCE_SHA }}
+          path: _v17-source
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+
+      - name: Verify source and tooling identities
+        env:
+          EXPECTED_TOOLING_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_TOOLING_SHA"
+          test "$(git -C _v17-source rev-parse HEAD)" = "$V17_SOURCE_SHA"
+          git -C _v17-source diff --exit-code -- .
+
+      - name: Capture exact-source retained V1.2 machine evidence
+        run: |
+          python scripts/capture_glaze_v1_7_v1_2_machine_qualification.py \
+            --source-root _v17-source \
+            --tooling-root . \
+            --out artifacts/v1.7-v1.2-machine
+
+      - name: Verify partial-evidence boundary
+        run: |
+          node scripts/validate_glaze_v1_7_v1_2_machine_qualification.mjs \
+            artifacts/v1.7-v1.2-machine/machine-evidence.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('artifacts/v1.7-v1.2-machine')
+          manifest=json.loads((root/'manifest.json').read_text())
+          evidence=json.loads((root/'machine-evidence.json').read_text())
+          assert manifest['sourceRevision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'
+          assert manifest['sourceModelVersion']=='1.7.0-dev.47'
+          assert manifest['acceptanceModelVersion']=='1.7.0-dev.39'
+          assert manifest['stableBaseline']=='1.6.0'
+          assert manifest['checkCount']==14
+          assert len(manifest['machineEvidenceLaneIds'])==20
+          assert manifest['passed'] is True
+          assert len(evidence)==20
+          assert all(item['verified'] is True for item in evidence)
+          assert all(item['revision']==manifest['sourceRevision'] for item in evidence)
+          assert all(item['evidenceType']=='machine' for item in evidence)
+          assert all(item['reference'].startswith('evidence+sha256:') for item in evidence)
+          assert manifest['authority']['machineEvidenceOnly'] is True
+          assert manifest['authority']['machineEvidenceCompletesAnyLane'] is False
+          for key in (
+              'renderedEvidenceClaimed','humanEvidenceClaimed','assistiveTechnologyEvidenceClaimed',
+              'deviceEvidenceClaimed','performanceEvidenceClaimed','energyEvidenceClaimed',
+              'provenanceEvidenceClaimed','v12QualificationClaimed','section46CompleteClaimed',
+              'v17AcceptanceClaimed','anchorStatusGranted','consumerEligibilityGranted',
+              'deploymentAcceptanceGranted','productionAcceptanceGranted','lifecyclePromotionAutomatic'
+          ):
+              assert manifest['authority'][key] is False, key
+          print('Retained V1.2 machine evidence manifest verification: PASS')
+          PY
+          git -C _v17-source diff --exit-code -- .
+          git diff --exit-code -- .
+
+      - name: Upload retained V1.2 machine evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: glaze-v1.7-v1.2-machine-${{ github.run_id }}
+          path: artifacts/v1.7-v1.2-machine/
+          if-no-files-found: error
+          retention-days: 90

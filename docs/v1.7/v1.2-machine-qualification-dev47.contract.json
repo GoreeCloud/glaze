@@ -1,0 +1,40 @@
+{
+  "recordType": "glaze-v1.7-retained-v1.2-machine-qualification-tooling",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "retainedAcceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "retainedLaneCount": 37,
+  "machineEligibleLaneCount": 20,
+  "nonMachineEligibleLaneCount": 17,
+  "machineOnlyFullyVerifiedLaneCount": 0,
+  "machineEvidenceReferenceFormat": "evidence+sha256:<digest>:v1.7/v1.2-machine/<check>.log",
+  "tooling": {
+    "plan": "contracts/v1.7/qualification.v1.2.machine.plan.json",
+    "capture": "scripts/capture_glaze_v1_7_v1_2_machine_qualification.py",
+    "validation": "scripts/validate_glaze_v1_7_v1_2_machine_qualification.mjs",
+    "workflow": ".github/workflows/glaze-v1.7-v1.2-machine-qualification.yml"
+  },
+  "remainingEvidenceClasses": [
+    "rendered",
+    "human",
+    "device",
+    "assistive-technology",
+    "performance",
+    "energy",
+    "provenance"
+  ],
+  "authority": {
+    "machineEvidenceOnly": true,
+    "evidenceInventoryComplete": false,
+    "section46Complete": false,
+    "v17Accepted": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false,
+    "lifecyclePromotionAutomatic": false
+  }
+}

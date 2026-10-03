@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.v1.2.machine-qualification",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "networkPolicy": "repository-local-only",
+  "evidenceType": "machine",
+  "checks": [
+    {
+      "id": "task-continuity-and-adaptive-composition",
+      "command": "node scripts/validate_glaze_v1_7_task_continuity_development.mjs",
+      "laneIds": ["task-continuity", "adaptive-composition"]
+    },
+    {
+      "id": "semantic-color",
+      "command": "node scripts/validate_glaze_v1_7_theme_semantic_color_development.mjs",
+      "laneIds": ["semantic-color"]
+    },
+    {
+      "id": "advanced-theme-system",
+      "command": "node scripts/validate_glaze_v1_7_advanced_theme_system_v1_2_development.mjs",
+      "laneIds": ["theme-safety", "custom-theme-accessibility"]
+    },
+    {
+      "id": "signature-motion",
+      "command": "node scripts/validate_glaze_v1_7_signature_motion_system_development.mjs",
+      "laneIds": ["signature-motion"]
+    },
+    {
+      "id": "motion-interruption-and-reversal",
+      "command": "node scripts/validate_glaze_v1_7_signature_motion_principles_development.mjs",
+      "laneIds": ["animation-interruption", "animation-reversal"]
+    },
+    {
+      "id": "connected-transformations",
+      "command": "node scripts/validate_glaze_v1_7_connected_transformation_2_development.mjs",
+      "laneIds": ["connected-transformations"]
+    },
+    {
+      "id": "reduced-motion",
+      "command": "node scripts/validate_glaze_v1_7_reduced_motion_equivalents_development.mjs",
+      "laneIds": ["reduced-motion"]
+    },
+    {
+      "id": "adaptive-input",
+      "command": "node scripts/validate_glaze_v1_7_adaptive_input_development.mjs",
+      "laneIds": ["keyboard", "pointer"]
+    },
+    {
+      "id": "accessibility-presentation",
+      "command": "node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs",
+      "laneIds": ["reduced-transparency", "increased-contrast", "forced-colors", "large-text"]
+    },
+    {
+      "id": "rtl-inherited-accessibility",
+      "command": "python scripts/validate_glaze_v1_3_accessibility.py",
+      "laneIds": ["rtl"]
+    },
+    {
+      "id": "privacy-and-security-boundaries",
+      "command": "node scripts/validate_glaze_v1_7_privacy_authority_boundaries_development.mjs",
+      "laneIds": ["privacy-boundaries", "security-boundaries"]
+    },
+    {
+      "id": "repository-regression-integrity",
+      "command": "python scripts/validate_glaze_v1.py",
+      "laneIds": ["regression"]
+    },
+    {
+      "id": "acceptance-control-self-check",
+      "command": "node scripts/validate_glaze_v1_7_acceptance_development.mjs",
+      "laneIds": []
+    },
+    {
+      "id": "qualification-packet-self-check",
+      "command": "node scripts/validate_glaze_v1_7_qualification_evidence.mjs",
+      "laneIds": []
+    }
+  ],
+  "expectedMachineLaneIds": [
+    "task-continuity",
+    "adaptive-composition",
+    "semantic-color",
+    "theme-safety",
+    "custom-theme-accessibility",
+    "signature-motion",
+    "connected-transformations",
+    "animation-interruption",
+    "animation-reversal",
+    "reduced-motion",
+    "keyboard",
+    "pointer",
+    "reduced-transparency",
+    "increased-contrast",
+    "forced-colors",
+    "large-text",
+    "rtl",
+    "regression",
+    "privacy-boundaries",
+    "security-boundaries"
+  ],
+  "authority": {
+    "machineEvidenceOnly": true,
+    "machineEvidenceCompletesAnyLane": false,
+    "renderedEvidenceClaimed": false,
+    "humanEvidenceClaimed": false,
+    "assistiveTechnologyEvidenceClaimed": false,
+    "deviceEvidenceClaimed": false,
+    "performanceEvidenceClaimed": false,
+    "energyEvidenceClaimed": false,
+    "provenanceEvidenceClaimed": false,
+    "v12QualificationClaimed": false,
+    "section46CompleteClaimed": false,
+    "v17AcceptanceClaimed": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false,
+    "lifecyclePromotionAutomatic": false
+  }
+}
