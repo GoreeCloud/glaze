@@ -1,0 +1,48 @@
+{
+  "recordType": "glaze-v1.7-retained-v1.2-rendered-browser-qualification-tooling",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "retainedAcceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "retainedLaneCount": 37,
+  "renderedCapableLaneCount": 23,
+  "renderedEvidenceLaneCount": 22,
+  "openRenderedLaneIds": [
+    "regression"
+  ],
+  "openRenderedLaneReason": "A governed V1.7 rendered regression baseline has not yet been established; self-comparison is not accepted as regression evidence.",
+  "sceneCount": 22,
+  "tooling": {
+    "plan": "contracts/v1.7/qualification.v1.2.rendered.plan.json",
+    "harness": "reference/v1.7/rendered-v1.2-qualification.html",
+    "harnessModule": "reference/v1.7/rendered-v1.2-qualification.mjs",
+    "capture": "scripts/capture_glaze_v1_7_v1_2_rendered_qualification.py",
+    "validation": "scripts/validate_glaze_v1_7_v1_2_rendered_qualification_harness.mjs",
+    "workflow": ".github/workflows/glaze-v1.7-v1.2-rendered-qualification.yml"
+  },
+  "evidenceBoundary": {
+    "browserClass": "chromium-headless",
+    "networkPolicy": "repository-local-only",
+    "renderedBrowserOnly": true,
+    "formFactorScenesAreBrowserClassRepresentations": true,
+    "physicalDeviceEvidenceClaimed": false,
+    "nativePlatformEvidenceClaimed": false,
+    "humanEvidenceClaimed": false,
+    "assistiveTechnologyEvidenceClaimed": false,
+    "representativePerformanceEvidenceClaimed": false,
+    "energyEvidenceClaimed": false,
+    "regressionBaselineClaimed": false
+  },
+  "authority": {
+    "v12QualificationComplete": false,
+    "section46Complete": false,
+    "v17Accepted": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false,
+    "lifecyclePromotionAutomatic": false
+  }
+}
