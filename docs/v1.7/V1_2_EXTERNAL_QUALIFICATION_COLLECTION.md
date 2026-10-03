@@ -3,7 +3,9 @@
 **Lifecycle:** DevelopmentQualification  
 **Frozen source:** `4b9d085a5177b96cc31d4270b38d792a59872e37`  
 **Acceptance model:** `1.7.0-dev.39`  
-**Historical source line:** V1.7 retained v1.2 / `1.7.0-dev.47`  \n**Successor qualification line:** Glaze V1.7.1 / `1.7.1-dev.1`  \n**Current bounded Anchor:** Glaze V1.7 / `1.7.0`
+**Historical source line:** V1.7 retained v1.2 / `1.7.0-dev.47`
+**Successor qualification line:** Glaze V1.7.1 / `1.7.1-dev.1`
+**Current bounded Anchor:** Glaze V1.7 / `1.7.0`
 
 PR #391 established the current retained working set: 43 exact-source records, 16 evidence-group-complete lanes, and 21 unverified lanes. This protocol does not create evidence or grant lifecycle authority.
 

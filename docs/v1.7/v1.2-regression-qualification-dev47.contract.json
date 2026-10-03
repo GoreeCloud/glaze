@@ -1,0 +1,55 @@
+{
+  "recordType": "glaze-v1.7.1-retained-v1.2-rendered-regression-qualification",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "retainedAcceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.7.0",
+  "consumerEligible": false,
+  "laneId": "regression",
+  "comparisonKind": "semantic-baseline-plus-double-render-pixel-sha256-exact",
+  "sceneCount": 22,
+  "pixelTolerance": 0,
+  "priorRenderedEvidence": {
+    "runId": 37144536213,
+    "artifactId": 11281038583,
+    "artifactDigest": "sha256:9b862d7da7d5aaf389507f9005edcdf141095593c8c4b30c26ff354e46da5018",
+    "priorPixelBaselineClaimed": false
+  },
+  "tooling": {
+    "plan": "contracts/v1.7/qualification.v1.2.regression.plan.json",
+    "comparator": "scripts/compare_glaze_v1_7_v1_2_rendered_regression.py",
+    "validator": "scripts/validate_glaze_v1_7_v1_2_regression_qualification_plan.mjs",
+    "workflow": ".github/workflows/glaze-v1.7-v1.2-regression-qualification.yml"
+  },
+  "authority": {
+    "renderedRegressionOnly": true,
+    "humanEvidenceClaimed": false,
+    "assistiveTechnologyEvidenceClaimed": false,
+    "physicalDeviceEvidenceClaimed": false,
+    "nativePlatformEvidenceClaimed": false,
+    "representativePerformanceEvidenceClaimed": false,
+    "energyEvidenceClaimed": false,
+    "governedReviewAcceptanceClaimed": false,
+    "section46CompleteClaimed": false,
+    "v17AcceptanceClaimed": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false,
+    "lifecyclePromotionAutomatic": false,
+    "v171AcceptanceClaimed": false,
+    "section48Accepted": false
+  },
+  "successorReleaseLine": "1.7.1",
+  "developmentIdentity": "1.7.1-dev.1",
+  "historicalSourceStableBaseline": "1.6.0",
+  "comparisonNormalization": {
+    "fontRenderHinting": "none",
+    "lcdTextDisabled": true,
+    "gpuDisabled": true,
+    "forceColorProfile": "srgb",
+    "harnessMetadataPillRadiusPixels": 0,
+    "pixelTolerance": 0
+  }
+}
