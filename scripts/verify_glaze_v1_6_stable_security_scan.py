@@ -107,9 +107,16 @@ def main() -> int:
     require(head == args.expected_sha, f"exact-head mismatch: checkout={head} expected={args.expected_sha}")
 
     lifecycle = load_json(ROOT / "registry/lifecycle.json")
-    require(lifecycle.get("currentStable") == "1.6.0", "current Stable must be 1.6.0 on the Stable promotion candidate")
-    require(lifecycle.get("currentOfficial") == "1.6.0", "current Official must be 1.6.0 on the Stable promotion candidate")
-    require(lifecycle.get("activeCandidate") is None, "V1.6 Release Candidate must be retired after Stable promotion")
+    live_version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+    require(lifecycle.get("currentStable") == live_version, "current Stable must match VERSION")
+    require(lifecycle.get("currentOfficial") == live_version, "current Official must match VERSION")
+    require(lifecycle.get("activeCandidate") is None, "no active lifecycle Candidate may coexist with the current Anchor")
+    current_release = next((item for item in lifecycle.get("releases", []) if item.get("version") == live_version), None)
+    require(isinstance(current_release, dict), "current Stable/Anchor release record missing")
+    require(current_release.get("status") == "stable", "current release must retain Stable compatibility status")
+    require(current_release.get("consumerEligible") is True, "current release must be consumer eligible")
+    v16_release = next((item for item in lifecycle.get("releases", []) if item.get("version") == "1.6.0"), None)
+    require(isinstance(v16_release, dict) and v16_release.get("status") == "stable", "retained V1.6 Stable release record missing")
 
     review = load_json(ROOT / "acceptance/v1.6-stable-qualification-review.json")
     require(review.get("decision") == "approved-for-stable-promotion", "Stable review must authorize the promotion")
@@ -264,7 +271,7 @@ def main() -> int:
         "result": "blocked" if blocked_reasons else "passed",
         "sourceRevision": head,
         "lifecycle": {
-            "currentStable": "1.6.0",
+            "currentStable": live_version,
             "activeCandidate": None,
             "stablePromotionAuthorized": False,
         },
