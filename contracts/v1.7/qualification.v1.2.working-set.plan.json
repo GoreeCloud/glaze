@@ -10,175 +10,37 @@
   "networkPolicy": "repository-local-only",
   "inputs": {
     "machineEvidence": "artifacts/v1.7-v1.2-working-set/machine/machine-evidence.json",
+    "renderedEvidence": "artifacts/v1.7-v1.2-working-set/rendered/rendered-evidence.json",
     "renderedManifest": "artifacts/v1.7-v1.2-working-set/rendered/manifest.json",
-    "renderedSceneDirectory": "artifacts/v1.7-v1.2-working-set/rendered/scenes",
     "provenanceEvidence": "artifacts/v1.7-v1.2-working-set/provenance/v12-provenance-evidence.json"
   },
-  "renderedBridgeMappings": [
-    {
-      "id": "task-continuity",
-      "finding": "Wide and compact exact-source workspace scenes preserve draft and pane identity, adapt pane count, avoid navigation execution, and render without horizontal overflow.",
-      "scenes": [
-        {
-          "id": "workspace-wide",
-          "requiredAssertions": [
-            "workspaceDraftPreserved",
-            "workspacePaneIdentityPreserved",
-            "workspaceNavigationNotExecuted",
-            "workspaceResponsivePaneCount",
-            "noHorizontalOverflow"
-          ]
-        },
-        {
-          "id": "workspace-compact",
-          "requiredAssertions": [
-            "workspaceDraftPreserved",
-            "workspacePaneIdentityPreserved",
-            "workspaceNavigationNotExecuted",
-            "workspaceResponsivePaneCount",
-            "noHorizontalOverflow"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "adaptive-composition",
-      "finding": "The exact-source workspace changes from three panes at 1440x1000 to one pane at 390x844 while preserving pane identity and avoiding horizontal overflow.",
-      "scenes": [
-        {
-          "id": "workspace-wide",
-          "requiredAssertions": [
-            "workspacePaneIdentityPreserved",
-            "workspaceResponsivePaneCount",
-            "noHorizontalOverflow"
-          ],
-          "expectedSceneData": {
-            "paneCount": 3
-          }
-        },
-        {
-          "id": "workspace-compact",
-          "requiredAssertions": [
-            "workspacePaneIdentityPreserved",
-            "workspaceResponsivePaneCount",
-            "noHorizontalOverflow"
-          ],
-          "expectedSceneData": {
-            "paneCount": 1
-          }
-        }
-      ]
-    },
-    {
-      "id": "mobile",
-      "finding": "The exact-source compact workspace renders at a 390x844 mobile-class viewport with one pane and no horizontal overflow.",
-      "scenes": [
-        {
-          "id": "workspace-compact",
-          "requiredAssertions": [
-            "workspaceResponsivePaneCount",
-            "noHorizontalOverflow"
-          ],
-          "expectedViewport": [
-            390,
-            844
-          ],
-          "expectedSceneData": {
-            "paneCount": 1
-          }
-        }
-      ]
-    },
-    {
-      "id": "desktop",
-      "finding": "The exact-source wide workspace renders at a 1440x1000 desktop-class viewport with three panes and no horizontal overflow.",
-      "scenes": [
-        {
-          "id": "workspace-wide",
-          "requiredAssertions": [
-            "workspaceResponsivePaneCount",
-            "noHorizontalOverflow"
-          ],
-          "expectedViewport": [
-            1440,
-            1000
-          ],
-          "expectedSceneData": {
-            "paneCount": 3
-          }
-        }
-      ]
-    },
-    {
-      "id": "large-text",
-      "finding": "The exact-source accessibility scene renders at a 32px root font with Large Text active, preserved non-color-only meaning, and no horizontal overflow.",
-      "scenes": [
-        {
-          "id": "accessibility-large-text",
-          "requiredAssertions": [
-            "accessibilityModeApplied",
-            "renderedLargeText",
-            "colorOnlyMeaningRejected",
-            "noHorizontalOverflow"
-          ],
-          "expectedComputed": {
-            "rootFontPx": 32,
-            "horizontalOverflowPx": 0
-          },
-          "expectedSceneDataIncludes": {
-            "effectiveModes": "large-text"
-          }
-        }
-      ]
-    },
-    {
-      "id": "forced-colors",
-      "finding": "The exact-source Forced Colors scene renders with platform forced-colors emulation active, solid-material fallback, preserved non-color-only meaning, and no horizontal overflow.",
-      "scenes": [
-        {
-          "id": "accessibility-forced-colors",
-          "requiredAssertions": [
-            "accessibilityModeApplied",
-            "renderedForcedColorsMode",
-            "renderedSolidFallback",
-            "colorOnlyMeaningRejected",
-            "noHorizontalOverflow"
-          ],
-          "expectedComputed": {
-            "horizontalOverflowPx": 0
-          },
-          "expectedSceneDataIncludes": {
-            "effectiveModes": "forced-colors"
-          },
-          "expectedMediaFeature": {
-            "name": "forced-colors",
-            "value": "active"
-          }
-        }
-      ]
-    },
-    {
-      "id": "representative-rendering",
-      "finding": "All fourteen exact-source dev.47 browser scenes render successfully across workspace, compact, accessibility, provider-adaptive, creative, compare, care, and expression surfaces with bounded browser-only authority.",
-      "requireAllManifestScenes": true,
-      "requiredAssertionsForAllScenes": [
-        "noHorizontalOverflow"
-      ]
-    }
-  ],
   "expectedMachineEvidenceRecordCount": 20,
-  "expectedRenderedEvidenceRecordCount": 7,
+  "expectedRenderedEvidenceRecordCount": 22,
   "expectedProvenanceEvidenceRecordCount": 1,
-  "expectedCombinedEvidenceRecordCount": 28,
+  "expectedCombinedEvidenceRecordCount": 43,
+  "openRenderedEvidenceLaneIds": [
+    "regression"
+  ],
   "expectedMatrixExternallyVerifiedLaneIds": [
     "task-continuity",
     "adaptive-composition",
+    "semantic-color",
+    "theme-safety",
+    "custom-theme-accessibility",
+    "signature-motion",
+    "connected-transformations",
+    "animation-interruption",
+    "animation-reversal",
+    "reduced-motion",
+    "reduced-transparency",
+    "increased-contrast",
     "forced-colors",
     "large-text",
+    "rtl",
     "artifact-provenance"
   ],
-  "expectedMatrixExternallyVerifiedCount": 5,
-  "expectedMatrixUnverifiedCount": 32,
+  "expectedMatrixExternallyVerifiedCount": 16,
+  "expectedMatrixUnverifiedCount": 21,
   "authority": {
     "workingSetOnly": true,
     "governedReviewAcceptanceClaimed": false,
