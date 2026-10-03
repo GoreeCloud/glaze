@@ -1,8 +1,8 @@
-name: Glaze UI Wear OS Emulator Runtime — Deferred Manual Validation
+name: Glaze Wear OS Emulator Runtime — Deferred Manual Validation
 
-# Wear OS is intentionally deferred to a later Glaze UI upgrade. This workflow
-# is preserved as a manual development/reference check and is not a Glaze UI
-# V1.6 Anchor expansion, V1.7 acceptance, or production-conformance gate.
+# Wear OS is intentionally deferred from bounded Glaze V1.7.0 Stable to V1.7.1 Development. This workflow
+# is preserved as a manual development/reference check and is not a V1.7.0 Anchor expansion,
+# V1.7.1 acceptance, or production-conformance gate.
 on:
   workflow_dispatch:
 
@@ -85,7 +85,7 @@ jobs:
           AvdId=$AVD_NAME
           PlayStore.enabled=false
           abi.type=x86_64
-          avd.ini.displayname=Glaze UI Wear OS Runtime
+          avd.ini.displayname=Glaze Wear OS Runtime
           avd.ini.encoding=UTF-8
           disk.dataPartition.size=2G
           fastboot.forceColdBoot=yes

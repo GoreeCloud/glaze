@@ -1,13 +1,13 @@
 # GLAZE UI V1.0-Origin — Icon Grid, Geometry, Materials, and Construction Contract
 
 **Contract origin:** Official V1.0 reset baseline; inherited by later V1 releases unless superseded.  
-**Current Stable product authority:** GLAZE UI V1.6 / `1.6.0`.
+**Current Stable product authority:** Glaze V1.7 / `1.7.0`.
 
-`tokens/icon-construction.json` retains an internal icon-construction contract revision and baseline of `1.5.0`. That value is a subsystem-contract revision only and does not define the current Glaze UI product lifecycle, consumer target, or production-acceptance state. Current product lifecycle authority is `1.6.0` and remains separate in `registry/lifecycle.json` and `VERSION`.
+`tokens/icon-construction.json` retains an internal icon-construction contract revision and baseline of `1.5.0`. That value is a subsystem-contract revision only and does not define the current Glaze UI product lifecycle, consumer target, or production-acceptance state. Current product lifecycle authority is `1.7.0` and remains separate in `registry/lifecycle.json` and `VERSION`.
 
 ## Purpose
 
-This contract defines how application and service identity assets are constructed, simplified, packaged, validated, and described for tooling across the V1 generation. It originated in GLAZE UI V1.0 and remains inherited by the current V1.6 Stable product unless a later governed contract explicitly supersedes it.
+This contract defines how application and service identity assets are constructed, simplified, packaged, validated, and described for tooling across the V1 generation. It originated in GLAZE UI V1.0 and remains inherited by the current V1.7 Stable product unless a later governed contract explicitly supersedes it.
 
 ## Master canvas and protected zones
 

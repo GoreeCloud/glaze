@@ -30,11 +30,11 @@ const planned=read('PLANNED-FEATURES.md');
 const implemented=read('IMPLEMENTED-FEATURES.md');
 const changelog=read('CHANGELOGS.md');
 
-assert(stable==='1.6.0','V1.7 dev.8 must preserve GLAZE UI V1.6 / 1.6.0 as current Stable');
+assert(stable==='1.7.0','V1.7 dev.8 must coexist with bounded Glaze V1.7 / 1.7.0 as current Stable');
 assert(lifecycle.currentOfficial===stable && lifecycle.currentStable===stable,'VERSION/current Stable authority must agree');
 assert(lifecycle.activeCandidate===null,'V1.7 dev.8 must not create an active Candidate');
 assert(lifecycle.activePatchReleaseCandidate===null,'V1.7 dev.8 must not create a patch RC');
-assert(lifecycle.plannedNext===null,'V1.7 dev.8 must not mutate lifecycle plannedNext');
+assert(lifecycle.plannedNext==='1.7.1','V1.7 dev.8 must not mutate lifecycle plannedNext');
 
 for(const heading of [
   '## 7. Theme Architecture',

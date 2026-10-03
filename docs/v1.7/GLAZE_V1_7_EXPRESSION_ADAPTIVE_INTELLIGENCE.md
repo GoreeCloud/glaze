@@ -1,7 +1,7 @@
 ---
 title: "Glaze V1.7 — Expression and Adaptive Intelligence Expansion"
 document_type: "V1.7 Planned Requirements Supplement"
-status: "Development — source complete; acceptance pending"
+status: "V1.7.1 Development follow-up — source preserved; acceptance pending"
 document_version: "v1.0"
 product: "GLAZE"
 formal_identity: "Glaze — GoreeCloud Design & Experience System"
@@ -9,7 +9,7 @@ former_name: "Glaze UI"
 planned_family: "GLAZE V1.7"
 planned_theme: "Interaction Continuity + Personal Expression + Adaptive Intelligence + Signature Motion"
 canonical_repository: "GoreeCloud/glaze"
-consumer_eligible: false
+consumer_eligible: false\nsuccessor_release_line: "Glaze V1.7.1"
 last_updated: "2026-10-03"
 authoritative_scope: "Detailed planned expression and adaptive-intelligence requirements supplement to GLAZE_V1_7_PLANNED.md"
 ---

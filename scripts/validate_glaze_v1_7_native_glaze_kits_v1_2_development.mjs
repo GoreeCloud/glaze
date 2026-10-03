@@ -57,9 +57,9 @@ function baseInput(platform,relationship='transient-elevation'){
   };
 }
 
-assert(read('VERSION').trim()==='1.6.0','V1.6 VERSION changed');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'dev.29 must not create lifecycle promotion state');
+assert(read('VERSION').trim()==='1.7.0','bounded V1.7 VERSION changed');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','dev.29 must not create lifecycle promotion state');
 
 for(const phrase of [
   '## 37. Native Glaze Kits',
@@ -224,5 +224,5 @@ console.log('Platforms: 4');
 console.log('Semantic motion relationships: 10');
 console.log('Identical animation implementation required: false');
 console.log('Section 37 complete: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

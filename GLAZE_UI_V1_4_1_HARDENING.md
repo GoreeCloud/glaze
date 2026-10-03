@@ -8,7 +8,7 @@
 
 V1.4.1 was the explicit home for human-dependent validation deferred from the V1.4.0 Stable release. Those qualification obligations were later reconciled through the governed V1.4.1 acceptance and promotion path recorded in `acceptance/v1.4.1-stable.md`. This document is therefore historical qualification provenance, not an open-work tracker.
 
-V1.4.1 also introduced additive runtime hardening while preserving the accepted V1.4.0 Stable source. The historical machine and human requirements below remain evidence context; they do not override current V1.6 Anchor authority or reopen completed V1.4.1 lifecycle work.
+V1.4.1 also introduced additive runtime hardening while preserving the accepted V1.4.0 Stable source. The historical machine and human requirements below remain evidence context; they do not override current Glaze V1.7 / 1.7.0 Anchor authority or reopen completed V1.4.1 lifecycle work.
 
 ## Historical human-validation requirements
 

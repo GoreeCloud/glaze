@@ -46,11 +46,8 @@ def main() -> int:
     req(bool(current) and current.get("status") == "stable", "live currentStable record must be Stable")
     req(bool(current) and current.get("consumerEligible") is True, "live currentStable record must be consumer-eligible")
     official_product_label = lifecycle.get("officialProductLabel")
-    stable_parts = current_stable.split(".") if isinstance(current_stable, str) else []
     req(isinstance(official_product_label, str) and bool(official_product_label), "officialProductLabel must identify live currentStable product family")
-    req(len(stable_parts) >= 2, "live currentStable must use a major.minor release family")
-    stable_family = ".".join(stable_parts[:2]) if len(stable_parts) >= 2 else ""
-    req(bool(stable_family) and official_product_label.startswith(f"GLAZE UI V{stable_family}"), "officialProductLabel must identify live currentStable release family")
+    req(bool(current) and official_product_label == current.get("label"), "officialProductLabel must match live currentStable release label")
 
     retained = release_for(lifecycle, RETAINED_VERSION)
     req(bool(retained) and retained.get("status") == "stable", "retained lifecycle must contain Stable 1.2.0")

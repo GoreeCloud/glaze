@@ -1,0 +1,84 @@
+name: Glaze V1.7 Bounded Stable Authority
+
+on:
+  pull_request:
+    paths:
+      - 'VERSION'
+      - 'registry/lifecycle.json'
+      - 'consumers/registry.json'
+      - 'schemas/consumer-registry.schema.json'
+      - 'GLAZE_V1_7.md'
+      - 'GLAZE_V1_7_1_HARDENING.md'
+      - 'acceptance/v1.7-stable.md'
+      - 'contracts/v1.7/stable-scope.json'
+      - 'js/glaze-v1.7.0.mjs'
+      - 'js/glaze-v1.7.1-development.mjs'
+      - 'scripts/verify_glaze_v1_7_stable.mjs'
+      - '.github/workflows/glaze-v1.7-stable.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'VERSION'
+      - 'registry/lifecycle.json'
+      - 'consumers/registry.json'
+      - 'schemas/consumer-registry.schema.json'
+      - 'GLAZE_V1_7.md'
+      - 'GLAZE_V1_7_1_HARDENING.md'
+      - 'acceptance/v1.7-stable.md'
+      - 'contracts/v1.7/stable-scope.json'
+      - 'js/glaze-v1.7.0.mjs'
+      - 'js/glaze-v1.7.1-development.mjs'
+      - 'scripts/verify_glaze_v1_7_stable.mjs'
+      - '.github/workflows/glaze-v1.7-stable.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  stable-authority:
+    name: v1.7-bounded-stable-authority
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
+      - name: Verify bounded V1.7 Stable authority
+        run: node scripts/verify_glaze_v1_7_stable.mjs
+
+      - name: Verify V1.7 Stable does not import retained Development runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -Eq "from ['\"]\./glaze-v1\.7-development" js/glaze-v1.7.0.mjs
+          ! grep -Eq "export \* from ['\"]\./glaze-v1\.7-development" js/glaze-v1.7.0.mjs
+          git diff --exit-code -- .
+
+  bounded-security-boundary:
+    name: v1.7-bounded-stable-security-boundary
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify no new dependency or executable-development surface enters Stable
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(grep -c "export \* from './glaze-v1.6.0.mjs'" js/glaze-v1.7.0.mjs)" -eq 1
+          ! grep -Eq "glaze-v1\.7-.*\.dev\.mjs" js/glaze-v1.7.0.mjs
+          test -f acceptance/v1.6-final-security-acceptance.json
+          test -f acceptance/v1.6-stable.json
+          git diff --exit-code -- .

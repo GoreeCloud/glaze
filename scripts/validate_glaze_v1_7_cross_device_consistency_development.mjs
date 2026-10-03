@@ -28,9 +28,9 @@ const changelog=read('CHANGELOGS.md');
 const research=read('research/v1.7-cross-device-consistency.md');
 const rootResearch=read('OPEN-SOURCE-RESEARCH.md');
 
-assert(read('VERSION').trim()==='1.6.0','dev.35 must preserve V1.6 / 1.6.0 Anchor baseline');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'dev.35 must not create release lifecycle state');
+assert(read('VERSION').trim()==='1.7.0','dev.35 must coexist with bounded Glaze V1.7 / 1.7.0 Anchor');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','dev.35 must not create release lifecycle state');
 
 assert(plan.includes('## 42. Cross-Device Consistency Without Uniformity'),'V1.7 plan missing Section 42');
 for(const phrase of [
@@ -186,5 +186,5 @@ console.log('Pixel-identical presentation required: false');
 console.log('Identical native controls required: false');
 console.log('Platform ranking/winner selection allowed: false');
 console.log('Section 42 complete: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

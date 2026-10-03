@@ -45,7 +45,6 @@ assert(
   'V1.6 retained Development validation requires live Stable authority at or after its frozen 1.5.1 baseline'
 );
 assert((lifecycle.activeCandidate === null || lifecycle.activeCandidate === '1.6.0-rc.1'), 'V1.6 Development validation permits only no active Candidate or governed 1.6.0-rc.1');
-assert(lifecycle.plannedNext === null, 'V1.6 Development must not create plannedNext');
 assert(lifecycle.activePatchReleaseCandidate === null, 'V1.6 Development must not create patch RC');
 
 for (const number of sections) {

@@ -22,10 +22,10 @@ const changelog=read('CHANGELOGS.md');
 
 const axes=["components","semantic-states","theme-presets","user-created-themes","color-families","appearance-modes","expression-modes","form-factors","adaptive-layouts","motion","loading-behavior","error-states","accessibility-configurations","platform-mappings"];
 
-assert(stable==='1.6.0','dev.12 must preserve V1.6 / 1.6.0 Stable');
+assert(stable==='1.7.0','dev.12 must coexist with bounded Glaze V1.7 / 1.7.0 Stable');
 assert(lifecycle.currentOfficial===stable&&lifecycle.currentStable===stable,'Stable authority mismatch');
 assert(lifecycle.activeCandidate===null&&lifecycle.activePatchReleaseCandidate===null,'dev.12 must not create Candidate state');
-assert(lifecycle.plannedNext===null,'dev.12 must not mutate plannedNext');
+assert(lifecycle.plannedNext==='1.7.1','dev.12 must not mutate plannedNext');
 
 assert(spec.includes('## 40. Glaze Studio'),'V1.7 v1.2 specification missing Glaze Studio Section 40');
 assert(spec.includes('dev.8–dev.13 use the prior v1.1 35-section numbering'),'v1.2 plan must preserve v1.1 implementation-numbering provenance');

@@ -27,9 +27,9 @@ const components=['GlzNotificationSurface','GlzActivityItem','GlzActivityGroup',
 const transitions=['progress','completion','recovery','arrival','expansion','dismissal'];
 const relationships={progress:'color-state-change',completion:'material-role-change',recovery:'material-role-change',arrival:'transient-elevation',expansion:'same-object-expansion',dismissal:'transient-elevation'};
 
-assert(read('VERSION').trim()==='1.6.0','V1.6 VERSION changed');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'dev.28 must not create lifecycle promotion state');
+assert(read('VERSION').trim()==='1.7.0','bounded V1.7 VERSION changed');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','dev.28 must not create lifecycle promotion state');
 for(const phrase of ['## 36. Notification and Activity Surfaces',...components,'progress, completion, recovery, arrival, expansion, or dismissal','Persistent pulsing should not become the default way to communicate attention.']){
   assert(spec.includes(phrase),'Section 36 requirement missing: '+phrase);
 }
@@ -136,5 +136,5 @@ console.log('Plan binding: v1.2 Section 36');
 console.log('Historical dev.7 provenance preserved: true');
 console.log('Persistent pulsing default: false');
 console.log('Section 36 complete: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

@@ -11,9 +11,13 @@ const QI='f7ef915f0aabea6cf92748018f2220a99e3a9c92';
 const RC='a9c93506dd062d29c6c894940b71d060e8c39110';
 
 const lifecycle=json('registry/lifecycle.json');
-assert.equal(read('VERSION').trim(),'1.6.0');
-assert.equal(lifecycle.currentOfficial,'1.6.0');
-assert.equal(lifecycle.currentStable,'1.6.0');
+const liveVersion=read('VERSION').trim();
+assert.equal(lifecycle.currentOfficial,liveVersion);
+assert.equal(lifecycle.currentStable,liveVersion);
+const liveRelease=lifecycle.releases.find(item=>item.version===liveVersion);
+assert.ok(liveRelease);
+assert.equal(liveRelease.status,'stable');
+assert.equal(liveRelease.consumerEligible,true);
 
 const v151=lifecycle.releases.find(item=>item.version==='1.5.1');
 assert.ok(v151);
@@ -62,10 +66,10 @@ for(const token of [REVIEWED,QUALIFIED,QI,RC,'5697516074','5705230782','GCU-ADR-
 }
 
 const consumers=json('consumers/registry.json');
-assert.equal(consumers.officialBaseline,'1.6.0');
-assert.equal(consumers.requiredConsumerVersion,'1.6.0');
-assert.ok(consumers.consumers.every(item=>item.requiredTargetVersion==='1.6.0'));
+assert.equal(consumers.officialBaseline,liveVersion);
+assert.equal(consumers.requiredConsumerVersion,liveVersion);
+assert.ok(consumers.consumers.every(item=>item.requiredTargetVersion===liveVersion));
 assert.ok(consumers.consumers.every(item=>item.productionEligible===false));
 
 console.log('GLAZE UI V1.5.1 retained Stable integrity: PASS');
-console.log('V1.5.1 remains the known-good rollback Stable; current authority is 1.6.0.');
+console.log(`V1.5.1 retained Stable integrity is preserved; current authority is ${liveVersion}.`);

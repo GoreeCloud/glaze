@@ -28,7 +28,7 @@ assert(
   liveTuple[0]>1 || (liveTuple[0]===1 && (liveTuple[1]>5 || (liveTuple[1]===5 && liveTuple[2]>=1))),
   'V1.6 retained qualification requires live Stable authority at or after its frozen 1.5.1 baseline'
 );
-assert((lifecycle.activeCandidate===null||lifecycle.activeCandidate==='1.6.0-rc.1')&&lifecycle.plannedNext===null&&lifecycle.activePatchReleaseCandidate===null,'regression evidence must not promote lifecycle');
+assert(lifecycle.activeCandidate===null&&lifecycle.activePatchReleaseCandidate===null,'regression evidence must not promote lifecycle');
 
 assert(record.schemaVersion===1,'regression evidence schema version drifted');
 assert(record.lifecycle==='DevelopmentQualification','regression evidence lifecycle mismatch');

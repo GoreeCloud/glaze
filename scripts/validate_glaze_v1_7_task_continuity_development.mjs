@@ -49,11 +49,11 @@ const environmentChanges = [
 ];
 const profiles = ['mobile', 'tablet', 'desktop', 'foldable', 'tv', 'wearable'];
 
-assert(stable === '1.6.0', 'V1.7 dev.1 must preserve GLAZE UI V1.6 / 1.6.0 as current Stable');
+assert(stable === '1.7.0', 'V1.7 dev.1 must coexist with bounded Glaze V1.7 / 1.7.0 as current Stable');
 assert(lifecycle.currentOfficial === stable && lifecycle.currentStable === stable, 'VERSION/current Stable authority must agree');
 assert(lifecycle.activeCandidate === null, 'V1.7 dev.1 must not create an active Candidate');
 assert(lifecycle.activePatchReleaseCandidate === null, 'V1.7 dev.1 must not create a patch RC');
-assert(lifecycle.plannedNext === null, 'V1.7 dev.1 must not mutate lifecycle plannedNext');
+assert(lifecycle.plannedNext==='1.7.1', 'V1.7 dev.1 must not mutate lifecycle plannedNext');
 
 assert(spec.includes('## 1. Task Continuity System'), 'V1.7 specification missing Task Continuity section');
 assert(spec.includes('## 4. Adaptive Composition'), 'V1.7 specification missing Adaptive Composition section');

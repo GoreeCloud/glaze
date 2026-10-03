@@ -8,10 +8,14 @@ const SOURCE='c7509c79256b04b0aa67cb9dd0737d7588e0ae4a';
 const QI='354f5759385c28596fcfec26a3ad525e89fb1c35';
 
 const lifecycle=json('registry/lifecycle.json');
-assert.equal(read('VERSION').trim(), '1.6.0');
-assert.equal(lifecycle.currentOfficial, '1.6.0');
-assert.equal(lifecycle.currentStable, '1.6.0');
+const liveVersion=read('VERSION').trim();
+assert.equal(lifecycle.currentOfficial, liveVersion);
+assert.equal(lifecycle.currentStable, liveVersion);
 assert.equal(lifecycle.activeCandidate, null);
+const liveRelease=lifecycle.releases.find(item=>item.version===liveVersion);
+assert.ok(liveRelease);
+assert.equal(liveRelease.status,'stable');
+assert.equal(liveRelease.consumerEligible,true);
 
 const rc=lifecycle.releases.find(item=>item.version==='1.6.0-rc.1');
 assert.ok(rc);
@@ -41,4 +45,4 @@ assert.ok(wrapper.includes("version: '1.6.0-rc.1'"));
 assert.ok(wrapper.includes("lifecycle: 'release-candidate'"));
 
 console.log('GLAZE UI V1.6.0-rc.1 retained historical integrity: PASS');
-console.log('Current Stable is 1.6.0; RC remains non-consumer-eligible provenance.');
+console.log(`Current Stable is ${liveVersion}; V1.6 RC remains non-consumer-eligible provenance.`);

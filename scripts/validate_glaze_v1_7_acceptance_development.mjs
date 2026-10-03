@@ -52,9 +52,9 @@ assert.equal(workflowOccurrenceCount('actions/setup-node@820762786026740c76f3608
 assert.equal(workflowOccurrenceCount("node-version: '22'"),3,'all V1.7 acceptance jobs must pin Node.js 22');
 assert.equal(workflowOccurrenceCount('git diff --exit-code -- .'),3,'all V1.7 acceptance jobs must fail on tracked-source mutation');
 assert(!acceptanceWorkflow.includes('ubuntu-latest'),'V1.7 acceptance workflow must not use a moving Ubuntu runner');
-assert.equal(version,'1.6.0','VERSION must remain V1.6 Anchor');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'Development source must not create lifecycle candidate');
+assert.equal(version,'1.7.0','VERSION must identify bounded V1.7 Stable');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','bounded V1.7 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','retained Development source must remain assigned to V1.7.1 without creating an active candidate');
 
 const empty=createGlazeV17AcceptanceMatrix({});
 assert.equal(empty.laneCount,37);
@@ -130,5 +130,5 @@ console.log('Conditional lanes: 2');
 console.log('Automated tests alone establish motion acceptance: false');
 console.log('Section 46 complete: false');
 console.log('V1.7 acceptance established by source: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained dev.39 acceptance work continues under V1.7.1');
 console.log('Consumer eligible: false');

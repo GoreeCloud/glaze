@@ -22,10 +22,10 @@ const changelog=read('CHANGELOGS.md');
 
 const events=["surface-relocation","composition-change","retained-object-identity","focus-movement","pane-primacy-change","compact-expanded-transition","theme-change"];
 
-assert(stable==='1.6.0','dev.13 must preserve V1.6 / 1.6.0 Stable');
+assert(stable==='1.7.0','dev.13 must coexist with bounded Glaze V1.7 / 1.7.0 Stable');
 assert(lifecycle.currentOfficial===stable&&lifecycle.currentStable===stable,'Stable authority mismatch');
 assert(lifecycle.activeCandidate===null&&lifecycle.activePatchReleaseCandidate===null,'dev.13 must not create Candidate state');
-assert(lifecycle.plannedNext===null,'dev.13 must not mutate plannedNext');
+assert(lifecycle.plannedNext==='1.7.1','dev.13 must not mutate plannedNext');
 
 assert(spec.includes("dev.13's “v1.1 Section 28 Continuity-Aware Motion”")&&spec.includes('must **not** be reinterpreted as v1.2 Section 28 Theme Transition System'),'v1.2 plan must preserve dev.13 v1.1 provenance');
 for(const heading of ['## 22. Glaze Signature Motion System','## 26. Adaptive Composition Motion','## 28. Theme Transition System','## 31. Reduced Motion Equivalents','## 34. Glaze Motion Lifecycle']) {

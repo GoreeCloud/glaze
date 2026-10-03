@@ -1,13 +1,13 @@
 # GLAZE UI V1.0-Origin — Application and Service Icon Identity
 
 **Contract origin:** Official V1.0 reset baseline; inherited by later V1 releases unless superseded.  
-**Current Stable product authority:** GLAZE UI V1.6 / `1.6.0`.
+**Current Stable product authority:** Glaze V1.7 / `1.7.0`.
 
-`tokens/icon-identity.json` retains an internal icon-identity contract revision and baseline of `1.5.0`. That value is a subsystem-contract revision only and does not define the current Glaze UI product lifecycle, consumer target, or production-acceptance state. Current product lifecycle authority is `1.6.0` and remains separate in `registry/lifecycle.json` and `VERSION`.
+`tokens/icon-identity.json` retains an internal icon-identity contract revision and baseline of `1.5.0`. That value is a subsystem-contract revision only and does not define the current Glaze UI product lifecycle, consumer target, or production-acceptance state. Current product lifecycle authority is `1.7.0` and remains separate in `registry/lifecycle.json` and `VERSION`.
 
 ## Governing principle
 
-The central identity rule is **shared DNA without shared identity**. The V1 identity grammar supplies common ecosystem structure while each product retains a distinct, memorable identity. This contract originated under GLAZE UI V1.0 and remains inherited by the current V1.6 Stable product where not superseded.
+The central identity rule is **shared DNA without shared identity**. The V1 identity grammar supplies common ecosystem structure while each product retains a distinct, memorable identity. This contract originated under GLAZE UI V1.0 and remains inherited by the current V1.7 Stable product where not superseded.
 
 ## Identity hierarchy
 

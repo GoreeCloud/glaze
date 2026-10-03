@@ -25,9 +25,9 @@ const families=['Glaze Bloom','Glaze Flow','Glaze Lift','Glaze Veil','Glaze Fold
 const relationships=['same-object-expansion','workspace-recomposition','transient-elevation','context-overlay','posture-partition','source-destination-continuity','direct-manipulation-settle','focus-transfer','color-state-change','material-role-change'];
 const identityRelationships=new Set(['same-object-expansion','source-destination-continuity']);
 
-assert(read('VERSION').trim()==='1.6.0','V1.6 VERSION changed');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'dev.16 must not create lifecycle promotion state');
+assert(read('VERSION').trim()==='1.7.0','bounded V1.7 VERSION changed');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','dev.16 must not create lifecycle promotion state');
 
 for(const phrase of ['## 24. Glaze Signature Transition Families','### Glaze Bloom','### Glaze Flow','### Glaze Lift','### Glaze Veil','### Glaze Fold','### Glaze Trace','### Glaze Settle','### Glaze Focus Transfer','### Glaze Color Shift','### Glaze Material Shift','Critical dialogs should remain certainty-first and must not depend on translucent effects.','It must not imitate a literal folding animation merely for decoration.','It must not become a continuous decorative trail.','Settle should feel precise rather than springy.','The actual focus state must update independently from the animation.','Protected semantic meaning must remain immediately recognizable throughout the transition.','Reduced Transparency should substitute a suitable non-translucent equivalent.']){
   assert(spec.includes(phrase),'Section 24 requirement missing: '+phrase);
@@ -121,5 +121,5 @@ console.log('Named families: 10');
 console.log('Family catalog implemented: true');
 console.log('Section 24 complete: false');
 console.log('Rendered choreography acceptance: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');

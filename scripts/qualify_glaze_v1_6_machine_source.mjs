@@ -28,7 +28,7 @@ const acceptanceContract=JSON.parse(fs.readFileSync(path.join(sourceRoot,'contra
 
 assert(version==='1.5.1','Stable VERSION must remain 1.5.1');
 assert(lifecycle.currentOfficial==='1.5.1'&&lifecycle.currentStable==='1.5.1','Stable lifecycle must remain 1.5.1');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null&&lifecycle.activePatchReleaseCandidate===null,'qualification source must not activate V1.6 lifecycle');
+assert(lifecycle.activeCandidate===null&&lifecycle.activePatchReleaseCandidate===null,'qualification source must not activate V1.6 lifecycle');
 assert(acceptanceContract.version===plan.acceptanceModelVersion,'acceptance model version mismatch');
 assert(acceptanceContract.acceptance.allEvidenceGroupsRequired===true,'qualification source must use grouped evidence requirements');
 assert(acceptanceContract.acceptance.partialEvidenceGroupMayPass===false,'partial evidence groups must not pass');

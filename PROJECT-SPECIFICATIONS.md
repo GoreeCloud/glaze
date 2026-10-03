@@ -1,10 +1,10 @@
-# Glaze UI — Project Specifications
+# Glaze — Project Specifications
 
-**Repository:** `GoreeCloud/glaze-ui`  
+**Repository:** `GoreeCloud/glaze`  
 **Project type:** Shared GoreeCloud visual, interaction, accessibility, adaptive-presentation, and component design system  
-**Current Official Stable:** GLAZE UI V1.6 / `1.6.0`  
-**Immediate Stable rollback:** `1.5.1`  
-**Current Development line:** GLAZE UI V1.7 / frozen v1.2 aggregate `1.7.0-dev.39` / current bounded v1.3 aggregate `1.7.0-dev.41`  
+**Current Official Stable / Anchor:** Glaze V1.7 / `1.7.0`  
+**Immediate Stable rollback:** GLAZE UI V1.6 / `1.6.0`  
+**Current Development line:** Glaze V1.7.1 / `1.7.1-dev.1`, inheriting historical V1.7 dev.47 source as Development-only input  
 **Migration baseline:** `8e8d37886692cada9ebbaf5c5c17783a96c93892`  
 **Canonical lifecycle authority:** `registry/lifecycle.json`  
 **Canonical machine version:** `VERSION`  
@@ -19,7 +19,7 @@ The Drive source is historically valuable but materially stale as a current-stat
 
 Version-coupled requirements remain in release-specific contracts and acceptance records. Current implementation state is governed by `IMPLEMENTED-FEATURES.md`; planned/open work by `PLANNED-FEATURES.md`; chronology by `CHANGELOGS.md`; lifecycle by `registry/lifecycle.json`.
 
-Historical lifecycle statements in the Drive source remain provenance and do not override V1.6 Stable or V1.7 Development authority.
+Historical lifecycle statements in the Drive source remain provenance and do not override current Glaze V1.7 / 1.7.0 Stable/Anchor authority or V1.7.1 Development scope.
 
 ## 1. Product role
 
@@ -373,7 +373,7 @@ Evidence must remain bound to the exact reviewed source and claimed environment.
 
 ## 19. Stable lifecycle
 
-Current Stable authority is GLAZE UI V1.6 / `1.6.0`.
+Current Stable/Anchor authority is Glaze V1.7 / `1.7.0`; GLAZE UI V1.6 / `1.6.0` is the retained rollback release.
 
 The shared release is consumer-eligible as a design-system source release.
 

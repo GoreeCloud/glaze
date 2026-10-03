@@ -37,9 +37,9 @@ const domains=[
   'accessibility-overrides','motion-selection-explanation'
 ];
 
-assert(read('VERSION').trim()==='1.6.0','dev.32 must preserve V1.6 / 1.6.0 Anchor baseline');
-assert(lifecycle.currentOfficial==='1.6.0'&&lifecycle.currentStable==='1.6.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
-assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext===null,'dev.32 must not create release lifecycle state');
+assert(read('VERSION').trim()==='1.7.0','dev.32 must coexist with bounded Glaze V1.7 / 1.7.0 Anchor');
+assert(lifecycle.currentOfficial==='1.7.0'&&lifecycle.currentStable==='1.7.0'&&lifecycle.currentLifecycle==='anchor','V1.6 Anchor authority changed');
+assert(lifecycle.activeCandidate===null&&lifecycle.plannedNext==='1.7.1','dev.32 must not create release lifecycle state');
 
 assert(spec.includes('## 39. Glaze Inspector'),'V1.7 plan missing Section 39');
 for(const phrase of [
@@ -212,5 +212,5 @@ console.log('Historical dev.11 / v1.1 Section 26 provenance preserved: true');
 console.log('Raw animation/performance values accepted: false');
 console.log('Source mutation allowed: false');
 console.log('Section 39 complete: false');
-console.log('Official Anchor baseline preserved: 1.6.0');
+console.log('Current bounded Anchor: 1.7.0; retained Development baseline: 1.6.0');
 console.log('Consumer eligible: false');
