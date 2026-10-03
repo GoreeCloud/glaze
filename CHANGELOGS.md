@@ -9,6 +9,13 @@ All notable changes to the Glaze reference implementation are recorded here.
 - Added `docs/GLAZE_RENAMING_AND_MIGRATION.md`, established Glaze-native canonical V1.7 planning paths, and retained the former V1.7 paths as full compatibility mirrors for existing validators and workflows.
 - Recorded the 1.7 rename boundary in `registry/lifecycle.json` while preserving **GLAZE UI V1.6 / 1.6.0** and every earlier historical release label unchanged. The rename does not grant V1.7 acceptance, consumer eligibility, deployment authority, or lifecycle promotion.
 
+- Added bounded `1.7.0-dev.42` **Adaptive Experience Surfaces** source: Glaze Workspace, Glaze Compact Surface, and Glaze Accessibility Presentation, with Task Continuity preservation, explicit compact escalation, accessibility precedence, and no Glaze-created provider/accessibility truth.
+- Added bounded `1.7.0-dev.43` **Trust and Care Surfaces** source: Glaze Agent Activity, Glaze Privacy Attention, and Glaze Care Surface, reusing provider/privacy/security/performance authority rather than creating parallel truth systems.
+- Added bounded `1.7.0-dev.44` **Creative and Compare Surfaces** source: proposal/preview/edit/pending/committed separation, source/target identity preservation, and no inferred approval, selection, commitment, ranking, or winner.
+- Added bounded `1.7.0-dev.45` **Section 48 Qualification Control** with v1.3-specific exact-revision evidence lanes layered on top of the frozen v1.2/dev.39 acceptance model.
+- All eleven planned Section 48 adaptive surfaces now have bounded source implementations. Section 48 remains acceptance-incomplete; rendered/native/device/assistive-technology/provider-integration/privacy-security/performance-energy/human/provenance evidence remains required.
+- Preserved `VERSION=1.6.0`, V1.6 Anchor lifecycle authority, and V1.7 non-consumer-eligibility.
+
 - Added bounded `1.7.0-dev.40` **Expression System Core** source for V1.7 plan v1.3 Section 48, covering Semantic Geometry, Supporting/Standard/Prominent/Hero emphasis, Expressive Typography, Semantic Containment, Component Expression, and governed Expression Resolution while rejecting unrestricted raw design, truth, ranking, measurement, and acceptance controls.
 - Added bounded `1.7.0-dev.41` **Provider Adaptive Surfaces** source for V1.7 plan v1.3 Section 48: Glaze Contextual Actions, Glaze Brief, and Glaze Control Center.
 - Contextual Actions require authoritative provider/context identity plus provider-owned availability before actionable presentation, preserve stable ordering, and do not manufacture user intent, ranking, permission, authorization, navigation, execution, or success.
