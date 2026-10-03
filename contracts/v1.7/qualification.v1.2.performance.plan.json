@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.v1.2.representative-performance-qualification",
+  "name": "Glaze V1.7 Retained v1.2 Representative Performance Qualification Plan",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "laneIds": [
+    "frame-pacing",
+    "input-latency",
+    "performance"
+  ],
+  "evidenceType": "performance",
+  "budget": {
+    "authority": "GoreeCloud Standard — Glaze UI Performance Budget",
+    "version": "v1.0",
+    "resolverP95MsMax": 10,
+    "resolverP99MsMax": 16.7,
+    "interactionPaintP95MsMax": 100,
+    "interactionPaintP99MsMax": 200,
+    "activeFrameP95Rule": "max(20ms,1.25*idle-median-frame-interval)",
+    "severeFrameStallRateMax": 0.01,
+    "catastrophicForegroundStallCountMax": 0,
+    "taskStateResetCountMax": 0,
+    "pageReloadRequiredCountMax": 0,
+    "automaticAuthorityActionCountMax": 0,
+    "minimumSamples": {
+      "resolver": 200,
+      "interactionPaint": 30,
+      "idleFrames": 120,
+      "activeFrames": 240
+    }
+  },
+  "environmentRequirements": [
+    "exactRevision",
+    "operatingSystem",
+    "runtime",
+    "hardware",
+    "foregroundState",
+    "presentationMode",
+    "measurementDate"
+  ],
+  "representativeCoverage": [
+    "task-continuity",
+    "adaptive-composition",
+    "motion-performance",
+    "accessibility-continuity",
+    "form-factor-profile",
+    "normal-available",
+    "runtime-resource-pressure",
+    "reduced-motion",
+    "expanded-window",
+    "constrained-window",
+    "pointer-or-keyboard"
+  ],
+  "harness": "reference/v1.7/performance-qualification.html",
+  "preparer": "scripts/prepare_glaze_v1_7_v1_2_performance_qualification.py",
+  "execution": {
+    "repositoryLocalOnly": true,
+    "telemetryRequired": false,
+    "remoteAnalysisRequired": false,
+    "reviewerMustConfirmRepresentativeEnvironment": true,
+    "reviewerMustConfirmAuthorityIncidentsAbsent": true,
+    "realReviewControlInteractionsRequired": true,
+    "hostedCiMayClaimRepresentativePerformance": false,
+    "generatedEvidenceRequiresSeparateDurableReview": true
+  },
+  "evidenceBoundary": {
+    "qualificationControlOnly": true,
+    "performanceEvidenceClaimedByPlan": false,
+    "humanEvidenceClaimed": false,
+    "assistiveTechnologyEvidenceClaimed": false,
+    "physicalDeviceEvidenceClaimed": false,
+    "nativePlatformEvidenceClaimed": false,
+    "energyEvidenceClaimed": false,
+    "v12QualificationClaimed": false,
+    "section46CompleteClaimed": false,
+    "v17AcceptanceClaimed": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "productionAcceptanceGranted": false,
+    "lifecyclePromotionAutomatic": false
+  }
+}
