@@ -57,6 +57,14 @@ The control targets the three retained lanes whose complete evidence group is `p
 
 The harness requires explicit reviewer confirmation that the observed hardware/runtime remains representative and explicit review of automatic authority incidents before it can emit a passing candidate measurement. A passing candidate still cannot close any lane automatically; separate durable exact-source review and evidence governance are required. Energy behavior is intentionally outside this tranche because its acceptance model requires both `energy` and `device` evidence. No representative performance measurement or performance-lane acceptance is claimed by the control itself.
 
+## Assistive-technology qualification control — 2026-10-03
+
+V1.7.1 now has a dedicated exact-source manual assistive-technology review control for the retained `assistive-technology` evidence group. The plan, fail-closed session template, human procedure, exact-source review-root materializer, interactive review surface, validator, and CI self-tests bind review to frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37` / `1.7.0-dev.47`, retained acceptance model `1.7.0-dev.39`, current Stable baseline `1.7.0`, and historical source baseline `1.6.0`.
+
+The review surface exercises V1.7 Accessibility Continuity and Adaptive Input semantics with native semantic controls, predictable landmarks/focus order, live status and alert regions, explicit non-drag alternatives, task-state continuity, 200% text reflow, Reduced Transparency review support, and Forced Colors compatibility. It deliberately has no PASS control and emits no evidence file. Hosted CI validates only the protocol/control plane and synthetic negative cases; accessibility trees, keyboard automation, self-tests, and the template are not assistive-technology evidence.
+
+A real session requires a human operator, a physical device, an identified assistive technology and version, exact source/tooling provenance, and scenario-level observations. After separate governed review, such a session may contribute the `assistive-technology` group to the Assistive technology lane and to Alternative input, but Alternative input still requires its independent `human` group. No lane is closed and no Section 41/48, lifecycle, consumer, deployment, publication, or production acceptance is created by the control itself.
+
 ## Section 48
 
 All Section 48 Expression System and Adaptive Intelligence surfaces move to V1.7.1 for qualification and release purposes:
