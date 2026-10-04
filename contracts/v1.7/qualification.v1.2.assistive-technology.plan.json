@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schemaVersion": 1,
+  "id": "glaze-v1.7.1-assistive-technology-qualification",
+  "product": "Glaze",
+  "version": "1.7.1-dev.1",
+  "lifecycle": "DevelopmentQualification",
+  "successorReleaseLine": "1.7.1",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "purpose": "Define exact-source manual assistive-technology session records for V1.7.1 so observed screen-reader, voice-access, switch-access, and other claimed assistive-technology behavior can be governed without treating machine semantics, browser accessibility trees, or CI as assistive-technology acceptance.",
+  "authority": {
+    "acceptanceModel": "contracts/v1.7/acceptance.dev.json",
+    "accessibilityContinuity": "contracts/v1.7/accessibility-continuity.dev.json",
+    "adaptiveInput": "contracts/v1.7/adaptive-input.dev.json",
+    "acceptanceRecord": "acceptance/v1.7-development.md"
+  },
+  "eligibleEvidenceGroups": [
+    {
+      "laneId": "assistive-technology",
+      "evidenceType": "assistive-technology",
+      "maySatisfyGroupAfterGovernedReview": true
+    },
+    {
+      "laneId": "alternative-input",
+      "evidenceType": "assistive-technology",
+      "maySatisfyGroupAfterGovernedReview": true,
+      "additionalRequiredGroupsRemain": ["human"]
+    }
+  ],
+  "currentBoundary": {
+    "protocolEstablished": true,
+    "manualAssistiveTechnologyEvidenceEstablished": false,
+    "assistiveTechnologyLaneClosed": false,
+    "alternativeInputLaneClosed": false,
+    "humanAccessibilityAcceptanceEstablished": false,
+    "deviceEvidenceEstablished": false,
+    "section41Complete": false,
+    "section48Accepted": false,
+    "v171AcceptanceEstablished": false,
+    "lifecyclePromotionEstablished": false,
+    "consumerAcceptanceEstablished": false,
+    "deploymentAcceptanceEstablished": false,
+    "productionAcceptanceEstablished": false
+  },
+  "record": {
+    "sourceRevisionRequired": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+    "sourceRevisionFormat": "40-lowercase-hex",
+    "toolingRevisionFormat": "40-lowercase-hex",
+    "repository": "GoreeCloud/glaze",
+    "manualExecutionRequired": true,
+    "physicalDeviceRequiredForSession": true,
+    "placeholderValuesProhibited": true,
+    "requiredTopLevelFields": [
+      "schemaVersion",
+      "recordType",
+      "sourceRevision",
+      "toolingRevision",
+      "repository",
+      "capturedAt",
+      "operator",
+      "manualExecution",
+      "platform",
+      "device",
+      "assistiveTechnology",
+      "scenarios",
+      "sessionDecision",
+      "sessionSummary",
+      "authority"
+    ],
+    "deviceRequiredFields": [
+      "physicalDevice",
+      "emulator",
+      "manufacturer",
+      "model",
+      "osName",
+      "osVersion",
+      "osBuild"
+    ],
+    "assistiveTechnologyRequiredFields": [
+      "name",
+      "version",
+      "inputMode"
+    ],
+    "recognizedTechnologies": [
+      "TalkBack",
+      "Voice Access",
+      "Switch Access",
+      "VoiceOver",
+      "Switch Control",
+      "Orca",
+      "Narrator",
+      "Other"
+    ],
+    "requiredScenarioIds": [
+      "source-and-orientation",
+      "navigate-semantic-regions",
+      "activate-semantic-actions",
+      "focus-order-and-reachability",
+      "names-roles-states-and-values",
+      "dynamic-status-and-recovery-announcement",
+      "large-text-200-percent",
+      "reduced-transparency-and-forced-colors",
+      "switch-voice-alternative-paths",
+      "task-continuity-across-input-change"
+    ],
+    "scenarioStatus": [
+      "pass",
+      "fail",
+      "not-applicable-with-reason"
+    ],
+    "sessionDecisionValues": [
+      "session-pass",
+      "session-fail"
+    ]
+  },
+  "acceptanceRules": {
+    "operatorIdentityRequired": true,
+    "technologyVersionRequired": true,
+    "manualExecutionRequired": true,
+    "machineAccessibilityTreeAloneIsAssistiveTechnologyEvidence": false,
+    "browserAccessibilityTreeAloneIsScreenReaderEvidence": false,
+    "automatedKeyboardTraversalAloneIsAssistiveTechnologyEvidence": false,
+    "hostedCiMayClaimManualAssistiveTechnologyEvidence": false,
+    "emulatorSessionMaySupportDevelopmentButNotPhysicalSessionQualification": true,
+    "sessionPassImpliesAssistiveTechnologyLaneClosed": false,
+    "sessionPassImpliesAlternativeInputLaneClosed": false,
+    "singleTechnologyPassImpliesSupportMatrixAcceptance": false,
+    "singlePlatformPassImpliesCompleteNativeParity": false,
+    "protocolValidationImpliesHumanAcceptance": false,
+    "protocolValidationImpliesSection48Acceptance": false,
+    "protocolValidationImpliesV171Acceptance": false,
+    "protocolValidationImpliesLifecyclePromotion": false,
+    "protocolValidationImpliesConsumerAcceptance": false
+  },
+  "requiredObservationDimensions": [
+    "spoken-or-presented-name",
+    "role-state-and-value",
+    "reading-and-focus-order",
+    "action-reachability",
+    "dynamic-state-announcement",
+    "error-and-recovery-feedback",
+    "large-text-reflow-and-reachability",
+    "accessibility-preference-precedence",
+    "alternative-input-path",
+    "task-and-focus-continuity"
+  ],
+  "implementation": {
+    "validator": "scripts/validate_glaze_v1_7_1_assistive_technology_qualification.py",
+    "workflow": ".github/workflows/glaze-v1.7.1-assistive-technology-qualification-control.yml",
+    "humanProcedure": "acceptance/v1.7.1-assistive-technology-qualification.md",
+    "recordTemplate": "acceptance/v1.7.1-assistive-technology-evidence.template.json",
+    "reviewHarness": "reference/v1.7/assistive-technology-qualification.html",
+    "preparationHelper": "scripts/prepare_glaze_v1_7_1_assistive_technology_qualification.py"
+  },
+  "boundary": "This contract establishes a fail-closed manual assistive-technology qualification control only. Synthetic self-tests, CI, accessibility-tree inspection, keyboard automation, and the fail-closed template are not assistive-technology evidence. Real exact-source manual sessions on physical devices must be separately reviewed and governed before they may satisfy an assistive-technology evidence group; no lane, Section 41/48 acceptance, V1.7.1 lifecycle, consumer, deployment, or production authority is granted automatically."
+}

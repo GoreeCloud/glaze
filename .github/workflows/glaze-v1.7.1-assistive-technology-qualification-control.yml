@@ -1,0 +1,154 @@
+name: Glaze V1.7.1 Assistive Technology Qualification Control
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/v1.7/qualification.v1.2.assistive-technology.plan.json'
+      - 'acceptance/v1.7.1-assistive-technology-evidence.template.json'
+      - 'acceptance/v1.7.1-assistive-technology-qualification.md'
+      - 'reference/v1.7/assistive-technology-qualification.html'
+      - 'scripts/prepare_glaze_v1_7_1_assistive_technology_qualification.py'
+      - 'scripts/validate_glaze_v1_7_1_assistive_technology_qualification.py'
+      - 'acceptance/v1.7-development.md'
+      - 'GLAZE_V1_7_1_HARDENING.md'
+      - '.github/workflows/glaze-v1.7.1-assistive-technology-qualification-control.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glaze-v1-7-1-at-control-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  V171_SOURCE_SHA: 4b9d085a5177b96cc31d4270b38d792a59872e37
+
+jobs:
+  verify-assistive-technology-qualification-control:
+    name: Verify V1.7.1 assistive-technology qualification control
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact tooling revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact tooling revision and frozen source availability
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          git cat-file -e "${V171_SOURCE_SHA}^{commit}"
+          git merge-base --is-ancestor "$V171_SOURCE_SHA" HEAD
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: Syntax-check control files
+        run: |
+          python -m json.tool contracts/v1.7/qualification.v1.2.assistive-technology.plan.json >/dev/null
+          python -m json.tool acceptance/v1.7.1-assistive-technology-evidence.template.json >/dev/null
+          python -m py_compile             scripts/prepare_glaze_v1_7_1_assistive_technology_qualification.py             scripts/validate_glaze_v1_7_1_assistive_technology_qualification.py
+
+      - name: Validate fail-closed assistive-technology control
+        run: python scripts/validate_glaze_v1_7_1_assistive_technology_qualification.py --self-test
+
+      - name: Prepare exact-source review root as a structural smoke test
+        run: |
+          python scripts/prepare_glaze_v1_7_1_assistive_technology_qualification.py --out _v171-at-control-smoke
+          test -f _v171-at-control-smoke/qualification-source.json
+          test -f _v171-at-control-smoke/js/glaze-v1.7-development-v1-3.dev.mjs
+          test -f _v171-at-control-smoke/reference/v1.7/assistive-technology-qualification.html
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('_v171-at-control-smoke/qualification-source.json').read_text())
+          assert data['sourceRevision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'
+          assert data['sourceModelVersion']=='1.7.0-dev.47'
+          assert data['acceptanceModelVersion']=='1.7.0-dev.39'
+          assert data['stableBaseline']=='1.7.0'
+          assert data['historicalSourceStableBaseline']=='1.6.0'
+          assert data['manualExecutionPerformed'] is False
+          assert data['assistiveTechnologyEvidenceClaimed'] is False
+          assert data['humanEvidenceClaimed'] is False
+          assert data['deviceEvidenceClaimed'] is False
+          assert data['section41Complete'] is False
+          assert data['section48Accepted'] is False
+          assert data['v171AcceptanceClaimed'] is False
+          print('Exact-source V1.7.1 AT review-root preparation smoke test: PASS')
+          PY
+
+      - name: Exercise V1.7 accessibility and alternative-input source models
+        run: |
+          node --input-type=module - <<'JS'
+          import {
+            resolveGlazeAccessibilityContinuity,
+            resolveGlazeAdaptiveInputBinding,
+            glazeV17V13Development
+          } from './js/glaze-v1.7-development-v1-3.dev.mjs';
+          const cases=[
+            {modes:['screen-reader','keyboard-navigation'],to:'assistive-input'},
+            {modes:['switch-access','keyboard-navigation'],to:'switch-access'},
+            {modes:['voice-access'],to:'voice-access'},
+            {modes:['keyboard-navigation'],to:'assistive-input'}
+          ];
+          for(const c of cases){
+            const result=resolveGlazeAccessibilityContinuity({
+              accessibilityChanges:c.modes,
+              accessibilityStateAuthoritative:true,
+              previousTaskState:{
+                navigationDestination:'qualification/review',
+                focusId:'review-control',
+                draftText:'preserve',
+                query:'assistive technology'
+              },
+              profile:'desktop',
+              profileAuthoritative:true,
+              semanticSurfaceId:'assistive-technology-review',
+              surfaceRole:'task',
+              fromInputModel:'keyboard',
+              toInputModel:c.to,
+              inputModelChangeAuthoritative:true
+            });
+            if(result.task.continuity.taskResetAllowed!==false)throw new Error('task reset boundary weakened');
+            const binding=resolveGlazeAdaptiveInputBinding({
+              actionId:'activate-review-control',
+              inputModel:c.to,
+              state:'available',
+              authoritative:true,
+              essential:true,
+              interactionDependencies:['drag','precision-pointer'],
+              unavailableDependencies:['drag','precision-pointer']
+            });
+            if(binding.alternatives.required!==true)throw new Error('alternative input path missing');
+          }
+          if(glazeV17V13Development.version!=='1.7.0-dev.47')throw new Error('frozen source identity drifted');
+          console.log('V1.7 AT review source-model smoke: PASS');
+          JS
+
+      - name: Preserve V1.7 accessibility and input source boundaries
+        run: |
+          node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs
+          node scripts/validate_glaze_v1_7_adaptive_input_development.mjs
+
+      - name: Preserve retained acceptance-control behavior
+        run: node scripts/validate_glaze_v1_7_acceptance_development.mjs
+
+      - name: Preserve bounded V1.7 Stable authority
+        run: node scripts/verify_glaze_v1_7_stable.mjs
+
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code -- .
