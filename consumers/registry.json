@@ -135,6 +135,17 @@
       "notes": "Advanced Tab Manager 0.1.13 completed repository-local GLAZE UI V1.6 / 1.6.0 rendered, keyboard, assistive-technology, alternate-appearance, large-text/reflow, constrained-layout, and native Firefox icon-surface acceptance for exact reviewed runtime revision 89f93d9fcfd77adbdf9296e0d823a6fe8861b1fe. Mozilla-signed parity plus persistent-install/full-restart acceptance passed in GoreeCloud/firefox-addons workflow run 36431225028 with signed XPI SHA-256 6e77c071d32457d197f841059132adb453350a5df2a847229d39f01d98de510c. Glaze consumer acceptance does not grant product production eligibility or Stable lifecycle authority. Glaze V1.7 / 1.7.0 is now the required shared target; prior evidence remains historical and fresh repository-local V1.7.0 acceptance is required."
     },
     {
+      "name": "GoreeCloud Browser Hardening",
+      "repository": "GoreeCloud/firefox-addons",
+      "status": "adoption-required",
+      "targetVersion": null,
+      "requiredTargetVersion": "1.7.0",
+      "referenceRevision": null,
+      "evidence": null,
+      "productionEligible": false,
+      "notes": "Browser Hardening 0.1.0 is a user-facing Firefox add-on in GoreeCloud/firefox-addons. It has no accepted repository-local Glaze V1.7 / 1.7.0 consumer evidence yet; fresh rendered, accessibility, interaction, and product-specific acceptance are required before current-baseline conformance may be claimed."
+    },
+    {
       "name": "GoreeCloud Security Center",
       "repository": "GoreeCloud/wardveil",
       "status": "adoption-required",
