@@ -167,6 +167,8 @@ def validate_source() -> dict[str, Any]:
         "deviceControl":"contracts/v1.7/qualification.v1.2.device.plan.json",
         "performanceControl":"contracts/v1.7/qualification.v1.2.performance.plan.json",
         "energyControl":"contracts/v1.7/qualification.v1.2.energy.plan.json",
+        "section48FieldControl":"contracts/v1.7/qualification.v1.3.field.plan.json",
+        "controlCoverage":"contracts/v1.7/qualification.v1.3.control-coverage.json",
     }.items():
         req(mapping.get(key) == rel, "integration map drifted: " + key)
         req((ROOT / rel).is_file(), "mapped control missing: " + rel)

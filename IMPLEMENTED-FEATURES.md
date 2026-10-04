@@ -7,6 +7,12 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** Glaze V1.7 / `1.7.0` (bounded Stable compatibility channel); GLAZE UI V1.6 / `1.6.0` is the immediate rollback baseline.
 
+## V1.7.1 Section 48 field-evidence controls
+
+A dedicated Section 48 field-evidence plan now maps the remaining `human`, `device`, `assistive-technology`, `performance`, and `energy` evidence groups to their v1.3 lane IDs while reusing the approved V1.7.1 companion methodologies without automatic evidence inheritance. The control includes five fail-closed candidate templates, a manual procedure, an exact-source review-package helper, semantic negative tests, and protected CI. It enforces real physical devices, real assistive technologies, multi-platform breadth for cross-platform expression, representative Section 48 performance workloads, and direct quantitative Energy measurement.
+
+A deterministic control-coverage registry now verifies every evidence group required by all 25 Section 48 qualification/coverage lanes has a governed collection or validation path across all 10 evidence types. The registry deliberately records `acceptedEvidenceEstablished=false` for every type: complete control coverage is not evidence acceptance, does not make the Section 48 evidence inventory complete, and grants no successor lifecycle, consumer, deployment, publication, or production authority.
+
 ## V1.7.1 Section 48 trust qualification controls
 
 Fail-closed manual collection controls now cover all Section 48 evidence groups of type `provider-integration` and `privacy-security`. The provider protocol covers six v1.3 lanes and enforces authoritative provider identity/provenance, least privilege, provider-owned truth, no Glaze-created execution/result/permission authority, safe revocation/failure behavior, explicit contract compatibility, and secret/private-payload exclusion. The privacy/security protocol covers two v1.3 lanes and enforces privacy by default, data minimization, Wardveil Security and Privacy Shield system authority, provider-local scope, conflict/unattested fail-closed behavior, truth/presentation separation, permission revocation, and no required telemetry.

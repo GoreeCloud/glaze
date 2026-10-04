@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "toolingRevision": "REPLACE_WITH_40_HEX_TOOLING_SHA",
+  "repository": "GoreeCloud/glaze",
+  "capturedAt": "REPLACE_WITH_ISO8601",
+  "operator": "REPLACE_WITH_OPERATOR",
+  "manualExecution": false,
+  "laneId": "REPLACE_WITH_ELIGIBLE_LANE",
+  "integration": {
+    "repository": "REPLACE_WITH_INTEGRATION_REPOSITORY",
+    "revision": "REPLACE_WITH_40_HEX_INTEGRATION_SHA",
+    "buildIdentifier": "REPLACE_WITH_BUILD_ID"
+  },
+  "observations": [],
+  "decision": "review-required",
+  "summary": "REPLACE_WITH_SUMMARY",
+  "limitations": "REPLACE_WITH_LIMITATIONS",
+  "recordType": "glaze-v1.7.1-section48-device-candidate",
+  "evidenceType": "device",
+  "device": {
+    "physicalDevice": false,
+    "emulator": false,
+    "manufacturer": "REPLACE_WITH_MANUFACTURER",
+    "model": "REPLACE_WITH_MODEL",
+    "platformFamily": "REPLACE_WITH_PLATFORM",
+    "osName": "REPLACE_WITH_OS",
+    "osVersion": "REPLACE_WITH_VERSION",
+    "formFactor": "REPLACE_WITH_FORM_FACTOR",
+    "inputCapabilities": [],
+    "platformFamiliesObserved": []
+  },
+  "authority": {
+    "candidateEvidenceOnly": true,
+    "durableEvidenceRecorded": false,
+    "evidenceAccepted": false,
+    "laneClosed": false,
+    "section48Accepted": false,
+    "v171AcceptanceClaimed": false,
+    "lifecyclePromotionAutomatic": false,
+    "consumerAcceptanceAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "publicationAutomatic": false,
+    "productionAcceptanceAutomatic": false,
+    "humanEvidenceAccepted": false,
+    "energyEvidenceAccepted": false
+  }
+}
