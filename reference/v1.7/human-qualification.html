@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" data-review-harness="glaze-v1.7.1-human-qualification">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Glaze V1.7.1 — Retained Human Qualification Review</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:light dark;--canvas:#0b111a;--surface:#182335;--raised:#25334a;--line:#5f6e86;--text:#f5f8ff;--muted:#bec9da;--accent:#a8ccff;--good:#8ee5b6;--warn:#ffd38b;--bad:#ff9ea9}
+*{box-sizing:border-box}html[data-text="large"]{font-size:150%}body{margin:0;background:var(--canvas);color:var(--text)}
+body[data-contrast="high"]{--line:#f3f7ff;--muted:#eef4ff}body[data-transparency="reduced"] .panel{background:var(--surface)}
+main{width:min(1240px,100%);margin:auto;padding:20px}.panel{background:color-mix(in srgb,var(--surface) 88%,transparent);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px}.banner{border-color:var(--warn)}
+h1,h2,h3{margin-top:0}p,li{line-height:1.55}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:minmax(300px,400px) minmax(0,1fr);gap:16px}
+.field{display:grid;gap:6px;margin:12px 0}.field>span{font-weight:700}select,input,button,textarea{font:inherit;color:inherit;background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:.65rem .8rem}
+select,input,button{min-height:44px}textarea{width:100%;min-height:96px;resize:vertical}button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:4px solid var(--accent);outline-offset:3px}
+.review-strip,.action-row{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:.8rem}.task{display:grid;gap:8px;margin:14px 0}
+.output-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(255,255,255,.035);min-width:0}.card pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.45}
+.status{font-weight:800}.pending{color:var(--warn)}.good{color:var(--good)}.bad{color:var(--bad)}#live-region{border:1px dashed var(--line);border-radius:12px;padding:10px;margin-top:12px}
+@media(max-width:820px){main{padding:10px}.grid,.output-grid{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}@media(forced-colors:active){.panel,.card,.pill{forced-color-adjust:auto;border:1px solid CanvasText}}
+</style>
+</head>
+<body>
+<main>
+<section class="panel banner" aria-labelledby="title">
+<h1 id="title">Glaze V1.7.1 — Retained Human Qualification Review</h1>
+<p><strong>Human review surface only — not acceptance evidence.</strong> This page cannot mark a lane passed, create canonical evidence, satisfy Assistive Technology, device/native, Performance, Energy, Section 48, lifecycle, consumer, deployment, publication, or production acceptance.</p>
+<p id="source-status" class="status pending">Checking exact frozen source…</p>
+<div class="review-strip"><span class="pill">Keyboard</span><span class="pill">Pointer</span><span class="pill">Representative rendering</span><span class="pill">Visual / motion</span><span class="pill">Privacy</span><span class="pill">Security</span></div>
+</section>
+<div class="grid">
+<section class="panel" aria-labelledby="controls-title">
+<h2 id="controls-title">Review controls</h2>
+<p class="muted">Use a real keyboard and pointing device. Change scenarios while focus is on a control and observe whether task state, focus, meaning, motion, and provider truth remain understandable and fail closed.</p>
+<label class="field"><span>Operating system and version</span><input id="os" autocomplete="off" placeholder="Reviewed OS"></label>
+<label class="field"><span>Browser/runtime and version</span><input id="runtime" autocomplete="off" placeholder="Reviewed browser or runtime"></label>
+<label class="field"><span>Representative hardware/environment</span><input id="hardware" autocomplete="off" placeholder="Reviewed hardware/environment"></label>
+<label class="field"><span>Form factor presentation</span><select id="profile"><option value="desktop">Desktop</option><option value="tablet">Tablet</option><option value="mobile">Mobile</option><option value="foldable">Foldable</option></select></label>
+<label class="field"><span>Input review mode</span><select id="input-model"><option value="keyboard">Keyboard</option><option value="pointer">Pointer</option></select></label>
+<label class="field"><span>Truth scenario</span><select id="truth-scenario"><option value="wardveil">Authoritative Wardveil protection</option><option value="spoof">Untrusted protection claim</option><option value="privacy">Authoritative Privacy Shield revocation</option><option value="conflict">Conflicting provider truth</option></select></label>
+<label class="field"><span>Accessibility mode</span><select id="accessibility"><option value="default">Default</option><option value="reduced-motion">Reduced Motion</option><option value="large-text">Large text / reflow</option><option value="increased-contrast">Increased Contrast</option><option value="reduced-transparency">Reduced Transparency</option></select></label>
+<label class="field"><span>Motion relationship</span><select id="motion"><option value="workspace-recomposition">Workspace recomposition</option><option value="direct-manipulation-settle">Direct manipulation settle</option><option value="focus-transfer">Focus transfer</option><option value="color-state-change">Color state change</option><option value="material-role-change">Material role change</option></select></label>
+<div class="task"><label for="task-marker"><strong>Task continuity marker</strong></label><input id="task-marker" value="V1.7.1-HUMAN-REVIEW-TASK-STATE"></div>
+<div class="action-row"><button id="apply" type="button" disabled>Apply review scenario</button><button id="secondary" type="button">Secondary focus target</button><button id="pointer-target" type="button">Real pointer activation target</button></div>
+<p id="keyboard-readout" class="muted">Real keyboard events observed on this page: 0</p>
+<p id="pointer-readout" class="muted">Real pointer events observed on this page: 0</p>
+<p id="focus-readout" class="muted">Focus continuity: waiting for a scenario change.</p>
+</section>
+<section class="panel" aria-labelledby="output-title">
+<h2 id="output-title">Frozen dev.47 presentation output</h2>
+<div class="review-strip"><span class="pill" id="aggregate">Aggregate: pending</span><span class="pill" id="composition">Composition: pending</span><span class="pill" id="input-output">Input: pending</span></div>
+<div class="output-grid" style="margin-top:12px">
+<article class="card"><h3>Adaptive input</h3><pre id="adaptive-output"></pre></article>
+<article class="card"><h3>Privacy / security truth</h3><pre id="truth-output"></pre></article>
+<article class="card"><h3>Signature Motion</h3><pre id="motion-output"></pre></article>
+<article class="card"><h3>Expression System</h3><pre id="expression-output"></pre></article>
+<article class="card"><h3>Task continuity</h3><pre id="continuity-output"></pre></article>
+<article class="card"><h3>Review invariants</h3><pre id="invariant-output"></pre></article>
+</div>
+<div id="live-region" role="status" aria-live="polite" aria-atomic="true">No review scenario has been applied yet.</div>
+<h3 style="margin-top:18px">Human observations to record externally</h3>
+<ol>
+<li><strong>Keyboard:</strong> verify logical Tab/Shift+Tab order, no keyboard trap, visible focus, and focus/task preservation.</li>
+<li><strong>Pointer:</strong> verify controls are targetable, activation does not create semantic authority, and pointer interaction is not required for meaning.</li>
+<li><strong>Representative rendering:</strong> inspect supported runtime and accessibility modes for clipping, overlap, illegibility, broken hierarchy, or unclear state.</li>
+<li><strong>Human visual and motion review:</strong> inspect ordinary and Reduced Motion paths for comprehension, continuity, quiet settling, and final-state understanding independent of animation completion.</li>
+<li><strong>Privacy boundaries:</strong> verify authoritative privacy state is explicit and untrusted claims fail closed without creating consent, permission, provider precedence, or collection behavior.</li>
+<li><strong>Security boundaries:</strong> verify only authoritative Wardveil protection creates protection truth and non-Wardveil protection claims remain unknown.</li>
+</ol>
+<p class="muted"><strong>Record results outside this harness.</strong> An accepted review record must identify the exact frozen source, environment, real reviewer-observed findings, limitations, and evidence reference. This page intentionally has no PASS button and creates no evidence file.</p>
+<label class="field"><span>Local reviewer notes (not persisted by this page)</span><textarea id="notes" placeholder="Optional scratch notes. Copy them manually if needed; this page does not store or transmit them."></textarea></label>
+</section>
+</div>
+</main>
+<script type="module">
+import {glazeV17V13Development,resolveGlazeAdaptiveInputBinding,resolveGlazeAdaptiveComposition,resolveGlazeSignatureMotion,resolveGlazeExpressionV13,resolveGlazeTaskContinuity,resolveGlazePrivacyAuthorityBoundaryV12} from '../../js/glaze-v1.7-development-v1-3.dev.mjs';
+const SOURCE='4b9d085a5177b96cc31d4270b38d792a59872e37';
+const SOURCE_MODEL='1.7.0-dev.47';
+const ACCEPTANCE='1.7.0-dev.39';
+const STABLE='1.7.0';
+const HISTORICAL_STABLE='1.6.0';
+const $=id=>document.getElementById(id);
+const state={sourceVerified:false,keyboardEvents:0,pointerEvents:0};
+function profiles(mode){if(mode==='reduced-motion')return ['reduced-motion'];if(mode==='large-text')return ['large-text'];if(mode==='increased-contrast')return ['increased-contrast'];if(mode==='reduced-transparency')return ['reduced-transparency'];return []}
+function a11y(mode){return {largeText:mode==='large-text',reducedMotion:mode==='reduced-motion',reducedTransparency:mode==='reduced-transparency',increasedContrast:mode==='increased-contrast',forcedColors:false}}
+function applyBodyMode(mode){document.documentElement.dataset.text=mode==='large-text'?'large':'default';document.body.dataset.contrast=mode==='increased-contrast'?'high':'default';document.body.dataset.transparency=mode==='reduced-transparency'?'reduced':'default'}
+function truthScenario(kind){
+ if(kind==='wardveil')return resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'security-protection',claims:[{providerId:'wardveil-security',ownerKind:'wardveil-security',authority:'security',scope:'system',state:'protected',authorityAttested:true}],transitionOccurrenceAuthoritative:true});
+ if(kind==='spoof')return resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'security-protection',claims:[{providerId:'random-service',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'protected',authorityAttested:true}],transitionOccurrenceAuthoritative:true});
+ if(kind==='privacy')return resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'privacy-consent',claims:[{providerId:'privacy-shield',ownerKind:'privacy-shield',authority:'privacy',scope:'system',state:'revoked',authorityAttested:true}],transitionOccurrenceAuthoritative:true});
+ return resolveGlazePrivacyAuthorityBoundaryV12({truthDomain:'synchronization',claims:[{providerId:'sync-a',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'synchronized',authorityAttested:true},{providerId:'sync-b',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'failed',authorityAttested:true}],transitionOccurrenceAuthoritative:true});
+}
+function render(){
+ if(!state.sourceVerified)return;
+ const beforeFocus=document.activeElement?.id||'none',beforeTask=$('task-marker').value,mode=$('accessibility').value,profile=$('profile').value,inputModel=$('input-model').value;
+ const adaptive=resolveGlazeAdaptiveInputBinding({actionId:'activate-review-target',inputModel,state:'available',authoritative:true,essential:true,interactionDependencies:inputModel==='keyboard'?['drag']:['precision-pointer'],unavailableDependencies:inputModel==='keyboard'?['drag']:['precision-pointer']});
+ const composition=resolveGlazeAdaptiveComposition({profile,semanticSurfaceId:'human-review-surface',surfaceRole:'task',posture:profile==='foldable'?'unfolded':'unknown',accessibilityProfiles:profiles(mode)});
+ const truth=truthScenario($('truth-scenario').value);
+ const motion=resolveGlazeSignatureMotion({relationship:$('motion').value,relationshipAuthoritative:true,accessibilityProfiles:profiles(mode)});
+ const expression=resolveGlazeExpressionV13({geometryRole:'connected',emphasisRole:$('truth-scenario').value==='wardveil'?'prominent':'standard',typographyRole:'body',containmentRole:'task-region',componentRole:'content',formFactor:profile,inputContext:inputModel,densityRole:mode==='large-text'?'spacious':'standard',colorIntent:$('truth-scenario').value==='wardveil'?'protected-state':'semantic-state',compositionRole:'primary-secondary',motionPurpose:'state-change',transitionOccurrenceAuthoritative:true,expressionProfile:'balanced',expressionProfileAuthoritative:true,performancePressure:'neutral',performancePressureAuthoritative:true,accessibility:a11y(mode),accessibilityAuthoritative:true,semanticSeverity:$('truth-scenario').value==='wardveil'?'critical':'ordinary',semanticSeverityAuthoritative:true});
+ const continuity=resolveGlazeTaskContinuity({environmentChange:mode==='default'?'input-method':'accessibility-mode',previous:{draftText:beforeTask,focusId:beforeFocus==='none'?'apply':beforeFocus},incoming:{},stateClasses:{draftText:'recoverable',focusId:'session-scoped'}});
+ applyBodyMode(mode);
+ $('aggregate').textContent='Aggregate: '+glazeV17V13Development.version;$('composition').textContent='Composition: '+composition.presentation;$('input-output').textContent='Input: '+adaptive.inputModel;
+ $('adaptive-output').textContent=JSON.stringify({inputModel:adaptive.inputModel,binding:adaptive.binding,alternatives:adaptive.alternatives,continuity:adaptive.continuity,authority:adaptive.authority},null,2);
+ $('truth-output').textContent=JSON.stringify({truth:truth.truth,presentation:truth.presentation,authority:truth.authority,providerSnapshot:truth.providerSnapshot},null,2);
+ $('motion-output').textContent=JSON.stringify({request:motion.request,signature:motion.signature,motion:motion.motion,accessibility:motion.accessibility,authority:motion.authority},null,2);
+ $('expression-output').textContent=JSON.stringify({expression:expression.expression,severity:expression.severity,continuity:expression.continuity,personalization:expression.personalization},null,2);
+ $('continuity-output').textContent=JSON.stringify({environmentChange:continuity.environmentChange,state:continuity.state,continuity:continuity.continuity,authority:continuity.authority},null,2);
+ $('invariant-output').textContent=JSON.stringify({taskMarkerPreserved:$('task-marker').value===beforeTask,reducedMotionRequested:mode==='reduced-motion',truthEffectiveState:truth.truth.effectiveState,providerConflict:truth.providerSnapshot?.conflict===true,inputCreatesExecutionAuthority:adaptive.authority.executionAuthorityCreatedByGlaze,animationControlsFinalTruth:false},null,2);
+ $('live-region').textContent='Review scenario updated. Input '+inputModel+'; presentation '+composition.presentation+'; effective truth '+truth.truth.effectiveState+'. No product action was executed.';
+ requestAnimationFrame(()=>{const afterFocus=document.activeElement?.id||'none';$('focus-readout').textContent='Focus before scenario: '+beforeFocus+'; after scenario: '+afterFocus+'; DOM focus preserved: '+String(beforeFocus===afterFocus)+'. Reviewer decides acceptability.'});
+}
+async function verifySource(){
+ try{
+  const response=await fetch('../../qualification-source.json',{cache:'no-store'});
+  if(!response.ok)throw new Error('source manifest HTTP '+response.status);
+  const manifest=await response.json();
+  const valid=manifest.sourceRevision===SOURCE&&manifest.sourceModelVersion===SOURCE_MODEL&&manifest.acceptanceModelVersion===ACCEPTANCE&&manifest.stableBaseline===STABLE&&manifest.historicalSourceStableBaseline===HISTORICAL_STABLE&&glazeV17V13Development.version===SOURCE_MODEL&&glazeV17V13Development.lifecycle==='Development'&&glazeV17V13Development.stableBaseline===HISTORICAL_STABLE&&glazeV17V13Development.consumerEligible===false;
+  if(!valid)throw new Error('exact-source or lifecycle identity mismatch');
+  state.sourceVerified=true;$('source-status').textContent='Exact frozen source verified: '+SOURCE+'. Tooling: '+manifest.toolingRevision+'. Human result: PENDING.';$('source-status').className='status good';$('apply').disabled=false;render();
+ }catch(error){$('source-status').textContent='BLOCKED — '+error.message+'. Prepare the exact-source review root with scripts/prepare_glaze_v1_7_1_human_qualification.py.';$('source-status').className='status bad'}
+}
+document.addEventListener('keydown',()=>{state.keyboardEvents+=1;$('keyboard-readout').textContent='Real keyboard events observed on this page: '+state.keyboardEvents+'. This count proves input occurred; it is not a Keyboard PASS decision.'});
+document.addEventListener('pointerdown',()=>{state.pointerEvents+=1;$('pointer-readout').textContent='Real pointer events observed on this page: '+state.pointerEvents+'. This count proves pointer input occurred; it is not a Pointer PASS decision.'});
+for(const id of ['profile','input-model','truth-scenario','accessibility','motion'])$(id).addEventListener('change',render);
+$('apply').addEventListener('click',render);$('pointer-target').addEventListener('click',render);verifySource();
+</script>
+</body>
+</html>

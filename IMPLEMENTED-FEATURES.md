@@ -17,6 +17,12 @@ A fail-closed local-first qualification control now exists for the three retaine
 
 The harness reuses the approved Glaze UI Performance Budget v1.0 evaluator, exercises current retained V1.7 adaptive-composition, semantic-color, Motion Performance, Performance and Energy Awareness, Expression System, and Task Continuity code paths, and requires real reviewer confirmation of environment representativeness plus authority-observation review. Hosted CI validates only the control plane; generated candidate JSON does not close any lane. Energy behavior remains outside this tranche because its acceptance model requires both `energy` and `device` evidence. No representative performance measurement, Section 48 acceptance, successor lifecycle promotion, consumer, deployment, publication, or production authority is established by the tooling.
 
+## V1.7.1 retained human qualification review control
+
+A fail-closed exact-source local review control now exists for the six retained lanes whose missing group can be supplied only by real human observation: Keyboard, Pointer, Representative rendering, Human visual/motion review, Privacy boundaries, and Security boundaries. The control binds to frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37` / `1.7.0-dev.47`, uses the retained dev.39 acceptance model, and exposes actual V1.7 Adaptive Input, composition, Signature Motion, Expression, Task Continuity, and privacy/security truth behavior for manual review.
+
+The harness counts real keyboard and pointer events but explicitly treats those counts only as proof that input occurred, not as PASS decisions. It has no PASS button, evidence export, persistent storage, remote resource, media capture, or telemetry path. CI can validate only the review control and frozen-source preparation. The retained evidence matrix remains 17 complete / 20 unverified until separately governed human evidence is actually recorded and accepted; no Section 48, lifecycle, consumer, deployment, publication, or production authority is created.
+
 ## V1.7.1 assistive-technology qualification control
 
 A dedicated local exact-source manual assistive-technology qualification control now exists for frozen retained source `4b9d085a5177b96cc31d4270b38d792a59872e37` / `1.7.0-dev.47`. The control includes the plan `contracts/v1.7/qualification.v1.2.assistive-technology.plan.json`, fail-closed session template, human procedure, exact-source materializer, semantic review surface, validator, and protected CI self-tests.
