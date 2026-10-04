@@ -130,8 +130,8 @@
   "implementation": {
     "validator": "scripts/validate_glaze_v1_7_1_energy_qualification.py",
     "workflow": ".github/workflows/glaze-v1.7.1-energy-qualification-control.yml",
-    "humanProcedure": "acceptance/v1.7.1-energy-qualification.md",
-    "recordTemplate": "acceptance/v1.7.1-energy-evidence.template.json",
+    "humanProcedure": "docs/v1.7/V1_7_1_ENERGY_QUALIFICATION.md",
+    "recordTemplate": "docs/v1.7/v1.7.1-energy-evidence.template.json",
     "preparationHelper": "scripts/prepare_glaze_v1_7_1_energy_qualification.py"
   },
   "currentBoundary": {
