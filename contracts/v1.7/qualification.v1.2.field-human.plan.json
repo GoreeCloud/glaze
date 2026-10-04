@@ -1,0 +1,84 @@
+{
+  "$schema": "../../schemas/v1.7.1-field-human-qualification-plan.schema.json",
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.1.field-human-qualification",
+  "name": "Glaze V1.7.1 Retained Field Human Qualification Plan",
+  "lifecycle": "DevelopmentQualification",
+  "successorReleaseLine": "1.7.1",
+  "developmentIdentity": "1.7.1-dev.1",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "evidenceType": "human",
+  "eligibleEvidenceGroups": [
+    {"laneId":"touch","evidenceType":"human","otherRequiredGroups":["device"],"companionControl":"contracts/v1.7/qualification.v1.2.device.plan.json","companionEvidenceAutomaticallyInherited":false},
+    {"laneId":"alternative-input","evidenceType":"human","otherRequiredGroups":["assistive-technology"],"companionControl":"contracts/v1.7/qualification.v1.2.assistive-technology.plan.json","companionEvidenceAutomaticallyInherited":false},
+    {"laneId":"native-behavior","evidenceType":"human","otherRequiredGroups":["device"],"companionControl":"contracts/v1.7/qualification.v1.2.device.plan.json","companionEvidenceAutomaticallyInherited":false}
+  ],
+  "authority": {
+    "acceptanceModel":"contracts/v1.7/acceptance.dev.json",
+    "adaptiveInput":"contracts/v1.7/adaptive-input.dev.json",
+    "nativeGlazeKits":"contracts/v1.7/native-glaze-kits-v1-2.dev.json",
+    "accessibilityContinuity":"contracts/v1.7/accessibility-continuity.dev.json",
+    "deviceQualification":"contracts/v1.7/qualification.v1.2.device.plan.json",
+    "assistiveTechnologyQualification":"contracts/v1.7/qualification.v1.2.assistive-technology.plan.json",
+    "acceptanceRecord":"acceptance/v1.7-development.md"
+  },
+  "record": {
+    "manualExecutionRequired":true,
+    "physicalDeviceRequired":true,
+    "placeholderValuesProhibited":true,
+    "oneRecordTargetsOneLane":true,
+    "eligibleLaneIds":["touch","alternative-input","native-behavior"],
+    "requiredTopLevelFields":["schemaVersion","recordType","sourceRevision","toolingRevision","repository","capturedAt","operator","manualExecution","laneId","platform","implementation","device","interaction","scenarios","sessionDecision","sessionSummary","authority"],
+    "requiredCommonScenarioIds":["source-and-session-identity","task-and-focus-continuity","meaning-and-authority-preservation","accessibility-preference-precedence","real-human-operation"],
+    "laneSpecificScenarioIds":{"touch":"touch-human-interaction-quality","alternative-input":"alternative-input-human-interaction-quality","native-behavior":"native-behavior-human-platform-quality"},
+    "scenarioStatus":["pass","fail"],
+    "sessionDecisionValues":["session-pass","session-fail"]
+  },
+  "laneRules": {
+    "touch":{"requiredActualInputMode":"touch","nativeImplementationRequired":false,"assistiveTechnologyIdentityRequired":false},
+    "alternative-input":{"requiredAlternativeInput":true,"nativeImplementationRequired":false,"assistiveTechnologyIdentityRequired":true},
+    "native-behavior":{"nativeImplementationRequired":true,"assistiveTechnologyIdentityRequired":false}
+  },
+  "execution": {
+    "realHumanObservationRequired":true,
+    "realPhysicalDeviceRequired":true,
+    "mayBeCoScheduledWithDeviceOrAssistiveTechnologySession":true,
+    "separateHumanEvidenceRecordRequired":true,
+    "deviceOrAssistiveTechnologyRecordAutomaticallyCountsAsHumanEvidence":false,
+    "hostedCiMayClaimHumanEvidence":false,
+    "emulatorOrSimulatorMayClaimHumanFieldEvidence":false,
+    "generatedTemplateMayClaimHumanEvidence":false,
+    "sessionPassImpliesLaneClosed":false
+  },
+  "implementation": {
+    "validator":"scripts/validate_glaze_v1_7_1_field_human_qualification.py",
+    "workflow":".github/workflows/glaze-v1.7.1-field-human-qualification-control.yml",
+    "humanProcedure":"acceptance/v1.7.1-field-human-qualification.md",
+    "recordTemplate":"acceptance/v1.7.1-field-human-evidence.template.json",
+    "devicePreparationHelper":"scripts/prepare_glaze_v1_7_1_device_qualification.py",
+    "assistiveTechnologyPreparationHelper":"scripts/prepare_glaze_v1_7_1_assistive_technology_qualification.py"
+  },
+  "currentBoundary": {
+    "protocolEstablished":true,
+    "humanEvidenceEstablished":false,
+    "touchLaneClosed":false,
+    "alternativeInputLaneClosed":false,
+    "nativeBehaviorLaneClosed":false,
+    "deviceEvidenceEstablishedByThisControl":false,
+    "assistiveTechnologyEvidenceEstablishedByThisControl":false,
+    "section41Complete":false,
+    "section48Accepted":false,
+    "v171AcceptanceEstablished":false,
+    "lifecyclePromotionEstablished":false,
+    "consumerAcceptanceEstablished":false,
+    "deploymentAcceptanceEstablished":false,
+    "publicationEstablished":false,
+    "productionAcceptanceEstablished":false
+  },
+  "boundary": "This plan establishes a fail-closed Human evidence companion control for Touch, Alternative input, and Native behavior. These observations require real human operation on real physical hardware and may be co-scheduled with Device or Assistive Technology sessions, but those other evidence records do not automatically count as Human evidence and this Human record does not count as Device or Assistive Technology evidence. Every lane still requires all evidence groups defined by the retained acceptance model. CI, templates, emulators, simulators, synthetic self-tests, and a session-pass value do not close a lane or establish Section 41/48, V1.7.1 lifecycle, consumer, deployment, publication, or production authority."
+}
