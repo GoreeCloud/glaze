@@ -1,0 +1,141 @@
+{
+  "$schema": "../../schemas/v1.7.1-device-qualification-plan.schema.json",
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.1.physical-device-qualification",
+  "name": "Glaze V1.7.1 Retained Physical-Device Qualification Plan",
+  "lifecycle": "DevelopmentQualification",
+  "successorReleaseLine": "1.7.1",
+  "developmentIdentity": "1.7.1-dev.1",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "evidenceType": "device",
+  "eligibleEvidenceGroups": [
+    {"laneId":"mobile","conditional":false,"otherRequiredGroups":["rendered"],"retainedOtherGroupsAlreadyPresent":true},
+    {"laneId":"tablet","conditional":false,"otherRequiredGroups":["rendered"],"retainedOtherGroupsAlreadyPresent":true},
+    {"laneId":"desktop","conditional":false,"otherRequiredGroups":["rendered"],"retainedOtherGroupsAlreadyPresent":true},
+    {"laneId":"foldable","conditional":false,"otherRequiredGroups":["rendered"],"retainedOtherGroupsAlreadyPresent":true},
+    {"laneId":"tv","conditional":false,"otherRequiredGroups":["rendered"],"retainedOtherGroupsAlreadyPresent":true},
+    {"laneId":"wearable","conditional":true,"otherRequiredGroups":["rendered"],"retainedOtherGroupsAlreadyPresent":true},
+    {"laneId":"touch","conditional":false,"otherRequiredGroups":["human"],"retainedOtherGroupsAlreadyPresent":false},
+    {"laneId":"native-behavior","conditional":false,"otherRequiredGroups":["human"],"retainedOtherGroupsAlreadyPresent":false},
+    {"laneId":"energy-behavior","conditional":true,"otherRequiredGroups":["energy"],"retainedOtherGroupsAlreadyPresent":false}
+  ],
+  "authority": {
+    "acceptanceModel": "contracts/v1.7/acceptance.dev.json",
+    "formFactorProfiles": "contracts/v1.7/form-factor-profiles.dev.json",
+    "adaptiveInput": "contracts/v1.7/adaptive-input.dev.json",
+    "nativeGlazeKits": "contracts/v1.7/native-glaze-kits-v1-2.dev.json",
+    "crossDeviceConsistency": "contracts/v1.7/cross-device-consistency.dev.json",
+    "performanceEnergyAwareness": "contracts/v1.7/performance-energy-awareness.dev.json",
+    "acceptanceRecord": "acceptance/v1.7-development.md"
+  },
+  "record": {
+    "sourceRevisionRequired": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+    "sourceRevisionFormat": "40-lowercase-hex",
+    "toolingRevisionFormat": "40-lowercase-hex",
+    "integrationRevisionFormat": "40-lowercase-hex",
+    "repository": "GoreeCloud/glaze",
+    "manualExecutionRequired": true,
+    "physicalDeviceRequired": true,
+    "emulatorOrSimulatorProhibitedForDeviceEvidence": true,
+    "placeholderValuesProhibited": true,
+    "oneRecordTargetsOneLane": true,
+    "eligibleLaneIds": [
+      "mobile","tablet","desktop","foldable","tv","wearable",
+      "touch","native-behavior","energy-behavior"
+    ],
+    "formFactors": ["mobile","tablet","desktop","foldable","tv","wearable"],
+    "platformFamilies": ["android","apple","linux","other"],
+    "implementationKinds": ["web","android-compose","apple-swiftui","linux-native","other-native"],
+    "nativeImplementationKinds": ["android-compose","apple-swiftui","linux-native","other-native"],
+    "inputCapabilities": [
+      "touch","pointer","keyboard","stylus","remote-dpad","rotary",
+      "switch-access","voice-access","assistive-input"
+    ],
+    "requiredTopLevelFields": [
+      "schemaVersion","recordType","sourceRevision","toolingRevision","repository",
+      "capturedAt","operator","manualExecution","laneId","platform","implementation",
+      "device","environment","scenarios","sessionDecision","sessionSummary","authority"
+    ],
+    "requiredCommonScenarioIds": [
+      "source-and-build-identity",
+      "physical-device-and-form-factor",
+      "platform-insets-and-safe-areas",
+      "task-and-state-continuity",
+      "accessibility-preference-precedence",
+      "semantic-authority-preservation"
+    ],
+    "laneSpecificScenarioIds": {
+      "mobile": "mobile-navigation-and-reachability",
+      "tablet": "tablet-dual-pane-and-mixed-input",
+      "desktop": "desktop-windowing-and-mixed-input",
+      "foldable": "foldable-posture-and-unsafe-regions",
+      "tv": "tv-far-view-and-directional-focus",
+      "wearable": "wearable-glanceability-and-rotary-or-touch",
+      "touch": "real-touch-and-semantic-alternatives",
+      "native-behavior": "native-toolkit-and-platform-conventions",
+      "energy-behavior": "background-offscreen-device-lifecycle"
+    },
+    "scenarioStatus": ["pass","fail"],
+    "sessionDecisionValues": ["session-pass","session-fail"]
+  },
+  "laneRules": {
+    "mobile": {"requiredFormFactor":"mobile"},
+    "tablet": {"requiredFormFactor":"tablet"},
+    "desktop": {"requiredFormFactor":"desktop"},
+    "foldable": {"requiredFormFactor":"foldable","requiredPostures":["folded","unfolded"]},
+    "tv": {"requiredFormFactor":"tv","requiredActualInput":["remote-dpad"]},
+    "wearable": {"requiredFormFactor":"wearable","requiredAnyActualInput":["touch","rotary"]},
+    "touch": {"requiredActualInput":["touch"]},
+    "native-behavior": {"requiresNativeImplementation":true},
+    "energy-behavior": {"requiresDevicePowerThermalContext":true}
+  },
+  "acceptanceRules": {
+    "operatorIdentityRequired": true,
+    "integrationBuildIdentityRequired": true,
+    "manualExecutionRequired": true,
+    "realPhysicalDeviceRequired": true,
+    "browserCiIsPhysicalDeviceEvidence": false,
+    "emulatorOrSimulatorIsDeviceEvidence": false,
+    "singleDeviceImpliesPlatformQualification": false,
+    "singleDeviceImpliesFormFactorMatrixAcceptance": false,
+    "singleNativeToolkitImpliesCrossPlatformNativeParity": false,
+    "webImplementationMayClaimNativeBehavior": false,
+    "deviceRecordMayClaimHumanEvidence": false,
+    "deviceRecordMayClaimPerformanceEvidence": false,
+    "deviceRecordMayClaimEnergyEvidence": false,
+    "deviceRecordPassImpliesLaneClosed": false,
+    "protocolValidationImpliesDeviceEvidence": false,
+    "protocolValidationImpliesSection48Acceptance": false,
+    "protocolValidationImpliesV171Acceptance": false,
+    "protocolValidationImpliesLifecyclePromotion": false,
+    "protocolValidationImpliesConsumerAcceptance": false,
+    "protocolValidationImpliesDeploymentAcceptance": false,
+    "protocolValidationImpliesProductionAcceptance": false
+  },
+  "implementation": {
+    "validator": "scripts/validate_glaze_v1_7_1_device_qualification.py",
+    "workflow": ".github/workflows/glaze-v1.7.1-device-qualification-control.yml",
+    "humanProcedure": "acceptance/v1.7.1-device-qualification.md",
+    "recordTemplate": "acceptance/v1.7.1-device-evidence.template.json",
+    "preparationHelper": "scripts/prepare_glaze_v1_7_1_device_qualification.py"
+  },
+  "currentBoundary": {
+    "protocolEstablished": true,
+    "physicalDeviceEvidenceEstablished": false,
+    "humanEvidenceEstablished": false,
+    "performanceEvidenceEstablished": false,
+    "energyEvidenceEstablished": false,
+    "section48Accepted": false,
+    "v171AcceptanceEstablished": false,
+    "lifecyclePromotionEstablished": false,
+    "consumerAcceptanceEstablished": false,
+    "deploymentAcceptanceEstablished": false,
+    "productionAcceptanceEstablished": false
+  },
+  "boundary": "This plan establishes a fail-closed physical-device qualification control for the retained V1.7.1 exact-source matrix. A real record may contribute only the device evidence group for one eligible lane after separate governed review. Form-factor records do not replace rendered evidence; Touch and Native behavior still require Human evidence; Energy behavior still requires independent Energy evidence. Browser CI, emulators, simulators, templates, protocol self-tests, and one device represented as an entire platform or form-factor matrix are not physical-device acceptance. No Section 48, V1.7.1 lifecycle, consumer, deployment, publication, or production authority is granted automatically."
+}

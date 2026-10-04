@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "recordType": "glaze-v1.7.1-physical-device-session-candidate",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "toolingRevision": "REPLACE_WITH_EXACT_40_CHAR_TOOLING_SHA",
+  "repository": "GoreeCloud/glaze",
+  "capturedAt": "REPLACE_WITH_ISO_8601_TIMESTAMP_WITH_TIMEZONE",
+  "operator": "REPLACE_WITH_OPERATOR_NAME",
+  "manualExecution": false,
+  "laneId": "mobile",
+  "platform": {
+    "family": "android",
+    "name": "REPLACE_WITH_PLATFORM_NAME",
+    "version": "REPLACE_WITH_PLATFORM_VERSION",
+    "build": "REPLACE_WITH_PLATFORM_BUILD"
+  },
+  "implementation": {
+    "kind": "web",
+    "application": "REPLACE_WITH_APPLICATION_NAME",
+    "integrationRepository": "GoreeCloud/REPLACE_WITH_REPOSITORY",
+    "integrationRevision": "REPLACE_WITH_EXACT_40_CHAR_INTEGRATION_SHA",
+    "glazeSourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+    "buildIdentifier": "REPLACE_WITH_BUILD_IDENTIFIER",
+    "nativeToolkit": "not-applicable-for-web"
+  },
+  "device": {
+    "physicalDevice": false,
+    "emulator": false,
+    "manufacturer": "REPLACE_WITH_MANUFACTURER",
+    "model": "REPLACE_WITH_MODEL",
+    "architecture": "REPLACE_WITH_ARCHITECTURE",
+    "formFactor": "mobile",
+    "displayRefreshHz": 0,
+    "inputCapabilities": [],
+    "actualInputsUsed": [],
+    "posturesObserved": [],
+    "safeAreaDescription": "REPLACE_WITH_SAFE_AREA_OBSERVATION"
+  },
+  "environment": {
+    "foregroundState": "foreground",
+    "powerSource": "REPLACE_WITH_POWER_SOURCE",
+    "batteryPercent": 0,
+    "thermalStateBefore": "REPLACE_WITH_THERMAL_STATE",
+    "thermalStateAfter": "REPLACE_WITH_THERMAL_STATE",
+    "backgroundLoad": "REPLACE_WITH_BACKGROUND_LOAD",
+    "accessibilityModes": []
+  },
+  "scenarios": [
+    {"id":"source-and-build-identity","status":"fail","observation":"REPLACE_WITH_DEVICE_OBSERVATION","defectOrFinding":"Template placeholder; not qualification evidence."},
+    {"id":"physical-device-and-form-factor","status":"fail","observation":"REPLACE_WITH_DEVICE_OBSERVATION","defectOrFinding":"Template placeholder; not qualification evidence."},
+    {"id":"platform-insets-and-safe-areas","status":"fail","observation":"REPLACE_WITH_DEVICE_OBSERVATION","defectOrFinding":"Template placeholder; not qualification evidence."},
+    {"id":"task-and-state-continuity","status":"fail","observation":"REPLACE_WITH_DEVICE_OBSERVATION","defectOrFinding":"Template placeholder; not qualification evidence."},
+    {"id":"accessibility-preference-precedence","status":"fail","observation":"REPLACE_WITH_DEVICE_OBSERVATION","defectOrFinding":"Template placeholder; not qualification evidence."},
+    {"id":"semantic-authority-preservation","status":"fail","observation":"REPLACE_WITH_DEVICE_OBSERVATION","defectOrFinding":"Template placeholder; not qualification evidence."},
+    {"id":"mobile-navigation-and-reachability","status":"fail","observation":"REPLACE_WITH_DEVICE_OBSERVATION","defectOrFinding":"Template placeholder; replace this scenario with the lane-specific scenario for the selected lane."}
+  ],
+  "sessionDecision": "session-fail",
+  "sessionSummary": "Fail-closed template only. Replace every placeholder and set manualExecution true only after a real physical-device session against the exact frozen Glaze source and identified integration build.",
+  "authority": {
+    "candidateEvidenceOnly": true,
+    "durableEvidenceRecorded": false,
+    "deviceEvidenceAccepted": false,
+    "laneClosed": false,
+    "humanEvidenceClaimed": false,
+    "assistiveTechnologyEvidenceClaimed": false,
+    "performanceEvidenceClaimed": false,
+    "energyEvidenceClaimed": false,
+    "section48Accepted": false,
+    "v171AcceptanceClaimed": false,
+    "lifecyclePromotionAutomatic": false,
+    "consumerAcceptanceAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "publicationAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  }
+}
