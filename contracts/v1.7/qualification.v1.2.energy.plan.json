@@ -1,0 +1,152 @@
+{
+  "$schema": "../../schemas/v1.7.1-energy-qualification-plan.schema.json",
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.1.energy-qualification",
+  "name": "Glaze V1.7.1 Retained Energy Qualification Plan",
+  "lifecycle": "DevelopmentQualification",
+  "successorReleaseLine": "1.7.1",
+  "developmentIdentity": "1.7.1-dev.1",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "laneId": "energy-behavior",
+  "evidenceType": "energy",
+  "conditionalLane": true,
+  "otherRequiredGroup": "device",
+  "otherGroupControl": "contracts/v1.7/qualification.v1.2.device.plan.json",
+  "authority": {
+    "acceptanceModel": "contracts/v1.7/acceptance.dev.json",
+    "performanceEnergyAwareness": "contracts/v1.7/performance-energy-awareness.dev.json",
+    "motionPerformance": "contracts/v1.7/motion-performance.dev.json",
+    "systemWideMotionStandard": "GoreeCloud Standard — System-Wide Motion Continuity and Performance",
+    "performanceBudget": "GoreeCloud Standard — Glaze UI Performance Budget",
+    "performanceBudgetVersion": "v1.0",
+    "acceptanceRecord": "acceptance/v1.7-development.md"
+  },
+  "governedEnergyBoundary": {
+    "numericEnergyAcceptanceThresholdEstablished": false,
+    "numericThresholdMustNotBeInvented": true,
+    "batteryPercentageDeltaAloneIsEnergyEvidence": false,
+    "cpuOrGpuUtilizationAloneIsEnergyEvidence": false,
+    "thermalObservationAloneIsEnergyEvidence": false,
+    "directOrDocumentedEnergyMeasurementRequired": true,
+    "sameSessionComparativePhasesRequired": true,
+    "governedReviewRequiredForAcceptance": true
+  },
+  "record": {
+    "recordType": "glaze-v1.7.1-energy-session-candidate",
+    "sourceRevisionRequired": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+    "repository": "GoreeCloud/glaze",
+    "manualExecutionRequired": true,
+    "physicalDeviceRequired": true,
+    "emulatorOrSimulatorProhibited": true,
+    "placeholderValuesProhibited": true,
+    "requiredTopLevelFields": [
+      "schemaVersion",
+      "recordType",
+      "sourceRevision",
+      "toolingRevision",
+      "repository",
+      "capturedAt",
+      "operator",
+      "manualExecution",
+      "platform",
+      "implementation",
+      "device",
+      "measurementMethod",
+      "phases",
+      "observations",
+      "candidateDisposition",
+      "authority"
+    ],
+    "measurementMethodClasses": [
+      "external-power-meter",
+      "platform-energy-profiler",
+      "os-power-telemetry",
+      "battery-energy-counter",
+      "other-direct-measurement"
+    ],
+    "measurementMetricKinds": [
+      "average-power-watts",
+      "energy-joules",
+      "energy-watt-hours",
+      "platform-energy-score"
+    ],
+    "requiredPhaseIds": [
+      "baseline-idle",
+      "representative-active",
+      "background-or-offscreen",
+      "post-work-recovery"
+    ],
+    "candidateDispositionValues": [
+      "review-required",
+      "invalid"
+    ]
+  },
+  "phaseRules": {
+    "minimumDurationSeconds": 30,
+    "allPhasesUseSameMeasurementMethod": true,
+    "allPhasesUseSameDeviceAndBuild": true,
+    "backgroundPhaseRequiresLifecycleObservation": true,
+    "recoveryPhaseRequiresReturnTowardIdleObservation": true,
+    "platformEnergyScoreComparableOnlyWithinSameToolSession": true
+  },
+  "requiredObservations": [
+    "optional-visual-work-suspension",
+    "background-offscreen-lifecycle",
+    "thermal-state-before-after",
+    "power-source-and-battery-context",
+    "state-and-task-integrity",
+    "accessibility-and-reduced-motion-integrity",
+    "semantic-authority-preservation",
+    "measurement-limitations"
+  ],
+  "acceptanceRules": {
+    "realPhysicalDeviceRequired": true,
+    "humanOperatorRequired": true,
+    "exactIntegrationBuildIdentityRequired": true,
+    "directEnergyMeasurementRequired": true,
+    "browserCiIsEnergyEvidence": false,
+    "emulatorOrSimulatorIsEnergyEvidence": false,
+    "syntheticSelfTestIsEnergyEvidence": false,
+    "batteryPercentageOnlyIsEnergyEvidence": false,
+    "cpuOrGpuUtilizationOnlyIsEnergyEvidence": false,
+    "candidateRecordPassesEnergyAutomatically": false,
+    "energyRecordMayClaimDeviceEvidence": false,
+    "energyRecordMayClaimHumanEvidence": false,
+    "energyRecordMayClaimPerformanceEvidence": false,
+    "protocolValidationImpliesEnergyEvidence": false,
+    "protocolValidationImpliesSection48Acceptance": false,
+    "protocolValidationImpliesV171Acceptance": false,
+    "protocolValidationImpliesLifecyclePromotion": false,
+    "protocolValidationImpliesConsumerAcceptance": false,
+    "protocolValidationImpliesDeploymentAcceptance": false,
+    "protocolValidationImpliesPublication": false,
+    "protocolValidationImpliesProductionAcceptance": false
+  },
+  "implementation": {
+    "validator": "scripts/validate_glaze_v1_7_1_energy_qualification.py",
+    "workflow": ".github/workflows/glaze-v1.7.1-energy-qualification-control.yml",
+    "humanProcedure": "acceptance/v1.7.1-energy-qualification.md",
+    "recordTemplate": "acceptance/v1.7.1-energy-evidence.template.json",
+    "preparationHelper": "scripts/prepare_glaze_v1_7_1_energy_qualification.py"
+  },
+  "currentBoundary": {
+    "protocolEstablished": true,
+    "energyEvidenceEstablished": false,
+    "deviceEvidenceEstablishedByThisProtocol": false,
+    "humanEvidenceEstablished": false,
+    "performanceEvidenceEstablished": false,
+    "section48Accepted": false,
+    "v171AcceptanceEstablished": false,
+    "lifecyclePromotionEstablished": false,
+    "consumerAcceptanceEstablished": false,
+    "deploymentAcceptanceEstablished": false,
+    "publicationEstablished": false,
+    "productionAcceptanceEstablished": false
+  },
+  "boundary": "This plan establishes a fail-closed Energy evidence collection control for the retained V1.7.1 energy-behavior lane. Because no approved GoreeCloud numeric energy ceiling exists, the protocol records direct or documented energy/power measurements and controlled comparative phases but does not automatically decide acceptance. Battery percentage delta, CPU/GPU utilization, thermal state, CI, emulators, templates, and synthetic self-tests cannot substitute for direct Energy evidence. A separately governed review must determine whether the measured behavior satisfies the applicable motion-efficiency standard, and the lane still separately requires Device evidence."
+}
