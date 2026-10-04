@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.1.v1.2-field-session-plan",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "retainedOpenLaneCount": 20,
+  "missingEvidenceGroupCount": 24,
+  "conditionalLaneIds": ["wearable", "energy-behavior"],
+  "batches": {
+    "representative-performance": [
+      ["frame-pacing","performance"],
+      ["input-latency","performance"],
+      ["performance","performance"]
+    ],
+    "browser-human-review": [
+      ["keyboard","human"],
+      ["pointer","human"],
+      ["representative-rendering","human"],
+      ["human-visual-motion-review","human"],
+      ["privacy-boundaries","human"],
+      ["security-boundaries","human"]
+    ],
+    "assistive-technology-and-alternative-input": [
+      ["assistive-technology","assistive-technology"],
+      ["alternative-input","assistive-technology"],
+      ["alternative-input","human"]
+    ],
+    "physical-device-and-field-human": [
+      ["mobile","device"],
+      ["tablet","device"],
+      ["desktop","device"],
+      ["foldable","device"],
+      ["tv","device"],
+      ["wearable","device"],
+      ["touch","device"],
+      ["touch","human"],
+      ["native-behavior","device"],
+      ["native-behavior","human"],
+      ["energy-behavior","device"]
+    ],
+    "direct-energy-measurement": [
+      ["energy-behavior","energy"]
+    ]
+  },
+  "controlPaths": {
+    "representative-performance": ["contracts/v1.7/qualification.v1.2.performance.plan.json"],
+    "browser-human-review": ["contracts/v1.7/qualification.v1.2.human.plan.json"],
+    "assistive-technology-and-alternative-input": ["contracts/v1.7/qualification.v1.2.assistive-technology.plan.json","contracts/v1.7/qualification.v1.2.field-human.plan.json"],
+    "physical-device-and-field-human": ["contracts/v1.7/qualification.v1.2.device.plan.json","contracts/v1.7/qualification.v1.2.field-human.plan.json"],
+    "direct-energy-measurement": ["contracts/v1.7/qualification.v1.2.energy.plan.json"]
+  },
+  "rules": {
+    "sameSessionMayCollectMultipleCandidateRecords": true,
+    "separateEvidenceRecordsRequiredByLaneAndType": true,
+    "companionEvidenceAutomaticallyInherited": false,
+    "candidateRecordAutomaticallyAccepted": false,
+    "independentGovernedReviewRequiredBeforeIntake": true,
+    "conditionalLaneRequiresSpecificJustification": true,
+    "hostedCiMaySubstituteForManualFieldEvidence": false,
+    "emulatorMaySubstituteForPhysicalDeviceEvidence": false,
+    "automationMaySubstituteForHumanObservation": false
+  },
+  "authority": {
+    "fieldSessionPerformed": false,
+    "evidenceAccepted": false,
+    "evidenceInventoryComplete": false,
+    "section46Complete": false,
+    "v171AcceptanceEstablished": false,
+    "lifecyclePromotionAutomatic": false
+  },
+  "boundary": "Execution aid only. Co-scheduling does not merge evidence types; candidates require independent governed review before intake. Wearable and Energy behavior remain conditional only with specific justification."
+}
