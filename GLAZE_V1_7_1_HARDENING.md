@@ -89,6 +89,14 @@ The control requires a real physical device and direct quantitative energy or po
 
 Energy evidence remains separate from the independent Device evidence group required by `energy-behavior`. The control creates neither group by itself, does not close the lane, and grants no Section 48, V1.7.1 lifecycle, consumer, deployment, publication, or production authority.
 
+## Field Human qualification companion control — 2026-10-03
+
+V1.7.1 now has a dedicated fail-closed Human evidence companion control for the three retained lanes whose Human group cannot be honestly reviewed in the browser-only human surface: Touch, Alternative input, and Native behavior. The plan, schema, candidate template, manual procedure, validator, and protected CI bind candidate records to frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37` / `1.7.0-dev.47`, retained acceptance model `1.7.0-dev.39`, current Stable baseline `1.7.0`, and historical source baseline `1.6.0`.
+
+The control requires real human operation on real physical hardware. Touch requires actual touch input; Alternative input requires a concrete non-primary input path plus technology identity/version where applicable; Native behavior requires an actual native implementation and toolkit. Sessions may be co-scheduled with the existing Device or Assistive-Technology protocols, but evidence types remain separate: a Device or Assistive-Technology record does not automatically count as Human evidence, and the Human record does not claim Device or Assistive-Technology evidence.
+
+CI validates only the protocol and negative cases. Emulators, simulators, templates, synthetic self-tests, and a `session-pass` value cannot close a lane. Separate governed durable review remains required, and each lane remains incomplete until its other acceptance-model evidence group is also accepted. No Section 41/48, V1.7.1 lifecycle, consumer, deployment, publication, or production authority is created by this control.
+
 ## Section 48
 
 All Section 48 Expression System and Adaptive Intelligence surfaces move to V1.7.1 for qualification and release purposes:

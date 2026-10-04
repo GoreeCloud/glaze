@@ -1,0 +1,87 @@
+name: Glaze V1.7.1 Field Human Qualification Control
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/v1.7/qualification.v1.2.field-human.plan.json'
+      - 'schemas/v1.7.1-field-human-qualification-plan.schema.json'
+      - 'acceptance/v1.7.1-field-human-evidence.template.json'
+      - 'acceptance/v1.7.1-field-human-qualification.md'
+      - 'scripts/validate_glaze_v1_7_1_field_human_qualification.py'
+      - 'acceptance/v1.7-development.md'
+      - 'GLAZE_V1_7_1_HARDENING.md'
+      - '.github/workflows/glaze-v1.7.1-field-human-qualification-control.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glaze-v1-7-1-field-human-control-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  V171_SOURCE_SHA: 4b9d085a5177b96cc31d4270b38d792a59872e37
+
+jobs:
+  verify-field-human-qualification-control:
+    name: Verify V1.7.1 field human qualification control
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact tooling revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact tooling revision and frozen source availability
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          git cat-file -e "${V171_SOURCE_SHA}^{commit}"
+          git merge-base --is-ancestor "$V171_SOURCE_SHA" HEAD
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: Syntax-check field-human qualification tooling
+        run: |
+          python -m json.tool contracts/v1.7/qualification.v1.2.field-human.plan.json >/dev/null
+          python -m json.tool schemas/v1.7.1-field-human-qualification-plan.schema.json >/dev/null
+          python -m json.tool acceptance/v1.7.1-field-human-evidence.template.json >/dev/null
+          python -m py_compile scripts/validate_glaze_v1_7_1_field_human_qualification.py
+
+      - name: Validate field-human control and synthetic negative cases
+        run: python scripts/validate_glaze_v1_7_1_field_human_qualification.py --self-test
+
+      - name: Preserve companion Device and Assistive-Technology controls
+        run: |
+          python scripts/validate_glaze_v1_7_1_device_qualification.py --self-test
+          python scripts/validate_glaze_v1_7_1_assistive_technology_qualification.py --self-test
+
+      - name: Preserve relevant V1.7 source boundaries
+        run: |
+          node scripts/validate_glaze_v1_7_adaptive_input_development.mjs
+          node scripts/validate_glaze_v1_7_native_glaze_kits_v1_2_development.mjs
+          node scripts/validate_glaze_v1_7_accessibility_continuity_development.mjs
+
+      - name: Preserve retained acceptance-control behavior
+        run: node scripts/validate_glaze_v1_7_acceptance_development.mjs
+
+      - name: Preserve bounded V1.7 Stable authority
+        run: node scripts/verify_glaze_v1_7_stable.mjs
+
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code -- .

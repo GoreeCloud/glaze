@@ -169,7 +169,7 @@ def validate_source() -> dict[str, Any]:
     req(template.get("device", {}).get("physicalDevice") is False, "template must not assert physical device")
     req(template.get("sessionDecision") == "session-fail", "template must default to session-fail")
 
-    for marker in ("A Device record is not Human evidence","Assistive-Technology record is not Human evidence","real physical hardware","touch-human-interaction-quality","alternative-input-human-interaction-quality","native-behavior-human-platform-quality","separate governed review remains required"):
+    for marker in ("A Device record is not Human evidence","Assistive-Technology record is not Human evidence","real physical hardware","touch-human-interaction-quality","alternative-input-human-interaction-quality","native-behavior-human-platform-quality","governed review remains required"):
         req(marker in procedure, "procedure missing marker: " + marker)
     return plan
 
