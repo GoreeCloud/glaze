@@ -1,1 +1,13 @@
-{}
+{
+  "schemaVersion": 1,
+  "recordId": "goreecloud.glaze.v1.7.1.v1.2-evidence-control-coverage",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "validator": "scripts/validate_glaze_v1_7_1_v1_2_control_coverage.mjs",
+  "fieldSessionPlan": "contracts/v1.7/qualification.v1.2.field-session-plan.json",
+  "controlCoverageComplete": true,
+  "acceptedEvidenceInventoryComplete": false,
+  "readyForGovernedQualificationReview": false,
+  "v171AcceptanceEstablished": false,
+  "boundary": "Executable coverage proof only. Control coverage is not accepted evidence and grants no lifecycle authority."
+}
