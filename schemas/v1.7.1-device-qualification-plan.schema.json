@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze/v1.7.1-device-qualification-plan.schema.json",
+  "title": "Glaze V1.7.1 Retained Physical-Device Qualification Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","planId","name","lifecycle","successorReleaseLine",
+    "developmentIdentity","sourceRevision","sourceModelVersion","acceptanceModelVersion",
+    "stableBaseline","historicalSourceStableBaseline","consumerEligible","evidenceType",
+    "eligibleEvidenceGroups","authority","record","laneRules","acceptanceRules",
+    "implementation","currentBoundary","boundary"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7.1-device-qualification-plan.schema.json"},
+    "schemaVersion": {"const":1},
+    "planId": {"const":"goreecloud.glaze.v1.7.1.physical-device-qualification"},
+    "name": {"const":"Glaze V1.7.1 Retained Physical-Device Qualification Plan"},
+    "lifecycle": {"const":"DevelopmentQualification"},
+    "successorReleaseLine": {"const":"1.7.1"},
+    "developmentIdentity": {"const":"1.7.1-dev.1"},
+    "sourceRevision": {"const":"4b9d085a5177b96cc31d4270b38d792a59872e37"},
+    "sourceModelVersion": {"const":"1.7.0-dev.47"},
+    "acceptanceModelVersion": {"const":"1.7.0-dev.39"},
+    "stableBaseline": {"const":"1.7.0"},
+    "historicalSourceStableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "evidenceType": {"const":"device"},
+    "eligibleEvidenceGroups": {
+      "type":"array","minItems":9,"maxItems":9,
+      "items":{
+        "type":"object","additionalProperties":false,
+        "required":["laneId","conditional","otherRequiredGroups","retainedOtherGroupsAlreadyPresent"],
+        "properties":{
+          "laneId":{"enum":["mobile","tablet","desktop","foldable","tv","wearable","touch","native-behavior","energy-behavior"]},
+          "conditional":{"type":"boolean"},
+          "otherRequiredGroups":{"type":"array","uniqueItems":true,"items":{"enum":["rendered","human","energy"]}},
+          "retainedOtherGroupsAlreadyPresent":{"type":"boolean"}
+        }
+      }
+    },
+    "authority":{"type":"object","minProperties":6},
+    "record":{
+      "type":"object","additionalProperties":false,
+      "required":[
+        "sourceRevisionRequired","sourceRevisionFormat","toolingRevisionFormat",
+        "integrationRevisionFormat","repository","manualExecutionRequired",
+        "physicalDeviceRequired","emulatorOrSimulatorProhibitedForDeviceEvidence",
+        "placeholderValuesProhibited","oneRecordTargetsOneLane","eligibleLaneIds",
+        "formFactors","platformFamilies","implementationKinds","nativeImplementationKinds",
+        "inputCapabilities","requiredTopLevelFields","requiredCommonScenarioIds",
+        "laneSpecificScenarioIds","scenarioStatus","sessionDecisionValues"
+      ],
+      "properties":{
+        "sourceRevisionRequired":{"const":"4b9d085a5177b96cc31d4270b38d792a59872e37"},
+        "sourceRevisionFormat":{"const":"40-lowercase-hex"},
+        "toolingRevisionFormat":{"const":"40-lowercase-hex"},
+        "integrationRevisionFormat":{"const":"40-lowercase-hex"},
+        "repository":{"const":"GoreeCloud/glaze"},
+        "manualExecutionRequired":{"const":true},
+        "physicalDeviceRequired":{"const":true},
+        "emulatorOrSimulatorProhibitedForDeviceEvidence":{"const":true},
+        "placeholderValuesProhibited":{"const":true},
+        "oneRecordTargetsOneLane":{"const":true},
+        "eligibleLaneIds":{
+          "const":["mobile","tablet","desktop","foldable","tv","wearable","touch","native-behavior","energy-behavior"]
+        },
+        "formFactors":{"const":["mobile","tablet","desktop","foldable","tv","wearable"]},
+        "platformFamilies":{"const":["android","apple","linux","other"]},
+        "implementationKinds":{"const":["web","android-compose","apple-swiftui","linux-native","other-native"]},
+        "nativeImplementationKinds":{"const":["android-compose","apple-swiftui","linux-native","other-native"]},
+        "inputCapabilities":{
+          "const":["touch","pointer","keyboard","stylus","remote-dpad","rotary","switch-access","voice-access","assistive-input"]
+        },
+        "requiredTopLevelFields":{"type":"array","minItems":17,"uniqueItems":true,"items":{"type":"string"}},
+        "requiredCommonScenarioIds":{
+          "const":[
+            "source-and-build-identity","physical-device-and-form-factor",
+            "platform-insets-and-safe-areas","task-and-state-continuity",
+            "accessibility-preference-precedence","semantic-authority-preservation"
+          ]
+        },
+        "laneSpecificScenarioIds":{
+          "type":"object","additionalProperties":false,
+          "required":["mobile","tablet","desktop","foldable","tv","wearable","touch","native-behavior","energy-behavior"],
+          "properties":{
+            "mobile":{"const":"mobile-navigation-and-reachability"},
+            "tablet":{"const":"tablet-dual-pane-and-mixed-input"},
+            "desktop":{"const":"desktop-windowing-and-mixed-input"},
+            "foldable":{"const":"foldable-posture-and-unsafe-regions"},
+            "tv":{"const":"tv-far-view-and-directional-focus"},
+            "wearable":{"const":"wearable-glanceability-and-rotary-or-touch"},
+            "touch":{"const":"real-touch-and-semantic-alternatives"},
+            "native-behavior":{"const":"native-toolkit-and-platform-conventions"},
+            "energy-behavior":{"const":"background-offscreen-device-lifecycle"}
+          }
+        },
+        "scenarioStatus":{"const":["pass","fail"]},
+        "sessionDecisionValues":{"const":["session-pass","session-fail"]}
+      }
+    },
+    "laneRules":{"type":"object","minProperties":9},
+    "acceptanceRules":{"type":"object","minProperties":17},
+    "implementation":{"type":"object","minProperties":5},
+    "currentBoundary":{"type":"object","minProperties":10},
+    "boundary":{"type":"string","minLength":400}
+  }
+}

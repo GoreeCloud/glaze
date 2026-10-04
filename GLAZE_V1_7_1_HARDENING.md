@@ -73,6 +73,14 @@ The review surface exercises V1.7 Accessibility Continuity and Adaptive Input se
 
 A real session requires a human operator, a physical device, an identified assistive technology and version, exact source/tooling provenance, and scenario-level observations. After separate governed review, such a session may contribute the `assistive-technology` group to the Assistive technology lane and to Alternative input, but Alternative input still requires its independent `human` group. No lane is closed and no Section 41/48, lifecycle, consumer, deployment, publication, or production acceptance is created by the control itself.
 
+## Physical-device qualification control — 2026-10-03
+
+V1.7.1 now has a dedicated exact-source physical-device qualification control for the nine retained lanes that contain a `device` evidence group: Mobile, Tablet, Desktop, Foldable, TV, Wearable, Touch, Native behavior, and Energy behavior. The plan, schema, fail-closed candidate template, manual procedure, exact-source review-package helper, validator, and protected CI bind the control to frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37` / `1.7.0-dev.47`, retained acceptance model `1.7.0-dev.39`, current Stable baseline `1.7.0`, and historical source baseline `1.6.0`.
+
+The control requires a real physical device, a real human-operated session, concrete device/platform/build identity, and one lane-specific observation set per record. Emulators and simulators cannot satisfy Device evidence. Mobile/Tablet/Desktop/Foldable/TV/Wearable records must match the actual claimed form factor; Foldable requires folded and unfolded posture observation; TV requires actual remote/D-pad input; Wearable requires real touch or rotary input; Touch requires real touch input. Native behavior additionally requires a native implementation rather than a browser/web surface.
+
+This tranche creates no Device evidence by itself. Form-factor lanes retain their existing rendered prerequisite, while Touch and Native behavior still require separate Human evidence. Energy behavior can receive only the Device half from this protocol; its independent `energy` group remains required. One physical device never implies an entire platform, OEM, form-factor, or native-toolkit matrix, and no Section 48, lifecycle, consumer, deployment, publication, or production authority is created by the control.
+
 ## Section 48
 
 All Section 48 Expression System and Adaptive Intelligence surfaces move to V1.7.1 for qualification and release purposes:
