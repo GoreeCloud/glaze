@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "recordType": "glaze-v1.7.1-energy-measurement-candidate",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "toolingRevision": "REPLACE_WITH_EXACT_40_CHAR_TOOLING_SHA",
+  "repository": "GoreeCloud/glaze",
+  "capturedAt": "REPLACE_WITH_ISO_8601_TIMESTAMP_WITH_TIMEZONE",
+  "operator": "REPLACE_WITH_OPERATOR_NAME",
+  "manualExecution": false,
+  "laneId": "energy-behavior",
+  "implementation": {
+    "application": "REPLACE_WITH_APPLICATION_NAME",
+    "integrationRepository": "GoreeCloud/REPLACE_WITH_REPOSITORY",
+    "integrationRevision": "REPLACE_WITH_EXACT_40_CHAR_INTEGRATION_SHA",
+    "glazeSourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+    "buildIdentifier": "REPLACE_WITH_BUILD_IDENTIFIER"
+  },
+  "device": {
+    "physicalDevice": false,
+    "emulator": false,
+    "manufacturer": "REPLACE_WITH_MANUFACTURER",
+    "model": "REPLACE_WITH_MODEL",
+    "architecture": "REPLACE_WITH_ARCHITECTURE",
+    "formFactor": "desktop",
+    "platform": "REPLACE_WITH_PLATFORM_AND_VERSION",
+    "displayRefreshHz": 0
+  },
+  "environment": {
+    "powerSource": "REPLACE_WITH_POWER_SOURCE",
+    "batteryStartPercent": 0,
+    "batteryEndPercent": 0,
+    "thermalStateBefore": "REPLACE_WITH_THERMAL_STATE",
+    "thermalStateAfter": "REPLACE_WITH_THERMAL_STATE",
+    "backgroundLoad": "REPLACE_WITH_BACKGROUND_LOAD",
+    "ambientCondition": "REPLACE_WITH_AMBIENT_CONDITION",
+    "constrainedCondition": "REPLACE_WITH_REAL_LOW_POWER_OR_RESOURCE_CONSTRAINT",
+    "lowPowerModeAvailable": false
+  },
+  "measurementMethod": {
+    "kind": "external-power-meter",
+    "name": "REPLACE_WITH_MEASUREMENT_TOOL",
+    "versionOrModel": "REPLACE_WITH_TOOL_VERSION_OR_MODEL",
+    "calibrationOrBaselineNote": "REPLACE_WITH_METHOD_NOTE"
+  },
+  "scenarios": [
+    {
+      "id": "source-and-build-identity",
+      "durationSeconds": 1,
+      "quantitativeMeasurements": [
+        {
+          "metric": "identity-check",
+          "unit": "count",
+          "value": 0
+        }
+      ],
+      "observation": "Template placeholder; not Energy evidence.",
+      "blockingFinding": "Template placeholder.",
+      "completed": false
+    },
+    {
+      "id": "controlled-idle-baseline",
+      "durationSeconds": 60,
+      "quantitativeMeasurements": [
+        {
+          "metric": "average-power",
+          "unit": "watts",
+          "value": 0
+        }
+      ],
+      "observation": "Template placeholder; not Energy evidence.",
+      "blockingFinding": "Template placeholder.",
+      "completed": false
+    },
+    {
+      "id": "foreground-representative-workload",
+      "durationSeconds": 60,
+      "quantitativeMeasurements": [
+        {
+          "metric": "average-power",
+          "unit": "watts",
+          "value": 0
+        }
+      ],
+      "observation": "Template placeholder; not Energy evidence.",
+      "blockingFinding": "Template placeholder.",
+      "completed": false
+    },
+    {
+      "id": "constrained-or-low-power-workload",
+      "durationSeconds": 60,
+      "quantitativeMeasurements": [
+        {
+          "metric": "average-power",
+          "unit": "watts",
+          "value": 0
+        }
+      ],
+      "observation": "Template placeholder; not Energy evidence.",
+      "blockingFinding": "Template placeholder.",
+      "completed": false
+    },
+    {
+      "id": "background-offscreen-lifecycle",
+      "durationSeconds": 60,
+      "quantitativeMeasurements": [
+        {
+          "metric": "average-power",
+          "unit": "watts",
+          "value": 0
+        }
+      ],
+      "observation": "Template placeholder; not Energy evidence.",
+      "blockingFinding": "Template placeholder.",
+      "completed": false
+    },
+    {
+      "id": "thermal-and-resource-recovery",
+      "durationSeconds": 60,
+      "quantitativeMeasurements": [
+        {
+          "metric": "average-power",
+          "unit": "watts",
+          "value": 0
+        }
+      ],
+      "observation": "Template placeholder; not Energy evidence.",
+      "blockingFinding": "Template placeholder.",
+      "completed": false
+    },
+    {
+      "id": "authority-and-task-integrity",
+      "durationSeconds": 1,
+      "quantitativeMeasurements": [
+        {
+          "metric": "automatic-authority-action-count",
+          "unit": "count",
+          "value": 0
+        }
+      ],
+      "observation": "Template placeholder; not Energy evidence.",
+      "blockingFinding": "Template placeholder.",
+      "completed": false
+    }
+  ],
+  "measurementDecision": "measurement-blocked",
+  "reviewSummary": "Fail-closed template only. Replace every placeholder after a real physical-device measurement session. A structurally complete record remains review-required and is not accepted Energy evidence until separate governed review.",
+  "authority": {
+    "candidateEvidenceOnly": true,
+    "durableEvidenceRecorded": false,
+    "energyEvidenceAccepted": false,
+    "deviceEvidenceClaimed": false,
+    "performanceEvidenceClaimed": false,
+    "humanEvidenceClaimed": false,
+    "laneClosed": false,
+    "section48Accepted": false,
+    "v171AcceptanceClaimed": false,
+    "lifecyclePromotionAutomatic": false,
+    "consumerAcceptanceAutomatic": false,
+    "deploymentAcceptanceAutomatic": false,
+    "publicationAutomatic": false,
+    "productionAcceptanceAutomatic": false
+  },
+  "measurementLimitations": "REPLACE_WITH_MEASUREMENT_LIMITATIONS_AND_COMPARABILITY_BOUNDARY"
+}

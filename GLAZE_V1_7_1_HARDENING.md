@@ -81,6 +81,14 @@ The control requires a real physical device, a real human-operated session, conc
 
 This tranche creates no Device evidence by itself. Form-factor lanes retain their existing rendered prerequisite, while Touch and Native behavior still require separate Human evidence. Energy behavior can receive only the Device half from this protocol; its independent `energy` group remains required. One physical device never implies an entire platform, OEM, form-factor, or native-toolkit matrix, and no Section 48, lifecycle, consumer, deployment, publication, or production authority is created by the control.
 
+## Energy-behavior qualification control — 2026-10-03
+
+V1.7.1 now has a dedicated exact-source Energy evidence collection control for the conditional `energy-behavior` lane. The plan, schema, fail-closed candidate template, human procedure, exact-source review-package helper, validator, and protected CI bind the control to frozen source `4b9d085a5177b96cc31d4270b38d792a59872e37` / `1.7.0-dev.47`, retained acceptance model `1.7.0-dev.39`, current Stable baseline `1.7.0`, and historical source baseline `1.6.0`.
+
+The control requires a real physical device and direct quantitative energy or power measurement across controlled idle, representative foreground workload, constrained/low-power operation, background/off-screen lifecycle, and thermal/resource recovery. Battery percentage, thermal state, or CPU/GPU utilization alone are contextual/proxy data and cannot satisfy Energy evidence. No numeric Energy acceptance threshold is currently approved for this retained lane, so the protocol deliberately has no automatic PASS decision and may not invent one; a structurally complete measurement remains `review-required` for separate governed assessment against the GoreeCloud motion/performance standards.
+
+Energy evidence remains separate from the independent Device evidence group required by `energy-behavior`. The control creates neither group by itself, does not close the lane, and grants no Section 48, V1.7.1 lifecycle, consumer, deployment, publication, or production authority.
+
 ## Section 48
 
 All Section 48 Expression System and Adaptive Intelligence surfaces move to V1.7.1 for qualification and release purposes:
