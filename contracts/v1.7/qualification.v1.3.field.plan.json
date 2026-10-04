@@ -203,7 +203,8 @@
       "performance": "acceptance/v1.7.1-section48-performance-evidence.template.json",
       "energy": "acceptance/v1.7.1-section48-energy-evidence.template.json"
     },
-    "preparationHelper": "scripts/prepare_glaze_v1_7_1_section48_field_qualification.py"
+    "preparationHelper": "scripts/prepare_glaze_v1_7_1_section48_field_qualification.py",
+    "governedEvidenceIntake": "contracts/v1.7/qualification.v1.3.evidence-intake.plan.json"
   },
   "currentBoundary": {
     "protocolEstablished": true,

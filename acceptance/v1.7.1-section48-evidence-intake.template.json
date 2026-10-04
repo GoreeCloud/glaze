@@ -1,0 +1,38 @@
+{
+  "$schema": "../schemas/v1.7.1-section48-evidence-intake.schema.json",
+  "schemaVersion": 1,
+  "recordId": "goreecloud.glaze.v1.7.1.section48-evidence-intake",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "toolingRevision": "REPLACE_WITH_40_HEX_TOOLING_SHA",
+  "section48QualificationModelVersion": "1.7.0-dev.47",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "review": {
+    "reviewedAt": "REPLACE_WITH_ISO8601_WITH_TIMEZONE",
+    "reviewer": "REPLACE_WITH_AUTHORIZED_REVIEWER",
+    "reviewerRole": "REPLACE_WITH_REVIEWER_ROLE",
+    "scope": "REPLACE_WITH_REVIEW_SCOPE",
+    "representativeRevisionConfirmed": false,
+    "independentReviewConfirmed": false,
+    "notes": "Template placeholder; not evidence."
+  },
+  "section48Applicability": {
+    "energy-v13": true
+  },
+  "section48NotApplicableJustifications": {},
+  "evidence": [],
+  "reviewDecision": "not-reviewed",
+  "authority": {
+    "packetIsV171Acceptance": false,
+    "section48Accepted": false,
+    "readyStatusGrantsAcceptance": false,
+    "lifecyclePromotionAutomatic": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "publicationAutomatic": false,
+    "productionAcceptanceGranted": false
+  },
+  "boundary": "Fail-closed V1.7.1 Section 48 governed evidence-intake template. Populate only from real exact-source records that have been independently reviewed and durably referenced. Partial reviewed evidence may be recorded without implying inventory completeness; even a complete inventory only becomes ready for a separate governed Section 48 acceptance review and grants no lifecycle or deployment authority."
+}

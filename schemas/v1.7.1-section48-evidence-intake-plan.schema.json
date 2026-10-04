@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze/v1.7.1-section48-evidence-intake-plan.schema.json",
+  "title": "Glaze V1.7.1 Section 48 Governed Evidence Intake Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "planId",
+    "name",
+    "lifecycle",
+    "successorReleaseLine",
+    "developmentIdentity",
+    "sourceRevision",
+    "sourceModelVersion",
+    "section48QualificationModelVersion",
+    "stableBaseline",
+    "historicalSourceStableBaseline",
+    "consumerEligible",
+    "section48LaneCount",
+    "evidenceTypes",
+    "conditionalLaneIds",
+    "intakeRules",
+    "referencePolicy",
+    "reviewDecisionValues",
+    "implementation",
+    "currentBoundary",
+    "boundary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../../schemas/v1.7.1-section48-evidence-intake-plan.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "planId": {
+      "const": "goreecloud.glaze.v1.7.1.section48-evidence-intake"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lifecycle": {
+      "const": "DevelopmentQualification"
+    },
+    "successorReleaseLine": {
+      "const": "1.7.1"
+    },
+    "developmentIdentity": {
+      "const": "1.7.1-dev.1"
+    },
+    "sourceRevision": {
+      "const": "4b9d085a5177b96cc31d4270b38d792a59872e37"
+    },
+    "sourceModelVersion": {
+      "const": "1.7.0-dev.47"
+    },
+    "section48QualificationModelVersion": {
+      "const": "1.7.0-dev.47"
+    },
+    "stableBaseline": {
+      "const": "1.7.0"
+    },
+    "historicalSourceStableBaseline": {
+      "const": "1.6.0"
+    },
+    "consumerEligible": {
+      "const": false
+    },
+    "section48LaneCount": {
+      "const": 25
+    },
+    "evidenceTypes": {
+      "const": [
+        "machine",
+        "rendered",
+        "device",
+        "human",
+        "assistive-technology",
+        "performance",
+        "energy",
+        "provenance",
+        "provider-integration",
+        "privacy-security"
+      ]
+    },
+    "conditionalLaneIds": {
+      "const": [
+        "energy-v13"
+      ]
+    },
+    "intakeRules": {
+      "type": "object",
+      "minProperties": 12
+    },
+    "referencePolicy": {
+      "type": "object",
+      "minProperties": 7
+    },
+    "reviewDecisionValues": {
+      "const": [
+        "not-reviewed",
+        "reviewed-evidence-inventory"
+      ]
+    },
+    "implementation": {
+      "type": "object",
+      "minProperties": 7
+    },
+    "currentBoundary": {
+      "type": "object",
+      "minProperties": 10
+    },
+    "boundary": {
+      "type": "string",
+      "minLength": 40
+    }
+  }
+}
