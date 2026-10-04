@@ -1,0 +1,48 @@
+name: Glaze V1.7.1 Retained V1.2 Control Coverage
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/v1.7/qualification.v1.2.control-coverage.json'
+      - 'contracts/v1.7/qualification.v1.2.field-session-plan.json'
+      - 'scripts/validate_glaze_v1_7_1_v1_2_control_coverage.mjs'
+      - '.github/workflows/glaze-v1.7.1-v1.2-control-coverage.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-control-coverage:
+    name: Verify retained V1.2 control coverage
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact tooling revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact tooling revision
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+
+      - name: Validate retained control coverage and field batching
+        run: node scripts/validate_glaze_v1_7_1_v1_2_control_coverage.mjs
+
+      - name: Preserve governed retained evidence intake
+        run: node scripts/validate_glaze_v1_7_1_v1_2_evidence_intake.mjs
+
+      - name: Preserve bounded V1.7 Stable authority
+        run: node scripts/verify_glaze_v1_7_stable.mjs
+
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code -- .
