@@ -72,4 +72,4 @@ req(String(schema.title).includes('Glaze V1.7'), 'consumer schema title must ide
 
 console.log('Glaze V1.7.0 bounded Stable authority verification: PASS');
 console.log('Stable behavior: inherited accepted V1.6.0 runtime');
-console.log('Transferred to V1.7.1: 21 open lanes + Section 48 Development acceptance');
+console.log('Transferred at V1.7 stabilization: 21 retained lanes + Section 48 Development acceptance; successor hardening status is tracked separately');

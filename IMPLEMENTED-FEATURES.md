@@ -2,10 +2,16 @@
 # Glaze — Implemented Features
 
 **Status:** Active implemented-feature control  
-**As of:** 2026-10-03  
+**As of:** 2026-10-04
 **Canonical lifecycle authority:** `registry/lifecycle.json`  
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** Glaze V1.7 / `1.7.0` (bounded Stable compatibility channel); GLAZE UI V1.6 / `1.6.0` is the immediate rollback baseline.
+
+## V1.7.1 retained v1.2 governed evidence intake
+
+A governed evidence-intake layer now sits on top of the established retained v1.2 working set. It reconstructs and verifies the frozen-source 44-record baseline (20 machine, 22 historical rendered, one durable rendered Regression record, and one provenance record) at 17 evidence-group-complete / 20 unverified lanes, then admits only new exact-source records that have been explicitly accepted by independent governed review.
+
+The packet accepts the eight evidence types recognized by the retained 37-lane model, enforces lane/type compatibility, exact source and tooling identity, credential-safe content-addressed references, timezone-qualified observation/review ordering, conditional-lane justification, and fail-closed matrix recomputation. A complete inventory can become ready for a separate governed qualification review, but it cannot itself complete Section 46 or grant V1.7.1 lifecycle, consumer, deployment, publication, or production authority.
 
 ## V1.7.1 Section 48 governed evidence intake
 

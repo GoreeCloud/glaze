@@ -1,0 +1,100 @@
+name: Glaze V1.7.1 Retained V1.2 Evidence Intake Control
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/v1.7/qualification.v1.2.evidence-intake.plan.json'
+      - 'schemas/v1.7.1-v1.2-evidence-intake-plan.schema.json'
+      - 'schemas/v1.7.1-v1.2-evidence-intake.schema.json'
+      - 'acceptance/v1.7.1-v1.2-evidence-intake.template.json'
+      - 'scripts/validate_glaze_v1_7_1_v1_2_evidence_intake.mjs'
+      - '.github/workflows/glaze-v1.7.1-v1.2-evidence-intake-control.yml'
+      - 'acceptance/v1.7-development.md'
+      - 'GLAZE_V1_7_1_HARDENING.md'
+      - 'CHANGELOGS.md'
+      - 'IMPLEMENTED-FEATURES.md'
+  push:
+    branches:
+      - main
+    paths:
+      - 'contracts/v1.7/qualification.v1.2.evidence-intake.plan.json'
+      - 'schemas/v1.7.1-v1.2-evidence-intake-plan.schema.json'
+      - 'schemas/v1.7.1-v1.2-evidence-intake.schema.json'
+      - 'acceptance/v1.7.1-v1.2-evidence-intake.template.json'
+      - 'scripts/validate_glaze_v1_7_1_v1_2_evidence_intake.mjs'
+      - '.github/workflows/glaze-v1.7.1-v1.2-evidence-intake-control.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glaze-v1-7-1-v1-2-evidence-intake-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  V17_SOURCE_SHA: 4b9d085a5177b96cc31d4270b38d792a59872e37
+
+jobs:
+  verify-v1-2-evidence-intake:
+    name: Verify retained V1.2 governed evidence intake
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Check out exact tooling revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact tooling revision and frozen source ancestry
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          git cat-file -e "${V17_SOURCE_SHA}^{commit}"
+          git merge-base --is-ancestor "$V17_SOURCE_SHA" HEAD
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: Syntax-check intake control
+        run: |
+          python -m json.tool contracts/v1.7/qualification.v1.2.evidence-intake.plan.json >/dev/null
+          python -m json.tool schemas/v1.7.1-v1.2-evidence-intake-plan.schema.json >/dev/null
+          python -m json.tool schemas/v1.7.1-v1.2-evidence-intake.schema.json >/dev/null
+          python -m json.tool acceptance/v1.7.1-v1.2-evidence-intake.template.json >/dev/null
+          node --check scripts/validate_glaze_v1_7_1_v1_2_evidence_intake.mjs
+
+      - name: Validate retained V1.2 evidence intake and negative self-tests
+        run: node scripts/validate_glaze_v1_7_1_v1_2_evidence_intake.mjs
+
+      - name: Preserve established 44-record retained baseline
+        run: |
+          node scripts/assemble_glaze_v1_7_v1_2_qualification_working_set.mjs --plan-only
+          node scripts/validate_glaze_v1_7_1_regression_evidence_record.mjs
+          node scripts/validate_glaze_v1_7_acceptance_development.mjs
+
+      - name: Preserve V1.7.1 field-control boundaries
+        run: |
+          node scripts/validate_glaze_v1_7_1_performance_qualification_plan.mjs
+          python scripts/validate_glaze_v1_7_1_assistive_technology_qualification.py
+          python scripts/validate_glaze_v1_7_1_device_qualification.py
+          python scripts/validate_glaze_v1_7_1_energy_qualification.py
+          node scripts/validate_glaze_v1_7_1_human_qualification_plan.mjs
+          python scripts/validate_glaze_v1_7_1_field_human_qualification.py
+
+      - name: Preserve bounded V1.7 Stable authority
+        run: node scripts/verify_glaze_v1_7_stable.mjs
+
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code -- .
