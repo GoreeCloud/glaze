@@ -1,0 +1,39 @@
+{
+  "$schema": "../schemas/v1.7.1-v1.2-evidence-intake.schema.json",
+  "schemaVersion": 1,
+  "recordId": "goreecloud.glaze.v1.7.1.v1.2-evidence-intake",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "toolingRevision": "REPLACE_WITH_40_HEX_TOOLING_SHA",
+  "acceptanceModelVersion": "1.7.0-dev.39",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "review": {
+    "reviewedAt": "REPLACE_WITH_ISO8601_WITH_TIMEZONE",
+    "reviewer": "REPLACE_WITH_AUTHORIZED_REVIEWER",
+    "reviewerRole": "REPLACE_WITH_REVIEWER_ROLE",
+    "scope": "REPLACE_WITH_REVIEW_SCOPE",
+    "representativeRevisionConfirmed": false,
+    "independentReviewConfirmed": false,
+    "notes": "Template placeholder; not evidence."
+  },
+  "retainedApplicability": {
+    "wearable": true,
+    "energy-behavior": true
+  },
+  "retainedNotApplicableJustifications": {},
+  "evidence": [],
+  "reviewDecision": "not-reviewed",
+  "authority": {
+    "packetIsV171Acceptance": false,
+    "section46Complete": false,
+    "readyStatusGrantsAcceptance": false,
+    "lifecyclePromotionAutomatic": false,
+    "anchorStatusGranted": false,
+    "consumerEligibilityGranted": false,
+    "deploymentAcceptanceGranted": false,
+    "publicationAutomatic": false,
+    "productionAcceptanceGranted": false
+  },
+  "boundary": "Fail-closed V1.7.1 retained-v1.2 governed evidence-intake template. Populate only from real exact-source records that have been independently reviewed and durably referenced. The established 44-record retained working set is the frozen-source baseline; partial new evidence may be recorded without implying matrix completion. Even a complete inventory only becomes ready for a separate governed qualification review and grants no Section 46, lifecycle, consumer, deployment, publication, or production authority."
+}
