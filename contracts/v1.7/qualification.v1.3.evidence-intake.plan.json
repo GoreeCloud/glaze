@@ -1,0 +1,82 @@
+{
+  "$schema": "../../schemas/v1.7.1-section48-evidence-intake-plan.schema.json",
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.1.section48-evidence-intake",
+  "name": "Glaze V1.7.1 Section 48 Governed Evidence Intake Plan",
+  "lifecycle": "DevelopmentQualification",
+  "successorReleaseLine": "1.7.1",
+  "developmentIdentity": "1.7.1-dev.1",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "section48QualificationModelVersion": "1.7.0-dev.47",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "section48LaneCount": 25,
+  "evidenceTypes": [
+    "machine",
+    "rendered",
+    "device",
+    "human",
+    "assistive-technology",
+    "performance",
+    "energy",
+    "provenance",
+    "provider-integration",
+    "privacy-security"
+  ],
+  "conditionalLaneIds": [
+    "energy-v13"
+  ],
+  "intakeRules": {
+    "exactSourceRevisionRequired": true,
+    "exactToolingRevisionRequired": true,
+    "contentAddressedEvidenceReferenceRequired": true,
+    "candidateRecordAutomaticallyAccepted": false,
+    "acceptedEvidenceRequiresGovernedReview": true,
+    "partialReviewedEvidenceMayBeRecorded": true,
+    "allRequiredGroupsNeededForInventoryComplete": true,
+    "conditionalLaneRequiresSpecificJustificationWhenNotApplicable": true,
+    "reviewedEvidenceMayPostdateObservation": true,
+    "evidenceMayPostdatePacketReview": false,
+    "retainedV12EvidenceAutomaticallyInherited": false,
+    "controlCoverageEqualsEvidenceCoverage": false,
+    "completeInventoryEqualsSection48Acceptance": false,
+    "completeInventoryEqualsV171Acceptance": false
+  },
+  "referencePolicy": {
+    "scheme": "evidence+sha256",
+    "digest": "sha256-lowercase-hex-64",
+    "locator": "credential-safe-repository-style-relative-logical-path",
+    "absolutePathsAllowed": false,
+    "parentTraversalAllowed": false,
+    "credentialsAllowed": false,
+    "unnecessaryPrivatePayloadAllowed": false
+  },
+  "reviewDecisionValues": [
+    "not-reviewed",
+    "reviewed-evidence-inventory"
+  ],
+  "implementation": {
+    "packetTemplate": "acceptance/v1.7.1-section48-evidence-intake.template.json",
+    "packetSchema": "schemas/v1.7.1-section48-evidence-intake.schema.json",
+    "validator": "scripts/validate_glaze_v1_7_1_section48_evidence_intake.mjs",
+    "workflow": ".github/workflows/glaze-v1.7.1-section48-evidence-intake-control.yml",
+    "controlCoverage": "contracts/v1.7/qualification.v1.3.control-coverage.json",
+    "fieldControl": "contracts/v1.7/qualification.v1.3.field.plan.json",
+    "trustControl": "contracts/v1.7/qualification.v1.3.trust.plan.json"
+  },
+  "currentBoundary": {
+    "intakeControlEstablished": true,
+    "acceptedEvidenceInventoryComplete": false,
+    "readyForSection48GovernedAcceptanceReview": false,
+    "section48Accepted": false,
+    "v171AcceptanceEstablished": false,
+    "lifecyclePromotionEstablished": false,
+    "consumerAcceptanceEstablished": false,
+    "deploymentAcceptanceEstablished": false,
+    "publicationEstablished": false,
+    "productionAcceptanceEstablished": false
+  },
+  "boundary": "This intake plan governs durable admission of independently reviewed exact-source Section 48 evidence for all 25 dev.47 v1.3 lanes. It permits incremental accepted evidence records while keeping inventory completeness fail-closed. Complete evidence inventory can make the packet ready for a separate governed Section 48 acceptance review, but cannot itself establish Section 48 acceptance, V1.7.1 acceptance, lifecycle promotion, consumer eligibility, deployment, publication, or production authority."
+}

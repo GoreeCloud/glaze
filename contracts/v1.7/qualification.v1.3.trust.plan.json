@@ -118,7 +118,8 @@
     "privacySecurityControl": "this-plan",
     "companionControlEvidenceAutomaticallyInherited": false,
     "section48FieldControl": "contracts/v1.7/qualification.v1.3.field.plan.json",
-    "controlCoverage": "contracts/v1.7/qualification.v1.3.control-coverage.json"
+    "controlCoverage": "contracts/v1.7/qualification.v1.3.control-coverage.json",
+    "governedEvidenceIntake": "contracts/v1.7/qualification.v1.3.evidence-intake.plan.json"
   },
   "implementation": {
     "validator": "scripts/validate_glaze_v1_7_1_section48_trust_qualification.py",

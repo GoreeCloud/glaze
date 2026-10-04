@@ -113,6 +113,14 @@ The field protocol covers 20 Human lanes, six Device lanes, six Assistive-Techno
 
 `contracts/v1.7/qualification.v1.3.control-coverage.json` and `scripts/validate_glaze_v1_7_1_section48_control_coverage.mjs` now prove that all 25 Section 48 qualification/coverage lanes and all 10 required evidence types have an explicit control path: machine, rendered, provenance, provider-integration, privacy-security, human, device, assistive-technology, performance, and energy. This is **control coverage only**. Accepted Section 48 evidence remains incomplete, the evidence inventory is not complete, and no Section 48, V1.7.1 lifecycle, consumer, deployment, publication, or production authority is created.
 
+## Section 48 governed evidence intake — 2026-10-03
+
+V1.7.1 now has a successor governed evidence-intake packet for all 25 Section 48 dev.47 qualification and coverage lanes. `contracts/v1.7/qualification.v1.3.evidence-intake.plan.json`, `acceptance/v1.7.1-section48-evidence-intake.template.json`, and `scripts/validate_glaze_v1_7_1_section48_evidence_intake.mjs` supersede the old 21-lane dev.45 intake **for future V1.7.1 evidence admission** without rewriting that historical control. The successor intake understands the four dev.47 coverage lanes—Expression System, Contextual Actions, Glaze Brief, and Glaze Control Center—in addition to the original 21 lanes.
+
+The packet permits incremental durable admission only for exact-source records with content-addressed `evidence+sha256:` references that have been independently accepted by governed review. Partial reviewed evidence is preserved as partial; it does not make the inventory complete. Every required evidence group must be satisfied for an applicable lane, and only conditional `energy-v13` may be marked not applicable with a specific justification. Observation time must precede evidence review time, which must not postdate the packet review. Duplicate or unsafe evidence references, stale revisions, wrong lane/type combinations, and authority overclaims fail closed.
+
+If all required groups are independently reviewed and present, the packet may become `readyForSection48GovernedAcceptanceReview=true`. That state is deliberately not Section 48 acceptance: the intake's authority remains false for Section 48 acceptance, V1.7.1 acceptance, lifecycle promotion, consumer eligibility, deployment, publication, and production.
+
 ## Section 48
 
 All Section 48 Expression System and Adaptive Intelligence surfaces move to V1.7.1 for qualification and release purposes:

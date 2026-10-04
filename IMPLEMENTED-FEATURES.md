@@ -7,6 +7,12 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** Glaze V1.7 / `1.7.0` (bounded Stable compatibility channel); GLAZE UI V1.6 / `1.6.0` is the immediate rollback baseline.
 
+## V1.7.1 Section 48 governed evidence intake
+
+A successor governed intake now covers all 25 dev.47 Section 48 lanes and all 10 evidence types, including the four coverage lanes that the historical 21-lane dev.45 intake cannot represent. It accepts only exact-source, content-addressed records that have already passed independent governed evidence review, supports incremental partial inventories, validates conditional Energy applicability, and deterministically computes per-lane evidence-group completeness.
+
+A complete reviewed inventory can become ready for a separate Section 48 acceptance review, but intake completeness is not acceptance and cannot promote lifecycle state. The historical dev.45 intake remains immutable provenance rather than being silently relabeled.
+
 ## V1.7.1 Section 48 field-evidence controls
 
 A dedicated Section 48 field-evidence plan now maps the remaining `human`, `device`, `assistive-technology`, `performance`, and `energy` evidence groups to their v1.3 lane IDs while reusing the approved V1.7.1 companion methodologies without automatic evidence inheritance. The control includes five fail-closed candidate templates, a manual procedure, an exact-source review-package helper, semantic negative tests, and protected CI. It enforces real physical devices, real assistive technologies, multi-platform breadth for cross-platform expression, representative Section 48 performance workloads, and direct quantitative Energy measurement.

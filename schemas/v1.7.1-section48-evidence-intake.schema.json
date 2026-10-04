@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze/v1.7.1-section48-evidence-intake.schema.json",
+  "title": "Glaze V1.7.1 Section 48 Governed Evidence Intake Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "recordId",
+    "lifecycle",
+    "sourceRevision",
+    "toolingRevision",
+    "section48QualificationModelVersion",
+    "stableBaseline",
+    "historicalSourceStableBaseline",
+    "review",
+    "section48Applicability",
+    "section48NotApplicableJustifications",
+    "evidence",
+    "reviewDecision",
+    "authority",
+    "boundary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/v1.7.1-section48-evidence-intake.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "recordId": {
+      "const": "goreecloud.glaze.v1.7.1.section48-evidence-intake"
+    },
+    "lifecycle": {
+      "const": "DevelopmentQualification"
+    },
+    "sourceRevision": {
+      "const": "4b9d085a5177b96cc31d4270b38d792a59872e37"
+    },
+    "toolingRevision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "section48QualificationModelVersion": {
+      "const": "1.7.0-dev.47"
+    },
+    "stableBaseline": {
+      "const": "1.7.0"
+    },
+    "historicalSourceStableBaseline": {
+      "const": "1.6.0"
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewedAt",
+        "reviewer",
+        "reviewerRole",
+        "scope",
+        "representativeRevisionConfirmed",
+        "independentReviewConfirmed",
+        "notes"
+      ],
+      "properties": {
+        "reviewedAt": {
+          "type": "string"
+        },
+        "reviewer": {
+          "type": "string"
+        },
+        "reviewerRole": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "representativeRevisionConfirmed": {
+          "type": "boolean"
+        },
+        "independentReviewConfirmed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "section48Applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "energy-v13": {
+          "type": "boolean"
+        }
+      }
+    },
+    "section48NotApplicableJustifications": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "energy-v13": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 2000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "laneId",
+          "type",
+          "sourceRevision",
+          "reference",
+          "finding",
+          "observedAt",
+          "reviewedAt",
+          "reviewer",
+          "acceptedByGovernedReview",
+          "limitations"
+        ],
+        "properties": {
+          "laneId": {
+            "enum": [
+              "workspace-continuity-v13",
+              "compact-surface-v13",
+              "agent-activity-authority-v13",
+              "privacy-attention-authority-v13",
+              "accessibility-presentation-v13",
+              "creative-state-separation-v13",
+              "compare-neutrality-v13",
+              "care-authority-v13",
+              "large-text-reflow-v13",
+              "forced-colors-v13",
+              "keyboard-continuity-v13",
+              "switch-access-v13",
+              "voice-access-v13",
+              "compact-device-behavior-v13",
+              "provider-integration-v13",
+              "privacy-security-integration-v13",
+              "cross-platform-expression-v13",
+              "performance-v13",
+              "energy-v13",
+              "human-visual-v13",
+              "artifact-provenance-v13",
+              "expression-system-v13",
+              "contextual-actions-v13",
+              "brief-v13",
+              "control-center-v13"
+            ]
+          },
+          "type": {
+            "enum": [
+              "machine",
+              "rendered",
+              "device",
+              "human",
+              "assistive-technology",
+              "performance",
+              "energy",
+              "provenance",
+              "provider-integration",
+              "privacy-security"
+            ]
+          },
+          "sourceRevision": {
+            "const": "4b9d085a5177b96cc31d4270b38d792a59872e37"
+          },
+          "reference": {
+            "type": "string"
+          },
+          "finding": {
+            "type": "string"
+          },
+          "observedAt": {
+            "type": "string"
+          },
+          "reviewedAt": {
+            "type": "string"
+          },
+          "reviewer": {
+            "type": "string"
+          },
+          "acceptedByGovernedReview": {
+            "type": "boolean"
+          },
+          "limitations": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "reviewDecision": {
+      "enum": [
+        "not-reviewed",
+        "reviewed-evidence-inventory"
+      ]
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packetIsV171Acceptance",
+        "section48Accepted",
+        "readyStatusGrantsAcceptance",
+        "lifecyclePromotionAutomatic",
+        "anchorStatusGranted",
+        "consumerEligibilityGranted",
+        "deploymentAcceptanceGranted",
+        "publicationAutomatic",
+        "productionAcceptanceGranted"
+      ],
+      "properties": {
+        "packetIsV171Acceptance": {
+          "const": false
+        },
+        "section48Accepted": {
+          "const": false
+        },
+        "readyStatusGrantsAcceptance": {
+          "const": false
+        },
+        "lifecyclePromotionAutomatic": {
+          "const": false
+        },
+        "anchorStatusGranted": {
+          "const": false
+        },
+        "consumerEligibilityGranted": {
+          "const": false
+        },
+        "deploymentAcceptanceGranted": {
+          "const": false
+        },
+        "publicationAutomatic": {
+          "const": false
+        },
+        "productionAcceptanceGranted": {
+          "const": false
+        }
+      }
+    },
+    "boundary": {
+      "type": "string",
+      "minLength": 40
+    }
+  }
+}
