@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze/v1.7.1-human-qualification-plan.schema.json",
+  "title": "Glaze V1.7.1 Retained Human Qualification Review Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","planId","name","lifecycle","successorReleaseLine",
+    "developmentIdentity","sourceRevision","sourceModelVersion","acceptanceModelVersion",
+    "stableBaseline","historicalSourceStableBaseline","consumerEligible","evidenceType",
+    "lanes","existingEvidencePrerequisites","requiredReviewScenarios","harness",
+    "preparation","acceptanceRecord","execution","evidenceBoundary","boundary"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7.1-human-qualification-plan.schema.json"},
+    "schemaVersion": {"const":1},
+    "planId": {"const":"goreecloud.glaze.v1.7.1.human-qualification"},
+    "name": {"const":"Glaze V1.7.1 Retained Human Qualification Review Plan"},
+    "lifecycle": {"const":"DevelopmentQualification"},
+    "successorReleaseLine": {"const":"1.7.1"},
+    "developmentIdentity": {"const":"1.7.1-dev.1"},
+    "sourceRevision": {"const":"4b9d085a5177b96cc31d4270b38d792a59872e37"},
+    "sourceModelVersion": {"const":"1.7.0-dev.47"},
+    "acceptanceModelVersion": {"const":"1.7.0-dev.39"},
+    "stableBaseline": {"const":"1.7.0"},
+    "historicalSourceStableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "evidenceType": {"const":"human"},
+    "lanes": {"const":["keyboard","pointer","representative-rendering","human-visual-motion-review","privacy-boundaries","security-boundaries"]},
+    "existingEvidencePrerequisites": {
+      "type":"object","additionalProperties":false,
+      "required":["keyboard","pointer","representative-rendering","human-visual-motion-review","privacy-boundaries","security-boundaries"],
+      "properties":{
+        "keyboard":{"const":["machine"]},
+        "pointer":{"const":["machine"]},
+        "representative-rendering":{"const":["rendered"]},
+        "human-visual-motion-review":{"const":[]},
+        "privacy-boundaries":{"const":["machine"]},
+        "security-boundaries":{"const":["machine"]}
+      }
+    },
+    "requiredReviewScenarios": {
+      "const":[
+        "real-keyboard-focus","real-pointer-activation",
+        "expanded-representative-rendering","compact-representative-rendering",
+        "reduced-motion","signature-motion-comprehension","task-continuity",
+        "privacy-authoritative","privacy-untrusted-fail-closed",
+        "security-authoritative-wardveil","security-provider-spoof-fail-closed",
+        "truth-conflict-fail-closed"
+      ]
+    },
+    "harness":{"const":"reference/v1.7/human-qualification.html"},
+    "preparation":{"const":"scripts/prepare_glaze_v1_7_1_human_qualification.py"},
+    "acceptanceRecord":{"const":"acceptance/v1.7-development.md"},
+    "execution":{
+      "type":"object","additionalProperties":false,
+      "required":[
+        "repositoryLocalOnly","telemetryRequired","remoteAnalysisRequired",
+        "realHumanObservationRequired","realKeyboardInteractionRequiredForKeyboardLane",
+        "realPointerInteractionRequiredForPointerLane",
+        "reviewerMustConfirmRepresentativeRuntimeForRenderingLane",
+        "reviewerMustObserveMotionAndReducedMotion",
+        "reviewerMustInspectPrivacyAndSecurityTruthBoundaries",
+        "reviewFindingsMustBeRecordedOutsideHarness","generatedEvidenceAutomatic"
+      ],
+      "properties":{
+        "repositoryLocalOnly":{"const":true},
+        "telemetryRequired":{"const":false},
+        "remoteAnalysisRequired":{"const":false},
+        "realHumanObservationRequired":{"const":true},
+        "realKeyboardInteractionRequiredForKeyboardLane":{"const":true},
+        "realPointerInteractionRequiredForPointerLane":{"const":true},
+        "reviewerMustConfirmRepresentativeRuntimeForRenderingLane":{"const":true},
+        "reviewerMustObserveMotionAndReducedMotion":{"const":true},
+        "reviewerMustInspectPrivacyAndSecurityTruthBoundaries":{"const":true},
+        "reviewFindingsMustBeRecordedOutsideHarness":{"const":true},
+        "generatedEvidenceAutomatic":{"const":false}
+      }
+    },
+    "evidenceBoundary":{
+      "type":"object","additionalProperties":false,
+      "required":[
+        "reviewSurfaceOnly","humanEvidenceClaimedByPlan","assistiveTechnologyEvidenceClaimed",
+        "physicalDeviceEvidenceClaimed","performanceEvidenceClaimed","energyEvidenceClaimed",
+        "section48Accepted","v171AcceptanceClaimed","lifecyclePromotionAutomatic",
+        "consumerAcceptanceAutomatic","deploymentAcceptanceAutomatic","productionAcceptanceAutomatic"
+      ],
+      "properties":{
+        "reviewSurfaceOnly":{"const":true},
+        "humanEvidenceClaimedByPlan":{"const":false},
+        "assistiveTechnologyEvidenceClaimed":{"const":false},
+        "physicalDeviceEvidenceClaimed":{"const":false},
+        "performanceEvidenceClaimed":{"const":false},
+        "energyEvidenceClaimed":{"const":false},
+        "section48Accepted":{"const":false},
+        "v171AcceptanceClaimed":{"const":false},
+        "lifecyclePromotionAutomatic":{"const":false},
+        "consumerAcceptanceAutomatic":{"const":false},
+        "deploymentAcceptanceAutomatic":{"const":false},
+        "productionAcceptanceAutomatic":{"const":false}
+      }
+    },
+    "boundary":{"type":"string","minLength":280}
+  }
+}

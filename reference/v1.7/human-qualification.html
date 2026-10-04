@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" data-review-harness="glaze-v1.7.1-human-qualification">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Glaze V1.7.1 — Human Qualification Review</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:light dark;--canvas:#0b111a;--surface:#182335;--raised:#25334a;--line:#65758f;--text:#f5f8ff;--muted:#c3cede;--accent:#a8ccff;--good:#91e8b9;--warn:#ffd38b;--bad:#ff9ea9}
+    *{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--text)}main{width:min(1180px,100%);margin:auto;padding:18px}
+    .panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px}.banner{border-color:var(--warn)}
+    h1,h2,h3{margin-top:0}p,li{line-height:1.55}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:minmax(290px,390px) minmax(0,1fr);gap:16px}
+    .field{display:grid;gap:6px;margin:12px 0}.field>span{font-weight:700}select,input,button,textarea,a.review-link{font:inherit;color:inherit;background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:.65rem .8rem}
+    select,input,button,a.review-link{min-height:44px}textarea{width:100%;min-height:96px;resize:vertical}button{cursor:pointer}a.review-link{display:inline-flex;align-items:center;text-decoration:none}
+    button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:4px solid var(--accent);outline-offset:3px}
+    .strip,.actions{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:.82rem}.status{font-weight:800}.pending{color:var(--warn)}.good{color:var(--good)}.bad{color:var(--bad)}
+    .outputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(255,255,255,.035);min-width:0}.card pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.45}
+    .review-surface{border:1px solid var(--line);border-radius:16px;padding:18px;overflow:hidden}.review-surface[data-layout="compact"]{max-width:440px}.motion-demo{width:72px;height:72px;border-radius:18px;background:var(--accent);transform:translateX(0);transition:transform 260ms cubic-bezier(.2,.8,.2,1)}.motion-demo[data-active="true"]{transform:translateX(88px)}.review-surface[data-reduced="true"] .motion-demo{transition:none}
+    #live{border:1px dashed var(--line);border-radius:12px;padding:10px;margin-top:12px}@media(max-width:820px){main{padding:10px}.grid,.outputs{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body><main>
+<section class="panel banner" aria-labelledby="title">
+  <h1 id="title">Glaze V1.7.1 — Human Qualification Review</h1>
+  <p><strong>Human review surface only — not acceptance evidence.</strong> This page has no PASS control, writes no evidence file, and cannot satisfy Assistive Technology, device, performance, energy, Section 48, lifecycle, consumer, deployment, or production acceptance.</p>
+  <p id="source-status" class="status pending">Checking exact frozen source…</p>
+  <div class="strip" aria-label="Human review lanes"><span class="pill">Keyboard</span><span class="pill">Pointer</span><span class="pill">Representative rendering</span><span class="pill">Visual / motion</span><span class="pill">Privacy</span><span class="pill">Security</span></div>
+</section>
+
+<div class="grid">
+<section class="panel" aria-labelledby="controls">
+  <h2 id="controls">Review controls</h2>
+  <p class="muted">Use a real keyboard and pointer. Keep focus on controls while applying scenarios. Review both this surface and the retained 22-scene rendered harness.</p>
+  <label class="field"><span>Operating system and version</span><input id="os" autocomplete="off" placeholder="Reviewed OS"></label>
+  <label class="field"><span>Browser/runtime and version</span><input id="runtime" autocomplete="off" placeholder="Reviewed browser/runtime"></label>
+  <label class="field"><span>Representative hardware/environment</span><input id="hardware" autocomplete="off" placeholder="Reviewed hardware/environment"></label>
+  <label class="field"><span>Layout</span><select id="layout"><option value="expanded">Expanded</option><option value="compact">Compact</option></select></label>
+  <label class="field"><span>Input model for resolver</span><select id="input-model"><option value="keyboard">Keyboard</option><option value="pointer">Pointer</option></select></label>
+  <label class="field"><span>Motion review</span><select id="motion"><option value="standard">Standard motion</option><option value="reduced">Reduced Motion</option></select></label>
+  <label class="field"><span>Truth-boundary scenario</span><select id="truth-case">
+    <option value="privacy-authoritative">Privacy — authoritative revocation</option>
+    <option value="privacy-untrusted">Privacy — unattested claim</option>
+    <option value="security-authoritative">Security — authoritative Wardveil protection</option>
+    <option value="security-spoof">Security — non-Wardveil spoof attempt</option>
+    <option value="truth-conflict">Provider truth conflict</option>
+  </select></label>
+  <label class="field"><span>Task continuity marker</span><input id="task-marker" value="V1.7.1-HUMAN-REVIEW-TASK-STATE"></label>
+  <div class="actions"><button id="apply" type="button" disabled>Apply review scenario</button><button id="secondary" type="button">Secondary focus target</button></div>
+  <p id="keyboard-readout" class="muted">Trusted keyboard events observed: 0</p>
+  <p id="pointer-readout" class="muted">Trusted pointer activations observed: 0</p>
+  <p id="focus-readout" class="muted">Focus continuity: waiting for scenario change.</p>
+  <a id="rendered-link" class="review-link" target="_blank" rel="noopener">Open retained 22-scene rendered review</a>
+</section>
+
+<section class="panel" aria-labelledby="output">
+  <h2 id="output">Frozen dev.47 review output</h2>
+  <div class="strip"><span class="pill" id="aggregate">Aggregate: pending</span><span class="pill" id="composition">Composition: pending</span><span class="pill" id="motion-pill">Motion: pending</span></div>
+  <div id="review-surface" class="review-surface" data-layout="expanded" data-reduced="false" style="margin-top:12px">
+    <h3>Representative task surface</h3>
+    <p>Review hierarchy, clipping, readable state, focus visibility, and truth communication. Motion is illustrative of the governed semantic resolver output and is not itself acceptance evidence.</p>
+    <div id="motion-demo" class="motion-demo" aria-hidden="true"></div>
+    <p id="semantic-state" class="status">No truth scenario applied yet.</p>
+  </div>
+  <div class="outputs" style="margin-top:12px">
+    <article class="card"><h3>Authority / truth</h3><pre id="truth-output"></pre></article>
+    <article class="card"><h3>Adaptive input</h3><pre id="input-output"></pre></article>
+    <article class="card"><h3>Signature Motion</h3><pre id="motion-output"></pre></article>
+    <article class="card"><h3>Task continuity</h3><pre id="continuity-output"></pre></article>
+  </div>
+  <div id="live" role="status" aria-live="polite" aria-atomic="true">No review scenario has been applied yet.</div>
+  <h3 style="margin-top:18px">Observations to record externally</h3>
+  <ol>
+    <li><strong>Keyboard:</strong> logical Tab/Shift+Tab order, visible focus, no trap, Enter/Space activation, and focus/task continuity.</li>
+    <li><strong>Pointer:</strong> usable hit targets, understandable hover/activation affordance, and no pointer-only semantic meaning.</li>
+    <li><strong>Representative rendering:</strong> inspect expanded and compact layouts here and the retained 22-scene rendered harness for clipping, hierarchy, legibility, and interaction reachability on the reviewed runtime.</li>
+    <li><strong>Human visual/motion review:</strong> confirm motion aids comprehension rather than spectacle; compare standard and Reduced Motion and verify final state never depends on animation completion.</li>
+    <li><strong>Privacy:</strong> authoritative privacy state remains explicit; unattested positive claims fail closed; no consent or permission is inferred.</li>
+    <li><strong>Security:</strong> Wardveil may communicate authoritative protection; other providers cannot impersonate Wardveil security authority; conflicts fail closed.</li>
+  </ol>
+  <p class="muted"><strong>Record findings outside this harness.</strong> An accepted human review record must identify exact source, environment, reviewer observations, limitations, and evidence reference. Scratch notes below are not persisted or transmitted.</p>
+  <label class="field"><span>Local scratch notes</span><textarea id="notes" placeholder="Optional local notes; copy them manually if needed."></textarea></label>
+</section>
+</div>
+</main>
+
+<script type="module">
+import {
+  glazeV17V13Development,
+  resolveGlazeAdaptiveComposition,
+  resolveGlazeAdaptiveInputBinding,
+  resolveGlazeSignatureMotion,
+  resolveGlazePrivacyAuthorityBoundaryV12,
+  resolveGlazeTaskContinuity
+} from '../../js/glaze-v1.7-development-v1-3.dev.mjs';
+
+const SOURCE='4b9d085a5177b96cc31d4270b38d792a59872e37';
+const SOURCE_MODEL='1.7.0-dev.47';
+const ACCEPTANCE='1.7.0-dev.39';
+const STABLE='1.7.0';
+const HISTORICAL_STABLE='1.6.0';
+const $=id=>document.getElementById(id);
+const state={sourceVerified:false,keyboardEvents:0,pointerActivations:0,motionToggle:false};
+
+function truthInput(kind){
+  if(kind==='privacy-authoritative')return {truthDomain:'privacy-consent',claims:[{providerId:'privacy-shield',ownerKind:'privacy-shield',authority:'privacy',scope:'system',state:'revoked',authorityAttested:true}],transitionOccurrenceAuthoritative:true};
+  if(kind==='privacy-untrusted')return {truthDomain:'privacy-consent',claims:[{providerId:'privacy-shield',ownerKind:'privacy-shield',authority:'privacy',scope:'system',state:'granted',authorityAttested:false}],transitionOccurrenceAuthoritative:true};
+  if(kind==='security-authoritative')return {truthDomain:'security-protection',claims:[{providerId:'wardveil-security',ownerKind:'wardveil-security',authority:'security',scope:'system',state:'protected',authorityAttested:true}],transitionOccurrenceAuthoritative:true};
+  if(kind==='security-spoof')return {truthDomain:'security-protection',claims:[{providerId:'random-service',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'protected',authorityAttested:true}],transitionOccurrenceAuthoritative:true};
+  return {truthDomain:'synchronization',claims:[
+    {providerId:'sync-a',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'synchronized',authorityAttested:true},
+    {providerId:'sync-b',ownerKind:'responsible-provider',authority:'service',scope:'provider-local',state:'failed',authorityAttested:true}
+  ],transitionOccurrenceAuthoritative:true};
+}
+
+function render(){
+  if(!state.sourceVerified)return;
+  const beforeFocus=document.activeElement?.id||'none';
+  const beforeTask=$('task-marker').value;
+  const compact=$('layout').value==='compact';
+  const reduced=$('motion').value==='reduced';
+  const inputModel=$('input-model').value;
+
+  const composition=resolveGlazeAdaptiveComposition({
+    profile:compact?'mobile':'desktop',
+    semanticSurfaceId:'human-qualification-task',
+    surfaceRole:'task',
+    posture:'unknown',
+    accessibilityProfiles:reduced?['reduced-motion']:[]
+  });
+  const binding=resolveGlazeAdaptiveInputBinding({
+    actionId:'apply-review-scenario',
+    inputModel,
+    state:'available',
+    authoritative:true,
+    essential:true
+  });
+  const motion=resolveGlazeSignatureMotion({
+    relationship:'workspace-recomposition',
+    relationshipAuthoritative:true,
+    accessibilityProfiles:reduced?['reduced-motion']:[]
+  });
+  const truth=resolveGlazePrivacyAuthorityBoundaryV12(truthInput($('truth-case').value));
+  const continuity=resolveGlazeTaskContinuity({
+    environmentChange:compact?'window-resize':'input-method',
+    previous:{draftText:beforeTask,focusId:beforeFocus},
+    incoming:{},
+    stateClasses:{draftText:'recoverable',focusId:'session-scoped'}
+  });
+
+  $('aggregate').textContent='Aggregate: '+glazeV17V13Development.version;
+  $('composition').textContent='Composition: '+composition.presentation;
+  $('motion-pill').textContent='Motion: '+motion.signature.family;
+  $('truth-output').textContent=JSON.stringify({truth:truth.truth,presentation:truth.presentation,authority:truth.authority},null,2);
+  $('input-output').textContent=JSON.stringify(binding,null,2);
+  $('motion-output').textContent=JSON.stringify({signature:motion.signature,motion:motion.motion,accessibility:motion.accessibility,continuity:motion.continuity},null,2);
+  $('continuity-output').textContent=JSON.stringify({state:continuity.state,continuity:continuity.continuity,authority:continuity.authority},null,2);
+
+  $('review-surface').dataset.layout=compact?'compact':'expanded';
+  $('review-surface').dataset.reduced=reduced?'true':'false';
+  state.motionToggle=!state.motionToggle;
+  $('motion-demo').dataset.active=state.motionToggle?'true':'false';
+  const accepted=truth.truth.accepted===true;
+  $('semantic-state').textContent='Effective truth state: '+truth.truth.effectiveState+'; accepted: '+accepted;
+  $('semantic-state').className='status '+(accepted?'good':'pending');
+
+  requestAnimationFrame(()=>{
+    const afterFocus=document.activeElement?.id||'none';
+    $('focus-readout').textContent='Focus before scenario: '+beforeFocus+'; after scenario: '+afterFocus+'; task marker preserved: '+($('task-marker').value===beforeTask);
+  });
+  $('live').textContent='Review scenario applied. No product action, permission, consent, security decision, or lifecycle action was executed.';
+}
+
+async function loadSource(){
+  try{
+    const response=await fetch('../../qualification-source.json',{cache:'no-store'});
+    if(!response.ok)throw new Error('source manifest HTTP '+response.status);
+    const m=await response.json();
+    const good=m.sourceRevision===SOURCE&&m.sourceModelVersion===SOURCE_MODEL&&m.acceptanceModelVersion===ACCEPTANCE&&m.stableBaseline===STABLE&&m.historicalSourceStableBaseline===HISTORICAL_STABLE&&glazeV17V13Development.version===SOURCE_MODEL&&glazeV17V13Development.lifecycle==='Development'&&glazeV17V13Development.stableBaseline===HISTORICAL_STABLE&&glazeV17V13Development.consumerEligible===false;
+    if(!good)throw new Error('exact-source or lifecycle identity mismatch');
+    state.sourceVerified=true;
+    $('source-status').textContent='Exact frozen source verified: '+SOURCE+'. Tooling: '+m.toolingRevision+'.';
+    $('source-status').className='status good';
+    $('apply').disabled=false;
+    $('rendered-link').href='rendered-v1.2-qualification.html?revision='+SOURCE;
+  }catch(error){
+    $('source-status').textContent='BLOCKED — '+error.message+'. Prepare this review root with scripts/prepare_glaze_v1_7_1_human_qualification.py.';
+    $('source-status').className='status bad';
+  }
+}
+
+document.addEventListener('keydown',event=>{
+  if(event.isTrusted){
+    state.keyboardEvents++;
+    $('keyboard-readout').textContent='Trusted keyboard events observed: '+state.keyboardEvents;
+  }
+});
+document.addEventListener('pointerup',event=>{
+  if(event.isTrusted){
+    state.pointerActivations++;
+    $('pointer-readout').textContent='Trusted pointer activations observed: '+state.pointerActivations;
+  }
+});
+$('apply').addEventListener('click',render);
+loadSource();
+</script>
+</body></html>
