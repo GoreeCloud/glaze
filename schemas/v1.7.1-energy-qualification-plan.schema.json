@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze/v1.7.1-energy-qualification-plan.schema.json",
+  "title": "Glaze V1.7.1 Energy Qualification Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "planId",
+    "name",
+    "lifecycle",
+    "successorReleaseLine",
+    "developmentIdentity",
+    "sourceRevision",
+    "sourceModelVersion",
+    "acceptanceModelVersion",
+    "stableBaseline",
+    "historicalSourceStableBaseline",
+    "consumerEligible",
+    "laneId",
+    "evidenceType",
+    "conditionalLane",
+    "otherRequiredGroup",
+    "otherGroupControl",
+    "authority",
+    "governedEnergyBoundary",
+    "record",
+    "phaseRules",
+    "requiredObservations",
+    "acceptanceRules",
+    "implementation",
+    "currentBoundary",
+    "boundary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../../schemas/v1.7.1-energy-qualification-plan.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "planId": {
+      "const": "goreecloud.glaze.v1.7.1.energy-qualification"
+    },
+    "lifecycle": {
+      "const": "DevelopmentQualification"
+    },
+    "successorReleaseLine": {
+      "const": "1.7.1"
+    },
+    "developmentIdentity": {
+      "const": "1.7.1-dev.1"
+    },
+    "sourceRevision": {
+      "const": "4b9d085a5177b96cc31d4270b38d792a59872e37"
+    },
+    "sourceModelVersion": {
+      "const": "1.7.0-dev.47"
+    },
+    "acceptanceModelVersion": {
+      "const": "1.7.0-dev.39"
+    },
+    "stableBaseline": {
+      "const": "1.7.0"
+    },
+    "historicalSourceStableBaseline": {
+      "const": "1.6.0"
+    },
+    "consumerEligible": {
+      "const": false
+    },
+    "laneId": {
+      "const": "energy-behavior"
+    },
+    "evidenceType": {
+      "const": "energy"
+    },
+    "conditionalLane": {
+      "const": true
+    },
+    "otherRequiredGroup": {
+      "const": "device"
+    },
+    "otherGroupControl": {
+      "const": "contracts/v1.7/qualification.v1.2.device.plan.json"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "governedEnergyBoundary": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "record": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "phaseRules": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "acceptanceRules": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "implementation": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "currentBoundary": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "requiredObservations": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "boundary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
