@@ -7,6 +7,12 @@
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** Glaze V1.7 / `1.7.0` (bounded Stable compatibility channel); GLAZE UI V1.6 / `1.6.0` is the immediate rollback baseline.
 
+## V1.7.1 Section 48 trust qualification controls
+
+Fail-closed manual collection controls now cover all Section 48 evidence groups of type `provider-integration` and `privacy-security`. The provider protocol covers six v1.3 lanes and enforces authoritative provider identity/provenance, least privilege, provider-owned truth, no Glaze-created execution/result/permission authority, safe revocation/failure behavior, explicit contract compatibility, and secret/private-payload exclusion. The privacy/security protocol covers two v1.3 lanes and enforces privacy by default, data minimization, Wardveil Security and Privacy Shield system authority, provider-local scope, conflict/unattested fail-closed behavior, truth/presentation separation, permission revocation, and no required telemetry.
+
+The plan, schema, manual procedure, candidate templates, exact-source review-package helper, validator, and protected CI establish only the collection/control plane. A candidate session is not accepted evidence; no Section 48 lane, successor lifecycle, consumer, deployment, publication, or production authority is granted automatically.
+
 ## V1.7.1 durable retained Regression evidence
 
 The successful PR #393 exact-source Regression qualification is represented by the durable canonical record `acceptance/v1.7.1-regression-evidence.json`. It binds exact tooling head `83c8d783dc57a78ad87d0819e06bd59782978989`, merge `8508f2636fe2364d041bb36f1d4a78c154978018`, run `37157473094`, verification job `111303763574`, comparison job `111303887933`, and artifact `11286278764` with digest `sha256:cb55b581668f6007b9ed56d53fca3a318ae773639f6a9e7620b22a4cf4d2e2e5` to frozen historical source `4b9d085a5177b96cc31d4270b38d792a59872e37`. Combined with retained machine evidence, Regression is evidence-group-complete for that frozen source; the retained matrix is now 17 complete / 20 unverified. This does not rebind evidence to a changed V1.7.1 candidate or create lifecycle, consumer, deployment, production, Section 48, privacy/security, device/native, human, assistive-technology, performance, or energy acceptance.

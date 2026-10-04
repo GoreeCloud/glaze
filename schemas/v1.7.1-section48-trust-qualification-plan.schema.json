@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze/v1.7.1-section48-trust-qualification-plan.schema.json",
+  "title": "Glaze V1.7.1 Section 48 Trust Qualification Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","planId","name","lifecycle","successorReleaseLine",
+    "developmentIdentity","sourceRevision","sourceModelVersion","section48QualificationModelVersion",
+    "stableBaseline","historicalSourceStableBaseline","consumerEligible","evidenceTypes",
+    "providerIntegrationLaneIds","privacySecurityLaneIds","governance","record",
+    "providerIntegrationScenarios","privacySecurityScenarios","providerIntegrationRules",
+    "privacySecurityRules","section48IntegrationMap","implementation","currentBoundary","boundary"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7.1-section48-trust-qualification-plan.schema.json"},
+    "schemaVersion": {"const":1},
+    "planId": {"const":"goreecloud.glaze.v1.7.1.section48-trust-qualification"},
+    "name": {"type":"string","minLength":1},
+    "lifecycle": {"const":"DevelopmentQualification"},
+    "successorReleaseLine": {"const":"1.7.1"},
+    "developmentIdentity": {"const":"1.7.1-dev.1"},
+    "sourceRevision": {"const":"4b9d085a5177b96cc31d4270b38d792a59872e37"},
+    "sourceModelVersion": {"const":"1.7.0-dev.47"},
+    "section48QualificationModelVersion": {"const":"1.7.0-dev.47"},
+    "stableBaseline": {"const":"1.7.0"},
+    "historicalSourceStableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "evidenceTypes": {"const":["provider-integration","privacy-security"]},
+    "providerIntegrationLaneIds": {
+      "const":[
+        "agent-activity-authority-v13",
+        "care-authority-v13",
+        "provider-integration-v13",
+        "contextual-actions-v13",
+        "brief-v13",
+        "control-center-v13"
+      ]
+    },
+    "privacySecurityLaneIds": {
+      "const":["privacy-attention-authority-v13","privacy-security-integration-v13"]
+    },
+    "governance": {"type":"object","minProperties":4},
+    "record": {
+      "type":"object",
+      "additionalProperties":false,
+      "required":[
+        "manualExecutionRequired","liveIntegrationRequired","placeholderValuesProhibited",
+        "oneRecordTargetsOneLane","sourceRevisionFormat","toolingRevisionFormat",
+        "integrationRevisionFormat","repository","scenarioStatusValues","sessionDecisionValues"
+      ],
+      "properties":{
+        "manualExecutionRequired":{"const":true},
+        "liveIntegrationRequired":{"const":true},
+        "placeholderValuesProhibited":{"const":true},
+        "oneRecordTargetsOneLane":{"const":true},
+        "sourceRevisionFormat":{"const":"40-lowercase-hex"},
+        "toolingRevisionFormat":{"const":"40-lowercase-hex"},
+        "integrationRevisionFormat":{"const":"40-lowercase-hex"},
+        "repository":{"const":"GoreeCloud/glaze"},
+        "scenarioStatusValues":{"const":["pass","fail"]},
+        "sessionDecisionValues":{"const":["session-pass","session-fail"]}
+      }
+    },
+    "providerIntegrationScenarios":{
+      "const":[
+        "source-and-integration-identity","provider-identity-and-provenance",
+        "least-privilege-contract","provider-truth-authority",
+        "execution-and-result-boundary","failure-isolation-and-revocation",
+        "data-minimization-and-secret-exclusion","contract-versioning-and-compatibility"
+      ]
+    },
+    "privacySecurityScenarios":{
+      "const":[
+        "source-and-integration-identity","privacy-by-default-and-data-minimization",
+        "wardveil-security-authority","privacy-shield-authority",
+        "provider-local-scope-boundary","conflict-and-unattested-fail-closed",
+        "truth-presentation-separation","permission-revocation-and-denial",
+        "telemetry-and-secret-exclusion"
+      ]
+    },
+    "providerIntegrationRules":{"type":"object","minProperties":12},
+    "privacySecurityRules":{"type":"object","minProperties":14},
+    "section48IntegrationMap":{"type":"object","minProperties":11},
+    "implementation":{"type":"object","minProperties":6},
+    "currentBoundary":{"type":"object","minProperties":12},
+    "boundary":{"type":"string","minLength":40}
+  }
+}

@@ -97,6 +97,14 @@ The control requires real human operation on real physical hardware. Touch requi
 
 CI validates only the protocol and negative cases. Emulators, simulators, templates, synthetic self-tests, and a `session-pass` value cannot close a lane. Separate governed durable review remains required, and each lane remains incomplete until its other acceptance-model evidence group is also accepted. No Section 41/48, V1.7.1 lifecycle, consumer, deployment, publication, or production authority is created by this control.
 
+## Section 48 trust qualification control — 2026-10-03
+
+V1.7.1 now has dedicated exact-source manual collection controls for Section 48 `provider-integration` and `privacy-security` evidence. The provider control covers Agent Activity authority, Care authority, the general Provider Integration lane, Contextual Actions, Glaze Brief, and Glaze Control Center. The privacy/security control covers Privacy Attention authority and the Privacy/Security Integration lane.
+
+The controls are governed by `contracts/v1.7/qualification.v1.3.trust.plan.json`, use `acceptance/v1.7.1-section48-trust-qualification.md`, and provide separate fail-closed candidate templates for the two evidence types. The provider protocol requires authoritative provider identity/provenance, least privilege, provider-owned truth, no Glaze command/result/permission invention, safe failure/revocation behavior, data minimization, secret exclusion, and explicit contract compatibility. The privacy/security protocol requires privacy by default, data minimization, preserved Wardveil Security and Privacy Shield system authority, provider-local scope discipline, conflict/unattested fail-closed behavior, truth/presentation separation, permission revocation, and no telemetry/secret capture.
+
+These are collection controls only. A `session-pass` record remains candidate evidence until separate governed review accepts exact-source durable evidence. Existing machine/rendered/device/AT/human/performance/energy/provenance controls do not automatically supply these trust-specific evidence types, and no Section 48, V1.7.1 lifecycle, consumer, deployment, publication, or production authority is created.
+
 ## Section 48
 
 All Section 48 Expression System and Adaptive Intelligence surfaces move to V1.7.1 for qualification and release purposes:
