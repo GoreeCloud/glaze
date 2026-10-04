@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goreecloud.dev/schemas/glaze/v1.7.1-energy-qualification-plan.schema.json",
+  "title": "Glaze V1.7.1 Energy-Behavior Qualification Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","schemaVersion","planId","name","lifecycle","successorReleaseLine",
+    "developmentIdentity","sourceRevision","sourceModelVersion","acceptanceModelVersion",
+    "stableBaseline","historicalSourceStableBaseline","consumerEligible","laneId",
+    "conditional","evidenceType","otherRequiredGroups","retainedOtherGroupsAlreadyPresent",
+    "authority","record","measurementRules","acceptanceRules","implementation",
+    "currentBoundary","boundary"
+  ],
+  "properties": {
+    "$schema": {"const":"../../schemas/v1.7.1-energy-qualification-plan.schema.json"},
+    "schemaVersion": {"const":1},
+    "planId": {"const":"goreecloud.glaze.v1.7.1.energy-behavior-qualification"},
+    "name": {"type":"string","minLength":1},
+    "lifecycle": {"const":"DevelopmentQualification"},
+    "successorReleaseLine": {"const":"1.7.1"},
+    "developmentIdentity": {"const":"1.7.1-dev.1"},
+    "sourceRevision": {"const":"4b9d085a5177b96cc31d4270b38d792a59872e37"},
+    "sourceModelVersion": {"const":"1.7.0-dev.47"},
+    "acceptanceModelVersion": {"const":"1.7.0-dev.39"},
+    "stableBaseline": {"const":"1.7.0"},
+    "historicalSourceStableBaseline": {"const":"1.6.0"},
+    "consumerEligible": {"const":false},
+    "laneId": {"const":"energy-behavior"},
+    "conditional": {"const":true},
+    "evidenceType": {"const":"energy"},
+    "otherRequiredGroups": {"const":["device"]},
+    "retainedOtherGroupsAlreadyPresent": {"const":false},
+    "authority": {"type":"object","minProperties":6},
+    "record": {
+      "type":"object",
+      "additionalProperties":false,
+      "required":[
+        "manualExecutionRequired","physicalDeviceRequired","emulatorOrSimulatorProhibited",
+        "placeholderValuesProhibited","sourceRevisionFormat","toolingRevisionFormat",
+        "integrationRevisionFormat","repository","allowedMeasurementMethods",
+        "requiredScenarioIds","measurementDecisionValues"
+      ],
+      "properties":{
+        "manualExecutionRequired":{"const":true},
+        "physicalDeviceRequired":{"const":true},
+        "emulatorOrSimulatorProhibited":{"const":true},
+        "placeholderValuesProhibited":{"const":true},
+        "sourceRevisionFormat":{"const":"40-lowercase-hex"},
+        "toolingRevisionFormat":{"const":"40-lowercase-hex"},
+        "integrationRevisionFormat":{"const":"40-lowercase-hex"},
+        "repository":{"const":"GoreeCloud/glaze"},
+        "allowedMeasurementMethods":{"type":"array","minItems":6,"uniqueItems":true,"items":{"type":"string"}},
+        "requiredScenarioIds":{"type":"array","minItems":7,"maxItems":7,"uniqueItems":true,"items":{"type":"string"}},
+        "measurementDecisionValues":{"const":["review-required","measurement-blocked"]}
+      }
+    },
+    "measurementRules":{"type":"object","minProperties":10},
+    "acceptanceRules":{"type":"object","minProperties":15},
+    "implementation":{"type":"object","minProperties":5},
+    "currentBoundary":{"type":"object","minProperties":10},
+    "boundary":{"type":"string","minLength":1}
+  }
+}
