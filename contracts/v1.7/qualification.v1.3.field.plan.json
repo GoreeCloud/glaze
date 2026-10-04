@@ -1,0 +1,226 @@
+{
+  "$schema": "../../schemas/v1.7.1-section48-field-qualification-plan.schema.json",
+  "schemaVersion": 1,
+  "planId": "goreecloud.glaze.v1.7.1.section48-field-qualification",
+  "name": "Glaze V1.7.1 Section 48 Field Evidence Qualification Plan",
+  "lifecycle": "DevelopmentQualification",
+  "successorReleaseLine": "1.7.1",
+  "developmentIdentity": "1.7.1-dev.1",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "section48QualificationModelVersion": "1.7.0-dev.47",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "consumerEligible": false,
+  "evidenceTypes": [
+    "human",
+    "device",
+    "assistive-technology",
+    "performance",
+    "energy"
+  ],
+  "laneIdsByEvidenceType": {
+    "human": [
+      "workspace-continuity-v13",
+      "agent-activity-authority-v13",
+      "privacy-attention-authority-v13",
+      "accessibility-presentation-v13",
+      "creative-state-separation-v13",
+      "compare-neutrality-v13",
+      "care-authority-v13",
+      "large-text-reflow-v13",
+      "forced-colors-v13",
+      "keyboard-continuity-v13",
+      "switch-access-v13",
+      "voice-access-v13",
+      "provider-integration-v13",
+      "privacy-security-integration-v13",
+      "cross-platform-expression-v13",
+      "human-visual-v13",
+      "expression-system-v13",
+      "contextual-actions-v13",
+      "brief-v13",
+      "control-center-v13"
+    ],
+    "device": [
+      "workspace-continuity-v13",
+      "compact-surface-v13",
+      "large-text-reflow-v13",
+      "compact-device-behavior-v13",
+      "cross-platform-expression-v13",
+      "energy-v13"
+    ],
+    "assistive-technology": [
+      "compact-surface-v13",
+      "accessibility-presentation-v13",
+      "large-text-reflow-v13",
+      "forced-colors-v13",
+      "switch-access-v13",
+      "voice-access-v13"
+    ],
+    "performance": [
+      "performance-v13"
+    ],
+    "energy": [
+      "energy-v13"
+    ]
+  },
+  "companionMethodControls": {
+    "human": [
+      "contracts/v1.7/qualification.v1.2.human.plan.json",
+      "contracts/v1.7/qualification.v1.2.field-human.plan.json"
+    ],
+    "device": [
+      "contracts/v1.7/qualification.v1.2.device.plan.json"
+    ],
+    "assistive-technology": [
+      "contracts/v1.7/qualification.v1.2.assistive-technology.plan.json"
+    ],
+    "performance": [
+      "contracts/v1.7/qualification.v1.2.performance.plan.json"
+    ],
+    "energy": [
+      "contracts/v1.7/qualification.v1.2.energy.plan.json"
+    ]
+  },
+  "companionEvidenceAutomaticallyInherited": false,
+  "commonRecordRules": {
+    "manualExecutionRequired": true,
+    "oneRecordTargetsOneLane": true,
+    "placeholderValuesProhibited": true,
+    "sourceRevisionFormat": "40-lowercase-hex",
+    "toolingRevisionFormat": "40-lowercase-hex",
+    "integrationRevisionFormat": "40-lowercase-hex",
+    "repository": "GoreeCloud/glaze",
+    "candidateDecisionValues": [
+      "session-pass",
+      "session-fail",
+      "review-required",
+      "measurement-blocked"
+    ],
+    "candidateRecordIsAcceptedEvidence": false,
+    "separateGovernedReviewRequired": true,
+    "exactSection48LaneBindingRequired": true,
+    "section48SpecificObservationRequired": true
+  },
+  "humanRules": {
+    "realHumanObserverRequired": true,
+    "realInteractionRequiredWhereApplicable": true,
+    "browserOrNativeSurfaceMayBeUsedOnlyWhenRepresentative": true,
+    "humanRecordMayClaimDeviceEvidence": false,
+    "humanRecordMayClaimAssistiveTechnologyEvidence": false,
+    "humanRecordMayClaimPerformanceEvidence": false,
+    "humanRecordMayClaimEnergyEvidence": false,
+    "privacySecurityTruthMayBeManufactured": false,
+    "providerTruthMayBeManufactured": false,
+    "crossPlatformLaneRequiresAtLeastTwoPlatformFamiliesObserved": true
+  },
+  "deviceRules": {
+    "realPhysicalDeviceRequired": true,
+    "emulatorOrSimulatorIsDeviceEvidence": false,
+    "actualFormFactorMustMatchClaim": true,
+    "compactDeviceLaneRequiresCompactPhysicalDevice": true,
+    "workspaceLaneRequiresRealWindowOrFormFactorTransitionObservation": true,
+    "largeTextLaneRequiresReal200PercentOrPlatformEquivalentSetting": true,
+    "crossPlatformLaneRequiresAtLeastTwoPlatformFamiliesObserved": true,
+    "energyLaneDeviceRecordMayClaimEnergyEvidence": false
+  },
+  "assistiveTechnologyRules": {
+    "realAssistiveTechnologyRequired": true,
+    "technologyNameAndVersionRequired": true,
+    "physicalDeviceRequired": true,
+    "accessibilityTreeAloneIsEvidence": false,
+    "keyboardAutomationAloneIsEvidence": false,
+    "switchLaneRequiresSwitchTechnology": true,
+    "voiceLaneRequiresVoiceTechnology": true,
+    "assistiveTechnologyRecordMayClaimHumanEvidence": false
+  },
+  "performanceRules": {
+    "governingBudget": "GoreeCloud Standard \u2014 Glaze UI Performance Budget v1.0",
+    "motionAuthority": "GoreeCloud Standard \u2014 System-Wide Motion Continuity and Performance",
+    "representativeEnvironmentRequired": true,
+    "realForegroundInteractionRequired": true,
+    "section48SurfaceCoverageRequired": true,
+    "minimumResolverSamples": 200,
+    "minimumInteractionPaintSamples": 30,
+    "minimumIdleFrameSamples": 120,
+    "minimumActiveFrameSamples": 240,
+    "hostedCiIsPerformanceEvidence": false,
+    "companionPerformancePassAutomaticallyQualifiesSection48": false
+  },
+  "energyRules": {
+    "realPhysicalDeviceRequired": true,
+    "directQuantitativeEnergyOrPowerMeasurementRequired": true,
+    "section48RepresentativeWorkloadRequired": true,
+    "batteryPercentageAloneIsEnergyEvidence": false,
+    "thermalStateAloneIsEnergyEvidence": false,
+    "cpuGpuUtilizationAloneIsEnergyEvidence": false,
+    "numericAcceptanceThresholdDefined": false,
+    "protocolMayInventThreshold": false,
+    "deviceEvidenceRemainsIndependent": true
+  },
+  "requiredSection48Coverage": {
+    "surfaceIds": [
+      "expression-system",
+      "contextual-actions",
+      "brief",
+      "control-center",
+      "workspace",
+      "compact-surface",
+      "accessibility-presentation",
+      "agent-activity",
+      "privacy-attention",
+      "care-surface",
+      "creative-surface",
+      "compare"
+    ],
+    "truthBoundaries": [
+      "provider-owned-truth",
+      "privacy-security-truth",
+      "user-intent-vs-provider-result"
+    ],
+    "accessibilityModes": [
+      "large-text",
+      "forced-colors",
+      "keyboard",
+      "switch-access",
+      "voice-access"
+    ],
+    "continuityModes": [
+      "expanded-to-compact",
+      "input-change",
+      "accessibility-change"
+    ]
+  },
+  "implementation": {
+    "validator": "scripts/validate_glaze_v1_7_1_section48_field_qualification.mjs",
+    "workflow": ".github/workflows/glaze-v1.7.1-section48-field-qualification-control.yml",
+    "humanProcedure": "acceptance/v1.7.1-section48-field-qualification.md",
+    "templates": {
+      "human": "acceptance/v1.7.1-section48-human-evidence.template.json",
+      "device": "acceptance/v1.7.1-section48-device-evidence.template.json",
+      "assistive-technology": "acceptance/v1.7.1-section48-assistive-technology-evidence.template.json",
+      "performance": "acceptance/v1.7.1-section48-performance-evidence.template.json",
+      "energy": "acceptance/v1.7.1-section48-energy-evidence.template.json"
+    },
+    "preparationHelper": "scripts/prepare_glaze_v1_7_1_section48_field_qualification.py"
+  },
+  "currentBoundary": {
+    "protocolEstablished": true,
+    "humanEvidenceEstablished": false,
+    "deviceEvidenceEstablished": false,
+    "assistiveTechnologyEvidenceEstablished": false,
+    "performanceEvidenceEstablished": false,
+    "energyEvidenceEstablished": false,
+    "companionEvidenceAutomaticallyInherited": false,
+    "section48EvidenceInventoryComplete": false,
+    "section48Accepted": false,
+    "v171AcceptanceEstablished": false,
+    "lifecyclePromotionEstablished": false,
+    "consumerAcceptanceEstablished": false,
+    "deploymentAcceptanceEstablished": false,
+    "publicationEstablished": false,
+    "productionAcceptanceEstablished": false
+  },
+  "boundary": "This plan establishes fail-closed Section 48 field-evidence collection controls for human, device, assistive-technology, performance, and energy groups. It reuses approved companion methods but never inherits their evidence automatically. Each candidate record must target one v1.3 lane, bind the frozen source and exact tooling/integration identity, include Section 48-specific observations, and survive separate governed review before it may satisfy an evidence group. CI, templates, synthetic fixtures, emulators, automation, or a companion-protocol pass cannot establish Section 48 evidence or any V1.7.1 lifecycle, consumer, deployment, publication, or production authority."
+}

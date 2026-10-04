@@ -1,0 +1,119 @@
+name: Glaze V1.7.1 Section 48 Field Qualification Control
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/v1.7/qualification.v1.3.field.plan.json'
+      - 'contracts/v1.7/qualification.v1.3.control-coverage.json'
+      - 'schemas/v1.7.1-section48-field-qualification-plan.schema.json'
+      - 'acceptance/v1.7.1-section48-field-qualification.md'
+      - 'acceptance/v1.7.1-section48-human-evidence.template.json'
+      - 'acceptance/v1.7.1-section48-device-evidence.template.json'
+      - 'acceptance/v1.7.1-section48-assistive-technology-evidence.template.json'
+      - 'acceptance/v1.7.1-section48-performance-evidence.template.json'
+      - 'acceptance/v1.7.1-section48-energy-evidence.template.json'
+      - 'scripts/prepare_glaze_v1_7_1_section48_field_qualification.py'
+      - 'scripts/validate_glaze_v1_7_1_section48_field_qualification.mjs'
+      - 'scripts/validate_glaze_v1_7_1_section48_control_coverage.mjs'
+      - 'acceptance/v1.7-development.md'
+      - 'GLAZE_V1_7_1_HARDENING.md'
+      - '.github/workflows/glaze-v1.7.1-section48-field-qualification-control.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glaze-v1-7-1-section48-field-control-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  V171_SOURCE_SHA: 4b9d085a5177b96cc31d4270b38d792a59872e37
+
+jobs:
+  verify-section48-field-qualification-control:
+    name: Verify V1.7.1 Section 48 field qualification control
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact tooling revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact tooling revision and frozen source availability
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          git cat-file -e "${V171_SOURCE_SHA}^{commit}"
+          git merge-base --is-ancestor "$V171_SOURCE_SHA" HEAD
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: Syntax-check field qualification tooling
+        run: |
+          python -m json.tool contracts/v1.7/qualification.v1.3.field.plan.json >/dev/null
+          python -m json.tool contracts/v1.7/qualification.v1.3.control-coverage.json >/dev/null
+          python -m json.tool schemas/v1.7.1-section48-field-qualification-plan.schema.json >/dev/null
+          for f in acceptance/v1.7.1-section48-*-evidence.template.json; do python -m json.tool "$f" >/dev/null; done
+          python -m py_compile scripts/prepare_glaze_v1_7_1_section48_field_qualification.py
+          node --check scripts/validate_glaze_v1_7_1_section48_field_qualification.mjs
+          node --check scripts/validate_glaze_v1_7_1_section48_control_coverage.mjs
+
+      - name: Validate field qualification control and synthetic negative cases
+        run: node scripts/validate_glaze_v1_7_1_section48_field_qualification.mjs --self-test
+
+      - name: Verify complete Section 48 evidence-control coverage
+        run: node scripts/validate_glaze_v1_7_1_section48_control_coverage.mjs
+
+      - name: Prepare exact-source field review package as structural smoke test
+        run: |
+          python scripts/prepare_glaze_v1_7_1_section48_field_qualification.py --out _v171-section48-field-control-smoke
+          test -f _v171-section48-field-control-smoke/qualification-source.json
+          test -f _v171-section48-field-control-smoke/js/glaze-v1.7-development-v1-3.dev.mjs
+          test -f _v171-section48-field-control-smoke/contracts/v1.7/qualification.v1.3.field.plan.json
+          test -f _v171-section48-field-control-smoke/acceptance/v1.7.1-section48-field-qualification.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('_v171-section48-field-control-smoke/qualification-source.json').read_text())
+          assert data['sourceRevision']=='4b9d085a5177b96cc31d4270b38d792a59872e37'
+          assert data['sourceModelVersion']=='1.7.0-dev.47'
+          assert data['stableBaseline']=='1.7.0'
+          assert data['historicalSourceStableBaseline']=='1.6.0'
+          assert data['targetEvidenceTypes']==['human','device','assistive-technology','performance','energy']
+          assert data['companionEvidenceAutomaticallyInherited'] is False
+          assert data['manualFieldSessionPerformed'] is False
+          assert data['humanEvidenceClaimed'] is False
+          assert data['deviceEvidenceClaimed'] is False
+          assert data['assistiveTechnologyEvidenceClaimed'] is False
+          assert data['performanceEvidenceClaimed'] is False
+          assert data['energyEvidenceClaimed'] is False
+          assert data['section48Accepted'] is False
+          print('Exact-source V1.7.1 Section 48 field review-package smoke test: PASS')
+          PY
+
+      - name: Preserve Section 48 qualification source boundaries
+        run: |
+          node scripts/validate_glaze_v1_7_section48_source_completion_dev45.mjs
+          node scripts/validate_glaze_v1_7_v1_3_qualification_dev46.mjs
+          node scripts/validate_glaze_v1_7_v1_3_qualification_coverage_dev47.mjs
+
+      - name: Preserve bounded V1.7 Stable authority
+        run: node scripts/verify_glaze_v1_7_stable.mjs
+
+      - name: Verify validation did not mutate tracked source
+        run: git diff --exit-code -- .

@@ -12,7 +12,10 @@
   "stableBaseline": "1.7.0",
   "historicalSourceStableBaseline": "1.6.0",
   "consumerEligible": false,
-  "evidenceTypes": ["provider-integration", "privacy-security"],
+  "evidenceTypes": [
+    "provider-integration",
+    "privacy-security"
+  ],
   "providerIntegrationLaneIds": [
     "agent-activity-authority-v13",
     "care-authority-v13",
@@ -26,10 +29,10 @@
     "privacy-security-integration-v13"
   ],
   "governance": {
-    "privacyPolicy": "GoreeCloud — Policy — Privacy and Data Protection",
-    "privacyShieldPolicy": "Policy — Privacy Shield Integration and Conformance",
-    "wardveilPolicy": "Policy — Wardveil Security Integration and Conformance",
-    "integrationArchitecture": "Architecture — Application Integration and Interoperability"
+    "privacyPolicy": "GoreeCloud \u2014 Policy \u2014 Privacy and Data Protection",
+    "privacyShieldPolicy": "Policy \u2014 Privacy Shield Integration and Conformance",
+    "wardveilPolicy": "Policy \u2014 Wardveil Security Integration and Conformance",
+    "integrationArchitecture": "Architecture \u2014 Application Integration and Interoperability"
   },
   "record": {
     "manualExecutionRequired": true,
@@ -40,8 +43,14 @@
     "toolingRevisionFormat": "40-lowercase-hex",
     "integrationRevisionFormat": "40-lowercase-hex",
     "repository": "GoreeCloud/glaze",
-    "scenarioStatusValues": ["pass", "fail"],
-    "sessionDecisionValues": ["session-pass", "session-fail"]
+    "scenarioStatusValues": [
+      "pass",
+      "fail"
+    ],
+    "sessionDecisionValues": [
+      "session-pass",
+      "session-fail"
+    ]
   },
   "providerIntegrationScenarios": [
     "source-and-integration-identity",
@@ -107,7 +116,9 @@
     "energyControl": "contracts/v1.7/qualification.v1.2.energy.plan.json",
     "providerIntegrationControl": "this-plan",
     "privacySecurityControl": "this-plan",
-    "companionControlEvidenceAutomaticallyInherited": false
+    "companionControlEvidenceAutomaticallyInherited": false,
+    "section48FieldControl": "contracts/v1.7/qualification.v1.3.field.plan.json",
+    "controlCoverage": "contracts/v1.7/qualification.v1.3.control-coverage.json"
   },
   "implementation": {
     "validator": "scripts/validate_glaze_v1_7_1_section48_trust_qualification.py",

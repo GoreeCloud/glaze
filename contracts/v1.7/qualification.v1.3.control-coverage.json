@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "recordId": "goreecloud.glaze.v1.7.1.section48-evidence-control-coverage",
+  "lifecycle": "DevelopmentQualification",
+  "sourceRevision": "4b9d085a5177b96cc31d4270b38d792a59872e37",
+  "sourceModelVersion": "1.7.0-dev.47",
+  "stableBaseline": "1.7.0",
+  "historicalSourceStableBaseline": "1.6.0",
+  "controls": {
+    "machine": {
+      "control": "contracts/v1.7/qualification.v1.3.machine.plan.json",
+      "mode": "repository-local-automated",
+      "controlEstablished": true,
+      "acceptedEvidenceEstablished": false
+    },
+    "rendered": {
+      "control": "contracts/v1.7/qualification.v1.3.rendered.plan.json",
+      "mode": "repository-local-browser-capture",
+      "controlEstablished": true,
+      "acceptedEvidenceEstablished": false
+    },
+    "provenance": {
+      "control": "contracts/v1.7/qualification.v1.3.provenance.plan.json",
+      "mode": "deterministic-source-provenance",
+      "controlEstablished": true,
+      "acceptedEvidenceEstablished": false
+    },
+    "provider-integration": {
+      "control": "contracts/v1.7/qualification.v1.3.trust.plan.json",
+      "mode": "manual-live-integration",
+      "controlEstablished": true,
+      "acceptedEvidenceEstablished": false
+    },
+    "privacy-security": {
+      "control": "contracts/v1.7/qualification.v1.3.trust.plan.json",
+      "mode": "manual-live-integration",
+      "controlEstablished": true,
+      "acceptedEvidenceEstablished": false
+    },
+    "human": {
+      "control": "contracts/v1.7/qualification.v1.3.field.plan.json",
+      "mode": "manual-field-observation",
+      "controlEstablished": true,
+      "acceptedEvidenceEstablished": false
+    },
+    "device": {
+      "control": "contracts/v1.7/qualification.v1.3.field.plan.json",
+      "mode": "manual-physical-device",
+      "controlEstablished": true,
+      "acceptedEvidenceEstablished": false
+    },
+    "assistive-technology": {
+      "control": "contracts/v1.7/qualification.v1.3.field.plan.json",
+      "mode": "manual-real-assistive-technology",
+      "controlEstablished": true,
+      "acceptedEvidenceEstablished": false
+    },
+    "performance": {
+      "control": "contracts/v1.7/qualification.v1.3.field.plan.json",
+      "mode": "manual-representative-measurement",
+      "controlEstablished": true,
+      "acceptedEvidenceEstablished": false
+    },
+    "energy": {
+      "control": "contracts/v1.7/qualification.v1.3.field.plan.json",
+      "mode": "manual-direct-quantitative-measurement",
+      "controlEstablished": true,
+      "acceptedEvidenceEstablished": false
+    }
+  },
+  "controlCoverageComplete": true,
+  "acceptedEvidenceInventoryComplete": false,
+  "section48Accepted": false,
+  "v171AcceptanceEstablished": false,
+  "boundary": "Control coverage means every evidence type required by the dev.47 Section 48 qualification lanes has a governed collection or validation path. It does not mean any manual or automated record has been accepted as Section 48 evidence, does not make the evidence inventory complete, and grants no lifecycle, consumer, deployment, publication, or production authority."
+}

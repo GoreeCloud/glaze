@@ -105,6 +105,14 @@ The controls are governed by `contracts/v1.7/qualification.v1.3.trust.plan.json`
 
 These are collection controls only. A `session-pass` record remains candidate evidence until separate governed review accepts exact-source durable evidence. Existing machine/rendered/device/AT/human/performance/energy/provenance controls do not automatically supply these trust-specific evidence types, and no Section 48, V1.7.1 lifecycle, consumer, deployment, publication, or production authority is created.
 
+## Section 48 field-evidence qualification control — 2026-10-03
+
+V1.7.1 now has a Section 48-specific field-evidence control for the remaining `human`, `device`, `assistive-technology`, `performance`, and `energy` groups. `contracts/v1.7/qualification.v1.3.field.plan.json` maps those evidence types directly to their v1.3 lanes, provides fail-closed candidate templates, a manual procedure, an exact-source review-package helper, semantic negative tests, and protected CI. Existing retained V1.7.1 Human, Device, Assistive Technology, Performance, and Energy protocols remain methodological precedents, but their evidence is never inherited automatically; every Section 48 record must explicitly target one v1.3 lane and include Section 48-specific observations.
+
+The field protocol covers 20 Human lanes, six Device lanes, six Assistive-Technology lanes, `performance-v13`, and `energy-v13`. It rejects emulators as Device evidence, accessibility-tree/automation substitutes as Assistive-Technology evidence, single-platform claims for cross-platform expression, hosted CI as representative Performance evidence, and battery-percentage/thermal/CPU/GPU proxy-only Energy claims. Section 48 Performance requires explicit workload coverage across the governed Section 48 surfaces; Energy requires direct quantitative energy/power measurement and remains review-required because no numeric Energy acceptance threshold is approved.
+
+`contracts/v1.7/qualification.v1.3.control-coverage.json` and `scripts/validate_glaze_v1_7_1_section48_control_coverage.mjs` now prove that all 25 Section 48 qualification/coverage lanes and all 10 required evidence types have an explicit control path: machine, rendered, provenance, provider-integration, privacy-security, human, device, assistive-technology, performance, and energy. This is **control coverage only**. Accepted Section 48 evidence remains incomplete, the evidence inventory is not complete, and no Section 48, V1.7.1 lifecycle, consumer, deployment, publication, or production authority is created.
+
 ## Section 48
 
 All Section 48 Expression System and Adaptive Intelligence surfaces move to V1.7.1 for qualification and release purposes:
