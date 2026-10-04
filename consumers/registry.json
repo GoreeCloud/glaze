@@ -204,12 +204,12 @@
       "name": "GoreeCloud News & Weather",
       "repository": "GoreeCloud/news-weather",
       "status": "adoption-required",
-      "targetVersion": "1.7.0",
+      "targetVersion": null,
       "requiredTargetVersion": "1.7.0",
-      "referenceRevision": "165a52c24650816b704cbe2e7857b511eabd1f2c",
+      "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "News & Weather source target and repository adoption record were updated to Glaze V1.7 / 1.7.0 at revision 165a52c24650816b704cbe2e7857b511eabd1f2c. Fresh repository-local rendered, accessibility, responsive, representative-platform, performance, privacy/security, rollback, release, and product acceptance remain incomplete; production eligibility is false."
+      "notes": "News & Weather repository source now declares Glaze V1.7 / 1.7.0 as its required target, but no repository-local Glaze consumer acceptance has been completed. Fresh rendered, accessibility, responsive, representative-platform, performance, privacy/security, rollback, release, and product acceptance remain required; production eligibility is false."
     }
   ]
 }
