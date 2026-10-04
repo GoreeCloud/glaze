@@ -1,0 +1,32 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://goreecloud.dev/schemas/glaze/v1.7.1-field-human-qualification-plan.schema.json",
+  "title":"Glaze V1.7.1 Field Human Qualification Plan",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["$schema","schemaVersion","planId","name","lifecycle","successorReleaseLine","developmentIdentity","sourceRevision","sourceModelVersion","acceptanceModelVersion","stableBaseline","historicalSourceStableBaseline","consumerEligible","evidenceType","eligibleEvidenceGroups","authority","record","laneRules","execution","implementation","currentBoundary","boundary"],
+  "properties":{
+    "$schema":{"const":"../../schemas/v1.7.1-field-human-qualification-plan.schema.json"},
+    "schemaVersion":{"const":1},
+    "planId":{"const":"goreecloud.glaze.v1.7.1.field-human-qualification"},
+    "name":{"type":"string","minLength":1},
+    "lifecycle":{"const":"DevelopmentQualification"},
+    "successorReleaseLine":{"const":"1.7.1"},
+    "developmentIdentity":{"const":"1.7.1-dev.1"},
+    "sourceRevision":{"const":"4b9d085a5177b96cc31d4270b38d792a59872e37"},
+    "sourceModelVersion":{"const":"1.7.0-dev.47"},
+    "acceptanceModelVersion":{"const":"1.7.0-dev.39"},
+    "stableBaseline":{"const":"1.7.0"},
+    "historicalSourceStableBaseline":{"const":"1.6.0"},
+    "consumerEligible":{"const":false},
+    "evidenceType":{"const":"human"},
+    "eligibleEvidenceGroups":{"type":"array","minItems":3,"maxItems":3},
+    "authority":{"type":"object","minProperties":7},
+    "record":{"type":"object","minProperties":8},
+    "laneRules":{"type":"object","required":["touch","alternative-input","native-behavior"]},
+    "execution":{"type":"object","minProperties":9},
+    "implementation":{"type":"object","minProperties":6},
+    "currentBoundary":{"type":"object","minProperties":10},
+    "boundary":{"type":"string","minLength":1}
+  }
+}
