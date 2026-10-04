@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en" data-review-harness="glaze-v1.7.1-assistive-technology-qualification">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Glaze V1.7.1 — Assistive-Technology Qualification Review Surface</title>
+  <style>
+    :root{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color-scheme:light dark;
+      --canvas:#0b111a;--surface:#172235;--raised:#22314a;--line:#718099;
+      --text:#f6f8fc;--muted:#c7d0df;--accent:#a9cbff;--danger:#ffb0bb;
+      --success:#9ce7bb;--focus:#ffd76a;--radius:16px
+    }
+    *{box-sizing:border-box}
+    html{font-size:100%}
+    body{margin:0;background:var(--canvas);color:var(--text);line-height:1.55}
+    body[data-solid="true"] .surface,
+    body[data-solid="true"] .raised{background:#111827!important;backdrop-filter:none!important}
+    a{color:var(--accent)}
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+      outline:4px solid var(--focus);outline-offset:4px
+    }
+    header,main,footer{width:min(1000px,100%);margin:auto;padding-inline:24px}
+    header{padding-top:28px}
+    main{padding-block:16px 40px}
+    footer{padding-block:20px 40px;color:var(--muted)}
+    .surface{
+      background:color-mix(in srgb,var(--surface) 92%,transparent);
+      border:1px solid var(--line);border-radius:var(--radius);
+      padding:20px;margin-block:16px;backdrop-filter:blur(12px)
+    }
+    .raised{background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:14px}
+    h1,h2,h3{line-height:1.2}
+    h1{font-size:clamp(2rem,6vw,3.3rem);margin:.2rem 0}
+    h2{margin-top:0}
+    .muted{color:var(--muted)}
+    .boundary{border-left:5px solid var(--focus);padding-left:14px}
+    .status{font-weight:700}
+    .pass{color:var(--success)}
+    .fail{color:var(--danger)}
+    nav ul{display:flex;flex-wrap:wrap;gap:10px 18px;padding-left:1.2rem}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    label{display:grid;gap:6px;font-weight:650}
+    button,input,select{
+      font:inherit;color:inherit;background:var(--raised);
+      border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem;min-height:44px
+    }
+    button{cursor:pointer}
+    button:disabled{opacity:.55;cursor:not-allowed}
+    .check{display:flex;align-items:flex-start;gap:10px}
+    .check input{min-height:auto;width:22px;height:22px}
+    #example-error[hidden],#details-panel[hidden]{display:none}
+    #example-error{border-left:5px solid var(--danger)}
+    #review-list{padding-left:1.4rem}
+    #review-list li{margin-block:.45rem}
+    .item-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .item-row span{min-width:12rem}
+    @media(max-width:720px){
+      header,main,footer{padding-inline:14px}
+      .grid{grid-template-columns:1fr}
+      nav ul{display:block}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+    }
+    @media(forced-colors:active){
+      .surface,.raised,button,input,select{
+        forced-color-adjust:auto;background:Canvas!important;color:CanvasText!important;
+        border-color:CanvasText!important;box-shadow:none!important
+      }
+      .boundary,#example-error{border-color:CanvasText!important}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <p class="muted">GoreeCloud / Glaze V1.7.1 Development qualification</p>
+  <h1>Assistive-Technology Review Surface</h1>
+  <p id="source-status" class="status" role="status" aria-live="polite">Checking exact-source review manifest…</p>
+  <p class="boundary"><strong>Manual review only.</strong> This page has no PASS control and emits no evidence file. CI, accessibility trees, keyboard automation, and this surface alone are not assistive-technology evidence. Record observations separately after a real human-operated session.</p>
+</header>
+
+<main>
+  <nav class="surface" aria-label="Review surface sections">
+    <h2>Review navigation</h2>
+    <ul>
+      <li><a href="#instructions">Instructions</a></li>
+      <li><a href="#semantic-controls">Semantic controls</a></li>
+      <li><a href="#announcements">Announcements and recovery</a></li>
+      <li><a href="#alternatives">Alternative input</a></li>
+      <li><a href="#continuity">Task continuity</a></li>
+    </ul>
+  </nav>
+
+  <section id="instructions" class="surface" aria-labelledby="instructions-heading">
+    <h2 id="instructions-heading">Instructions</h2>
+    <p>Use the assistive technology and input method under review to navigate this surface. Record what is actually spoken, focused, activated, announced, or blocked. The scenario selector below changes only this review surface's source-model preview; it does not assert platform or accessibility truth.</p>
+    <div class="grid">
+      <label for="review-mode">Source-model review scenario
+        <select id="review-mode" disabled>
+          <option value="screen-reader">Screen reader</option>
+          <option value="switch-access">Switch access</option>
+          <option value="voice-access">Voice access</option>
+          <option value="keyboard-navigation">Keyboard navigation</option>
+        </select>
+      </label>
+      <label for="presentation-mode">Presentation review helper
+        <select id="presentation-mode">
+          <option value="normal">Normal presentation</option>
+          <option value="solid">Solid / reduced-transparency helper</option>
+        </select>
+      </label>
+    </div>
+    <p id="model-status" class="muted" role="status" aria-live="polite">Source model not evaluated yet.</p>
+  </section>
+
+  <section id="semantic-controls" class="surface" aria-labelledby="semantic-heading">
+    <h2 id="semantic-heading">Semantic controls</h2>
+    <div class="grid">
+      <label for="draft">Qualification draft text
+        <input id="draft" value="Preserve this draft across the review transition">
+      </label>
+      <label for="priority">Example priority
+        <select id="priority">
+          <option>Normal</option>
+          <option>Important</option>
+          <option>Critical</option>
+        </select>
+      </label>
+    </div>
+
+    <p class="check">
+      <input id="example-setting" type="checkbox">
+      <label for="example-setting">Enable example setting</label>
+    </p>
+
+    <button id="details-toggle" type="button" aria-expanded="false" aria-controls="details-panel" disabled>Show review details</button>
+    <div id="details-panel" class="raised" hidden>
+      <h3>Review details</h3>
+      <p>This disclosure exists to review expanded/collapsed state, semantic grouping, and focus behavior without custom widget semantics.</p>
+    </div>
+  </section>
+
+  <section id="announcements" class="surface" aria-labelledby="announcements-heading">
+    <h2 id="announcements-heading">Announcements and recovery</h2>
+    <p>Use the controls below to review dynamic status and error/recovery presentation.</p>
+    <div class="item-row">
+      <button id="status-demo" type="button" disabled>Run example status change</button>
+      <button id="error-demo" type="button" disabled>Trigger example validation error</button>
+    </div>
+    <p id="live-status" role="status" aria-live="polite">No status change yet.</p>
+    <div id="example-error" class="raised" role="alert" hidden>
+      <p><strong>Example error:</strong> The qualification sample could not be saved.</p>
+      <button id="recover-error" type="button">Recover from example error</button>
+    </div>
+  </section>
+
+  <section id="alternatives" class="surface" aria-labelledby="alternatives-heading">
+    <h2 id="alternatives-heading">Alternative input paths</h2>
+    <p>The example list deliberately offers explicit Move Up / Move Down controls instead of requiring drag, hover, precision pointing, or multi-touch.</p>
+    <ol id="review-list">
+      <li data-key="alpha"><div class="item-row"><span>Alpha task</span><button type="button" data-move="up">Move Alpha up</button><button type="button" data-move="down">Move Alpha down</button></div></li>
+      <li data-key="beta"><div class="item-row"><span>Beta task</span><button type="button" data-move="up">Move Beta up</button><button type="button" data-move="down">Move Beta down</button></div></li>
+      <li data-key="gamma"><div class="item-row"><span>Gamma task</span><button type="button" data-move="up">Move Gamma up</button><button type="button" data-move="down">Move Gamma down</button></div></li>
+    </ol>
+    <p id="reorder-status" role="status" aria-live="polite">No item moved yet.</p>
+  </section>
+
+  <section id="continuity" class="surface" aria-labelledby="continuity-heading">
+    <h2 id="continuity-heading">Task continuity across input/layout change</h2>
+    <p>Enter or edit the draft text above, place focus where useful, then activate the transition. The surface changes composition while preserving the draft value; the source model is evaluated without executing navigation or focus on the operator's behalf.</p>
+    <button id="continuity-demo" type="button" disabled>Recompose surface and review continuity</button>
+    <div id="continuity-result" class="raised" tabindex="-1">
+      <p><strong>Current composition:</strong> <span id="composition-label">expanded review</span></p>
+      <p><strong>Draft snapshot:</strong> <span id="draft-snapshot">Preserve this draft across the review transition</span></p>
+      <p id="continuity-status" role="status" aria-live="polite">No continuity transition yet.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Exact source: <code>4b9d085a5177b96cc31d4270b38d792a59872e37</code> • retained model <code>1.7.0-dev.47</code> • V1.7.1 qualification only.</p>
+</footer>
+
+<script type="module">
+import {
+  glazeV17V13Development,
+  resolveGlazeAccessibilityContinuity,
+  resolveGlazeAdaptiveInputBinding
+} from '../../js/glaze-v1.7-development-v1-3.dev.mjs';
+
+const SOURCE='4b9d085a5177b96cc31d4270b38d792a59872e37';
+const SOURCE_MODEL='1.7.0-dev.47';
+const ACCEPTANCE='1.7.0-dev.39';
+const STABLE='1.7.0';
+const HISTORICAL_STABLE='1.6.0';
+const $=id=>document.getElementById(id);
+const interactive=['review-mode','details-toggle','status-demo','error-demo','continuity-demo'];
+let sourceVerified=false;
+let compact=false;
+
+function reviewModes(){
+  const mode=$('review-mode').value;
+  if(mode==='screen-reader')return ['screen-reader','keyboard-navigation'];
+  if(mode==='switch-access')return ['switch-access','keyboard-navigation'];
+  if(mode==='voice-access')return ['voice-access'];
+  return ['keyboard-navigation'];
+}
+
+function evaluateSourceModel(){
+  if(!sourceVerified)return;
+  const modes=reviewModes();
+  const result=resolveGlazeAccessibilityContinuity({
+    accessibilityChanges:modes,
+    accessibilityStateAuthoritative:true,
+    previousTaskState:{
+      navigationDestination:'qualification/review',
+      focusId:'review-control',
+      draftText:$('draft').value,
+      query:'assistive technology'
+    },
+    profile:compact?'mobile':'desktop',
+    profileAuthoritative:true,
+    semanticSurfaceId:'assistive-technology-review',
+    surfaceRole:'task',
+    fromInputModel:'keyboard',
+    toInputModel:$('review-mode').value==='switch-access'?'switch-access':$('review-mode').value==='voice-access'?'voice-access':'assistive-input',
+    inputModelChangeAuthoritative:true
+  });
+  const binding=resolveGlazeAdaptiveInputBinding({
+    actionId:'activate-review-control',
+    inputModel:$('review-mode').value==='switch-access'?'switch-access':$('review-mode').value==='voice-access'?'voice-access':'assistive-input',
+    state:'available',
+    authoritative:true,
+    essential:true,
+    interactionDependencies:['drag','precision-pointer'],
+    unavailableDependencies:['drag','precision-pointer']
+  });
+  $('model-status').textContent=
+    'Source-model preview: '+result.accessibility.acceptedModes.join(', ')+
+    '; task reset allowed: '+String(result.task.continuity.taskResetAllowed)+
+    '; alternative input required: '+String(binding.alternatives.required)+'.';
+}
+
+async function loadSource(){
+  try{
+    const response=await fetch('../../qualification-source.json',{cache:'no-store'});
+    if(!response.ok)throw new Error('source manifest HTTP '+response.status);
+    const manifest=await response.json();
+    const good=manifest.sourceRevision===SOURCE &&
+      manifest.sourceModelVersion===SOURCE_MODEL &&
+      manifest.acceptanceModelVersion===ACCEPTANCE &&
+      manifest.stableBaseline===STABLE &&
+      manifest.historicalSourceStableBaseline===HISTORICAL_STABLE &&
+      glazeV17V13Development.version===SOURCE_MODEL &&
+      glazeV17V13Development.stableBaseline===HISTORICAL_STABLE &&
+      glazeV17V13Development.consumerEligible===false;
+    if(!good)throw new Error('exact-source or lifecycle identity mismatch');
+    sourceVerified=true;
+    $('source-status').textContent='Exact frozen source verified: '+SOURCE+'. Tooling: '+manifest.toolingRevision+'.';
+    $('source-status').className='status pass';
+    for(const id of interactive)$(id).disabled=false;
+    evaluateSourceModel();
+  }catch(error){
+    $('source-status').textContent='BLOCKED — '+error.message+'. Prepare the review root with scripts/prepare_glaze_v1_7_1_assistive_technology_qualification.py.';
+    $('source-status').className='status fail';
+  }
+}
+
+$('review-mode').addEventListener('change',evaluateSourceModel);
+$('presentation-mode').addEventListener('change',()=>{
+  document.body.dataset.solid=$('presentation-mode').value==='solid'?'true':'false';
+});
+
+$('details-toggle').addEventListener('click',()=>{
+  const expanded=$('details-toggle').getAttribute('aria-expanded')==='true';
+  $('details-toggle').setAttribute('aria-expanded',String(!expanded));
+  $('details-toggle').textContent=expanded?'Show review details':'Hide review details';
+  $('details-panel').hidden=expanded;
+});
+
+$('status-demo').addEventListener('click',()=>{
+  $('live-status').textContent='Example operation started.';
+  setTimeout(()=>{$('live-status').textContent='Example operation completed without changing task state.';},250);
+});
+
+$('error-demo').addEventListener('click',()=>{
+  $('example-error').hidden=false;
+});
+$('recover-error').addEventListener('click',()=>{
+  $('example-error').hidden=true;
+  $('live-status').textContent='Example error recovered. The review task remains available.';
+  $('error-demo').focus();
+});
+
+$('review-list').addEventListener('click',event=>{
+  const button=event.target.closest('button[data-move]');
+  if(!button)return;
+  const item=button.closest('li');
+  const direction=button.dataset.move;
+  if(direction==='up'&&item.previousElementSibling){
+    item.parentElement.insertBefore(item,item.previousElementSibling);
+  }else if(direction==='down'&&item.nextElementSibling){
+    item.parentElement.insertBefore(item.nextElementSibling,item);
+  }
+  $('reorder-status').textContent=item.querySelector('span').textContent+' moved '+direction+'. Explicit controls remain available.';
+  button.focus();
+});
+
+$('continuity-demo').addEventListener('click',()=>{
+  const draft=$('draft').value;
+  compact=!compact;
+  const result=resolveGlazeAccessibilityContinuity({
+    accessibilityChanges:reviewModes(),
+    accessibilityStateAuthoritative:true,
+    previousTaskState:{
+      navigationDestination:'qualification/review',
+      focusId:'continuity-demo',
+      draftText:draft,
+      query:'assistive technology'
+    },
+    profile:compact?'mobile':'desktop',
+    profileAuthoritative:true,
+    semanticSurfaceId:'assistive-technology-review',
+    surfaceRole:'task',
+    fromInputModel:'keyboard',
+    toInputModel:$('review-mode').value==='switch-access'?'switch-access':$('review-mode').value==='voice-access'?'voice-access':'assistive-input',
+    inputModelChangeAuthoritative:true
+  });
+  $('composition-label').textContent=compact?'compact review':'expanded review';
+  $('draft-snapshot').textContent=draft;
+  $('continuity-status').textContent=
+    'Source model preserved draft: '+String(result.task.state.draftText===draft)+
+    '; Glaze executed focus: '+String(result.focus.focusExecutionPerformedByGlaze)+
+    '; task reset allowed: '+String(result.task.continuity.taskResetAllowed)+'.';
+  evaluateSourceModel();
+});
+
+loadSource();
+</script>
+</body>
+</html>
