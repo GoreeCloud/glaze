@@ -86,15 +86,15 @@
     },
     {
       "name": "GoreeCloud Keyboard",
-      "repository": "GoreeCloud/keyboard",
-      "sourcePath": null,
+      "repository": "GoreeCloud/android-app-defaults",
+      "sourcePath": "apps/keyboard",
       "status": "adoption-required",
       "targetVersion": null,
       "requiredTargetVersion": "1.7.0",
       "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "Canonical Keyboard source is GoreeCloud/keyboard. Fresh repository-local V1.7.0 adoption and acceptance evidence is required before the consumer may advance from adoption-required."
+      "notes": "Canonical Keyboard source is the apps/keyboard subtree of GoreeCloud/android-app-defaults. Fresh repository-local V1.7.0 adoption and acceptance evidence is required before the consumer may advance from adoption-required."
     },
     {
       "name": "GoreeCloud Notes",
