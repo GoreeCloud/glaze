@@ -17,9 +17,24 @@ const json = rel => JSON.parse(read(rel));
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const sha256 = text => crypto.createHash('sha256').update(text).digest('hex');
 
+const assetsRoot = fs.realpathSync(path.resolve(root, 'assets'));
+const normalizeAssetPath = rel => {
+  const raw = String(rel ?? '');
+  assert(raw.length > 0 && raw === raw.trim(), 'asset path must be non-empty and trimmed');
+  assert(!raw.includes('\\'), `backslash asset path forbidden: ${raw}`);
+  assert(!path.posix.isAbsolute(raw), `absolute asset path forbidden: ${raw}`);
+  const normalized = path.posix.normalize(raw);
+  assert(normalized === raw, `non-canonical asset path forbidden: ${raw}`);
+  assert(normalized.startsWith('assets/'), `asset path escaped assets root: ${raw}`);
+  const real = fs.realpathSync(path.resolve(root, normalized));
+  assert(real.startsWith(`${assetsRoot}${path.sep}`), `asset path escaped real assets root: ${raw}`);
+  return {rel: normalized, real};
+};
+const readAsset = rel => fs.readFileSync(normalizeAssetPath(rel).real, 'utf8');
+
 const registry = json('registry/icon-glyph-registry.json');
 const schema = json('schemas/icon-glyph-registry.schema.json');
-const sprite = read('assets/icon-glyphs/system-symbols.svg');
+const sprite = readAsset('assets/icon-glyphs/system-symbols.svg');
 const docs = read('ICON_GLYPH_REGISTRY.md');
 const aggregate = read('js/glaze-v1.7.1-development.mjs');
 
@@ -47,11 +62,20 @@ for (const alias of registry.aliases) {
 
 const spriteHash = sha256(sprite);
 const unsafe = [
-  /<script\b/i, /<foreignObject\b/i, /\son[a-z]+\s*=/i,
-  /\bhref\s*=\s*["']https?:/i, /\bxlink:href\s*=\s*["']https?:/i,
-  /\burl\(\s*["']?https?:/i, /<!ENTITY/i
+  /<!DOCTYPE/i, /<!ENTITY/i, /<\?xml-stylesheet/i,
+  /<\s*(?:script|foreignObject|iframe|object|embed|image|use|a|animate|set|animateTransform|animateMotion|mpath)\b/i,
+  /\son[a-z]+\s*=/i, /(?:xlink:)?href\s*=/i,
+  /@import/i, /\burl\s*\(/i, /\b(?:javascript|data|file):/i
 ];
 for (const pattern of unsafe) assert(!pattern.test(sprite), `unsafe SVG content: ${pattern}`);
+
+const allowedSvgElements = new Set([
+  'svg','defs','style','symbol','g','path','circle','rect','line','polyline','polygon','ellipse'
+]);
+for (const match of sprite.matchAll(/<\s*\/?\s*([A-Za-z][A-Za-z0-9:-]*)\b/g)) {
+  const element = match[1].toLowerCase();
+  assert(allowedSvgElements.has(element), `unsupported SVG element: ${element}`);
+}
 
 const symbolIds = new Set([...sprite.matchAll(/<symbol\s+id="([^"]+)"/g)].map(match => match[1]));
 for (const entry of registry.entries) {
@@ -62,16 +86,19 @@ for (const entry of registry.entries) {
   assert(entry.accessibility.colorIndependent === true, `color-dependent meaning forbidden: ${entry.id}`);
   assert(entry.theme.highContrast && entry.theme.forcedColors && entry.theme.reducedTransparency, `adaptive modes incomplete: ${entry.id}`);
   assert(['preserve','mirror'].includes(entry.rtl.behavior), `invalid RTL rule: ${entry.id}`);
-  assert(!/^https?:/i.test(entry.source.asset), `remote source forbidden: ${entry.id}`);
+  const assetPath = normalizeAssetPath(entry.source.asset).rel;
 
   if (entry.source.kind === 'svg-symbol') {
+    assert(assetPath.startsWith('assets/icon-glyphs/'), `symbol asset escaped icon-glyph root: ${entry.id}`);
     assert(entry.source.sha256 === spriteHash, `sprite integrity mismatch: ${entry.id}`);
     assert(symbolIds.has(entry.source.symbol), `missing SVG symbol: ${entry.id}`);
   }
   if (entry.source.kind === 'identity-reference') {
     assert(entry.namespace === 'identity', `identity reference escaped identity namespace: ${entry.id}`);
+    assert(assetPath.startsWith('assets/identity/official/'), `identity reference escaped official identity root: ${entry.id}`);
     assert(entry.source.symbol === null, `identity reference must not define a local symbol: ${entry.id}`);
-    const identityAsset = read(entry.source.asset);
+    const identityAsset = readAsset(entry.source.asset);
+    for (const pattern of unsafe) assert(!pattern.test(identityAsset), `unsafe identity SVG content for ${entry.id}: ${pattern}`);
     assert(sha256(identityAsset) === entry.source.sha256, `identity-reference integrity mismatch: ${entry.id}`);
   }
 }
