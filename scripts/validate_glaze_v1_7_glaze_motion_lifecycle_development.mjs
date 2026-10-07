@@ -101,12 +101,12 @@ for(const entry of glazeMotion.consumerEvidence.firstPartyEvaluations){
 }
 
 assert(registry.officialBaseline==='1.7.0'&&registry.requiredConsumerVersion==='1.7.0','current consumer registry not aligned to bounded V1.7');
-for(const repo of ['GoreeCloud/launcher','GoreeCloud/goreecloud-keyboard']){
-  const matches=registry.consumers.filter(entry=>entry.repository===repo);
-  assert(matches.length===1,'current registry entry missing for '+repo);
+for(const [sourcePath,label] of [['apps/launcher','Launcher'],['apps/keyboard','Keyboard']]){
+  const matches=registry.consumers.filter(entry=>entry.repository==='GoreeCloud/android-app-defaults'&&entry.sourcePath===sourcePath);
+  assert(matches.length===1,'current registry entry missing for '+label+' monorepo source '+sourcePath);
   const entry=matches[0];
-  assert(entry.status==='adoption-required'&&entry.requiredTargetVersion==='1.7.0'&&entry.productionEligible===false,'current consumer acceptance overclaimed for '+repo);
-  assert(entry.targetVersion===null&&entry.referenceRevision===null&&entry.evidence===null,'unverified current-target evidence present for '+repo);
+  assert(entry.status==='adoption-required'&&entry.requiredTargetVersion==='1.7.0'&&entry.productionEligible===false,'current consumer acceptance overclaimed for '+label);
+  assert(entry.targetVersion===null&&entry.referenceRevision===null&&entry.evidence===null,'unverified current-target evidence present for '+label);
 }
 
 assert(!motionDoc.includes('acceptance/glaze-motion-0.6-experimental.md'),'current Motion doc points to retired acceptance path');
@@ -116,7 +116,7 @@ assert(motionDoc.includes('retains Glaze Motion 0.6 as Experimental'),'current M
 assert(!motionValidator.includes("ACCEPTANCE=ROOT/'acceptance/glaze-motion-0.6-experimental.md'"),'current Motion validator still requires retired acceptance path');
 assert(!motionValidator.includes("version=='2.2.0'"),'current Motion validator still expects obsolete 2.2 VERSION');
 assert(motionValidator.includes("version=='1.7.0'"),'current Motion validator does not preserve bounded V1.7 Anchor');
-assert(motionValidator.includes("CURRENT_LAUNCHER='GoreeCloud/launcher'"),'current Motion validator does not use current Launcher identity');
+assert(motionValidator.includes("CURRENT_MONOREPO='GoreeCloud/android-app-defaults'")&&motionValidator.includes("CURRENT_LAUNCHER_PATH='apps/launcher'")&&motionValidator.includes("CURRENT_KEYBOARD_PATH='apps/keyboard'"),'current Motion validator does not use current monorepo consumer identities');
 
 for(const phrase of [
   'Retain Experimental',

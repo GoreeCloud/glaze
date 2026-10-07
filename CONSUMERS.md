@@ -24,6 +24,8 @@ Current shared authority:
 
 An accepted current consumer must target exactly `1.7.0`.
 
+For monorepos, `repository` identifies the canonical GitHub repository and `sourcePath` identifies the consumer-owned subtree. Repository/path pairs are unique consumer locations; multiple GoreeCloud products may legitimately share one monorepo when their `sourcePath` values differ. A `null` `sourcePath` means the repository root is the consumer source boundary.
+
 ## Shared boundary
 
 V1.7.0 is bounded to inherited accepted V1.6.0 runtime behavior. The dev.47/Section 48 feature set is a V1.7.1 Development concern and is not part of current consumer conformance.
