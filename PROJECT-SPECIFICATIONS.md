@@ -284,6 +284,21 @@ Iconography must preserve:
 
 Directional icons and interaction affordances must adapt correctly for RTL where applicable.
 
+### Shared icon and glyph registry — mandatory planned capability
+
+Glaze **must provide a shared, versioned, authoritative icon and glyph registry** so GoreeCloud applications and services resolve approved visual symbols by stable semantic identifiers rather than maintaining independent, diverging icon sets. This is an implementation requirement, **not a claim that the shared registry or its consumers are already implemented or qualified**.
+
+The registry must:
+- distinguish reusable interface icons, compact semantic glyphs, and first-party application/service identity packages; retain the distinct Identity DNA and Identity Lock requirements for product and service artwork;
+- supply stable namespaced identifiers, meanings, categories, canonical vector sources, allowed optical sizes and variants, provenance, usage rights, ownership, lifecycle/version, and deprecation/replacement metadata;
+- define semantic role, Glaze geometry and stroke/optical weight, color-token and interaction-state mappings, light/dark/high-contrast/forced-color adaptations, accessible name/description behavior, decorative treatment, and RTL directional behavior;
+- enable platform adapters and applications to consume the same approved semantic catalog without requiring pixel-identical native rendering or network access for ordinary presentation;
+- preserve platform-native accessibility, input, density, and rendering behavior; reserve protected semantic status and product/provider truth to their authoritative owners;
+- prevent silent duplication, naming collisions, unreviewed icon overrides, unlicensed artwork, unsafe SVG resources, or ad hoc product-local copies of approved shared assets;
+- enforce machine-readable schema validation, provenance and asset integrity checks, contrast/legibility and optical-size coverage, deterministic resolution and fallback, compatibility/deprecation checks, and representative rendered/human accessibility review before production qualification.
+
+The existing `ICON_CONSTRUCTION.md`, `ICON_IDENTITY.md`, `ICONOGRAPHY.md`, and `schemas/icon-manifest.schema.json` govern related construction/identity behavior and must be reused rather than replaced by a competing registry authority. The planned implementation is tracked as `FR-020` in `PLANNED-FEATURES.md`.
+
 ## 14. Loading, progress, feedback, and recovery
 
 Loading and progress presentation must remain truthful.
