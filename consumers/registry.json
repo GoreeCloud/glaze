@@ -215,6 +215,18 @@
       "evidence": null,
       "productionEligible": false,
       "notes": "Canonical Since source is the apps/since subtree of GoreeCloud/android-app-defaults. Existing application-local theme behavior and prior Glaze work do not establish V1.7.0 consumer acceptance; fresh repository-local downstream acceptance remains required."
+    },
+    {
+      "name": "GoreeCloud News & Weather",
+      "repository": "GoreeCloud/news-weather",
+      "status": "adoption-required",
+      "targetVersion": null,
+      "requiredTargetVersion": "1.7.0",
+      "referenceRevision": null,
+      "evidence": null,
+      "productionEligible": false,
+      "notes": "News & Weather repository source now declares Glaze V1.7 / 1.7.0 as its required target, but no repository-local Glaze consumer acceptance has been completed. Fresh rendered, accessibility, responsive, representative-platform, performance, privacy/security, rollback, release, and product acceptance remain required; production eligibility is false.",
+      "sourcePath": null
     }
   ]
 }
