@@ -142,6 +142,8 @@ assert(resolveIconGlyph('not.registered', {fallback:false}) === null, 'fail-clos
 assert(searchIconGlyphs('warning').some(result => result.id === 'glyph.status.warning'), 'search index missing warning');
 assert(listIconGlyphIds({namespace:'identity'}).length === 1, 'identity namespace list mismatch');
 assert(gallery.includes('../assets/identity/official/facet/glaze-ui-mark.svg'), 'review gallery missing canonical identity asset');
+assert(gallery.includes('aria-pressed="false"'), 'review gallery RTL control must expose initial pressed state');
+assert(gallery.includes("setAttribute('aria-pressed',String(active))"), 'review gallery RTL control must synchronize pressed state');
 
 const caps = getIconGlyphRegistryCapabilities();
 assert(caps.lifecycle === 'Development' && caps.consumerEligible === false && caps.networkRequired === false, 'capability boundary mismatch');
