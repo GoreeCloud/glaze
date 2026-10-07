@@ -18,8 +18,10 @@ REFERENCE=ROOT/'reference/glaze-motion.html'
 RENDERED=ROOT/'scripts/validate_glaze_motion_rendered.py'
 
 HISTORICAL_LAUNCHER='GoreeCloud/goreecloud-launcher'
-CURRENT_LAUNCHER='GoreeCloud/launcher'
-KEYBOARD='GoreeCloud/goreecloud-keyboard'
+HISTORICAL_KEYBOARD='GoreeCloud/goreecloud-keyboard'
+CURRENT_MONOREPO='GoreeCloud/android-app-defaults'
+CURRENT_LAUNCHER_PATH='apps/launcher'
+CURRENT_KEYBOARD_PATH='apps/keyboard'
 LAUNCHER_HEAD='3095b9320b660f5e166465990d5d2bee061d7422'
 LAUNCHER_MERGE='23a389b3b24db726ceab5e328f9f8157fa7655ae'
 KEYBOARD_HEAD='80de7bd2dcff6d07b06b19f8250e37d20155d7ff'
@@ -35,7 +37,12 @@ def phrases(body,items,label):
 
 def by_repo(entries,repo):
     found=[x for x in entries if x.get('repository')==repo]
-    req(len(found)==1,f'exactly one record required for {repo}')
+    req(len(found)==1,f'exactly one historical record required for {repo}')
+    return found[0]
+
+def by_location(entries,repo,source_path):
+    found=[x for x in entries if x.get('repository')==repo and x.get('sourcePath')==source_path]
+    req(len(found)==1,f'exactly one current record required for {repo}/{source_path}')
     return found[0]
 
 def main():
@@ -92,7 +99,7 @@ def main():
     req(historical_launcher.get('pullRequest')==22 and historical_launcher.get('validatedHead')==LAUNCHER_HEAD and historical_launcher.get('mergeRevision')==LAUNCHER_MERGE,'Launcher historical Motion evidence changed')
     req(historical_launcher.get('evaluationMode')=='native-android-test-only' and historical_launcher.get('productionDependency') is False and historical_launcher.get('nativeDeviceCertification') is False and historical_launcher.get('candidatePromotionSufficient') is False,'Launcher Experimental boundary changed')
 
-    historical_keyboard=by_repo(evaluations,KEYBOARD)
+    historical_keyboard=by_repo(evaluations,HISTORICAL_KEYBOARD)
     req(historical_keyboard.get('pullRequest')==4 and historical_keyboard.get('validatedHead')==KEYBOARD_HEAD and historical_keyboard.get('mergeRevision')==KEYBOARD_MERGE,'Keyboard historical Motion evidence changed')
     req(historical_keyboard.get('evaluationMode')=='native-android-test-only' and historical_keyboard.get('productionDependency') is False and historical_keyboard.get('nativeDeviceCertification') is False and historical_keyboard.get('candidatePromotionSufficient') is False,'Keyboard Experimental boundary changed')
 
@@ -116,8 +123,8 @@ def main():
     registry=json.loads(REGISTRY.read_text())
     req(registry.get('officialBaseline')==version and registry.get('requiredConsumerVersion')==version,'consumer registry does not match current Glaze Anchor')
 
-    launcher=by_repo(registry.get('consumers',[]),CURRENT_LAUNCHER)
-    keyboard=by_repo(registry.get('consumers',[]),KEYBOARD)
+    launcher=by_location(registry.get('consumers',[]),CURRENT_MONOREPO,CURRENT_LAUNCHER_PATH)
+    keyboard=by_location(registry.get('consumers',[]),CURRENT_MONOREPO,CURRENT_KEYBOARD_PATH)
     for consumer,label in ((launcher,'Launcher'),(keyboard,'Keyboard')):
         req(consumer.get('status')=='adoption-required',f'{label} must remain adoption-required')
         req(consumer.get('requiredTargetVersion')==version,f'{label} required target must match current Glaze Anchor')
@@ -160,7 +167,7 @@ def main():
     core=CORE.read_text()
     phrases(core,('export * from "./glaze.motion.js"','export * from "./glaze.motion.accessibility.js"'),'aggregate runtime')
 
-    print('Glaze Motion 0.6 Experimental validated under GLAZE UI V1.6 Anchor: historical Motion evidence preserved; current consumers remain adoption-required; Motion remains non-production')
+    print('Glaze Motion 0.6 Experimental validated under Glaze V1.7 / 1.7.0 Anchor: historical Motion evidence preserved; current consumers remain adoption-required; Motion remains non-production')
 
 if __name__=='__main__':
     main()

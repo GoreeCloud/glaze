@@ -50,7 +50,7 @@ assert(scope.continuityPolicy.presentationBehaviorChangePermittedByPromotion ===
 assert(scope.continuityPolicy.authorizationBehaviorChangePermittedByPromotion === false, 'V1.5.0 promotion history must retain no-authorization-change policy');
 
 const consumerSchema = json('schemas/consumer-registry.schema.json');
-assert(consumerSchema.properties?.schemaVersion?.const === 8, 'Consumer registry schema must retain governed schema version 8');
+assert(Number.isInteger(consumerSchema.properties?.schemaVersion?.const) && consumerSchema.properties.schemaVersion.const >= 8, 'Consumer registry schema must retain a governed schema version at or after the V1.5 historical baseline');
 assert(String(consumerSchema.title).includes('Consumer Registry'), 'Consumer registry schema title must retain its governed registry identity');
 const currentConsumers=json('consumers/registry.json');
 assert(currentConsumers.officialBaseline===lifecycle.currentStable,'current consumer registry baseline must follow live Stable authority');

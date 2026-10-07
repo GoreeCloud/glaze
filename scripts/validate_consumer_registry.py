@@ -12,7 +12,7 @@ SEMVER = re.compile(r"^\d+\.\d+\.\d+$")
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
 REPOSITORY = re.compile(r"^GoreeCloud/.+$")
 STATUSES = {"adoption-required", "unverified", "accepted-v1"}
-SCHEMA_VERSION = 8
+SCHEMA_VERSION = 9
 
 
 def req(condition: bool, message: str) -> None:
@@ -117,19 +117,22 @@ def main() -> None:
     consumers = data.get("consumers")
     req(isinstance(consumers, list) and consumers, "consumers must be a non-empty list")
     seen_names: set[str] = set()
-    seen_repositories: set[str] = set()
+    seen_consumer_locations: set[tuple[str, str]] = set()
     accepted = 0
     historical = 0
-    required_keys = {"name", "repository", "status", "targetVersion", "requiredTargetVersion", "referenceRevision", "evidence", "productionEligible", "notes"}
+    required_keys = {"name", "repository", "sourcePath", "status", "targetVersion", "requiredTargetVersion", "referenceRevision", "evidence", "productionEligible", "notes"}
 
     for index, consumer in enumerate(consumers):
         req(isinstance(consumer, dict), f"consumers[{index}] must be an object")
         req(set(consumer) == required_keys, f"consumers[{index}] field drift")
-        name, repo, status = consumer.get("name"), consumer.get("repository"), consumer.get("status")
+        name, repo, source_path, status = consumer.get("name"), consumer.get("repository"), consumer.get("sourcePath"), consumer.get("status")
         req(isinstance(name, str) and name.strip(), f"consumers[{index}].name")
         req(isinstance(repo, str) and REPOSITORY.fullmatch(repo) is not None, f"consumers[{index}].repository")
-        req(name not in seen_names and repo not in seen_repositories, f"duplicate consumer identity {name}/{repo}")
-        seen_names.add(name); seen_repositories.add(repo)
+        req(source_path is None or (isinstance(source_path, str) and source_path.strip() and not source_path.startswith("/") and ".." not in source_path.split("/")), f"consumers[{index}].sourcePath")
+        normalized_path = source_path or ""
+        identity = (repo, normalized_path)
+        req(name not in seen_names and identity not in seen_consumer_locations, f"duplicate consumer identity {name}/{repo}/{normalized_path}")
+        seen_names.add(name); seen_consumer_locations.add(identity)
         req(status in STATUSES, f"{repo} status")
         req(consumer.get("requiredTargetVersion") == stable, f"{repo} required target must be current Stable")
         req(consumer.get("productionEligible") is False, f"{repo} must not become production-eligible from Glaze registry state alone")
