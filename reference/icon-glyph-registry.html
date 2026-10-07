@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Glaze Icon and Glyph Registry Review</title>
+<style>
+:root{color-scheme:light dark;font-family:system-ui,sans-serif;background:Canvas;color:CanvasText}
+body{margin:0;padding:2rem;max-width:1100px;margin-inline:auto}
+header{display:flex;gap:1rem;align-items:end;justify-content:space-between;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin-block:1.5rem}
+.card{border:1px solid color-mix(in srgb,CanvasText 18%,transparent);border-radius:1rem;padding:1rem;display:grid;gap:.55rem;background:color-mix(in srgb,Canvas 92%,CanvasText 8%)}
+svg{width:42px;height:42px;color:CanvasText}
+span{opacity:.72;font-size:.9rem}
+.rtl{direction:rtl}
+@media (forced-colors:active){.card{border:1px solid CanvasText}}
+</style>
+</head>
+<body>
+<header><div><h1>Shared icon and glyph registry</h1><p>Development review surface — not production acceptance.</p></div><button id="dir" type="button">Toggle RTL</button></header>
+<section class="grid"><article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#search"/></svg><strong>ui.action.search</strong><span>Search</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#share"/></svg><strong>ui.action.share</strong><span>Share</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#delete"/></svg><strong>ui.action.delete</strong><span>Delete</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#back"/></svg><strong>ui.navigation.back</strong><span>Back</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#forward"/></svg><strong>ui.navigation.forward</strong><span>Forward</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#settings"/></svg><strong>ui.system.settings</strong><span>Settings</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#cloud"/></svg><strong>ui.object.cloud</strong><span>Cloud</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#device"/></svg><strong>ui.object.device</strong><span>Device</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#folder"/></svg><strong>ui.object.folder</strong><span>Folder</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#account"/></svg><strong>ui.object.account</strong><span>Account</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#network"/></svg><strong>ui.object.network</strong><span>Network</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#sync"/></svg><strong>glyph.status.sync</strong><span>Syncing</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#warning"/></svg><strong>glyph.status.warning</strong><span>Warning</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#privacy"/></svg><strong>glyph.status.privacy</strong><span>Privacy</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#security"/></svg><strong>glyph.status.security</strong><span>Security</span></article>
+<article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#unavailable"/></svg><strong>glyph.status.unavailable</strong><span>Unavailable</span></article></section>
+<script>document.querySelector('#dir').addEventListener('click',()=>document.documentElement.classList.toggle('rtl'));</script>
+</body></html>

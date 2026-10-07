@@ -1,0 +1,380 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://design.goreecloud.com/schemas/icon-glyph-registry.schema.json",
+  "title": "Glaze Shared Icon and Glyph Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "registryVersion",
+    "lifecycle",
+    "stableBaseline",
+    "consumerEligible",
+    "namespaces",
+    "fallbackPolicy",
+    "entries",
+    "aliases"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0-development"
+    },
+    "registryVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+-development$"
+    },
+    "lifecycle": {
+      "const": "Development"
+    },
+    "stableBaseline": {
+      "const": "1.7.0"
+    },
+    "consumerEligible": {
+      "const": false
+    },
+    "namespaces": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ui",
+        "glyph",
+        "identity"
+      ],
+      "properties": {
+        "ui": {
+          "type": "string",
+          "minLength": 1
+        },
+        "glyph": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identity": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "fallbackPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unknownId",
+        "networkRequired",
+        "missingVariant"
+      ],
+      "properties": {
+        "unknownId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "networkRequired": {
+          "const": false
+        },
+        "missingVariant": {
+          "enum": [
+            "default",
+            "fail-closed"
+          ]
+        }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    },
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/alias"
+      }
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "namespace",
+        "concept",
+        "category",
+        "meaning",
+        "source",
+        "opticalSizes",
+        "variants",
+        "rtl",
+        "accessibility",
+        "theme",
+        "semantic",
+        "provenance",
+        "lifecycle"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(ui|glyph|identity)\\.[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+        },
+        "namespace": {
+          "enum": [
+            "ui",
+            "glyph",
+            "identity"
+          ]
+        },
+        "concept": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "enum": [
+            "action",
+            "navigation",
+            "object",
+            "system",
+            "status",
+            "semantic",
+            "identity"
+          ]
+        },
+        "meaning": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "asset",
+            "symbol",
+            "sha256"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "svg-symbol",
+                "identity-reference"
+              ]
+            },
+            "asset": {
+              "type": "string",
+              "minLength": 1
+            },
+            "symbol": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        "opticalSizes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "micro",
+              "compact",
+              "standard",
+              "display"
+            ]
+          }
+        },
+        "variants": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "outline",
+              "filled",
+              "monochrome",
+              "identity"
+            ]
+          }
+        },
+        "rtl": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "behavior"
+          ],
+          "properties": {
+            "behavior": {
+              "enum": [
+                "preserve",
+                "mirror"
+              ]
+            }
+          }
+        },
+        "accessibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "defaultName",
+            "decorativeAllowed",
+            "colorIndependent"
+          ],
+          "properties": {
+            "defaultName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "decorativeAllowed": {
+              "type": "boolean"
+            },
+            "colorIndependent": {
+              "const": true
+            }
+          }
+        },
+        "theme": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "modes",
+            "highContrast",
+            "forcedColors",
+            "reducedTransparency"
+          ],
+          "properties": {
+            "modes": {
+              "type": "array",
+              "minItems": 2,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "light",
+                  "dark",
+                  "deep-dark"
+                ]
+              }
+            },
+            "highContrast": {
+              "const": true
+            },
+            "forcedColors": {
+              "const": true
+            },
+            "reducedTransparency": {
+              "const": true
+            }
+          }
+        },
+        "semantic": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "role",
+            "colorToken"
+          ],
+          "properties": {
+            "role": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "colorToken": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "owner",
+            "origin",
+            "usageRights",
+            "reviewState"
+          ],
+          "properties": {
+            "owner": {
+              "const": "GoreeCloud"
+            },
+            "origin": {
+              "enum": [
+                "first-party-original",
+                "canonical-identity-reference"
+              ]
+            },
+            "usageRights": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reviewState": {
+              "enum": [
+                "development-source",
+                "official-identity"
+              ]
+            }
+          }
+        },
+        "lifecycle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "introduced"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "development",
+                "stable-reference",
+                "deprecated"
+              ]
+            },
+            "introduced": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "alias": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "target",
+        "status",
+        "reason"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "const": "deprecated"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
