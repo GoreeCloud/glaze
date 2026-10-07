@@ -164,13 +164,15 @@
             },
             "asset": {
               "type": "string",
-              "minLength": 1
+              "minLength": 1,
+              "pattern": "^assets/(icon-glyphs|identity/official)/[A-Za-z0-9._/-]+$"
             },
             "symbol": {
               "type": [
                 "string",
                 "null"
-              ]
+              ],
+              "pattern": "^[A-Za-z][A-Za-z0-9._:-]*$"
             },
             "sha256": {
               "type": "string",
@@ -361,11 +363,13 @@
       "properties": {
         "id": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "^(ui|glyph|identity)\\.[a-z0-9]+(?:[.-][a-z0-9]+)*$"
         },
         "target": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "^(ui|glyph|identity)\\.[a-z0-9]+(?:[.-][a-z0-9]+)*$"
         },
         "status": {
           "const": "deprecated"
