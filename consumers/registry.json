@@ -3,7 +3,7 @@
   "officialBaseline": "1.7.0",
   "officialProductLabel": "Glaze V1.7",
   "requiredConsumerVersion": "1.7.0",
-  "auditedAt": "2026-10-04",
+  "auditedAt": "2026-10-07",
   "statusVocabulary": [
     "adoption-required",
     "unverified",
@@ -227,6 +227,18 @@
       "productionEligible": false,
       "notes": "News & Weather repository source now declares Glaze V1.7 / 1.7.0 as its required target, but no repository-local Glaze consumer acceptance has been completed. Fresh rendered, accessibility, responsive, representative-platform, performance, privacy/security, rollback, release, and product acceptance remain required; production eligibility is false.",
       "sourcePath": null
+    },
+    {
+      "name": "GoreeCloud Memos",
+      "repository": "GoreeCloud/memos",
+      "sourcePath": null,
+      "status": "adoption-required",
+      "targetVersion": null,
+      "requiredTargetVersion": "1.7.0",
+      "referenceRevision": null,
+      "evidence": null,
+      "productionEligible": false,
+      "notes": "GoreeCloud Memos is being rebuilt as a maintained fork of usememos/memos. Current required shared target is Glaze V1.7 / 1.7.0; no historical or accepted Memos consumer revision is claimed here. Fresh repository-local source mapping, rendered, accessibility, responsive, representative-platform, performance, rollback, human visual, release, and product acceptance remain required; production eligibility is false."
     }
   ]
 }
