@@ -2,10 +2,16 @@
 # Glaze — Implemented Features
 
 **Status:** Active implemented-feature control  
-**As of:** 2026-10-04
+**As of:** 2026-10-06
 **Canonical lifecycle authority:** `registry/lifecycle.json`  
 **Canonical repository:** `GoreeCloud/glaze`  
 **Current Official Anchor:** Glaze V1.7 / `1.7.0` (bounded Stable compatibility channel); GLAZE UI V1.6 / `1.6.0` is the immediate rollback baseline.
+
+## V1.7.1 shared icon and glyph registry Development foundation
+
+The V1.7.1 Development source now includes the first shared Glaze icon and glyph registry foundation: a machine-readable schema and catalog, 17 initial `ui.*` / `glyph.*` / `identity.*` entries, two explicit compatibility aliases, a dependency-free first-party vector symbol sprite, deterministic local/offline resolution and catalog search, accessibility/RTL/theme/provenance metadata, integrity and SVG-safety validation, an exact-head CI workflow, and a representative review gallery. The V1.7.1 aggregate exposes the resolver without changing the `1.7.0` Stable runtime.
+
+This is source implementation, not production acceptance. The registry remains Development-only and non-consumer-eligible until applicable rendered/human accessibility and optical review, native/platform qualification, production qualification, and downstream consumer acceptance are separately completed. Product/service Identity DNA and Identity Lock remain governed by the existing identity/construction authorities, and registry semantics do not manufacture provider-owned privacy, security, synchronization, availability, or other state truth.
 
 ## V1.7.1 retained v1.2 governed evidence intake
 

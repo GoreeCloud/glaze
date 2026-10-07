@@ -1,0 +1,68 @@
+name: Glaze Shared Icon and Glyph Registry Development
+
+on:
+  pull_request:
+    paths:
+      - 'schemas/icon-glyph-registry.schema.json'
+      - 'registry/icon-glyph-registry.json'
+      - 'assets/icon-glyphs/**'
+      - 'assets/identity/official/facet/glaze-ui-mark.svg'
+      - 'assets/identity/official/facet/README.md'
+      - 'js/icon-glyph-registry*.mjs'
+      - 'js/glaze-v1.7.1-development.mjs'
+      - 'scripts/validate_json_schema_subset.mjs'
+      - 'reference/icon-glyph-registry.html'
+      - 'ICON_GLYPH_REGISTRY.md'
+      - 'PROJECT-SPECIFICATIONS.md'
+      - 'ICONOGRAPHY.md'
+      - 'PLANNED-FEATURES.md'
+      - 'IMPLEMENTED-FEATURES.md'
+      - 'CHANGELOGS.md'
+      - '.github/workflows/icon-glyph-registry.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'schemas/icon-glyph-registry.schema.json'
+      - 'registry/icon-glyph-registry.json'
+      - 'assets/icon-glyphs/**'
+      - 'assets/identity/official/facet/glaze-ui-mark.svg'
+      - 'assets/identity/official/facet/README.md'
+      - 'js/icon-glyph-registry*.mjs'
+      - 'js/glaze-v1.7.1-development.mjs'
+      - 'scripts/validate_json_schema_subset.mjs'
+      - 'reference/icon-glyph-registry.html'
+      - 'ICON_GLYPH_REGISTRY.md'
+      - 'PROJECT-SPECIFICATIONS.md'
+      - 'ICONOGRAPHY.md'
+      - 'PLANNED-FEATURES.md'
+      - 'IMPLEMENTED-FEATURES.md'
+      - 'CHANGELOGS.md'
+      - '.github/workflows/icon-glyph-registry.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-icon-glyph-registry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out exact source revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Verify exact source revision
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+      - name: Validate JSON syntax
+        run: |
+          python3 -m json.tool schemas/icon-glyph-registry.schema.json >/dev/null
+          python3 -m json.tool registry/icon-glyph-registry.json >/dev/null
+      - name: Validate JavaScript syntax
+        run: |
+          node --check js/icon-glyph-registry.data.mjs
+          node --check js/icon-glyph-registry.mjs
+          node --check js/glaze-v1.7.1-development.mjs
+          node --check scripts/validate_json_schema_subset.mjs
+      - name: Validate shared icon and glyph registry
+        run: node scripts/validate_icon_glyph_registry.mjs

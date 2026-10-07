@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style>.g{fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <symbol id="search" viewBox="0 0 24 24"><circle class="g" cx="10.5" cy="10.5" r="5.75"/><path class="g" d="m15 15 4.25 4.25"/></symbol>
+  <symbol id="share" viewBox="0 0 24 24"><circle class="g" cx="18" cy="5.5" r="2.25"/><circle class="g" cx="6" cy="12" r="2.25"/><circle class="g" cx="18" cy="18.5" r="2.25"/><path class="g" d="m8 11 7.8-4.25M8 13l7.8 4.25"/></symbol>
+  <symbol id="delete" viewBox="0 0 24 24"><path class="g" d="M4.5 7.25h15M9 4.5h6l.75 2.75M7 7.25l.75 12.25h8.5L17 7.25M10 10.25v6M14 10.25v6"/></symbol>
+  <symbol id="back" viewBox="0 0 24 24"><path class="g" d="m14.75 5-7 7 7 7"/></symbol>
+  <symbol id="forward" viewBox="0 0 24 24"><path class="g" d="m9.25 5 7 7-7 7"/></symbol>
+  <symbol id="settings" viewBox="0 0 24 24"><circle class="g" cx="12" cy="12" r="3"/><path class="g" d="M12 3.75v2M12 18.25v2M3.75 12h2M18.25 12h2M6.17 6.17l1.42 1.42M16.41 16.41l1.42 1.42M17.83 6.17l-1.42 1.42M7.59 16.41l-1.42 1.42"/></symbol>
+  <symbol id="cloud" viewBox="0 0 24 24"><path class="g" d="M7.25 18.25h10.5a3.5 3.5 0 0 0 .35-6.98A6.25 6.25 0 0 0 6.2 9.4a4.45 4.45 0 0 0 1.05 8.85Z"/></symbol>
+  <symbol id="device" viewBox="0 0 24 24"><rect class="g" x="6.5" y="3.5" width="11" height="17" rx="2"/><path class="g" d="M10 17.5h4"/></symbol>
+  <symbol id="folder" viewBox="0 0 24 24"><path class="g" d="M3.75 7.25h6l1.75 2h8.75v8.5a2 2 0 0 1-2 2H5.75a2 2 0 0 1-2-2Z"/><path class="g" d="M3.75 7.25v-1a2 2 0 0 1 2-2H9l1.75 2h7.5a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="account" viewBox="0 0 24 24"><circle class="g" cx="12" cy="8" r="3.25"/><path class="g" d="M5.5 19.25c.7-3.35 3.05-5.25 6.5-5.25s5.8 1.9 6.5 5.25"/></symbol>
+  <symbol id="network" viewBox="0 0 24 24"><circle class="g" cx="12" cy="5" r="2"/><circle class="g" cx="6" cy="18.5" r="2"/><circle class="g" cx="18" cy="18.5" r="2"/><path class="g" d="M11.1 6.8 7 16.6M12.9 6.8l4.1 9.8M8 18.5h8"/></symbol>
+  <symbol id="sync" viewBox="0 0 24 24"><path class="g" d="M18.8 8.25A7.25 7.25 0 0 0 6.5 6.5L4.75 8.25M5.2 15.75A7.25 7.25 0 0 0 17.5 17.5l1.75-1.75"/><path class="g" d="M4.75 4.75v3.5h3.5M19.25 19.25v-3.5h-3.5"/></symbol>
+  <symbol id="warning" viewBox="0 0 24 24"><path class="g" d="M12 3.75 21 20H3Z"/><path class="g" d="M12 9v5M12 17.25h.01"/></symbol>
+  <symbol id="privacy" viewBox="0 0 24 24"><path class="g" d="M12 3.5 19 6v5.25c0 4.45-2.75 7.45-7 9.25-4.25-1.8-7-4.8-7-9.25V6Z"/><path class="g" d="M9.5 11.25V10a2.5 2.5 0 0 1 5 0v1.25M8.75 11.25h6.5v4.5h-6.5Z"/></symbol>
+  <symbol id="security" viewBox="0 0 24 24"><path class="g" d="M12 3.5 19 6v5.25c0 4.45-2.75 7.45-7 9.25-4.25-1.8-7-4.8-7-9.25V6Z"/><path class="g" d="m8.75 12 2.1 2.1 4.4-4.4"/></symbol>
+  <symbol id="unavailable" viewBox="0 0 24 24"><circle class="g" cx="12" cy="12" r="8.25"/><path class="g" d="m6.2 6.2 11.6 11.6"/></symbol>
+</svg>

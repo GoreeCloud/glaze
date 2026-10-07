@@ -6,6 +6,7 @@
  */
 
 export * from './glaze-v1.7-development-v1-3.dev.mjs';
+export * from './icon-glyph-registry.mjs';
 
 import {glazeV17V13Development} from './glaze-v1.7-development-v1-3.dev.mjs';
 
@@ -21,6 +22,9 @@ export const glazeV171Development = Object.freeze({
   retainedEvidenceAutomaticallyRebound: false,
   section48SourceAvailable: true,
   section48Accepted: false,
+  iconGlyphRegistrySourceAvailable: true,
+  iconGlyphRegistryStableQualified: false,
+  iconGlyphRegistryConsumerAdoptionAutomatic: false,
   releasePromotionAutomatic: false,
   deploymentAcceptanceAutomatic: false,
   productionAcceptanceAutomatic: false
