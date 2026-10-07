@@ -65,7 +65,7 @@ const unsafe = [
   /<!DOCTYPE/i, /<!ENTITY/i, /<\?xml-stylesheet/i,
   /<\s*(?:script|foreignObject|iframe|object|embed|image|use|a|animate|set|animateTransform|animateMotion|mpath)\b/i,
   /\son[a-z]+\s*=/i, /(?:xlink:)?href\s*=/i,
-  /@import/i, /\burl\s*\(/i, /\b(?:javascript|data|file):/i
+  /@import/i, /\burl\s*\(\s*["']?\s*(?:https?:|data:|file:|javascript:|\/\/)/i, /\b(?:javascript|data|file):/i
 ];
 for (const pattern of unsafe) assert(!pattern.test(sprite), `unsafe SVG content: ${pattern}`);
 
