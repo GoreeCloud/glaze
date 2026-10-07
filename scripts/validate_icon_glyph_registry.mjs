@@ -41,6 +41,25 @@ const aggregate = read('js/glaze-v1.7.1-development.mjs');
 const schemaErrors = validateSchema(registry, schema);
 assert(schemaErrors.length === 0, `schema validation failed:\n${schemaErrors.join('\n')}`);
 assert(JSON.stringify(registry) === JSON.stringify(iconGlyphRegistryData), 'generated data mirror diverged from registry JSON');
+assert(Object.isFrozen(iconGlyphRegistryData), 'registry data root must be immutable');
+assert(Object.isFrozen(iconGlyphRegistryData.namespaces), 'registry namespaces must be immutable');
+assert(Object.isFrozen(iconGlyphRegistryData.fallbackPolicy), 'registry fallback policy must be immutable');
+assert(Object.isFrozen(iconGlyphRegistryData.entries), 'registry entries collection must be immutable');
+assert(Object.isFrozen(iconGlyphRegistryData.aliases), 'registry aliases collection must be immutable');
+for (const entry of iconGlyphRegistryData.entries) {
+  assert(Object.isFrozen(entry), `registry entry must be immutable: ${entry.id}`);
+  assert(Object.isFrozen(entry.source), `registry source must be immutable: ${entry.id}`);
+  assert(Object.isFrozen(entry.opticalSizes), `registry optical sizes must be immutable: ${entry.id}`);
+  assert(Object.isFrozen(entry.variants), `registry variants must be immutable: ${entry.id}`);
+  assert(Object.isFrozen(entry.rtl), `registry RTL metadata must be immutable: ${entry.id}`);
+  assert(Object.isFrozen(entry.accessibility), `registry accessibility metadata must be immutable: ${entry.id}`);
+  assert(Object.isFrozen(entry.theme), `registry theme metadata must be immutable: ${entry.id}`);
+  assert(Object.isFrozen(entry.theme.modes), `registry theme modes must be immutable: ${entry.id}`);
+  assert(Object.isFrozen(entry.semantic), `registry semantic metadata must be immutable: ${entry.id}`);
+  assert(Object.isFrozen(entry.provenance), `registry provenance must be immutable: ${entry.id}`);
+  assert(Object.isFrozen(entry.lifecycle), `registry lifecycle metadata must be immutable: ${entry.id}`);
+}
+for (const alias of iconGlyphRegistryData.aliases) assert(Object.isFrozen(alias), `registry alias must be immutable: ${alias.id}`);
 
 assert(registry.lifecycle === 'Development', 'registry must remain Development');
 assert(registry.stableBaseline === '1.7.0', 'stable baseline must remain 1.7.0');
