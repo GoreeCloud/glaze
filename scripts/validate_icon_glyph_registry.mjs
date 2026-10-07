@@ -36,6 +36,7 @@ const registry = json('registry/icon-glyph-registry.json');
 const schema = json('schemas/icon-glyph-registry.schema.json');
 const sprite = readAsset('assets/icon-glyphs/system-symbols.svg');
 const docs = read('ICON_GLYPH_REGISTRY.md');
+const gallery = read('reference/icon-glyph-registry.html');
 const aggregate = read('js/glaze-v1.7.1-development.mjs');
 
 const schemaErrors = validateSchema(registry, schema);
@@ -98,6 +99,7 @@ for (const match of sprite.matchAll(/<\s*\/?\s*([A-Za-z][A-Za-z0-9:-]*)\b/g)) {
 
 const symbolIds = new Set([...sprite.matchAll(/<symbol\s+id="([^"]+)"/g)].map(match => match[1]));
 for (const entry of registry.entries) {
+  assert(gallery.includes(`<strong>${entry.id}</strong>`), `review gallery missing canonical entry: ${entry.id}`);
   assert(entry.id.startsWith(`${entry.namespace}.`), `namespace mismatch: ${entry.id}`);
   assert(entry.provenance.owner === 'GoreeCloud', `owner missing: ${entry.id}`);
   assert(entry.provenance.usageRights.trim(), `usage-right metadata missing: ${entry.id}`);
@@ -139,6 +141,7 @@ assert(resolveIconGlyph('not.registered').canonicalId === 'glyph.status.unavaila
 assert(resolveIconGlyph('not.registered', {fallback:false}) === null, 'fail-closed no-fallback mode failed');
 assert(searchIconGlyphs('warning').some(result => result.id === 'glyph.status.warning'), 'search index missing warning');
 assert(listIconGlyphIds({namespace:'identity'}).length === 1, 'identity namespace list mismatch');
+assert(gallery.includes('../assets/identity/official/facet/glaze-ui-mark.svg'), 'review gallery missing canonical identity asset');
 
 const caps = getIconGlyphRegistryCapabilities();
 assert(caps.lifecycle === 'Development' && caps.consumerEligible === false && caps.networkRequired === false, 'capability boundary mismatch');
