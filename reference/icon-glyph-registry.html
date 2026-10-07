@@ -16,7 +16,7 @@ span{opacity:.72;font-size:.9rem}
 </style>
 </head>
 <body>
-<header><div><h1>Shared icon and glyph registry</h1><p>Development review surface — not production acceptance.</p></div><button id="dir" type="button">Toggle RTL</button></header>
+<header><div><h1>Shared icon and glyph registry</h1><p>Development review surface — not production acceptance.</p></div><button id="dir" type="button" aria-pressed="false">Toggle RTL</button></header>
 <section class="grid"><article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#search"/></svg><strong>ui.action.search</strong><span>Search</span></article>
 <article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#share"/></svg><strong>ui.action.share</strong><span>Share</span></article>
 <article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#delete"/></svg><strong>ui.action.delete</strong><span>Delete</span></article>
@@ -34,5 +34,5 @@ span{opacity:.72;font-size:.9rem}
 <article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#security"/></svg><strong>glyph.status.security</strong><span>Security</span></article>
 <article class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="../assets/icon-glyphs/system-symbols.svg#unavailable"/></svg><strong>glyph.status.unavailable</strong><span>Unavailable</span></article>
 <article class="card"><img class="icon-preview" src="../assets/identity/official/facet/glaze-ui-mark.svg" alt="" aria-hidden="true"><strong>identity.glaze</strong><span>Glaze</span></article></section>
-<script>document.querySelector('#dir').addEventListener('click',()=>document.documentElement.classList.toggle('rtl'));</script>
+<script>const dirButton=document.querySelector('#dir');dirButton.addEventListener('click',()=>{const active=document.documentElement.classList.toggle('rtl');dirButton.setAttribute('aria-pressed',String(active));});</script>
 </body></html>
