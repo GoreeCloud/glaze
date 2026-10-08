@@ -239,6 +239,18 @@
       "evidence": null,
       "productionEligible": false,
       "notes": "GoreeCloud Memos is being rebuilt as a maintained fork of usememos/memos. Current required shared target is Glaze V1.7 / 1.7.0; no historical or accepted Memos consumer revision is claimed here. Fresh repository-local source mapping, rendered, accessibility, responsive, representative-platform, performance, rollback, human visual, release, and product acceptance remain required; production eligibility is false."
+    },
+    {
+      "name": "GoreeCloud Markdown",
+      "repository": "GoreeCloud/markdown",
+      "sourcePath": null,
+      "status": "adoption-required",
+      "targetVersion": null,
+      "requiredTargetVersion": "1.7.0",
+      "referenceRevision": null,
+      "evidence": null,
+      "productionEligible": false,
+      "notes": "Standalone Kotlin/Jetpack Compose Android Markdown editor. Official Glaze V1.7.0 native token mapping and independent exact-source accessibility, device, security, performance, and product acceptance are pending. This registration does not grant production eligibility."
     }
   ]
 }
