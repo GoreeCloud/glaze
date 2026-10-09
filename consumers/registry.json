@@ -233,12 +233,12 @@
       "repository": "GoreeCloud/memos",
       "sourcePath": null,
       "status": "adoption-required",
-      "targetVersion": "1.7.0",
+      "targetVersion": null,
       "requiredTargetVersion": "1.7.0",
-      "referenceRevision": "4deb692cac7a9cb25973c162d9645fb4de0d7f0c",
+      "referenceRevision": null,
       "evidence": null,
       "productionEligible": false,
-      "notes": "GoreeCloud Memos vendors the current Glaze V1.7 / 1.7.0 Stable web/runtime source and has repository-local automated rendered Development evidence. Status remains adoption-required: fresh human visual, independent assistive-technology, representative-browser/device, performance, rollback, release, and product acceptance remain required; source adoption and automated Chromium evidence do not establish production eligibility."
+      "notes": "GoreeCloud Memos now vendors the Glaze V1.7 / 1.7.0 Stable web/runtime source and has repository-local automated rendered Development evidence. Under the consumer-registry contract, current-target adoption does not become registry provenance until full consumer acceptance is established, so target/revision/evidence remain null. Fresh human visual, independent assistive-technology, representative-browser/device, performance, rollback, release, and product acceptance remain required; production eligibility is false."
     }
   ]
 }
