@@ -21,6 +21,7 @@ test("reject spoofed data, malformed times and nonfinite metrics", () => {
   v=>delete v.points[0].values.blocked,
   v=>v.points[1].timestamp=v.points[0].timestamp,
   v=>v.points[0].timestamp="now",
+  v=>v.points[0].timestamp="2026-02-30T05:00:00Z",
   v=>v.updatedAt="not-a-date",
   v=>v.series[1].key="allowed",
   v=>v.series[0].key="timestamp",

@@ -36,3 +36,7 @@ The normalization layer preserves explicit `null` (missing) as distinct from num
 EvilCharts upstream: MIT License, Copyright (c) 2026 Gurbinder. When importing registry code, retain the original copyright and MIT permission notice in the distributed source or notices. [Full upstream license](https://github.com/legions-developer/evilcharts/blob/main/LICENSE).
 
 Glaze integration glue is original GoreeCloud code under the [Glaze repository license](../../LICENSE). Do not add paid components or the hosted upstream website as a runtime dependency.
+
+## Verified consumer-build regression (October 13, 2026)
+
+The opt-in Glaze wrapper was compiled in a clean, temporary **Next.js 16.4.0** consumer created with the official shadcn registry. The first version hit Next.js static prerender protection because upstream EvilCharts creates randomized loading-fixture data even when not loading. The development adapter now lazily imports the EvilCharts component **after client mount** while immediately rendering its accessible source-data table. In a fresh test consumer, registry install, normalization tests, TypeScript and optimized Next.js build/static prerender all succeeded. This validates build compatibility for that environment only; browser assistive-technology, native parity and release acceptance remain unverified.
