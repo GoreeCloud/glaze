@@ -40,3 +40,17 @@ Glaze integration glue is original GoreeCloud code under the [Glaze repository l
 ## Verified consumer-build regression (October 13, 2026)
 
 The opt-in Glaze wrapper was compiled in a clean, temporary **Next.js 16.4.0** consumer created with the official shadcn registry. The first version hit Next.js static prerender protection because upstream EvilCharts creates randomized loading-fixture data even when not loading. The development adapter now lazily imports the EvilCharts component **after client mount** while immediately rendering its accessible source-data table. In a fresh test consumer, registry install, normalization tests, TypeScript and optimized Next.js build/static prerender all succeeded. This validates build compatibility for that environment only; browser assistive-technology, native parity and release acceptance remain unverified.
+
+## Bar chart option (Development)
+
+In a compatible React/shadcn consumer, install the **free MIT-licensed** upstream registry entry:
+
+```sh
+npx shadcn@latest add @evilcharts/recharts-bar-chart
+```
+
+Copy `GlazeEvilBarChart.tsx`, `normalize.mjs` and `normalize.d.mts` into the consumer, retaining the expected `@/components/evilcharts/charts/recharts-bar-chart` import. It uses the exact same source-data contract as `GlazeEvilLineChart` and displays the original values in a semantic HTML table when chart graphics have not yet loaded or cannot load. The chart implementation is loaded after client mount to prevent upstream randomized loading fixtures from executing during static prerender.
+
+**Verified isolated consumer evidence (October 13, 2026):** Upstream registry installation created six source files. An isolated **Next.js 16.4.0** + shadcn/React consumer using source revision `95b9333a919bafc9ea3f3a25d5fa5559c8ffbb4a` passed TypeScript, optimized production build and static prerender. In headless Chromium, the bar chart hydrated and rendered at **1100×760** desktop and **390×844** mobile viewport sizes. A three-row semantic source table retained numeric zero separately from an explicit `Missing` value, the synthetic source text remained visible, and no page-level JavaScript errors were detected. Evidence marker: `GLAZE_BAR_CHART_CHROMIUM_HYDRATION_PASSED`. The test consumer and its own test server were cleaned up.
+
+This is Development-only build/browser evidence with **synthetic fixture data**. It does not establish real metric ingestion, native-platform support, assistive-technology access, color contrast, interactive keyboard/touch coverage, high-density performance, or Stable acceptance. No subscriptions, hosted telemetry or paid chart service were used.
