@@ -18,7 +18,7 @@ export function GlazeEvilLineChart({ chart }: { chart: ChartInput }) {
     return <p role="alert">Chart unavailable: invalid or missing source data.</p>;
   }
   const config = Object.fromEntries(data.series.map((s,i) => [s.key, {
-    label: s.label, color: PALETTE[i],
+    label: s.label, colors: { light: [PALETTE[i]], dark: [PALETTE[i]] },
   }]));
   return <section data-glz-evilcharts="development" aria-label={data.title}>
     <header>
