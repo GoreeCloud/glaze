@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0-development",
+  "lifecycle": "Development",
+  "stableBaseline": "1.7.0",
+  "consumerEligible": false,
+  "networkRequired": false,
+  "providers": [
+    {
+      "id": "lucide",
+      "name": "Lucide",
+      "repository": "https://github.com/lucide-icons/lucide",
+      "revision": "3f1255ecfa1b5b3a231e4aeb027781761204e187",
+      "license": "ISC",
+      "licensePath": "licenses/third-party/lucide.LICENSE"
+    },
+    {
+      "id": "tabler",
+      "name": "Tabler Icons",
+      "repository": "https://github.com/tabler/tabler-icons",
+      "revision": "a4ce1404bc6d24d3c365afe7b258d6bf6f48d62d",
+      "license": "MIT",
+      "licensePath": "licenses/third-party/tabler.LICENSE"
+    },
+    {
+      "id": "heroicons",
+      "name": "Heroicons",
+      "repository": "https://github.com/tailwindlabs/heroicons",
+      "revision": "616b7a4dbbf3d011760af8066262cd5c6b3868f3",
+      "license": "MIT",
+      "licensePath": "licenses/third-party/heroicons.LICENSE"
+    }
+  ],
+  "assets": [
+    {
+      "id": "thirdparty.lucide.sparkles",
+      "provider": "lucide",
+      "name": "sparkles",
+      "category": "decorative",
+      "label": "Sparkles",
+      "assetPath": "assets/third-party/lucide/sparkles.svg",
+      "upstreamPath": "icons/sparkles.svg",
+      "rtl": "preserve",
+      "geometry": "24x24",
+      "lifecycle": "development",
+      "accessibleName": "Sparkles"
+    },
+    {
+      "id": "thirdparty.lucide.scan-face",
+      "provider": "lucide",
+      "name": "scan-face",
+      "category": "action",
+      "label": "Face scan",
+      "assetPath": "assets/third-party/lucide/scan-face.svg",
+      "upstreamPath": "icons/scan-face.svg",
+      "rtl": "preserve",
+      "geometry": "24x24",
+      "lifecycle": "development",
+      "accessibleName": "Face scan"
+    },
+    {
+      "id": "thirdparty.tabler.device-desktop",
+      "provider": "tabler",
+      "name": "device-desktop",
+      "category": "device",
+      "label": "Desktop device",
+      "assetPath": "assets/third-party/tabler/device-desktop.svg",
+      "upstreamPath": "icons/outline/device-desktop.svg",
+      "rtl": "preserve",
+      "geometry": "24x24",
+      "lifecycle": "development",
+      "accessibleName": "Desktop device"
+    },
+    {
+      "id": "thirdparty.tabler.layout-grid",
+      "provider": "tabler",
+      "name": "layout-grid",
+      "category": "layout",
+      "label": "Grid layout",
+      "assetPath": "assets/third-party/tabler/layout-grid.svg",
+      "upstreamPath": "icons/outline/layout-grid.svg",
+      "rtl": "preserve",
+      "geometry": "24x24",
+      "lifecycle": "development",
+      "accessibleName": "Grid layout"
+    },
+    {
+      "id": "thirdparty.heroicons.adjustments-horizontal",
+      "provider": "heroicons",
+      "name": "adjustments-horizontal",
+      "category": "action",
+      "label": "Adjustments",
+      "assetPath": "assets/third-party/heroicons/adjustments-horizontal.svg",
+      "upstreamPath": "optimized/24/outline/adjustments-horizontal.svg",
+      "rtl": "preserve",
+      "geometry": "24x24",
+      "lifecycle": "development",
+      "accessibleName": "Adjustments"
+    },
+    {
+      "id": "thirdparty.heroicons.squares-2x2",
+      "provider": "heroicons",
+      "name": "squares-2x2",
+      "category": "layout",
+      "label": "Grid of squares",
+      "assetPath": "assets/third-party/heroicons/squares-2x2.svg",
+      "upstreamPath": "optimized/24/outline/squares-2x2.svg",
+      "rtl": "preserve",
+      "geometry": "24x24",
+      "lifecycle": "development",
+      "accessibleName": "Grid of squares"
+    }
+  ]
+}
