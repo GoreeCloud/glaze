@@ -52,7 +52,11 @@ for(const a of catalog.assets){
   assert.match(svg,/<svg\b/i,`svg root missing: ${a.id}`);
   assert.match(svg,/viewBox\s*=\s*["']0 0 24 24["']/i,`unexpected geometry: ${a.id}`);
   assert.match(svg,/currentColor/,`semantic color inheritance missing: ${a.id}`);
-  assert.doesNotMatch(svg,/<!(?:DOCTYPE|ENTITY)|<\?xml-stylesheet|<\s*(?:script|style|foreignObject|iframe|object|embed|image|use|a|animate|set)\b|\son[a-z]+\s*=|(?:xlink:)?href\s*=|\b(?:javascript|data|file|https?):|url\s*\(|@import/gi,`unsafe SVG markup: ${a.id}`);
+  // The sole allowed HTTP URL is the XML namespace declaration; it is not a fetched asset.
+  // Verify and remove that literal before rejecting every other remote URL or active payload.
+  assert.ok(svg.includes('xmlns="http://www.w3.org/2000/svg"'), `canonical SVG namespace missing: ${a.id}`);
+  const sanitizedNamespace = svg.replace(/xmlns\\s*=\\s*["']http:\\/\\/www\\.w3\\.org\\/2000\\/svg["']/gi, 'xmlns="verified-svg-namespace"');
+  assert.doesNotMatch(sanitizedNamespace,/<!(?:DOCTYPE|ENTITY)|<\?xml-stylesheet|<\s*(?:script|style|foreignObject|iframe|object|embed|image|use|a|animate|set)\b|\son[a-z]+\s*=|(?:xlink:)?href\s*=|\b(?:javascript|data|file|https?):|url\s*\(|@import/gi,`unsafe SVG markup: ${a.id}`);
   const uncommented = svg.replace(/<!--[\s\S]*?-->/g,'');
   for(const match of uncommented.matchAll(/<\s*\/?\s*([A-Za-z][A-Za-z0-9-]*)\b/g)) {
     assert.ok(new Set(['svg','path','circle','rect','line','polyline','polygon','ellipse','g']).has(match[1]),`unsupported element ${match[1]} in ${a.id}`);
