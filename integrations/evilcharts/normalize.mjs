@@ -10,7 +10,8 @@ function limitedString(s, length, name) {
 }
 function utc(s) {
   limitedString(s, 32, "UTC timestamp");
-  if (!ISO.test(s) || !Number.isFinite(Date.parse(s)) ||\n      new Date(s).toISOString() !== (s.includes(".") ? s : s.replace(/Z$/, ".000Z")))
+  if (!ISO.test(s) || !Number.isFinite(Date.parse(s)) ||
+      new Date(s).toISOString() !== (s.includes(".") ? s : s.replace(/Z$/, ".000Z")))
     throw new TypeError("Timestamp must be a valid UTC ISO-8601 string");
   return s;
 }
