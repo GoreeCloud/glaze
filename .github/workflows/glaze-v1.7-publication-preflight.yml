@@ -1,0 +1,95 @@
+name: Glaze V1.7 Publication Preflight (Non-Publishing)
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/prepare_glaze_v1_7_publication.py'
+      - '.github/workflows/glaze-v1.7-publication-preflight.yml'
+      - 'js/glaze-v1.7.0.mjs'
+      - 'js/glaze-v1.6*.mjs'
+      - 'contracts/v1.7/stable-scope.json'
+      - 'registry/lifecycle.json'
+      - 'acceptance/v1.7-stable.md'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/prepare_glaze_v1_7_publication.py'
+      - '.github/workflows/glaze-v1.7-publication-preflight.yml'
+      - 'js/glaze-v1.7.0.mjs'
+      - 'js/glaze-v1.6*.mjs'
+      - 'contracts/v1.7/stable-scope.json'
+      - 'registry/lifecycle.json'
+      - 'acceptance/v1.7-stable.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-rehearsal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out exact immutable source revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+
+      - name: Verify bounded Anchor source and compile publication preflight
+        run: |
+          set -euo pipefail
+          node scripts/verify_glaze_v1_7_stable.mjs
+          python3 -m py_compile scripts/prepare_glaze_v1_7_publication.py
+
+      - name: Build same source twice and compare released candidate bytes
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          python3 scripts/prepare_glaze_v1_7_publication.py --expected-sha "$EXPECTED_SHA" --output-dir "$RUNNER_TEMP/v17-a"
+          python3 scripts/prepare_glaze_v1_7_publication.py --expected-sha "$EXPECTED_SHA" --output-dir "$RUNNER_TEMP/v17-b"
+          (cd "$RUNNER_TEMP/v17-a" && sha256sum --check --strict SHA256SUMS)
+          (cd "$RUNNER_TEMP/v17-b" && sha256sum --check --strict SHA256SUMS)
+          for file in glaze-v1.7.0-source-runtime.tar.gz cyclonedx-1.5.json provenance.json SHA256SUMS; do
+            cmp "$RUNNER_TEMP/v17-a/$file" "$RUNNER_TEMP/v17-b/$file"
+          done
+
+      - name: Verify isolated release runtime and non-authorizing provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v17-extracted"
+          tar -xzf "$RUNNER_TEMP/v17-a/glaze-v1.7.0-source-runtime.tar.gz" -C "$RUNNER_TEMP/v17-extracted"
+          node --input-type=module -e "const m = await import(process.argv[1]); if(m.glazeV170?.version !== '1.7.0' || m.glazeV170?.retainedDev47RuntimeIncluded !== false || m.glazeV160?.version !== '1.6.0') process.exit(1)" \
+            "file://$RUNNER_TEMP/v17-extracted/glaze-v1.7.0/js/glaze-v1.7.0.mjs"
+          python3 - "$RUNNER_TEMP/v17-a/provenance.json" <<'PY'
+          import json
+          import sys
+          p = json.load(open(sys.argv[1], encoding='utf-8'))
+          assert p['publicationAuthorized'] is False
+          assert p['humanReleaseAcceptance'] == 'pending'
+          assert p['immutablePublicationReadback'] == 'pending'
+          assert p['anchorQualificationEffect'] == 'none'
+          PY
+          git diff --exit-code -- .
+
+      - name: Retain unaccepted source rehearsal artifacts for review
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: glaze-v1.7.0-publication-rehearsal-unaccepted
+          path: |
+            ${{ runner.temp }}/v17-a/glaze-v1.7.0-source-runtime.tar.gz
+            ${{ runner.temp }}/v17-a/cyclonedx-1.5.json
+            ${{ runner.temp }}/v17-a/provenance.json
+            ${{ runner.temp }}/v17-a/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 14
