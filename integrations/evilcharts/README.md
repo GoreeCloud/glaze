@@ -7,7 +7,7 @@ EvilCharts is [MIT licensed](https://github.com/legions-developer/evilcharts/blo
 ## Install in a compatible React consumer (Development only)
 
 1. Configure React, CSS, Recharts, Motion, and the `@/components` alias following [EvilCharts registry instructions](https://evilcharts.com) and the shadcn registry documentation.
-2. Install the **`recharts-line-chart` registry entry** and its dependencies through the public `@evilcharts` namespace. The upstream [registry.json](https://github.com/legions-developer/evilcharts/blob/main/registry.json) maps this entry to `components/evilcharts/charts/recharts-line-chart.tsx`.
+2. Install the **`recharts-line-chart` registry entry** and its dependencies with `npx shadcn@latest add @evilcharts/recharts-line-chart` (per the [official installation instructions](https://evilcharts.com/docs/recharts/installation)). The upstream [registry.json](https://github.com/legions-developer/evilcharts/blob/main/registry.json) maps this entry to `components/evilcharts/charts/recharts-line-chart.tsx`.
 3. Copy or import `GlazeEvilLineChart.tsx` and `normalize.mjs` into the compatible consumer, retaining the `@/components/evilcharts/charts/recharts-line-chart` import target.
 4. Pass **explicit, source-authoritative** chart payloads only. No artificial data generation or producer polling occurs in this adapter.
 
