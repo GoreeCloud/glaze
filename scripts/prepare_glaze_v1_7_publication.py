@@ -96,6 +96,20 @@ def prepare(expected_sha: str, out: Path) -> dict:
     require(not git("diff", "--name-only", "HEAD", "--", *paths),
             "dirty release source paths cannot be packaged")
     payload = {p: (ROOT / p).read_bytes() for p in paths}
+    # V1.7 must inherit the published V1.6 runtime, not merely share a version label.
+    accepted_v16 = next(r for r in lifecycle["releases"] if r["version"] == "1.6.0")
+    require(git("rev-parse", "v1.6.0^{commit}") == accepted_v16["acceptedReleaseSource"],
+            "published V1.6 tag/source authority mismatch")
+    from build_glaze_v1_6_final_artifact import stable_wrapper
+    for rel in runtime_closure():
+        if rel == ENTRYPOINT:
+            continue
+        if rel == "js/glaze-v1.6.0.mjs":
+            expected = stable_wrapper()
+        else:
+            expected = subprocess.check_output(
+                ["git", "show", "v1.6.0:" + rel], cwd=ROOT)
+        require(payload[rel] == expected, "inherited V1.6 runtime differs from accepted bytes: " + rel)
     listing = [{"path": p, "size": len(payload[p]), "sha256": digest(payload[p])} for p in paths]
     manifest = {
         "schemaVersion": 1, "product": "Glaze V1.7", "version": "1.7.0",
