@@ -1,0 +1,44 @@
+name: Glaze Third-Party Assets (Development)
+
+on:
+  pull_request:
+    paths:
+      - 'assets/third-party/**'
+      - 'licenses/third-party/**'
+      - 'registry/third-party-assets.development.json'
+      - 'js/third-party-assets.development.mjs'
+      - 'scripts/validate_third_party_assets_development.mjs'
+      - 'tests/third-party-assets.development.test.mjs'
+      - 'THIRD_PARTY_ASSETS.md'
+      - '.github/workflows/third-party-assets-development.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/third-party/**'
+      - 'licenses/third-party/**'
+      - 'registry/third-party-assets.development.json'
+      - 'js/third-party-assets.development.mjs'
+      - 'scripts/validate_third_party_assets_development.mjs'
+      - 'tests/third-party-assets.development.test.mjs'
+      - 'THIRD_PARTY_ASSETS.md'
+      - '.github/workflows/third-party-assets-development.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-asset-imports:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact PR/source revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Check checkout revision
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+      - name: Validate catalog, license, and SVG security boundaries
+        run: node scripts/validate_third_party_assets_development.mjs
+      - name: Test discovery and fail-closed resolver
+        run: node --test tests/third-party-assets.development.test.mjs
