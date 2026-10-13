@@ -55,7 +55,7 @@ for(const a of catalog.assets){
   // The sole allowed HTTP URL is the XML namespace declaration; it is not a fetched asset.
   // Verify and remove that literal before rejecting every other remote URL or active payload.
   assert.ok(svg.includes('xmlns="http://www.w3.org/2000/svg"'), `canonical SVG namespace missing: ${a.id}`);
-  const sanitizedNamespace = svg.replace(/xmlns\\s*=\\s*["']http:\\/\\/www\\.w3\\.org\\/2000\\/svg["']/gi, 'xmlns="verified-svg-namespace"');
+  const sanitizedNamespace = svg.replace('xmlns="http://www.w3.org/2000/svg"', 'xmlns="verified-svg-namespace"');
   assert.doesNotMatch(sanitizedNamespace,/<!(?:DOCTYPE|ENTITY)|<\?xml-stylesheet|<\s*(?:script|style|foreignObject|iframe|object|embed|image|use|a|animate|set)\b|\son[a-z]+\s*=|(?:xlink:)?href\s*=|\b(?:javascript|data|file|https?):|url\s*\(|@import/gi,`unsafe SVG markup: ${a.id}`);
   const uncommented = svg.replace(/<!--[\s\S]*?-->/g,'');
   for(const match of uncommented.matchAll(/<\s*\/?\s*([A-Za-z][A-Za-z0-9-]*)\b/g)) {
