@@ -1,0 +1,27 @@
+name: Validate EvilCharts Glaze Development Adapter
+on:
+  pull_request:
+    paths:
+      - "integrations/evilcharts/**"
+      - ".github/workflows/evilcharts-development.yml"
+  push:
+    branches: [main]
+    paths:
+      - "integrations/evilcharts/**"
+      - ".github/workflows/evilcharts-development.yml"
+permissions:
+  contents: read
+jobs:
+  adapter-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify checked-out revision
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+      - name: Test source-bound chart normalization
+        run: node --test integrations/evilcharts/tests/*.test.mjs
