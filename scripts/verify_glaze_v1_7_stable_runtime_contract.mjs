@@ -38,7 +38,7 @@ const acceptedV16SourceBlobs = Object.freeze({
   "glaze-v1.6-acceptance.dev.mjs": "a72a23b4a7176e4d2a816fa6bac1eb740162f148"
 });
 const gitBlobSha = bytes => createHash('sha1')
-  .update(`blob ${bytes.length}\\0`)
+  .update(`blob ${bytes.length}\0`)
   .update(bytes)
   .digest('hex');
 for (const [name, expectedSha] of Object.entries(acceptedV16SourceBlobs)) {
@@ -48,7 +48,7 @@ for (const [name, expectedSha] of Object.entries(acceptedV16SourceBlobs)) {
 const aggregateSource = readFileSync(
   fileURLToPath(new URL('../js/glaze-v1.6-development.mjs', import.meta.url)), 'utf8'
 );
-const inheritedSources = [...aggregateSource.matchAll(/export\\s+\\*\\s+from\\s+['"]\\.\\/(glaze-v1\\.6-[^'"]+\\.dev\\.mjs)['"]/g)]
+const inheritedSources = [...aggregateSource.matchAll(/export\s+\*\s+from\s+['"]\.\/(glaze-v1\.6-[^'"]+\.dev\.mjs)['"]/g)]
   .map(match => match[1]).sort();
 assert.deepEqual(inheritedSources, Object.keys(acceptedV16SourceBlobs)
   .filter(name => name !== 'glaze-v1.6-development.mjs').sort(),
