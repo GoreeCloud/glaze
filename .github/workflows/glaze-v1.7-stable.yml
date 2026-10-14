@@ -11,7 +11,10 @@ on:
       - 'GLAZE_V1_7_1_HARDENING.md'
       - 'acceptance/v1.7-stable.md'
       - 'contracts/v1.7/stable-scope.json'
+      - 'js/glaze-v1.6.0.mjs'
+      - 'js/glaze-v1.6-development.mjs'
       - 'js/glaze-v1.7.0.mjs'
+      - 'scripts/verify_glaze_v1_7_stable_runtime_contract.mjs'
       - 'js/glaze-v1.7.1-development.mjs'
       - 'scripts/verify_glaze_v1_7_stable.mjs'
       - '.github/workflows/glaze-v1.7-stable.yml'
@@ -26,7 +29,10 @@ on:
       - 'GLAZE_V1_7_1_HARDENING.md'
       - 'acceptance/v1.7-stable.md'
       - 'contracts/v1.7/stable-scope.json'
+      - 'js/glaze-v1.6.0.mjs'
+      - 'js/glaze-v1.6-development.mjs'
       - 'js/glaze-v1.7.0.mjs'
+      - 'scripts/verify_glaze_v1_7_stable_runtime_contract.mjs'
       - 'js/glaze-v1.7.1-development.mjs'
       - 'scripts/verify_glaze_v1_7_stable.mjs'
       - '.github/workflows/glaze-v1.7-stable.yml'
@@ -53,6 +59,9 @@ jobs:
 
       - name: Verify bounded V1.7 Stable authority
         run: node scripts/verify_glaze_v1_7_stable.mjs
+
+      - name: Verify executable V1.7 Stable runtime compatibility
+        run: node scripts/verify_glaze_v1_7_stable_runtime_contract.mjs
 
       - name: Verify V1.7 Stable does not import retained Development runtime
         shell: bash
