@@ -5,6 +5,8 @@ on:
     paths:
       - 'js/glaze-v1.7.1-development.mjs'
       - 'js/glaze-v1.7-development-v1-3.dev.mjs'
+      - 'js/glaze-v1.7-development.mjs'
+      - 'js/glaze-v1.7-*.dev.mjs'
       - 'js/icon-glyph-registry.mjs'
       - 'js/glaze-v1.7.0.mjs'
       - 'scripts/verify_glaze_v1_7_1_development_boundary.mjs'
@@ -14,6 +16,8 @@ on:
     paths:
       - 'js/glaze-v1.7.1-development.mjs'
       - 'js/glaze-v1.7-development-v1-3.dev.mjs'
+      - 'js/glaze-v1.7-development.mjs'
+      - 'js/glaze-v1.7-*.dev.mjs'
       - 'js/icon-glyph-registry.mjs'
       - 'js/glaze-v1.7.0.mjs'
       - 'scripts/verify_glaze_v1_7_1_development_boundary.mjs'
@@ -32,6 +36,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
