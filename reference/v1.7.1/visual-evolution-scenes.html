@@ -76,6 +76,17 @@
 </div></div>
 </div>
 </section>
+<dialog id="memo-customize-dialog" class="memo-editor" aria-labelledby="memo-editor-title" aria-describedby="memo-editor-description">
+<div class="memo-editor-inner">
+<div><h2 id="memo-editor-title" class="memo-editor-heading">Customize memo</h2><p id="memo-editor-description" class="memo-editor-helper">Change this example note. Nothing is saved.</p></div>
+<fieldset><legend>Note color</legend><div class="memo-editor-swatches" role="group" aria-label="Choose example note color">
+<button type="button" class="memo-color-swatch" data-memo-tone="" aria-pressed="false"><span class="memo-color-dot" aria-hidden="true"></span>Default</button>
+<button type="button" class="memo-color-swatch" data-memo-tone="warm" aria-pressed="false"><span class="memo-color-dot" aria-hidden="true"></span>Clay</button>
+<button type="button" class="memo-color-swatch" data-memo-tone="green" aria-pressed="false"><span class="memo-color-dot" aria-hidden="true"></span>Meadow</button>
+<button type="button" class="memo-color-swatch" data-memo-tone="rose" aria-pressed="false"><span class="memo-color-dot" aria-hidden="true"></span>Rose</button>
+</div></fieldset>
+<label class="memo-editor-label" for="memo-label-input">Label<input id="memo-label-input" class="memo-editor-input" maxlength="24" autocomplete="off"></label>
+<div class="memo-editor-actions"><button type="button" id="memo-customize-cancel" class="btn">Cancel</button><button type="button" id="memo-customize-apply" class="btn btn-primary">Apply to memo</button></div></div></dialog>
 <dialog id="sample-dialog" class="scene-dialog" aria-labelledby="dialog-heading"><h2 id="dialog-heading">A thoughtful interaction</h2><p>This dialog is a local demonstration of Glaze presentation, not an actual account or service action.</p><button type="button" class="btn btn-primary" id="dialog-close">Done</button></dialog>
 <p class="scene-notice" role="status" aria-live="polite" id="scene-status">Example scenes ready.</p>
 <p class="footer">Glaze V1.7.1 · Development · No consumer or release acceptance asserted.</p>
