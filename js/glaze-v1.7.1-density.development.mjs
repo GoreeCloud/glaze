@@ -14,6 +14,6 @@ export function wireDensity(root,scope,status) {
     if(status)status.textContent='Sample density: '+choice+'. No setting was saved.';
   }
   for(const b of buttons)b.addEventListener('click',()=>change(b.dataset.density));
-  change('comfortable');
+  applyDensity(root,'comfortable',buttons);
   return change;
 }
