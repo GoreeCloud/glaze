@@ -116,6 +116,21 @@ const server=http.createServer((req,res)=>{
       await page.keyboard.press('Escape');
       assert.equal(await page.$eval('.scene-note-menu',e=>e.hidden),true);
       assert.equal(await page.$eval('[data-note-more]',e=>e.getAttribute('aria-expanded')),'false');
+      await page.click('[data-note-more]');
+      await page.click('[data-note-action="pin"]');
+      assert.equal(await page.$eval('.scene-memo',e=>e.dataset.pinned),'false');
+      assert.equal(await page.evaluate(()=>document.querySelectorAll('.scene-pin-indicator').length),0);
+      await page.click('[data-note-more]');
+      await page.click('[data-note-action="appearance"]');
+      assert.equal(await page.$eval('#memo-customize-dialog',e=>e.open),true);
+      await page.click('#memo-customize-cancel');
+      assert.equal(await page.$eval('#memo-customize-dialog',e=>e.open),false);
+      for(const mode of ['empty','error','loading']){
+        await page.click('[data-content-mode="'+mode+'"]');
+        assert.equal(await page.$eval('#scene-content-'+mode,e=>e.hidden),false);
+        assert.equal(await page.$eval('[data-content-mode="'+mode+'"]',e=>e.getAttribute('aria-pressed')),'true');
+        assert.ok((await page.$eval('#scene-content-feedback',e=>e.textContent)).includes('Illustrative'));
+      }
       await page.click('#dialog-open');
       assert.equal(await page.$eval('#sample-dialog',el=>el.open),true);
       await page.keyboard.press('Escape');
