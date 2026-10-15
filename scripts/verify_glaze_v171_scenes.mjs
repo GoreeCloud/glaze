@@ -18,6 +18,18 @@ assert.match(html,/role="tablist"/);
 assert.match(html,/role="tabpanel"/);
 assert.match(html,/data-colorize/);
 assert.match(html,/id="memo-customize-dialog"/);
+assert.match(html,/id="glaze-notice-preview"/);
+assert.match(html,/aria-live="polite"/);
+const noticeSource=read('js/glaze-v1.7.1-notice-demo.development.mjs');
+const noticeCss=read('css/glaze-v1.7.1-notice-demo.development.css');
+for(const tone of ['security','warning','privacy']) {
+ assert.ok(html.includes('data-notice-demo="'+tone+'"'));
+ assert.ok(noticeSource.includes(tone));
+ assert.ok(noticeCss.includes('data-tone='+tone));
+}
+for(const restricted of ['localStorage','sessionStorage','sendBeacon','XMLHttpRequest']) assert.ok(!noticeSource.includes(restricted));
+assert.match(noticeCss,/forced-colors:active/);
+
 assert.match(html,/id="memo-label-input"/);
 assert.match(html,/data-memo-tone="green"/);
 assert.match(html,/glaze-v1.7.1-memo-customizer.development.mjs/);
