@@ -1,6 +1,7 @@
 /* Glaze 1.7.1 visual-evolution gallery — Development-only.
    NOT a Stable entrypoint; variables are loaded from the companion JSON.
    All icon symbols come from Glaze's retained Development icon-glyph registry. */
+@import url("./glaze-v1.7.1-density.development.css");
 :root{
   color-scheme:light;
   --canvas:#f4f4f0;--surface:#fff;--surfaceRaised:#fff;--sidebar:#ebeee9;
