@@ -6,6 +6,7 @@
 <meta name="color-scheme" content="light dark">
 <title>Glaze 1.7.1 — Visual Evolution Lab (Development)</title>
 <link rel="stylesheet" href="../../css/glaze-v1.7.1-visual-evolution.development.css">
+<link rel="stylesheet" href="../../css/glaze-v1.7.1-glyph-lab.development.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -114,6 +115,27 @@
         <div class="empty-search" id="empty-search" role="status">No matching component examples.</div>
       </div>
     </section>
+    <section class="section" id="glyphs" aria-labelledby="glyph-heading">
+      <div class="card glyph-panel">
+        <h2 id="glyph-heading">Canonical vector glyphs</h2>
+        <p class="glyph-panel-intro">Explore the 16 Glaze Development registry symbols. This gallery uses the existing first-party vector sprite—not a replacement icon family.</p>
+        <div class="glyph-toolbar">
+          <label class="glyph-filter" for="glyph-search">Find a glyph
+            <input type="search" id="glyph-search" placeholder="Search glyph names" autocomplete="off">
+          </label>
+          <div class="glyph-size-controls" role="group" aria-label="Glyph optical size">
+            <button type="button" data-glyph-size="16" aria-pressed="false">Small</button>
+            <button type="button" data-glyph-size="24" aria-pressed="true">Standard</button>
+            <button type="button" data-glyph-size="32" aria-pressed="false">Display</button>
+          </div>
+        </div>
+        <div id="glyph-grid" class="glyph-grid" aria-label="Canonical glyph samples"></div>
+        <div class="glyph-meta">
+          <span id="glyph-count" role="status" aria-live="polite">Loading glyphs</span>
+          <output id="glyph-selection" class="glyph-selected">Select a glyph to see its registered symbol ID.</output>
+        </div>
+      </div>
+    </section>
     <footer class="footer"><span>Glaze V1.7.1 · Development preview · No production-state claims</span><span>Locally rendered • no tracking • no remote assets</span></footer>
   </main>
 </div>
@@ -179,5 +201,6 @@ document.querySelectorAll('.nav-link').forEach(link=>link.addEventListener('clic
   link.setAttribute('aria-current','page');
 }));
 </script>
+<script type="module" src="../../js/glaze-v1.7.1-glyph-lab.development.mjs"></script>
 </body>
 </html>
