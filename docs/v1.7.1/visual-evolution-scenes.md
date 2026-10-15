@@ -36,3 +36,21 @@ tab selection, native dialog dismissal, illustrative progress, palette
 examples, and reduced-motion/forced-colors behavior. Its results are
 **Development browser smoke evidence only**, not physical-device, human
 visual, assistive-technology, performance, energy or release acceptance.
+
+## Memo appearance customization — Development
+
+The Memos scene now uses a dedicated, native-dialog-based appearance editor,
+replacing the older color-cycling control. It previews four named options
+(Default, Clay, Meadow, Rose) and permits bounded editing of an illustrative
+note label (maximum 24 characters). Apply changes only to the synthetic note
+already displayed in the current page; Cancel and Escape must leave it unchanged.
+
+Focus moves into the dialog on opening and returns to the invoking note control
+on close. Visible focus, reduced-motion, and forced-colors styles are included.
+No account access, persistent preference, service endpoint, note database,
+storage migration, or production Memos behavior is implied.
+
+Development Chromium regression exercises Apply, Cancel, Escape, label edits,
+focus restoration, the responsive scenes, and other existing interactions at
+320, 390, 768, 1280 and 1600 px. Manual screen-reader and physical-device
+acceptance remain separate open gates.
