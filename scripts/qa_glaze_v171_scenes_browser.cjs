@@ -37,6 +37,16 @@ const server=http.createServer((req,res)=>{
       let state=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:innerWidth,memos:document.querySelectorAll('.scene-memo').length,dock:document.querySelectorAll('.scene-dock button').length}));
       assert.ok(state.scroll<=width+1,'Horizontal overflow '+JSON.stringify(state));
       assert.equal(state.memos,5);assert.equal(state.dock,5);
+      if(width===390){
+        const composition=await page.evaluate(()=>{
+          const choices=Array.from(document.querySelectorAll('.scene-theme-link'),e=>Math.round(e.getBoundingClientRect().top));
+          return {masonry:getComputedStyle(document.querySelector('.scene-masonry')).columnCount,themeRows:choices};
+        });
+        assert.equal(composition.masonry,'2','two-column mobile notes');
+        assert.equal(composition.themeRows[0],composition.themeRows[1],'first theme row');
+        assert.equal(composition.themeRows[2],composition.themeRows[3],'second theme row');
+        assert.ok(composition.themeRows[2]>composition.themeRows[0],'balanced two-row theme picker');
+      }
       if(process.env.GLAZE_QA_SCREENSHOTS){
         fs.mkdirSync(process.env.GLAZE_QA_SCREENSHOTS,{recursive:true});
         await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'memos-'+width+'.png'),fullPage:true});
