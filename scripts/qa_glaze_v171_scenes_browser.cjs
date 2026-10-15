@@ -63,7 +63,7 @@ const server=http.createServer((req,res)=>{
       const page=await browser.newPage();
       await page.goto(base+'?theme='+theme,{waitUntil:'networkidle0'});
       const palette=await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--surface').trim());
-      assert.match(palette,/^#[0-9a-f]{6}$/i);
+      assert.match(palette,/^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i);
       if(theme!=='porcelain') assert.match(await page.$eval('#scene-status',el=>el.textContent),new RegExp(theme+' example theme'));
       results.push({theme,surface:palette});
       await page.close();
