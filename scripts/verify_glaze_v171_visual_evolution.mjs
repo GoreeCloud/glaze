@@ -71,6 +71,20 @@ assertMessage(!/\b(?:https?:)?\/\/(?!localhost)/i.test(html.replace('<!doctype h
 assertMessage(html.includes('Illustrative states only'),'Example-state label missing');
 assertMessage(html.includes('Development preview'),'Development notice missing');
 
+const glyphJS=read('js/glaze-v1.7.1-glyph-lab.development.mjs');
+const glyphCSS=read('css/glaze-v1.7.1-glyph-lab.development.css');
+const glyphList=glyphJS.match(/const names=\[([^\]]+)\]/);
+assertMessage(Boolean(glyphList),'Canonical glyph manifest missing from lab');
+const glyphNames=Array.from(glyphList[1].matchAll(/'([a-z]+)'/g),m=>m[1]);
+assert.equal(glyphNames.length,16,'Glyph preview should enumerate canonical registry');
+assert.equal(new Set(glyphNames).size,glyphNames.length,'Duplicate gallery icon');
+for(const name of glyphNames)
+ assertMessage(iconSymbols.includes('<symbol id="'+name+'"'),'Unknown canonical glyph '+name);
+assertMessage(html.includes('id="glyph-grid"'),'Glyph explorer absent');
+assertMessage(html.includes('glaze-v1.7.1-glyph-lab.development.mjs'),'Glyph controller absent');
+assertMessage(glyphCSS.includes('forced-colors:active'),'Glyph forced colors fallback absent');
+assertMessage(glyphCSS.includes(':focus-visible'),'Glyph visible focus missing');
+
 console.log('Visual Evolution Development: structural contract PASS');
 console.log('4 theme examples × 11 foreground/background contrast checks ≥ 4.5');
 console.log('Canonical symbol references, local assets, responsive/accessibility fallbacks and Stable separation verified.');
