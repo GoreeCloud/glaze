@@ -9,3 +9,13 @@
 .scene-memo button{color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:7px 10px}
 .scene-memo button:hover{border-color:var(--accent)}
 .scene-memo button:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+
+/* Compact-width Memos uses true two-column Pinterest-style composition. */
+@media(min-width:360px) and (max-width:600px){
+  .scene-masonry{columns:2;column-gap:10px}
+  .scene-memo{padding:12px;margin-bottom:10px}
+  .scene-memo h3{font-size:13px}
+  .scene-memo p{font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+  .scene-label{font-size:10px;margin:7px 0 6px;padding:4px 7px}
+  .scene-memo button{font-size:11px;padding:7px 9px;min-height:35px}
+}
