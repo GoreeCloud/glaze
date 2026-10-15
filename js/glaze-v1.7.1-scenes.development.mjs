@@ -49,3 +49,18 @@ document.getElementById('progress-update').addEventListener('click',()=>{
  document.getElementById('sample-progress-value').textContent=progress.value+'%';
  status.textContent='Illustrative progress updated; no background process ran.';
 });
+
+// Optional, non-persistent review theme: ?theme=cedar|nocturne|contrast.
+const selectedTheme=new URLSearchParams(location.search).get('theme');
+if(['cedar','nocturne','contrast'].includes(selectedTheme)){
+ try{
+  const url=new URL('../tokens/v1.7.1/visual-evolution.development.json',import.meta.url);
+  const response=await fetch(url);if(!response.ok)throw new Error('Local theme unavailable');
+  const manifest=await response.json();
+  if(manifest.lifecycle!=='Development'||manifest.consumerEligible!==false)throw new Error('Unapproved palette');
+  const colors=manifest.themeSamples[selectedTheme];
+  for(const [role,value] of Object.entries(colors))if(/^#[0-9a-f]{6}$/i.test(value))document.documentElement.style.setProperty('--'+role,value);
+  document.documentElement.style.colorScheme=colors.appearance==='dark'?'dark':'light';
+  status.textContent=selectedTheme+' example theme loaded; no theme setting was saved.';
+ }catch{status.textContent='Theme preview unavailable; default example colors retained.';}
+}
