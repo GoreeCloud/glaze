@@ -212,6 +212,20 @@ const server=http.createServer((req,res)=>{
       results.push({theme,surface:palette});
       await page.close();
     }
+    const rtl=await browser.newPage();
+    await rtl.setViewport({width:390,height:844});
+    await rtl.goto(base,{waitUntil:'networkidle0'});
+    await rtl.evaluate(()=>document.documentElement.dir='rtl');
+    assert.ok(await rtl.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'RTL horizontal overflow');
+    await rtl.click('[data-note-more]');
+    await rtl.keyboard.press('Escape');
+    assert.equal(await rtl.$eval('.scene-note-menu',e=>e.hidden),true);
+    await rtl.click('#tab-launcher');
+    await rtl.click('#drawer-toggle');
+    assert.equal(await rtl.$eval('#scene-drawer',e=>e.hidden),false);
+    await rtl.click('#drawer-close');
+    results.push({rtl:true,viewport:390,menu:true,drawer:true});
+    await rtl.close();
     const page=await browser.newPage();
     await page.setViewport({width:390,height:844});
     const cdp=await page.createCDPSession();
