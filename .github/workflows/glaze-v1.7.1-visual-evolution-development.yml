@@ -9,6 +9,12 @@ on:
       - 'docs/v1.7.1/visual-evolution.md'
       - 'scripts/verify_glaze_v171_visual_evolution.mjs'
       - 'assets/icon-glyphs/system-symbols.svg'
+      - 'reference/v1.7.1/visual-evolution-scenes.html'
+      - 'css/glaze-v1.7.1-scenes*.css'
+      - 'js/glaze-v1.7.1-scenes.development.mjs'
+      - 'scripts/verify_glaze_v171_scenes.mjs'
+      - 'scripts/qa_glaze_v171_scenes_browser.cjs'
+      - 'docs/v1.7.1/visual-evolution-scenes.md'
       - '.github/workflows/glaze-v1.7.1-visual-evolution-development.yml'
   push:
     branches: [main]
@@ -19,6 +25,12 @@ on:
       - 'docs/v1.7.1/visual-evolution.md'
       - 'scripts/verify_glaze_v171_visual_evolution.mjs'
       - 'assets/icon-glyphs/system-symbols.svg'
+      - 'reference/v1.7.1/visual-evolution-scenes.html'
+      - 'css/glaze-v1.7.1-scenes*.css'
+      - 'js/glaze-v1.7.1-scenes.development.mjs'
+      - 'scripts/verify_glaze_v171_scenes.mjs'
+      - 'scripts/qa_glaze_v171_scenes_browser.cjs'
+      - 'docs/v1.7.1/visual-evolution-scenes.md'
       - '.github/workflows/glaze-v1.7.1-visual-evolution-development.yml'
 
 permissions:
@@ -43,6 +55,12 @@ jobs:
 
       - name: Verify development-only visual source
         run: node scripts/verify_glaze_v171_visual_evolution.mjs
+
+      - name: Verify development-only application scenes
+        run: node scripts/verify_glaze_v171_scenes.mjs
+
+      - name: Validate browser test harness syntax
+        run: node --check scripts/qa_glaze_v171_scenes_browser.cjs
 
       - name: Verify checkout remains unchanged
         run: git diff --exit-code -- .
