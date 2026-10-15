@@ -15,3 +15,24 @@ The reference scene uses canonical Glaze SVG symbols, native semantic controls, 
 **Qualification boundaries:** Source-contract and repository checks cannot establish rendered quality, native parity, screen-reader accessibility, keyboard-device behavior, performance or energy acceptance. Do not adopt into consumers or publish a release until the applicable separate evidence is reviewed and approved.
 
 **Source boundaries:** Current Stable Glaze remains 1.7.0. These scenes are not imported by its entrypoint. V1.6 stays the historical rollback baseline.
+
+## Accessible sample-theme navigation — Development
+
+The experience scenes now show four explicitly labeled theme choices (Porcelain, Cedar,
+Nocturne, Contrast), with active selection exposed by `aria-current`.
+Theme differences are examples rather than new official brand-color authority;
+selection uses a local URL parameter and never persists a user preference.
+
+Component refinements include high-visibility keyboard focus, responsive grouping,
+reduced-motion and forced-colors alternatives, and a narrow semantic edge for
+**synthetic, explicitly labelled** information and warning examples. These
+presentations do not provide evidence of live connectivity, security, privacy,
+sync or provider state.
+
+The independently runnable Chromium test harness is
+`scripts/qa_glaze_v171_scenes_browser.cjs`. It tests compact through
+wide viewports, note color changes, the five-column Launcher drawer, roving
+tab selection, native dialog dismissal, illustrative progress, palette
+examples, and reduced-motion/forced-colors behavior. Its results are
+**Development browser smoke evidence only**, not physical-device, human
+visual, assistive-technology, performance, energy or release acceptance.
