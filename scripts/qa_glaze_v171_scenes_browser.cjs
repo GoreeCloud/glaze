@@ -153,6 +153,12 @@ const server=http.createServer((req,res)=>{
       await gallery.click('[data-glyph="security"]');
       assert.ok((await gallery.$eval('#glyph-selection',el=>el.textContent)).includes('#security'));
       assert.equal(await gallery.$eval('[data-glyph="security"]',el=>el.getAttribute('aria-pressed')),'true');
+      await gallery.evaluate(()=>{
+        const input=document.getElementById('glyph-search');
+        input.value='';
+        input.dispatchEvent(new Event('input',{bubbles:true}));
+      });
+      assert.equal(await gallery.evaluate(()=>document.querySelectorAll('.glyph-tile:not([hidden])').length),16);
       await gallery.setViewport({width:390,height:844});
       assert.ok(await gallery.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'glyph mobile overflow');
       await gallery.setViewport({width:1280,height:900});
