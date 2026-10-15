@@ -101,6 +101,7 @@ p{margin:0}
 .state strong{display:block;font-size:12px}
 .state span{display:block;font-size:10px;color:var(--muted)}
 .state[data-tone="success"]{--status:var(--success)}
+.state[data-tone="security"]{--status:var(--security)}
 .state[data-tone="warning"]{--status:var(--warning)}
 .state[data-tone="information"]{--status:var(--information)}
 .state[data-tone="privacy"]{--status:var(--privacy)}
