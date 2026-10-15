@@ -7,3 +7,5 @@
 .scene-memo[data-tone=rose]{background:color-mix(in srgb,#B86F8A 15%,var(--surface))}
 .scene-label{display:inline-block;border:1px solid var(--border);border-radius:99px;font-size:11px;margin:8px;padding:4px 8px}
 .scene-memo button{color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:7px 10px}
+.scene-memo button:hover{border-color:var(--accent)}
+.scene-memo button:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
