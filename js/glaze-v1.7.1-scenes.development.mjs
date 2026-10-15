@@ -27,9 +27,18 @@ document.querySelectorAll('[data-colorize]').forEach(button=>button.addEventList
 
 const drawer=document.getElementById('scene-drawer');
 const toggle=document.getElementById('drawer-toggle');
-function openDrawer(open){drawer.hidden=!open;toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'Close app drawer':'Open app drawer';if(!open)toggle.focus();}
+function openDrawer(open){
+  drawer.hidden=!open;
+  toggle.setAttribute('aria-expanded',String(open));
+  toggle.textContent=open?'Close app drawer':'Open app drawer';
+  if(open)document.getElementById('drawer-close').focus();
+  else toggle.focus();
+}
 toggle.addEventListener('click',()=>openDrawer(drawer.hidden));
 document.getElementById('drawer-close').addEventListener('click',()=>openDrawer(false));
+drawer.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){event.preventDefault();openDrawer(false);}
+});
 const svgNS='http://www.w3.org/2000/svg';
 const glyphNames=['folder','cloud','device','network','account','search','settings','share','privacy','security'];
 for(const name of glyphNames){
