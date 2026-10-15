@@ -52,3 +52,21 @@ cards.forEach((card,index)=>{
   else if(event.key==='Tab')closeMenu();
  });
  edit.addEventListener('click',()=>{closeMenu();appearance.click();});
+ pin.addEventListener('click',()=>{
+  const pinned=card.dataset.pinned!=='true';
+  card.dataset.pinned=String(pinned);
+  pin.textContent=pinned?'Unpin note':'Pin note';
+  let flag=card.querySelector('.scene-pin-indicator');
+  if(pinned){
+   if(!flag){flag=document.createElement('span');flag.className='scene-pin-indicator';flag.textContent='Pinned';card.querySelector('h3').after(flag);}
+  }else flag?.remove();
+  status.textContent=pinned?'Example memo pinned locally. Nothing was saved.':'Example memo unpinned locally. Nothing was saved.';
+  closeMenu(true);
+ });
+});
+document.addEventListener('pointerdown',event=>{
+ if(active&&!active.card.contains(event.target))closeMenu();
+});
+document.addEventListener('focusin',event=>{
+ if(active&&!active.menu.contains(event.target)&&event.target!==active.button)closeMenu();
+});
