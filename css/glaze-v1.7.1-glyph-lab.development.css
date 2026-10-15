@@ -16,3 +16,6 @@
 .glyph-tile-label{font-size:11px;text-align:center}
 .glyph-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:11px;color:var(--muted)}
 .glyph-selected{color:var(--text);font-weight:730}
+@media(max-width:600px){.glyph-panel{padding:16px}.glyph-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.glyph-toolbar{align-items:stretch}.glyph-size-controls button{flex:1}}
+@media(pointer:coarse){.glyph-size-controls button{min-height:44px}}
+@media(forced-colors:active){.glyph-tile,.glyph-filter input,.glyph-size-controls button{background:Canvas;color:CanvasText;border-color:CanvasText}.glyph-tile svg{color:CanvasText}.glyph-tile[aria-pressed="true"],.glyph-size-controls button[aria-pressed="true"]{outline:2px solid Highlight;outline-offset:-2px}}
