@@ -119,6 +119,9 @@ const server=http.createServer((req,res)=>{
       assert.equal(await page.$eval('.scene-note-menu',e=>e.hidden),true);
       assert.equal(await page.$eval('[data-note-more]',e=>e.getAttribute('aria-expanded')),'false');
       await page.click('[data-note-more]');
+      await page.click('.scene-memo h3');
+      assert.equal(await page.$eval('.scene-note-menu',e=>e.hidden),true,'click within note outside menu dismisses it');
+      await page.click('[data-note-more]');
       await page.click('[data-note-action="pin"]');
       assert.equal(await page.$eval('.scene-memo',e=>e.dataset.pinned),'false');
       assert.equal(await page.evaluate(()=>document.querySelectorAll('.scene-pin-indicator').length),0);
