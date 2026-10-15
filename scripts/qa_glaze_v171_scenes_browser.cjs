@@ -37,6 +37,15 @@ const server=http.createServer((req,res)=>{
       let state=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:innerWidth,memos:document.querySelectorAll('.scene-memo').length,dock:document.querySelectorAll('.scene-dock button').length}));
       assert.ok(state.scroll<=width+1,'Horizontal overflow '+JSON.stringify(state));
       assert.equal(state.memos,5);assert.equal(state.dock,5);
+      const beforePad=await page.$eval('.section .scene-card',el=>parseFloat(getComputedStyle(el).paddingTop));
+      await page.click('[data-density="compact"]');
+      const afterPad=await page.$eval('.section .scene-card',el=>parseFloat(getComputedStyle(el).paddingTop));
+      assert.ok(afterPad<beforePad,'Compact density must actually reduce card padding: '+afterPad+'/'+beforePad);
+      assert.equal(await page.evaluate(()=>document.documentElement.dataset.glazeDensity),'compact');
+      assert.equal(await page.$eval('[data-density="compact"]',el=>el.getAttribute('aria-pressed')),'true');
+      await page.click('[data-density="comfortable"]');
+      assert.equal(await page.$eval('.section .scene-card',el=>parseFloat(getComputedStyle(el).paddingTop)),beforePad);
+      assert.equal(await page.evaluate(()=>document.documentElement.dataset.glazeDensity),'comfortable');
       if(width===390){
         const composition=await page.evaluate(()=>{
           const choices=Array.from(document.querySelectorAll('.scene-theme-link'),e=>Math.round(e.getBoundingClientRect().top));
@@ -120,6 +129,24 @@ const server=http.createServer((req,res)=>{
       }
       results.push({width,pass:true,drawerColumns:5,keyboard:true,dialog:true,progress:true});
       await page.close();
+    }
+    {
+      const gallery=await browser.newPage();
+      await gallery.goto(base.replace('visual-evolution-scenes.html','visual-evolution.html'),{waitUntil:'networkidle0'});
+      const initial=await gallery.$eval('.showcase-item',el=>parseFloat(getComputedStyle(el).paddingTop));
+      await gallery.click('[data-density="compact"]');
+      const dense=await gallery.$eval('.showcase-item',el=>parseFloat(getComputedStyle(el).paddingTop));
+      assert.ok(dense<initial,'Gallery density must affect component geometry');
+      assert.equal(await gallery.evaluate(()=>document.documentElement.dataset.glazeDensity),'compact');
+      await gallery.click('[data-density="comfortable"]');
+      assert.equal(await gallery.$eval('.showcase-item',el=>parseFloat(getComputedStyle(el).paddingTop)),initial);
+      await gallery.click('[data-theme="nocturne"]');
+      assert.equal(await gallery.$eval('[data-theme="nocturne"]',el=>el.getAttribute('aria-pressed')),'true');
+      await gallery.type('#component-search','glyphs');
+      assert.ok(await gallery.$eval('.showcase-item.hidden',els=>els.length)>=1);
+      assert.ok(await gallery.$eval('a[href="./visual-evolution-scenes.html"]',el=>Boolean(el.href)));
+      results.push({gallery:true,density:true,theme:true,search:true});
+      await gallery.close();
     }
     for(const theme of ['porcelain','cedar','nocturne','contrast']){
       const page=await browser.newPage();
