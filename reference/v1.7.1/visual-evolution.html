@@ -53,6 +53,7 @@
           <div class="feature-actions">
             <button class="btn btn-primary" id="preview-action" type="button">Try an interaction <svg class="icon" aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#forward"></use></svg></button>
             <a class="btn" href="#components">View components</a>
+            <a class="btn" href="./visual-evolution-scenes.html">Explore app scenes</a>
           </div>
         </div>
         <div class="feature-art" aria-hidden="true">
@@ -118,6 +119,7 @@
 </div>
 <div class="toast" id="demo-toast" role="status" aria-live="polite" hidden></div>
 <script type="module">
+import {wireDensity} from '../../js/glaze-v1.7.1-density.development.mjs';
 const root=document.documentElement;
 const choices=Array.from(document.querySelectorAll('[data-theme]'));
 const feedback=document.getElementById('theme-feedback');
@@ -158,10 +160,7 @@ function showToast(message){toast.textContent=message;toast.hidden=false;toast.f
 document.getElementById('preview-action').addEventListener('click',()=>showToast('Interaction preview · no external action performed.'));
 document.getElementById('sample-primary').addEventListener('click',()=>showToast('Primary action preview'));
 document.getElementById('sample-secondary').addEventListener('click',()=>showToast('Secondary action preview'));
-document.querySelectorAll('[data-density]').forEach(button=>button.addEventListener('click',()=>{
-  document.querySelectorAll('[data-density]').forEach(v=>v.setAttribute('aria-pressed',String(v===button)));
-  showToast('Preview density: '+button.dataset.density);
-}));
+wireDensity(root,document);
 document.getElementById('demo-switch').addEventListener('click',event=>{
   const control=event.currentTarget;const checked=control.getAttribute('aria-checked')!=='true';
   control.setAttribute('aria-checked',String(checked));document.getElementById('demo-switch-label').textContent=checked?'On':'Off';
