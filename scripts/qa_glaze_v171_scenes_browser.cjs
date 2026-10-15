@@ -104,6 +104,8 @@ const server=http.createServer((req,res)=>{
       assert.equal(await page.$eval('.scene-memo img',el=>el.tagName).catch(()=>null),null,'no injected HTML markup');
 
       await page.click('[data-note-more]');
+      if(process.env.GLAZE_QA_SCREENSHOTS)
+        await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'note-menu-'+width+'.png'),fullPage:true});
       assert.equal(await page.$eval('[data-note-more]',e=>e.getAttribute('aria-expanded')),'true');
       assert.equal(await page.evaluate(()=>document.activeElement.dataset.noteAction),'appearance');
       await page.keyboard.press('ArrowDown');
