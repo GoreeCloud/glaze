@@ -37,9 +37,21 @@ const server=http.createServer((req,res)=>{
       let state=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:innerWidth,memos:document.querySelectorAll('.scene-memo').length,dock:document.querySelectorAll('.scene-dock button').length}));
       assert.ok(state.scroll<=width+1,'Horizontal overflow '+JSON.stringify(state));
       assert.equal(state.memos,5);assert.equal(state.dock,5);
+      if(process.env.GLAZE_QA_SCREENSHOTS){
+        fs.mkdirSync(process.env.GLAZE_QA_SCREENSHOTS,{recursive:true});
+        await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'memos-'+width+'.png'),fullPage:true});
+      }
       await page.click('#tab-launcher');await page.click('#drawer-toggle');
       const drawer=await page.evaluate(()=>({open:!document.querySelector('#scene-drawer').hidden,columns:getComputedStyle(document.querySelector('#drawer-grid')).gridTemplateColumns.split(' ').length,items:document.querySelectorAll('#drawer-grid button').length}));
       assert.deepEqual(drawer,{open:true,columns:5,items:10});
+      assert.equal(await page.evaluate(()=>document.activeElement.id),'drawer-close','drawer initial focus');
+      await page.keyboard.press('Escape');
+      assert.equal(await page.$eval('#scene-drawer',el=>el.hidden),true,'Escape closes drawer');
+      assert.equal(await page.evaluate(()=>document.activeElement.id),'drawer-toggle','drawer focus restoration');
+      await page.click('#drawer-toggle');
+      if(process.env.GLAZE_QA_SCREENSHOTS){
+        await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'drawer-'+width+'.png'),fullPage:true});
+      }
       await page.click('#drawer-close');await page.click('#tab-memos');
       await page.click('[data-colorize]');
       assert.equal(await page.$eval('.scene-memo',el=>el.dataset.tone),'green');
@@ -63,6 +75,8 @@ const server=http.createServer((req,res)=>{
       const page=await browser.newPage();
       await page.goto(base+'?theme='+theme,{waitUntil:'networkidle0'});
       const palette=await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--surface').trim());
+      const current=await page.$eval('[data-scene-theme][aria-current="true"]',els=>els.map(el=>el.dataset.sceneTheme));
+      assert.deepEqual(current,[theme],'one visible active theme choice');
       assert.match(palette,/^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i);
       if(theme!=='porcelain') assert.match(await page.$eval('#scene-status',el=>el.textContent),new RegExp(theme+' example theme'));
       results.push({theme,surface:palette});
