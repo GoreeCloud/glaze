@@ -12,3 +12,7 @@
 .scene-note-menu button{min-height:40px;background:transparent;color:var(--text);border:0;border-radius:9px;text-align:left;font-size:12px;font-weight:660;padding:9px 11px}
 .scene-note-menu button:hover,.scene-note-menu button:focus-visible{background:var(--accentSubtle)}
 .scene-pin-indicator{display:inline-block;margin:0 0 6px;padding:3px 8px;border:1px solid var(--border);background:var(--accentSubtle);color:var(--text);font-size:10px;font-weight:770;border-radius:99px}
+@media(max-width:390px){.scene-note-actions{gap:5px}.scene-note-more{width:36px;height:36px}.scene-note-menu{width:min(190px,calc(100% - 14px));right:7px}}
+@media(pointer:coarse){.scene-note-actions [data-colorize],.scene-note-more,.scene-note-menu button{min-height:44px}.scene-note-more{min-width:44px}}
+@media(forced-colors:active){.scene-note-menu,.scene-note-more,.scene-pin-indicator{background:Canvas;color:CanvasText;border-color:CanvasText;box-shadow:none}.scene-note-more[aria-expanded="true"]{outline:2px solid Highlight}}
+@media(prefers-reduced-motion:reduce){.scene-note-menu,.scene-note-more{transition:none;animation:none}}
