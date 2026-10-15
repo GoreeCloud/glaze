@@ -24,3 +24,18 @@ document.querySelectorAll('[data-colorize]').forEach(button=>button.addEventList
  card.dataset.tone=tones[(current+1)%tones.length];
  status.textContent='Example memo color changed; no note was saved.';
 }));
+
+const drawer=document.getElementById('scene-drawer');
+const toggle=document.getElementById('drawer-toggle');
+function openDrawer(open){drawer.hidden=!open;toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'Close app drawer':'Open app drawer';if(!open)toggle.focus();}
+toggle.addEventListener('click',()=>openDrawer(drawer.hidden));
+document.getElementById('drawer-close').addEventListener('click',()=>openDrawer(false));
+const svgNS='http://www.w3.org/2000/svg';
+const glyphNames=['folder','cloud','device','network','account','search','settings','share','privacy','security'];
+for(const name of glyphNames){
+ const button=document.createElement('button');button.type='button';button.setAttribute('aria-label','Example '+name+' entry');
+ const svg=document.createElementNS(svgNS,'svg');svg.setAttribute('aria-hidden','true');
+ const use=document.createElementNS(svgNS,'use');use.setAttribute('href','../../assets/icon-glyphs/system-symbols.svg#'+name);svg.append(use);button.append(svg);
+ button.addEventListener('click',()=>{status.textContent=name+' example selected; no app launched.';});
+ document.getElementById('drawer-grid').append(button);
+}
