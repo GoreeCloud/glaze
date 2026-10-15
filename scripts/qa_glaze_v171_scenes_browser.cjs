@@ -143,7 +143,7 @@ const server=http.createServer((req,res)=>{
       await gallery.click('[data-theme="nocturne"]');
       assert.equal(await gallery.$eval('[data-theme="nocturne"]',el=>el.getAttribute('aria-pressed')),'true');
       await gallery.type('#component-search','glyphs');
-      assert.ok(await gallery.$eval('.showcase-item.hidden',els=>els.length)>=1);
+      assert.ok((await gallery.evaluate(()=>document.querySelectorAll('.showcase-item.hidden').length))>=1);
       assert.ok(await gallery.$eval('a[href="./visual-evolution-scenes.html"]',el=>Boolean(el.href)));
       results.push({gallery:true,density:true,theme:true,search:true});
       await gallery.close();
