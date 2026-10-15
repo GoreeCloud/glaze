@@ -19,6 +19,14 @@
 <button type="button" id="tab-launcher" role="tab" aria-selected="false" aria-controls="scene-launcher" tabindex="-1" data-scene="launcher">Launcher</button>
 <button type="button" id="tab-dashboard" role="tab" aria-selected="false" aria-controls="scene-dashboard" tabindex="-1" data-scene="dashboard">System dashboard</button>
 </nav>
+<!-- glaze-v171-scene-polish: local example theme navigator -->
+<div class="scene-theme-bar" role="group" aria-label="Example appearance, not saved">
+  <span class="scene-theme-caption">Theme previews</span>
+  <a class="scene-theme-link" data-scene-theme="porcelain" href="?theme=porcelain"><span class="scene-theme-dot scene-theme-porcelain" aria-hidden="true"></span>Porcelain</a>
+  <a class="scene-theme-link" data-scene-theme="cedar" href="?theme=cedar"><span class="scene-theme-dot scene-theme-cedar" aria-hidden="true"></span>Cedar</a>
+  <a class="scene-theme-link" data-scene-theme="nocturne" href="?theme=nocturne"><span class="scene-theme-dot scene-theme-nocturne" aria-hidden="true"></span>Nocturne</a>
+  <a class="scene-theme-link" data-scene-theme="contrast" href="?theme=contrast"><span class="scene-theme-dot scene-theme-contrast" aria-hidden="true"></span>Contrast</a>
+</div>
 <section class="scene-panel" role="tabpanel" id="scene-memos" aria-labelledby="tab-memos">
 <div class="section-heading"><h2>Memos: expressive masonry</h2><p>Example notes, colors and labels</p></div>
 <p class="scene-notice">Color controls modify these demonstration notes only. No account data is accessed.</p>
@@ -50,9 +58,9 @@
 <div class="section-heading"><h2>System dashboard: truthful emphasis</h2><p>Demonstration data only</p></div>
 <p class="scene-notice">The values and status messages below are synthetic examples; no GoreeCloud infrastructure is queried.</p>
 <div class="scene-grid">
-<div class="scene-card"><h3>Connectivity example</h3><span class="scene-tag">Informational</span><p>Connected in this sample state, not a verified service status.</p></div>
+<div class="scene-card" data-meaning="information"><h3>Connectivity example</h3><span class="scene-tag">Informational</span><p>Connected in this sample state, not a verified service status.</p></div>
 <div class="scene-card"><h3>Storage example</h3><span class="scene-tag">Sample data</span><p>Illustrative usage: 32 of 64 GB. Not actual device storage.</p><progress value="32" max="64" aria-label="Illustrative storage utilization"></progress></div>
-<div class="scene-card"><h3>Review example</h3><span class="scene-tag">Attention</span><p>Requires review. Warning meaning is reinforced by text, not color alone.</p></div>
+<div class="scene-card" data-meaning="warning"><h3>Review example</h3><span class="scene-tag">Attention</span><p>Requires review. Warning meaning is reinforced by text, not color alone.</p></div>
 </div>
 </section>
 <section class="section" aria-labelledby="controls-title">
