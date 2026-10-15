@@ -64,3 +64,9 @@ if(['cedar','nocturne','contrast'].includes(selectedTheme)){
   status.textContent=selectedTheme+' example theme loaded; no theme setting was saved.';
  }catch{status.textContent='Theme preview unavailable; default example colors retained.';}
 }
+
+/* glaze-v171-scene-polish: active example theme, never stored */
+const sceneTheme=['cedar','nocturne','contrast'].includes(selectedTheme)?selectedTheme:'porcelain';
+for(const item of document.querySelectorAll('[data-scene-theme]')){
+  if(item.dataset.sceneTheme===sceneTheme)item.setAttribute('aria-current','true');
+}
