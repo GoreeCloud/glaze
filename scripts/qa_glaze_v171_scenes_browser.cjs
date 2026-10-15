@@ -145,7 +145,21 @@ const server=http.createServer((req,res)=>{
       await gallery.type('#component-search','glyphs');
       assert.ok((await gallery.evaluate(()=>document.querySelectorAll('.showcase-item.hidden').length))>=1);
       assert.ok(await gallery.$eval('a[href="./visual-evolution-scenes.html"]',el=>Boolean(el.href)));
-      results.push({gallery:true,density:true,theme:true,search:true});
+      assert.equal(await gallery.$eval('.glyph-tile',els=>els.length),16);
+      await gallery.click('[data-glyph-size="32"]');
+      assert.equal(await gallery.$eval('.glyph-tile svg',el=>Math.round(el.getBoundingClientRect().width)),32);
+      await gallery.type('#glyph-search','secur');
+      assert.equal(await gallery.$eval('.glyph-tile:not([hidden])',els=>els.length),1);
+      await gallery.click('[data-glyph="security"]');
+      assert.ok((await gallery.$eval('#glyph-selection',el=>el.textContent)).includes('#security'));
+      assert.equal(await gallery.$eval('[data-glyph="security"]',el=>el.getAttribute('aria-pressed')),'true');
+      await gallery.setViewport({width:390,height:844});
+      assert.ok(await gallery.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'glyph mobile overflow');
+      await gallery.setViewport({width:1280,height:900});
+      assert.ok(await gallery.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'glyph desktop overflow');
+      if(process.env.GLAZE_QA_SCREENSHOTS)
+        await gallery.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'glyph-gallery-1280.png'),fullPage:true});
+      results.push({gallery:true,density:true,theme:true,search:true,glyphs:true});
       await gallery.close();
     }
     for(const theme of ['porcelain','cedar','nocturne','contrast']){
