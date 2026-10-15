@@ -39,3 +39,9 @@
 @media(max-width:390px){.scene-theme-link{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.scene-card{transition:none}}
 @media(forced-colors:active){.scene-theme-bar,.scene-theme-link,.scene-drawer,.scene-panel,.scene-card{border-color:CanvasText;box-shadow:none}.scene-theme-link[aria-current="true"]{outline:2px solid Highlight;outline-offset:-2px}.scene-theme-dot{border:1px solid CanvasText;background:Canvas}}
+
+/* Compact theme navigation: consistent two-by-two choices, no orphan row. */
+@media(max-width:520px){
+  .scene-theme-link{flex:1 1 calc(50% - 5px);justify-content:flex-start;min-width:0}
+  .scene-theme-caption{flex:0 0 100%}
+}
