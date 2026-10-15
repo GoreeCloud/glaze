@@ -1,0 +1,14 @@
+/* Glaze 1.7.1 synthetic semantic notices */
+.scene-notice-preview{margin-top:14px;padding:13px;display:flex;gap:11px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-inline-start:4px solid var(--notice-tone);border-radius:13px}
+.scene-notice-preview[hidden]{display:none}
+.scene-notice-preview[data-tone=security]{--notice-tone:var(--security)}
+.scene-notice-preview[data-tone=warning]{--notice-tone:var(--warning)}
+.scene-notice-preview[data-tone=privacy]{--notice-tone:var(--privacy)}
+.scene-notice-preview svg{color:var(--notice-tone);width:19px;height:19px;flex:none}
+.scene-notice-preview strong{font-size:12px}
+.scene-notice-preview p{font-size:11px;line-height:1.5;color:var(--muted);margin:4px 0}
+.scene-notice-close{padding:5px 9px;margin-left:auto;background:var(--canvas);color:var(--text);border:1px solid var(--border);border-radius:9px;font-size:11px}
+.scene-notice-close:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.scene-notice-controls{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.scene-notice-controls .btn{min-height:38px}
+@media(forced-colors:active){.scene-notice-preview{background:Canvas;color:CanvasText;border:2px solid CanvasText}.scene-notice-preview svg{color:CanvasText}}
