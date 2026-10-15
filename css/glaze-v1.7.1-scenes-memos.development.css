@@ -1,0 +1,9 @@
+.scene-masonry{columns:3 175px;column-gap:12px}
+.scene-memo{display:inline-block;break-inside:avoid;vertical-align:top;width:100%;background:var(--canvas);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:12px}
+.scene-memo h3{font-size:14px;margin:0 0 8px}
+.scene-memo p{font-size:12px;line-height:1.55;margin:8px 0;color:var(--text)}
+.scene-memo[data-tone=warm]{background:color-mix(in srgb,#B47644 15%,var(--surface))}
+.scene-memo[data-tone=green]{background:color-mix(in srgb,#528A6B 15%,var(--surface))}
+.scene-memo[data-tone=rose]{background:color-mix(in srgb,#B86F8A 15%,var(--surface))}
+.scene-label{display:inline-block;border:1px solid var(--border);border-radius:99px;font-size:11px;margin:8px;padding:4px 8px}
+.scene-memo button{color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:7px 10px}
