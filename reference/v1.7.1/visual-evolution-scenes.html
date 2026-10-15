@@ -81,6 +81,33 @@
 </div></div>
 </div>
 </section>
+<section class="section" aria-labelledby="material-lab-title">
+<div class="section-heading"><h2 id="material-lab-title">Surface and control laboratory</h2><p>Meaningful elevation, decorative accent, and geometry</p></div>
+<div class="scene-material-lab">
+<h3>Shape the experience</h3><p>Try visual treatments on one synthetic workspace card. Nothing is saved or applied to other apps.</p>
+<div class="scene-material-layout">
+<div class="scene-material-controls">
+<div class="scene-material-field"><span id="material-elevation-label" class="scene-material-label">Surface elevation</span>
+<div class="scene-material-group" role="group" aria-labelledby="material-elevation-label">
+<button type="button" data-material-elevation="flat" aria-pressed="true">Flat</button>
+<button type="button" data-material-elevation="raised" aria-pressed="false">Raised</button>
+<button type="button" data-material-elevation="outlined" aria-pressed="false">Outlined</button>
+</div></div>
+<div class="scene-material-field">
+<label class="scene-material-label" for="scene-material-radius">Corner radius</label>
+<div class="scene-material-slider-row"><input id="scene-material-radius" type="range" min="8" max="28" step="2" value="18" aria-describedby="scene-material-feedback"><output for="scene-material-radius" id="scene-material-radius-output">18px</output></div>
+</div>
+<div class="scene-material-field">
+<button type="button" role="switch" id="scene-material-accent" class="scene-material-switch" aria-checked="true"><span>Decorative accent</span><span class="scene-material-track" aria-hidden="true"><span class="scene-material-thumb"></span></span></button>
+</div></div>
+<article id="scene-material-preview" class="scene-material-preview" data-elevation="flat" data-accent="on">
+<div class="scene-material-icon"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#cloud"></use></svg></div>
+<span class="scene-material-caption">Visual treatment example</span>
+<h3>Your workspace, considered.</h3>
+<p>Geometry, contrast, and elevation express hierarchy. This card doesn't represent a connected service.</p>
+</article>
+</div><p class="scene-material-feedback" id="scene-material-feedback" role="status" aria-live="polite">Example: flat surface, 18px corners, decorative accent on. No preference was saved.</p>
+</div></section>
 <section class="section" aria-labelledby="state-demo-title">
 <div class="section-heading"><h2 id="state-demo-title">Every state matters</h2><p>Loading, empty, and error · illustrative only</p></div>
 <div class="scene-content-demo">
@@ -136,4 +163,5 @@
 <script type="module" src="../../js/glaze-v1.7.1-notice-demo.development.mjs"></script>
 <script type="module" src="../../js/glaze-v1.7.1-note-menu.development.mjs"></script>
 <script type="module" src="../../js/glaze-v1.7.1-content-states.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-material-lab.development.mjs"></script>
 </body></html>
