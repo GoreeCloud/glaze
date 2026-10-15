@@ -54,3 +54,21 @@ Development Chromium regression exercises Apply, Cancel, Escape, label edits,
 focus restoration, the responsive scenes, and other existing interactions at
 320, 390, 768, 1280 and 1600 px. Manual screen-reader and physical-device
 acceptance remain separate open gates.
+
+## Semantic notice component — Development
+
+A separate example component now demonstrates three explicit, synthetic
+security, warning and privacy notices. Each selection provides a contextual
+semantic color, the appropriate first-party Glaze vector glyph, and human-readable
+text that distinguishes the example from a provider-derived result.
+
+The notice is presented with a polite live region and explicit dismissal.
+Dismiss and Escape restore keyboard focus to the initiating control.
+No live connectivity, security posture, account permission or user data
+is consulted or represented as verified.
+
+Browser regression verifies each semantic glyph/message and dismissal
+across all five supported demonstration viewport sizes. Source tests
+assert canonical semantics and forbid local persistence and unrelated
+network APIs. Forced-colors presentation retains borders and readable text;
+manual assistive-technology and real-device acceptance remain unqualified.
