@@ -70,7 +70,8 @@ const server=http.createServer((req,res)=>{
     }
     const page=await browser.newPage();
     await page.setViewport({width:390,height:844});
-    await page.emulateMediaFeatures([{name:'forced-colors',value:'active'},{name:'prefers-reduced-motion',value:'reduce'}]);
+    const cdp=await page.createCDPSession();
+    await cdp.send('Emulation.setEmulatedMedia',{features:[{name:'forced-colors',value:'active'},{name:'prefers-reduced-motion',value:'reduce'}]});
     await page.goto(base,{waitUntil:'networkidle0'});
     assert.equal(await page.evaluate(()=>matchMedia('(forced-colors: active)').matches),true);
     assert.equal(await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),true);
