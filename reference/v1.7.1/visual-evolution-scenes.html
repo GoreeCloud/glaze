@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" data-glaze-preview="1.7.1-development">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Glaze 1.7.1 — Application Experience Scenes</title>
+<link rel="stylesheet" href="../../css/glaze-v1.7.1-scenes.development.css">
+</head>
+<body>
+<a href="#main" class="skip">Skip to scenes</a>
+<main class="main" id="main">
+<header class="topbar"><div class="breadcrumbs"><a href="./visual-evolution.html">Visual Evolution</a> / <strong>Experience Scenes</strong></div><a class="btn" href="./visual-evolution.html">Theme gallery</a></header>
+<div class="eyebrow">Glaze 1.7.1 · Design exploration only</div>
+<h1>One language. Many personalities.</h1>
+<p class="lead">Three distinct, locally rendered GoreeCloud-inspired compositions. These are non-production design studies, not implementations or live service states.</p>
+<nav role="tablist" aria-label="Example product scenes" class="scene-tabs">
+<button type="button" id="tab-memos" role="tab" aria-selected="true" aria-controls="scene-memos" tabindex="0" data-scene="memos">Memos</button>
+<button type="button" id="tab-launcher" role="tab" aria-selected="false" aria-controls="scene-launcher" tabindex="-1" data-scene="launcher">Launcher</button>
+<button type="button" id="tab-dashboard" role="tab" aria-selected="false" aria-controls="scene-dashboard" tabindex="-1" data-scene="dashboard">System dashboard</button>
+</nav>
+<section class="scene-panel" role="tabpanel" id="scene-memos" aria-labelledby="tab-memos">
+<div class="section-heading"><h2>Memos: expressive masonry</h2><p>Example notes, colors and labels</p></div>
+<p class="scene-notice">Color controls modify these demonstration notes only. No account data is accessed.</p>
+<div class="scene-masonry">
+<article class="scene-memo" data-tone="warm"><h3>Creative directions</h3><p>Collect typography, tactile geometry and a warmer approach to navigation.</p><span class="scene-label">Design</span><button type="button" data-colorize aria-label="Change color of Creative directions memo">Change color</button></article>
+<article class="scene-memo" data-tone="green"><h3>Ideas for tomorrow</h3><p>Great software feels intentional, responsive, and carefully finished.</p><p>Use content-driven colors without losing semantic clarity.</p><span class="scene-label">Ideas</span><button type="button" data-colorize aria-label="Change color of Ideas for tomorrow memo">Change color</button></article>
+<article class="scene-memo"><h3>A small reminder</h3><p>More meaning. Less decoration.</p><span class="scene-label">Personal</span><button type="button" data-colorize aria-label="Change color of A small reminder memo">Change color</button></article>
+<article class="scene-memo" data-tone="rose"><h3>Visual references</h3><p>Rounded surfaces, warm paper, deliberate shadows and recognizably consistent vector symbols.</p><span class="scene-label">Inspiration</span><button type="button" data-colorize aria-label="Change color of Visual references memo">Change color</button></article>
+<article class="scene-memo"><h3>Ship with care</h3><p>Human review, screen readers, and actual hardware still matter.</p><span class="scene-label">Review</span><button type="button" data-colorize aria-label="Change color of Ship with care memo">Change color</button></article>
+</div></section>
+<section class="scene-panel" role="tabpanel" id="scene-launcher" aria-labelledby="tab-launcher" hidden>
+<div class="section-heading"><h2>Launcher: spacious by default</h2><p>5-column dock and drawer</p></div>
+<p class="scene-notice">A conceptual home-screen preview. No search bar or default home-page apps; only five dock entries.</p>
+<div class="scene-phone">
+<div style="position:absolute;top:17px;left:20px;font-size:12px;font-weight:750">9:41</div>
+<button class="scene-drawer-toggle" type="button" id="drawer-toggle" aria-expanded="false" aria-controls="scene-drawer">Open app drawer</button>
+<div class="scene-dock" aria-label="Dock glyph examples">
+<button type="button" aria-label="Folder dock sample"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg></button>
+<button type="button" aria-label="Cloud dock sample"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#cloud"></use></svg></button>
+<button type="button" aria-label="Network dock sample"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#network"></use></svg></button>
+<button type="button" aria-label="Device dock sample"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#device"></use></svg></button>
+<button type="button" aria-label="Account dock sample"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#account"></use></svg></button>
+</div>
+<div class="scene-drawer" id="scene-drawer" hidden>
+<div class="section-heading"><h3>All apps</h3><button type="button" class="btn" id="drawer-close" aria-label="Close app drawer">Close</button></div>
+<div class="scene-drawer-grid" id="drawer-grid"></div>
+</div></div></section>
+<section class="scene-panel" role="tabpanel" id="scene-dashboard" aria-labelledby="tab-dashboard" hidden>
+<div class="section-heading"><h2>System dashboard: truthful emphasis</h2><p>Demonstration data only</p></div>
+<p class="scene-notice">The values and status messages below are synthetic examples; no GoreeCloud infrastructure is queried.</p>
+<div class="scene-grid">
+<div class="scene-card"><h3>Connectivity example</h3><span class="scene-tag">Informational</span><p>Connected in this sample state, not a verified service status.</p></div>
+<div class="scene-card"><h3>Storage example</h3><span class="scene-tag">Sample data</span><p>Illustrative usage: 32 of 64 GB. Not actual device storage.</p><progress value="32" max="64" aria-label="Illustrative storage utilization"></progress></div>
+<div class="scene-card"><h3>Review example</h3><span class="scene-tag">Attention</span><p>Requires review. Warning meaning is reinforced by text, not color alone.</p></div>
+</div>
+</section>
+<section class="section" aria-labelledby="controls-title">
+<div class="section-heading"><h2 id="controls-title">Component interaction laboratory</h2><p>Keyboard, state, glyphs, and controlled demos</p></div>
+<div class="scene-grid">
+<div class="scene-card"><h3>Modal dialog</h3><p>Native focus management and Escape dismissal.</p><button type="button" class="btn btn-primary" id="dialog-open">Open dialog</button></div>
+<div class="scene-card"><h3>Semantic progress</h3><p>Only illustrative progress, not external system activity.</p><progress id="sample-progress" value="35" max="100" aria-label="Illustrative task progress"></progress><p><span id="sample-progress-value">35%</span> in this example</p><button type="button" class="btn" id="progress-update">Advance example</button></div>
+<div class="scene-card"><h3>Optical vector sizes</h3><p>One Glaze-registry symbol, rendered at four scales.</p><div class="scene-glyphs">
+<label><svg width="12" height="12" aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg>Micro</label>
+<label><svg width="16" height="16" aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg>Compact</label>
+<label><svg width="24" height="24" aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg>Standard</label>
+<label><svg width="36" height="36" aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg>Display</label>
+</div></div>
+</div>
+</section>
+<dialog id="sample-dialog" class="scene-dialog" aria-labelledby="dialog-heading"><h2 id="dialog-heading">A thoughtful interaction</h2><p>This dialog is a local demonstration of Glaze presentation, not an actual account or service action.</p><button type="button" class="btn btn-primary" id="dialog-close">Done</button></dialog>
+<p class="scene-notice" role="status" aria-live="polite" id="scene-status">Example scenes ready.</p>
+<p class="footer">Glaze V1.7.1 · Development · No consumer or release acceptance asserted.</p>
+</main>
+<script type="module" src="../../js/glaze-v1.7.1-scenes.development.mjs"></script>
+</body></html>
