@@ -38,3 +38,8 @@ html[data-glaze-density="compact"] .scene-theme-link{min-height:38px}
 @media(max-width:520px){.scene-density-label{width:100%}.scene-density-choice{flex:1}}
 @media(pointer:coarse){.scene-density-choice{min-height:44px}}
 @media(forced-colors:active){.scene-density-choice{background:Canvas;color:CanvasText;border-color:CanvasText}.scene-density-choice[aria-pressed="true"]{outline:2px solid Highlight;outline-offset:-2px}}
+
+@media(max-width:760px){
+  html[data-glaze-density="compact"] .scene-panel{padding:12px}
+  html[data-glaze-density="compact"] .scene-memo{padding:11px}
+}
