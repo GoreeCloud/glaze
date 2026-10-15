@@ -75,7 +75,7 @@ const server=http.createServer((req,res)=>{
       const page=await browser.newPage();
       await page.goto(base+'?theme='+theme,{waitUntil:'networkidle0'});
       const palette=await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--surface').trim());
-      const current=await page.$eval('[data-scene-theme][aria-current="true"]',els=>els.map(el=>el.dataset.sceneTheme));
+      const current=await page.evaluate(()=>Array.from(document.querySelectorAll('[data-scene-theme][aria-current="true"]'),el=>el.dataset.sceneTheme));
       assert.deepEqual(current,[theme],'one visible active theme choice');
       assert.match(palette,/^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i);
       if(theme!=='porcelain') assert.match(await page.$eval('#scene-status',el=>el.textContent),new RegExp(theme+' example theme'));
