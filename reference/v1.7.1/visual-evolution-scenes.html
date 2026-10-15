@@ -76,6 +76,21 @@
 </div></div>
 </div>
 </section>
+<section class="section" aria-labelledby="notices-title">
+<div class="section-heading"><h2 id="notices-title">Meaningful notifications</h2><p>Illustrative states, not live system events</p></div>
+<div class="scene-card">
+<h3>Semantic notice examples</h3><p>Every state pairs a canonical glyph with a clear message and contextual color.</p>
+<div class="scene-notice-controls" aria-label="Select an example notice">
+<button type="button" class="btn" data-notice-demo="security">Security</button>
+<button type="button" class="btn" data-notice-demo="warning">Warning</button>
+<button type="button" class="btn" data-notice-demo="privacy">Privacy</button>
+</div>
+<div class="scene-notice-preview" id="glaze-notice-preview" role="status" aria-live="polite" hidden>
+<svg aria-hidden="true"><use id="glaze-notice-glyph" href="../../assets/icon-glyphs/system-symbols.svg#security"></use></svg>
+<div><strong id="glaze-notice-title">Example</strong><p id="glaze-notice-body">Illustrative status.</p></div>
+<button type="button" class="scene-notice-close" id="glaze-notice-dismiss">Dismiss</button>
+</div>
+</div></section>
 <dialog id="memo-customize-dialog" class="memo-editor" aria-labelledby="memo-editor-title" aria-describedby="memo-editor-description">
 <div class="memo-editor-inner">
 <div><h2 id="memo-editor-title" class="memo-editor-heading">Customize memo</h2><p id="memo-editor-description" class="memo-editor-helper">Change this example note. Nothing is saved.</p></div>
@@ -93,4 +108,5 @@
 </main>
 <script type="module" src="../../js/glaze-v1.7.1-scenes.development.mjs"></script>
 <script type="module" src="../../js/glaze-v1.7.1-memo-customizer.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-notice-demo.development.mjs"></script>
 </body></html>
