@@ -31,5 +31,13 @@ for(const forbidden of ['localStorage','sessionStorage','sendBeacon','XMLHttpReq
 }
 assert.match(css,/forced-colors:active/);
 assert.match(css,/max-width:720px/);
+assert.match(css,/scene-theme-bar/);
+assert.match(css,/scene-theme-link/);
+assert.match(css,/data-meaning="warning"/);
+assert.match(css,/max-width:520px/);
+assert.match(read('css/glaze-v1.7.1-scenes-memos.development.css'),/columns:2/);
+for(const tone of ['information','warning']) assert.ok(html.includes('data-meaning="'+tone+'"'));
+for(const theme of ['porcelain','cedar','nocturne','contrast']) assert.ok(html.includes('data-scene-theme="'+theme+'"'));
+
 assert.ok(!read('js/glaze-v1.7.0.mjs').includes('scenes.development'));
 console.log('Glaze scenes: source contract PASS; real human/native/AT qualification remains open.');
