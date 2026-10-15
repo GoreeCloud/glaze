@@ -1,0 +1,17 @@
+# Glaze 1.7.1 — Application Experience Scenes
+
+**Status:** Development only; no Stable, deployment or consumer authority.
+
+This additive reference explores three distinct Glaze presentations without modifying GoreeCloud applications:
+
+- **Memos:** content-driven masonry with note color controls and visible labels. Colors are personalization examples, not semantic system status.
+- **Launcher:** an empty home screen with five dock positions, and a solid five-column app drawer. The displayed symbols are generic registry glyphs, not official app icons.
+- **System dashboard:** synthetic, explicitly labeled connectivity, usage and attention examples. These are not service measurements.
+
+The reference scene uses canonical Glaze SVG symbols, native semantic controls, arrow-key tab navigation, dialog focus and Escape behavior, a demonstrative progress control, Reduced Motion inheritance and forced-color styles.
+
+**Review location:** reference/v1.7.1/visual-evolution-scenes.html. From repository root, serve using Python's local HTTP server, then open that path.
+
+**Qualification boundaries:** Source-contract and repository checks cannot establish rendered quality, native parity, screen-reader accessibility, keyboard-device behavior, performance or energy acceptance. Do not adopt into consumers or publish a release until the applicable separate evidence is reviewed and approved.
+
+**Source boundaries:** Current Stable Glaze remains 1.7.0. These scenes are not imported by its entrypoint. V1.6 stays the historical rollback baseline.
