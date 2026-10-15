@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {applyDensity} from '../js/glaze-v1.7.1-density.development.mjs';
 import {readFileSync} from 'node:fs';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const html=read('reference/v1.7.1/visual-evolution-scenes.html');
@@ -15,6 +16,20 @@ for(const id of ['memos','launcher','dashboard']){
 }
 assert.match(html,/aria-live="polite"/);
 assert.match(html,/role="tablist"/);
+assert.match(html,/data-density="compact"/);
+assert.match(html,/data-density="comfortable"/);
+assert.match(read('reference/v1.7.1/visual-evolution.html'),/wireDensity\(root,document\)/);
+const densityCSS=read('css/glaze-v1.7.1-density.development.css');
+assert.match(densityCSS,/data-glaze-density="compact"/);
+assert.match(densityCSS,/min-height:44px/);
+const fakeRoot={dataset:{}};
+const fakeButton={dataset:{density:'compact'},attributes:{},setAttribute(key,value){this.attributes[key]=value;}};
+assert.equal(applyDensity(fakeRoot,'unknown',[fakeButton]),false,'invalid mode must fail');
+assert.equal(fakeRoot.dataset.glazeDensity,undefined);
+assert.equal(applyDensity(fakeRoot,'compact',[fakeButton]),true);
+assert.equal(fakeRoot.dataset.glazeDensity,'compact');
+assert.equal(fakeButton.attributes['aria-pressed'],'true');
+
 assert.match(html,/role="tabpanel"/);
 assert.match(html,/data-colorize/);
 assert.match(html,/id="memo-customize-dialog"/);
