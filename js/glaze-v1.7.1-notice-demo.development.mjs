@@ -15,6 +15,7 @@ for(const b of document.querySelectorAll('[data-notice-demo]')){
   if(!Object.hasOwn(examples,type))return;
   opener=b;notice.dataset.tone=type;
   title.textContent=examples[type][0];body.textContent=examples[type][1];
+  document.getElementById('glaze-notice-glyph').setAttribute('href','../../assets/icon-glyphs/system-symbols.svg#'+type);
   notice.hidden=false;close.focus();
  });
 }
