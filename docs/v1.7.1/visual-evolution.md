@@ -68,3 +68,11 @@ This change does not modify VERSION, registry/lifecycle.json, GLAZE_V1_7.md, js/
 ## Authority
 
 GoreeCloud/Instructions.md; Interface Design and Visual Quality; Color, Visual Composition and Glaze Integration; Semantic Color-Coding; Use of Vector Icons and Vector Glyphs; current canonical GoreeCloud/glaze repository lifecycle and hardening contracts.
+
+## Development density and canonical glyph explorer
+
+Comfortable/Compact now adjusts real card and component spacing in both local example galleries, without persistence or production consumer changes. Coarse-pointer layouts retain accessible targets. The script rejects unsupported density values and no longer replaces initial theme announcements.
+
+The main gallery includes a searchable 16-symbol first-party vector explorer with Small, Standard and Display sizes, accessible selection, and symbol IDs validated against the canonical SVG registry. These are Development design reviews, not new official icons or live security/provider states.
+
+Automated smoke tests inspect actual computed spacing, themes, glyph filtering, optical sizes, responsive overflow and prior application-scene interactions. Human/native/screen-reader/performance and governed release signoff remain open.
