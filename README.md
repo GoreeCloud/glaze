@@ -41,6 +41,10 @@ GLAZE UI V1.6 / `1.6.0` is the immediate known-good rollback baseline and remain
 
 ## Consumer boundary
 
+**GoreeCloud application UI identity requirement:** Every GoreeCloud application MUST have its own purpose-built user interface based on the latest applicable, approved Stable version of Glaze. Glaze provides the shared design and experience foundation, not a single identical interface for all applications. Each application MUST express its distinct purpose, navigation, layouts, information hierarchy, workflows, iconography, and product-specific visual identity while using the current applicable Glaze tokens, components, interaction patterns, semantic states, and accessibility requirements.
+
+When the approved Stable Glaze baseline advances, each application MUST be evaluated for adoption and independently migrated and validated as applicable. A Glaze version declaration or a shared-library upgrade alone does not establish completed implementation or consumer conformance. This provision implements the GoreeCloud-wide *Standard — Color, Visual Composition, and Glaze Integration* (Sections 3 and 13) without replacing that standard's governance authority.
+
 Promotion of the shared design system does not automatically make any GoreeCloud application conformant or production-ready. Every applicable consumer must target `1.7.0` and complete fresh repository-local acceptance for its supported runtime, platforms, accessibility, privacy/security integration, rollback, release, and production boundary.
 
 ## Development provenance
