@@ -103,6 +103,19 @@ const server=http.createServer((req,res)=>{
       assert.ok(await page.$eval('.scene-memo .scene-label',el=>el.textContent.startsWith('<img')),'label is text, not parsed HTML');
       assert.equal(await page.$eval('.scene-memo img',el=>el.tagName).catch(()=>null),null,'no injected HTML markup');
 
+      await page.click('[data-note-more]');
+      assert.equal(await page.$eval('[data-note-more]',e=>e.getAttribute('aria-expanded')),'true');
+      assert.equal(await page.evaluate(()=>document.activeElement.dataset.noteAction),'appearance');
+      await page.keyboard.press('ArrowDown');
+      assert.equal(await page.evaluate(()=>document.activeElement.dataset.noteAction),'pin');
+      await page.keyboard.press('Enter');
+      assert.equal(await page.$eval('.scene-memo',e=>e.dataset.pinned),'true');
+      assert.equal(await page.$eval('.scene-pin-indicator',e=>e.textContent),'Pinned');
+      assert.equal(await page.evaluate(()=>document.activeElement.hasAttribute('data-note-more')),true);
+      await page.click('[data-note-more]');
+      await page.keyboard.press('Escape');
+      assert.equal(await page.$eval('.scene-note-menu',e=>e.hidden),true);
+      assert.equal(await page.$eval('[data-note-more]',e=>e.getAttribute('aria-expanded')),'false');
       await page.click('#dialog-open');
       assert.equal(await page.$eval('#sample-dialog',el=>el.open),true);
       await page.keyboard.press('Escape');
