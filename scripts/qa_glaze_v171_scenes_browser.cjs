@@ -66,6 +66,9 @@ const server=http.createServer((req,res)=>{
       await page.click('[data-colorize]');
       assert.equal(await page.$eval('#memo-customize-dialog',el=>el.open),true);
       assert.equal(await page.$eval('#memo-label-input',el=>el.value),'Design');
+      if(process.env.GLAZE_QA_SCREENSHOTS){
+        await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'memo-editor-'+width+'.png'),fullPage:true});
+      }
       await page.click('[data-memo-tone="green"]');
       await page.$eval('#memo-label-input',el=>{el.value='Refined Design';el.dispatchEvent(new Event('input',{bubbles:true}));});
       await page.click('#memo-customize-apply');
