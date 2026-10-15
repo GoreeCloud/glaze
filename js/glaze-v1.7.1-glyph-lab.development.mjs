@@ -29,3 +29,13 @@ input.addEventListener('input',()=>{
  for(const item of tiles){item.hidden=!item.dataset.glyph.includes(query);if(!item.hidden)visible++;}
  count.textContent=visible+' of '+tiles.length+' glyphs shown';
 });
+for(const button of document.querySelectorAll('[data-glyph-size]')){
+ button.addEventListener('click',()=>{
+  const size=Number(button.dataset.glyphSize);
+  if(![16,24,32].includes(size))return;
+  grid.style.setProperty('--glyph-size',size+'px');
+  for(const option of document.querySelectorAll('[data-glyph-size]'))
+   option.setAttribute('aria-pressed',String(option===button));
+ });
+}
+count.textContent=names.length+' of '+names.length+' glyphs shown';
