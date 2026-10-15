@@ -18,12 +18,7 @@ tabs.forEach((t,i)=>{
   if(target!==null){e.preventDefault();selectTab(target,true);}
  });
 });
-const tones=['','warm','green','rose'];
-document.querySelectorAll('[data-colorize]').forEach(button=>button.addEventListener('click',()=>{
- const card=button.closest('.scene-memo');const current=tones.indexOf(card.dataset.tone||'');
- card.dataset.tone=tones[(current+1)%tones.length];
- status.textContent='Example memo color changed; no note was saved.';
-}));
+// Memo colors and labels are now handled by the separate accessible editor.
 
 const drawer=document.getElementById('scene-drawer');
 const toggle=document.getElementById('drawer-toggle');
