@@ -81,6 +81,16 @@ const server=http.createServer((req,res)=>{
       await page.keyboard.press('Escape');
       assert.equal(await page.$eval('.scene-memo',el=>el.dataset.tone),'green','Escape must not mutate note');
       assert.equal(await page.evaluate(()=>document.activeElement.hasAttribute('data-colorize')),true,'focus restored to edit opener');
+      await page.click('[data-colorize]');
+      await page.$eval('#memo-label-input',el=>{el.value='   ';el.dispatchEvent(new Event('input',{bubbles:true}));});
+      await page.click('#memo-customize-apply');
+      assert.equal(await page.$eval('.scene-memo .scene-label',el=>el.textContent),'Unlabeled','empty label fallback');
+      await page.click('[data-colorize]');
+      await page.$eval('#memo-label-input',el=>{el.value='<img src=x onerror=alert(1)>';el.dispatchEvent(new Event('input',{bubbles:true}));});
+      await page.click('#memo-customize-apply');
+      assert.ok(await page.$eval('.scene-memo .scene-label',el=>el.textContent.startsWith('<img')),'label is text, not parsed HTML');
+      assert.equal(await page.$eval('.scene-memo img',el=>el.tagName).catch(()=>null),null,'no injected HTML markup');
+
       await page.click('#dialog-open');
       assert.equal(await page.$eval('#sample-dialog',el=>el.open),true);
       await page.keyboard.press('Escape');
