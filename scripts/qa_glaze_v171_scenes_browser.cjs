@@ -145,11 +145,11 @@ const server=http.createServer((req,res)=>{
       await gallery.type('#component-search','glyphs');
       assert.ok((await gallery.evaluate(()=>document.querySelectorAll('.showcase-item.hidden').length))>=1);
       assert.ok(await gallery.$eval('a[href="./visual-evolution-scenes.html"]',el=>Boolean(el.href)));
-      assert.equal(await gallery.$eval('.glyph-tile',els=>els.length),16);
+      assert.equal(await gallery.evaluate(()=>document.querySelectorAll('.glyph-tile').length),16);
       await gallery.click('[data-glyph-size="32"]');
       assert.equal(await gallery.$eval('.glyph-tile svg',el=>Math.round(el.getBoundingClientRect().width)),32);
       await gallery.type('#glyph-search','secur');
-      assert.equal(await gallery.$eval('.glyph-tile:not([hidden])',els=>els.length),1);
+      assert.equal(await gallery.evaluate(()=>document.querySelectorAll('.glyph-tile:not([hidden])').length),1);
       await gallery.click('[data-glyph="security"]');
       assert.ok((await gallery.$eval('#glyph-selection',el=>el.textContent)).includes('#security'));
       assert.equal(await gallery.$eval('[data-glyph="security"]',el=>el.getAttribute('aria-pressed')),'true');
