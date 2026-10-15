@@ -1,0 +1,31 @@
+/* Opt-in Development spacing: compact never erases readable focus/touch targets. */
+html[data-glaze-density="compact"] .showcase{gap:10px}
+html[data-glaze-density="compact"] .showcase-item{padding:13px;gap:12px;min-height:138px}
+html[data-glaze-density="compact"] .metric-grid{gap:10px}
+html[data-glaze-density="compact"] .metric{padding:15px;min-height:132px}
+html[data-glaze-density="compact"] .metric-name{margin-top:10px}
+html[data-glaze-density="compact"] .panel{padding:17px}
+html[data-glaze-density="compact"] .component-panel{padding:18px}
+html[data-glaze-density="compact"] .btn{min-height:38px;padding-inline:13px}
+html[data-glaze-density="compact"] .field{height:38px}
+html[data-glaze-density="compact"] .nav-link{padding:8px 10px}
+html[data-glaze-density="compact"] .section{margin-top:24px}
+html[data-glaze-density="compact"] .state{padding:10px}
+html[data-glaze-density="compact"] .scene-grid{gap:9px}
+html[data-glaze-density="compact"] .scene-card{padding:14px}
+html[data-glaze-density="compact"] .scene-panel{padding:18px}
+html[data-glaze-density="compact"] .scene-memo{padding:12px;margin-bottom:9px}
+html[data-glaze-density="compact"] .scene-dock{padding:7px}
+html[data-glaze-density="compact"] .scene-theme-bar{padding:8px}
+html[data-glaze-density="compact"] .scene-theme-link{min-height:38px}
+@media(pointer:coarse),(max-width:730px){
+  html[data-glaze-density="compact"] .btn,
+  html[data-glaze-density="compact"] .scene-theme-link,
+  html[data-glaze-density="compact"] .scene-tab,
+  html[data-glaze-density="compact"] .scene-memo button,
+  html[data-glaze-density="compact"] .nav-link{min-height:44px}
+}
+@media(forced-colors:active){
+  html[data-glaze-density="compact"] .scene-card,
+  html[data-glaze-density="compact"] .showcase-item{border-color:CanvasText}
+}
