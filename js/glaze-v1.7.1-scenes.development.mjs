@@ -1,4 +1,5 @@
 /* Glaze V1.7.1 development scenes; local UI examples only. */
+import {wireDensity} from './glaze-v1.7.1-density.development.mjs';
 const tabs=[...document.querySelectorAll('[role="tab"][data-scene]')];
 const panels=tabs.map(t=>document.getElementById(t.getAttribute('aria-controls')));
 const status=document.getElementById('scene-status');
@@ -74,3 +75,5 @@ const sceneTheme=['cedar','nocturne','contrast'].includes(selectedTheme)?selecte
 for(const item of document.querySelectorAll('[data-scene-theme]')){
   if(item.dataset.sceneTheme===sceneTheme)item.setAttribute('aria-current','true');
 }
+
+wireDensity(document.documentElement,document,status);
