@@ -29,3 +29,12 @@ html[data-glaze-density="compact"] .scene-theme-link{min-height:38px}
   html[data-glaze-density="compact"] .scene-card,
   html[data-glaze-density="compact"] .showcase-item{border-color:CanvasText}
 }
+
+.scene-density-bar{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:0 0 16px;padding:10px;border:1px solid var(--border);border-radius:15px;background:var(--surface)}
+.scene-density-label{padding:5px 10px;color:var(--muted);font-size:11px;font-weight:750}
+.scene-density-choice{min-height:40px;border:1px solid var(--border);border-radius:11px;color:var(--text);background:var(--canvas);padding:8px 14px;font-size:12px;font-weight:700}
+.scene-density-choice[aria-pressed="true"]{background:var(--accentSubtle);border-color:var(--accent)}
+.scene-density-choice:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+@media(max-width:520px){.scene-density-label{width:100%}.scene-density-choice{flex:1}}
+@media(pointer:coarse){.scene-density-choice{min-height:44px}}
+@media(forced-colors:active){.scene-density-choice{background:Canvas;color:CanvasText;border-color:CanvasText}.scene-density-choice[aria-pressed="true"]{outline:2px solid Highlight;outline-offset:-2px}}
