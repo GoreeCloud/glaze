@@ -39,3 +39,13 @@ for(const name of glyphNames){
  button.addEventListener('click',()=>{status.textContent=name+' example selected; no app launched.';});
  document.getElementById('drawer-grid').append(button);
 }
+
+const dialog=document.getElementById('sample-dialog');
+document.getElementById('dialog-open').addEventListener('click',()=>dialog.showModal());
+document.getElementById('dialog-close').addEventListener('click',()=>dialog.close());
+const progress=document.getElementById('sample-progress');
+document.getElementById('progress-update').addEventListener('click',()=>{
+ progress.value=Math.min(100,progress.value+15);
+ document.getElementById('sample-progress-value').textContent=progress.value+'%';
+ status.textContent='Illustrative progress updated; no background process ran.';
+});
