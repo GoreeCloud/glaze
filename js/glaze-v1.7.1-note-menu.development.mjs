@@ -40,3 +40,15 @@ cards.forEach((card,index)=>{
   card.classList.add('scene-menu-open');
   button.setAttribute('aria-expanded','true');edit.focus();
  });
+ menu.addEventListener('keydown',event=>{
+  const items=[edit,pin];const current=items.indexOf(document.activeElement);
+  let target=-1;
+  if(event.key==='ArrowDown')target=(current+1)%items.length;
+  if(event.key==='ArrowUp')target=(current+items.length-1)%items.length;
+  if(event.key==='Home')target=0;
+  if(event.key==='End')target=items.length-1;
+  if(target>=0){event.preventDefault();items[target].focus();}
+  else if(event.key==='Escape'){event.preventDefault();closeMenu(true);}
+  else if(event.key==='Tab')closeMenu();
+ });
+ edit.addEventListener('click',()=>{closeMenu();appearance.click();});
