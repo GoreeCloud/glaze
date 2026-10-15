@@ -100,6 +100,17 @@ const server=http.createServer((req,res)=>{
       assert.equal(await page.$eval('#sample-dialog',el=>el.open),false);
       await page.click('#progress-update');
       assert.equal(await page.$eval('#sample-progress',el=>el.value),50);
+      for(const type of ['security','warning','privacy']){
+        await page.click('[data-notice-demo="'+type+'"]');
+        assert.equal(await page.$eval('#glaze-notice-preview',el=>el.hidden),false);
+        assert.equal(await page.$eval('#glaze-notice-preview',el=>el.dataset.tone),type);
+        assert.ok((await page.$eval('#glaze-notice-title',el=>el.textContent)).length>5);
+        assert.ok((await page.$eval('#glaze-notice-glyph',el=>el.getAttribute('href'))).endsWith('#'+type));
+        await page.click('#glaze-notice-dismiss');
+        assert.equal(await page.$eval('#glaze-notice-preview',el=>el.hidden),true);
+        assert.equal(await page.evaluate(type=>document.activeElement?.dataset.noticeDemo===type,type),true);
+      }
+
       await page.focus('#tab-memos');await page.keyboard.press('ArrowRight');
       assert.equal(await page.$eval('#tab-launcher',el=>el.getAttribute('aria-selected')),'true');
       assert.deepEqual(errors,[],'browser errors');
