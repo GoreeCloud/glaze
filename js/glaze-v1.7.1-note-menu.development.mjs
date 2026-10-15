@@ -65,7 +65,7 @@ cards.forEach((card,index)=>{
  });
 });
 document.addEventListener('pointerdown',event=>{
- if(active&&!active.card.contains(event.target))closeMenu();
+ if(active&&!(active.menu.contains(event.target)||active.button.contains(event.target)))closeMenu();
 });
 document.addEventListener('focusin',event=>{
  if(active&&!active.menu.contains(event.target)&&event.target!==active.button)closeMenu();
