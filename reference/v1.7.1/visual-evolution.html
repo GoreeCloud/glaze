@@ -147,7 +147,8 @@ try{
     }
     choice.addEventListener('click',()=>render(choice.dataset.theme));
   }
-  render('porcelain');
+  const requestedTheme = new URLSearchParams(location.search).get('theme');
+  render(Object.hasOwn(themes, requestedTheme) ? requestedTheme : 'porcelain');
 }catch(error){
   feedback.textContent='Theme switching needs the local repository HTTP preview. From the repository root, run: python3 -m http.server 8000';
   choices.forEach(c=>{c.disabled=true;});
