@@ -81,6 +81,26 @@
 </div></div>
 </div>
 </section>
+<section class="section" aria-labelledby="state-demo-title">
+<div class="section-heading"><h2 id="state-demo-title">Every state matters</h2><p>Loading, empty, and error · illustrative only</p></div>
+<div class="scene-content-demo">
+<h3>Content state explorer</h3><p>Switch between UI examples. No loading request or system failure actually occurs.</p>
+<div class="scene-content-options" role="group" aria-label="Preview content states">
+<button type="button" data-content-mode="loading" aria-pressed="true">Loading</button>
+<button type="button" data-content-mode="empty" aria-pressed="false">Empty</button>
+<button type="button" data-content-mode="error" aria-pressed="false">Error</button>
+</div>
+<div class="scene-content-stage">
+<div id="scene-content-loading" class="scene-loading-bars" aria-label="Illustrative loading skeleton"><span></span><span></span><span></span></div>
+<div id="scene-content-empty" class="scene-content-display" hidden>
+<svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg>
+<strong>Nothing here yet</strong><p>Example empty view — no notes or files were queried.</p></div>
+<div id="scene-content-error" class="scene-content-display" data-tone="error" hidden>
+<svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#warning"></use></svg>
+<strong>Something needs attention</strong><p>Example error view — no actual operation failed.</p></div>
+</div>
+<p class="scene-content-feedback" role="status" aria-live="polite" id="scene-content-feedback">Illustrative loading state. No request is running.</p>
+</div></section>
 <section class="section" aria-labelledby="notices-title">
 <div class="section-heading"><h2 id="notices-title">Meaningful notifications</h2><p>Illustrative states, not live system events</p></div>
 <div class="scene-card">
