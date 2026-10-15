@@ -81,4 +81,26 @@ for(const tone of ['information','warning']) assert.ok(html.includes('data-meani
 for(const theme of ['porcelain','cedar','nocturne','contrast']) assert.ok(html.includes('data-scene-theme="'+theme+'"'));
 
 assert.ok(!read('js/glaze-v1.7.0.mjs').includes('scenes.development'));
+const noteMenu=read('js/glaze-v1.7.1-note-menu.development.mjs');
+const noteCSS=read('css/glaze-v1.7.1-note-menu.development.css');
+const stateJS=read('js/glaze-v1.7.1-content-states.development.mjs');
+const stateCSS=read('css/glaze-v1.7.1-content-states.development.css');
+for(const path of ['glaze-v1.7.1-note-menu.development.mjs','glaze-v1.7.1-content-states.development.mjs'])
+ assert.ok(html.includes(path),'Development scene controller missing '+path);
+for(const name of ['loading','empty','error']){
+ assert.ok(html.includes('id="scene-content-'+name+'"'));
+ assert.ok(html.includes('data-content-mode="'+name+'"'));
+}
+for(const term of ['ArrowDown','ArrowUp','Escape','aria-expanded','dataset.pinned','closeMenu'])
+ assert.ok(noteMenu.includes(term),'Memos menu state missing '+term);
+for(const restriction of ['localStorage','sessionStorage','XMLHttpRequest','sendBeacon'])
+ assert.ok(!noteMenu.includes(restriction)&&!stateJS.includes(restriction),'No persistence or external state');
+for(const sheet of [noteCSS,stateCSS]){
+ assert.match(sheet,/forced-colors:active/);
+ assert.match(sheet,/prefers-reduced-motion:reduce/);
+}
+assert.match(stateJS,/aria-pressed/);
+assert.match(noteCSS,/focus-visible/);
+assert.match(html,/id="scene-content-feedback"/);
+
 console.log('Glaze scenes: source contract PASS; real human/native/AT qualification remains open.');
