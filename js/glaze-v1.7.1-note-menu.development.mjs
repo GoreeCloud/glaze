@@ -21,3 +21,22 @@ cards.forEach((card,index)=>{
  const menu=document.createElement('div');menu.className='scene-note-menu';
  menu.id='scene-note-menu-'+index;menu.role='menu';menu.hidden=true;
  button.setAttribute('aria-controls',menu.id);
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+ svg.setAttribute('aria-hidden','true');
+ const use=document.createElementNS('http://www.w3.org/2000/svg','use');
+ use.setAttribute('href','../../assets/icon-glyphs/system-symbols.svg#settings');
+ svg.append(use);button.append(svg);bar.append(button);
+ function action(text,kind){
+  const item=document.createElement('button');item.type='button';
+  item.role='menuitem';item.dataset.noteAction=kind;item.textContent=text;
+  menu.append(item);return item;
+ }
+ const edit=action('Customize appearance','appearance');
+ const pin=action('Pin note','pin');
+ card.append(menu);
+ button.addEventListener('click',()=>{
+  if(active?.menu===menu){closeMenu(true);return;}
+  closeMenu();active={menu,button,card};menu.hidden=false;
+  card.classList.add('scene-menu-open');
+  button.setAttribute('aria-expanded','true');edit.focus();
+ });
