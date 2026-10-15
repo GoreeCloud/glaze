@@ -64,7 +64,23 @@ const server=http.createServer((req,res)=>{
       }
       await page.click('#drawer-close');await page.click('#tab-memos');
       await page.click('[data-colorize]');
+      assert.equal(await page.$eval('#memo-customize-dialog',el=>el.open),true);
+      assert.equal(await page.$eval('#memo-label-input',el=>el.value),'Design');
+      await page.click('[data-memo-tone="green"]');
+      await page.$eval('#memo-label-input',el=>{el.value='Refined Design';el.dispatchEvent(new Event('input',{bubbles:true}));});
+      await page.click('#memo-customize-apply');
       assert.equal(await page.$eval('.scene-memo',el=>el.dataset.tone),'green');
+      assert.equal(await page.$eval('.scene-memo .scene-label',el=>el.textContent),'Refined Design');
+      assert.equal(await page.$eval('#memo-customize-dialog',el=>el.open),false);
+      await page.click('[data-colorize]');
+      await page.click('[data-memo-tone="rose"]');
+      await page.click('#memo-customize-cancel');
+      assert.equal(await page.$eval('.scene-memo',el=>el.dataset.tone),'green','Cancel must not mutate note');
+      await page.click('[data-colorize]');
+      await page.click('[data-memo-tone="warm"]');
+      await page.keyboard.press('Escape');
+      assert.equal(await page.$eval('.scene-memo',el=>el.dataset.tone),'green','Escape must not mutate note');
+      assert.equal(await page.evaluate(()=>document.activeElement.hasAttribute('data-colorize')),true,'focus restored to edit opener');
       await page.click('#dialog-open');
       assert.equal(await page.$eval('#sample-dialog',el=>el.open),true);
       await page.keyboard.press('Escape');
