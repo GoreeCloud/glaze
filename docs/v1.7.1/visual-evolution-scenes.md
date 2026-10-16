@@ -77,7 +77,9 @@ manual assistive-technology and real-device acceptance remain unqualified.
 
 ## Note context actions and content-state explorer — Development
 
-The Memos example now has an icon-bearing per-note context menu. It uses canonical Glaze vector geometry, explicit ARIA menu/menuitem semantics, visible expanded state, keyboard Arrow/Home/End navigation, Escape and outside-click dismissal, and focus restoration. The local Pin/Unpin action changes a visible Pinned marker but does **not** reorder or persist any note. Customize appearance routes to the existing synthetic color/label editor.
+The Memos example now has an icon-bearing per-note context menu. It uses canonical Glaze vector geometry, explicit ARIA menu/menuitem semantics, visible expanded state, keyboard Arrow/Home/End navigation, Escape and outside-click dismissal, and focus restoration. Menu items remain reachable by arrow-key navigation rather than the document's ordinary Tab order. Forward Tab exits toward the next note, and reverse Tab returns to the menu trigger; dismissal occurs after focus moves, avoiding focus loss. These are browser-tested Development interactions, not screen-reader certification.
+
+The local Pin/Unpin action changes a visible Pinned marker but does **not** reorder or persist any note. Customize appearance routes to the existing synthetic color/label editor.
 
 A separate content-state example offers Loading, Empty and Error selections. Skeletons, canonical folder and warning glyphs, text, and semantic colors make each illustrative state legible without color alone. Loading is entirely synthetic: no actual requests are started; Error is not a detected service failure. Motion and forced-colors fallbacks are provided.
 
