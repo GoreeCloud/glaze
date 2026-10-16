@@ -151,6 +151,11 @@ jobs:
         run: node scripts/qa_glaze_v171_scenes_browser.cjs
         env:
           GLAZE_PUPPETEER_MODULE: ${{ runner.temp }}/glaze-a11y/node_modules/puppeteer-core
+      - name: Typography reflow and cross-theme WCAG audit
+        run: node scripts/qa_glaze_v171_typography.cjs
+        env:
+          GLAZE_PUPPETEER_MODULE: ${{ runner.temp }}/glaze-a11y/node_modules/puppeteer-core
+          GLAZE_AXE_PATH: ${{ runner.temp }}/glaze-a11y/node_modules/axe-core/axe.min.js
       - name: Local preview resource and stability budget
         run: node scripts/qa_glaze_v171_performance.cjs
         env:
