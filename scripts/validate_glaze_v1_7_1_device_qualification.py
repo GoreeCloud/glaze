@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import argparse
 import copy
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import json
 import math
 from pathlib import Path
@@ -118,6 +118,7 @@ def timestamp(value: Any, label: str) -> str:
     except ValueError as exc:
         raise QualificationError(f"{label} must be ISO-8601") from exc
     req(parsed.tzinfo is not None, f"{label} must include timezone")
+    req(parsed <= datetime.now(timezone.utc) + timedelta(minutes=5), f"{label} cannot be future-dated")
     return text
 
 
@@ -514,6 +515,10 @@ def self_test(plan: dict[str, Any]) -> None:
 
     for lane in LANES:
         validate_record(sample(plan, lane, head), plan)
+
+    future = sample(plan, "mobile", head)
+    future["capturedAt"] = (datetime.now(timezone.utc) + timedelta(days=1)).isoformat()
+    reject(future, plan, "future physical-device session")
 
     stale = sample(plan, "mobile", head)
     stale["sourceRevision"] = "0" * 40
