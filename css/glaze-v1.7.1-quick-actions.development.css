@@ -1,0 +1,24 @@
+/* Glaze V1.7.1 — Development-only quick actions. Local navigation, no persistence. */
+.scene-command-open{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);font:inherit;font-size:12px;font-weight:730}
+.scene-command-open svg{width:17px;height:17px;color:var(--accent)}
+.scene-command-key{font-size:10px;font-weight:720;letter-spacing:.03em;border:1px solid var(--border);border-radius:6px;padding:2px 5px;background:var(--canvas);color:var(--muted)}
+.scene-command-dialog{width:min(520px,calc(100vw - 24px));max-height:min(580px,calc(100dvh - 28px));border:1px solid var(--border);border-radius:22px;background:var(--surface);color:var(--text);padding:0;box-shadow:0 25px 80px rgba(0,0,0,.24);overflow:hidden}
+.scene-command-dialog::backdrop{background:rgba(9,19,17,.62)}
+.scene-command-header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 20px 12px}
+.scene-command-header h2{font-size:20px;font-weight:790;letter-spacing:-.045em;margin:0}
+.scene-command-close{min-width:38px;min-height:38px;border-radius:10px;border:1px solid var(--border);background:var(--canvas);color:var(--text);font:inherit;font-size:12px;font-weight:700}
+.scene-command-help{color:var(--muted);font-size:11px;line-height:1.5;padding:0 20px;margin:0 0 13px}
+.scene-command-search{display:block;box-sizing:border-box;width:calc(100% - 40px);height:46px;margin:0 20px 12px;padding:11px 13px;font:inherit;font-size:14px;border:1px solid var(--border);border-radius:12px;background:var(--canvas);color:var(--text)}
+.scene-command-results{margin:0 12px 12px;padding:5px;display:grid;gap:4px;max-height:min(320px,40dvh);overflow:auto}
+.scene-command-action{display:flex;align-items:center;gap:12px;min-height:48px;width:100%;padding:11px 13px;text-align:start;border:1px solid transparent;border-radius:12px;color:var(--text);background:transparent;font:inherit;font-size:13px;font-weight:690}
+.scene-command-action:hover,.scene-command-action:focus-visible{background:var(--accentSubtle);border-color:var(--accent)}
+.scene-command-action svg{width:20px;height:20px;flex:none;color:var(--accent)}
+.scene-command-action span{display:grid;gap:2px}
+.scene-command-action small{font-size:10px;color:var(--muted);font-weight:550}
+.scene-command-empty{padding:23px 12px;color:var(--muted);font-size:12px;text-align:center}
+.scene-command-footer{border-top:1px solid var(--border);background:var(--canvas);padding:11px 20px;color:var(--muted);font-size:11px}
+.scene-command-open:focus-visible,.scene-command-close:focus-visible,.scene-command-search:focus-visible,.scene-command-action:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+@media(max-width:520px){.scene-command-dialog{border-radius:18px}.scene-command-header{padding:16px 15px 9px}.scene-command-help{padding:0 15px}.scene-command-search{width:calc(100% - 30px);margin-inline:15px}.scene-command-open{flex:1;justify-content:center}}
+@media(pointer:coarse){.scene-command-open,.scene-command-close,.scene-command-action{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.scene-command-dialog,.scene-command-action{transition:none;animation:none}}
+@media(forced-colors:active){.scene-command-dialog,.scene-command-action,.scene-command-open,.scene-command-close,.scene-command-search{background:Canvas;color:CanvasText;border-color:CanvasText;box-shadow:none}.scene-command-action svg{color:CanvasText}.scene-command-action:focus-visible{outline-color:Highlight}}
