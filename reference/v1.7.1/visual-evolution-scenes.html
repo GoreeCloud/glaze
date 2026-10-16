@@ -81,6 +81,43 @@
 </div></div>
 </div>
 </section>
+<section class="section" aria-labelledby="scene-form-heading">
+<div class="section-heading"><h2 id="scene-form-heading">Forms worth using</h2><p>Readable controls · useful feedback · safe validation</p></div>
+<div class="scene-form-lab">
+<h3>Workspace preview</h3>
+<p>Practice the form treatment with synthetic data. This preview neither creates a workspace nor saves any setting.</p>
+<div class="scene-form-layout">
+<form id="scene-form" class="scene-form-controls" novalidate>
+<div class="scene-form-field">
+<label for="scene-form-name">Workspace name <span aria-hidden="true">*</span></label>
+<input id="scene-form-name" class="scene-form-input" name="workspace" type="text" maxlength="32" autocomplete="off" required aria-required="true" aria-describedby="scene-form-name-help scene-form-error" placeholder="e.g. Design Studio">
+<span id="scene-form-name-help" class="scene-form-help">Required for this preview · up to 32 characters</span>
+<span id="scene-form-error" class="scene-form-error" data-visible="false">Enter a workspace name to preview this example.</span>
+</div>
+<fieldset class="scene-form-fieldset">
+<legend>Workspace type</legend>
+<div class="scene-form-options">
+<label class="scene-form-radio"><input type="radio" name="scene-workspace-mode" value="personal" checked>Personal</label>
+<label class="scene-form-radio"><input type="radio" name="scene-workspace-mode" value="team">Team</label>
+</div>
+</fieldset>
+<label class="scene-form-check" for="scene-form-preview-toggle">
+<input type="checkbox" id="scene-form-preview-toggle" checked> Show preview treatment
+</label>
+<div class="scene-form-actions">
+<button type="submit" class="scene-form-action" data-primary>Preview changes</button>
+<button type="reset" class="scene-form-action">Reset</button>
+</div>
+</form>
+<article class="scene-form-result" id="scene-form-result" data-preview="visible" aria-label="Synthetic workspace preview">
+<div class="scene-form-result-icon"><svg aria-hidden="true"><use id="scene-form-result-icon" href="../../assets/icon-glyphs/system-symbols.svg#account"></use></svg></div>
+<div class="scene-form-result-title" id="scene-form-result-title">Your workspace</div>
+<div class="scene-form-result-meta" id="scene-form-result-meta">Personal workspace · demonstration only</div>
+</article>
+</div>
+<p id="scene-form-status" class="scene-form-status" role="status" aria-live="polite">Preview is ready. No workspace or settings were created.</p>
+</div>
+</section>
 <section class="section" aria-labelledby="material-lab-title">
 <div class="section-heading"><h2 id="material-lab-title">Surface and control laboratory</h2><p>Meaningful elevation, decorative accent, and geometry</p></div>
 <div class="scene-material-lab">
@@ -164,4 +201,5 @@
 <script type="module" src="../../js/glaze-v1.7.1-note-menu.development.mjs"></script>
 <script type="module" src="../../js/glaze-v1.7.1-content-states.development.mjs"></script>
 <script type="module" src="../../js/glaze-v1.7.1-material-lab.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-form-lab.development.mjs"></script>
 </body></html>
