@@ -96,3 +96,45 @@ demonstration. Browser tests must verify computed geometry and shadow changes,
 accessible selection, switch state, keyboard range adjustment, and no overflow
 at 320/390/768/1280/1600 px. These are Development smoke checks, not manual
 accessibility, production, native-device or release acceptance.
+
+## October 15 — Accessibility and consumer-preparation evidence
+
+An isolated axe-core WCAG 2.0/2.1 A/AA automated browser audit now covers:
+desktop and compact gallery; desktop and compact application scenes; Memos
+dialog; Launcher tab; note context menu; and Nocturne theme. The first run
+reported link-name mismatches, an insufficient-contrast sidebar label and a
+prohibited ARIA attribute on a decorative skeleton. Those were corrected.
+The next run reported **zero violations in all eight cases**. This does not
+prove complete accessibility, since automated engines cover only a subset of
+WCAG and do not emulate screen-reader users.
+
+The Development workflow now executes Chromium interaction/viewport tests and
+axe in addition to source/contrast/adapter checks on every relevant PR change.
+Opt-in, architecture-specific, **non-shipping** Memos, Asterport and Launcher
+assets and adoption instructions are in `integrations/v1.7.1/README.md`.
+They do not modify or import into the current applications or Glaze Stable.
+
+### Manual acceptance still required
+
+- **Android hardware:** Connect an authorized phone over USB with debugging
+  permission. First verify a device appears under `adb devices -l`; none
+  appeared during this session. Install only a separately accepted Launcher
+  Development APK, then review the 5-column home/dock/drawer, navigation,
+  gestures, TalkBack labels, dynamic type, rotation, screen insets, wallpaper
+  and rollback. Do not use ADB emulator/browser screenshots as physical proof.
+- **Desktop screen-reader:** Manually navigate both galleries with Orca on
+  Linux and/or NVDA on Windows, and verify heading navigation, dialog name,
+  menu arrow/Escape/focus restoration, state announcements, input labels,
+  keyboard focus and high-contrast operation. Orca being installed on the
+  connected laptop alone is not evidence that this happened.
+- **Mobile screen-reader:** Verify VoiceOver (iOS/Safari) and TalkBack
+  (Android/Chrome) on real hardware, including note customization and
+  application preview navigation; collect device/OS/browser versions.
+- **Product integration:** Review the opt-in adapters separately in the
+  Memos React/Tailwind, Asterport React/Vite, and Launcher Lawnchair-native
+  source branches. Full consumer tests, screenshots, UI approval, packaging,
+  performance/energy and privacy/security acceptance are required before
+  production adoption.
+
+**Status:** Automated development qualification passed; human/device, native
+consumer and release acceptance **remain open**. Do not mark 1.7.1 Stable.
