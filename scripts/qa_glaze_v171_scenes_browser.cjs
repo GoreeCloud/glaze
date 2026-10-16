@@ -37,6 +37,14 @@ const server=http.createServer((req,res)=>{
       let state=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:innerWidth,memos:document.querySelectorAll('.scene-memo').length,dock:document.querySelectorAll('.scene-dock button').length}));
       assert.ok(state.scroll<=width+1,'Horizontal overflow '+JSON.stringify(state));
       assert.equal(state.memos,5);assert.equal(state.dock,5);
+      await page.click('#scene-command-open');
+      assert.equal(await page.$eval('#scene-command-dialog',el=>el.open),true);
+      await page.type('#scene-command-search','launcher');
+      assert.equal(await page.$eval('#scene-command-count',el=>el.textContent),'1 example actions available');
+      await page.keyboard.press('Enter');
+      assert.equal(await page.$eval('#tab-launcher',el=>el.getAttribute('aria-selected')),'true');
+      assert.equal(await page.$eval('#scene-command-dialog',el=>el.open),false);
+      await page.click('#tab-memos');
       const beforePad=await page.$eval('.section .scene-card',el=>parseFloat(getComputedStyle(el).paddingTop));
       await page.click('[data-density="compact"]');
       const afterPad=await page.$eval('.section .scene-card',el=>parseFloat(getComputedStyle(el).paddingTop));
