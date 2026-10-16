@@ -49,3 +49,12 @@ test('preview server permits assets but rejects malformed and unsafe requests', 
   assert.equal((await request('/assets/preview.css', 'POST')).status, 405);
   assert.equal((await request('/assets/preview.css')).status, 200, 'server stays available after rejected requests');
 });
+
+test('all browser audits use the shared local preview server', () => {
+  const names = ['scenes_browser', 'typography', 'axe', 'performance', 'privacy_security'];
+  for (const name of names) {
+    const source=fs.readFileSync(path.join(__dirname,'..','scripts','qa_glaze_v171_'+name+'.cjs'),'utf8');
+    assert.ok(source.includes("require('./glaze_v171_preview_server.cjs')"), name);
+    assert.ok(source.includes('createPreviewServer(root)'), name);
+  }
+});
