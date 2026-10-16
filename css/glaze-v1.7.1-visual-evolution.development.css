@@ -28,7 +28,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .brand-mark img{width:31px;height:31px;object-fit:contain}
 .brand-title{font-size:18px;line-height:1.05;font-weight:740;letter-spacing:-.045em}
 .brand-subtitle{display:block;margin-top:4px;color:var(--muted);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
-.small-label{text-transform:uppercase;letter-spacing:.115em;color:var(--faint);font-size:10px;font-weight:750;padding:0 12px}
+.small-label{text-transform:uppercase;letter-spacing:.115em;color:var(--muted);font-size:10px;font-weight:750;padding:0 12px}
 .nav-group{display:grid;gap:5px}
 .nav-link{display:flex;gap:12px;align-items:center;padding:11px 12px;border-radius:13px;font-size:13px;font-weight:600;color:var(--muted)}
 .nav-link:hover{background:var(--surface);color:var(--text)}
