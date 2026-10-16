@@ -82,7 +82,7 @@ function clean(s){
     clean(await storageState(page));
     await page.reload({waitUntil:'networkidle0'});
     assert.equal(await page.$eval('.scene-memo .scene-label',e=>e.textContent),'Design','memo changes stay ephemeral');
-    assert.equal(await page.$eval('.scene-memo',e=>e.dataset.pinned),'','pin state not persisted');
+    assert.equal(await page.$eval('.scene-memo',e=>e.dataset.pinned||''),'','pin state not persisted');
     assert.equal(await page.$eval('#scene-form-name',e=>e.value),'','form data not persisted');
     assert.equal(await page.$eval('#scene-form-result-title',e=>e.textContent),'Your workspace','workspace preview not persisted');
    }else{
