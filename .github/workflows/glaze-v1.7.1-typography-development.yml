@@ -1,0 +1,11 @@
+name: Glaze V1.7.1 Typography Development
+on:
+  pull_request:
+    paths:
+      - 'scripts/qa_glaze_v171_typography.cjs'
+      - 'css/glaze-v1.7.1-typography-lab.development.css'
+      - 'js/glaze-v1.7.1-typography-lab.development.mjs'
+      - 'reference/v1.7.1/visual-evolution-scenes.html'
+      - '.github/workflows/glaze-v1.7.1-typography-development.yml'
+permissions:
+  contents: read
