@@ -24,6 +24,11 @@ The experience scenes now show four explicitly labeled theme choices (Porcelain,
 Nocturne, Contrast), with active selection exposed by `aria-current`.
 Theme differences are examples rather than new official brand-color authority;
 selection uses a local URL parameter and never persists a user preference.
+A missing or malformed Development palette leaves the default Porcelain colors and
+`aria-current` selection intact instead of falsely marking the requested theme
+as applied. Palette roles are checked before mutation, and the Contrast sample
+uses dark native-control appearance. This fallback is exercised with synthetic
+failed and malformed local resource responses; it is not a deployment test.
 
 Component refinements include high-visibility keyboard focus, responsive grouping,
 reduced-motion and forced-colors alternatives, and a narrow semantic edge for
