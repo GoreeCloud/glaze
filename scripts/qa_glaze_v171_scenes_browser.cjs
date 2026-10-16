@@ -89,7 +89,9 @@ const server=http.createServer((req,res)=>{
       assert.equal(await page.$eval('#memo-customize-dialog',el=>el.open),true);
       assert.equal(await page.$eval('#memo-label-input',el=>el.value),'Design');
       // A global shortcut must not interrupt another modal's edits or steal focus.
-      await page.keyboard.press('Control+k');
+      await page.keyboard.down('Control');
+      await page.keyboard.press('k');
+      await page.keyboard.up('Control');
       assert.equal(await page.$eval('#memo-customize-dialog',el=>el.open),true,'memo dialog remains open');
       assert.equal(await page.$eval('#scene-command-dialog',el=>el.open),false,'command dialog must not stack');
       assert.equal(await page.evaluate(()=>document.activeElement.id),'memo-label-input','memo editor keeps keyboard focus');
