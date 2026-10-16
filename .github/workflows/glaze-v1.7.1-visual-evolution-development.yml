@@ -37,6 +37,7 @@ on:
       - 'scripts/qa_glaze_v171_axe.cjs'
       - 'scripts/qa_glaze_v171_typography.cjs'
       - 'scripts/qa_glaze_v171_performance.cjs'
+      - 'scripts/qa_glaze_v171_privacy_security.cjs'
       - 'scripts/verify_glaze_v171_adapters.mjs'
       - 'integrations/v1.7.1/**'
       - 'docs/v1.7.1/visual-evolution-scenes.md'
@@ -78,6 +79,7 @@ on:
       - 'scripts/qa_glaze_v171_axe.cjs'
       - 'scripts/qa_glaze_v171_typography.cjs'
       - 'scripts/qa_glaze_v171_performance.cjs'
+      - 'scripts/qa_glaze_v171_privacy_security.cjs'
       - 'scripts/verify_glaze_v171_adapters.mjs'
       - 'integrations/v1.7.1/**'
       - 'docs/v1.7.1/visual-evolution-scenes.md'
@@ -114,6 +116,9 @@ jobs:
 
       - name: Validate opt-in consumer adapters
         run: node scripts/verify_glaze_v171_adapters.mjs
+
+      - name: Validate privacy isolation harness syntax
+        run: node --check scripts/qa_glaze_v171_privacy_security.cjs
 
       - name: Validate accessibility harness syntax
         run: node --check scripts/qa_glaze_v171_axe.cjs
@@ -158,6 +163,10 @@ jobs:
           GLAZE_AXE_PATH: ${{ runner.temp }}/glaze-a11y/node_modules/axe-core/axe.min.js
       - name: Local preview resource and stability budget
         run: node scripts/qa_glaze_v171_performance.cjs
+        env:
+          GLAZE_PUPPETEER_MODULE: ${{ runner.temp }}/glaze-a11y/node_modules/puppeteer-core
+      - name: Local preview privacy and storage isolation
+        run: node scripts/qa_glaze_v171_privacy_security.cjs
         env:
           GLAZE_PUPPETEER_MODULE: ${{ runner.temp }}/glaze-a11y/node_modules/puppeteer-core
       - name: Axe automated WCAG review
