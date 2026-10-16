@@ -4,22 +4,11 @@
    GLAZE_CHROME_PATH to an existing Chrome/Chromium executable. */
 const fs=require('node:fs');
 const path=require('node:path');
-const http=require('node:http');
 const assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
 const puppeteer=require(process.env.GLAZE_PUPPETEER_MODULE||'puppeteer');
-const extensions={'.html':'text/html','.css':'text/css','.mjs':'text/javascript','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml'};
-const server=http.createServer((req,res)=>{
-  let url;
-  try { url=new URL(req.url,'http://localhost'); }catch {res.writeHead(400);return res.end('Bad URL');}
-  const target=path.resolve(root,'.'+decodeURIComponent(url.pathname));
-  if(target!==root&&!target.startsWith(root+path.sep)){res.writeHead(403);return res.end('Forbidden');}
-  fs.readFile(target,(error,bytes)=>{
-    if(error){res.writeHead(404);return res.end('Missing');}
-    res.writeHead(200,{'Content-Type':extensions[path.extname(target)]||'application/octet-stream','Cache-Control':'no-store'});
-    res.end(bytes);
-  });
-});
+const {createPreviewServer}=require('./glaze_v171_preview_server.cjs');
+const server=createPreviewServer(root);
 (async()=>{
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   let browser;

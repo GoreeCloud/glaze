@@ -1,18 +1,11 @@
 #!/usr/bin/env node
 /* Development-only deterministic resource/visual stability smoke.
    Timings are diagnostic, not hardware performance or energy acceptance. */
-const fs=require('node:fs'),http=require('node:http'),path=require('node:path'),assert=require('node:assert/strict');
+const path=require('node:path'),assert=require('node:assert/strict');
 const browserLib=require(process.env.GLAZE_PUPPETEER_MODULE||'puppeteer');
 const root=path.resolve(__dirname,'..');
-const contentTypes={'.html':'text/html','.css':'text/css','.mjs':'text/javascript','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml'};
-const server=http.createServer((req,res)=>{
- const target=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));
- if(!target.startsWith(root+path.sep)){res.writeHead(403).end();return;}
- fs.readFile(target,(err,data)=>{
-  if(err){res.writeHead(404).end();return;}
-  res.writeHead(200,{'content-type':contentTypes[path.extname(target)]||'text/plain','cache-control':'no-store'}).end(data);
- });
-});
+const {createPreviewServer}=require('./glaze_v171_preview_server.cjs');
+const server=createPreviewServer(root);
 (async()=>{
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
  let browser;

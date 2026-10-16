@@ -8,6 +8,8 @@ on:
       - 'reference/v1.7.1/visual-evolution.html'
       - 'docs/v1.7.1/visual-evolution.md'
       - 'scripts/verify_glaze_v171_visual_evolution.mjs'
+      - 'scripts/glaze_v171_preview_server.cjs'
+      - 'tests/glaze-v1.7.1-preview-server.test.cjs'
       - 'assets/icon-glyphs/system-symbols.svg'
       - 'reference/v1.7.1/visual-evolution-scenes.html'
       - 'css/glaze-v1.7.1-scenes*.css'
@@ -50,6 +52,8 @@ on:
       - 'reference/v1.7.1/visual-evolution.html'
       - 'docs/v1.7.1/visual-evolution.md'
       - 'scripts/verify_glaze_v171_visual_evolution.mjs'
+      - 'scripts/glaze_v171_preview_server.cjs'
+      - 'tests/glaze-v1.7.1-preview-server.test.cjs'
       - 'assets/icon-glyphs/system-symbols.svg'
       - 'reference/v1.7.1/visual-evolution-scenes.html'
       - 'css/glaze-v1.7.1-scenes*.css'
@@ -111,6 +115,9 @@ jobs:
 
       - name: Verify development-only application scenes
         run: node scripts/verify_glaze_v171_scenes.mjs
+
+      - name: Verify isolated preview-server security and request resilience
+        run: node --test tests/glaze-v1.7.1-preview-server.test.cjs
 
       - name: Validate browser test harness syntax
         run: node --check scripts/qa_glaze_v171_scenes_browser.cjs
