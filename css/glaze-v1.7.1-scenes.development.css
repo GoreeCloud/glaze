@@ -7,6 +7,7 @@
 @import url("./glaze-v1.7.1-note-menu.development.css");
 @import url("./glaze-v1.7.1-content-states.development.css");
 @import url("./glaze-v1.7.1-material-lab.development.css");
+@import url("./glaze-v1.7.1-form-lab.development.css");
 .scene-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
 .scene-tabs button{border:1px solid var(--border);border-radius:12px;padding:11px 17px;background:var(--surface);color:var(--text)}
 .scene-tabs button[aria-selected=true]{background:var(--accent);color:var(--onAccent)}
