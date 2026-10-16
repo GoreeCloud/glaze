@@ -10,7 +10,7 @@ on:
       - 'js/icon-glyph-registry.mjs'
       - 'js/glaze-v1.7.0.mjs'
       - 'scripts/verify_glaze_v1_7_1_development_boundary.mjs'
-      - '.github/workflows/glaze-v1.7.1-development-boundary.yml'
+      - '.github/workflows/glaze-v1.7.1-*.yml'
   push:
     branches: [main]
     paths:
@@ -21,7 +21,7 @@ on:
       - 'js/icon-glyph-registry.mjs'
       - 'js/glaze-v1.7.0.mjs'
       - 'scripts/verify_glaze_v1_7_1_development_boundary.mjs'
-      - '.github/workflows/glaze-v1.7.1-development-boundary.yml'
+      - '.github/workflows/glaze-v1.7.1-*.yml'
 
 permissions:
   contents: read
