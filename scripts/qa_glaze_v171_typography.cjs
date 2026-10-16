@@ -48,6 +48,10 @@ const server=http.createServer((req,res)=>{
    assert.equal(state.columns,2,'paired controls grid');
    assert.equal(state.row,true,'paired controls same row');
    assert.ok(state.target>=44,'touch target height');
+   if(process.env.GLAZE_QA_SCREENSHOTS && width===390 && (theme==='porcelain'||theme==='nocturne')){
+     fs.mkdirSync(process.env.GLAZE_QA_SCREENSHOTS,{recursive:true});
+     await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'typography-'+theme+'-390.png'),fullPage:true});
+   }
    if(process.env.GLAZE_AXE_PATH){
     await page.addScriptTag({path:process.env.GLAZE_AXE_PATH});
     const report=await page.evaluate(()=>window.axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}}));
