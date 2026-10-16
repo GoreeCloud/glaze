@@ -25,7 +25,7 @@ The exact bounded source anchor is `7c4ded83d7a8725165bb6a55dfb175667cc9589e`. U
 
 ## V1.7.1
 
-`GLAZE_V1_7_1_HARDENING.md` controls the 21 retained open qualification lanes plus Section 48 acceptance. V1.7.1 is Development and non-consumer-eligible until separately qualified and promoted.
+`GLAZE_V1_7_1_HARDENING.md` controls the qualification work inherited by V1.7.1, including the 21 lanes open at the V1.7.0 transfer checkpoint. The October 3, 2026 frozen-source Regression checkpoint left 20 retained v1.2 lanes unverified (17 of 37 evidence-group-complete for that historical source). Section 48 acceptance remains separate. These historical counts do not qualify any changed V1.7.1 candidate. V1.7.1 is Development and non-consumer-eligible until separately qualified and promoted.
 
 ## Consumer boundary
 

@@ -6,7 +6,7 @@ Glaze V1.7 / `1.7.0` is the current Official Anchor and Stable-compatibility sha
 
 The governing records are `VERSION`, `registry/lifecycle.json`, `GLAZE_V1_7.md`, `contracts/v1.7/stable-scope.json`, `acceptance/v1.7-stable.md`, and `js/glaze-v1.7.0.mjs`.
 
-V1.7.0 intentionally inherits the accepted V1.6.0 runtime behavior. The retained `1.7.0-dev.47` source, its 21 open qualification lanes, and Section 48 Expression System / Adaptive Intelligence acceptance are outside the V1.7.0 Stable scope and are transferred to V1.7.1.
+V1.7.0 intentionally inherits the accepted V1.6.0 runtime behavior. The retained `1.7.0-dev.47` source, the 21 qualification lanes open at the V1.7.0 transfer checkpoint, and Section 48 Expression System / Adaptive Intelligence acceptance are outside the V1.7.0 Stable scope and are transferred to V1.7.1. The later frozen-source Regression checkpoint left 20 retained v1.2 lanes unverified; it did not qualify a changed V1.7.1 candidate or grant Stable authority.
 
 No missing evidence is treated as passing. In particular, unverified dev.47 Privacy boundaries and Security boundaries are attached to Development behavior that is excluded from the Stable runtime; they are not deferred requirements for behavior shipped by 1.7.0.
 

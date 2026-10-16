@@ -29,7 +29,7 @@ This preserves GoreeCloud's fail-closed rule: missing qualification evidence is 
 
 All unfinished or unverified V1.7 Development obligations moved out of the V1.7.0 Stable runtime. The retained open qualification boundary includes frame pacing, input latency, claimed form factors/devices, keyboard/pointer/touch/alternative input, representative rendering, native behavior, performance, energy, regression, human visual/motion review, assistive technology, privacy boundaries, security boundaries, and Section 48 acceptance.
 
-The existing 16 evidence-group-complete retained lanes remain exact-source provenance for their historical reviewed source. They are not silently rebound to later V1.7.1 revisions.
+Following the frozen-source Regression checkpoint on October 3, 2026, the retained v1.2 qualification matrix has 17 of 37 evidence-group-complete lanes and 20 unverified lanes. This is historical-source evidence tied to `4b9d085a5177b96cc31d4270b38d792a59872e37`, not qualification of a changed V1.7.1 candidate. It is never silently rebound to later revisions.
 
 ## Privacy and security
 
