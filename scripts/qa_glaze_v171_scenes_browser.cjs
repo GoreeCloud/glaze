@@ -340,7 +340,7 @@ const server=http.createServer((req,res)=>{
       await fallback.goto(base+'?theme=cedar',{waitUntil:'networkidle0'});
       assert.deepEqual(await fallback.evaluate(()=>[...document.querySelectorAll('[data-scene-theme][aria-current="true"]')].map(el=>el.dataset.sceneTheme)),['porcelain'],'failed theme leaves only default marked active');
       assert.match(await fallback.$eval('#scene-status',el=>el.textContent),/Theme preview unavailable/);
-      assert.equal(await fallback.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--canvas').trim()),'#F4F4F0','invalid theme never partly applies palette');
+      assert.equal(await fallback.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--canvas').trim()),'#f4f4f0','invalid theme never partly applies palette');
       results.push({themeFallback:mode,defaultSelection:true});
       await fallback.close();
     }
