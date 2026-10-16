@@ -28,7 +28,7 @@ function run(button){
  const target=document.getElementById(button.dataset.commandTarget);
  if(!target)return;
  close();
- if(button.dataset.commandTab){
+ if(button.hasAttribute('data-command-tab')){
    target.click();target.focus();
  }else{
    if(!target.hasAttribute('tabindex'))target.setAttribute('tabindex','-1');
