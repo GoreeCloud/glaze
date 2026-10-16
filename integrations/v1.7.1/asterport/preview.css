@@ -1,0 +1,34 @@
+/* Development-only opt-in bridge for Asterport's existing Glaze 1.7.0 consumer tokens.
+ * No demo palette, provider status or service state is injected.
+ * Scope by putting data-glaze-v171-preview on a dedicated preview container only. */
+[data-glaze-v171-preview].glaze-v171-asterport{
+ --glaze-canvas:var(--ast-glaze-canvas);
+ --glaze-surface:var(--ast-glaze-base);
+ --glaze-surface-raised:var(--ast-glaze-raised);
+ --glaze-text:var(--ast-glaze-text-primary);
+ --glaze-muted:var(--ast-glaze-text-secondary);
+ --glaze-border:var(--ast-glaze-line);
+ --glaze-focus:var(--ast-glaze-focus);
+ --glaze-radius-card:20px;
+ --glaze-radius-control:12px;
+ --glaze-target-min:44px;
+}
+[data-glaze-v171-preview].glaze-v171-asterport .glaze-v171-preview-card{
+ background:var(--glaze-surface);color:var(--glaze-text);
+ border:1px solid var(--glaze-border);border-radius:var(--glaze-radius-card);
+ padding:18px;
+}
+[data-glaze-v171-preview].glaze-v171-asterport .glaze-v171-preview-action{
+ min-height:var(--glaze-target-min);border-radius:var(--glaze-radius-control);
+ border:1px solid var(--glaze-border);color:var(--glaze-text);
+ background:var(--glaze-surface-raised);padding:10px 15px;
+}
+[data-glaze-v171-preview].glaze-v171-asterport .glaze-v171-preview-action:focus-visible{
+ outline:3px solid var(--glaze-focus);outline-offset:3px;
+}
+@media(forced-colors:active){
+ [data-glaze-v171-preview].glaze-v171-asterport .glaze-v171-preview-card,
+ [data-glaze-v171-preview].glaze-v171-asterport .glaze-v171-preview-action{
+  color:CanvasText;background:Canvas;border-color:CanvasText;
+ }
+}
