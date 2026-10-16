@@ -148,6 +148,19 @@ const server=http.createServer((req,res)=>{
       await page.keyboard.press('Escape');
       assert.equal(await page.$eval('.scene-note-menu',e=>e.hidden),true);
       assert.equal(await page.$eval('[data-note-more]',e=>e.getAttribute('aria-expanded')),'false');
+      // Tab and reverse Tab leave the menu without losing the next keyboard target.
+      await page.click('[data-note-more]');
+      assert.equal(await page.$eval('.scene-note-menu [role="menuitem"]',el=>el.tabIndex),-1);
+      await page.keyboard.press('Tab');
+      await page.waitForFunction(()=>document.querySelector('.scene-note-menu').hidden);
+      assert.equal(await page.$eval('[data-note-more]',el=>el.getAttribute('aria-expanded')),'false');
+      assert.equal(await page.evaluate(()=>document.activeElement.closest('.scene-memo')===document.querySelectorAll('.scene-memo')[1]),true,'Tab moves to next note');
+      await page.click('[data-note-more]');
+      await page.keyboard.down('Shift');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('Shift');
+      await page.waitForFunction(()=>document.querySelector('.scene-note-menu').hidden);
+      assert.equal(await page.evaluate(()=>document.activeElement.hasAttribute('data-note-more')),true,'reverse Tab returns to menu trigger');
       await page.click('[data-note-more]');
       await page.click('.scene-memo h3');
       assert.equal(await page.$eval('.scene-note-menu',e=>e.hidden),true,'click within note outside menu dismisses it');
