@@ -23,6 +23,7 @@
 .scene-material-preview[data-elevation="outlined"]{border:2px solid var(--accent);box-shadow:none}
 .scene-material-icon{display:grid;place-items:center;width:47px;height:47px;border-radius:14px;background:var(--accentSubtle);color:var(--accent)}
 .scene-material-icon svg{width:24px;height:24px}
+.scene-material-preview[data-accent="off"][data-elevation="outlined"]{border-color:var(--border)}
 .scene-material-preview[data-accent="off"] .scene-material-icon{background:var(--surface);color:var(--muted);border:1px solid var(--border)}
 .scene-material-preview h3{font-size:20px;letter-spacing:-.045em;margin:0}
 .scene-material-preview p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
