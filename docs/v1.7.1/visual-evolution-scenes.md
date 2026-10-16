@@ -193,7 +193,8 @@ at phone widths. Selection uses pressed-state labels rather than color alone.
 A dedicated, opt-in Chromium/axe script at
 `scripts/qa_glaze_v171_typography.cjs` covers type size, line spacing,
 high-clarity state, target geometry, reflow and sampled WCAG checks for four
-sample themes at 320/390/768/1280px combinations. Its tests are separate from
-the existing mandatory Development workflow once the required Chromium job runs that matrix.
+sample themes at 320/390/768/1280px combinations. The full matrix now runs
+inside the required Development Chromium/axe job, including checks for three
+sibling field groups and correct specimen placement within the responsive layout.
 A source/baseline browser success is not a claim of human screen-reader,
 physical-device, localization or native typography acceptance.
