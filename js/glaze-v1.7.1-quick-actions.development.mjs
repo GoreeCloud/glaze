@@ -57,6 +57,8 @@ commandResults.addEventListener('keydown',event=>{
 for(const button of commandActions)button.addEventListener('click',()=>run(button));
 document.addEventListener('keydown',event=>{
  if((event.ctrlKey||event.metaKey)&&!event.altKey&&event.key.toLowerCase()==='k'){
+  // Do not stack a command palette over another modal workflow.
+  if([...document.querySelectorAll('dialog[open]')].some(dialog=>dialog!==commandDialog)){event.preventDefault();return;}
   event.preventDefault();commandDialog.open?close():open();
  }
 });

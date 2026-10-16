@@ -88,6 +88,11 @@ const server=http.createServer((req,res)=>{
       await page.click('[data-colorize]');
       assert.equal(await page.$eval('#memo-customize-dialog',el=>el.open),true);
       assert.equal(await page.$eval('#memo-label-input',el=>el.value),'Design');
+      // A global shortcut must not interrupt another modal's edits or steal focus.
+      await page.keyboard.press('Control+k');
+      assert.equal(await page.$eval('#memo-customize-dialog',el=>el.open),true,'memo dialog remains open');
+      assert.equal(await page.$eval('#scene-command-dialog',el=>el.open),false,'command dialog must not stack');
+      assert.equal(await page.evaluate(()=>document.activeElement.id),'memo-label-input','memo editor keeps keyboard focus');
       if(process.env.GLAZE_QA_SCREENSHOTS){
         await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'memo-editor-'+width+'.png'),fullPage:true});
       }
