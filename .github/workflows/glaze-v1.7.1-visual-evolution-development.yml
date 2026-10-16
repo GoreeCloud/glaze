@@ -142,6 +142,10 @@ jobs:
         run: node scripts/qa_glaze_v171_scenes_browser.cjs
         env:
           GLAZE_PUPPETEER_MODULE: ${{ runner.temp }}/glaze-a11y/node_modules/puppeteer-core
+      - name: Local preview resource and stability budget
+        run: node scripts/qa_glaze_v171_performance.cjs
+        env:
+          GLAZE_PUPPETEER_MODULE: ${{ runner.temp }}/glaze-a11y/node_modules/puppeteer-core
       - name: Axe automated WCAG review
         run: node scripts/qa_glaze_v171_axe.cjs
         env:
