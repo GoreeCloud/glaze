@@ -14,7 +14,6 @@ const types = {
 };
 function createPreviewServer(rootDirectory) {
   const root = fs.realpathSync(rootDirectory);
-  const withinRoot = candidate => candidate.startsWith(root + path.sep);
   return http.createServer((request, response) => {
     const headers = {'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff'};
     const reject = (status, message) => response.writeHead(status, headers).end(message);
@@ -31,13 +30,17 @@ function createPreviewServer(rootDirectory) {
     const components = pathname.slice(1).split('/');
     if (!roots.has(components[0]) || components.some(part => !part || part === '.' || part === '..' || part.startsWith('.')))
       return reject(403, 'Forbidden');
+    const assetRoot = path.join(root, components[0]);
+    const withinAssetRoot = target => target.startsWith(assetRoot + path.sep);
     const candidate = path.resolve(root, ...components);
-    if (!withinRoot(candidate)) return reject(403, 'Forbidden');
+    if (!withinAssetRoot(candidate)) return reject(403, 'Forbidden');
     const type = types[path.extname(candidate).toLowerCase()];
     if (!type) return reject(403, 'Unsupported asset');
     fs.realpath(candidate, (error, resolved) => {
       if (error) return reject(404, 'Not found');
-      if (!withinRoot(resolved)) return reject(403, 'Forbidden');
+      // A symlink must not alias a non-preview root, hidden file, or another asset root.
+      if (!withinAssetRoot(resolved) || path.relative(root, resolved).split(path.sep).some(part => part.startsWith('.')))
+        return reject(403, 'Forbidden');
       fs.stat(resolved, (statError, stat) => {
         if (statError || !stat.isFile()) return reject(404, 'Not found');
         fs.readFile(resolved, (readError, bytes) => {

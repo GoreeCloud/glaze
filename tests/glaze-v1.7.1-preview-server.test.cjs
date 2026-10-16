@@ -13,6 +13,13 @@ test('preview server permits assets but rejects malformed and unsafe requests', 
   fs.mkdirSync(path.join(root, 'assets'), {recursive: true});
   fs.writeFileSync(path.join(root, 'assets', 'preview.css'), 'body{color:green}');
   fs.writeFileSync(path.join(root, 'VERSION'), 'not a preview asset');
+  fs.writeFileSync(path.join(root, 'package.json'), '{"private":"not a preview asset"}');
+  fs.writeFileSync(path.join(root, 'assets', '.hidden.json'), '{"private":"hidden preview file"}');
+  fs.mkdirSync(path.join(root, 'js'));
+  fs.writeFileSync(path.join(root, 'js', 'approved.js'), 'export const ok = true;');
+  fs.symlinkSync(path.join(root, 'package.json'), path.join(root, 'assets', 'leaked.json'));
+  fs.symlinkSync(path.join(root, 'assets', '.hidden.json'), path.join(root, 'assets', 'hidden-alias.json'));
+  fs.symlinkSync(path.join(root, 'js', 'approved.js'), path.join(root, 'assets', 'cross-root.js'));
   fs.writeFileSync(path.join(sandbox, 'outside.css'), 'private data');
   fs.symlinkSync(path.join(sandbox, 'outside.css'), path.join(root, 'assets', 'escape.css'));
   fs.symlinkSync(path.join(root, 'assets', 'preview.css'), path.join(root, 'assets', 'internal.css'));
@@ -41,11 +48,20 @@ test('preview server permits assets but rejects malformed and unsafe requests', 
   const head = await request('/assets/preview.css', 'HEAD');
   assert.equal(head.status, 200);
   assert.equal(head.body, '');
-  for (const target of ['/VERSION', '/.git/config', '/assets/%2e%2e/VERSION', '/assets/escape.css']) {
+  for (const target of ['/VERSION', '/.git/config', '/assets/%2e%2e/VERSION', '/assets/escape.css', '/assets/leaked.json', '/assets/.hidden.json', '/assets/hidden-alias.json', '/assets/cross-root.js']) {
     assert.equal((await request(target)).status, 403, target);
   }
   assert.equal((await request('/assets/absent.css')).status, 404);
   assert.equal((await request('/assets/%ZZ.css')).status, 400);
   assert.equal((await request('/assets/preview.css', 'POST')).status, 405);
   assert.equal((await request('/assets/preview.css')).status, 200, 'server stays available after rejected requests');
+});
+
+test('all browser audits use the shared local preview server', () => {
+  const names = ['scenes_browser', 'typography', 'axe', 'performance', 'privacy_security'];
+  for (const name of names) {
+    const source=fs.readFileSync(path.join(__dirname,'..','scripts','qa_glaze_v171_'+name+'.cjs'),'utf8');
+    assert.ok(source.includes("require('./glaze_v171_preview_server.cjs')"), name);
+    assert.ok(source.includes('createPreviewServer(root)'), name);
+  }
 });

@@ -1,21 +1,12 @@
 #!/usr/bin/env node
 /* Development-preview privacy/security regression. Synthetic browser evidence only;
    this does not qualify real providers, devices, privacy or security release lanes. */
-const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const assert=require('node:assert/strict');
 const puppeteer=require(process.env.GLAZE_PUPPETEER_MODULE||'puppeteer');
+const path=require('node:path');
 const root=path.resolve(__dirname,'..');
-const mime={'.html':'text/html','.css':'text/css','.mjs':'text/javascript','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml'};
-const server=http.createServer((req,res)=>{
- let target;
- try{target=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));}
- catch{res.writeHead(400).end('Bad request');return;}
- if(!target.startsWith(root+path.sep)){res.writeHead(403).end('Forbidden');return;}
- fs.readFile(target,(error,data)=>{
-  if(error){res.writeHead(404).end('Not found');return;}
-  res.writeHead(200,{'content-type':mime[path.extname(target)]||'application/octet-stream','cache-control':'no-store'}).end(data);
- });
-});
+const {createPreviewServer}=require('./glaze_v171_preview_server.cjs');
+const server=createPreviewServer(root);
 async function storageState(page){
  return page.evaluate(async()=>({
   cookies:document.cookie,
