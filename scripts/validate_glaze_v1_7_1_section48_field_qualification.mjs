@@ -34,7 +34,7 @@ const expected={
 };
 function meaningful(value,label){req(typeof value==='string'&&value.trim(),label+' must be non-empty'); const s=value.trim(); req(!PLACEHOLDER.test(s),label+' contains placeholder'); return s;}
 function git(...args){return execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();}
-function validDate(v){return typeof v==='string'&&/(?:Z|[+-]\\d{2}:\\d{2})$/.test(v)&&Number.isFinite(Date.parse(v))&&Date.parse(v)<=Date.now()+5*60*1000;}
+function validDate(v){return typeof v==='string'&&/(?:Z|[+-][0-9]{2}:[0-9]{2})$/.test(v)&&Number.isFinite(Date.parse(v))&&Date.parse(v)<=Date.now()+5*60*1000;}
 function authorityFalse(a,key){req(a&&a[key]===false,'authority boundary must remain false: '+key);}
 function observations(items){req(Array.isArray(items)&&items.length>0,'observations must be non-empty'); for(const [i,x] of items.entries()){req(x&&typeof x==='object'&&!Array.isArray(x),'observation '+i+' must be object'); meaningful(x.id,'observation id'); req(['pass','fail','not-applicable-with-reason'].includes(x.status),'observation status invalid'); meaningful(x.observation,'observation text');}}
 
