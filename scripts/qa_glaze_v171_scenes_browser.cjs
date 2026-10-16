@@ -102,6 +102,10 @@ const server=http.createServer((req,res)=>{
       await page.click('#memo-customize-apply');
       assert.ok(await page.$eval('.scene-memo .scene-label',el=>el.textContent.startsWith('<img')),'label is text, not parsed HTML');
       assert.equal(await page.$eval('.scene-memo img',el=>el.tagName).catch(()=>null),null,'no injected HTML markup');
+      await page.click('[data-colorize]');
+      await page.$eval('#memo-label-input',el=>{el.value='Design';el.dispatchEvent(new Event('input',{bubbles:true}));});
+      await page.click('#memo-customize-apply');
+      assert.equal(await page.$eval('.scene-memo .scene-label',el=>el.textContent),'Design','synthetic visual restored after injection test');
 
       await page.click('[data-note-more]');
       if(process.env.GLAZE_QA_SCREENSHOTS)
@@ -147,6 +151,7 @@ const server=http.createServer((req,res)=>{
       await page.click('#scene-material-accent');
       assert.equal(await page.$eval('#scene-material-accent',e=>e.getAttribute('aria-checked')),'false');
       assert.equal(await page.$eval('#scene-material-preview',e=>e.dataset.accent),'off');
+      assert.equal(await page.$eval('#scene-material-preview',e=>getComputedStyle(e).borderTopColor),await page.$eval('.scene-card',e=>getComputedStyle(e).borderTopColor),'accent-off should use neutral border');
       await page.focus('#scene-material-radius');
       await page.$eval('#scene-material-radius',e=>{e.value='22';e.dispatchEvent(new Event('input',{bubbles:true}));});
       assert.equal(await page.$eval('#scene-material-preview',e=>getComputedStyle(e).borderTopLeftRadius),'22px');
