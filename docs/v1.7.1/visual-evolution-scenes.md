@@ -181,3 +181,19 @@ historical V1.7.1 retained field-evidence lanes.
 ## Typography and readability laboratory — Development
 
 The scenes gallery now includes an opt-in system-font specimen with Standard (15px), Relaxed (18px), and Large (21px) sample text plus Balanced and Airy leading. Controls expose pressed states and change only the sample; they do not persist settings or alter GoreeCloud apps. Responsive width and text reflow remain release-review criteria. The browser test checks the rendered Large size, while hardware, screen-reader and design signoff remain open.
+
+## Reading clarity refinement — Development
+
+The synthetic typography specimen has a third local-only choice: Regular or
+Higher clarity. Higher clarity strengthens text weight and optical spacing
+without replacing GoreeCloud's canonical system font or application settings.
+The paired line-spacing and clarity controls use balanced two-column grids
+at phone widths. Selection uses pressed-state labels rather than color alone.
+
+A dedicated, opt-in Chromium/axe script at
+`scripts/qa_glaze_v171_typography.cjs` covers type size, line spacing,
+high-clarity state, target geometry, reflow and sampled WCAG checks for four
+sample themes at 320/390/768/1280px combinations. Its tests are separate from
+the existing mandatory Development workflow until CI job approval/wiring.
+A source/baseline browser success is not a claim of human screen-reader,
+physical-device, localization or native typography acceptance.
