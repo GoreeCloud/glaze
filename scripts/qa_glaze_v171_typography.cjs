@@ -55,3 +55,7 @@ const server=http.createServer((req,res)=>{
    }
    console.log(JSON.stringify({theme,width,highClarity:true}));
    await page.close();
+  }
+  console.log('Development typography QA PASS; physical and manual AT testing remains open.');
+ }finally{if(browser)await browser.close();}
+})().catch(e=>{console.error('Typography QA FAIL:',e.message);process.exitCode=1;}).finally(()=>server.close());
