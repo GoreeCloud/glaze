@@ -14,6 +14,9 @@
 <div class="eyebrow">Glaze 1.7.1 · Design exploration only</div>
 <h1>One language. Many personalities.</h1>
 <p class="lead">Three distinct, locally rendered GoreeCloud-inspired compositions. These are non-production design studies, not implementations or live service states.</p>
+<div class="scene-command-tools">
+<button type="button" class="scene-command-open" id="scene-command-open" aria-haspopup="dialog" aria-controls="scene-command-dialog"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#search"></use></svg> Quick actions <span class="scene-command-key" aria-hidden="true">Ctrl K</span></button>
+</div>
 <nav role="tablist" aria-label="Example product scenes" class="scene-tabs">
 <button type="button" id="tab-memos" role="tab" aria-selected="true" aria-controls="scene-memos" tabindex="0" data-scene="memos">Memos</button>
 <button type="button" id="tab-launcher" role="tab" aria-selected="false" aria-controls="scene-launcher" tabindex="-1" data-scene="launcher">Launcher</button>
@@ -180,6 +183,27 @@
 <button type="button" class="scene-notice-close" id="glaze-notice-dismiss">Dismiss</button>
 </div>
 </div></section>
+<dialog id="scene-command-dialog" class="scene-command-dialog" aria-labelledby="scene-command-heading" aria-describedby="scene-command-help">
+<div class="scene-command-header">
+<h2 id="scene-command-heading">Quick actions</h2>
+<button type="button" id="scene-command-close" class="scene-command-close">Close</button>
+</div>
+<p id="scene-command-help" class="scene-command-help">Search and open an example. Use arrow keys to move, Enter to select, or Escape to close.</p>
+<label class="scene-form-help" for="scene-command-search" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">Search example actions</label>
+<input id="scene-command-search" class="scene-command-search" type="search" autocomplete="off" placeholder="Find scenes and components" aria-controls="scene-command-results">
+<div id="scene-command-results" class="scene-command-results" role="group" aria-label="Example navigation actions">
+<button type="button" class="scene-command-action" data-command-tab data-command-target="tab-memos" data-keywords="masonry notes labels color"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg><span>Memos<small>Notes, masonry and color</small></span></button>
+<button type="button" class="scene-command-action" data-command-tab data-command-target="tab-launcher" data-keywords="home dock apps drawer five columns"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#device"></use></svg><span>Launcher<small>Dock and five-column drawer</small></span></button>
+<button type="button" class="scene-command-action" data-command-tab data-command-target="tab-dashboard" data-keywords="system health semantic panels"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#cloud"></use></svg><span>System dashboard<small>Semantic dashboard preview</small></span></button>
+<button type="button" class="scene-command-action" data-command-target="controls-title" data-keywords="modal progress vector sizes component glyph"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#settings"></use></svg><span>Component laboratory<small>Dialog, progress and vectors</small></span></button>
+<button type="button" class="scene-command-action" data-command-target="scene-form-heading" data-keywords="form input validation radio checkbox"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#account"></use></svg><span>Form controls<small>Fields, validation and feedback</small></span></button>
+<button type="button" class="scene-command-action" data-command-target="material-lab-title" data-keywords="surface elevation radius accent shadow"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#settings"></use></svg><span>Surface laboratory<small>Elevation and geometry</small></span></button>
+<button type="button" class="scene-command-action" data-command-target="state-demo-title" data-keywords="skeleton empty loading failure error"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#warning"></use></svg><span>Content states<small>Loading, empty and error</small></span></button>
+<button type="button" class="scene-command-action" data-command-target="notices-title" data-keywords="notification security privacy warning"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#security"></use></svg><span>Semantic notices<small>Clear information and alerts</small></span></button>
+</div>
+<p class="scene-command-empty" id="scene-command-empty" hidden>No matching example actions. Try a different word.</p>
+<div class="scene-command-footer"><span id="scene-command-count" role="status" aria-live="polite">8 example actions available</span> · Local design examples only</div>
+</dialog>
 <dialog id="memo-customize-dialog" class="memo-editor" aria-labelledby="memo-editor-title" aria-describedby="memo-editor-description">
 <div class="memo-editor-inner">
 <div><h2 id="memo-editor-title" class="memo-editor-heading">Customize memo</h2><p id="memo-editor-description" class="memo-editor-helper">Change this example note. Nothing is saved.</p></div>
@@ -202,4 +226,5 @@
 <script type="module" src="../../js/glaze-v1.7.1-content-states.development.mjs"></script>
 <script type="module" src="../../js/glaze-v1.7.1-material-lab.development.mjs"></script>
 <script type="module" src="../../js/glaze-v1.7.1-form-lab.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-quick-actions.development.mjs"></script>
 </body></html>
