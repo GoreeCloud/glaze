@@ -27,6 +27,13 @@ const server=http.createServer((req,res)=>{
    const page=await browser.newPage();
    await page.setViewport({width,height:850});
    await page.goto(addr+'?theme='+theme,{waitUntil:'networkidle0'});
+   const hierarchy=await page.evaluate(()=>{
+     const controls=document.querySelector('.scene-type-controls');
+     return {fields:controls.querySelectorAll(':scope > .scene-type-field').length,
+       adjacent:document.getElementById('scene-type-sample').parentElement===document.querySelector('.scene-type-layout')};
+   });
+   assert.equal(hierarchy.fields,3,'independent typography fields');
+   assert.equal(hierarchy.adjacent,true,'specimen inside layout');
    assert.equal(await page.$eval('.scene-type-sample p',e=>getComputedStyle(e).fontSize),'15px');
    await page.click('[data-type-scale="large"]');
    assert.equal(await page.$eval('.scene-type-sample p',e=>getComputedStyle(e).fontSize),'21px');
