@@ -173,6 +173,8 @@ const server=http.createServer((req,res)=>{
       assert.equal(await page.$eval('#scene-form-name',e=>e.value),'');
       if(process.env.GLAZE_QA_SCREENSHOTS && (width===390||width===1280))
         await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'forms-'+width+'.png'),fullPage:true});
+      await page.click('[data-type-scale="large"]');
+      assert.equal(await page.$eval('.scene-type-sample p',el=>getComputedStyle(el).fontSize),'21px');
       const defaultRadius=await page.$eval('#scene-material-preview',e=>getComputedStyle(e).borderTopLeftRadius);
       assert.equal(defaultRadius,'18px');
       await page.click('[data-material-elevation="raised"]');
