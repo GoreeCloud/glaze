@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- GoreeCloud Launcher Glaze 1.7.1 design preview dimensions only.
+     NOT an installed resource, Stable binding, or APK build.
+     Adapt in Launcher branch's actual source tree after device acceptance. -->
+<resources>
+    <dimen name="glaze_v171_preview_touch_min">48dp</dimen>
+    <dimen name="glaze_v171_preview_corner_card">18dp</dimen>
+    <dimen name="glaze_v171_preview_corner_control">12dp</dimen>
+    <dimen name="glaze_v171_preview_dock_inset">10dp</dimen>
+    <integer name="glaze_v171_preview_home_columns">5</integer>
+    <integer name="glaze_v171_preview_dock_columns">5</integer>
+    <integer name="glaze_v171_preview_drawer_columns">5</integer>
+</resources>
