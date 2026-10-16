@@ -177,3 +177,7 @@ bytes for the 390px scenes, and the same resource count/bytes at 1280px.
 These are synthetic, single-machine samples and do not qualify Frame pacing,
 Input latency, native Performance, Energy behavior, physical touch or the
 historical V1.7.1 retained field-evidence lanes.
+
+## Typography and readability laboratory — Development
+
+The scenes gallery now includes an opt-in system-font specimen with Standard (15px), Relaxed (18px), and Large (21px) sample text plus Balanced and Airy leading. Controls expose pressed states and change only the sample; they do not persist settings or alter GoreeCloud apps. Responsive width and text reflow remain release-review criteria. The browser test checks the rendered Large size, while hardware, screen-reader and design signoff remain open.
