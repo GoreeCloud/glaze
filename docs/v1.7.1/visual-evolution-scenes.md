@@ -144,3 +144,36 @@ consumer and release acceptance **remain open**. Do not mark 1.7.1 Stable.
 The new opt-in interaction laboratory demonstrates a required workspace label, native Personal/Team radio controls, a preview checkbox, Reset, inline error/help text and a visual example card. Submit is intercepted locally: no account/workspace is created, no data is persisted, and text is always written through `textContent`, never HTML. Error state uses `aria-invalid`, explicitly described help/error elements, and focuses the invalid input. Native radio and checkbox controls remain keyboard-operable. Forced-colors and Reduced Motion alternatives are provided.
 
 Chromium exercises empty-name failure, focus and error recovery, safe HTML-like text, Team selection, preview visibility, Reset, and responsive rendering. Automated axe is extended to cover the invalid and committed form examples. Human/native-device/screen-reader qualification is still independently required.
+
+## Quick Actions — Development
+
+The experience gallery includes a searchable, local-only **Quick actions** dialog.
+It opens from a visible control or with Control/Command+K. Actions filter by
+name and related terms, with an explicit empty-result message. Arrow keys,
+Home/End, Enter and Escape are supported. Selecting Memos, Launcher or the
+dashboard activates the corresponding demonstration tab; selecting a control
+section moves focus to its heading. First-party SVG glyphs accompany text
+labels, and nothing opens a real app or changes a connected service.
+
+Automated Chromium checks cover command search, tab activation and dismissal,
+and the axe suite audits both open and empty-results states. The example is
+not consumer-integrated or a substitute for human screen-reader testing.
+
+## Local resource and layout stability — Development
+
+`scripts/qa_glaze_v171_performance.cjs` measures three isolated, local
+Chromium previews (gallery mobile, scenes mobile, scenes desktop). The bounded
+smoke checks first-party request count (maximum 35), encoded resource payload
+(maximum 160,000 bytes), unexpected external network requests, runtime errors,
+horizontal overflow and cumulative layout shift (maximum 0.1). FCP and DOM
+readiness times are logged as **diagnostic samples only**, not absolute release
+budgets or representative hardware performance evidence. The script runs in
+the Development CI browser job, independently of the existing responsive and
+automated accessibility suites.
+
+Observed local baseline before the tightened threshold: 10 resources and
+34,899 encoded bytes for the 390px gallery, 23 resources and 71,801 encoded
+bytes for the 390px scenes, and the same resource count/bytes at 1280px.
+These are synthetic, single-machine samples and do not qualify Frame pacing,
+Input latency, native Performance, Energy behavior, physical touch or the
+historical V1.7.1 retained field-evidence lanes.
