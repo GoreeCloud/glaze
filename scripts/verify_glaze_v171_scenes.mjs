@@ -103,4 +103,17 @@ assert.match(stateJS,/aria-pressed/);
 assert.match(noteCSS,/focus-visible/);
 assert.match(html,/id="scene-content-feedback"/);
 
+const materialJS=read('js/glaze-v1.7.1-material-lab.development.mjs');
+const materialCSS=read('css/glaze-v1.7.1-material-lab.development.css');
+for(const part of ['scene-material-preview','scene-material-radius','scene-material-accent','scene-material-feedback'])
+ assert.ok(html.includes('id="'+part+'"'),'Material component missing '+part);
+for(const kind of ['flat','raised','outlined'])assert.ok(html.includes('data-material-elevation="'+kind+'"'));
+assert.match(html,/role="switch"/);assert.match(html,/aria-checked="true"/);
+assert.match(materialJS,/aria-pressed/);assert.match(materialJS,/aria-checked/);
+assert.match(materialJS,/Number.isFinite/);
+assert.match(materialCSS,/forced-colors:active/);assert.match(materialCSS,/prefers-reduced-motion:reduce/);
+assert.match(materialCSS,/focus-visible/);
+for(const restricted of ['localStorage','sessionStorage','sendBeacon','XMLHttpRequest'])
+ assert.ok(!materialJS.includes(restricted),'Unwanted side-effect in presentation module');
+
 console.log('Glaze scenes: source contract PASS; real human/native/AT qualification remains open.');
