@@ -40,6 +40,10 @@ const server=http.createServer((req,res)=>{
       await page.click('#scene-command-open');
       assert.equal(await page.$eval('#scene-command-dialog',el=>el.open),true);
       await page.type('#scene-command-search','launcher');
+      if(process.env.GLAZE_QA_SCREENSHOTS && (width===390||width===1280)){
+        fs.mkdirSync(process.env.GLAZE_QA_SCREENSHOTS,{recursive:true});
+        await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'quick-actions-'+width+'.png'),fullPage:true});
+      }
       assert.equal(await page.$eval('#scene-command-count',el=>el.textContent),'1 example action available');
       await page.keyboard.press('Enter');
       assert.equal(await page.$eval('#tab-launcher',el=>el.getAttribute('aria-selected')),'true');
