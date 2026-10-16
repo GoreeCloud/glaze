@@ -21,3 +21,5 @@
 @media(max-width:390px){.scene-type-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.scene-type-option{padding-inline:6px}}
 @media(forced-colors:active){.scene-type-lab,.scene-type-option,.scene-type-sample{background:Canvas;color:CanvasText;border-color:CanvasText}}
 @media(prefers-reduced-motion:reduce){.scene-type-option,.scene-type-sample{transition:none;animation:none}}
+
+.scene-type-options-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
