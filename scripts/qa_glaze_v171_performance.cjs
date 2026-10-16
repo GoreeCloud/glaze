@@ -40,8 +40,8 @@ const server=http.createServer((req,res)=>{
    });
    assert.deepEqual(errors,[],'runtime errors: '+name);
    assert.deepEqual(external,[],'external network dependency: '+name);
-   assert.ok(perf.resources<=45,name+' request count '+perf.resources);
-   assert.ok(perf.bytes<=600000,name+' first-party payload '+perf.bytes);
+   assert.ok(perf.resources<=35,name+' request count '+perf.resources);
+   assert.ok(perf.bytes<=160000,name+' first-party payload '+perf.bytes);
    assert.ok(perf.cls<=.1,name+' layout shift '+perf.cls);
    assert.ok(perf.overflow<=1,name+' horizontal overflow '+perf.overflow);
    console.log(JSON.stringify({case:name,...perf}));
