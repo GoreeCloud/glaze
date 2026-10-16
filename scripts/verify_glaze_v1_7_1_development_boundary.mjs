@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // V1.7.1 successor Development must never acquire Stable authority from source availability.
 import assert from 'node:assert/strict';
+import {readdirSync,readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import * as icons from '../js/icon-glyph-registry.mjs';
 import * as historical from '../js/glaze-v1.7-development-v1-3.dev.mjs';
@@ -61,4 +62,14 @@ assert.equal(stable.glazeV170.retainedDev47RuntimeIncluded, false);
 assert.equal(stable.glazeV170.section48RuntimeIncluded, false);
 assert.ok(!('glazeV171Development' in stable), 'Development metadata leaked into Stable');
 
+const allV171Workflows = readdirSync(new URL('../.github/workflows/',import.meta.url)).filter(name=>name.startsWith('glaze-v1.7.1-')&&name.endsWith('.yml'));
+assert.ok(allV171Workflows.length>=13,'Missing V1.7.1 workflows');
+for(const name of allV171Workflows){
+ const source=readFileSync(new URL('../.github/workflows/'+name,import.meta.url),'utf8');
+ const checkouts=source.split('uses: actions/checkout@').length-1;
+ const sourceRefs=source.split('ref: ${{ github.event.pull_request.head.sha || github.sha }}').length-1;
+ assert.ok(checkouts>0,'Missing checkout: '+name);
+ assert.equal(sourceRefs,checkouts,'Unpinned source checkout: '+name);
+}
+console.log('PASS: all V1.7.1 qualification checkouts pinned to source head');
 console.log('PASS: Glaze V1.7.1 Development provenance, export identity and fail-closed authority');
