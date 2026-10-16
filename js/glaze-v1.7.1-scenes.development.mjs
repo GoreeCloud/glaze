@@ -61,21 +61,26 @@ document.getElementById('progress-update').addEventListener('click',()=>{
 
 // Optional, non-persistent review theme: ?theme=cedar|nocturne|contrast.
 const selectedTheme=new URLSearchParams(location.search).get('theme');
+let sceneTheme='porcelain';
 if(['cedar','nocturne','contrast'].includes(selectedTheme)){
  try{
   const url=new URL('../tokens/v1.7.1/visual-evolution.development.json',import.meta.url);
   const response=await fetch(url);if(!response.ok)throw new Error('Local theme unavailable');
   const manifest=await response.json();
   if(manifest.lifecycle!=='Development'||manifest.consumerEligible!==false)throw new Error('Unapproved palette');
-  const colors=manifest.themeSamples[selectedTheme];
-  for(const [role,value] of Object.entries(colors))if(/^#[0-9a-f]{6}$/i.test(value))document.documentElement.style.setProperty('--'+role,value);
-  document.documentElement.style.colorScheme=colors.appearance==='dark'?'dark':'light';
+  const colors=manifest.themeSamples?.[selectedTheme];
+  const roles=Object.entries(colors||{}).filter(([role])=>role!=='appearance'&&role!=='description');
+  if(roles.length<6||!['light','dark','high-contrast'].includes(colors?.appearance)||
+     roles.some(([role,value])=>!/^[a-z][a-zA-Z0-9]*$/.test(role)||!/^#[0-9a-f]{6}$/i.test(value)))
+    throw new Error('Invalid theme palette');
+  for(const [role,value] of roles)document.documentElement.style.setProperty('--'+role,value);
+  document.documentElement.style.colorScheme=colors.appearance==='dark'||colors.appearance==='high-contrast'?'dark':'light';
+  sceneTheme=selectedTheme;
   status.textContent=selectedTheme+' example theme loaded; no theme setting was saved.';
  }catch{status.textContent='Theme preview unavailable; default example colors retained.';}
 }
 
 /* glaze-v171-scene-polish: active example theme, never stored */
-const sceneTheme=['cedar','nocturne','contrast'].includes(selectedTheme)?selectedTheme:'porcelain';
 for(const item of document.querySelectorAll('[data-scene-theme]')){
   if(item.dataset.sceneTheme===sceneTheme)item.setAttribute('aria-current','true');
 }
