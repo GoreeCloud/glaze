@@ -168,6 +168,25 @@ Automated Chromium checks cover command search, tab activation and dismissal,
 and the axe suite audits both open and empty-results states. The example is
 not consumer-integrated or a substitute for human screen-reader testing.
 
+## Development privacy and security isolation smoke
+
+`scripts/qa_glaze_v171_privacy_security.cjs` exercises the current opt-in
+gallery and scene previews with synthetic content in isolated local Chromium.
+The browser intercepts and rejects off-origin network requests, tracks
+WebSocket creation and attempted sendBeacon calls, checks cookies,
+localStorage, sessionStorage, IndexedDB, CacheStorage and service-worker
+registrations, and verifies synthetic note, pin and workspace-preview changes
+disappear after reload. Browser runtime exceptions fail the check. This test is
+required in the Development CI browser job on each affected candidate head.
+
+**Evidence boundary:** This proves only these preview pages and synthetic
+workflows under that CI browser environment. It is not an audit of upstream
+providers, native applications, operating-system permissions, real private
+data, threat models or production telemetry. The retained V1.7.1 Privacy
+boundaries and Security boundaries lanes, Section 48 provider/privacy-security
+acceptance, physical-device observations, human review and governed exact-source
+evidence intake remain open.
+
 ## Local resource and layout stability — Development
 
 `scripts/qa_glaze_v171_performance.cjs` measures three isolated, local
