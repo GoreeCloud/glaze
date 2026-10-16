@@ -139,4 +139,5 @@ assert.match(quickActions,/hasAttribute\('data-command-tab'\)/);
 assert.match(quickActions,/showModal\(\)/);
 assert.match(quickStyles,/focus-visible/);
 assert.match(quickStyles,/forced-colors:active/);
+assert.ok(html.includes('id="scene-type-sample"'));
 console.log('Glaze scenes: source contract PASS; real human/native/AT qualification remains open.');
