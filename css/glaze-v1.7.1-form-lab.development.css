@@ -4,7 +4,7 @@
 .scene-form-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:20px;align-items:start}
 .scene-form-controls{display:grid;gap:17px}
 .scene-form-field{display:grid;gap:7px}
-.scene-form-field label,.scene-form-field legend{color:var(--text);font-weight:750;font-size:12px}
+.scene-form-field label,.scene-form-fieldset legend{color:var(--text);font-weight:750;font-size:12px}
 .scene-form-help{font-size:11px;color:var(--muted);line-height:1.5}
 .scene-form-input{display:block;width:100%;height:45px;border:1px solid var(--border);border-radius:12px;background:var(--canvas);color:var(--text);padding:11px 13px;font:inherit;font-size:13px}
 .scene-form-input[aria-invalid="true"]{border:2px solid var(--warning)}
