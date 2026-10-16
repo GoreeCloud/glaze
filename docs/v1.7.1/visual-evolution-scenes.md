@@ -138,4 +138,9 @@ They do not modify or import into the current applications or Glaze Stable.
 
 **Status:** Automated development qualification passed; human/device, native
 consumer and release acceptance **remain open**. Do not mark 1.7.1 Stable.
-\n## Form and validation preview — Development\n\nThe new opt-in interaction laboratory demonstrates a required workspace label, native Personal/Team radio controls, a preview checkbox, Reset, inline error/help text and a visual example card. Submit is intercepted locally: no account/workspace is created, no data is persisted, and text is always written through \`textContent\`, never HTML. Error state uses \`aria-invalid\`, explicitly described help/error elements, and focuses the invalid input. Native radio and checkbox controls remain keyboard-operable. Forced-colors and Reduced Motion alternatives are provided.\n\nChromium exercises empty-name failure, focus and error recovery, safe HTML-like text, Team selection, preview visibility, Reset, and responsive rendering. Automated axe is extended to cover the invalid and committed form examples. Human/native-device/screen-reader qualification is still independently required.\n
+
+## Form and validation preview — Development
+
+The new opt-in interaction laboratory demonstrates a required workspace label, native Personal/Team radio controls, a preview checkbox, Reset, inline error/help text and a visual example card. Submit is intercepted locally: no account/workspace is created, no data is persisted, and text is always written through `textContent`, never HTML. Error state uses `aria-invalid`, explicitly described help/error elements, and focuses the invalid input. Native radio and checkbox controls remain keyboard-operable. Forced-colors and Reduced Motion alternatives are provided.
+
+Chromium exercises empty-name failure, focus and error recovery, safe HTML-like text, Team selection, preview visibility, Reset, and responsive rendering. Automated axe is extended to cover the invalid and committed form examples. Human/native-device/screen-reader qualification is still independently required.
