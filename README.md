@@ -51,6 +51,6 @@ See `docs/v1.7/GLAZE_V1_7_PLANNED.md` and the V1.7 qualification records for the
 
 ## Upcoming identity: GC UI
 
-On October 16, 2026, the GoreeCloud owner directed that **GC UI** will permanently replace both **Glaze** and **Glaze UI**. This is an **approved future naming decision**, not a completed migration. The current verified Glaze 1.7.0 release identity, repository paths, consumer requirements, and historical Glaze UI evidence remain unchanged until a controlled, validated cutover.
+On October 16, 2026, the GoreeCloud owner directed that **GC UI (GoreeCloud User Interface)** will permanently replace both **Glaze** and **Glaze UI**. This is an **approved future naming decision**, not a completed migration. The current verified Glaze 1.7.0 release identity, repository paths, consumer requirements, and historical Glaze UI evidence remain unchanged until a controlled, validated cutover.
 
 See [docs/BRANDING.md](docs/BRANDING.md) for the decision and migration boundaries.
