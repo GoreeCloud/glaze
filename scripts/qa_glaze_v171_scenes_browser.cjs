@@ -325,6 +325,25 @@ const server=http.createServer((req,res)=>{
       results.push({theme,surface:palette});
       await page.close();
     }
+    // Failed or malformed palette loads must not mislabel default colors as selected.
+    for(const mode of ['unavailable','malformed']){
+      const fallback=await browser.newPage();
+      await fallback.setRequestInterception(true);
+      fallback.on('request',req=>{
+        if(!req.url().endsWith('/tokens/v1.7.1/visual-evolution.development.json'))return req.continue();
+        if(mode==='unavailable')return req.respond({status:503,contentType:'application/json',body:'{}'});
+        return req.respond({status:200,contentType:'application/json',body:JSON.stringify({
+          lifecycle:'Development',consumerEligible:false,
+          themeSamples:{cedar:{appearance:'light',canvas:'#112233',surface:'invalid'}}
+        })});
+      });
+      await fallback.goto(base+'?theme=cedar',{waitUntil:'networkidle0'});
+      assert.deepEqual(await fallback.evaluate(()=>[...document.querySelectorAll('[data-scene-theme][aria-current="true"]')].map(el=>el.dataset.sceneTheme)),['porcelain'],'failed theme leaves only default marked active');
+      assert.match(await fallback.$eval('#scene-status',el=>el.textContent),/Theme preview unavailable/);
+      assert.equal(await fallback.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--canvas').trim()),'#F4F4F0','invalid theme never partly applies palette');
+      results.push({themeFallback:mode,defaultSelection:true});
+      await fallback.close();
+    }
     const rtl=await browser.newPage();
     await rtl.setViewport({width:390,height:844});
     await rtl.goto(base,{waitUntil:'networkidle0'});
