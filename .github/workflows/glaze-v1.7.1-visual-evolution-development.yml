@@ -118,6 +118,9 @@ jobs:
       - name: Validate accessibility harness syntax
         run: node --check scripts/qa_glaze_v171_axe.cjs
 
+      - name: Validate typography harness syntax
+        run: node --check scripts/qa_glaze_v171_typography.cjs
+
       - name: Verify checkout remains unchanged
         run: git diff --exit-code -- .
 
