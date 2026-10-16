@@ -136,6 +136,26 @@ const server=http.createServer((req,res)=>{
         assert.equal(await page.$eval('[data-content-mode="'+mode+'"]',e=>e.getAttribute('aria-pressed')),'true');
         assert.ok((await page.$eval('#scene-content-feedback',e=>e.textContent)).includes('Illustrative'));
       }
+      const defaultRadius=await page.$eval('#scene-material-preview',e=>getComputedStyle(e).borderTopLeftRadius);
+      assert.equal(defaultRadius,'18px');
+      await page.click('[data-material-elevation="raised"]');
+      assert.equal(await page.$eval('#scene-material-preview',e=>e.dataset.elevation),'raised');
+      assert.notEqual(await page.$eval('#scene-material-preview',e=>getComputedStyle(e).boxShadow),'none');
+      await page.click('[data-material-elevation="outlined"]');
+      assert.equal(await page.$eval('#scene-material-preview',e=>getComputedStyle(e).borderTopWidth),'2px');
+      assert.equal(await page.$eval('[data-material-elevation="outlined"]',e=>e.getAttribute('aria-pressed')),'true');
+      await page.click('#scene-material-accent');
+      assert.equal(await page.$eval('#scene-material-accent',e=>e.getAttribute('aria-checked')),'false');
+      assert.equal(await page.$eval('#scene-material-preview',e=>e.dataset.accent),'off');
+      await page.focus('#scene-material-radius');
+      await page.$eval('#scene-material-radius',e=>{e.value='22';e.dispatchEvent(new Event('input',{bubbles:true}));});
+      assert.equal(await page.$eval('#scene-material-preview',e=>getComputedStyle(e).borderTopLeftRadius),'22px');
+      await page.keyboard.press('ArrowRight');
+      assert.equal(await page.$eval('#scene-material-radius-output',e=>e.textContent),'24px');
+      assert.ok((await page.$eval('#scene-material-feedback',e=>e.textContent)).includes('No preference was saved'));
+      if(process.env.GLAZE_QA_SCREENSHOTS && (width===390||width===1280)){
+        await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'materials-'+width+'.png'),fullPage:true});
+      }
       await page.click('#dialog-open');
       assert.equal(await page.$eval('#sample-dialog',el=>el.open),true);
       await page.keyboard.press('Escape');
