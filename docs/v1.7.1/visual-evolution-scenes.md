@@ -10,6 +10,8 @@ This additive reference explores three distinct Glaze presentations without modi
 
 The reference scene uses canonical Glaze SVG symbols, native semantic controls, arrow-key tab navigation, dialog focus and Escape behavior, a demonstrative progress control, Reduced Motion inheritance and forced-color styles.
 
+The illustrative Launcher drawer is nonmodal: moving focus outside it closes the drawer without changing the focused destination. Escape and the explicit Close control dismiss it and return focus to its toggle. These behaviors have browser regression coverage but still require device and assistive-technology validation.
+
 **Review location:** reference/v1.7.1/visual-evolution-scenes.html. From repository root, serve using Python's local HTTP server, then open that path.
 
 **Qualification boundaries:** Source-contract and repository checks cannot establish rendered quality, native parity, screen-reader accessibility, keyboard-device behavior, performance or energy acceptance. Do not adopt into consumers or publish a release until the applicable separate evidence is reviewed and approved.
