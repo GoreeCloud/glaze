@@ -8,12 +8,15 @@
 | Implementation status | **Not yet migrated or verified** |
 | Current system name | Glaze |
 | Historical predecessor name | Glaze UI |
-| Future permanent system name | **GC UI** |
+| Future permanent system name | **GC UI — GoreeCloud User Interface** |
+| Official abbreviation expansion | **GC UI** = **GoreeCloud User Interface** |
 | Effective cutover date | Not specified ("soon") |
 
 ## Decision
 
-**GC UI will permanently replace both "Glaze" and "Glaze UI" as the active name of GoreeCloud's shared design, interface, and experience system.**
+**GC UI (GoreeCloud User Interface) will permanently replace both "Glaze" and "Glaze UI" as the active name of GoreeCloud's shared design, interface, and experience system.**
+
+**Naming rule:** **GC UI** is short for **GoreeCloud User Interface**. Use the full form where the expansion is needed and the short form as the approved system name. Do not reinterpret **GC** or **UI** as different words.
 
 This is an owner-directed future naming decision. It does **not** mean that the system, repository, applications, releases, dependent packages, or user-facing interfaces have already migrated.
 
@@ -43,4 +46,5 @@ The October 16, 2026 decision supersedes the **long-term naming destination** of
 
 ## Revision history
 
+- **2026-10-16:** Clarified the approved expansion: GC UI = GoreeCloud User Interface.
 - **2026-10-16:** Initial record of the owner's permanent future GC UI replacement decision. Migration remains planned.
