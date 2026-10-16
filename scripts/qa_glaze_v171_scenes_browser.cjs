@@ -81,6 +81,12 @@ const server=http.createServer((req,res)=>{
       assert.equal(await page.$eval('#scene-drawer',el=>el.hidden),true,'Escape closes drawer');
       assert.equal(await page.evaluate(()=>document.activeElement.id),'drawer-toggle','drawer focus restoration');
       await page.click('#drawer-toggle');
+      await page.focus('#drawer-grid button:last-child');
+      await page.keyboard.press('Tab');
+      assert.equal(await page.$eval('#scene-drawer',el=>el.hidden),true,'focus exit closes nonmodal drawer');
+      assert.equal(await page.$eval('#drawer-toggle',el=>el.getAttribute('aria-expanded')),'false');
+      assert.notEqual(await page.evaluate(()=>document.activeElement.id),'drawer-toggle','focus remains at destination control');
+      await page.click('#drawer-toggle');
       if(process.env.GLAZE_QA_SCREENSHOTS){
         await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'drawer-'+width+'.png'),fullPage:true});
       }
