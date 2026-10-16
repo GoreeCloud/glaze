@@ -23,17 +23,21 @@ tabs.forEach((t,i)=>{
 
 const drawer=document.getElementById('scene-drawer');
 const toggle=document.getElementById('drawer-toggle');
-function openDrawer(open){
+function openDrawer(open,restoreFocus=true){
   drawer.hidden=!open;
   toggle.setAttribute('aria-expanded',String(open));
   toggle.textContent=open?'Close app drawer':'Open app drawer';
   if(open)document.getElementById('drawer-close').focus();
-  else toggle.focus();
+  else if(restoreFocus)toggle.focus();
 }
 toggle.addEventListener('click',()=>openDrawer(drawer.hidden));
 document.getElementById('drawer-close').addEventListener('click',()=>openDrawer(false));
 drawer.addEventListener('keydown',event=>{
   if(event.key==='Escape'){event.preventDefault();openDrawer(false);}
+});
+// Dismiss the nonmodal drawer when focus leaves it, preserving the target.
+document.addEventListener('focusin',event=>{
+ if(!drawer.hidden&&!drawer.contains(event.target)&&event.target!==toggle)openDrawer(false,false);
 });
 const svgNS='http://www.w3.org/2000/svg';
 const glyphNames=['folder','cloud','device','network','account','search','settings','share','privacy','security'];
