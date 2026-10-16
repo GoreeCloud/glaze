@@ -28,7 +28,7 @@ cards.forEach((card,index)=>{
  svg.append(use);button.append(svg);bar.append(button);
  function action(text,kind){
   const item=document.createElement('button');item.type='button';
-  item.role='menuitem';item.dataset.noteAction=kind;item.textContent=text;
+  item.role='menuitem';item.tabIndex=-1;item.dataset.noteAction=kind;item.textContent=text;
   menu.append(item);return item;
  }
  const edit=action('Customize appearance','appearance');
@@ -49,7 +49,11 @@ cards.forEach((card,index)=>{
   if(event.key==='End')target=items.length-1;
   if(target>=0){event.preventDefault();items[target].focus();}
   else if(event.key==='Escape'){event.preventDefault();closeMenu(true);}
-  else if(event.key==='Tab')closeMenu();
+  else if(event.key==='Tab'){
+   // Let native tab navigation reach the next destination before hiding
+   // the focused menuitem; synchronous hiding can discard keyboard focus.
+   requestAnimationFrame(()=>{if(active?.menu===menu)closeMenu();});
+  }
  });
  edit.addEventListener('click',()=>{closeMenu();appearance.click();});
  pin.addEventListener('click',()=>{
