@@ -44,7 +44,9 @@ function meaningful(value,label,max=2000){
 }
 function timestamp(value,label){
   const s=meaningful(value,label,50); req(/(?:Z|[+-]\d{2}:\d{2})$/.test(s),label+' must include timezone');
-  const ms=Date.parse(s); req(Number.isFinite(ms),label+' invalid'); return ms;
+  const ms=Date.parse(s); req(Number.isFinite(ms),label+' invalid');
+  req(ms<=Date.now()+5*60*1000,label+' cannot be future-dated');
+  return ms;
 }
 function evidenceReference(value,label){
   const s=meaningful(value,label,800); const m=REF.exec(s); req(m,label+' must use evidence+sha256');
@@ -251,6 +253,10 @@ reject(r=>{r.evidence[0].type='provenance';},'wrong lane/type');
 reject(r=>{r.evidence[0].reference='https://example.invalid/evidence';},'non-content-addressed reference');
 reject(r=>{r.evidence[0].reviewedAt='2026-10-04T08:00:00-05:00';},'review predates observation');
 reject(r=>{r.review.independentReviewConfirmed=false;},'missing independent review');
+reject(r=>{r.review.reviewedAt=new Date(Date.now()+86400000).toISOString();},'future-dated packet review');
+reject(r=>{r.evidence[0].observedAt=new Date(Date.now()+86400000).toISOString();},'future-dated observation');
+reject(r=>{r.review.reviewedAt=new Date(Date.now()+3*86400000).toISOString();r.evidence[0].reviewedAt=new Date(Date.now()+86400000).toISOString();},'future-dated evidence review');
+
 reject(r=>{r.authority.section46Complete=true;},'authority overclaim');
 reject(r=>{r.retainedApplicability['mobile']=false;},'required lane marked not applicable');
 

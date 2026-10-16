@@ -1,0 +1,35 @@
+/* Glaze 1.7.1 — Opt-in, development-only surface material laboratory. */
+.scene-material-lab{padding:23px;border:1px solid var(--border);border-radius:20px;background:var(--surface)}
+.scene-material-lab>p{font-size:12px;color:var(--muted);margin:6px 0 18px}
+.scene-material-layout{display:grid;grid-template-columns:minmax(205px,.9fr) minmax(0,1.1fr);gap:20px;align-items:stretch}
+.scene-material-controls{display:grid;align-content:start;gap:18px}
+.scene-material-field{display:grid;gap:10px}
+.scene-material-label{font-size:12px;font-weight:760;color:var(--text)}
+.scene-material-group{display:flex;flex-wrap:wrap;gap:5px}
+.scene-material-group button{flex:1;min-height:42px;padding:9px;border-radius:11px;background:var(--canvas);color:var(--text);border:1px solid var(--border);font-size:11px;font-weight:730}
+.scene-material-group button[aria-pressed="true"]{color:var(--onAccent);background:var(--accent);border-color:var(--accent)}
+.scene-material-group button:focus-visible,.scene-material-switch:focus-visible,.scene-material-field input:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.scene-material-slider-row{display:flex;align-items:center;gap:13px}
+.scene-material-slider-row input{width:100%;accent-color:var(--accent);min-height:38px;cursor:pointer}
+.scene-material-slider-row output{font-size:12px;font-weight:730;color:var(--text);width:45px;text-align:right;flex:none}
+.scene-material-switch{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;width:100%;padding:9px 10px;background:var(--canvas);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:12px;font-weight:730}
+.scene-material-track{width:39px;height:23px;border-radius:999px;background:var(--border);border:1px solid var(--muted);padding:2px;display:flex;align-items:center;flex:none}
+.scene-material-thumb{height:17px;width:17px;border-radius:50%;background:var(--text)}
+.scene-material-switch[aria-checked="true"] .scene-material-track{background:var(--accent);border-color:var(--accent);justify-content:flex-end}
+.scene-material-switch[aria-checked="true"] .scene-material-thumb{background:var(--onAccent)}
+.scene-material-preview{--scene-radius:18px;align-self:stretch;display:flex;flex-direction:column;gap:15px;justify-content:center;padding:23px;border-radius:var(--scene-radius);border:1px solid var(--border);background:var(--canvas);color:var(--text);min-height:230px}
+.scene-material-preview[data-elevation="flat"]{box-shadow:none}
+.scene-material-preview[data-elevation="raised"]{background:var(--surface);box-shadow:0 12px 32px rgba(0,0,0,.13)}
+.scene-material-preview[data-elevation="outlined"]{border:2px solid var(--accent);box-shadow:none}
+.scene-material-icon{display:grid;place-items:center;width:47px;height:47px;border-radius:14px;background:var(--accentSubtle);color:var(--accent)}
+.scene-material-icon svg{width:24px;height:24px}
+.scene-material-preview[data-accent="off"][data-elevation="outlined"]{border-color:var(--border)}
+.scene-material-preview[data-accent="off"] .scene-material-icon{background:var(--surface);color:var(--muted);border:1px solid var(--border)}
+.scene-material-preview h3{font-size:20px;letter-spacing:-.045em;margin:0}
+.scene-material-preview p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+.scene-material-preview .scene-material-caption{font-size:10px;font-weight:730;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.scene-material-feedback{font-size:11px;color:var(--muted);margin-top:14px}
+@media(max-width:760px){.scene-material-layout{grid-template-columns:1fr}.scene-material-lab{padding:15px}.scene-material-preview{min-height:190px}}
+@media(pointer:coarse){.scene-material-group button,.scene-material-switch{min-height:44px}}
+@media(forced-colors:active){.scene-material-lab,.scene-material-preview,.scene-material-group button,.scene-material-switch{background:Canvas;color:CanvasText;border-color:CanvasText;box-shadow:none}.scene-material-icon{background:Canvas;color:CanvasText;border:1px solid CanvasText}.scene-material-switch[aria-checked="true"] .scene-material-track{background:Highlight}.scene-material-switch[aria-checked="true"] .scene-material-thumb{background:HighlightText}.scene-material-group button[aria-pressed="true"]{outline:2px solid Highlight;outline-offset:-2px}}
+@media(prefers-reduced-motion:reduce){.scene-material-preview,.scene-material-track,.scene-material-thumb{transition:none;animation:none}}

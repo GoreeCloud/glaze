@@ -1,0 +1,26 @@
+/* Glaze V1.7.1 appearance editor — synthetic Memos scene only. */
+.memo-editor{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:24px;padding:0;width:min(420px,calc(100vw - 28px));max-height:min(600px,calc(100dvh - 32px));box-shadow:0 24px 70px rgba(0,0,0,.23);overflow:auto}
+.memo-editor::backdrop{background:rgba(8,17,14,.57)}
+.memo-editor-inner{padding:24px;display:grid;gap:17px}
+.memo-editor-heading{font-size:23px;font-weight:760;letter-spacing:-.045em;margin:0}
+.memo-editor-helper{font-size:12px;line-height:1.5;color:var(--muted);margin:5px 0 0}
+.memo-editor legend{font-size:12px;font-weight:730;padding:0;margin:0 0 11px}
+.memo-editor fieldset{padding:0;margin:0;border:0}
+.memo-editor-swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.memo-color-swatch{display:flex;flex-direction:column;align-items:center;gap:7px;padding:9px 4px;border:2px solid transparent;border-radius:14px;background:var(--canvas);color:var(--text);font-size:10px;min-height:86px;justify-content:center}
+.memo-color-swatch:hover{border-color:var(--border)}
+.memo-color-swatch[aria-pressed=true]{border-color:var(--accent);background:var(--accentSubtle)}
+.memo-color-swatch:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.memo-color-dot{display:block;width:28px;height:28px;border-radius:11px;background:var(--memo-tone);border:1px solid color-mix(in srgb,var(--text) 16%,transparent)}
+.memo-color-swatch[data-memo-tone=""]{--memo-tone:var(--surface)}
+.memo-color-swatch[data-memo-tone=warm]{--memo-tone:#D8AA80}
+.memo-color-swatch[data-memo-tone=green]{--memo-tone:#A1CFB1}
+.memo-color-swatch[data-memo-tone=rose]{--memo-tone:#D9ADC0}
+.memo-editor-label{display:grid;gap:8px;font-size:12px;font-weight:710}
+.memo-editor-input{width:100%;padding:11px 13px;border-radius:12px;border:1px solid var(--border);background:var(--canvas);color:var(--text);font-size:14px;min-height:44px}
+.memo-editor-input:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.memo-editor-actions{display:flex;gap:9px;justify-content:flex-end}
+.memo-editor-actions .btn{min-height:44px}
+@media(max-width:390px){.memo-editor-inner{padding:19px}.memo-color-swatch{font-size:10px}}
+@media(forced-colors:active){.memo-editor,.memo-color-swatch,.memo-editor-input{background:Canvas;color:CanvasText;border-color:CanvasText;box-shadow:none}.memo-color-swatch[aria-pressed=true]{outline:2px solid Highlight;outline-offset:-2px}.memo-color-dot{background:Canvas;border-color:CanvasText}}
+@media(prefers-reduced-motion:reduce){.memo-editor,.memo-color-swatch{animation:none!important;transition:none!important}}

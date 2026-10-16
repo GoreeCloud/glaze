@@ -1,0 +1,18 @@
+/* Development-only note context actions, opt-in. */
+.scene-memo{position:relative}
+.scene-memo.scene-menu-open{z-index:5}
+.scene-note-actions{display:flex;align-items:center;justify-content:flex-end;gap:7px;margin-top:9px}
+.scene-note-actions [data-colorize]{flex:1;min-height:37px}
+.scene-note-more{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:11px;border:1px solid var(--border);background:var(--surface);color:var(--text)}
+.scene-note-more svg{width:18px;height:18px;color:var(--accent)}
+.scene-note-more[aria-expanded="true"]{background:var(--accentSubtle);border-color:var(--accent)}
+.scene-note-more:focus-visible,.scene-note-menu button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.scene-note-menu{position:absolute;right:9px;bottom:50px;z-index:8;width:min(224px,calc(100% - 18px));display:grid;gap:4px;padding:7px;background:var(--surface);border:1px solid var(--border);border-radius:13px;box-shadow:0 14px 38px rgba(0,0,0,.18)}
+.scene-note-menu[hidden]{display:none}
+.scene-note-menu button{min-height:40px;background:transparent;color:var(--text);border:0;border-radius:9px;text-align:left;font-size:12px;font-weight:660;padding:9px 11px}
+.scene-note-menu button:hover,.scene-note-menu button:focus-visible{background:var(--accentSubtle)}
+.scene-pin-indicator{display:inline-block;margin:0 0 6px;padding:3px 8px;border:1px solid var(--border);background:var(--accentSubtle);color:var(--text);font-size:10px;font-weight:770;border-radius:99px}
+@media(max-width:390px){.scene-note-actions{gap:5px}.scene-note-more{width:36px;height:36px}.scene-note-menu{width:min(190px,calc(100% - 14px));right:7px}}
+@media(pointer:coarse){.scene-note-actions [data-colorize],.scene-note-more,.scene-note-menu button{min-height:44px}.scene-note-more{min-width:44px}}
+@media(forced-colors:active){.scene-note-menu,.scene-note-more,.scene-pin-indicator{background:Canvas;color:CanvasText;border-color:CanvasText;box-shadow:none}.scene-note-more[aria-expanded="true"]{outline:2px solid Highlight}}
+@media(prefers-reduced-motion:reduce){.scene-note-menu,.scene-note-more{transition:none;animation:none}}

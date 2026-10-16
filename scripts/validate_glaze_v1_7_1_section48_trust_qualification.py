@@ -6,6 +6,7 @@ import copy
 import json
 import re
 import subprocess
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -74,6 +75,17 @@ def meaningful(value: Any, label: str) -> str:
     req(isinstance(value, str) and value.strip(), label + " must be a non-empty string")
     text = value.strip()
     req(not PLACEHOLDER.search(text), label + " contains a placeholder")
+    return text
+
+def validated_capture_time(value: Any) -> str:
+    text = meaningful(value, "capturedAt")
+    try:
+        captured = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise QualificationError("capturedAt must be ISO-8601") from exc
+    req(captured.tzinfo is not None, "capturedAt requires an explicit timezone")
+    req(captured <= datetime.now(timezone.utc) + timedelta(minutes=5),
+        "capturedAt cannot be future-dated")
     return text
 
 def git(*args: str) -> str:
@@ -238,7 +250,7 @@ def validate_common(record: dict[str, Any], evidence_type: str, allowed_lanes: l
     tooling = record.get("toolingRevision")
     req(isinstance(tooling, str) and bool(HEX40.fullmatch(tooling)), "toolingRevision must be a lowercase 40-character SHA")
     req(record.get("repository") == "GoreeCloud/glaze", "repository identity drifted")
-    meaningful(record.get("capturedAt"), "capturedAt")
+    validated_capture_time(record.get("capturedAt"))
     meaningful(record.get("operator"), "operator")
     req(record.get("manualExecution") is True, "manualExecution must be true")
     lane = meaningful(record.get("laneId"), "laneId")
@@ -446,6 +458,13 @@ def self_test() -> None:
     privacy = sample_privacy(head)
     validate_provider_record(provider)
     validate_privacy_record(privacy)
+
+    malformed_time = copy.deepcopy(provider)
+    malformed_time["capturedAt"] = "not-a-timestamp"
+    reject(validate_provider_record, malformed_time, "malformed provider capture time")
+    future_time = copy.deepcopy(privacy)
+    future_time["capturedAt"] = (datetime.now(timezone.utc) + timedelta(days=1)).isoformat()
+    reject(validate_privacy_record, future_time, "future privacy/security capture time")
 
     stale = copy.deepcopy(provider)
     stale["sourceRevision"] = "0" * 40

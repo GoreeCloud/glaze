@@ -1,0 +1,8 @@
+.scene-phone{position:relative;overflow:hidden;width:min(300px,100%);height:450px;margin:12px auto;border:4px solid var(--text);border-radius:30px;background:radial-gradient(circle at 70% 30%,var(--accentSubtle),var(--canvas) 72%)}
+.scene-dock,.scene-drawer-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+.scene-dock{position:absolute;left:9px;right:9px;bottom:18px;background:var(--surface);border:1px solid var(--border);border-radius:17px;padding:8px}
+.scene-dock button,.scene-drawer-grid button{display:grid;place-items:center;min-height:41px;background:var(--accentSubtle);color:var(--accent);border:0;border-radius:12px}
+.scene-dock svg,.scene-drawer-grid svg{width:20px;height:20px}
+.scene-drawer-toggle{position:absolute;bottom:95px;left:50%;transform:translateX(-50%);border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:99px;padding:8px 14px;white-space:nowrap}
+.scene-drawer{position:absolute;inset:43px 8px 8px;z-index:2;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:15px}
+.scene-drawer-grid{row-gap:12px;margin-top:15px}

@@ -1,0 +1,38 @@
+/* Development-only Memos bridge. Maps existing Tailwind roles, not sample theme colors.
+ * Explicitly opt in on a preview wrapper; never apply this to :root or body. */
+[data-glaze-v171-preview].glaze-v171-memos{
+ --glaze-canvas:var(--background);
+ --glaze-surface:var(--card);
+ --glaze-text:var(--foreground);
+ --glaze-muted:var(--muted-foreground);
+ --glaze-border:var(--border);
+ --glaze-focus:var(--ring);
+ --glaze-accent:var(--primary);
+ --glaze-radius-card:var(--radius,18px);
+ --glaze-target-min:44px;
+}
+[data-glaze-v171-preview].glaze-v171-memos .glaze-v171-preview-note{
+ display:block;break-inside:avoid;margin-bottom:12px;padding:14px;
+ border:1px solid var(--glaze-border);border-radius:var(--glaze-radius-card);
+ background:var(--glaze-surface);color:var(--glaze-text);
+}
+[data-glaze-v171-preview].glaze-v171-memos .glaze-v171-preview-action{
+ min-height:var(--glaze-target-min);color:var(--glaze-text);
+ background:var(--glaze-surface);border:1px solid var(--glaze-border);
+ border-radius:12px;padding:9px 12px;
+}
+[data-glaze-v171-preview].glaze-v171-memos .glaze-v171-preview-action:focus-visible{
+ outline:3px solid var(--glaze-focus);outline-offset:2px;
+}
+@media(min-width:360px){
+ [data-glaze-v171-preview].glaze-v171-memos .glaze-v171-preview-masonry{columns:2;column-gap:12px}
+}
+@media(min-width:900px){
+ [data-glaze-v171-preview].glaze-v171-memos .glaze-v171-preview-masonry{columns:3}
+}
+@media(forced-colors:active){
+ [data-glaze-v171-preview].glaze-v171-memos .glaze-v171-preview-note,
+ [data-glaze-v171-preview].glaze-v171-memos .glaze-v171-preview-action{
+  color:CanvasText;background:Canvas;border-color:CanvasText;
+ }
+}

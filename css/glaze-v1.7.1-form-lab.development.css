@@ -1,0 +1,35 @@
+/* Glaze 1.7.1 — Development-only form + validation scene */
+.scene-form-lab{background:var(--surface);border:1px solid var(--border);border-radius:21px;padding:23px}
+.scene-form-lab>p{font-size:12px;color:var(--muted);margin:5px 0 20px;line-height:1.55}
+.scene-form-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:20px;align-items:start}
+.scene-form-controls{display:grid;gap:17px}
+.scene-form-field{display:grid;gap:7px}
+.scene-form-field label,.scene-form-fieldset legend{color:var(--text);font-weight:750;font-size:12px}
+.scene-form-help{font-size:11px;color:var(--muted);line-height:1.5}
+.scene-form-input{display:block;width:100%;height:45px;border:1px solid var(--border);border-radius:12px;background:var(--canvas);color:var(--text);padding:11px 13px;font:inherit;font-size:13px}
+.scene-form-input[aria-invalid="true"]{border:2px solid var(--warning)}
+.scene-form-input:focus-visible,.scene-form-radio input:focus-visible,.scene-form-check input:focus-visible,.scene-form-action:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.scene-form-error{display:none;font-size:12px;color:var(--text);font-weight:650;border-inline-start:3px solid var(--warning);padding-inline-start:10px;line-height:1.45}
+.scene-form-error[data-visible="true"]{display:block}
+.scene-form-fieldset{border:0;padding:0;margin:0;display:grid;gap:9px}
+.scene-form-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.scene-form-radio{display:flex;align-items:center;gap:9px;min-height:44px;border:1px solid var(--border);border-radius:12px;background:var(--canvas);color:var(--text);padding:10px;font-size:12px;font-weight:670;cursor:pointer}
+.scene-form-radio:has(input:checked){background:var(--accentSubtle);border-color:var(--accent)}
+.scene-form-radio input,.scene-form-check input{width:17px;height:17px;accent-color:var(--accent);flex:none}
+.scene-form-check{display:flex;align-items:center;gap:11px;font-size:12px;color:var(--text);min-height:44px}
+.scene-form-actions{display:flex;gap:8px;flex-wrap:wrap}
+.scene-form-action{min-height:44px;padding:10px 15px;border:1px solid var(--border);border-radius:12px;background:var(--canvas);color:var(--text);font-size:12px;font-weight:740}
+.scene-form-action[data-primary]{background:var(--accent);color:var(--onAccent);border-color:var(--accent)}
+.scene-form-result{min-height:280px;display:grid;gap:14px;align-content:center;border:1px solid var(--border);border-radius:19px;background:var(--canvas);color:var(--text);padding:22px}
+.scene-form-result svg{width:24px;height:24px;color:var(--accent)}
+.scene-form-result-icon{display:grid;place-items:center;width:47px;height:47px;border-radius:15px;background:var(--accentSubtle)}
+.scene-form-result-title{font-weight:790;font-size:19px;letter-spacing:-.035em;overflow-wrap:anywhere}
+.scene-form-result-meta{font-size:11px;color:var(--muted);line-height:1.5}
+.scene-form-result[data-preview="hidden"] .scene-form-result-icon{opacity:.5}
+.scene-form-result[data-preview="hidden"]{border-style:dashed}
+.scene-form-status{font-size:11px;color:var(--muted);line-height:1.5;margin:13px 0 0}
+@media(max-width:770px){.scene-form-layout{grid-template-columns:1fr}.scene-form-lab{padding:15px}.scene-form-result{min-height:160px}}
+@media(max-width:390px){.scene-form-actions .scene-form-action{flex:1}.scene-form-options{gap:6px}.scene-form-radio{padding:8px}}
+@media(pointer:coarse){.scene-form-radio,.scene-form-action,.scene-form-check{min-height:44px}}
+@media(forced-colors:active){.scene-form-lab,.scene-form-input,.scene-form-radio,.scene-form-action,.scene-form-result{background:Canvas;color:CanvasText;border-color:CanvasText}.scene-form-radio:has(input:checked),.scene-form-action[data-primary]{outline:2px solid Highlight;outline-offset:-2px}.scene-form-input[aria-invalid="true"],.scene-form-error{border-color:Mark}.scene-form-result svg{color:CanvasText}}
+@media(prefers-reduced-motion:reduce){.scene-form-lab,.scene-form-result,.scene-form-action{animation:none;transition:none}}

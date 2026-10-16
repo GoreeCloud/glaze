@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" data-glaze-preview="1.7.1-development">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Glaze 1.7.1 — Application Experience Scenes</title>
+<link rel="stylesheet" href="../../css/glaze-v1.7.1-scenes.development.css">
+</head>
+<body>
+<a href="#main" class="skip">Skip to scenes</a>
+<main class="main" id="main">
+<header class="topbar"><div class="breadcrumbs"><a href="./visual-evolution.html">Visual Evolution</a> / <strong>Experience Scenes</strong></div><a class="btn" href="./visual-evolution.html">Theme gallery</a></header>
+<div class="eyebrow">Glaze 1.7.1 · Design exploration only</div>
+<h1>One language. Many personalities.</h1>
+<p class="lead">Three distinct, locally rendered GoreeCloud-inspired compositions. These are non-production design studies, not implementations or live service states.</p>
+<div class="scene-command-tools">
+<button type="button" class="scene-command-open" id="scene-command-open" aria-haspopup="dialog" aria-controls="scene-command-dialog"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#search"></use></svg> Quick actions <span class="scene-command-key" aria-hidden="true">Ctrl K</span></button>
+</div>
+<nav role="tablist" aria-label="Example product scenes" class="scene-tabs">
+<button type="button" id="tab-memos" role="tab" aria-selected="true" aria-controls="scene-memos" tabindex="0" data-scene="memos">Memos</button>
+<button type="button" id="tab-launcher" role="tab" aria-selected="false" aria-controls="scene-launcher" tabindex="-1" data-scene="launcher">Launcher</button>
+<button type="button" id="tab-dashboard" role="tab" aria-selected="false" aria-controls="scene-dashboard" tabindex="-1" data-scene="dashboard">System dashboard</button>
+</nav>
+<!-- glaze-v171-scene-polish: local example theme navigator -->
+<div class="scene-theme-bar" role="group" aria-label="Example appearance, not saved">
+  <span class="scene-theme-caption">Theme previews</span>
+  <a class="scene-theme-link" data-scene-theme="porcelain" href="?theme=porcelain"><span class="scene-theme-dot scene-theme-porcelain" aria-hidden="true"></span>Porcelain</a>
+  <a class="scene-theme-link" data-scene-theme="cedar" href="?theme=cedar"><span class="scene-theme-dot scene-theme-cedar" aria-hidden="true"></span>Cedar</a>
+  <a class="scene-theme-link" data-scene-theme="nocturne" href="?theme=nocturne"><span class="scene-theme-dot scene-theme-nocturne" aria-hidden="true"></span>Nocturne</a>
+  <a class="scene-theme-link" data-scene-theme="contrast" href="?theme=contrast"><span class="scene-theme-dot scene-theme-contrast" aria-hidden="true"></span>Contrast</a>
+</div>
+<div class="scene-density-bar" role="group" aria-label="Example spacing density">
+<span class="scene-density-label">Spacing</span>
+<button type="button" class="scene-density-choice" data-density="comfortable" aria-pressed="true">Comfortable</button>
+<button type="button" class="scene-density-choice" data-density="compact" aria-pressed="false">Compact</button>
+</div>
+<section class="scene-panel" role="tabpanel" id="scene-memos" aria-labelledby="tab-memos">
+<div class="section-heading"><h2>Memos: expressive masonry</h2><p>Example notes, colors and labels</p></div>
+<p class="scene-notice">Appearance controls modify these demonstration notes only. No account data is accessed.</p>
+<div class="scene-masonry">
+<article class="scene-memo" data-tone="warm"><h3>Creative directions</h3><p>Collect typography, tactile geometry and a warmer approach to navigation.</p><span class="scene-label">Design</span><button type="button" data-colorize aria-label="Customize Creative directions memo">Customize</button></article>
+<article class="scene-memo" data-tone="green"><h3>Ideas for tomorrow</h3><p>Great software feels intentional, responsive, and carefully finished.</p><p>Use content-driven colors without losing semantic clarity.</p><span class="scene-label">Ideas</span><button type="button" data-colorize aria-label="Customize Ideas for tomorrow memo">Customize</button></article>
+<article class="scene-memo"><h3>A small reminder</h3><p>More meaning. Less decoration.</p><span class="scene-label">Personal</span><button type="button" data-colorize aria-label="Customize A small reminder memo">Customize</button></article>
+<article class="scene-memo" data-tone="rose"><h3>Visual references</h3><p>Rounded surfaces, warm paper, deliberate shadows and recognizably consistent vector symbols.</p><span class="scene-label">Inspiration</span><button type="button" data-colorize aria-label="Customize Visual references memo">Customize</button></article>
+<article class="scene-memo"><h3>Ship with care</h3><p>Human review, screen readers, and actual hardware still matter.</p><span class="scene-label">Review</span><button type="button" data-colorize aria-label="Customize Ship with care memo">Customize</button></article>
+</div></section>
+<section class="scene-panel" role="tabpanel" id="scene-launcher" aria-labelledby="tab-launcher" hidden>
+<div class="section-heading"><h2>Launcher: spacious by default</h2><p>5-column dock and drawer</p></div>
+<p class="scene-notice">A conceptual home-screen preview. No search bar or default home-page apps; only five dock entries.</p>
+<div class="scene-phone">
+<div style="position:absolute;top:17px;left:20px;font-size:12px;font-weight:750">9:41</div>
+<button class="scene-drawer-toggle" type="button" id="drawer-toggle" aria-expanded="false" aria-controls="scene-drawer">Open app drawer</button>
+<div class="scene-dock" aria-label="Dock glyph examples">
+<button type="button" aria-label="Folder dock sample"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg></button>
+<button type="button" aria-label="Cloud dock sample"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#cloud"></use></svg></button>
+<button type="button" aria-label="Network dock sample"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#network"></use></svg></button>
+<button type="button" aria-label="Device dock sample"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#device"></use></svg></button>
+<button type="button" aria-label="Account dock sample"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#account"></use></svg></button>
+</div>
+<div class="scene-drawer" id="scene-drawer" hidden>
+<div class="section-heading"><h3>All apps</h3><button type="button" class="btn" id="drawer-close" aria-label="Close app drawer">Close</button></div>
+<div class="scene-drawer-grid" id="drawer-grid"></div>
+</div></div></section>
+<section class="scene-panel" role="tabpanel" id="scene-dashboard" aria-labelledby="tab-dashboard" hidden>
+<div class="section-heading"><h2>System dashboard: truthful emphasis</h2><p>Demonstration data only</p></div>
+<p class="scene-notice">The values and status messages below are synthetic examples; no GoreeCloud infrastructure is queried.</p>
+<div class="scene-grid">
+<div class="scene-card" data-meaning="information"><h3>Connectivity example</h3><span class="scene-tag">Informational</span><p>Connected in this sample state, not a verified service status.</p></div>
+<div class="scene-card"><h3>Storage example</h3><span class="scene-tag">Sample data</span><p>Illustrative usage: 32 of 64 GB. Not actual device storage.</p><progress value="32" max="64" aria-label="Illustrative storage utilization"></progress></div>
+<div class="scene-card" data-meaning="warning"><h3>Review example</h3><span class="scene-tag">Attention</span><p>Requires review. Warning meaning is reinforced by text, not color alone.</p></div>
+</div>
+</section>
+<section class="section" aria-labelledby="controls-title">
+<div class="section-heading"><h2 id="controls-title">Component interaction laboratory</h2><p>Keyboard, state, glyphs, and controlled demos</p></div>
+<div class="scene-grid">
+<div class="scene-card"><h3>Modal dialog</h3><p>Native focus management and Escape dismissal.</p><button type="button" class="btn btn-primary" id="dialog-open">Open dialog</button></div>
+<div class="scene-card"><h3>Semantic progress</h3><p>Only illustrative progress, not external system activity.</p><progress id="sample-progress" value="35" max="100" aria-label="Illustrative task progress"></progress><p><span id="sample-progress-value">35%</span> in this example</p><button type="button" class="btn" id="progress-update">Advance example</button></div>
+<div class="scene-card"><h3>Optical vector sizes</h3><p>One Glaze-registry symbol, rendered at four scales.</p><div class="scene-glyphs">
+<label><svg width="12" height="12" aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg>Micro</label>
+<label><svg width="16" height="16" aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg>Compact</label>
+<label><svg width="24" height="24" aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg>Standard</label>
+<label><svg width="36" height="36" aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg>Display</label>
+</div></div>
+</div>
+</section>
+<section class="section" aria-labelledby="scene-form-heading">
+<div class="section-heading"><h2 id="scene-form-heading">Forms worth using</h2><p>Readable controls · useful feedback · safe validation</p></div>
+<div class="scene-form-lab">
+<h3>Workspace preview</h3>
+<p>Practice the form treatment with synthetic data. This preview neither creates a workspace nor saves any setting.</p>
+<div class="scene-form-layout">
+<form id="scene-form" class="scene-form-controls" novalidate>
+<div class="scene-form-field">
+<label for="scene-form-name">Workspace name <span aria-hidden="true">*</span></label>
+<input id="scene-form-name" class="scene-form-input" name="workspace" type="text" maxlength="32" autocomplete="off" required aria-required="true" aria-describedby="scene-form-name-help scene-form-error" placeholder="e.g. Design Studio">
+<span id="scene-form-name-help" class="scene-form-help">Required for this preview · up to 32 characters</span>
+<span id="scene-form-error" class="scene-form-error" data-visible="false">Enter a workspace name to preview this example.</span>
+</div>
+<fieldset class="scene-form-fieldset">
+<legend>Workspace type</legend>
+<div class="scene-form-options">
+<label class="scene-form-radio"><input type="radio" name="scene-workspace-mode" value="personal" checked>Personal</label>
+<label class="scene-form-radio"><input type="radio" name="scene-workspace-mode" value="team">Team</label>
+</div>
+</fieldset>
+<label class="scene-form-check" for="scene-form-preview-toggle">
+<input type="checkbox" id="scene-form-preview-toggle" checked> Show preview treatment
+</label>
+<div class="scene-form-actions">
+<button type="submit" class="scene-form-action" data-primary>Preview changes</button>
+<button type="reset" class="scene-form-action">Reset</button>
+</div>
+</form>
+<article class="scene-form-result" id="scene-form-result" data-preview="visible" aria-label="Synthetic workspace preview">
+<div class="scene-form-result-icon"><svg aria-hidden="true"><use id="scene-form-result-icon" href="../../assets/icon-glyphs/system-symbols.svg#account"></use></svg></div>
+<div class="scene-form-result-title" id="scene-form-result-title">Your workspace</div>
+<div class="scene-form-result-meta" id="scene-form-result-meta">Personal workspace · demonstration only</div>
+</article>
+</div>
+<p id="scene-form-status" class="scene-form-status" role="status" aria-live="polite">Preview is ready. No workspace or settings were created.</p>
+</div>
+</section>
+<section class="section" aria-labelledby="scene-type-heading">
+<div class="section-heading"><h2 id="scene-type-heading">Typography with purpose</h2><p>Test clarity at different reading sizes</p></div>
+<div class="scene-type-lab"><h3>Readability laboratory</h3><p>A local, synthetic type specimen using system fonts. No preference is saved.</p>
+<div class="scene-type-layout"><div class="scene-type-controls">
+<div class="scene-type-field"><span class="scene-type-label" id="type-scale-label">Text scale</span><div class="scene-type-options" role="group" aria-labelledby="type-scale-label">
+<button type="button" class="scene-type-option" data-type-scale="standard" aria-pressed="true">Standard</button><button type="button" class="scene-type-option" data-type-scale="relaxed" aria-pressed="false">Relaxed</button><button type="button" class="scene-type-option" data-type-scale="large" aria-pressed="false">Large</button></div></div>
+<div class="scene-type-field"><span class="scene-type-label" id="type-leading-label">Line spacing</span><div class="scene-type-options scene-type-options-pair" role="group" aria-labelledby="type-leading-label">
+<button type="button" class="scene-type-option" data-type-leading="balanced" aria-pressed="true">Balanced</button><button type="button" class="scene-type-option" data-type-leading="airy" aria-pressed="false">Airy</button></div></div><div class="scene-type-field">
+<span class="scene-type-label" id="type-clarity-label">Reading treatment</span>
+<div class="scene-type-options scene-type-options-pair" role="group" aria-labelledby="type-clarity-label">
+<button type="button" class="scene-type-option" data-type-clarity="regular" aria-pressed="true">Regular</button>
+<button type="button" class="scene-type-option" data-type-clarity="enhanced" aria-pressed="false">Higher clarity</button>
+</div>
+</div>
+</div>
+<article class="scene-type-sample" id="scene-type-sample" data-clarity="regular"><span class="scene-type-eyebrow">Editorial example</span><h3>More room for the important things.</h3><p>Thoughtful interfaces are easier to navigate when their type is clear, measured and responsive. Meaning comes first; details support the reading experience.</p><span class="scene-type-byline">Glaze typography · illustration only</span></article></div>
+<p id="scene-type-feedback" class="scene-type-feedback" role="status" aria-live="polite">Illustrative standard text and balanced spacing. Nothing saved.</p></div></section>
+<section class="section" aria-labelledby="material-lab-title">
+<div class="section-heading"><h2 id="material-lab-title">Surface and control laboratory</h2><p>Meaningful elevation, decorative accent, and geometry</p></div>
+<div class="scene-material-lab">
+<h3>Shape the experience</h3><p>Try visual treatments on one synthetic workspace card. Nothing is saved or applied to other apps.</p>
+<div class="scene-material-layout">
+<div class="scene-material-controls">
+<div class="scene-material-field"><span id="material-elevation-label" class="scene-material-label">Surface elevation</span>
+<div class="scene-material-group" role="group" aria-labelledby="material-elevation-label">
+<button type="button" data-material-elevation="flat" aria-pressed="true">Flat</button>
+<button type="button" data-material-elevation="raised" aria-pressed="false">Raised</button>
+<button type="button" data-material-elevation="outlined" aria-pressed="false">Outlined</button>
+</div></div>
+<div class="scene-material-field">
+<label class="scene-material-label" for="scene-material-radius">Corner radius</label>
+<div class="scene-material-slider-row"><input id="scene-material-radius" type="range" min="8" max="28" step="2" value="18" aria-describedby="scene-material-feedback"><output for="scene-material-radius" id="scene-material-radius-output">18px</output></div>
+</div>
+<div class="scene-material-field">
+<button type="button" role="switch" id="scene-material-accent" class="scene-material-switch" aria-checked="true"><span>Decorative accent</span><span class="scene-material-track" aria-hidden="true"><span class="scene-material-thumb"></span></span></button>
+</div></div>
+<article id="scene-material-preview" class="scene-material-preview" data-elevation="flat" data-accent="on">
+<div class="scene-material-icon"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#cloud"></use></svg></div>
+<span class="scene-material-caption">Visual treatment example</span>
+<h3>Your workspace, considered.</h3>
+<p>Geometry, contrast, and elevation express hierarchy. This card doesn't represent a connected service.</p>
+</article>
+</div><p class="scene-material-feedback" id="scene-material-feedback" role="status" aria-live="polite">Example: flat surface, 18px corners, decorative accent on. No preference was saved.</p>
+</div></section>
+<section class="section" aria-labelledby="state-demo-title">
+<div class="section-heading"><h2 id="state-demo-title">Every state matters</h2><p>Loading, empty, and error · illustrative only</p></div>
+<div class="scene-content-demo">
+<h3>Content state explorer</h3><p>Switch between UI examples. No loading request or system failure actually occurs.</p>
+<div class="scene-content-options" role="group" aria-label="Preview content states">
+<button type="button" data-content-mode="loading" aria-pressed="true">Loading</button>
+<button type="button" data-content-mode="empty" aria-pressed="false">Empty</button>
+<button type="button" data-content-mode="error" aria-pressed="false">Error</button>
+</div>
+<div class="scene-content-stage">
+<div id="scene-content-loading" class="scene-loading-bars" aria-hidden="true"><span></span><span></span><span></span></div>
+<div id="scene-content-empty" class="scene-content-display" hidden>
+<svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg>
+<strong>Nothing here yet</strong><p>Example empty view — no notes or files were queried.</p></div>
+<div id="scene-content-error" class="scene-content-display" data-tone="error" hidden>
+<svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#warning"></use></svg>
+<strong>Something needs attention</strong><p>Example error view — no actual operation failed.</p></div>
+</div>
+<p class="scene-content-feedback" role="status" aria-live="polite" id="scene-content-feedback">Illustrative loading state. No request is running.</p>
+</div></section>
+<section class="section" aria-labelledby="notices-title">
+<div class="section-heading"><h2 id="notices-title">Meaningful notifications</h2><p>Illustrative states, not live system events</p></div>
+<div class="scene-card">
+<h3>Semantic notice examples</h3><p>Every state pairs a canonical glyph with a clear message and contextual color.</p>
+<div class="scene-notice-controls" aria-label="Select an example notice">
+<button type="button" class="btn" data-notice-demo="security">Security</button>
+<button type="button" class="btn" data-notice-demo="warning">Warning</button>
+<button type="button" class="btn" data-notice-demo="privacy">Privacy</button>
+</div>
+<div class="scene-notice-preview" id="glaze-notice-preview" role="status" aria-live="polite" hidden>
+<svg aria-hidden="true"><use id="glaze-notice-glyph" href="../../assets/icon-glyphs/system-symbols.svg#security"></use></svg>
+<div><strong id="glaze-notice-title">Example</strong><p id="glaze-notice-body">Illustrative status.</p></div>
+<button type="button" class="scene-notice-close" id="glaze-notice-dismiss">Dismiss</button>
+</div>
+</div></section>
+<dialog id="scene-command-dialog" class="scene-command-dialog" aria-labelledby="scene-command-heading" aria-describedby="scene-command-help">
+<div class="scene-command-header">
+<h2 id="scene-command-heading">Quick actions</h2>
+<button type="button" id="scene-command-close" class="scene-command-close">Close</button>
+</div>
+<p id="scene-command-help" class="scene-command-help">Search and open an example. Use arrow keys to move, Enter to select, or Escape to close.</p>
+<label class="scene-form-help" for="scene-command-search" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">Search example actions</label>
+<input id="scene-command-search" class="scene-command-search" type="search" autocomplete="off" placeholder="Find scenes and components" aria-controls="scene-command-results">
+<div id="scene-command-results" class="scene-command-results" role="group" aria-label="Example navigation actions">
+<button type="button" class="scene-command-action" data-command-tab data-command-target="tab-memos" data-keywords="masonry notes labels color"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#folder"></use></svg><span>Memos<small>Notes, masonry and color</small></span></button>
+<button type="button" class="scene-command-action" data-command-tab data-command-target="tab-launcher" data-keywords="home dock apps drawer five columns"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#device"></use></svg><span>Launcher<small>Dock and five-column drawer</small></span></button>
+<button type="button" class="scene-command-action" data-command-tab data-command-target="tab-dashboard" data-keywords="system health semantic panels"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#cloud"></use></svg><span>System dashboard<small>Semantic dashboard preview</small></span></button>
+<button type="button" class="scene-command-action" data-command-target="controls-title" data-keywords="modal progress vector sizes component glyph"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#settings"></use></svg><span>Component laboratory<small>Dialog, progress and vectors</small></span></button>
+<button type="button" class="scene-command-action" data-command-target="scene-form-heading" data-keywords="form input validation radio checkbox"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#account"></use></svg><span>Form controls<small>Fields, validation and feedback</small></span></button>
+<button type="button" class="scene-command-action" data-command-target="material-lab-title" data-keywords="surface elevation radius accent shadow"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#settings"></use></svg><span>Surface laboratory<small>Elevation and geometry</small></span></button>
+<button type="button" class="scene-command-action" data-command-target="state-demo-title" data-keywords="skeleton empty loading failure error"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#warning"></use></svg><span>Content states<small>Loading, empty and error</small></span></button>
+<button type="button" class="scene-command-action" data-command-target="notices-title" data-keywords="notification security privacy warning"><svg aria-hidden="true"><use href="../../assets/icon-glyphs/system-symbols.svg#security"></use></svg><span>Semantic notices<small>Clear information and alerts</small></span></button>
+</div>
+<p class="scene-command-empty" id="scene-command-empty" hidden>No matching example actions. Try a different word.</p>
+<div class="scene-command-footer"><span id="scene-command-count" role="status" aria-live="polite">8 example actions available</span> · Local design examples only</div>
+</dialog>
+<dialog id="memo-customize-dialog" class="memo-editor" aria-labelledby="memo-editor-title" aria-describedby="memo-editor-description">
+<div class="memo-editor-inner">
+<div><h2 id="memo-editor-title" class="memo-editor-heading">Customize memo</h2><p id="memo-editor-description" class="memo-editor-helper">Change this example note. Nothing is saved.</p></div>
+<fieldset><legend>Note color</legend><div class="memo-editor-swatches" role="group" aria-label="Choose example note color">
+<button type="button" class="memo-color-swatch" data-memo-tone="" aria-pressed="false"><span class="memo-color-dot" aria-hidden="true"></span>Default</button>
+<button type="button" class="memo-color-swatch" data-memo-tone="warm" aria-pressed="false"><span class="memo-color-dot" aria-hidden="true"></span>Clay</button>
+<button type="button" class="memo-color-swatch" data-memo-tone="green" aria-pressed="false"><span class="memo-color-dot" aria-hidden="true"></span>Meadow</button>
+<button type="button" class="memo-color-swatch" data-memo-tone="rose" aria-pressed="false"><span class="memo-color-dot" aria-hidden="true"></span>Rose</button>
+</div></fieldset>
+<label class="memo-editor-label" for="memo-label-input">Label<input id="memo-label-input" class="memo-editor-input" maxlength="24" autocomplete="off"></label>
+<div class="memo-editor-actions"><button type="button" id="memo-customize-cancel" class="btn">Cancel</button><button type="button" id="memo-customize-apply" class="btn btn-primary">Apply to memo</button></div></div></dialog>
+<dialog id="sample-dialog" class="scene-dialog" aria-labelledby="dialog-heading"><h2 id="dialog-heading">A thoughtful interaction</h2><p>This dialog is a local demonstration of Glaze presentation, not an actual account or service action.</p><button type="button" class="btn btn-primary" id="dialog-close">Done</button></dialog>
+<p class="scene-notice" role="status" aria-live="polite" id="scene-status">Example scenes ready.</p>
+<p class="footer">Glaze V1.7.1 · Development · No consumer or release acceptance asserted.</p>
+</main>
+<script type="module" src="../../js/glaze-v1.7.1-scenes.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-memo-customizer.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-notice-demo.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-note-menu.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-content-states.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-material-lab.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-form-lab.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-quick-actions.development.mjs"></script>
+<script type="module" src="../../js/glaze-v1.7.1-typography-lab.development.mjs"></script>
+</body></html>

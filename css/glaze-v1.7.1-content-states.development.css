@@ -1,0 +1,25 @@
+/* Development-only loading, empty and error state presentation. */
+.scene-content-demo{margin-top:16px;border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:18px}
+.scene-content-demo h3{font-size:15px;margin:0 0 5px}
+.scene-content-demo p{font-size:12px;color:var(--muted)}
+.scene-content-options{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}
+.scene-content-options button{border:1px solid var(--border);border-radius:11px;background:var(--canvas);color:var(--text);padding:9px 13px;min-height:40px;font-size:12px;font-weight:700}
+.scene-content-options button[aria-pressed="true"]{background:var(--accentSubtle);border-color:var(--accent)}
+.scene-content-options button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.scene-content-stage{background:var(--canvas);border:1px solid var(--border);border-radius:15px;min-height:148px;display:grid;place-items:center;padding:20px}
+.scene-content-stage>[hidden]{display:none}
+.scene-content-display{display:grid;justify-items:center;gap:7px;text-align:center;max-width:320px}
+.scene-content-display svg{width:26px;height:26px;color:var(--accent)}
+.scene-content-display strong{font-size:13px;color:var(--text)}
+.scene-content-display p{margin:0;line-height:1.5}
+.scene-content-display[data-tone="error"] svg{color:var(--warning)}
+.scene-loading-bars{display:grid;gap:10px;width:min(340px,100%);padding:10px}
+.scene-loading-bars span{height:12px;border-radius:99px;background:linear-gradient(90deg,var(--accentSubtle),var(--surfaceRaised),var(--accentSubtle));background-size:200% 100%;animation:scene-loading-flow 2.4s ease-in-out infinite}
+.scene-loading-bars span:nth-child(2){width:86%}
+.scene-loading-bars span:nth-child(3){width:62%}
+@keyframes scene-loading-flow{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+.scene-content-feedback{margin:10px 0 0;color:var(--muted);font-size:11px}
+@media(max-width:520px){.scene-content-demo{padding:12px}.scene-content-options button{flex:1}}
+@media(pointer:coarse){.scene-content-options button{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.scene-loading-bars span{animation:none;background:var(--accentSubtle)}}
+@media(forced-colors:active){.scene-content-demo,.scene-content-stage,.scene-content-options button{background:Canvas;color:CanvasText;border-color:CanvasText}.scene-loading-bars span{animation:none;background:GrayText}.scene-content-options button[aria-pressed="true"]{outline:2px solid Highlight}}

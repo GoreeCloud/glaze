@@ -10,7 +10,7 @@ on:
       - 'js/icon-glyph-registry.mjs'
       - 'js/glaze-v1.7.0.mjs'
       - 'scripts/verify_glaze_v1_7_1_development_boundary.mjs'
-      - '.github/workflows/glaze-v1.7.1-development-boundary.yml'
+      - '.github/workflows/glaze-v1.7.1-*.yml'
   push:
     branches: [main]
     paths:
@@ -21,7 +21,7 @@ on:
       - 'js/icon-glyph-registry.mjs'
       - 'js/glaze-v1.7.0.mjs'
       - 'scripts/verify_glaze_v1_7_1_development_boundary.mjs'
-      - '.github/workflows/glaze-v1.7.1-development-boundary.yml'
+      - '.github/workflows/glaze-v1.7.1-*.yml'
 
 permissions:
   contents: read
@@ -36,6 +36,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
       - name: Set up Node.js
@@ -44,7 +45,11 @@ jobs:
           node-version: '22'
 
       - name: Verify V1.7.1 Development isolation and export identity
-        run: node scripts/verify_glaze_v1_7_1_development_boundary.mjs
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          node scripts/verify_glaze_v1_7_1_development_boundary.mjs
 
       - name: Verify source checkout remains unchanged
         run: git diff --exit-code -- .

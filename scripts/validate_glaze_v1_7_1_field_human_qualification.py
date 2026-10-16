@@ -6,7 +6,7 @@ and native-behavior. Synthetic self-tests validate only the protocol.
 """
 from __future__ import annotations
 import argparse, json, re, subprocess
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -81,8 +81,12 @@ def meaningful(value: Any, label: str, allow_na: bool = False) -> str:
 
 def timestamp(value: Any, label: str) -> str:
     text = meaningful(value, label)
-    parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    try:
+        parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise QualificationError(label + " must be ISO-8601") from exc
     req(parsed.tzinfo is not None, label + " must include timezone")
+    req(parsed <= datetime.now(timezone.utc) + timedelta(minutes=5), label + " cannot be future-dated")
     return text
 
 def string_array(value: Any, label: str) -> list[str]:
@@ -289,6 +293,8 @@ def self_test(plan: dict[str, Any]) -> None:
     head = git("rev-parse", "HEAD")
     for lane in LANES:
         validate_record(sample(lane, head), plan)
+    bad = sample("touch", head); bad["capturedAt"] = (datetime.now(timezone.utc) + timedelta(days=1)).isoformat(); reject(bad, plan, "future field-human session")
+    bad = sample("touch", head); bad["capturedAt"] = "not-a-timestamp"; reject(bad, plan, "malformed field-human date")
     bad = sample("touch", head); bad["sourceRevision"] = "0"*40; reject(bad, plan, "stale source")
     bad = sample("touch", head); bad["device"]["physicalDevice"] = False; bad["device"]["emulator"] = True; reject(bad, plan, "emulator")
     bad = sample("touch", head); bad["interaction"]["actualInputModes"] = ["pointer"]; reject(bad, plan, "touch without touch")
