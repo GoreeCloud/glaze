@@ -11,7 +11,7 @@ import copy
 import json
 import re
 import subprocess
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -93,6 +93,7 @@ def valid_timestamp(value: Any, label: str) -> str:
     except ValueError as exc:
         raise QualificationError(f"{label} must be ISO-8601: {text!r}") from exc
     req(parsed.tzinfo is not None, f"{label} must include an explicit timezone")
+    req(parsed <= datetime.now(timezone.utc) + timedelta(minutes=5), f"{label} cannot be future-dated")
     return text
 
 
@@ -388,6 +389,10 @@ def reject(record: dict[str, Any], plan: dict[str, Any], head: str, label: str) 
 def self_test(plan: dict[str, Any], head: str) -> None:
     valid = sample(head, plan)
     validate_record(valid, plan, head)
+
+    future = copy.deepcopy(valid)
+    future["capturedAt"] = (datetime.now(timezone.utc) + timedelta(days=1)).isoformat()
+    reject(future, plan, head, "future assistive-technology session")
 
     stale = copy.deepcopy(valid)
     stale["sourceRevision"] = "0" * 40
