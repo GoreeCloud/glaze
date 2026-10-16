@@ -177,6 +177,11 @@ const server=http.createServer((req,res)=>{
       assert.equal(await page.$eval('.scene-type-sample p',el=>getComputedStyle(el).fontSize),'21px');
       await page.click('[data-type-leading="airy"]');
       assert.ok(await page.$eval('.scene-type-sample p',el=>parseFloat(getComputedStyle(el).lineHeight))>38);
+      await page.click('[data-type-clarity="enhanced"]');
+      assert.equal(await page.$eval('#scene-type-sample',e=>e.dataset.clarity),'enhanced');
+      assert.ok(await page.$eval('.scene-type-sample p',e=>Number(getComputedStyle(e).fontWeight)>=600));
+      assert.equal(await page.$eval('[data-type-clarity="enhanced"]',e=>e.getAttribute('aria-pressed')),'true');
+      assert.equal(await page.$eval('.scene-type-options-pair',e=>getComputedStyle(e).gridTemplateColumns.split(' ').length),2);
       const defaultRadius=await page.$eval('#scene-material-preview',e=>getComputedStyle(e).borderTopLeftRadius);
       assert.equal(defaultRadius,'18px');
       await page.click('[data-material-elevation="raised"]');
