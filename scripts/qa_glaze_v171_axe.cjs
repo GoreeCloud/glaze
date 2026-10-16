@@ -20,13 +20,15 @@ const server=http.createServer((req,res)=>{
  try{
   browser=await P.launch({headless:true,executablePath:process.env.GLAZE_CHROME_PATH||undefined,args:['--no-sandbox']});
   const base='http://127.0.0.1:'+server.address().port+'/reference/v1.7.1/';
-  const samples=[['gallery','visual-evolution.html',1280],['gallery-mobile','visual-evolution.html',390],['scenes','visual-evolution-scenes.html',1280],['scenes-mobile','visual-evolution-scenes.html',390],['editor','visual-evolution-scenes.html',390],['launcher','visual-evolution-scenes.html',390],['menu','visual-evolution-scenes.html',390],['form-invalid','visual-evolution-scenes.html',390],['form-team','visual-evolution-scenes.html',390],['material-raised','visual-evolution-scenes.html',390],['error-state','visual-evolution-scenes.html',390],['notice-warning','visual-evolution-scenes.html',390],['glyph-filter','visual-evolution.html',390],['rtl','visual-evolution-scenes.html',390],['dark','visual-evolution-scenes.html?theme=nocturne',390]];
+  const samples=[['gallery','visual-evolution.html',1280],['gallery-mobile','visual-evolution.html',390],['scenes','visual-evolution-scenes.html',1280],['scenes-mobile','visual-evolution-scenes.html',390],['editor','visual-evolution-scenes.html',390],['launcher','visual-evolution-scenes.html',390],['menu','visual-evolution-scenes.html',390],['commands','visual-evolution-scenes.html',390],['commands-empty','visual-evolution-scenes.html',390],['form-invalid','visual-evolution-scenes.html',390],['form-team','visual-evolution-scenes.html',390],['material-raised','visual-evolution-scenes.html',390],['error-state','visual-evolution-scenes.html',390],['notice-warning','visual-evolution-scenes.html',390],['glyph-filter','visual-evolution.html',390],['rtl','visual-evolution-scenes.html',390],['dark','visual-evolution-scenes.html?theme=nocturne',390]];
   for(const [name,url,width] of samples){
    const page=await browser.newPage();await page.setViewport({width,height:880});
    await page.goto(base+url,{waitUntil:'networkidle0'});
    if(name==='editor')await page.click('[data-colorize]');
    if(name==='launcher')await page.click('#tab-launcher');
    if(name==='menu')await page.click('[data-note-more]');
+   if(name==='commands'||name==='commands-empty')await page.click('#scene-command-open');
+   if(name==='commands-empty')await page.type('#scene-command-search','missing-command');
    if(name==='form-invalid')await page.click('#scene-form button[type="submit"]');
    if(name==='form-team'){
      await page.type('#scene-form-name','Example Team');
