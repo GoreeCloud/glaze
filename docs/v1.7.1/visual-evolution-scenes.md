@@ -194,6 +194,6 @@ A dedicated, opt-in Chromium/axe script at
 `scripts/qa_glaze_v171_typography.cjs` covers type size, line spacing,
 high-clarity state, target geometry, reflow and sampled WCAG checks for four
 sample themes at 320/390/768/1280px combinations. Its tests are separate from
-the existing mandatory Development workflow until CI job approval/wiring.
+the existing mandatory Development workflow once the required Chromium job runs that matrix.
 A source/baseline browser success is not a claim of human screen-reader,
 physical-device, localization or native typography acceptance.
