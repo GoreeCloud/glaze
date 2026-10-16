@@ -131,4 +131,12 @@ assert.match(formCSS,/prefers-reduced-motion:reduce/);
 for(const forbidden of ['localStorage','sessionStorage','XMLHttpRequest','sendBeacon'])
  assert.ok(!formJS.includes(forbidden),'Form preview cannot persist or send data');
 
+const quickActions=read('js/glaze-v1.7.1-quick-actions.development.mjs');
+const quickStyles=read('css/glaze-v1.7.1-quick-actions.development.css');
+for(const id of ['scene-command-open','scene-command-dialog','scene-command-search','scene-command-results'])
+ assert.ok(html.includes('id="'+id+'"'));
+assert.match(quickActions,/hasAttribute\('data-command-tab'\)/);
+assert.match(quickActions,/showModal\(\)/);
+assert.match(quickStyles,/focus-visible/);
+assert.match(quickStyles,/forced-colors:active/);
 console.log('Glaze scenes: source contract PASS; real human/native/AT qualification remains open.');
