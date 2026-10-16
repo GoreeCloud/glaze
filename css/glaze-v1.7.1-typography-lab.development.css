@@ -25,7 +25,7 @@
 .scene-type-options-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 
 .scene-type-sample[data-clarity="enhanced"] p{font-weight:600;letter-spacing:.008em}
-.scene-type-field>.scene-type-field{margin-top:18px}
+
 
 .scene-type-sample[data-clarity="enhanced"] h3{font-weight:820;letter-spacing:-.025em}
 .scene-type-sample[data-clarity="enhanced"] .scene-type-byline{font-weight:700}
