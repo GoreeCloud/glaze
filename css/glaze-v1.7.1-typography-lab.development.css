@@ -19,3 +19,4 @@
 .scene-type-feedback{font-size:11px;color:var(--muted);margin:13px 0 0}
 @media(max-width:770px){.scene-type-layout{grid-template-columns:1fr}.scene-type-lab{padding:15px}.scene-type-sample{padding:18px}}
 @media(max-width:390px){.scene-type-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.scene-type-option{padding-inline:6px}}
+@media(forced-colors:active){.scene-type-lab,.scene-type-option,.scene-type-sample{background:Canvas;color:CanvasText;border-color:CanvasText}}
