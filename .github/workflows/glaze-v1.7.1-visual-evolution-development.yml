@@ -28,6 +28,9 @@ on:
       - 'css/glaze-v1.7.1-content-states.development.css'
       - 'scripts/verify_glaze_v171_scenes.mjs'
       - 'scripts/qa_glaze_v171_scenes_browser.cjs'
+      - 'scripts/qa_glaze_v171_axe.cjs'
+      - 'scripts/verify_glaze_v171_adapters.mjs'
+      - 'integrations/v1.7.1/**'
       - 'docs/v1.7.1/visual-evolution-scenes.md'
       - '.github/workflows/glaze-v1.7.1-visual-evolution-development.yml'
   push:
@@ -58,6 +61,9 @@ on:
       - 'css/glaze-v1.7.1-content-states.development.css'
       - 'scripts/verify_glaze_v171_scenes.mjs'
       - 'scripts/qa_glaze_v171_scenes_browser.cjs'
+      - 'scripts/qa_glaze_v171_axe.cjs'
+      - 'scripts/verify_glaze_v171_adapters.mjs'
+      - 'integrations/v1.7.1/**'
       - 'docs/v1.7.1/visual-evolution-scenes.md'
       - '.github/workflows/glaze-v1.7.1-visual-evolution-development.yml'
 
@@ -90,8 +96,44 @@ jobs:
       - name: Validate browser test harness syntax
         run: node --check scripts/qa_glaze_v171_scenes_browser.cjs
 
+      - name: Validate opt-in consumer adapters
+        run: node scripts/verify_glaze_v171_adapters.mjs
+
+      - name: Validate accessibility harness syntax
+        run: node --check scripts/qa_glaze_v171_axe.cjs
+
       - name: Verify checkout remains unchanged
         run: git diff --exit-code -- .
 
       - name: Record qualification boundary
         run: echo "Structural/contrast check only. No rendered, assistive-technology, native, performance, security, privacy, consumer or Stable acceptance."
+
+  visual-evolution-browser-accessibility:
+    name: v1.7.1-chromium-and-wcag-automation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+      - name: Install isolated audit dependencies
+        run: npm install --prefix "$RUNNER_TEMP/glaze-a11y" --ignore-scripts --no-save --no-audit --no-fund puppeteer-core@24.24.0 axe-core@4.10.3
+      - name: Resolve runner browser
+        run: |
+          browser="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          test -n "$browser" || { echo "No runner browser; browser qualification blocked"; exit 1; }
+          echo "GLAZE_CHROME_PATH=$browser" >> "$GITHUB_ENV"
+      - name: Browser interaction and responsive smoke
+        run: node scripts/qa_glaze_v171_scenes_browser.cjs
+        env:
+          GLAZE_PUPPETEER_MODULE: ${{ runner.temp }}/glaze-a11y/node_modules/puppeteer-core
+      - name: Axe automated WCAG review
+        run: node scripts/qa_glaze_v171_axe.cjs
+        env:
+          GLAZE_PUPPETEER_MODULE: ${{ runner.temp }}/glaze-a11y/node_modules/puppeteer-core
+          GLAZE_AXE_PATH: ${{ runner.temp }}/glaze-a11y/node_modules/axe-core/axe.min.js
