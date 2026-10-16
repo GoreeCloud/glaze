@@ -35,3 +35,16 @@ const server=http.createServer((req,res)=>{
    await page.click('[data-type-clarity="enhanced"]');
    assert.equal(await page.$eval('#scene-type-sample',e=>e.dataset.clarity),'enhanced');
    assert.equal(await page.$eval('[data-type-clarity="enhanced"]',e=>e.getAttribute('aria-pressed')),'true');
+   assert.ok(await page.$eval('.scene-type-sample p',e=>Number(getComputedStyle(e).fontWeight)>=600));
+   const state=await page.evaluate(()=>{
+    const pair=document.querySelector('.scene-type-options-pair');
+    const choices=[...pair.querySelectorAll('button')];
+    return {overflow:document.documentElement.scrollWidth-innerWidth,
+      columns:getComputedStyle(pair).gridTemplateColumns.split(' ').length,
+      row:Math.abs(choices[0].getBoundingClientRect().top-choices[1].getBoundingClientRect().top)<2,
+      target:Math.min(...choices.map(e=>e.getBoundingClientRect().height))};
+   });
+   assert.ok(state.overflow<=1,theme+' '+width+' overflow');
+   assert.equal(state.columns,2,'paired controls grid');
+   assert.equal(state.row,true,'paired controls same row');
+   assert.ok(state.target>=44,'touch target height');
