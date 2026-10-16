@@ -28,3 +28,13 @@ const server=http.createServer((req,res)=>{
    if(name==='launcher')await page.click('#tab-launcher');
    if(name==='menu')await page.click('[data-note-more]');
    await page.addScriptTag({path:axePath});
+   const report=await page.evaluate(async()=>window.axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}}));
+   const violations=report.violations.map(v=>({rule:v.id,severity:v.impact,targets:v.nodes.map(n=>n.target).slice(0,8)}));
+   failed+=violations.length;
+   console.log(JSON.stringify({case:name,passed:report.passes.length,violations}));
+   await page.close();
+  }
+  if(failed)throw Error(failed+' WCAG audit rule failures');
+  console.log('Automated axe audit PASS. Physical device and human screen-reader acceptance remain open.');
+ }finally{if(browser)await browser.close();}
+})().catch(e=>{console.error('AUDIT FAIL:',e.message);process.exitCode=1;}).finally(()=>server.close());
