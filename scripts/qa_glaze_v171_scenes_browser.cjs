@@ -140,6 +140,26 @@ const server=http.createServer((req,res)=>{
         assert.equal(await page.$eval('[data-content-mode="'+mode+'"]',e=>e.getAttribute('aria-pressed')),'true');
         assert.ok((await page.$eval('#scene-content-feedback',e=>e.textContent)).includes('Illustrative'));
       }
+      await page.click('#scene-form button[type="submit"]');
+      assert.equal(await page.$eval('#scene-form-name',e=>e.getAttribute('aria-invalid')),'true','required input is invalid');
+      assert.equal(await page.$eval('#scene-form-error',e=>e.dataset.visible),'true');
+      assert.equal(await page.evaluate(()=>document.activeElement.id),'scene-form-name','focus must reach invalid control');
+      await page.type('#scene-form-name','<b>Design Studio</b>');
+      await page.click('.scene-form-radio:has(input[value="team"])');
+      await page.click('#scene-form button[type="submit"]');
+      assert.equal(await page.$eval('#scene-form-name',e=>e.hasAttribute('aria-invalid')),false);
+      assert.equal(await page.$eval('#scene-form-result-title',e=>e.textContent),'<b>Design Studio</b>');
+      assert.equal(await page.evaluate(()=>document.querySelectorAll('#scene-form-result-title b').length),0,'input never becomes markup');
+      assert.equal(await page.$eval('#scene-form-result-meta',e=>e.textContent.startsWith('Team workspace')),true);
+      assert.equal(await page.$eval('#scene-form-result-icon',e=>e.getAttribute('href').endsWith('#network')),true);
+      await page.click('#scene-form-preview-toggle');
+      assert.equal(await page.$eval('#scene-form-result',e=>e.dataset.preview),'hidden');
+      await page.click('#scene-form button[type="reset"]');
+      assert.equal(await page.$eval('#scene-form-result-title',e=>e.textContent),'Your workspace');
+      assert.equal(await page.$eval('#scene-form-result',e=>e.dataset.preview),'visible');
+      assert.equal(await page.$eval('#scene-form-name',e=>e.value),'');
+      if(process.env.GLAZE_QA_SCREENSHOTS && (width===390||width===1280))
+        await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'forms-'+width+'.png'),fullPage:true});
       const defaultRadius=await page.$eval('#scene-material-preview',e=>getComputedStyle(e).borderTopLeftRadius);
       assert.equal(defaultRadius,'18px');
       await page.click('[data-material-elevation="raised"]');
