@@ -15,7 +15,7 @@ function update(){
  let count=0;
  for(const button of commandActions){button.hidden=!matches(button,q);if(!button.hidden)count++;}
  commandEmpty.hidden=count!==0;
- commandCount.textContent=count+' example actions available';
+ commandCount.textContent=count+(count===1?' example action available':' example actions available');
 }
 function open(){
  if(commandDialog.open)return;
