@@ -116,4 +116,19 @@ assert.match(materialCSS,/focus-visible/);
 for(const restricted of ['localStorage','sessionStorage','sendBeacon','XMLHttpRequest'])
  assert.ok(!materialJS.includes(restricted),'Unwanted side-effect in presentation module');
 
+const formJS=read('js/glaze-v1.7.1-form-lab.development.mjs');
+const formCSS=read('css/glaze-v1.7.1-form-lab.development.css');
+for(const id of ['scene-form','scene-form-name','scene-form-error','scene-form-result','scene-form-preview-toggle','scene-form-status'])
+ assert.ok(html.includes('id="'+id+'"'),'Missing form component '+id);
+assert.match(html,/aria-required="true"/);
+assert.match(html,/aria-describedby="scene-form-name-help scene-form-error"/);
+assert.match(formJS,/preventDefault\(\)/);
+assert.match(formJS,/textContent=label/);
+assert.match(formJS,/aria-invalid/);
+assert.match(formCSS,/focus-visible/);
+assert.match(formCSS,/forced-colors:active/);
+assert.match(formCSS,/prefers-reduced-motion:reduce/);
+for(const forbidden of ['localStorage','sessionStorage','XMLHttpRequest','sendBeacon'])
+ assert.ok(!formJS.includes(forbidden),'Form preview cannot persist or send data');
+
 console.log('Glaze scenes: source contract PASS; real human/native/AT qualification remains open.');
