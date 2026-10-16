@@ -229,6 +229,26 @@ const server=http.createServer((req,res)=>{
     for(const theme of ['porcelain','cedar','nocturne','contrast']){
       const page=await browser.newPage();
       await page.goto(base+'?theme='+theme,{waitUntil:'networkidle0'});
+      const materialContrast=await page.evaluate(()=>{
+        function luminance(rgb){
+          const v=(rgb.match(/[0-9.]+/g)||[]).slice(0,3).map(Number).map(n=>{
+            const c=n/255;return c<=.04045?c/12.92:((c+.055)/1.055)**2.4;
+          });
+          return .2126*v[0]+.7152*v[1]+.0722*v[2];
+        }
+        function pair(selector){
+          const c=getComputedStyle(document.querySelector(selector));
+          const a=luminance(c.color),b=luminance(c.backgroundColor);
+          return Number(((Math.max(a,b)+.05)/(Math.min(a,b)+.05)).toFixed(2));
+        }
+        return {
+          selected:pair('[data-material-elevation="flat"]'),
+          unselected:pair('[data-material-elevation="raised"]'),
+          switchText:pair('#scene-material-accent')
+        };
+      });
+      for(const [control,ratio] of Object.entries(materialContrast))
+        assert.ok(ratio>=4.5,'Material text contrast '+theme+'/'+control+' = '+ratio);
       const palette=await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--surface').trim());
       const current=await page.evaluate(()=>Array.from(document.querySelectorAll('[data-scene-theme][aria-current="true"]'),el=>el.dataset.sceneTheme));
       assert.deepEqual(current,[theme],'one visible active theme choice');
