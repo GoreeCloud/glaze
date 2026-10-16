@@ -45,7 +45,11 @@ jobs:
           node-version: '22'
 
       - name: Verify V1.7.1 Development isolation and export identity
-        run: node scripts/verify_glaze_v1_7_1_development_boundary.mjs
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          node scripts/verify_glaze_v1_7_1_development_boundary.mjs
 
       - name: Verify source checkout remains unchanged
         run: git diff --exit-code -- .
