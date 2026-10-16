@@ -7,6 +7,7 @@ import json
 import math
 import re
 import subprocess
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -68,6 +69,17 @@ def meaningful(value: Any, label: str) -> str:
     req(isinstance(value, str) and value.strip(), label + " must be a non-empty string")
     text = value.strip()
     req(not PLACEHOLDER.search(text), label + " contains a placeholder")
+    return text
+
+def validated_capture_time(value: Any) -> str:
+    text = meaningful(value, "capturedAt")
+    try:
+        captured = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise QualificationError("capturedAt must be ISO-8601") from exc
+    req(captured.tzinfo is not None, "capturedAt requires an explicit timezone")
+    req(captured <= datetime.now(timezone.utc) + timedelta(minutes=5),
+        "capturedAt cannot be future-dated")
     return text
 
 def finite(value: Any, label: str, minimum: float | None = None, maximum: float | None = None) -> float:
@@ -202,7 +214,7 @@ def validate_record(record: dict[str, Any], plan: dict[str, Any]) -> None:
     tooling = meaningful(record.get("toolingRevision"), "toolingRevision")
     req(bool(HEX40.fullmatch(tooling)), "toolingRevision must be a lowercase 40-character SHA")
     req(record.get("repository") == "GoreeCloud/glaze", "repository drifted")
-    meaningful(record.get("capturedAt"), "capturedAt")
+    validated_capture_time(record.get("capturedAt"))
     meaningful(record.get("operator"), "operator")
     req(record.get("manualExecution") is True, "real Energy record requires manualExecution=true")
     req(record.get("laneId") == "energy-behavior", "record may target only energy-behavior")
@@ -399,6 +411,13 @@ def self_test(plan: dict[str, Any]) -> None:
     req(bool(HEX40.fullmatch(head)), "current tooling revision is not a full SHA")
     good = sample(plan, head)
     validate_record(good, plan)
+
+    malformed_time = copy.deepcopy(good)
+    malformed_time["capturedAt"] = "not-a-timestamp"
+    reject(malformed_time, plan, "malformed capture time")
+    future_time = copy.deepcopy(good)
+    future_time["capturedAt"] = (datetime.now(timezone.utc) + timedelta(days=1)).isoformat()
+    reject(future_time, plan, "future capture time")
 
     stale = copy.deepcopy(good)
     stale["sourceRevision"] = "0" * 40
