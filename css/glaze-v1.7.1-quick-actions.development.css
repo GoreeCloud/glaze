@@ -11,6 +11,7 @@
 .scene-command-search{display:block;box-sizing:border-box;width:calc(100% - 40px);height:46px;margin:0 20px 12px;padding:11px 13px;font:inherit;font-size:14px;border:1px solid var(--border);border-radius:12px;background:var(--canvas);color:var(--text)}
 .scene-command-results{margin:0 12px 12px;padding:5px;display:grid;gap:4px;max-height:min(320px,40dvh);overflow:auto}
 .scene-command-action{display:flex;align-items:center;gap:12px;min-height:48px;width:100%;padding:11px 13px;text-align:start;border:1px solid transparent;border-radius:12px;color:var(--text);background:transparent;font:inherit;font-size:13px;font-weight:690}
+.scene-command-action[hidden],.scene-command-empty[hidden]{display:none}
 .scene-command-action:hover,.scene-command-action:focus-visible{background:var(--accentSubtle);border-color:var(--accent)}
 .scene-command-action svg{width:20px;height:20px;flex:none;color:var(--accent)}
 .scene-command-action span{display:grid;gap:2px}
