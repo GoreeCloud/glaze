@@ -48,3 +48,9 @@ Promotion of the shared design system does not automatically make any GoreeCloud
 Historical V1.7 dev.1–dev.47 identifiers remain immutable provenance. They are not renamed to V1.7.1. The V1.7.1 wrapper establishes the new successor line while retaining those historical source references.
 
 See `docs/v1.7/GLAZE_V1_7_PLANNED.md` and the V1.7 qualification records for the detailed Development history.
+
+## Upcoming identity: GC UI
+
+On October 16, 2026, the GoreeCloud owner directed that **GC UI** will permanently replace both **Glaze** and **Glaze UI**. This is an **approved future naming decision**, not a completed migration. The current verified Glaze 1.7.0 release identity, repository paths, consumer requirements, and historical Glaze UI evidence remain unchanged until a controlled, validated cutover.
+
+See [docs/BRANDING.md](docs/BRANDING.md) for the decision and migration boundaries.
