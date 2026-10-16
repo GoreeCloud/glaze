@@ -80,3 +80,19 @@ The Memos example now has an icon-bearing per-note context menu. It uses canonic
 A separate content-state example offers Loading, Empty and Error selections. Skeletons, canonical folder and warning glyphs, text, and semantic colors make each illustrative state legible without color alone. Loading is entirely synthetic: no actual requests are started; Error is not a detected service failure. Motion and forced-colors fallbacks are provided.
 
 Automated browser evidence includes compact through wide viewports, note menu state, keyboard and focus, pin toggling, appearance routing, state selection, and representative RTL checks. These examples still require manual screen-reader, touch-device, native, design, performance and release acceptance. They are not production app features.
+
+## Surface and control laboratory — Development
+
+An opt-in interactive material panel now offers real visual evaluation of Flat,
+Raised, and Outlined card treatments, a native keyboard-operable corner-radius
+range, and a semantic decorative-accent switch. Only the synthetic preview
+card changes; values are not saved, sent to providers, or applied to GoreeCloud
+applications. The switch exposes `role="switch"` and `aria-checked`, and
+elevation buttons expose pressed selection. Meaningful text remains available
+without relying on hue or elevation alone.
+
+Responsive, forced-colors, and reduced-motion fallbacks are scoped to this
+demonstration. Browser tests must verify computed geometry and shadow changes,
+accessible selection, switch state, keyboard range adjustment, and no overflow
+at 320/390/768/1280/1600 px. These are Development smoke checks, not manual
+accessibility, production, native-device or release acceptance.
