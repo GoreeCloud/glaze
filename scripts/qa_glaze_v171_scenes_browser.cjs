@@ -45,6 +45,7 @@ const server=http.createServer((req,res)=>{
         await page.screenshot({path:path.join(process.env.GLAZE_QA_SCREENSHOTS,'quick-actions-'+width+'.png'),fullPage:true});
       }
       assert.equal(await page.$eval('#scene-command-count',el=>el.textContent),'1 example action available');
+      assert.equal(await page.evaluate(()=>[...document.querySelectorAll('.scene-command-action')].filter(el=>getComputedStyle(el).display!=='none').length),1,'only matching command is rendered');
       await page.keyboard.press('Enter');
       assert.equal(await page.$eval('#tab-launcher',el=>el.getAttribute('aria-selected')),'true');
       assert.equal(await page.$eval('#scene-command-dialog',el=>el.open),false);
